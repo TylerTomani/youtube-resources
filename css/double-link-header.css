@@ -43,6 +43,7 @@ header>.img-container {
     max-height: 100px;
     flex-basis: 20%;
 }
+body>header>.page-logo > img,
 body>header>.img-container img {
     /* flex-basis: 5%; */
     /* max-width: 200px; */
