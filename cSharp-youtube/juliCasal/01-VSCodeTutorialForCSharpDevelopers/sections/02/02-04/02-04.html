@@ -1,0 +1,142 @@
+<div class="steps-container">
+    <h2>02-04 Run with <code>dotnet</code></h2>
+    <h3>(instead of debugger)</h3>
+     <!-- 01-01 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>01</h4>
+            <p>
+                To run the api with debug on, change into the <code>webApplication1</code> directory 
+                and
+                run
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+cd WebApplication1</pre>
+            </div>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+dotnet build</pre>
+            </div>
+            <p>
+                Make sure you are in the directory
+            </p>
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/02/02-04/images/01.png">
+        </div>
+    </div>    
+    <!-- 02 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt playVid-click">
+            <h4>02</h4>
+            <p>
+                 enter the command 
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+dotnet run</pre>
+            </div>
+            <p>
+                you can now go back to the <code>WebApplication1.http</code>
+                and click <q>send request</q>
+            </p>  
+        </div>
+        <div class="step-vid">
+            <video src="sections/02/02-04/images/02.mov">
+        </div>
+    </div>
+    <!-- 03 -->
+    <div class="step ">
+        <div tabindex="1" class="step-txt">
+            <h4>03</h4>
+            <p>
+                Notice that breakpoint works the same, 
+                just go to the <code>WebApplication1</code> script and click 
+                <q>send request</q> after inserting the <span class="r">breakpoint</span>
+            </p>
+        </div>
+        <div class="step-vid">
+            <video src="sections/02/02-04/images/03.mov">
+        </div>
+    </div>
+    <!-- 04 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>04</h4>
+            <p>
+                shorcut for running <q>Send</q>
+                <br>
+                <q>Command + alt + R</q>
+            </p>
+        </div>
+        <div class="step-vid">
+            <video src="sections/02/02-04/images/04.mov">
+        </div>
+    </div>
+    <!-- 05 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt playVid-click rb2 r">
+            <h4 class="">05</h4>
+            <h5>(Fixing server)</h5>
+            <p>
+                If you kill the process of <code class="bl">dotnet</code>, and try to re-run 
+                the process you will encounter an error with the server.
+            </p>
+            <p class="bl">
+                **Notice this where the port is located in the <code>.htpp</code> and <code>launchSetting.json</code>
+                scripts
+            </p>
+        </div>
+        <div class="step-vid rb2">
+            <video src="sections/02/02-04/images/05.mov">
+        </div>
+    </div>
+
+    <div class="step">
+        <div tabindex="1" class="step-txt playVid-click rb2 ">
+            <h4 class="r">06</h4>
+            <h5 class="r">find and kill the server process</h5>
+            <p>
+                <span class="r">Locate the server with the <code class="bl">lsof -i </code>
+                command and the  <span class="m">port number</span> after the <code class="bl">:</code></span>
+            </p>
+            <h6></h6>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+lsof -i :<span class="m">port number</span></pre>
+            </div>
+            <p>
+                Kill the command with the <code class="o">PID</code>
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+kill -9 <span class="o">PID number</span></pre>
+            </div>
+            <p>
+                Rerun dotnet
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+dotnet run</pre>
+            </div>      
+        </div>
+        <div class="step-vid rb2">
+            <video src="sections/02/02-04/images/06.mov">
+        </div>
+    </div>
+    <!-- 07 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt playVid-click">
+            <h4>07</h4>
+            <p>
+                Or you can change the port number in the <code>WebApplication1.http</code> and <code>launchSetting.json</code>
+            </p>
+        </div>
+        <div class="step-vid">
+            <video src="sections/02/02-04/images/07.mov">
+        </div>
+    </div>
+    <button tabindex="1" id="nxtLesson">next lesson</button>
+</div>
