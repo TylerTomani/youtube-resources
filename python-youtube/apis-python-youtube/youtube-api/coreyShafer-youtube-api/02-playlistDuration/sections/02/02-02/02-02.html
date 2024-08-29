@@ -1,0 +1,98 @@
+<div class="steps-container">
+    <header>
+        <h2>02-02 <code class="lsg-fix">timedelta.total_seconds()</code>
+        </h2>
+    </header>
+    <!-- 01-01 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>01</h4>
+            <p>
+                Use the <code class="lsg">timedelta</code> class from the <code class="m">datetime</code>
+                library. Pass in the hours,minutes, and seconds and add the method <code class="lsg">total_seconds()</code>.
+                Return value to video_seconds variable
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+import re
+import os
+<div class="code-container">
+<pre tabindex="1" class="copy-code"><span class="m">from datetime import timedelta</span></pre>
+</div>
+from googleapiclient.discovery import build
+import json
+# Get new api key this one is fake
+api_key = 'AIzaSyBycc_eAr1_P3NWDzR08IHkCA3_44wKEDM'
+youtube = build('youtube','v3',developerKey=api_key)
+channel_id = 'UCCezIgC97PvUuR4_gbFUs5g'
+playlist_id = 'PL-osiE80TeTsWmV9i9c58mdDCSskIFdDS'
+pListItem_response = youtube.playlistItems().list(
+    part='contentDetails',
+    playlistId=playlist_id
+)
+response = pListItem_response.execute()
+vid_ids = []
+for data in response['items']:
+    vid_ids.append(data['contentDetails']['videoId'])
+
+videos_response = youtube.videos().list(
+    part='contentDetails',
+    id=','.join(vid_ids)
+)
+response = videos_response.execute()
+hours_pattern = re.compile(r'(\d+)H')
+mins_pattern = re.compile(r'(\d+)M')
+secs_pattern = re.compile(r'(\d+)S')
+os.system('clear')
+for vid in response['items']:
+    duration = vid['contentDetails']['duration']
+    hours = hours_pattern.search(duration)
+    mins =  mins_pattern.search(duration)
+    secs =  secs_pattern.search(duration)
+
+    hours = int(hours.group(1))  if hours else 0
+    mins  = int(mins.group(1))   if mins  else 0
+    secs  = int(secs.group(1))   if secs  else 0
+
+        <div class="code-container">
+        <pre tabindex="1" class="copy-code">
+    video_seconds = timedelta(
+        hours = hours,
+        minutes=mins,
+        seconds=secs
+    ).<span class="lsg">total_seconds()</span>
+    print(video_seconds)</pre>
+    </div>
+    
+
+</pre>
+            </div>
+            
+            
+        </div>
+        <div class="step-img ac jc">
+            <img src="sections/02/02-02/images/01.png">
+        </div>
+    </div>
+    <!-- 01-02 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>02</h4>
+            <p>
+            </p>
+        </div>
+        <div class="step-img">
+            <img src="sections/02/02-02/images/02.png">
+        </div>
+    </div>
+    <!-- 03 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>03</h4>
+        </div>
+        <div class="step-img">
+            <img src="sections/02/02-02/images/03.png">
+        </div>
+    </div>
+    <button tabindex="1" id="nxtLesson">next lesson</button>
+</div>

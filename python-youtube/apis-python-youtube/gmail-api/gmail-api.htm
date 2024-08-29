@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>python-gmail-api</title>
+    <!-- <link rel="stylesheet" href="../../../css/doc-topic-v2.css"> -->
+    <link rel="stylesheet" href="../../../../css/doc-topic-v3.css">
+    <link rel="stylesheet" href="../../../../css/resource-header-temp.css">
+    <script src="../../../js/letterFocus-docs.js" defer></script>
+    <script src="../../../js/dropResource-docs.js" defer></script>
+</head>
+<body>
+    <header>
+        <a tabindex="1" id="homeLink" href="../../python-index.htm">&larr;home-python</a>
+        <div class="fi page-title">
+            <h1>Python - Youtube - APIS - Gmail</h1>
+        </div>
+        <div class="page-logo">
+            
+            <a tabindex="1" id="mainHomeLink" href="../../../../index.html">main home tyler tomani</a>
+        </div>
+    </header>
+    <main>
+        <h2>Resources</h2>
+        <!-- Youtube Gmail API Tutorials -->
+        <div class="resources-container">
+            <div class="resource-container">
+                <header tabindex="1" id="youtube" class="resource">
+                    <h3>Youtube Python API Tutorials</h3>
+                    <img src="data:image/png;base64,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"
+0                        alt="">
+                </header>
+                <div class="sub-resources-container show">
+                    <!-- JieJenn -->
+                    <h4 class="sub-resource-container">
+                        <a tabindex="1" id="jieJenn" class="sub-resource subject"  href="../gmail-api/youtubeChannels/jieJienn/jie-jenn-gmail.htm
+                        ">JieJenn
+                        <img src="../../images/jieJenn.jpeg">
+                        </a>
+                    </h4>                        
+                    <h4 class="sub-resource-container">
+                        <a tabindex="1" id="codeTops" class="sub-resource subject"  href="youtubeChannels/codeTops/codeTops-gmail.htm
+                        ">CodeTops
+                        <img src="../../images/codeTops.jpeg">
+                        </a>
+                    </h4>                        
+                </div>
+            </div>
+            
+        </div>
+
+    </main>
+
+</body>

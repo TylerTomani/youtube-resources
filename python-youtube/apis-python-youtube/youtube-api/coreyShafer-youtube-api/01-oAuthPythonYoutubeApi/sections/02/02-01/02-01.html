@@ -1,0 +1,114 @@
+<div class="steps-container">
+    <h2>02-02 <code>build()</code> </h2>
+    <h3>github documentation</h3>
+    <!-- build() -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h5><code class="o">build()</code></h5>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+                    from googleapiclient.discovery import build
+
+                    service = build('drive', 'v3')
+                    # ...
+                    service.close()</pre>
+            </div>
+            <p>
+                The <span class="o">build()</span> function give us access to the api
+            </p>
+
+        </div>
+        <div class="step-img">
+            <img src="sections/02/02-02/images/00.png">
+        </div>
+    </div>
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>01</h4>
+            <p>
+                Documentation for the <code class="o">build()</code> function
+                Can be found on the github page,
+                <br> <a target="_blank"
+                    href="https://github.com/googleapis/google-api-python-client">https://github.com/googleapis/google-api-python-client</a>
+                scroll down and open <q>docs folder</q>
+                <br>
+                Then in <q>docs folder</q> click on <q>Getting Started</q>, this goes over the api key and setting up
+                console.google
+
+            </p>
+        </div>
+        <div class="step-vid">
+            <video src="sections/02/02-02/images/01.mov">
+        </div>
+    </div>
+    <!-- 01-02 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>02</h4>
+            <p>
+                The request using <code class="o">build()</code> requires <code class="m">serviceName</code>
+                and <code class="m">version</code>.
+                <br>
+                The <code class="lsg">developerKey</code> is the API key we got from the previous lesson
+            </p>
+        </div>
+        <div class="step-img">
+            <img src="sections/02/02-02/images/02.png">
+        </div>
+    </div>
+    <!-- 01-03 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>03</h4>
+            <p>
+                To find the instance methods for <code class="o">build()</code>
+                Go to back a page to and click on <q class="b">Supported APIs</q>,
+                or go here <a
+                    href="https://googleapis.github.io/google-api-python-client/docs/dyn/youtube_v3.html">https://googleapis.github.io/google-api-python-client/docs/dyn/youtube_v3.html</a>
+                <br>
+                and press,
+                <br>
+                'command + F'
+                <br>
+                to find the version of the youtube api being used.
+
+
+                The for <code class="o">build()</code> that allow us to retrieve info can be found
+            </p>
+        </div>
+        <div class="step-vid">
+            <video src="sections/02/02-02/images/03.mov">
+        </div>
+    </div>
+    <!-- 01-04 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>04</h4>
+            <p>
+                Anything without the <code>=None</code> means it is options. We can see that the
+                <code>serviceName</code>
+                and <code>version</code> are mandatory.
+                <br>
+                The <code>developerKey</code> is optional but that is the API key, which we will need, so I guess I'm
+                not sure about NONE
+            </p>
+        </div>
+        <div class="step-img">
+            <img src="sections/02/02-02/images/04.png">
+        </div>
+    </div>
+    <!-- 01-05 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt playVid-click">
+            <h4>05</h4>
+            <p>
+                The <code>service</code> object returned from the api request, (seen in step 2), is an object that has
+                methods.
+            </p>
+        </div>
+        <div class="step-vid">
+            <video src="sections/">
+        </div>
+    </div>
+    <button tabindex="1" id="nxtLesson">next lesson</button>
+</div>

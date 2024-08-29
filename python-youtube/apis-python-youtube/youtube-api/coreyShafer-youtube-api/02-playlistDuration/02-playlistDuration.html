@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02-playlistDuration-coreyShafer--</title>
+<link rel="stylesheet" href="../../css/colors.css">
+<link rel="stylesheet" href="../../../../../css/resource-templates/tutorial-temp-ffc.css">
+<link rel="stylesheet" href="../../../../../css/resource-templates/lesson-temp-fcc.css">
+<link rel="stylesheet" href="../../../../../css/resource-templates/copy-code-fcc.css">
+
+<script type="module" src="../../../../../js/resource-templates/sections-fcc.js" defer></script>
+<script type="module" src="../../../../../js/resource-templates/lessons-temp-fcc.js" defer></script>
+<script type="module" src="../../../../../js/resource-templates/copy-code-resources.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav id="mainLinksContainer">
+            <div id="mainLinks">
+                <a autofocus  tabindex="1" id="backlink" href="../../youtube-api.html">&larr;back</a>
+                <a tabindex="1" id="homelink" href="../../../../../../../index.html">Home (main)</a>
+                <a tabindex="1" id="regexCmds" target="_blank" href="../../../../../../../Shortcuts/regex-cmds/regex-cmds.html">regex</a>
+                <a tabindex="1" id="programShorcuts" target="_blank"
+                    href="../../../../../../../Shortcuts/programShorcuts.html">program Shorcuts</a>
+            </div>
+            <div class="img-container">
+                <a tabindex="1" id="tutorialLink" target="_blank" href="https://www.youtube.com/watch?v=th5_9woFJmk">
+                    <img
+                        src="data:image/jpeg;base64,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">
+                </a>
+            </div>
+        </nav>
+        <h1>2. Python YouTube API Tutorial: Calculating the Duration of a Playlist</h1>    
+        <p class="r">Maybe Have the letter "C" key go to the most important peice of code on each lesson/section</p>
+    </header>
+    <nav tabindex="1" class="section-lesson-title">
+        <span id="section-lesson-titles"><span id="section-title">Section</span><span id="lesson-title">&rarr;lesson</span></span>
+    </nav>
+     <main>
+        <aside tabindex="1">
+            <ul class="sections-container">
+                <!-- s1 - get playlist 'i' -->
+                <li class="section-container">
+                    <a tabindex="1" class="section" href="sections/01/01.html">
+                        Section 1 - Get <code class="g">playlist 'id'</code>, <code class="b-fix">playlistItem()</code>
+                        and <code class="r">videoId</code>
+                    </a>
+                    <ul class="sub-section ">
+                        <li><a tabindex="1" href="sections/01/01-01/01-01.html">1.
+                             Get <code class="o-fix">channel 'id'</code> to
+                             <code class="b-fix">playlists()</code>
+                        </a></li>
+                        <li><a tabindex="1" href="sections/01/01-02/01-02.html">2. 
+                            <code class="g">playlist 'id'</code> to  <code class="b-fix">playlistItems()</code>
+                        </a></li>
+                        <li><a tabindex="1" href="sections/01/01-03/01-03.html">3.
+                             <code><span class="m">contentDetails</span>[<span class="r">'videoId'</span>]</code> 
+                             <br>to <code class="b-fix">videos()</code>
+                        </a></li>
+    
+                    </ul>
+                </li>
+                <!-- s2 -->
+                <li class="section-container">
+                    <a  tabindex="1" class="section" href="sections/02/02.html">
+                        Section 2 - get duration of videos <br>first 5
+                    </a>
+                    <ul class="sub-section ">
+                        <li><a tabindex="1" href="sections/02/02-01/02-01.html">1.
+                                Create regex pattern 
+                                <br> <code class="b">re.compile()</code>, <code class="r">search()</code>
+                                <code class="o">group(1)</code>
+                            </a>
+                        </li>
+                        <li><a tabindex="1" href="sections/02/02-02/02-02.html">12
+                                <code class="lsg-fix">timedelta.total_seconds()</code>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- s3 -->
+                <li class="section-container">
+                    <a tabindex="1" class="section" href="sections/03/03.html">
+                        Section 3 - pageTokens
+                    </a>
+                    <ul class="sub-section ">
+                        <li><a tabindex="1" href="sections/03/03-01/03-01.html">1.
+                                get Nextpage Token
+                            </a>
+                        </li>
+                        <li><a   tabindex="1" href="sections/03/03-02/03-02.html">2.
+                                convert total seconds
+                                <br> back into 
+                                hours, minutes,
+                                <br> and seconds
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+            </ul>
+        </aside>
+        <div tabindex="1" id="targetDiv">
+            
+        </div>
+    </main>
+    
+    
+</body>
+</html>

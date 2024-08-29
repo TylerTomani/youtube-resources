@@ -1,0 +1,113 @@
+* {
+    margin:0; 
+    padding:0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+main {
+    margin: 0 2.5%;
+    padding: 0 2.5%;
+}
+main > header {
+    display: flex; 
+    gap: 1rem;
+}
+main > header > .subject#shortcuts > p{
+    font-size: .87rem;
+    /* width: 40%; */
+    border: 1px solid blue;
+}
+main > header > .subject#shortcuts > ul{
+    padding-left: 15%;
+}
+main > header > .subject {
+    flex-basis: 45%;
+}
+main > header > .subject > img {
+    margin: 0 25%;
+    width: 50%;
+
+}
+
+
+.subject-container {
+    margin-top: 2.5%;
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+.subject-container > .subject-header {
+    display: flex;
+}
+.subject-container > .subject-header > .subject {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 2.5%;
+}
+.subject-container > .subject-header > .subject > img {
+    width: 10%;
+}
+.subject-container > .subject-tutorials-container{
+    border: 2px solid black;
+    display: flex;
+    flex-wrap: wrap;
+}
+.subject-container > .subject-tutorials-container > .tutorial,
+.subject-container > .subject-tutorials-container > .playlist-container{
+    /* border: 2px solid blue; */
+    flex-basis: 47.5%;
+}
+
+.playlist-container > header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1% 0;
+}
+.playlist-container > header > h2{
+    padding-bottom: 2.5%;
+    padding-left: 2.5%;
+}
+img {
+    max-height: 100px;
+    margin: 0 25%
+}
+.subject > img,
+.playlist-container > header > img{
+    width: 60%;
+    /* align-self: center; */
+    /* max-width: 124px; */
+    max-height: 124px;
+    margin-left: 22%;
+}
+.playlist-container > .tutorials-container {
+    margin-top: 1%;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+.playlist-container > .playlist-tutorials-container > .tutorial > h2 {
+    font-size: 1.1rem;
+}
+.playlist-container > .playlist-tutorials-container > .tutorial > img {
+    width: 50%;
+    margin: 0 2.5%;
+    
+}
+
+
+.subject:active,.subject:focus,.subject:hover,
+.project:active,.project:focus,.project:hover,
+.playlist-container:active,.playlist-container:focus,.playlist-container:hover,
+.tutorial:active,.tutorial:focus,.tutorial:hover{
+    border: 3px solid blue;
+    box-shadow: 0px 0px 4px 2px blue;
+}
+
+.hide {
+    display: none !important;
+}
+.show {
+    display: inline-flex !important;
+}

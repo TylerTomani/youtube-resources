@@ -1,0 +1,259 @@
+<div class="steps-container">
+    <header>
+        <h2>01-01 Get <code class="o">channel id</code> get playlists
+        </h2>
+    </header>
+    <!-- 01-01 -->
+    <div class="step col-reverse">
+        <div tabindex="1" class="step-txt ">
+            <h4>01</h4>
+            <p>
+                Find the <code class="o">channel id</code> to find the playlist. The channel id 
+                is in the response from the <code class="b-fix">channels()</code> resource. It can be found 
+                using <code class="m">contentDetails</code> or <span class="g">statistics</span>
+                in <code>part</code>
+
+            </p>
+            <div class="code-container ass w-90">
+                <pre tabindex="1" class="copy-code mdtxt">
+import os
+from googleapiclient.discovery import build
+import json
+<span class="l"># Get new api key this one is fake</span>
+api_key = <span class="l">'AIzaSyBycc_eAr1_P3NWDzR08IHkCA3_44wKEDM'</span>
+youtube = build('youtube', 'v3', developerKey=api_key)
+
+channel_request = youtube.channels().list(
+    <span class="l"># part='statistics',</span>
+    <span class="r">part</span>='<span class="m">contentDetails</span>',
+    forUsername='schafer5'
+)
+response = channel_request.execute()
+channel_id = response['items'][0]['<span class="o">id</span>']
+
+os.system('clear')
+print(response)
+print("-channelId----------------")
+print(<span class="o">channel_id</span>)
+
+</pre>
+            </div>
+            <p>
+                The <code class="o">'id'</code> is contained in an object {} within <code>'items'</code>
+                as the first index
+                <br>
+                <code>response['items'][0]['id']</code>
+            </p>
+            <p>
+                Visit documentation for reference <code>channels().list()</code>
+                <a class="smtxt"
+                    href="https://developers.google.com/youtube/v3/docs/channels/list#:~:text=brandingSettings-,contentDetails,-contentOwnerDetails">
+                    https://developers.google.com/youtube/v3/docs/channels/list
+                </a>
+            </p>
+
+        </div>
+        <div class="step-img ac jc">
+            <img src="sections/01/01-01/images/01.png">
+        </div>
+        
+    </div>        
+    <!-- 02 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt ">
+            <h4>02</h4>
+            <h5><code class="b-fix">playlists()</code></h5>
+            <p>
+                Pass the <code class="o">channel id</code> as the argument <code class="o">channelId</code> 
+                in the <code>list()</code> instance method of the <span class="b-fix">playlist()</span> resource
+                using <code>list()</code>'s 
+            </p>
+            <p>
+                The <code class="b-fix">playlists()</code> takes <code class="m">'contentDetails'</code> as a <code class="r">part</code>
+                arguement.
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code mdtxt">
+import os
+from googleapiclient.discovery import build
+import json
+# Get new api key this one is fake
+api_key = 'AIzaSyBycc_eAr1_P3NWDzR08IHkCA3_44wKEDM'
+youtube = build('youtube', 'v3', developerKey=api_key)
+
+channel_request = youtube.channels().list(
+    part='contentDetails',
+    forUsername='schafer5'
+)
+response = channel_request.execute()
+<span class="o">channel_id</span> = response['items'][0][<span class="o">'id'</span>]
+
+playlists_request = youtube.<span class="b-fix">playlists</span>().list(
+    <span class="r">part</span>='<span class="m">contentDetails</span>',
+    channelId=<span class="o">channel_id</span>
+)
+
+os.system('clear')
+response = playlists_request.execute()                    
+print(response)</pre>
+            </div>
+            <p>
+                The playlist are located as an array of dictionaries in the 'items' key of the playlist() response.
+                see documentation here for playlist(),
+                <br>
+                <a target="_blank"
+                    href="https://developers.google.com/youtube/v3/docs/playlists/list">https://developers.google.com/youtube/v3/docs/playlists/list</a>
+                <br>
+                
+            </p>
+            
+        </div>
+        <div class="step-img ac jc">
+            <img src="sections/01/01-01/images/02.png">
+        </div>
+    </div>
+    <!-- 03 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>03</h4>
+            <p>
+                
+                You can loop through the <code class="b">playlist()</code> results, and get their ids.
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code mdtxt">
+import os
+from googleapiclient.discovery import build
+import json
+# Get new api key this one is fake
+api_key = 'AIzaSyBycc_eAr1_P3NWDzR08IHkCA3_44wKEDM'
+youtube = build('youtube', 'v3', developerKey=api_key)
+
+channel_request = youtube.channels().list(
+    # part='statistics',
+    part='contentDetails',
+    forUsername='schafer5'
+)
+response = channel_request.execute()
+channel_id = response['items'][0]['id']
+
+playlists_request = youtube.playlists().list(
+    part='contentDetails',
+    channelId=channel_id
+)
+
+os.system('clear')
+response = playlists_request.execute()
+for data in response['items']:
+    print(data)
+    print(f'playlist_id: {data["id"]}')
+    print()</pre>
+            </div>
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/01/01-01/images/03.png">
+        </div>
+    </div>
+    <!-- 04 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>04</h4>
+            <p>
+                Add <code class="m">snippets</code> into <code class="r">part</code> to see details of the playlist. This 
+                is where the title's are located
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code mdtxt">
+import os
+from googleapiclient.discovery import build
+import json
+# Get new api key this one is fake
+api_key = 'AIzaSyBycc_eAr1_P3NWDzR08IHkCA3_44wKEDM'
+youtube = build('youtube', 'v3', developerKey=api_key)
+channel_request = youtube.channels().list(
+    part='contentDetails',
+    forUsername='schafer5'
+)
+response = channel_request.execute()
+channel_id = response['items'][0]['id']
+playlists_request = youtube.playlists().list(
+    part='contentDetails,<span class="m">snippet</span> ',
+    channelId=channel_id
+)
+os.system('clear')
+response = playlists_request.execute()                    
+print(response)</pre>
+            </div>
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/01/01-01/images/04.png">
+        </div>
+    </div>
+    <!-- 05 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>05</h4>
+            <p>
+                Get the Ids and titles for practice, then use the Django Playlist Id in the next lesson.
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code mdtxt">
+import os
+from googleapiclient.discovery import build
+import json
+# Get new api key this one is fake
+api_key = 'AIzaSyBycc_eAr1_P3NWDzR08IHkCA3_44wKEDM'
+youtube = build('youtube', 'v3', developerKey=api_key)
+channel_request = youtube.channels().list(
+    part='contentDetails',
+    forUsername='schafer5'
+)
+response = channel_request.execute()
+channel_id = response['items'][0]['id']
+playlists_request = youtube.playlists().list(
+    part='contentDetails,snippet',
+    channelId=channel_id
+)
+os.system('clear')
+response = playlists_request.execute()                    
+# print(response)
+for data in response['items']:
+    print(data['snippet']['title'])
+    print(data['id'])
+    print()</pre> 
+            </div>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p</pre>
+            </div>
+        </div>
+        <div class="step-img">
+            <img src="sections/01/01-01/images/05.png">
+        </div>
+    </div>
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>06</h4>
+            <p>
+               <span class="r">**Remember</span> You can find the playlist id in the url of the playlist page.
+                <a
+                    href="https://www.youtube.com/playlist?list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p">https://www.youtube.com/playlist?list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p</a>
+            </p>
+            <div class="code-container  ass w-90">
+                <pre tabindex="1" class="copy-code wbg mdtxt">
+                    PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p</pre>
+            </div>
+            <p>
+                But the api way is described in this section
+            </p>
+    
+        </div>
+        <div class="step-img">
+            <img src="sections/01/images/03.png">
+        </div>
+    </div>
+    
+    <button tabindex="1" id="nxtLesson">next lesson</button>
+</div>

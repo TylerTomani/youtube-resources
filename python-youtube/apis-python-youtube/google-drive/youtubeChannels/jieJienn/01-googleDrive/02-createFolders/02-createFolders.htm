@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jiejenn-02-createFolders-</title>
+    <link rel="stylesheet" href="../../../../../../../../css/colors.css" />
+    <link rel="stylesheet" href="../../../../../../../../css/font-sizes.css" />
+    <link rel="stylesheet" href="../../../../../../../css/resource-header-temp.css" />
+    <link rel="stylesheet" href="../../../../../../../css/tutorial-temp-v2.css" />
+    <link rel="stylesheet" href="../../../../../../../../css/copy-code.css">
+    <link rel="stylesheet" href="../../../../../../../../css/imgAnimate-v2.css">
+    <script src="../../../../../../../js/letterFocus-tutorial.js" defer></script>
+    <script src="../../../../../../../../js/copy-code.js" defer></script>
+    <script src="../../../../../../../js/dropPartStepFocus-v2.js" defer></script>
+    <script src="../../../../../../../js/loadpageNewTab.js" defer></script>
+    <script type="module" src="../../../../../../../js/autofocusLoad.js" defer></script>
+    <script type="module" src="../../../../../../../js/play-enlarge-video.js" defer></script>
+    <script type="module" src="../../../../../../../js/img-enlarge-v1.js" defer></script>
+    <script type="module" src="../../../../../../../js/addRemoveTabs-v1.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="home-link">
+            <a id="homeLink" tabindex="1" href="../../jie-jenn-googeDrive.htm">(home)gmail-api-jieJenn</a>
+        </div>
+        <div class="title-container">
+            <h1>Jie Jenn - 02-createFolders</h1>
+            <h2>2. Google Drive API in Python | Create Folders</h2>
+        </div>
+        <div class="page-logo">
+            <img src="data:image/png;base64,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">
+            <a id="tutorialLink" tabindex="1" target="_blank" href="https://www.youtube.com/watch?v=uI220BJ0yXc&list=PL3JVwFmb_BnTamTxXbmlwpspYdpmaHdbz&index=2">tutorial</a>
+        </div>
+    </header>
+    <main>
+        <div class="parts-container">
+            <!-- Part 1 - Create Project, OAuth, and Venv  -->
+            <div class="part">
+                <a id="part01" tabindex="1" href="#" class="dropPart"><h3>Part 1 Documentation</h3></a>
+                <div class="steps-container ">
+                    <!-- 01-01 -->
+                    <div class="step">
+                        <div id="step01" tabindex="1" class="step-txt">
+                            <h4>01</h4>
+                            <p>
+                                Go to google drive and go to the folders section
+                            </p>
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/01-01.png">
+                        </div>
+                    </div>
+                    <!-- 01-02 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h4>02</h4>
+                            <p>
+                                Go to the Reference page for <q>files</q> &rarr; <q>create</q>
+                                <a target="_blank" href="https://developers.google.com/drive/api/reference/rest/v3/files">
+                                    https://developers.google.com/drive/api/reference/rest/v3/files
+                                </a>
+                            </p>
+                        </div>
+                        <div class="step-img">
+                            <img class="lg-enlarge" src="imagesVideos/01-02.png">
+                        </div>
+                    </div>
+                    <!-- 01-03 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h4>03</h4>
+                            <p>
+                                We need the <code class="m">uploadType</code> the others are optional
+                            </p>
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/01-03.png">
+                        </div>
+                    </div>
+                    <!-- 01-04 -->
+                    <div class="step-col">
+                        <div tabindex="1" class="step-txt">
+                            <h4>04</h4>
+                            <p>
+                                Scroll down to the Request Body in the <q>Overview</q> section,
+                                <br>
+                                <a target="_blank" href="https://developers.google.com/drive/api/reference/rest/v3/files#File">https://developers.google.com/drive/api/reference/rest/v3/files#File</a>
+                                we will need to specify 
+                                the <code class="m">mimeType</code> and the <code class="m">name</code>
+
+                            </p>
+                        </div>
+                        <div class="img-2-container">
+
+                            <div class="step-img">
+                                <img src="imagesVideos/01-04a.png">
+                            </div>
+                            <div class="step-img">
+                                <img src="imagesVideos/01-04b.png">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 01-05 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h4>05</h4>
+                            <p>
+                                Go  &rarr; <q>Supported Mime types</q>
+                                <span class="r">Under Version 2 'v2??'</span>
+                                <a target="_blank" href="https://developers.google.com/drive/api/guides/mime-types">
+                                    https://developers.google.com/drive/api/guides/mime-types
+                                </a>
+                                We will be using the folders mime type to create folders,
+                            </p>
+                            <div class="code-container">
+                                <pre tabindex="1" class="copy-code">
+application/vnd.google-apps.folder</pre>
+                            </div>
+                            
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/01-05.png">
+                        </div>
+                    </div>
+                </div>
+            </div>            
+            <!-- Part 2 - Create Folders Script -->
+            <div class="part">
+                <a id="part01" tabindex="1" href="#" class="dropPart">
+                    <h3>Part 2 - Create Folders Script</h3>
+                </a>
+                <div class="steps-container show">
+                    <!-- 02-01 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h4>01</h4>
+                            <p>
+                                Loop through the <code>national_park</code> list and create the folders
+                                by creating a <code>file_metadata</code> dictionary  that includes the folder name and 
+                                <code>mimeType</code>
+                            </p>
+                            <div class="code-container">
+                                <pre tabindex="1" class="copy-code online">
+application/vnd.google-apps.folder</pre>
+                            </div>
+                            <p>
+                                for folder, then add it to the <code class="r">body</code> parameter in 
+                               the <code class="mdblue">create()</code> method
+
+                            </p>
+                            <div class="code-container">
+                                <pre tabindex="1" class="copy-code">
+from googleServiceCreate import create_service
+CLIENT_SECRET = 'credentials.json'
+API_NAME = 'drive'
+API_VERSION = 'v3'
+SCOPES = ['https://www.googleapis.com/auth/drive']
+
+service = create_service(CLIENT_SECRET,API_NAME,API_VERSION,SCOPES)
+
+national_parks = ['Yellowstone','Rocky Moutains','Yosemite']
+
+for national_park in national_parks:
+    file_metadata = {
+        'name': national_park,
+        'mimeType': 'application/vnd.google-apps.folder'
+    }
+    service.files().<span class="mdblue">create</span>(<span class="r">body</span> =file_metadata).execute()</pre>
+                            </div>
+                            
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/02-01.png">
+                        </div>
+                    </div>
+                    <!-- 02-02 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h4>02</h4>
+                            <p>
+                                Now the folders will appear in the google drive
+                            </p>
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/02-02.png">
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jiejenn-01_sendEmail-</title>
+    <link rel="stylesheet" href="../../../../../../../../css/colors.css" />
+    <link rel="stylesheet" href="../../../../../../../../css/font-sizes.css" />
+    <link rel="stylesheet" href="../../../../../../../css/resource-header-temp.css" />
+    <link rel="stylesheet" href="../../../../../../../css/tutorial-temp-v2.css" />
+    <link rel="stylesheet" href="../../../../../../../../css/copy-code.css">
+    <link rel="stylesheet" href="../../../../../../../../css/imgAnimate-v2.css">
+    <script src="../../../../../../../js/letterFocus-tutorial.js" defer></script>
+    <script src="../../../../../../../../js/copy-code.js" defer></script>
+    <script src="../../../../../../../js/dropPartStepFocus-v2.js" defer></script>
+    <script src="../../../../../../../js/loadpageNewTab.js" defer></script>
+    <script type="module" src="../../../../../../../js/autofocusLoad.js" defer></script>
+    <script type="module" src="../../../../../../../js/play-enlarge-video.js" defer></script>
+    <script type="module" src="../../../../../../../js/img-enlarge-v1.js" defer></script>
+    <script type="module" src="../../../../../../../js/addRemoveTabs-v1.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="home-link">
+            <a id="homeLink" tabindex="1" href="../../jie-jenn-gmail.htm">(home)gmail-api-jieJenn</a>
+        </div>
+        <div class="title-container">
+            <h1>Jie Jenn - gmail api playlist</h1>
+            <h2>01_How to use Gmail API to send an email in Python</h2>
+        </div>
+        <div class="page-logo">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3n2xRaDhY_cplhUTNhg_xMjATAO4sSAfGjNSMHInRl8wFIGJO93EYopD0ZMdDPuMmrHk&usqp=CAU">
+            <a id="tutorialLink" tabindex="1" target="_blank" href="https://www.youtube.com/watch?v=44ERDGa9Dr4&list=PL3JVwFmb_BnSHlyy3gItOar_Y8w45mbJx&index=2">tutorial</a>
+        </div>
+    </header>
+    <main>
+        <div class="parts-container">
+            <!-- Part 1 - Create venv & install flask  -->
+            <div class="part">
+                <a id="part01" tabindex="1" href="#" class="dropPart"><h3>Part 1 - Start Script, import function from extenal script </h3></a>
+                <div class="steps-container ">
+                    <!-- 01-01 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h4>01</h4>
+                            <p>
+                                import the <code class="mdblue">create_service</code> function from the
+                                <code>google_api.py</code> script and import the following libraries.
+                                The google_api.py script can be found at 
+                                <br>
+                                <a target="_blank" href="https://learndataanalysis.org/google-py-file-source-code/">https://learndataanalysis.org/google-py-file-source-code/</a>
+                            </p>
+                            <p class="">
+                                <span class="r">go back and create your own create service function</span>
+                                I did go to the bottom to see
+                            </p>
+                            <div class="code-container">
+                                <pre tabindex="1" class="copy-code">
+from google_apis import <span class="mdblue">create_service </span>
+import base64
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+                                </pre>
+                            </div>
+                            
+                        </div>
+                        <div class="step-img">
+                            <img class="sm-enlarge" src="imagesVideos/01-01.png">
+                        </div>
+                    </div>
+                    <!-- 01-02 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h4>02</h4>
+                            <p>
+                                Supply the function with the following variables, and the 
+                                full scope,
+                            </p>
+                            <div class="code-container">
+                                <pre tabindex="1" class="copy-code online">
+https://mail.google.com/</pre>
+                            </div>
+                            <p ><span class="r">Make sure you put this scope into a list</span>
+                                You Always forget!!!
+                            </p>
+                            <div class="code-container">
+                                <pre tabindex="1" class="copy-code">
+from google_apis import create_service
+import base64
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+
+CLIENT_SECRET_FILE = 'credentials.json'
+API_NAME = 'gmail'
+API_VERSION = 'v1'
+SCOPES = ['https://mail.google.com/']
+
+service = create_service(CLIENT_SECRET_FILE,API_NAME,API_VERSION,SCOPES)
+                                </pre>
+                            </div>
+                            <p>
+                                run this script and the autorization window should appear as seen in gettingStarted tutorials
+                                codeTops and Jiejenn 
+                            </p>
+                                
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/01-02.png">
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <!-- Part 2 - Create message -->
+            <div class="part">
+                <a id="" tabindex="1" href="#" class="dropPart">
+                    <h3>Part 2 - Create the message, assign values to <code>mimeMessage</code></h3>
+                </a>
+                <div class="steps-container ">
+                    <!-- 02-01 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h4>01</h4>
+                            <p>
+                                create the message, and assign the following values to <span class="m">mimeMessage[]</span> 
+                                which is an instance of the <code class="mdblue">MIMEMultPart</code>
+                                review <a target="_blank" href="../../../codeTops/00-howGetStartGmailAPI/01-howGetStartGmailAPI/01-howGetStartGmailAPI.htm">codeTops Part 8</a>
+                                to see how the the email objects work
+                            </p>
+                            <p>
+                                <code><span class="r">'plain'</span></code> is an option for message formate, there are others 
+                                including html for style
+                            </p>
+                            <div class="code-container">
+                                <pre tabindex="1" class="copy-code">
+emailMsg = "yo I'm sending emails with python"
+mimeMessage = <span class="mdblue">MIMEMultipart()</span>
+mimeMessage['to'] = 'tstudystuff@gmail.com'
+mimeMessage['subject'] = 'yo yo'
+mimeMessage.attach(MIMEText(emailMsg, '<span class="r">plain</span>'))
+
+<span class="r">raw_string = base64.urlsafe_b64encode(mimeMessage.as_bytes().decode())</span>
+                                </pre>
+                            </div>
+                            <p>
+                                The red line doesn't work below is corrected by chatGPT
+                            </p>
+                            
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/02-01.png">
+                        </div>
+                    </div>
+                    <!-- 02-02 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h4>02</h4>
+                            <p>
+                                The code he jieJenn provides does NOT work, make sure the line with 
+                                <br>
+                                <code>raw_string = base64.urlsafe_b64encode(mimeMessage.as_bytes()).decode('utf-8')</code>
+                                <br>
+                                looks like this.
+                            </p>
+                            <p>Below is the complete code and will work</p>
+                            <div class="code-container">
+                                <pre tabindex="1" class="copy-code">
+from google_apis import create_service
+import base64
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+
+CLIENT_SECRET_FILE = 'credentials.json'
+API_NAME = 'gmail'
+API_VERSION = 'v1'
+SCOPES = ['https://mail.google.com/']
+
+service = create_service(CLIENT_SECRET_FILE,API_NAME,API_VERSION,SCOPES)
+
+emailMsg = "yo I'm sending emails with python"
+mimeMessage = MIMEMultipart()
+mimeMessage['to'] = 'tstudystuff@gmail.com'
+mimeMessage['subject'] = 'yo yo'
+mimeMessage.attach(MIMEText(emailMsg,'plain'))
+raw_string = base64.urlsafe_b64encode(mimeMessage.as_bytes()).decode('utf-8')
+
+message = service.users().messages().send(userId='me', body={'raw': raw_string}).execute()
+                                </pre>
+                            </div>
+                            
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/02-02.png">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Part 3 - my own google_api.py script and full script -->
+            <div class="part">
+                <a id="" tabindex="1" href="#" class="dropPart">
+                    <h3>Part 3 - my own google_api.py script and full script</h3>
+                </a>
+                <div class="steps-container">
+                    <div class="step-col">
+                        <div tabindex="1" class="step-txt">
+                            <h4>01</h4>
+                            <h3>my <code>google_api.py</code> script</h3>
+                            <p>
+                                This is my simplified service script
+                            </p>
+                        </div>
+                        <div class="img-2-container">
+                            <div class="code-container">
+                                <pre tabindex="1" class="copy-code">
+import os
+import datetime
+from collections import namedtuple
+from google_auth_oauthlib.flow import InstalledAppFlow
+from googleapiclient.discovery import build
+from google.oauth2.credentials import Credentials
+from google.auth.transport.requests import Request
+
+def create_service(client_secret_file, api_name, api_version, *scopes, prefix=''):
+    CLIENT_SECRET_FILE = client_secret_file
+    API_SERVICE_NAME = api_name
+    API_VERSION = api_version
+    SCOPES = [scope for scope in scopes[0]]
+    
+    creds = None
+    if os.path.exists('token.json'):
+        creds = Credentials.from_authorized_user_file('token.json',SCOPES)
+    if not creds or creds.valid:
+        if creds and creds.expired and creds.refresh_token:
+            creds.refresh(Request())
+        else:
+            flow = InstalledAppFlow.from_client_secrets_file('credentials.json',SCOPES)
+            creds = flow.run_local_server(port=0)
+        with open ('token.json','w') as token:
+            token.write(creds.to_json())
+
+    try: 
+        service = build(CLIENT_SECRET_FILE,API_SERVICE_NAME,API_VERSION,credentials=creds)
+        return service
+    except HTTPError as error:
+        print('err',error)
+                                </pre>
+                            </div>
+                            <div class="code-container">
+                                <pre tabindex="1" class="copy-code">
+from google_apis import create_service
+import base64
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+
+CLIENT_SECRET_FILE = 'credentials.json'
+API_NAME = 'gmail'
+API_VERSION = 'v1'
+SCOPES = ['https://mail.google.com/']
+
+service = create_service(CLIENT_SECRET_FILE,API_NAME,API_VERSION,SCOPES)
+
+emailMsg = "I don't know"
+mimeMessage = MIMEMultipart()
+mimeMessage['to'] = 'tstudystuff@gmail.com'
+mimeMessage['subject'] = "I'm gonna start drinking I think,"
+mimeMessage.attach(MIMEText(emailMsg,'plain'))
+raw_string = base64.urlsafe_b64encode(mimeMessage.as_bytes()).decode('utf-8')
+
+message = service.users().messages().send(userId='me', body={'raw': raw_string}).execute()
+                                </pre>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+    </main>
+
+</body>
+</html>

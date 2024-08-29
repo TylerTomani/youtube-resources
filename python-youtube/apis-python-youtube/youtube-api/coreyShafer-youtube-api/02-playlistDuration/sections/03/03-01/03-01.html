@@ -1,0 +1,141 @@
+<div class="steps-container">
+    <header>
+        <h2>03-01 <code class="o">while True</code>, <code class="m">nextPageToken</code>,
+        <code class="b">playlistItems()</code> & <code class="r">maxResults</code></h2>
+    </header>
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>01</h4>
+            <p>
+                Two ways to get <code class="m">nextPageToken</code>, which is located in top tier or <code class="b">playlistItems().list()</code>
+                response, <code class="lsg">print(playlistItems_response['nextPageToken'])</code>
+                or 
+                <code>print(playlistItems_response.<span class="lsg">get</span>('nextPageToken')</code>
+            </p>
+            
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code mdtxt">
+import re
+import os
+from datetime import timedelta
+from googleapiclient.discovery import build
+import json
+# Get new api key this one is fake
+api_key = 'AIzaSyBycc_eAr1_P3NWDzR08IHkCA3_44wKEDM'
+youtube = build('youtube','v3',developerKey=api_key)
+channel_id = 'UCCezIgC97PvUuR4_gbFUs5g'
+playlist_id = 'PL-osiE80TeTsWmV9i9c58mdDCSskIFdDS'
+# nextPageToken = None
+playlistItems_request = youtube.playlistItems().list(
+    part='contentDetails',
+    playlistId=playlist_id,
+    maxResults=1,
+    # pageToken=nextPageToken
+)
+playlistItems_response = playlistItems_request.execute()
+vid_ids = []
+for data in playlistItems_response['items']:
+    vid_ids.append(data['contentDetails']['videoId'])
+os.system('clear')
+<div class="code-container">
+<pre tabindex="1" class="copy-code"><span class="y">print(json.dumps(playlistItems_response, indent=2))</span></pre>
+</div>
+<div class="code-container">
+<pre tabindex="1" class="copy-code">print(<span class="b-fix">playlistItems_response</span>['<span class="m">nextPageToken</span>'])</pre>
+</div>
+print()
+<div class="code-container">
+<pre tabindex="1" class="copy-code">print(playlistItems_response.<span class="lsg-fix lgtxt">get</span>('nextPageToken'))</pre>
+</div></pre>
+            </div>      
+            <p>
+                use <code class="y-fix">json.dumps(data,index=2))</code> to see the data from
+                the response is json format
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+json.dumps(data,index=2))</pre>
+            </div>
+            
+            
+        </div>
+        <div class="step-img ac jc">
+            <img src="sections/03/03-01/images/01.png">
+        </div>
+    </div>        
+    <!-- 01-02 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>02</h4>
+            <p>
+                Place code in a <code class="o">while True:</code> loop, define a 
+                <code class="m">nextPageToken = None</code> variable above it.
+                Add the parameters <code class="r">maxResult</code> and pass <code class="m">nextPageToken </code>
+                (which starts as 'None') into the <code class="r">pageToken</code> parameter.
+            </p>
+            <div class="code-container">
+        <pre tabindex="1" class="copy-code mdtxt">
+from datetime import timedelta
+import re
+import os
+from googleapiclient.discovery import build
+import json
+# Get new api key this one is fake
+api_key = 'AIzaSyBycc_eAr1_P3NWDzR08IHkCA3_44wKEDM'
+youtube = build('youtube', 'v3', developerKey=api_key)
+playlist_id = 'PL-osiE80TeTsWmV9i9c58mdDCSskIFdDS'
+channel_id = 'UCCezIgC97PvUuR4_gbFUs5g'
+
+hours_pattern = re.compile(r'(\d+)H')
+mins_pattern = re.compile(r'(\d+)M')
+secs_pattern = re.compile(r'(\d+)S')
+
+nextPageToken = None
+while True:
+    playlistItems_request = youtube.playlistItems().list(
+        part='contentDetails',
+        playlistId=playlist_id,
+        maxResults=50,
+        pageToken=nextPageToken
+    )
+    playlistItems_response = playlistItems_request.execute()
+
+    vid_ids = []
+    for pl_item in playlistItems_response['items']:
+        vid_ids.append(pl_item['contentDetails']['videoId'])
+    videos_request = youtube.videos().list(
+        part="contentDetails,snippet",
+        id=','.join(vid_ids),
+    )
+    os.system('clear')
+    videos_response = videos_request.execute()
+    for vid in videos_response['items']:
+        duration = vid['contentDetails']['duration']
+        hours = hours_pattern.search(duration)
+        mins = mins_pattern.search(duration)
+        secs = secs_pattern.search(duration)
+
+        hours = int(hours.group(1)) if hours else 0
+        mins = int(mins.group(1)) if mins else 0
+        secs = int(secs.group(1)) if secs else 0
+
+        video_seconds = timedelta(
+        hours = hours,
+        minutes=mins,
+        seconds=secs
+        ).total_seconds()
+        print(vid['snippet']['title'])
+        print(video_seconds)
+    nextPageToken = playlistItems_response.<span class="lsg">get</span>('<span class="m">nextPageToken</span>')
+    if not nextPageToken:
+        break</pre>
+            </div>
+        </div>
+        <div class="step-img ">
+            <img src="sections/03/images/01.png" alt="">
+        </div>
+    </div>
+    
+    
+    <button tabindex="1" id="nxtLesson">next lesson</button>
+</div>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jiejenn-04-downloadFiles-</title>
+    <link rel="stylesheet" href="../../../../../../../../css/colors.css" />
+    <link rel="stylesheet" href="../../../../../../../../css/font-sizes.css" />
+    <link rel="stylesheet" href="../../../../../../../css/resource-header-temp.css" />
+    <link rel="stylesheet" href="../../../../../../../css/tutorial-temp-v2.css" />
+    <link rel="stylesheet" href="../../../../../../../../css/copy-code.css">
+    <link rel="stylesheet" href="../../../../../../../../css/imgAnimate-v2.css">
+    <script src="../../../../../../../js/letterFocus-tutorial.js" defer></script>
+    <script src="../../../../../../../../js/copy-code.js" defer></script>
+    <script src="../../../../../../../js/dropPartStepFocus-v2.js" defer></script>
+    <script src="../../../../../../../js/loadpageNewTab.js" defer></script>
+    <script type="module" src="../../../../../../../js/autofocusLoad.js" defer></script>
+    <script type="module" src="../../../../../../../js/play-enlarge-video.js" defer></script>
+    <script type="module" src="../../../../../../../js/img-enlarge-v1.js" defer></script>
+    <script type="module" src="../../../../../../../js/addRemoveTabs-v1.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="home-link">
+            <a id="homeLink" tabindex="1" href="../../jie-jenn-googeDrive.htm">(home)gmail-api-jieJenn</a>
+        </div>
+        <div class="title-container">
+            <h1>Jie Jenn - 04-downloadFiles</h1>
+            <h2>4. Google Drive API in Python | Download Files </h2>
+        </div>
+        <div class="page-logo">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAACoCAMAAABt9SM9AAABcVBMVEUttnL////8/PwZsmr8//y44cr//f8stnH///54eHh7e3svtHL8//9/f38ttnCWlpbi8+sYsW3m5uZGuH91yp7Dw8P29vb0/fVzc3PNzc3R7dyhoaHa2tqPj49lwZSU07K5ubmSkpLh4eGwsLCFhYVSeb2fn5/90UzMzMw1tXdggb83caE3dqv/0UBeXF3/20un3L42a5dRUVH/5VZggr3d8uj0//ym28HH6dQit2uv4MRlwZfM2KX65Jb8+N/M3OesxduPs9IAhC7xz0j03Hm50OAufLUZbag3mmQAiUOHr1L677xklb/n9fmXzK8AiUDizlT401wgoGEgn1RjoELW4+5gjrjFxEszdaQsZJgdoE+Xt4v/zVCsw85Jg7cxcrr68JX242z789R3o8b57LDyuzPqyHzoyWzhtj7dpjYzhZBAXaz1/NPz994zqHpJcMBii6f/8IP7yCkzdpY1nIg3YaH61mv65KmU3bXJ8td0y5qyoJ2ZAAAVzklEQVR4nO1dDWPbRJrWaGRJ9siKxyNbiexIrh1CRAl1C/6Qc23hgOY4oBxw9ModLEth79hlub3t3YIvv/6ed2QntmNomqTlGvS0SWx5NJp59H6OPa8NDzB/82DsLK0MjxU4KwqyngKGufawCzx1X+c554XCGrJcy3LPRdaVx89JlgXGnrYv17riDK+TLNd9eqJ+E1gly2Oe9Xe3Ne7Y1nqxW4Xruab74d0333rrm7fefLd5dQVsjWSV/v7t/Zf39/ffCc3wTH24IPXde4eHrwKHn9+8y64oV6fIcr3wH977x5cJ++/b1pn6gIH78N4Hd7+5d4/oevXmh2c77cXDKlkWu//Rex/9k2br4/BsIuJZ3meH77K7WrSuXz9897ciWaz2yaefvPfPmqyXb3vWE4ULvsCy2GeHD9794F5O1s03cdCyryBjp8gKONj66F++ILJu3AmfFEG4rgeuIFmHnx8eXn/48Pr1659/Cfqs0H52g/61sEpWJIX89F8/+rcbYOvtL97BtJ8waR1nuMPPCHcfvKrJglhZ3hXMo1bJUo4jIFre7ZdvzGz8E9TJ9d783VeHh/cevvqQmIIWfv7l719//etHz9DKb/Xql9xjo8FYvdecP213mutaLZLl2mzCHcOQn5ZY+La2Wj+GTyLL++Zw5gVnXN28+eVfbwB3Lmcaa9DcLLcuu8dKk7U2G7On3c1yb12zRbI8Fqa+YRh+7Lr2t/u5jWerEmI2l1i/O2PqhKubb/4eXO3fvszZLKFerm5cbo/t8g4zt8vt/Flzp1pdezcWybJZwsGVISNmh9aPoOqLP3x3SkC6r722qLpvzcm6/nDG1edbX9+48fL+x4jjn41HvHyyOpUWa1bKMyloVc5CViR84WQyQM7j2u//QePfV89o37q1SNaDnKmcK03W9R9IC/f3w2cVya+S1W109mZGrNluNLZmc67vNRrd2VDNk+P1RpNeap901+ttV6/1WtVqbrQa5e2NyhPJ8mLHcDJf1ezmh/j3H99998fv/vjHRytndJfIaj64B8sOthA53NR4UHuHqNp/fOeMCcBTY5ms5rXyZrlc1UamvVPe3CxXO/S4V9nc3Kxs1/PjlTLaaJu0sdlrlMuV8u58Fp1NSFKlXK1WN7doftVyffcsZBmZb2R/+v5vL72BfzN8tti8u7XVee3W3tbW3B01f3dPC9aDu+GffyA8+vbr/RuUWj5+hADiEqg5jSWyzJ1KpbO1Wyl3yNhUNtrtjQoZny1w1m1UK1UadaVa6XV2qmVia7u6U77WAz1zc97s4Fmns13daNBa/DZ6OoNksZrwffGf33//0gn+8uVS89atW7deew2/5t6iSWr48Pp/3fnr68ANjf1csh49F8lqaGpYq7rZZN2yfnyNfreqO3jYrtDvjWqlTjRU4fNAVqWz0oduNbPvrTKOn4EsF+F7lv43BOulmWC98tIbzaXgsgWqCMdksQ/IXh3e1VzN2NonPH4cPiPBWp7oRpVkB/PFXJvl6k6jbjIyPZ1KdbfdZE3Mr1nJ7fVWpbylJYtery700Skf2/e9Mr16BrIsVpPZ/3z//V9OBOurd5dDh3q327h1q93tHocPbx1SzPDDKlf7jz9mz8MbQlx2Wru7rY3KZpvErFIp7+iQFaasUq5ozeqWc5Wrl0mmYMxpzjv5H2q5d626u9ep7DS2zHqlumc2TZC1bilvJShN5N++/2pBCx+wU0HpsoFHCg2yHv55Va72H79PPV4GN6ewSFYTZG1o9GhU9d42+Kq0GZ5s7e6Uq+Vt8xRZ+mSQNeuiswnbXoaRL2+2e9WdbWAHfzqnL7xMlmf96W8vvfLKK2+8QnjjjZc+O61Ky6GDy775/OHNV3+YUTXTQOBjiz0Pstg1bZsAGhQE3qzDXENomm0KJDbIqNfnvrJc2VtDVheavLGxU93e2G024FjJb8IzrgnlVnND07SX36k9BbjWxcOu9+U3D76ZkfXjOxo//vjj7UfPLpFeIqtXKWvP3ILxbm9u0NBa1e0mIgSSpjo5PXNmpnar1PQUWXP7vqVn1yagTXtNdvgz7+48BSzA+3Ougre//fbbn8CT53res1uiAVlVZCQASIH13mk3u7BZ8IablRYoq5J5Rhi+ZTY71c08jNjeau8ifmCLZB0HWmTfy5WF5PxJBr65d9K4nkdyFPI216bfi3Atz2WPiKrXZyr4E3F1Kqe8PCDtnWGzqyUdkWilSo6/U9aR6E6dYi46XM4zYhh+0i7NwLWyJmu7fCydlEF3N3cWZrqxPlOfk9XcqNdNiB7+d+tt3CrWbNU3mvV2F4nzOpGcgd43syz30dxgvfPoNsgyLfMZkoX8ZgatOc1Ga6PVyIfY7e1utPbyx1utjd3eLKupd3bnj9sb7YU/uuFGnTV3GwsXaG901113Tla7W9/rtFv439hqQWR7bbPDthot5FedXmP3lwcfunde18Ho/v5t79Hj970r+o7FnKx6y+z1mj36Xe/tbcG+mT2z1d7a6vYavb21PJ/ADq3bs/Dq5dsfv+16V3EBni3YrDay8ka32Wmbe60ukvem2WjUm/V6s9tsLqTo6+DBbIXffjyLGW5btnsF198Jp71hs7P1tJ3QmzleeOen2z/99OiOZ13Zt6QvHjos4Cq+SbGIyyTrFyLZq4HLJCv/UNfV1ECNS1XDqw7DzMPKAmeAcUW9/DOBUSpwZhi8wJlhFChQoECBAgUKFChQoECBAgUKFChQoECBAgUKFChQoECBAgUKFChQoECBAgUKFChQoECBAgUKFCjwAsC50MlPcbbjX+RKTwtBP0L4l3tRcaFzT5/t6EESVq4gLnKlcwHD8/1LpUtQeUHcgvOc64tTgkmU5KzkA3WMDN3PmvvPjS9HCiFnuJDurHarUumLc/XIU7GynU3K4zECRBYNWt+JTKbiOUmX78Sl8XgcRdF4POkHGIC4oL2ZQYzCMJHnmYTDR1YYLIikcERSwgCjHONS7DuGGg8mJLe+GoQDdYl3+echfHX8bQOe5w1rAfed84nDMpzUc+1aei4tlJ7NBvJEWlI/oK+T0Lv/dQGAgfRlCeOdQv54n7ks4c9FtPgR82ybMTsHYyN5KSbAUcz1LJU9/YmGSEFMbVGzOJixrdkQbY8NhCEjm4ry0Wu2y0rPZxMqD5hpewNI9yC0GH0FSP9curOKGVnn8Bm+kTKT+DjpS5Y827RO9jLHjp/FNWucOppIC2Q9Fz3UZLGYcy5F3LdM07XifIJCONo/+toVQTf9eUQjfO7PnvgG+SbhIDDyYVt4xmc+C2RZdqhmp1AzTifh+ex1B53gkEOu75hRh57jVCLLP54/yGKmOZQ8N+8czGA0MpXGCVn5wPRleDbrj65Fk3BIXC9BXUSWk+Vox8wT1zPZWOoRZo6QKj5SChfHZMHEgRKkVlkq4jh37r6MY/JNaJhinGkcx6l0SINmZOX+ypGpwktK8rk9pEMxIeXzCMA3uFCxUtInyaqtkGXZwwVf7Thppi+5RBZ4yXvFGKgt3WDOMYdYCen7Fxe+E7JIlPjY9kxXT9GXKhmEIC+MAvho4cu+Z+qq374YW2FJz1om1nAkIZ6hO+bppGa5VtjXVn1OFrXiql8beswMx4E08siLx6XaEKbaCwdJHgE4jprUoG1hSf0cWQvDdpwgZJFaIssxZBzVLMaGtUlKtoSKbicRVa3FEXUJxmVJsoQfUDW/gC4t4xpk32M2nOQYmuZzy4J7c7TmMtsl3+6kNWbDNfEx/NfBgNmM6iZqU7JAFg9qVB/JxUvWWGjV5ok1K5mEU/q5WKgB+WNcr5k8UbIw7giGPjfwM7LA1WTIqOYHLlQ7ILZ8OWZ5ERDPDo/k6tyfFoKfSBZBeSAI5tLJYhMDZLUohKOEr4ZAR8xzD6COcgzPxEoS/MVoU5L0kgkPxkI0Nk1ddX5OFmnvkPxtbYCZ2F4kQUIWgxNWK41KQ9u0LURJvp/WqJU1IGJd+xRZpmd9Mi+/QFZBRjpiOCELoj/SQy2VQhpLzA2fj3Be2A+SEJepXTgYWyHLT4faaMHsDOj+KCk+SSxy0hhLAHmCFAgBSlwvhDXlE7RGZEZkeXYNIW0cgqOBXCDLUDVoNnriEmMmd58Z0Hab9cmppAPbo04RLrm26U5gv4PQ9taQZVvzQoNRCjlH6LBMluHEVBItydBr5Om7ImTN9sKUGzKNILNHl05WjcjKmfFgvJCA8ZFnYtowlxADeHQRePYQohVDGgY2fdNDLllDhVueJZC6ZnpCli8TmqiiLBg3mljIaIK4CKxeBmnw2JjThXEHxpKuFw/ZabIgsWQQCGzKnTVkQeBtj0QM9wd3xY1xy8F7GEuZ+WkUjtMLcrVKFhkhkixM3yUFc4wUPndoWx5MMx9D0RSNbljDLZvwLIaJmuQaqs8CHzEJvjoJHRzoi0XfM0IuXIW45Ue+yNLRKM0gRWlcopvDSTFN3BwkNiQ068gaHlcgChU3TpPlpyS3caZjC7SHKfTlwMZoSoESnKcXT3xPSZYFmw4rBJlx2VRb3nzw9yU1JS3iQwxkAuPAM5gEDI/CaY++eIVMKmIkbR2OQwdRw2SCvCc+sC1KTYTBESYE/QgGCjYu4uQ00DyfD0/WkIU46yA4OAgAULqOLEWV40YJ0L9P1r+Puxh4ZMZYOCjFkp8zq/95sjBFiuGhFRjLAfl0mHFyKSXYIUg1iySMsxUHsMGKD5iL9G9G1mgtWbjhnuvpONch52RR71C1UpjXDzRtIouGYbEaUSrWkwVveGzfHWONGvqQzeOvILTxL4A0y3hAiRxG50bxhTOTFbIoK4Ul9HPJCnKytP8dkZeeMHOYjmDKBchkiYKZGfETstJ1ZAn6XpA8KfC1SiKuygKLQpTaOIkT2KwZWZCsfBDrJctKZzB0ULCerGiOMVyS0HFyqUbswc4GzvlW15bIIlVHIkK5gqh5NEWMZUCemaQJZA1gzqcUsmI8LID/GktImxdhUh7StBPJEqfJcoyBB4IoA4E41GD9Ek4+F50grIaHZCStZLMQMaS+Q5cZrZcsOV+d9NeRlSmPXFKeEWWSBBBDF5TGqWkEV8sG6fkWQZbI0rkhIitfIoP3dArvyAkjq4QLZvwAhmUYExOQNzMKbSuQuPuwBK49EMQyn5PlnJYsHSNFUugAGzcYyTXdILcm6UbgihbIcjhsv+lSME+UriXLWgwq10iWQFDLgkzH1lKV+inIilhEySGXMBvWUDkXU0RNFq6hCAEsue1aCAGEUC5FyBxcIeLy7EivmEBLoQ6elSI3AWcutXgCWcKPqbpwgjuNoApxJzJP0jOrllHWSxzR8pTgJVjBUFGU1GdrgtKVdGcdWejVHiCqgiOJmzYZEwVdHyGCcLKUqtKml0AWJWQEi74i07QC4krbJ8srHcTJwEP0rI2OyOKhNshI9yUkG3mjyujNhV8ki/y+O5zE6AmRkgW9JQNleolKFRIhEzTASfCYaAtHQRKtjeCfJFmQcDWAgY/iNFUwqx7kyEkxXDZSqVATdDm+aL4jyFggGHFhcKlcqx0Guf9GGIdAME+rbCvJr+OLyCSBgwXSsSbUK3f2FDL3yTf7JJFhTpbn6VUHQT3leSC4SsjywCLaplUbhIzVmhYlAZh9QuPQF0SmqfX7eJREiBcuBkoOJV95bgiD4Zbo2iKGXaAYcEirqokUIkvoouFgQDnbML5wBE+knADJ+Zx+X/TD3AuzQSDzBRlE77gqxex6ORrZdC7YOg4/orUrHRoOKFamOGOQ6sWwlHqieMdFT5DELFMDNw+ARimdSgGdI+/n+YzVlxYZfWdBsoLcDZzAl4j0tLvmU5yTSP1OWTx28xG7eqWE7kDo5qm0N4gvnEhDh1QwTXIEccr9+UIwLVLdL0WDqBSksxU9+ra/ZEABC3ywH0dRMr9+WorINtAq4EE0jqm1fzCOYmf2/otK6N2GyZEgE0cRhpiOyb0rWKsk6qf5/NUIjUZKZsF4rBaWn3xqVFKLrswxRCm/vCNGUcnQb/fAMcfUBQ05o8VxaHcalMb6iLj4YipSj4wCvfyNMISVC8Iv/IyOc7pF2r6DDR9O2c9g4KEIXL+Ud6PfnxL0PiG563x1jNPNzRfh/PwKNAGR/5J5fImHnM8WtDIKJTh179O7XAvG2KeamEtzJUcqpA7JkS+jH1pxy5dqKd2hgaWOXoPVk6OViuf/ZmyBAgUKFChQoECBAgUKFChQoECBAgUKFChQoECBAgUKFChQoECBAgWuEugT4nq7aIEnwvd9+mhaljlp8cmtJ8EXAdU/6KvLKDZwxeD487I1+YcbHRXlH5kdzrbSFphD0CdO5x+D96l0RVpjXlgqhZ7nxQVZy3B8wfOd6w6VAkh5nzYs84xqgJQu/jnmqwWIltK79WGrYuWLbMLYAff1JsqoIGsZvojyj+X7/D4LY99XpalwREabKZ9TvZEXB7SbQe8RdWj3X+AYVCRJyjTxmBcXZC2DJIuNpchok4iVR1bxoAaLZd4vvOEyoG8BY8MUf2GktN4JGemdScOkEKxVCCoVcF86ymIMBh6RqHM0jsY1vV+q2H2xAto0O+B8xGjDptCpDu1ToV2oz6dW2YsE2k/KlKzpzWSOP6v7I3DUm/xy7LBYq26V1qtKsywxNokZo3pxfjpALOqkTkabjCeLxbpoE5renqWf5Y/ynehC15zSlaf0Vi79iiH0r8WKU5ddmPPXgB9bdgjCRjwTehNpzFOqgcOoBMRJM5HSBjLazUzpEdVeTBW8J+0Rpx3teg+2r1/xDaXy6pZOauSVwWaNXnyB01vOaT+wkWFWA2ZHiLVECRY+XpSsdEr794SRwQlIQXUs+0E/oAKpKjCo4Kb6X0RoVC1G8KMDbkj4VXGkK1oKgZclpExecDf2/wNwKiBCZWAgMzy2PG9wP6GaFZPF2MFP+9JIk0QF02naD4JkmiYy7afJNE7GaprEEj94NhX4GwRBlqikrwI1nSohpjhnEgTTyYXr3vzawB0PbVK+vJpBEOrCkJRHL4qBr/qc94ODJFCltM/vqyDu8yyJYzVJp+mBmnwyUYnqy6mK434QjyQIVWoUJCqWRwnvx30x4kn8q83ykoBwIQ6Hx1uVedofhGFtHC+X6XVUP9ME9I8iyNQ0PQJZYgRiSkTSUT8ek4TJvpoEk+AguB+kQV+N0rh/xIOAQ/5EwpMXPxjxHRih4yjB9yWnMrqZYyxL1uQoiJMgnsSRSmSQHh2MjqY4kvTTSTwKRkkq42QK4ekHkzgWkYSqxtMgSYKjNAFvoOpofBlF835V5GUrxdyc6CA+r4K52MoRSin8iDRO0ZYq36RK0dHUoONUC8fBr5QeixR8GjEaO3QSnQPq44P+Cy9Zjq4QunLM/8V66lS0c10Y4DizMEwkCzKkH1F9iWn8ogvWM4FwTnMJZfcvWE/pamJt5XpdjOFXGMzzxf8BWgam37WNY30AAAAASUVORK5CYII=">
+            <a id="tutorialLink" tabindex="1" target="_blank" href="https://www.youtube.com/watch?v=FzH_F6e2CJE&list=PL3JVwFmb_BnTamTxXbmlwpspYdpmaHdbz&index=4">tutorial</a>
+        </div>
+    </header>
+    <main>
+        <div class="parts-container">
+            <div class="part">
+                <h3><a tabindex="1" href="#">Part 0</a></h3>
+                <div class="steps-container show">
+                    <div class="step-col">
+                        <div tabindex="1" class="step-txt rbshadow">
+                            <h4>00</h4>
+                            <p>
+                                This script is not working, Skip to delete file/folders than work on 
+                                data analysis and scraping, save project to google drive with python
+                            </p>
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/">
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <!-- Part 1 - Import libraries/module and script  -->
+            <div class="part">
+                <a id="part01" tabindex="1" href="#" class="dropPart"><h3>Part 1 - Import libraries/module and start script</h3></a>
+                <div class="steps-container ">
+                    <!-- 01-01 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt playVid-click">
+                            <h4>01</h4>
+                            <p>
+                                Get the id for the files from drive double click on the file's name, then opening into a new window
+                            </p>
+                        </div>
+                        <div class="step-vid">
+                            <video src="imagesVideos/01-01.mov">
+                        </div>
+                    </div>
+                    <!-- 01-02 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h4>02</h4>
+                            <p>
+                                The fles id is in the URL before view
+                            </p>
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/01-02.png">
+                        </div>
+                    </div>
+                    <!-- 01-03 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt ">
+                            <h4>03</h4>
+                            <p>
+                                Get the file id for the excel file seen in previous lesson <a target="_blank" href="../03-uploadFiles/03-uploadFiles.htm">
+                                    03-uploadFiles</a>
+                                    and put them into a list <code class="m">file_ids</code>
+                            </p>
+                            <p>
+                                You also need to import 3 modules to download files from drive
+                            </p>
+                            <div class="code-container">
+                                <pre tabindex="1" class="copy-code">
+import os
+import io
+from googleapiclient.http import MediaIoBaseDownload
+from googleServiceCreate import create_service
+CLIENT_SECRET = 'credentials.json'
+API_NAME = 'drive'
+API_VERSION = 'v3'
+
+SCOPES = ['https://www.googleapis.com/auth/drive']
+service = create_service(CLIENT_SECRET,API_NAME,API_VERSION,SCOPES)
+
+<span class="m">file_ids</span> = ['1fF3WBDA8l9Mw40_Xf_8Ftgf9N-cgs2wW', '1M_TC8OjNl1TgE44BXo5hTy-BjDJio7Yq']</pre>
+                            </div>
+                            
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/01-03.png">
+                        </div>
+                    </div>
+                    <!-- 01-04 -->
+                    <div class="step">
+                        <div id="step01" tabindex="1" class="step-txt">
+                            <h4>04</h4>
+                            <p>
+                                Make a list for <code>file_name</code> 
+                                (** you have the option to rename files here)
+                            </p>
+                            <div class="code-container">
+                                <pre tabindex="1" class="copy-code">
+import os
+import io
+from googleapiclient.http import MediaIoBaseDownload
+from googleServiceCreate import create_service
+CLIENT_SECRET = 'credentials.json'
+API_NAME = 'drive'
+API_VERSION = 'v3'
+
+SCOPES = ['https://www.googleapis.com/auth/drive']
+service = create_service(CLIENT_SECRET,API_NAME,API_VERSION,SCOPES)
+
+
+file_ids = ['1fF3WBDA8l9Mw40_Xf_8Ftgf9N-cgs2wW', '1M_TC8OjNl1TgE44BXo5hTy-BjDJio7Yq']
+file_name = ['excelExample.xlsx','fall.jpeg']
+
+                                </pre>
+                            </div>                            
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/01-04.png">
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>            
+            <!-- Part 2 - Script -->
+            <div class="part">
+                <a id="" tabindex="1" href="#" class="dropPart">
+                    <h3>Part 2 - script</h3>
+                </a>
+                <div class="steps-container show">
+                    <!-- 02-01 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h4>01</h4>
+                            <p>
+                                zip and loop through <code class="gr">file_ids</code> and <code>file_names</code>.
+                                Provide the <code class="gr">file_id</code> to the method <code>
+                                <span class="mdblue">files</span>().<span class="mdblue">get_media</span>()
+                                </code> parameter <code class="r">fileId</code> parameters, on a a <code>request</code> object 
+                            </p>
+                            <div class="code-container">
+                                <pre tabindex="1" class="copy-code">
+<span class="gr">file_ids</span> = ['1fF3WBDA8l9Mw40_Xf_8Ftgf9N-cgs2wW', '1M_TC8OjNl1TgE44BXo5hTy-BjDJio7Yq']
+file_names = ['excelExample.xlsx','fall.jpeg']
+
+for file_id, file_name in zip(file_ids,file_names):
+    request = service.<span class="mdblue">files</span>().<span class="mdblue">get_media</span>(<span class="r">fileId</span>=<span class="gr">file_id</span>)
+                                </pre>
+                            </div>
+                            
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/02-01.png">
+                        </div>
+                    </div>
+                    <!-- 02-02 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h4>02</h4>
+                            <p>
+                                <span class="r">I don't get this fully,</span>
+                                us io module's <code class="mdblue">BytesIO()</code> and put it in 
+                                a <code class="gr">fh</code> variable,
+                                then, assign it to a <code class="mdblue">MediaIoBaseDownload</code> along with 
+                                the <strong><code>request</code></strong> in a output
+                            </p>
+                            <div class="code-container">
+                                <pre tabindex="1" class="copy-code">
+<span class="gr">fh</span> = io.<span class="mdblue">BytesIO()</span>
+download = <span class="mdblue">MediaIoBaseDownload</span>(<span class="r">fd</span>=<span class="gr">fh</span>, request= <strong>request</strong> )
+                                </pre>
+                            </div>
+                            
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/02-02.png">
+                        </div>
+                    </div>
+                    <!-- 02-03 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h4>03</h4>
+                            <p>
+                                make a while loop for the <code>download</code> MediaIoBaseDownload object. This 
+                                return a tuple, use the status to monitor the progress with a f string or format
+                            </p>
+                            <p>
+                                <code>progress()</code> * 100 converts it to a percentage
+                            </p>
+                            <div class="code-container">
+                                <pre tabindex="1" class="copy-code">
+
+                                </pre>
+                            </div>
+                            
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/02-03.png">
+                        </div>
+                    </div>
+                    <!-- 02-04 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h4>04</h4>
+                            <p>
+                                We can seek throught the fh variable and write it to a file
+                            </p>
+                            <div class="code-container">
+                                <pre tabindex="1" class="copy-code">
+                                    
+                                </pre>
+                            </div>
+                            
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/02-04.png">
+                        </div>
+                    </div>
+                </div>
+                
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,172 @@
+u<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02-02-FHIR via HTTP</title>
+    <link rel="stylesheet" href="../../../../../../../css/resource-header-temp.css" />
+    <link rel="stylesheet" href="../../../../../../../css/tutorial-temp-v1.css" />
+    <link rel="stylesheet" href="../../../../../../../../css/copy-code.css">
+    <link rel="stylesheet" href="../../../../../../../../css/imgAnimate-v2.css">
+    <script src="../../../../../../../js/letterFocus-tutorial.js" defer></script>
+    <script src="../../../../../../../../js/copy-code.js" defer></script>
+    <script src="../../../../../../../js/dropPartStepFocus-v2.js" defer></script>
+    <script src="../../../../../../../js/loadpageNewTab.js" defer></script>
+    <script type="module" src="../../../../../../../js/play-enlarge-video.js" defer></script>
+    <script type="module" src="../../../../../../../js/autofocusLoad.js" defer></script>
+    <script type="module" src="../../../../../../../js/img-enlarge-v1.js" defer></script>
+    <script type="module" src="../../../../../../../js/addRemoveTabs-v1.js" defer></script>
+
+</head>
+<body>
+    <header>
+        <div class="home-link">
+            <a tabindex="1" href="../../fhir-index.htm">Home</a>
+        </div>
+        <div class="notes">
+            <h2>Notes</h2>
+            <textarea id="notesTextArea" class="r" >
+figure out way to save typed text next time i open the page
+and fix it so that hitting 'n' in this text area doesn't clear typed text
+            </textarea>
+        </div>
+        <div class="page-title">
+            <h1>FHIR for Developers - FHIR vs HTTP</h1>
+            <img src="../gino.png" alt="">
+            <a tabindex="1" target="_blank" href="https://www.youtube.com/watch?v=eBAQYMT2KtM&list=PLsR-zcO--dypwthv7_QXwLMXKkdqsQvAm&index=2
+                ">tutorial</a>
+        </div>
+    </header>
+    <main>
+        <!-- Part 1 - rest api -->
+        <div class="part">
+            <a id="part01" tabindex="1" href="#" class="dropPart"><h2>Part 1 - RestApi  </h2></a>
+            <div class="steps-container show ">  
+                <!-- 01 -->
+                <div class="step">
+                    <div tabindex="1" class="step-txt step-vid playVid-click">
+                        <h3>01</h3>
+                        <p>
+                            Go to RESTful Api page in the 'Documentation' tab
+                            <a target="_blank" href="https://hl7.org/fhir/http.html">https://hl7.org/fhir/http.html</a>                  
+                        </p>
+                    </div>
+                    <div class="step-vid">
+                        <video src="imagesVideos/01.mp4"></video>
+                    </div>
+
+                </div>
+                <!-- 02 -->
+                <div class="step">
+                    <div tabindex="1" class="step-txt">
+                        <h3>02</h3>
+                        <p>
+                            go back when you can and do this part
+                        </p>
+                    </div>
+                    <div class="step-img">
+                        <!-- <img src="imagesVideos/01-02.png" alt=""> -->
+                    </div>
+                </div>
+     
+            </div>
+        </div>
+        <!-- Part 2 - Confluence example data -->
+        <div class="part">
+            <a autofocus  id="part02" tabindex="1" href="#" class="dropPart"><h2>Part 2 - Confluence example data</h2></a>
+            <div class="steps-container   ">  
+                <div class="step-col ">
+                    <div tabindex="1" class="step-txt question">
+                        <h3>01</h3>
+                        <p>
+                            there is 'Hapi' free test data somewhere on this site i can't find
+                            <a target="_blank" href="https://confluence.hl7.org/">https://confluence.hl7.org/</a>                  
+                        </p>
+                    </div>
+                </div>
+                <!-- 02 -->
+                <div class="step ">
+                    <div tabindex="1" class="step-txt question">
+                        <h3>02</h3>
+                        <p>
+                            In the tutorial the page looks like this, he copies and uses the 
+                        </p>
+                        <div class="code-container">
+                            <pre class="copy-code">
+http://hapi.fhir.org/baseR4 </pre>	
+                        </div>
+                        <p>
+                            endpoint which i can't find       
+                        </p>
+                    </div>
+                    <div class="step-img">
+                        <img src="imagesVideos/02-02.png" alt="">
+                    </div>
+                </div>
+                <!-- 03 -->
+                <div class="step-col">
+                    <div tabindex="1" class="step-txt question">
+                        <h3>03</h3>
+                        <p>
+                            He uses <a target="_blank" href="https://web.postman.co/workspace/My-Workspace~04c2f541-0380-463a-83d5-43f101ab40d0/overview?workspaceOnboarding=show"> postman</a>
+                            for the example
+                        </p>
+                        <p class="r">I have never used postman</p>
+                    </div>
+                </div>
+                <!-- 04 -->
+                <div class="step">
+                    <div tabindex="1" class="step-txt step-vid playVid-click">
+                        <h3>04</h3>
+                        <p>
+                            With the endpoint above you will get an error response, because you have to supply meta data
+                        </p>
+                    </div>
+                    <div class="step-vid">
+                        <video src="imagesVideos/02-4.mp4" >
+                    </div>
+                </div>
+                <!-- 05   -->
+                <div class="step">
+                    <div tabindex="1" class="step-txt">
+                        <h3>05</h3>
+                        <p>
+                            Go back to RESTFULApi FHIR Doc here , search for '/metadata'
+                            <a target="_blank" href="https://hl7.org/fhir/http.html#:~:text=GET%20%5Bbase%5D/-,metadata,-%7B%3Fmode%3D%5Bmode%5D%7D%20%7B%26_format">https://hl7.org/fhir/http.html#:~:text=GET%20%5Bbase%5D/-,metadata,-%7B%3Fmode%3D%5Bmode%5D%7D%20%7B%26_format</a>
+                        </p>
+                    </div>
+                    <div class="step-img">
+                        <img src="imagesVideos/02-05.png" >
+                    </div>
+                </div>
+                <!-- 06 -->
+                <div class="step">
+                    <div tabindex="1" class="step-txt">
+                        <h3>06</h3>
+                        <p>
+                            Go back to postman <a target="_blank" href="https://web.postman.co/workspace/My-Workspace~04c2f541-0380-463a-83d5-43f101ab40d0/request/create?requestId=f008ed79-4837-4df2-8b21-ef39f05f5048">postman</a>
+                            and add /metadta to the endpoint
+                        </p>
+                        <div class="code-container">
+                            <pre class="copy-code">
+http://hapi.fhir.org/baseR4/metadata </pre>	
+                        </div>
+                    </div>
+                    <div class="step-img">
+                        <img src="imagesVideos/02-06.png" >
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="part">
+            <a id="part03" tabindex="1" href="#" class="dropPart"><h2>Part 3 TBD</h2></a>
+            <div class="steps-container">
+
+            </div>
+        </div>
+        <footer tabindex="1" id="footer"></footer>
+
+ 
+    </main>
+    
+</body>
+</html>

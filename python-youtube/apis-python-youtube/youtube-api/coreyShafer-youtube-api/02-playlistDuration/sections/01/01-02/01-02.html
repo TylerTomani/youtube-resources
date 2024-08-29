@@ -1,0 +1,125 @@
+<div class="steps-container">
+    <header>
+        <h2>01-02  <code class="g">playlist 'id'</code> to <code class="b-fix">playlistItems()</code>
+            
+        </h2>
+    </header>
+    <!-- 01-01 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>01</h4>
+            <p>
+                Get the 2. <code class="g">playlist 'id'</code> from the <code class="b">playlists()</code>
+                instance method resource for the 'Pandas Tutorials' playlist
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code mdtxt">
+import os
+from googleapiclient.discovery import build
+import json
+# Get new api key this one is fake
+api_key = 'AIzaSyBycc_eAr1_P3NWDzR08IHkCA3_44wKEDM'
+youtube = build('youtube','v3',developerKey=api_key)
+
+channel_response  = youtube.channels().list(
+    part='contentDetails',
+    forUsername='schafer5'
+)
+response = channel_response.execute()
+channel_id = response['items'][0]['id']
+
+playlist_response  = youtube.<span class="b-fix">playlists()</span>.list(
+    part="contentDetails,snippet",
+    channelId=channel_id
+)
+response = playlist_response.execute()
+playlist_id = ''
+for pl in response['items']:
+    if pl['snippet']['title'] == 'Pandas Tutorials':
+        <span class="l">playlist_id</span> = pl['id']
+os.system('clear')
+print(<span class="l">playlist_id</span>)
+
+</pre>
+            </div>
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/01/01-02/images/01.png">
+        </div>
+    </div>
+    <!-- 01-02 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>02</h4>
+            <p>
+                Can also be found in the url of the playlist page.
+                <br>
+                <a target="_blank" href="https://www.youtube.com/playlist?list=PL-osiE80TeTsWmV9i9c58mdDCSskIFdDS">
+                    https://www.youtube.com/playlist?list=PL-osiE80TeTsWmV9i9c58mdDCSskIFdDS
+                </a>
+            </p>
+        </div>
+        <div class="step-img">
+            <img src="sections/01/01-02/images/02.png">
+        </div>
+    </div>
+    <!-- 03 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>03</h4>
+            <p>
+                Place the video id's from the <code class="b-fix">playlistItems()</code>.list() response in to 
+                a list []. This only returns the first five videos.
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code mdtxt">
+import os
+from googleapiclient.discovery import build
+import json
+# Get new api key this one is fake
+api_key = 'AIzaSyBycc_eAr1_P3NWDzR08IHkCA3_44wKEDM'
+youtube = build('youtube','v3',developerKey=api_key)
+
+channel_response  = youtube.channels().list(
+    part='contentDetails',
+    forUsername='schafer5'
+)
+response = channel_response.execute()
+channel_id = response['items'][0]['id']
+
+playlist_response  = youtube.playlists().list(
+    part="contentDetails,snippet",
+    channelId=channel_id
+)
+response = playlist_response.execute()
+playlist_id = ''
+for pl in response['items']:
+    if pl['snippet']['title'] == 'Pandas Tutorials':
+        <span class="l">playlist_id</span> = pl['id']
+os.system('clear')
+print(playlist_id)
+
+pListItems_response = youtube.<span class="b-fix">playlistItems()</span>.list(
+    part='contentDetails',
+    playlistId=<span class="l">playlist_id</span>
+)
+response = pListItems_response.execute()
+os.system('clear')        
+# print(response)
+vid_ids = []
+for item in response['items']:
+    vid_ids.append(item['id'])
+for vidId in vid_ids:
+    print(vidId)
+    print()
+</pre>
+            </div>
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/01/01-02/images/03.png">
+        </div>
+    </div>
+    <button tabindex="1" id="nxtLesson">next lesson</button>
+</div>

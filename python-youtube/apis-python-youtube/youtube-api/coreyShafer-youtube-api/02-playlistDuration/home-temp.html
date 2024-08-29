@@ -1,0 +1,175 @@
+<div class="steps-container">
+    <h3>Welcome </h3>
+            
+    <h4>01- Python YouTube API Tutorial: Getting Started - Creating an API Key and Querying the API</h4>
+    <div class="steps-container">
+        <!-- 01 -->
+        <div class="step">
+            <div tabindex="1" class="step-txt">
+                <p>
+                    From Corey Schafer, this calaculates his Django playlist duration, found here
+                    <a
+                        href="https://www.youtube.com/playlist?list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p">https://www.youtube.com/playlist?list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p</a>
+                </p>
+                <div class="code-container">
+                    <pre tabindex="1" class="copy-code wbg">
+PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p</pre>
+                </div>
+                
+                <p>
+                    <strong>google-client-pyton-api github</strong>
+                    <a tabindex="1"
+                        href="https://github.com/googleapis/google-api-python-client">https://github.com/googleapis/google-api-python-client</a>
+                    </li>
+                    <br>
+                    <strong>youtube api references</strong>
+                    <a href="https://developers.google.com/youtube/v3/docs">https://developers.google.com/youtube/v3/docs</a>
+                <p>
+        
+        
+        
+                </p>
+            </div>
+            <div class="step-img">
+                <img src="images/02.png">
+            </div>
+        </div>
+        <div class="step-col">
+            <div tabindex="1" class="step-txt">
+                <h4>04</h4>
+                <h5>full code</h5>
+                <div class="code-container">
+                    <pre  id="fullcode" tabindex="1" class="copy-code mdtxt">
+                        from datetime import timedelta
+    import re
+    import os
+    from googleapiclient.discovery import build
+    import json
+    # Get new api key this one is fake
+    api_key = 'AIzaSyBycc_eAr1_P3NWDzR08IHkCA3_44wKEDM'
+    youtube = build('youtube', 'v3', developerKey=api_key)
+    playlist_id = 'PL-osiE80TeTsWmV9i9c58mdDCSskIFdDS'
+    channel_id = 'UCCezIgC97PvUuR4_gbFUs5g'
+    hours_pattern = re.compile(r'(\d+)H')
+    mins_pattern = re.compile(r'(\d+)M')
+    secs_pattern = re.compile(r'(\d+)S')
+
+    total_seconds = 0
+    nextPageToken = None
+    while True:
+        playlistItems_request = youtube.playlistItems().list(
+            part='contentDetails',
+            playlistId=playlist_id,
+            maxResults=50,
+            pageToken=nextPageToken
+        )
+        playlistItems_response = playlistItems_request.execute()
+
+        vid_ids = []
+        for pl_item in playlistItems_response['items']:
+            vid_ids.append(pl_item['contentDetails']['videoId'])
+        videos_request = youtube.videos().list(
+            part="contentDetails,snippet",
+            id=','.join(vid_ids),
+        )
+        os.system('clear')
+        videos_response = videos_request.execute()
+        for vid in videos_response['items']:
+            duration = vid['contentDetails']['duration']
+            hours = hours_pattern.search(duration)
+            mins = mins_pattern.search(duration)
+            secs = secs_pattern.search(duration)
+
+            hours = int(hours.group(1)) if hours else 0
+            mins = int(mins.group(1)) if mins else 0
+            secs = int(secs.group(1)) if secs else 0
+
+            video_seconds = timedelta(
+            hours = hours,
+            minutes=mins,
+            seconds=secs
+            ).total_seconds()
+            
+            total_seconds += video_seconds
+        nextPageToken = playlistItems_response.get('nextPageToken')
+        if not nextPageToken:
+            break
+    total_seconds = int(total_seconds)
+    minutes,seconds = divmod(total_seconds,60)
+    hours,minutes = divmod(minutes,60)
+    print(f'{hours}:{minutes}:{seconds}')</pre>
+                </div>
+                
+            </div>
+            <div class="step-img">
+                <img src="sections/">
+            </div>
+        </div>
+        <!-- 02 -->
+        <div class="step">
+            <div tabindex="1" class="step-txt">
+                <h4>2</h4>
+                <p>
+                    Click image in the top right for tutorial, or press "T" on keyboard.
+                    Continue With Code From 1. Getting Started Creating an API Key and Querying the API
+                </p>
+                <div class="code-container">
+                    <pre tabindex="1" class="copy-code mdtxt">
+from googleapiclient.discovery import build
+import json
+<span class="l"># Get new api key this one is fake</span>
+api_key = <span class="l">'AIzaSyBycc_eAr1_P3NWDzR08IHkCM'</span>
+youtube = build('youtube', 'v3', developerKey=api_key)
+request = youtube.channels().list(
+    part='statistics',
+    forUsername='schafer5'
+)
+response = request.execute()
+print(response)</pre>
+                </div>
+            </div>
+            <div class="step-img sm-enlarge ">
+                <img src="../01-oAuthPythonYoutubeApi/sections/03/images/01.png" alt="">
+            </div>
+        </div>
+        <!-- 03 -->
+        <div class="step">
+            <div tabindex="1" class="step-txt">
+                <h4>03</h4>
+                <p>
+                    Get channelId
+                </p>
+                <div class="code-container">
+                    <pre tabindex="1" class="copy-code mdtxt">
+import os
+
+from googleapiclient.discovery import build
+import json
+# Get new api key
+api_key = 'AIzaSyBycc_eAr1_P3NWDzR08IHkCA3_44wKEDM'
+
+youtube = build('youtube', 'v3', developerKey=api_key)
+
+request = youtube.channels().list(
+    part='statistics',
+    forUsername='schafer5'
+)
+
+os.system('clear')
+response = request.execute()
+print(response)
+print("**********")
+print(response['items'][0]['id'])
+
+        </pre>
+                </div>
+                
+            </div>
+            <div class="step-img">
+                <img src="images/03.png">
+            </div>
+        </div>
+        
+    </div>        
+    <button tabindex="1" id="nxtLesson">next lesson</button>
+</div>

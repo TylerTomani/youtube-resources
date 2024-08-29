@@ -1,0 +1,308 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01-01-gino</title>
+    <!-- <link rel="stylesheet" href="../../css/flex-questions.css"/> -->
+    <!-- <link rel="stylesheet" href="../../css/imgVid.css"/> -->
+    <link rel="stylesheet" href="../../../css/resource-header-temp.css"/>
+
+    <link rel="stylesheet" href="../../../css/tutorial-temp.css"/>
+    <link rel="stylesheet" href="../../../../css/colors.css">
+    <link rel="stylesheet" href="../../../../css/copy-code.css">
+    <script module src="../../../js/home-link-focus.js" defer></script>
+    <!-- <script module src="../../../../js/copy-code.js" defer></script> -->
+    <!-- <script module src="../../../js/playEnlargeVid.js" defer></script> -->
+    <script src="../../../js//dropPartStepFocus.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="fi home-link">
+            <a tabindex="1" href="../../fhir-index.htm">home</a>
+        </div>
+        <div class="page-title">
+            <h1>FHIR</h1>
+            <h2>FHIR for Developers - Getting Started</h2>
+            <div class="page-logo">
+                <img src="../gino.png" alt="">
+                <a tabindex="1" target="_blank" href="https://www.youtube.com/watch?v=m2O6HiA1Z7g&list=PLsR-zcO--dypwthv7_QXwLMXKkdqsQvAm&index=1&pp=iAQB
+                ">tutorial</a>
+            </div>
+        </div>
+    </header>
+    <main>
+        <!-- Step 1 - FHIR Version and Maturity Model -->
+        
+        <div class="part">
+            <a id="" tabindex="1" href="#" class="dropPart"><h2>Part 1 - FHIR Version and Maturity Model</h2></a>
+            <div class="steps-container  ">  
+                <div class="step-col">
+                    <div tabindex="1" class="step-txt">
+                        <p>
+                            Here is a link the FHIR Documentation version page
+                            <a target="_blank" href="http://hl7.org/fhir/directory.html">http://hl7.org/fhir/directory.html</a>                  
+                            The current version available of FHIR is 5.0. In the <a target="_blank" href="https://www.medent.com/mapi.pdf">medent api doc </a>
+                            it states That the R2 format is used?
+                        </p>
+                    </div>
+                    <div class="img-2-container">
+                        <div class="step-img">
+                            <img class="img-l" src="imagesVideos/01-01a.png" alt="">
+                        </div>
+                        <div class="step-img">
+                            <img class="img-r" src="imagesVideos/01-01b.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <!-- 02 -->
+                <div class="step">
+                    <div tabindex="1" class="step-txt">
+                        <h3>02</h3>
+                        <p>
+                            Examples, links and Expansion packs can be found to the right
+                        </p>
+                    </div>
+                    <div class="step-img">
+                        <img src="imagesVideos/01-02.png" alt="">
+                    </div>
+                </div>
+                <div class="step">
+                    <div tabindex="1" class="step-txt">
+                        <h3>03</h3>
+                        <p>
+                            The maturity model can be found at this link
+                            <a target="_blank" href="https://confluence.hl7.org/display/FHIR/FHIR+Maturity+Model">https://confluence.hl7.org/display/FHIR/FHIR+Maturity+Model</a>
+                            FMM0 means it is a working draft, anything with a <strong>Normative </strong>
+                            FMM6 = FMM5 means it is currently working and will be moving forward
+                        </p>
+                    </div>
+                    <div class="step-img">
+                        <img src="imagesVideos/01-03.png" >
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Step 2 - Navigate the FHIR Home page -->
+        <div class="part">
+            <a id="steps02" tabindex="1" href="#" class="dropPart"><h2>Step 2 - Navigate the FHIR Home page</h2></a>
+            <div class="steps-container ">
+                <div class="step">
+                    <div tabindex="1" class="step-txt">
+                        <h3>01</h3>
+                        <p>
+                            Most of the things we want are in resources
+                            <a target="_blank" href="https://hl7.org/fhir/resourcelist.html">https://hl7.org/fhir/resourcelist.html</a>
+                            Anything marked with an "N" means that it is 'Normative' (FMM6 = FMM5) which works now and will in later versions
+                            <br> 
+                            Anything with a number following it means that it is a work in progress draft version
+                        </p>
+                    </div>
+                    <div class="step-img">
+                        <img src="imagesVideos/02-01.png" >
+                    </div>
+                </div>
+                <!-- 02 -->
+                <div class="step">
+                    <div tabindex="1" class="step-vid playVid-click">
+                        <h3>02</h3>
+                        <p>
+                            Scroll down and click the "Patient"
+                        </p>
+                    </div>
+                    <div class="step-vid">
+                        <video src="imagesVideos/02-02.mp4" >
+                    </div>
+                </div>
+                <!-- 03 -->
+                <div class="step">
+                    <div tabindex="1" class="step-vid playVid-click">
+                        <h3>03</h3>
+                        <p>
+                            Inside <q>Compartments</q> are things availabe in returning bundles which will be covered later
+                        </p>
+                    </div>
+                    <div class="step-vid">
+                        <video src="imagesVideos/02-03.mp4" >
+                    </div>
+                </div>
+                <!-- 04 -->
+                <div class="step">
+                    <div tabindex="1" class="step-txt">
+                        <h3>04</h3>
+                        <p>
+                            Scroll down to see the 'Patient' resource content
+                            <a target="_blank" href="https://hl7.org/fhir/patient.html#:~:text=8.1.3-,Resource%20Content,-Structure">https://hl7.org/fhir/patient.html</a>
+                        </p>
+                    </div>
+                    <div class="step-img">
+                        <img src="imagesVideos/02-04.png" >
+                    </div>
+                </div>
+                <!-- 05 -->
+                <div class="step">
+                    <div tabindex="1" class="step-txt">
+                        <h3>05</h3>
+                        <p>
+                            Scroll down further to see 'Patient' search parameters
+                            <a target="_blank" href="https://hl7.org/fhir/patient.html#:~:text=8.1.13%20Search%20Parameters">https://hl7.org/fhir/patient.html</a>
+                            These are what you can ask the server to look for on the patient
+                        </p>
+                    </div>
+                    <div class="step-img">
+                        <img src="imagesVideos/02-05.png" >
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Step 3 - Examples -->
+        <div class="part">
+            <a id="steps02" tabindex="1" href="#" class="dropPart"><h2>Step 3 - Examples</h2></a>
+            <div class="steps-container ">
+                <div class="step">
+                    <div tabindex="1" class="step-vid playVid-click">
+                        <h3></h3>
+                        <p>
+                            On the 'Patient Page', click on the 'Examples' tag to see the layout of the 'Patient' in XML, JSON, and Turtle 
+                            <a target="_blank" href="https://hl7.org/fhir/patient.html#:~:text=8.1.2%20References%20to%20this%20Resource    ">https://hl7.org/fhir/patient-examples.html</a>
+
+                        </p>
+                    </div>
+                    <div class="step-vid">
+                        <video src="imagesVideos/03-01.mp4" >
+                    </div>
+                </div>
+                <!-- 02 -->
+                <div class="step-col">
+                    <div tabindex="1" class="step-txt">
+                        <p>
+                            Compare the json format on the right to the structure on the left
+                        </p>
+                    </div>
+                    <div class="img-2-container">
+                        <div class="step-img">
+                            <img class="img-l" src="imagesVideos/03-02a.png" alt="">
+                        </div>
+                        <div class="step-img">
+                            <img class="img-r" src="imagesVideos/03-02b.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <!-- 03 -->
+                <div class="step-col">
+                    <div tabindex="1" class="step-txt">
+                        <h3></h3>
+                        <p>
+                            The rest are the tabs are not clear to me yet
+                        </p>
+                    </div>
+                    <div class="step-img">
+                        <img src="imagesVideos" >
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- Step 4 - Data types -->
+        <div class="part">
+            <a id="step04" tabindex="1" href="#" class="dropPart"><h2>Step 4 - data types</h2></a>
+            <div class="steps-container show">
+
+                <div class="step-col">
+                    <div tabindex="1" class="step-txt">
+                        <p>
+                            Go to this link to see the data types, figure these out as we go 
+                            <a target="_blank" href="https://hl7.org/fhir/datatypes.html">https://hl7.org/fhir/datatypes.html</a>
+                        </p>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <!-- Step 5 - Extensions -->
+        <div class="part">
+            <a id="step05" tabindex="1" href="#" class="dropPart"><h2>Step 5 - data types</h2></a>
+            <div class="steps-container ">
+
+                <div class="step-col">
+                    <div tabindex="1" class="step-txt">
+                        <p>
+                            Go to 32 minutes in the video to see extensions
+                            <a target="_blank" href="https://www.youtube.com/watch?v=m2O6HiA1Z7g&list=PLsR-zcO--dypwthv7_QXwLMXKkdqsQvAm">tutorial</a>
+                        </p>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <!-- Step 6 - Extensions -->
+        <div class="part">
+            <a id="step06" tabindex="1" href="#" class="dropPart"><h2>Step 6 - rest api</h2></a>
+            <div class="steps-container ">
+                <div class="step">
+                    <div tabindex="1" class="step-txt">
+                        <h3>01</h3>
+                        <p>
+                            this page shows how we interact with the data 
+                            <a target="_blank" href="https://hl7.org/fhir/http.html">https://hl7.org/fhir/http.html</a>
+                        </p>
+                    </div>
+                    <div class="step-img">
+                        <img src="imagesVideos/06-01.png" >
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Step 7 - FHIR Package registry -->
+        <div class="part question">
+            <a id="step07" tabindex="1" href="#" class="dropPart"><h2>Step 7 - FHIR Package registry</h2></a>
+            <div class="steps-container show">
+                <div class="step">
+                    <div tabindex="1" class="step-vid playVid-click">
+                        <p>
+                            I don't understand this but there is a US guide vs IG difference?
+                            but here is a link to it 
+                            <a target="_blank" href="https://registry.fhir.org/">https://registry.fhir.org/</a>                            
+                        </p>
+                    </div>
+                    <div class="step-vid">
+                        <video src="imagesVideos/07-01.mp4" >
+                    </div>
+                </div>
+                <!-- 02 -->
+                <div class="step">
+                    <div tabindex="1" class="step-txt">
+                        <h3>02</h3>
+                        <p>
+                            I believe this is package with the us-core guide?
+                        </p>
+                    </div>
+                    <div class="step-img">
+                        <img src="imagesVideos/07-02.png" >
+                    </div>
+                </div>
+                <!-- 03 -->
+                <div class="step question">
+                    <div tabindex="1" class="step-txt">
+                        <h3>03</h3>
+                        <p>
+                            inside the page above in HL7 <a target="_blank" href="https://registry.fhir.org/package/hl7.fhir.us.ecr%7C2.1.0">https://registry.fhir.org/package/hl7.fhir.us.ecr%7C2.1.0</a>
+                            I AM LOST HERE
+                        </p>
+                    </div>
+                    <div class="step-img">
+                        <img src="imagesVideos" >
+                    </div>
+                </div>
+            </div>
+            <div class="part">
+                <a id="step07" tabindex="1" href="#" class="dropPart"><h2>Part 7 GO back and see the rest of video</h2></a>
+            </div>
+        </div>
+        <footer tabindex="1" id="footer"></footer>
+
+ 
+    </main>
+    
+</body>
+</html>

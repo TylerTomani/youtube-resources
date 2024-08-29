@@ -1,0 +1,117 @@
+<div class="steps-container">
+    <header>
+        <h2>01-03 <code><span class="m">contentDetails</span>[<span class="r">'videoId'</span>]</code>
+        <br>to <code class="b-fix">videos()</code>
+            
+        </h2>
+    </header>
+    <!-- 01-01 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>01</h4>
+            <p>
+                Simplify the code by pasting in the <span class="o">channel id</span> and <span class="g">playlist id</span> into variables at top.
+                Append vid_ids to <code class="r-fix">vid_ids</code> [] list.
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code mdtxt">
+import os
+from googleapiclient.discovery import build
+import json
+# Get new api key this one is fake
+api_key = 'AIzaSyBycc_eAr1_P3NWDzR08IHkCA3_44wKEDM'
+youtube = build('youtube','v3',developerKey=api_key)
+<span class="o">channel_id = 'UCCezIgC97PvUuR4_gbFUs5g'</span>
+<span class="l">playlist_id = 'PL-osiE80TeTsWmV9i9c58mdDCSskIFdDS'</span>
+
+response = pListItem_response.execute()
+vid_ids = []
+
+
+os.system('clear')
+for data in response['items']:
+    vid_ids.append(data[<span class="m">'contentDetails'</span>][<span class="r">'videoId'</span>])
+for vid_id in vid_ids:
+    print(vid_id)
+print()
+print(response)
+</pre>
+            </div>
+            <p>
+                Make sure you get the <span class="r">videoId</span> from <span class="m">contentDetails</span>
+            </p>            
+            <h6>Channel Id</h6>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code smtxt">
+UCCezIgC97PvUuR4_gbFUs5g</pre>
+            </div>
+            <h6>Playlist Id</h6>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code smtxt">
+PL-osiE80TeTsWmV9i9c58mdDCSskIFdDS</pre>
+            </div>
+            <a target="_blank" href="PL-osiE80TeTsWmV9i9c58mdDCSskIFdDS"></a>
+        </div>
+        <div class="step-img ac jc">
+            <img src="sections/01/01-03/images/01.png">
+        </div>
+    </div>
+    <!-- 02 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>02</h4>
+            <p>
+                Send the list as a comma seperated string into code <code class="r">videoId</code>
+                parameters for list() to <code class="b-fix">videos()</code> static method resource
+            </p>
+            <p>
+                Use <span class="lsg">','.join(vid_ids)</span> to create a comma seperated string
+            </p>
+            <p class="r mdtxt">
+                **The default max amount of video is 50. And default only returns the first five.
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code mdtxt">
+import os
+from googleapiclient.discovery import build
+import json
+# Get new api key this one is fake
+api_key = 'AIzaSyBycc_eAr1_P3NWDzR08IHkCA3_44wKEDM'
+youtube = build('youtube','v3',developerKey=api_key)
+channel_id = 'UCCezIgC97PvUuR4_gbFUs5g'
+playlist_id = 'PL-osiE80TeTsWmV9i9c58mdDCSskIFdDS'
+
+pListItem_response = youtube.playlistItems().list(
+    part='contentDetails',
+    playlistId=playlist_id
+)
+
+response = pListItem_response.execute()
+vid_ids = []
+for data in response['items']:
+    vid_ids.append(data['contentDetails']['videoId'])
+
+videos_response = youtube.videos().list(
+    part='contentDetails',
+    id=<span class="lsg-fix">','.join(vid_ids)</span>
+)
+response = videos_response.execute()
+os.system('clear')
+print(response)
+for vid in response['items']:
+    print()
+    print(vid)
+                </pre>
+            </div>
+            <p>
+                notice when the <code class="o">duration</code> key is, we can use this in the next section to calculate the 
+                duration of the entire playlist
+            </p>
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/01/01-03/images/02.png">
+        </div>
+    </div>
+    <button tabindex="1" id="nxtLesson">next lesson</button>
+</div>

@@ -1,0 +1,893 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02-01-FHIR Introduction to Search</title>
+    <link rel="stylesheet" href="../../../../../../../../css/font-sizes.css" />
+    <link rel="stylesheet" href="../../../../../../../css/resource-header-temp.css" />
+    <link rel="stylesheet" href="../../../../../../../css/tutorial-temp-v2.css" />
+    <link rel="stylesheet" href="../../../../../../../../css/copy-code.css">
+    <link rel="stylesheet" href="../../../../../../../../css/imgAnimate-v2.css">
+    <script src="../../../../../../../js/letterFocus-tutorial.js" defer></script>
+    <script src="../../../../../../../../js/copy-code.js" defer></script>
+    <script src="../../../../../../../js/dropPartStepFocus-v2.js" defer></script>
+    <script src="../../../../../../../js/loadpageNewTab.js" defer></script>
+    <script type="module" src="../../../../../../../js/play-enlarge-video.js" defer></script>
+    <script type="module" src="../../../../../../../js/autofocusLoad.js" defer></script>
+    <script type="module" src="../../../../../../../js/img-enlarge-v1.js" defer></script>
+    <script type="module" src="../../../../../../../js/addRemoveTabs-v1.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="fi home-link">
+            <a id="homeLink" tabindex="1" href="../../ginoCannessa-fhir.htm">home</a>
+        </div>
+        <div class="page-title">
+            <h1>FHIR</h1>
+            <h2>FHIR Search - Part 1: Introduction to Search</h2>
+        </div>
+        <div class="page-logo">
+            <img src="../gino2.png" alt="">
+            <a id="tutorialLink" tabindex="1" target="_blank" href="https://www.youtube.com/watch?v=pozHEE_c5hI&list=PLsR-zcO--dypskMPAd8r-EoiQOCdiYrux
+            ">tutorial</a>
+            <br>
+            
+            <a target="_blank" id="medent" tabindex="1" href="https://www.medent.com/std_api/MEDENT%20API%20Documentation.pdf">medent (not linked)</a>
+        </div>
+    </header>
+    <main>
+        <div class="parts-container">
+            <!-- Part 1 - FHIR Documentation Bundle type: searchset -->
+            <div class="part">
+                <a id="part01" tabindex="1" href="#" class="dropPart"><h2>Part 1 - FHIR Documentation <strong><code>Bundle</code></strong><strong> <code>type: searchset</code></strong></h2></a>
+                <div class="steps-container show">  
+                    <!-- 01-00 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h4>00</h4>
+                            <p>
+                                Most
+                                Go to FHIR homepage, 
+                                <br>
+                                <a target="_blank" href="https://build.fhir.org/">https://build.fhir.org/</a>
+                                <br>
+                                and click search
+                            </p>
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/01-00.png" >
+                        </div>
+                    </div>
+                    <!-- 01-01 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h4>01</h4>
+                            <p>
+                                The official request method for FHIR is <code>POST</code> but <code>GET</code> is often used, most other apis.
+                                Info located in the documentation here ,
+                                <br>
+                                <a target="_blank"
+                                    href="https://www.hl7.org/fhir/search.html#:~:text=All%20resource%20types%3A%20Note%20that%20if%20the%20_type%20parameter%20is%20included%2C%20all%20other%20search%20parameters%20SHALL%20be%20common%20to%20all%20provided%20types%2C%20and%20if%20_type%20is%20not%20included%2C%20all%20parameters%20SHALL%20be%20common%20to%20all%20resource%20types.%20Show%20as%3A%20HTTP%20GET%20%7C%20HTTP%20POST">
+                                    https://www.hl7.org/fhir/search.html
+                                </a>
+                                <br>
+                                &emsp; <a target="_blank" href="https://www.hl7.org/fhir/search.html#:~:text=A%20server%20that%20does%20not%20support%20search%20via%20GET%20will%20return%20links%20in%20the%20same%20style%20as%20a%20server%20that%20does%20not%20support%20search%20via%20POST.%20Note%20that%20this%20makes%20the%20self%20link%20special%20in%20the%20context%20of%20bundle%20links%2C%20as%20all%20other%20links%20are%20intended%20to%20be%20resolvable%20by%20a%20client.">
+                                    A server that does not support search via GET will return links in the same style as a server that does not support
+                                    search via POST. Note that this makes the self link special in the context of bundle links, as all other links are
+                                    intended to be resolvable by a client.
+                                </a>
+                            </p>
+                            <p class="mdlgtxt">
+                                &emsp;All resource types: Note that if the _type parameter is included, all other search parameters SHALL be common to all
+                                provided types, and if _type is not included, all parameters SHALL be common to all resource types.
+                            </p>
+                            <div class="code-container">
+                                <pre tabindex="1" class="copy-code xlgcode">
+GET [base]?parameter(s)</pre>
+                            </div>
+                            <p class="mdlgtxt">
+                                A specified resource type:
+                            </p>
+                            <div class="code-container">
+                                <pre tabindex="1" class="copy-code xlgcode">
+GET [base]/[type]?parameter(s)</pre>
+                            </div>
+                            <p class="mdlgtxt">
+                                A specified compartment, perhaps with a specified resource type in that compartment. Note that the literal * (asterisk)
+                                is valid as the [type] in a GET-based compartment search. This syntax is for disambiguation between an instance read and
+                                a compartment search, which would otherwise share the same URL.
+                            </p>
+                            <div class="code-container">
+                                <pre tabindex="1" class="copy-code xlgcode">
+GET [base]/[compartment]/[id]/[type]?parameter(s)</pre>
+                            </div>
+                            
+                            
+                            
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/01-01.png">
+                        </div>
+                    </div>
+                    <!-- 01-02 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt playVid-click">
+                            <h4>02</h4>
+                            <p>
+                                A full example of a <code>search</code> using <code>POST</code> and <code>GET</code> requests can be found in the <i>rest api </i>
+                                section in <q>search</q>
+                            </p>
+                            <p>
+                                This contains the <span class="mdlgtxt"><code>POST</code> 'Body'</span> and can be found here,
+                                <br>
+                                <a target="_blank" href="https://www.hl7.org/fhir/http.html#search">https://www.hl7.org/fhir/http.html#search</a>
+                                <br>
+                                example for <i>resource type</i> search below
+                            </p>
+                            <div class="code-container">
+                                <pre tabindex="1" class="copy-code lgcode">
+POST [base]/[resource-type]/_search
+Content-Type: application/x-www-form-urlencoded
+param1=value&...{&_format=[mime-type]}</pre>
+                            </div>
+                            
+
+                        </div>
+                        <div class="step-vid">
+                            <video src="imagesVideos/01-02.mov">
+                        </div>
+                    </div>
+                    <!-- 01-03 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h4>03</h3>
+                            <p>
+                                FHIR returns a <code><strong><q>Bundle</q></strong></code>
+                                with the type <code><strong><q>searchset</q></strong></code>.
+                                This allows us access to different attributes related  to the search query,
+                            </p>
+                            <p>
+                                <a target="_blank" href="https://build.fhir.org/search.html#:~:text=In%20order%20to%20include%20related%20information%20(e.g.%2C%20number%20of%20total%20results)%2C%20support%20extended%20functionality%20(e.g.%2C%20paging)%2C%20and%20allow%20multiple%20resource%20types%20in%20results%20(e.g.%2C%20returning%20Patient%20and%20Encounter%20resources)%2C%20FHIR%20Search%20instead%20returns%20a%20Bundle%20resource%2C%20with%20a%20type%20of%20searchset.
+                                ">https://build.fhir.org/search</a>
+                            </p>
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/01-03.png" >
+                        </div>
+                    </div>
+                    <!-- 01-04 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h4>04</h4>
+                            <p>
+                                You can see the <code>type</code> <code>searchset</code> in the <strong><code>Bundle</code></strong>
+                                <strong>Resource</strong> page,
+                                <br>
+                                <a target="_blank" href="https://hl7.org/fhir/bundle.html">https://hl7.org/fhir/bundle.html</a>
+                            </p>
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/01-04.png" >
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Part 2 - GET POST -->
+            <div class="part">
+                <a id="" tabindex="1"  href="#" class="dropPart"><h2>Part 2 - GET POST</h2></a>
+                <div class="steps-container">
+                    <!-- 02-01 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h3>01</h3>
+                            <p>
+                                <strong><code>POST</code></strong> is the official HTTP request Verb, but <strong><code>GET</code></strong>
+                                can be used and is more common amoung other REST apis. (<span class="r">**Important</span> ) it seems, <strong>
+                                    <code>GET</code>
+                                </strong> is the new standard
+                            </p>
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/02-01.png" >
+                        </div>
+                    </div>
+                    <!-- 02-02 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt step-vid playVid-click">
+                            <h3>02</h3>
+                            <p>
+                                Ths <strong><code>GET</code></strong> example on the <strong>search</strong> page isn't good, 
+                                Go to search from the hompage in the RESTFUL API section,
+                                <a target="_blank" href="https://hl7.org/fhir/http.html#search">https://hl7.org/fhir/http.html#search</a>
+                            </p>
+                        </div>
+                        <div class="step-vid">
+                            <video src="imagesVideos/02-02.mp4" >
+                        </div>
+                    </div>
+                    <!-- 02-03 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h3>03</h3>
+                            <p>
+                                Again, the link and example code for <strong><code>POST</code></strong>,
+                                <a target="_blank" href="https://hl7.org/fhir/http.html#search">https://hl7.org/fhir/http.html#search</a>
+                            </p>
+                            <div class="code-container">
+                                <pre class="copy-code">
+    POST [base]/_search
+    Content-Type: application/x-www-form-urlencoded
+    param1=value&...{&_format=[mime-type]}</pre>	
+                            </div>
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/02-03.png" >
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Part 3 - Visual Studio REST Client Extention .http vs Python -->
+            <div class="part">
+                <a tabindex="1" href="#" class="dropPart"><h2>Part 3 - Visual Studio REST Client Extention and HTTP vs Python</h2></a>
+                <div class="steps-container ">
+                    <!-- 03-01 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h3>01</h3>
+                            <p>
+                                To use REST APIs in VS code, Save a file as <code>filename.http</code>
+                                in vs code, download the <strong><q>REST CLIENT</q></strong> extension.
+                                
+                            </p>
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/03-01.png" >
+                        </div>
+                    </div>
+                    <!-- 03-02 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt step-vid playVid-click">
+                            <h3>02</h3>
+                            <h4>http</h4>
+                            <p>
+                                The following code  file makes a reuqest to the <strong><code>Patient</code></strong>
+                                <strong>Resource</strong>. Click Send Request to make request
+                            </p>
+                            <code>GET [base]/[<code>type</code>]?parameter(s)</code>
+                            <div class="code-container">
+                                <pre class="copy-code">
+    @fhirUrl = http://hapi.fhir.org/baseR4/
+
+    GET {{fhirUrl}}/<span class="b">Patient</span>
+    Accept: application/fhir+json</pre>	
+                            </div>
+                            <p>
+                                This returns a bundle full of patients
+                            </p>
+                        </div>
+                        <div class="step-vid">
+                            <video src="imagesVideos/03-02.mp4" >
+                        </div>
+                    </div>
+                    <!-- 03-03 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h3>03</h3>
+                            <h4><code>python -m -venv venv</code> & <code>pip list</code></h4>
+                            <p>
+                                Must install a 'virtual enviorment' <code>venv</code>
+                                and import the <code>request</code> library
+                            </p>
+                            <div class="code-container">
+                                <pre class="copy-code">
+    python -m venv venv</pre>	
+                            </div>
+                            <div class="code-container">
+                                <pre class="copy-code">
+    ./venv/Script/activate.bat</pre>	
+                            </div>
+                            <div class="code-container">
+                                <pre class="copy-code">
+    pip install request</pre>	
+                            </div>
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/03-03.png" >
+                        </div>
+                    </div>
+                    <!-- 03-04 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h3>04</h3>
+                            <h4>python</h4>
+                            <p>
+                                This python code does the same as the HTTP request in 02 above
+                            </p>
+                            <div class="code-container">
+                                <pre class="copy-code">
+    import requests
+    fhir_url = 'http://hapi.fhir.org/baseR4/'
+    endpoint = f'{fhir_url}/Patient'
+    headers = {'Accept': 'application/fhir+json'}
+
+    response = requests.get(endpoint,headers=headers)
+    if response.status_code == 200:
+        fhir_data = response.json()
+        print(fhir_data)
+    else:
+        print(f'Error: {response.status_code}')
+        print(response.text)
+        </pre>	
+                            </div>
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/03-04.png" >
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Part 4 - GET HTTP response.text ( Bundle & url links: self,previous,next) -->
+            <div class="part">
+                <a tabindex="1" href="#" class="dropPart"><h2>Part 4 - <code>GET</code> & <code>POST</code> HTTP response.text ( Bundle & url links: self,previous,next)</h2> 
+                <br>
+                <h3>&emsp;(import json (in python))</h3>
+                </a>
+                <div class="steps-container ">
+                    <!-- 04-01 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h3>01</h3>
+                            <p>
+                                We can see from the previous code in Part 3 that in the response, there is a <code>Bundle</code>.
+                                Inside the bundle there is a <code>resource</code>(right word??) named <code>link</code>
+                                which contains the propeties(right word??) <code>relation:</code> and <code>url</code>
+                                <br>
+                                <a target="1" href="https://hl7.org/fhir/bundle.html">https://hl7.org/fhir/bundle.html</a>
+                            </p>
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/04-01.png" >
+                        </div>
+                    </div>
+                    <!-- 04-02 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h3>02</h3>
+                            <h4><code>import <span class="lsg">json</span></code> use pretty</h4>
+                            <p>
+                                The json from the HTTP request in the console, has no line breaks, is difficult to read.
+                                import the <code class="lsg">json</code>
+                                and use the function <code><span class="lsg">json</span>.<span class="gr">dumps</span>()</code>
+                            </p>
+                            <div class="code-container">
+                                <pre class="copy-code">
+    import requests
+    import <span class="lsg">json</span>
+
+    fhir_url = 'http://hapi.fhir.org/baseR4/'
+    endpoint = f'{fhir_url}/Patient'
+    headers = {'Accept': 'application/fhir+json'}
+
+    response = requests.get(endpoint, headers=headers)
+    if response.status_code == 200:
+        fhir_data = response.json()
+        <span class="b">pretty_fhir_data</span> = <span class="lsg">json</span>.<span class="gr">dumps</span>(fhir_data,<span class="m">indent=2</span>)
+        print(<span class="b">pretty_fhir_data</span>)
+    else:
+        print(f'Error: {response.status_code}')
+        print(f'{response.text}')
+
+                            </pre>	
+                            </div>
+                            <p>
+                                The returned bundle contains the (parameter right word?) <code>link</code>
+                                with the propeties(right word??) 
+                                <ul>
+                                    <li><code>relative</code></li>
+                                    <li><code>url</code></li>
+                                </ul>
+                            </p>
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/04-02.png" >
+                        </div>
+                    </div>
+                    <!-- 04-03 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h3>03</h3>
+                            <h4>HTTP</h4>
+                            <p>
+                                &emsp;You can do the same thing as the examples above using <code>POST</code> in HTTP, 
+                                <br>
+                                but with <code>POST</code>,
+                                <br> 
+                                we have to use the <code class="m">_search</code> parameter
+                                <br>
+                                and,
+                                &emsp;Add a <code>Content-Type</code> with the <code>x-www-form-urlencoded</code>
+                                directory
+                            </p>
+                            <div class="code-container">
+                                <pre class="copy-code">
+    @fhirUrl = http://hapi.fhir.org/baseR4/Patient
+    <span class="b">POST</span> {{fhirUrl}}/Patient/<span class="m">_search</span>
+    <span class="b">Accept</span>: application/fhir+json
+    <span class="b">Content-type: </span> <span class="b">x-www-form-urlencoded</span>
+    </pre>	
+                            </div>
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/04-03.png" >
+                        </div>
+                    </div>
+                    <!-- 04-04 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h3>04</h3>
+                            <h4>python</h4>
+                            <p>
+                                &emsp;In python, 
+                                Place <code><span class="b">Accept</span>: <span class="o">'application/fhir+json'</span></code>
+                                and <code><span class="b">Content-Type</span>: <span class="o">'application/x-www-form-urlencoded'</span></code>
+                                in the <code class="dc">header</code>
+                                <br>
+                                Add a <code class="lsg">dictionary</code> called <code class="m">playload</code>, by convention, to make a <code>POST</code>
+                                in python.
+                            </p>
+                            <div class="code-container">
+                                <pre class="copy-code xmd-code">
+    import requests
+    import json 
+
+    fhir_url = 'http://hapi.fhir.org/baseR4/'
+    endpoint = f'{fhir_url}/Patient/_search'
+    <span class="dc">headers</span> = {
+        <span class="b">'Accept'</span>: <span class="o">'application/fhir+json'</span>,
+        <span class="b">'Content-Type'</span>: <span class="o">'application/x-www-form-urlencoded'</span>
+    }
+    <span class="m">payload</span> = {
+        <span class="g"># place search parameters here</span>
+    }
+    response = requests.<span class="b">post</span>(endpoint, headers=headers, data=<span class="m">payload</span>)
+    if response.status_code == 200:
+        fhir_data = response.json()
+        pretty_fhir_data = json.dumps(fhir_data, indent=2)
+        print(pretty_fhir_data)
+    else:
+        print(f'Error: {response.status_code}')
+        print(f'{response.text}')</pre>	
+                            </div>
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/04-04.png" >
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Part 5 - search parameters HTTP vs Python-->
+            <div class="part">
+                <a tabindex="1" href="#" class="dropPart"><h2>Part 5 - 'Common search Parameters' and 'Search control parameters' HTTP vs Python</h2></a>
+                <div class="steps-container ">
+                    <!-- 05-01 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt step-vid playVid-click">
+                            <h3>01</h3>
+                            <p>
+                                &emsp;Here are all the 'Common Parameters for all resources' and 'Search control parameters' 
+                                <br>
+                                <a target="_blank" href="https://hl7.org/fhir/search.html#:~:text=3.2.1.11%20Summary%20Tables">https://hl7.org/fhir/search.html</a>
+                                <br>
+                                &emsp;The</span> <q>Common Parameters for all resources</q> apply to he 1st level of resources
+                                <span class="r">They are not required for any data bases</span> but typically FHIR apis have these Parameters.
+
+                            </p>
+                        </div>
+                        <div class="step-vid">
+                            <video src="imagesVideos/05-01.mp4" >
+                        </div>
+                    </div>
+                    <div class="step-col">
+                        <div tabindex="1" class="step-txt">
+                            <p>
+                                <q>Common Parameters for all resources</q> work on any resource if available in database, 
+                                <q>Search control parameters</q> work on certain specific resources if available.
+                            </p>
+                        </div>
+                        <div class="img-2-container">
+                            <div class="step-img">
+                                <img  class="img-l" src="imagesVideos/05-01a.png" alt="">
+                            </div>
+                            <div class="step-img">
+                                <img class="img-r" src="imagesVideos/05-01b.png" alt="">
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <!-- 05-02 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h3>02</h3>
+                            <h4>HTTP search parameter <code class="r">_id</code></h4>
+                            <p>
+                                In HTTP we can add the <strong><q>Common search Parameters</q></strong> such as <span class="r">_id</span>,
+                                after the <code>fhir_url</code> in the <code>GET</code> request.
+                            </p>
+                            <div class="code-container">
+                                <pre class="copy-code">
+    @fhirUrl = http://hapi.fhir.org/baseR4/
+    GET {{fhirUrl}}/Patient/<span class="r">592912</span>
+    Accept: application/fhir+json</pre>	
+                            </div>
+                            <p>
+                                This format returns the <strong class="r"><q>Patient</q></strong> type
+                            </p>
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/05-02.png" >
+                        </div>
+                    </div>
+                    <!-- 05-03 -->
+                    <div class="step">
+                        <div   tabindex="1" class="step-txt">
+                            <h3>03</h3>
+                            <p>
+                                This format returns the resources as a bundle
+                            </p>
+                            <div class="code-container">
+                                <pre class="copy-code">
+    @fhirUrl = http://hapi.fhir.org/baseR4
+    GET {{fhirUrl}}/Patient<span class="r">?_id=592912</span>
+    Accept: application/fhir+json</pre>	
+                </div>
+                            <p>
+                                You can access multiple ids with this format
+                            </p>
+                            <div class="code-container">
+                                <pre class="copy-code">
+    @fhirUrl = http://hapi.fhir.org/baseR4
+    GET {{fhirUrl}}/Patient<span class="r">?_id=592912,592913</span>
+    Accept: application/fhir+json    </pre>	
+                            </div>
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/05-03.png" >
+                        </div>
+                    </div>
+                    <!-- 05-04 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h3>04</h3>
+                            <h4>python search parameter <code class="r">_id</code> <code>GET</code></h4>
+                            <p>
+                                In python, 
+                            </p>
+                            <div class="code-container">
+                                <pre class="copy-code xmd-code">
+    import requests
+    import json
+    fhir_url = 'http://hapi.fhir.org/baseR4'
+    patient_id = '<span class="r">592912</span>'
+    endpoint = f'{fhir_url}/Patient/{<span class="r">patient_id</span>}'
+    headers = {'Accept': 'application/fhir+json'}
+
+    response = requests.get(endpoint,headers=headers)
+    if response.status_code == 200:
+        fhir_data = response.json()
+        pretty_fhir_data = json.dumps(fhir_data, indent=2)
+        print(pretty_fhir_data)
+    else:
+        print(f'Error: {response.status_code}')
+        print(f'{response.text})</pre>	
+                            </div>
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/05-04.png" >
+                        </div>
+                    </div>
+                    <!-- 05-05 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h3>05</h3>
+                            <h4>mulitple <code class="r">_id</code>s in python</h4>
+                            <p>
+                                Here is one way of getting multiple <code>_id</code> numbers in python
+                            </p>
+                            <div class="code-container">
+                                <pre class="copy-code xmd-code">
+    import requests
+    import json
+    fhir_url = 'http://hapi.fhir.org/baseR4'
+    <span class="r">patient_ids</span> = ['<span class="r">592912</span>','<span class="r">592913</span>']
+
+    url = f"{fhir_url}/Patient?<span class="r">_id</span>={','.join(<span class="r">patient_ids</span>)}"
+    headers = {
+        'Accept': 'application/fhir+json'
+    }
+    response = reuqests.get(url,headers=headers)
+    if response.status_code == 200:
+        fhir_data = resonse.json()
+        pretty_fhir_data = json.dumps(fhir_data, indent=2)
+        print(pretty_fhir_data)
+    else:
+        print(f'Error: {response.status_code}')
+        print(f'response.text')</pre>	
+                            </div>
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/05-05.png" >
+                        </div>
+                    </div>
+                    <!-- 05-06 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h3>06</h3>
+                            <p>
+                                Here is another way of using multiple patient <code class="r">_id</code>s.
+                                using <code class="m">params</code>
+                            </p>
+                            <div class="code-container">
+                                <pre class="copy-code xmd-code">
+    import requests
+    import json
+    fhir_url = 'http://hapi.fhir.org/baseR4'
+    <span class="r">patient_ids</span> = ['592912','592913']
+    url = f'{fhir_url}/Patient'
+    <span class="m">query_params</span> = {'_id': ','.join(<span class="r">patient_ids</span>)}
+    headers = {
+    'Accept': 'application.fhir+json'
+    }
+    response = requests.get(url, params=<span class="m">query_params</span>, headers=headers)
+    if response.status_code == 200:
+    fhir_data = response.json()
+    pretty_fhir_data = json.dumps(fhir_data, indent=2)
+    print(pretty_fhir_data)
+    else:
+    print(f'Error, {response.status_code}')
+    print(f'{response.text}')</pre>	
+                            </div>
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/05-06.png" >
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Part 6 - _format in url vs header (applicaiton/fhir+json or applicaiton/fhir+xml) -->
+            <div class="part">
+                <a tabindex="1" href="#" class="dropPart"><h2>Part 6 - _format in url vs header (applicaiton/fhir+json or applicaiton/fhir+xml)</h2></a>
+                <div class="steps-container">
+                    <!-- 06-01 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h3>01</h3>
+                            <h4>in xml http</h4>
+                            <p>
+                                You can place the <span class="m">_format</span> in the url or in the headers argument.
+                                (The url will overide the header)
+                            </p>
+    <div class="code-container">
+        <pre class="copy-code">
+    @fhirUrl = http://hapi.fhir.org/baseR4
+    GET {{fhirUrl}}/Patient?_id=592912,592913<span class="m">&_format</span>=application/fhir+xml
+    Accept: application/fhir+json</pre>	
+    </div>
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/06-01.png" >
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Part 7 Search Paramters of Resource 'Patient' -->
+            <div class="part">
+                <a tabindex="1" href="#" class="dropPart"><h2>Part 7 - -Search Paramters of Resource <code>'Patient'</code> <code class="m">?given</code> for <code class="b">name</code></h2></a>
+                <div class="steps-container ">
+                    <!-- 07-01 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt step-vid playVid-click">
+                            <h3>01</h3>
+                            <p>
+                                Go to the bottom of a resource to find the resource's <q>Search Parametes</q>                            
+                                <br>
+                                <a target="_blank" href="https://hl7.org/fhir/patient.html
+                                ">https://hl7.org/fhir/patient.html</a>
+                            </p>
+                        </div>
+                        <div class="step-vid">
+                            <video src="imagesVideos/07-01.mp4" >
+                        </div>
+                    </div>
+                    <!-- 07-02 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt step-vid playVid-click">
+                            <h3>02</h3>
+                            <p>
+                                Use <code class="m">given</code> as for the 'Search parameters' <strong><code>name</code></strong>
+                                <br>
+                                <a target="_blank" href="https://hl7.org/fhir/search.html#string
+                                ">https://hl7.org/fhir/search.html#string</a>
+
+                            </p>
+                        </div>
+                        <div class="step-vid">
+                            <video src="imagesVideos/07-02.mp4" >
+                        </div>
+                    </div>
+                    <!-- 07-03 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h3>03</h3>
+                            <h4>in http xml</h4>
+                            <div class="code-container">
+                                <pre class="copy-code">
+    @fhirUrl = http://hapi.fhir.org/baseR4
+    GET {{fhirUrl}}/Patient<span class="m">?given</span>=eve
+    Accept: application/fhir+json</pre>	
+                            </div>
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/07-03.png" >
+                        </div>
+                    </div>
+                    <!-- 07-04 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h3>04</h3>
+                            <h4>in python</h4>
+                            <div class="code-container">
+                                <pre class="copy-code">
+    import requests
+    import json
+    fhir_url = 'http://hapi.fhir.org/baseR4/'
+    search_params = {
+        '<span class="m">given</span>':'eve'
+    }
+    url = f'{fhir_url}Patient'
+    headers = {
+        'Accept': 'application/fhir+json'
+    }
+    response = requests.get(url, params=search_params,headers=headers)
+    if response.status_code == 200:
+        fhir_data = response.json()
+        pretty_data = json.dumps(fhir_data,indent=2)
+        print(pretty_data)
+    else:
+        print(f'Error: {response.status_code}')
+        print(f'{response.text}')</pre>	
+                            </div>
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/07-04.png" >
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Part 8 - 'Common search Parameters' and 'Search control parameters' Documentation -->
+            <div class="part">
+                <a tabindex="1" href="#" class="dropPart"><h2>Part 8 - 'Common search Parameters' <code>_</code> and 'Search control parameters' <code>_nounderscore</code> Documentation</h2></a>
+                <div class="steps-container ">
+                    <!-- 08-01 -->
+                    <div class="step">
+                        <div   tabindex="1" class="step-txt">
+                            <h3>01</h3>
+                            <p>
+                                Anyting with <code>_</code> is a top level 'Common Parameters'
+                                <br>
+                                is top level search parameter that should work on any resource such as:
+                                <br><code>_id</code>, <code>_has</code>, <code>_security</code>, <code>_lastUpdated</code>
+                                <br>
+                                Link to page seach for:
+                            </p>
+                            <div class="code-container">
+                                <pre class="copy-code">
+    Summary table</pre>	
+                            </div>
+                            <p>
+                                at
+                                <a target="_blank" href="https://hl7.org/fhir/search.html#:~:text=Common%20Parameters%20defined%20for%20all%20resources%3A
+                                ">https://hl7.org/fhir/search.html</a>
+                            </p>
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/08-01.png" >
+                        </div>
+                    </div>
+                    <!-- 08-02 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h3>02</h3>
+                            <p>
+                                Put <code class="m">metadata</code>
+                                at the end of the base url
+                            </p>
+                            <div class="code-container">
+                                <pre class="copy-code">
+    http://hapi.fhir.org/baseR4</pre>	
+                            </div>
+                            <p>
+                                You can find these parameters in 
+                                <br>
+                                CapabilityStatment &rarr; 'rest' &rarr; 'resource' &rarr; 'searchParam'
+                            </p>
+                            <p> Anything without a under score is something i don't get yet</p>
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/08-02.png" >
+                        </div>
+                    </div>
+                    <!-- 08-03 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt step-vid playVid-click">
+                            <h3>03</h3>
+                            <p>
+                                The <code>CapabilityStatment</code> documentaion can be found here
+                                <br>    
+                                <a target="_blank" href="https://hl7.org/fhir/capabilitystatement.html
+                                ">https://hl7.org/fhir/capabilitystatement.html</a>
+                                <br>
+                                <span class="r">I'm a little confused here</span> I think ones without the <code>_</code>
+                                are search parameters for the specific resource
+                            </p>
+                        </div>
+                        <div class="step-vid">
+                            <video src="imagesVideos/08-03.mp4"></video>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- Part 9 - everything -->
+            <div class="part">
+                <a tabindex="1" href="#" class="dropPart"><h2>Part 9 - everything</h2></a>
+                <div class="steps-container show">
+                    <!-- 09-01 -->
+                    <div class="step ">
+                        <div tabindex="1" class="step-txt">
+                            <h3>01</h3>
+                            <p>
+                                Certain Search Parameters not part of the fhir spec and part 
+                                of the servers will be found 
+
+                            </p>
+                            <div class="code-container">
+                                <pre class="copy-code">
+    import requests
+    import json
+    fhir_url = 'http://hapi.fhir.org/baseR4/'
+    # search_params = {
+    #     'given':'eve'
+    # }
+    url = f'{fhir_url}Patient'
+    headers = {
+        'Accept': 'application/fhir+json'
+    }
+    # response = requests.get(url, params=search_params,headers=headers)
+    response = requests.get(url,headers=headers)
+    if response.status_code == 200:
+        fhir_data = response.json()
+        pretty_data = json.dumps(fhir_data,indent=2)
+        with open('CapabilityStatent.json','w') as f:
+            f.write(pretty_data)
+            f.close()
+        print(pretty_data)
+    else:
+        print(f'Error: {response.status_code}')
+        print(f'{response.text}')</pre>	
+                            </div>
+                            <p>
+                                Patient &rarr; 'entry' &rarr; 'resource' &rarr; 'operation'
+                            </p>
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/09-01.png" >
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer tabindex="1" id="footer"></footer>
+    
+</body>
+</html>

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jiejenn-03-uploadFiles-</title>
+    <link rel="stylesheet" href="../../../../../../../../css/colors.css" />
+    <link rel="stylesheet" href="../../../../../../../../css/font-sizes.css" />
+    <link rel="stylesheet" href="../../../../../../../css/resource-header-temp.css" />
+    <link rel="stylesheet" href="../../../../../../../css/tutorial-temp-v2.css" />
+    <link rel="stylesheet" href="../../../../../../../../css/copy-code.css">
+    <link rel="stylesheet" href="../../../../../../../../css/imgAnimate-v2.css">
+    <script src="../../../../../../../js/letterFocus-tutorial.js" defer></script>
+    <script src="../../../../../../../../js/copy-code.js" defer></script>
+    <script src="../../../../../../../js/dropPartStepFocus-v2.js" defer></script>
+    <script src="../../../../../../../js/loadpageNewTab.js" defer></script>
+    <script type="module" src="../../../../../../../js/autofocusLoad.js" defer></script>
+    <script type="module" src="../../../../../../../js/play-enlarge-video.js" defer></script>
+    <script type="module" src="../../../../../../../js/img-enlarge-v1.js" defer></script>
+    <script type="module" src="../../../../../../../js/addRemoveTabs-v1.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="home-link">
+            <a id="homeLink" tabindex="1" href="../../jie-jenn-googeDrive.htm">(home)gmail-api-jieJenn</a>
+        </div>
+        <div class="title-container">
+            <h1>Jie Jenn - 03-uploadFiles</h1>
+            <h2>3. Google Drive API in Python | Upload Files</h2>
+        </div>
+        <div class="page-logo">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAACoCAMAAABt9SM9AAABblBMVEUttnL////8/Pwasmr7/vy14sr//f////54eHgstnF7e3sttXN/f3/8//8utXQst3CWlpbDw8Pm5ub29vZAtnfB59EjsW3y/fjNzc2t3sHY7+K/4dGIz6gVr2Rzc3Pb29tdwY/j9e25ubnh4eGPj4+fn5+wsLCSkpLK6tuFhYVSeb1swpqU0rD90UyoqKhNern/4FFggcA3caE3d63/0UD///U2a5dZV1gob6X+4lP+zjxKuoWe17p8zKNtxplPvoXN16b845X899/N3OasxduPs9IAgzDw0Ej123m50OAufLY5mGMAiUWFsVD58Lxllb+Xy67hzVT401za5/AcbawlnmAfoFNjoET346HGxEr21DYRaJmvwswAkkSWt4j/zVBWg6z58JX24294o8f6++TxvDPqyXdKSkritUDcpjrs4so1hZFBXaxVhqv1/NQ0qHf/8IMzdpU1m4lCZrL7xRf75rP81W/+zBn52Yqi4LhWhTyEAAAVIUlEQVR4nO1dj2PaRpplJCEhhCSDxAhkMBIYggt1s41J3EiIjdNem1yv6SVpL5e2t922u9297bZ713T3/N/f+0aAwSax641J7OglxiCNRpqn78ebETPOKaaiSG88GDtLqZzCMpwVGVm/AjlpxUaNacCvrus8x1wqrCBL0xTlXGRdeay0LBCmgLBfW9eVZ3ilZWm/nqg3AivIMn97R+BAPSNnmqlJmnn3/Q+A9++ZMK8ryvUJslSW/5cP997e29v7aKScMVWi3L37j/dv3Lixv79/865pvilkMe9fP/63twm3P1HPTJZz/8HdB/dvCNx8dFVN6zhZJvv0q4+/+nci63cPR6uj/wmMzEeP77G7MK13gf17V5Oqk2Sp4Weff/zxfzzcA1t7T0xNHZ1SAcUrTXv0+MG9B2RWIOvm+4yC3RVUuyfccNz8/LPPvvpPYVlPRyPlNDWgoW/JYFn7X+w/3ifDeveLL8HU6KxWeZlwnKw+N/jnn3/1Xx/+juj6BuFIPaUGElea94hw92uia//LkaaNzhrvLhOOk+XqtsU/+8y8c/tDcsRPTpUPmvn+/cc3Ht9/98a7qWHd3P/y9++9983BBQauWq/ykmsslxmr9BzxvlKrtVaXWiRLUlm9qedy/PM8G4mE+PbD0WmGxb7dn2bBGylXN29++bfrwHcXlhKdrUL3ZddYdFh3C4yxysbWVqFQWknXIlkm81w7B7ICTVKfUIhHjD8RqCXHWfx4d0bVnKsv3v/99afXn965MLIqhdLGy62xVdhh0nYBDDk7xe12u1QqrbLdRbJU1uA5Istn6mj0kMj6w58Ojh/R2bq16Lof3F+giri6+UXtm+vXP9x7eGFK/uWT1S7uMqdYgBWUCzsVIq9YXlFsiSyf2znd5mNmIlJ9cvsPhD8eP6J16/tFsh6kVM3t6ubNd7+7fv3tp3t7o4vqVh8nq1Nu16aG4LTK5drU8iu1crkzvVTpaHul7NCuIz+r7O5ul671uqUSglZtq8ck5hSK7RUnXnLDQLZsO+eGjuN4j5w//gn485//+9gRnSWynK+nhkUdHYEH4Udgam/v9gG7oP74MlnOtQIFmR69b+0UEHFKoqG94tbWVnG7km4vFlBGWMvGVq9cKBQL3Vkr2jiiVMRPaauG6mhzrViorTjxElmJrNtG8y8/vPXWO8BbhHd+frRYvFOrtW/dqtVmd5I5qQvu//Xu6MfvCD9+8s3edeIKvaV1uKG0Uyy2a91ioS0Czkarda24BbOpgbNOuVQs0VUXS4Vee6dUILa2SzuFaz3QM3M0p41P7fZ2qVsWZLTKvWJpZQZZkg4+143cTz/88PNbKVHAz18uNbj7/S2B73uzM30tXPCvo7+99957lATJA58+BVfPDsx1WFa5SHGZdUtbDusUxPtr9Not7eBtq0ivG6Uibq60XULOA1nkYkt1iFIivlPtZKenZ0ONjWXb+B9w9Y4Afr31G8dcLL57nCz24F1SWHeJqylbqV3dfjYyL0iXLjV0o0S2g/airU6htFOuIOQwitmlbssRXuUUS7tUJnUuWBbtLy3U0YYUSeM7ILV3ezDC09xQYSG3//eHn6eGJXBvWTpUOp3yrVutTmcuHz7YJzX63RFXeylXtx+ydbghzGWnC2wI3ysXi8XCjpCsCGXFQnGDPKszzW0VEbYRzKnNO+kvKlm7VurW2sWdcm1GhrSTMnoMy5bFhvznn2eGRXjATqS0Y9nwEXT7/tc/LpqV4OrZL2mNF4BFshyQtSHQo6uq9LYLIKyFjMZq3Z1CqbAtnSBLHAyyplW0txDbC0X8IMC32qJxcO7OyRMvSQfV9P4Cs/rNHG890k6MOrS+/36J4G9vppY1Y0pQdfvZw9FJnl8SltzwmohNAF0U/E6qIFzDaBxSmK0NCuqVWa4sFGsryOrAkzc2dkrbG12H7YgkcAaySMNLkrr8pPYEOqXCIlma+eW3D749SMn6KMXf//73OwcX15FeIqtXLIjMvIvg3draoEvrlrYdKATReaGkJ03DVLdERU+QNYvvIkpt0LHiFpzihufDSBlp5o8iD16/8+TJL0/uHJimZpoXN0QDsko7JQIahui905I6iFnIhlvFXVBWKnaJvFJNctqlqYzYrrW6pSIZ2BFZc6FF8b1QTBXZVgnqAwb5QlHq1I56Q5X0OJK8zgqCl0BPGVV2QD5IWvT2P549e2JqknmBT8XQ7Z1iqyMsHUq0KJJ9uyCUKPVYnB3aXCiIPIjAD1Gadr+vFQRZ24W5dVIPurM1NaUalSwWeidPe0SWs1GpSHB5/O9UWi2nw5zdyoZTaXXQcW69gDEa/NO0g1nA+ujgzrNfzvXU8VegU55CeI5T7m50y+kldnrdjd1pv6a2u9HtTfVSpd2dvW9ttBZ+iYIbFeZ0ZxpVFF0RsNgRWa1OpdZu7eJ/udaFyfZaUpvVyrvoX7V75VNGREbs4D0iC1r0iXnw7JOLElivGjOyKrvSbs/Z7Uq9XqVXq220HKkn7bZqtc5uuVdbTfQc0ki5k/YHb7/95OGHmildzUcW85jVQq+83HHaLanW7aDz7kjlcsWpVJyO45SfM3I4hQm3Gz15+BSC4fY/bv/fSNVOHTG8nDiZDZ32KqX/IpgaU1RzdPAEufAAnRzt1KcclxT/vHRYgGmeXuYy42WS9QIlezXwMslKv3J0NT1QIGdedd85G8701bIc3EbJcDbkLv6mXR3k8hnOjJyc4czIZciQIUOGDBkyZMiQIUOGDBkyZMiQIUOGDBkyZMiQIUOGDBkyZMiQIUOGDBkyZMiQIUOGDBkyZMiwFuj60XvDeFHJF+588TnsVRufV/jcp7lwGDlr6dPzoKe7z0WYYej4WboT+GDMMdtkTH+J4uc50QVCxz9b1+eXZei2rD/vKg1LtwnnPJetL5Nl5+ZsUb10K/BKtRv0Lmec90QXBd3KyZbLZ5cFqlx8eq4XcNe1zucjNncNvkSWzi2Ly3wGOqltybIoYdM1vXaWlTN47Hn1mRvqxjBU8u5zbqlt1b1waJ+rDbzueWP7yIUNmw+r/SPkI5x90g/rFpEW+ErfPc9pLhS6HSlMYdHUWmzXYypLnjN3UY9MlYXnu+EW6u3L82NhQw3GmKqlUGlJR0uuMtUEozk5zzTWeO1mUBpywEyJJVNbsiMmKWz4nMu0AzTGc8/lhhMQ4/MFouWqqqqSOoXJfNmSQ1NViSPsU1j+tSOLCIC5DKZk6S5R9wKyJPVcZBkgSwJZ87Sr6zAjyVTy1Wo1n8/jJ7JzchB6VXLDKVmvnYAAAUxaJEvRiKw0rVvUTJsypmWkZSU2JcuybUPXbdpDSTInEqmBbKbLFKpTE7JIAeg6R2qLjpFlcJCleU2Z05RlBHhoPduGK1JVRCSrp2RRnSiBKohGg5K3yJpUfknyrIOshOEuzsiyXSbBsrh4G0xkXbYmQeDKaRbXj8jCpXI3ChLsa+p6Lk37SKVRktA2eZoFqBRVwPkxyzIoQMFMZWp+CugXHgUuHShvzskC1TLOkwQWpUfSFEZO5nTmyOLnVjHnBMiSTpBF5uD6zAv42PeY4lUjIS4WyeJRHHqKgn0Dnt5hgwfV0KM/eRH6CRf0QgHUEYeUMO8es6zcEVlH18IT0/Sp+gWybDnpewpjXhi7MF38N6yG70lMccI4WnNYW0kWBxljZrJ4iBxGKx4pIjUtkCUnHqIb4rKkKflUpskNiZaNNZmKY4Zyuhy9h9itYEvYgH+fJCtcsCyICV9TTRHg52TpvJ6uuITA6gVk4YbVT1dsVEza8grJ0qeWZdjI7JLkmKrnh6apSMqAmjUjy+ZjUwFTIezO1FiV2DISTTHVcLNehS2qLIK61KPQRJOUPvSIinpB1tyOBFmK05Rl/Jeb8LGc3gzNNAZMySIpm6fK/PwmqlAUJAFdpi3hcByHqqmFsLY1uuILyVKVOsJN4pmqGVq48ilZhu2iWaofcW7FtAIlGmjJfZjAkMK15amoo2kYaJcpmXWL8wH9Tc8VZM1XFPRdNLoZkrw6IgtZYGBKkpKAT7cP2+ojDaB20zMg/a0QJhysNWq9kCyz2qRcROrCHMtzsiC+VQmCi1NMr6uK6qMrjuzG8iDN1pt5FKvKqIxY26RMJg+0VWSBCIlsTlLZmAuypEWy4IQiLXK4qhzBbrUAsRQm7UUyOmYT39tECllfp0gnOXCCLHlGFuwe6b/pSyR7bH1OFoWNWMY+3ZjAtJQAEsKNY5f6em5QBQVVjrjGFIlFtk1G2WcryZpZVhiBkONk6SndEUkLGQFNMSFqeIi74+UHE6sJGWvZ1vrIskmUaotk4eoaU7KQrHShEetwj/6RZeUsD28SEhgGWqjhCIuMsWkEjbofMgozfTknj0lJiRCOHihSxQmyNG+QInFp1OEkWQFTFC0exgQfQTKmWk2YNdKjXw+4kHlrI4ssSz0ii7o7R5bFQtmm9CUP0Xxfn1uWIW64CBdkdprQ/Og4VUMkPvxTTEEWRxVKyMVAjDzELVlBVtMW6+jQGNEKsgwy++kKaib1idAts/nAp4QL21b8QF7r2AS5oTbv4NAnyWwckZVaVkxk8TlZOZBlskBfIktueAraE1aHwacga5O2oGoiSzcMPlxtWdwSIEmwgiwyZUXyaVTC9/1+tUGdCpu7ST7UQBgE3MBeY8zK6RMPiS3ftKh7o6N9sPHBzA0VZHRcXTMPQ1pwQ9sIoajGJKAhpz2Nhgoo8KpmPjIQXmIcigBPnQOJiSpykEsryJK8JulfwkrL0icM2sOl/pDMDQ6BgXPjBEiFUaOq4YzIj+vjytC5b0JNuTKNVXLuw4a8yJ4F+Aaium5xL5UHczcUYyk+WYXBEzpiYqC8qdKwArTlJjZRNpx46Ek1uIE8wL1VAX5Jwa8gK2eEKv2FCQriyH75Q44QVSVdh2ttDnFGz1pnb1snGQAni2jUMsprSDVVXNKULE9kojwE4WgCiT0XpYGmqlpCt9j1QUgfeQmmI/nwZqMZKGghSSIaPJBQBWqus1XS4TSyDE6pxbeoN80HI8gq3UaXCHGeFE2kmZB/5xuLPBcQHl3KxaqCyOArJES9wJ6Rha5KPB4iZ8PBcJ+PujvQP5S/k6ARari9gW5R6jOVYQT/8EwTnMN97USB0Pfq4wYy2UqddYIsbVln2VGIe1AduG6UV1QJ59YjSBU1xr11qwicVXmNZOWoAwcprEn0Nz0kpBxvjDAgyEJKQ2+GMdrn01gqqVOT/ggZQnxfNcWyy7jP0KsG+swgBHc6hHIISdUnMC0SDJTmYZmbmgmy5i3DCWg8y2seNRUyE8yk3Z0qKqfujo7uAzKfEoY0gosTiWwDkjzfpy3hxF7zYzMeVanbkabofkDDmVOy6kEoNmp9Me6MIG6qfUsMQLj1aVdF8xORv8G5Rl1o5sUWiaoxp1GHoScKKcOfFBL4884JohjyIyLbEVkIdnBljRSJyJ1j0ePkQV/UgHsZJty2LJkPQzY79QAXu95hGiSYaJin5FyFzksH/qZkcfdTbN9M0pyj22O/GogWowcTxVWk83xigSuIA+TDBjZUP424zeN+3RAHWNEmKogjLif9zcieP82l8nm/6i4nfrfaH6ZDi3U/NsQgoi7zANfWx4kMcjl6VocT9dNT09O19VoWIpTVFMOVspw2Zyoi0MURm5uWLsQptCWStriTlgW6xCgnPXSk8VC80oBnOqaJ35AVhoUD02phLfiVs2ZmIO4HtixKSpJQ096Li33GzMHs9NJI84HAaZ10Kluos1f+wMygP2CnwLLWGz5f6+f2zwVCSkP09/VXft8uA2BZqpA6r/pCLgHQ4Ud2bLxu3zZ4XaE3qsPLGEFeCehhXUbWWbHWQchLD13PLCtDhgwZMmTIkCFDhgwZMmTIkCFDhgwZMmTIkCHDK0H2VO+sEF/r0rNHe2eBbfNmOjche2x8KnSe5Pt+NY545o3HodPcxXSeMn09V9ej9GupzGusc4rBZYBhpV9GFR/E1zfdkJlevuqZzFzv9MTXHzS1Vbanb+krwPRdcJ83m5HHaBZkhiUYVmSJ5XR0I3B1mvvBBrJNEz1Zn7/qi3vNYFt9mkWs5wx5yLxA1yf5Q4umW/tMzSzrGGzXo+V0DCNnhWLugvjKueXGiFnPW2XnjYXOkfyqXHzhWlVc8dXrwKdpMmqcZcNlGLY8ZqbiWraY4i6mJRB9NN+uIWc6axk2zXOjVTgmCmMRTQ01jKTar0JAsOHyemdvPAwxGY35TUgG1qcZLLaM/o7cpBmRLLCfu0jfmwgDbE0Q4iccUWpMq9dEiavTsiyRp5p1vmKyz3RmhCGmIeXEnBhDX5xAtfhWX9rwGkwd+idB05JZPmBqaOlIjj6rimWrwJ6aXxBaOklWMSJB6wOIdhspc8L4aN0Wi1ZxNMQNIHcW61zSnC9RgFZ2XPc6SxcAPVCYV9VoerBuT0ymBLZFoYyx+qIqNdx0lSkrp9NyYGi9G1mCOFsXk+VpZId20sGuWOLStl2xKhXtTZe+vPT5lQSoSauw0CiW4VN3R0z1NlmwuJyle8h1g8uwFW5zS4caO2wcJhbnRpQYHA7rVjmteWnJlpwMZDgm9FqA/WKSoJ6TcZi87gXPXjoMuWFqqugJGoacKKbpx8M+S6cSz6G7dW5Yh8NofNhw6+Px8NCNLSt2h4fBsIrXRG4ME2vYaFiHh8FgPG4Oo7jujt3Dw4nBG8OGmx+PD+vuZQ9a0FhiCSSZ1tGz+ZjmWdNKYJt8sWX6JJZ5PEiGgyjvxnLsJkldlhtJgI8NdxDVef2n2I35YZQEKBZzEBpN4mQYBTxoNOMg5rE8DC67H1q2nITecBafuBWHnhduBnxpQrUeHUJPDAZRnGxaMW8IsixwMMhPhiClHlSH1ajB40l9UE8G43jgJvVJ3UrihCews2ToNprDyato4MuEQYuSWXOXo2FlWm1XXk70epRPkmA4DupJ3x3yhhWABhjWsFF380E8rg8tWFADxoP3SWL5HK4agKNGI3DjAfxVBs2Tyx6zkORIJ81XYzRo5UsaCFyOL0Y0iaxJYFmBC2FASt+duNyYTFx9YuHVRTUudtAWy41izicRt/gk4K7hBhayZDCIJ5c9ZpG+zOUW19dIB5qPPd5JuUslqT5fk9w4WpjcEIekMtQaRkJMzF9wEitoJNkzkBUwUkl1bJl2br92a4tfIM7csYYdTcvPDtDTgeurb1n/Dwz5k34BsIxXAAAAAElFTkSuQmCC">
+            <a id="tutorialLink" tabindex="1" target="_blank" href="https://www.youtube.com/watch?v=cCKPjW5JwKo&list=PL3JVwFmb_BnTamTxXbmlwpspYdpmaHdbz&index=3">tutorial</a>
+        </div>
+    </header>
+    <main>
+        <div class="parts-container">
+            <!-- Part 1 - Docs  -->
+            <div class="part">
+                <a id="part01" tabindex="1" href="#" class="dropPart"><h3>Part 1 Docs</h3></a>
+                <div class="steps-container ">
+                    <!-- 01-01 -->
+                    <div class="step">
+                        <div id="step01" tabindex="1" class="step-txt">
+                            <h4>01</h4>
+                            <p>
+                                Go to google drive and go to the folders section
+                            </p>
+                            
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/01-01.png">
+                        </div>
+                    </div>
+                    <!-- 01-02 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h4>02</h4>
+                            <p>
+                                Go to the documentation for the <q>create</q> method.
+                                <br>
+                                <a target="_blank" href="https://developers.google.com/drive/api/reference/rest/v3/files/create">
+                                    https://developers.google.com/drive/api/reference/rest/v3/files/create</a>
+                                We use this to upload files
+                            </p>
+                        </div>
+                        <div class="step-img">
+                            <img class="lg-enlarge" src="imagesVideos/01-02.png">
+                        </div>
+                    </div>
+                </div>
+            </div>            
+            <!-- Part 2 - Script Create new Folder and upload file  -->
+            <div class="part">
+                <a id="" tabindex="1" href="#" class="dropPart">
+                    <h3>Part 2 - Script Create new Folder and upload file</h3>
+                </a>
+                <div class="steps-container ">
+                    <!-- 02-01 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h4>02</h4>
+                            <p>
+                                Create a new folder <q>random files</q> with the script in <a target="_blank" href="../02-createFolders/02-createFolders.htm">02-createFolders</a>
+                            </p>
+                            <p>
+                                Use the mime type found at 
+                                <br>
+                                <a target="_blank" href="https://developers.google.com/drive/api/guides/mime-types">
+                                    https://developers.google.com/drive/api/guides/mime-types
+                                </a>
+                            </p>
+                            <div class="code-container">
+                                <pre tabindex="1" class="copy-code online">
+application/vnd.google-apps.folder</pre>
+                            </div>
+                            <div class="code-container">
+                                <pre tabindex="1" class="copy-code">
+from googleServiceCreate import create_service
+CLIENT_SECRET = 'credentials.json'
+API_NAME = 'drive'
+API_VERSION = 'v3'
+SCOPES = ['https://www.googleapis.com/auth/drive']
+
+service = create_service(CLIENT_SECRET,API_NAME,API_VERSION,SCOPES)
+
+national_parks = ['Yellowstone','Rocky Moutains','Yosemite']
+
+file_metadata = {
+'name': 'random files',
+'mimeType': 'application/vnd.google-apps.folder'
+}
+
+service.files().create(body=file_metadata).execute()</pre>
+                            </div>
+                            
+                            
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/02-01.png">
+                        </div>
+                    </div>
+                    <!-- 02-02 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h4>02</h4>
+                            <p>
+                                Click on the folder and get the <code>'id'</code> of the folder from the URL.
+                            </p>
+                            <div class="code-container">
+                                <pre tabindex="1" class="copy-code online">
+1JWqwvybul0ZlvgcYkP53FxozYJUq9JYp</pre>
+                            </div>
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/02-02.png">
+                        </div>
+                    </div>
+                    <!-- 02-03 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h4>03</h4>
+                            <p>
+                                The example files are an excel file and jpeg, use the folder id in the previous step, 
+                                and get the <code>'mimeType'</code> for excel files and jpeg from,
+                                <br>
+                                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types">
+                                    https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types
+                                </a>
+                            </p>
+                            <p>
+                                Insert the folder id, names of files and mime types into variables,
+                            </p>
+                            <div class="code-container">
+                                <pre tabindex="1" class="copy-code">
+from googleServiceCreate import create_service
+CLIENT_SECRET = 'credentials.json'
+API_NAME = 'drive'
+API_VERSION = 'v3'
+SCOPES = ['https://www.googleapis.com/auth/drive']
+
+service = create_service(CLIENT_SECRET,API_NAME,API_VERSION,SCOPES)
+
+folder_id = '1JWqwvybul0ZlvgcYkP53FxozYJUq9JYp'
+file_names = ['Untitled spreadsheet.xlsx', 'Automn_landscape.jpg']
+mime_types = ['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet','image/jpeg']</pre>
+                            </div>
+                            
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/02-03.png">
+                        </div>
+                    </div>
+                    <!-- 02-04 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h4>04</h4>
+                            <p>
+                                Create a loop and add the names to a dict's name 'key', and the folder_id
+                                to 'parents'
+                            </p>
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/02-04.png">
+                        </div>
+                    </div>
+                    <!-- 02-05 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h4>05</h4>
+                            <p>
+                                Import the class <code class="mgblue">MediaFileUpload</code> from the <code class="m">googleapiclient.http</code>
+                                library
+                            </p>
+                            <p>
+                                Add the path to the files as the first argument to a <code class="mdblue">MediaFileUpload</code>
+                                class, <span class="mdblue">format</span> with <code>file_name</code> and <code class="r">mimeType</code> with mime type.
+                            </p>
+                            <p>
+                                Make sure to use the <code class="mdblue">zip()</code> function in loop
+                            </p>
+<div class="code-container">
+    <pre tabindex="1" class="copy-code">
+from googleapiclient.http import MediaFileUpload
+from googleServiceCreate import create_service
+CLIENT_SECRET = 'credentials.json'
+API_NAME = 'drive'
+API_VERSION = 'v3'
+SCOPES = ['https://www.googleapis.com/auth/drive']
+
+service = create_service(CLIENT_SECRET,API_NAME,API_VERSION,SCOPES)
+
+folder_id = '1JWqwvybul0ZlvgcYkP53FxozYJUq9JYp'
+file_names = ['Untitled spreadsheet.xlsx', 'Automn_landscape.jpg']
+mime_types = ['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet','image/jpeg']
+
+for file_name,mime_type in zip(file_names,mime_types):
+    file_metadata = {
+        'name': file_name,
+        'parents': [folder_id]
+    }
+    media = MediaFileUpload('./exFiles/{0}'.format(file_name),mimetype=mime_type)
+    service.files().create(
+        body=file_metadata,
+        media_body=media,
+        fields='id'
+    ).execute()</pre>
+</div>
+
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/02-05.png">
+                        </div>
+                    </div>
+                    <!-- 02-06 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h4>06</h4>
+                            <p>
+                                The files should now appear in the folder
+                            </p>
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/02-06.png">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Part 3 Both Scripts -->
+            <div class="part">
+                <a id="" tabindex="1" href="#" class="dropPart">
+                    <h3>Part 3 - Both Scripts</h3>
+                </a>
+                <div class="steps-container show">
+                    <div class="step-col">
+                        <div tabindex="1" class="step-txt">
+                            <h4>01</h4>
+                            <p>
+                                Full Codes
+                            </p>
+                        </div>
+                        <div class="img-2-container">
+                            <div class="code-container">
+                                <pre tabindex="1" class="copy-code sm-code">
+from googleapiclient.http import MediaFileUpload
+from googleServiceCreate import create_service
+CLIENT_SECRET = 'credentials.json'
+API_NAME = 'drive'
+API_VERSION = 'v3'
+SCOPES = ['https://www.googleapis.com/auth/drive']
+
+service = create_service(CLIENT_SECRET,API_NAME,API_VERSION,SCOPES)
+
+folder_id = '1JWqwvybul0ZlvgcYkP53FxozYJUq9JYp'
+file_names = ['Untitled spreadsheet.xlsx', 'Automn_landscape.jpg']
+mime_types = ['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet','image/jpeg']
+
+for file_name,mime_type in zip(file_names,mime_types):
+    file_metadata = {
+        'name': file_name,
+        'parents': [folder_id]
+    }
+    media = MediaFileUpload('./exFiles/{0}'.format(file_name),mimetype=mime_type)
+    service.files().create(
+        body=file_metadata,
+        media_body=media,
+        fields='id'
+    ).execute()
+
+                                </pre>
+                            </div>
+                             <div class="code-container">
+                                <pre tabindex="1" class="copy-code sm-code">
+                                    
+import os.path
+
+from google.auth.transport.requests import Request
+from google.oauth2.credentials import Credentials
+from google_auth_oauthlib.flow import InstalledAppFlow
+from googleapiclient.discovery import build
+from googleapiclient.errors import HttpError
+
+def create_service(client_secret,api_name,api_version,*scopes):
+    CLIENT_SECRET = client_secret
+    API_NAME = api_name
+    API_VERSION = api_version
+    SCOPES = [scope for scope in scopes[0]]
+
+    creds = None
+    if os.path.exists('token.json'):
+        creds = Credentials.from_authorized_user_file('token.json',SCOPES)
+    if not creds or not creds.valid:
+        if creds and creds.expired and creds.refresh_token:
+            creds.refresh(Request())
+        else:
+            flow = InstalledAppFlow.from_client_secrets_file('credentials.json',SCOPES)
+            creds = flow.run_local_server(port=0)
+        with open ('token.json','w') as token:
+            token.write(creds.to_json())
+    try:
+        service = build(API_NAME,API_VERSION,credentials=creds)
+        return service
+    except HttpError as e:
+        print('error', e)
+                                
+                                
+                                </pre>
+                             </div>
+                                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+</body>
+</html>

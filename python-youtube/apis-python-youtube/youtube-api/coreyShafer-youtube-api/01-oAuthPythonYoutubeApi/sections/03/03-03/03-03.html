@@ -1,0 +1,79 @@
+<div class="steps-container">
+    <h2>03-03  <code class="m">list</code>
+    </h2>
+    <h3>youtube api documentation</h3>
+    <!-- 01 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>01</h4>
+            <p>
+                The github documentation is not good for nested 'Instance Methods', go to the youtube api references page
+                <br>
+                <a href="https://developers.google.com/youtube/v3/docs">https://developers.google.com/youtube/v3/docs</a>
+            </p>
+        </div>
+        <div class="step-vid">
+            <video src="sections/03/03-03/images/01.mov">
+        </div>
+    </div>
+    <!-- 02 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>02</h4>
+            <p>
+                On the <code class="o">channels()</code> reference page, you can see what we can pass into the
+                required paramater of <code class="m">list()</code>.
+                <code class="r">part</code>. We are interested in <code><strong>'statistics'</strong></code>.
+                but all are available for use
+            </p>
+        </div>
+        <div class="step-img">
+            <img src="sections/03/03-03/images/02.png">
+        </div>
+    </div>
+    <!-- 03 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>03</h4>
+            <p>
+                Going back to the github documentation, we can see that we can get the <code><strong>'statistics'</strong></code> of a page by also supplying a <code><strong>forUsername</strong></code> value.
+            </p>
+        </div>
+        <div class="step-img">
+            <img src="sections/03/03-03/images/03.png">
+        </div>
+    </div>
+    <!-- 04 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>03</h4>
+            <p>
+                This is a fully functional request using all the info
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+from googleapiclient.discovery import build
+import json
+api_key = 'AIzaSyDzHXVBwo9IA0Y_kBHjmoEf9l66ngoj4Ag'
+
+youtube = build('youtube', 'v3', developerKey=api_key)
+
+request = youtube.channels().list(
+    part='statistics',
+    forUsername='schafer5'
+)
+
+response = request.execute()
+print(response)</pre>
+            </div>
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/03/images/01.png">
+        </div>
+    </div>
+    
+
+    
+    <button tabindex="1" id="nxtLesson">next lesson</button>
+</div>

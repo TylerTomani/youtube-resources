@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>codeTops-01_howToGetStartedGmailAPI-Python</title>
+    <link rel="stylesheet" href="../../../../../../../../css/colors.css" />
+    <link rel="stylesheet" href="../../../../../../../css/resource-header-temp.css" />
+    <link rel="stylesheet" href="../../../../../../../css/tutorial-temp-v2.css   " />
+    <link rel="stylesheet" href="../../../../../../../../css/copy-code.css">
+    <link rel="stylesheet" href="../../../../../../../../css/imgAnimate-v2.css">
+    <script src="../../../../../../../js/letterFocus-tutorial.js" defer></script>
+    <script src="../../../../../../../../js/copy-code.js" defer></script>
+    <script src="../../../../../../../js/dropPartStepFocus-v2.js" defer></script>
+    <script src="../../../../../../../js/loadpageNewTab.js" defer></script>
+    <script type="module" src="../../../../../../../js/autofocusLoad.js" defer></script>
+    <script type="module" src="../../../../../../../js/play-enlarge-video.js" defer></script>
+    <script type="module" src="../../../../../../../js/img-enlarge-v1.js" defer></script>
+    <script type="module" src="../../../../../../../js/addRemoveTabs-v1.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="home-link">
+            <a id="homeLink" tabindex="1" href="../../codeTops-gmail.htm">&larr;codeTops-api-gmail-api</a>
+        </div>
+        <div class="title-container">
+            <h1>CodeTops - gmail api</h1>
+            <h2>How to get started with Gmail API </h2>
+        </div>
+        <div class="page-logo">
+            <img src="01-howGetStartGmailAPI.png">
+            <a id="tutorialLink" tabindex="1" target="_blank" href="https://www.youtube.com/watch?v=7E3NNxeXiys">tutorial</a>
+        </div>
+    </header>
+    <main>
+        <div class="parts-container">
+        <!-- Part 1 - Create New project -->
+            <div class="part">
+                <a id="part01" tabindex="1" href="#" class="dropPart"><h3>Part 1 - Create New project </h3></a>
+                <h4>console.cloud.google -(google cloud platform)</h4>
+                <div class="steps-container   ">
+                    <!-- 01-01 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt playVid-click">
+                            <h4>01</h4>
+                            <p>
+                                &emsp;Go to the console.cloud google and create a new project
+                                <br>
+                                <a tabindex="-1" target="_blank" href="https://console.cloud.google.com/apis/dashboard?project=mygmaildata-408619">https://developers.google.com/gmail/api/guides</a>
+                            </p>
+                            <p>
+                                &emsp;Create a new project name <q>mygmaildata</q>
+                            </p>
+                        </div>
+                        <div class="step-vid">
+                            <video src="imagesVideos/01-01.mov" type="video/quicktime"  ></video>            
+                        </div>
+                    </div>
+                    <!-- 01-02 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt playVid-click">
+                            <h4>02</h4>
+                            <p>
+                                &emsp;Select the project go to <q>Library</q> or <q>Enable APIs & Services</q>, 
+                                search for <q>gmail api</q>, and <i><q>ENABLE</q></i> it.
+                            </p>
+                        </div>
+                        <div class="step-vid ">
+                            <video class="animate-lg" play src="imagesVideos/01-02.mov">
+                        </div>
+                    </div>
+                    <!-- 01-03 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt playVid-click">
+                            <h4>03</h4>
+                            <p>
+                                Enable The <i><q>Gmail API</q></i> 
+                            </p>
+                        </div>
+                        <div class="step-vid">
+                            <video src="imagesVideos/01-03.mov"></video>
+                        </div>
+                    </div>
+                    <!-- 01-04 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt playVid-click">
+                            <h4>04</h4>
+                            <p>
+                                Go to <i><q>CREATE CREDENTIALS</q></i> in the api.
+                            </p>
+                        </div>
+                        <div class="step-vid">
+                            <video src="imagesVideos/01-04.mov"></video>
+                        </div>
+                    </div>
+                    <!-- 01-05 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt rbshadow">
+                            <h4>05</h4>
+                            <p>
+                                You might also be able to do it on the <i><q>Credential</q></i> pages
+                            </p>
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/01-05.png">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- Part 2 - Create Credentials - Credential Type & Scopes -->
+            <div class="part">
+                <h3><a tabindex="1" href="#"   class="dropPart">Part 2 - Create Credentials - <span class="bl">Credential Type & Scopes</span></a></h3>
+                <h4><strong>Credential types and Scopes</strong></h4>
+                <div class="steps-container hide">
+                    <!-- 02-01 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h4>01</h4>
+                            <p>
+                                Choose <q>User Data</q>
+                                then hit <i><q>NEXT</q></i>
+                            </p>
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/02-01.png">
+                        </div>
+                    </div>
+                    <!-- 02-02 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt playVid-click">
+                            <h4>02</h4>
+                            <p>
+                                Name and enter emails, then hit <i><q></q></i>
+                            </p>
+                        </div>
+                        <div class="step-vid">
+                            <video src="imagesVideos/02-02.mov">
+                        </div>
+                    </div>
+                    <!-- 02-03 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt playVid-click">
+                            <h4>03</h4>
+                            <p>
+                                click <i><q>ADD OR REMOVE SCOPES</q></i>
+                                and <strong>filter</strong>
+                                <q>gmail</q>
+                                to see the available scopes
+                            </p>
+                        </div>
+                        <div class="step-vid">
+                            <video class="animate-lg" src="imagesVideos/02-03.mov">
+                        </div>
+                    </div>
+                    <!-- 02-04 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h4>04</h4>
+                            <p>
+                                For now, choose the <code>readonly</code> scope and click update
+                            </p>
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/02-04.png">
+                        </div>
+                    </div>
+                    <!-- 02-05 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt playVid-click">
+                            <h4>05</h4>
+                            <p>
+                                The scope will appear at the bottom of the page,
+                                Click <i><q>SAVE and Continue</q></i>
+                            </p>
+                        </div>
+                        <div class="step-vid">
+                            <video src="imagesVideos/02-05.mov">
+                        </div>
+                    </div>
+                    <!-- 02-06 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h4>06</h4>
+                            <p>
+                                Choose <i><q>Desktop App</q></i> for OAuth type, and name it
+                            </p>
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/02-06.png">
+                        </div>
+                    </div>
+                    <!-- 02-07 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h4>07</h4>
+                            <p>
+                                Download the client_secret file to same directory as the script
+                            </p>
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/02-07.png">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- Part 3 - OAuth Client ID Application Type* - Desktop App-->
+            <div class="part">
+                <a tabindex="1" href="#" class="dropPart"><h3 class="rbshadow">Part 3 - OAuth Client ID - <span class="t"> <strong>Applicaiton Type*</strong> -Desktop App</span></h3></a>
+                <div class="steps-container">
+                    <!-- 03-01 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h4>01</h4>
+                            <p>
+                                Select <q class="r">Desktop App</q> for <strong class="r">Applicaion Type*</strong>
+                                and give the same name as the <code>console.cloud.google</code>
+                                project name then click <i><q>CREATE</q></i>
+                            </p>
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/03-01.png">
+                        </div>
+                    </div>
+                    <!-- 03-02 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h4>02</h4>
+                            <p>
+                                This is also stated in the Gmail Api Documentation -> <q>Quickstarts</q>&rarr;<q>Python</q>
+                                <br>
+                                <a target="_blank" href="https://developers.google.com/gmail/api/quickstart/python
+                                "></a>
+                            </p>
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/03-02.png">
+                        </div>
+                    </div>
+                    <!-- 03-03 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h4>03</h4>
+                            <p>
+                                Download the the credentials to the same directory as the project,
+                                then click <i><q>DONE</q></i>
+                            </p>
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/03-03.png">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- Part 4 - add Test user -->
+            <div class="part">
+                <a id="part04" tabindex="1" href="#" class="dropPart"><h3>Part 4 add Test user</h3></a>
+                <div class="steps-container">
+                    <!-- 04-01 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h4>01</h4>
+                            <p>
+                                Go to <q>OAuth consent screen </q>
+                                to add <i><q>ADD USERS</q></i>
+                                and add your email to the User
+                            </p>
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/04-01.png">
+                        </div>
+                    </div>
+                    <!-- 04-02 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h4>04</h4>
+                            <p>
+                                Enter the email you wish to use
+                            </p>
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/04-02.png">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- Part 5 Create a VENV & Install Libraries -->
+            <div class="part">
+                <a tabindex="1" href="#" class="dropPart"><h3>Part 5 Create a VENV & Install Libraries</h3></a>
+                <div class="steps-container ">
+                    <!-- 05-01 -->
+                    <div class="step">
+                        <div tabindex="1"  class="step-txt">
+                            <h4>01</h4>
+                            <p>
+                                Go to
+                                <a target="_blank" href="../../../jieJienn/00-googleDriveApiPython/01-gettingStarted/01-gettingStarted.htm">jieJenn 00-GetStartGmailApi-Python</a> for review, and install a venv in the directory of the
+                                project, and install the libraries
+                            </p>
+                            <div class="code-container w-80">
+                                <pre tabindex="1" class="copy-code">
+python -m venv venv</pre>
+                            </div>
+                            <div class="code-container w-80">
+                                <pre tabindex="1" class="copy-code">
+./venv/bin/activate</pre>
+                            </div>
+            
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/05-01.png">
+                        </div>
+                    </div>
+                    <!-- 05-02 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h4>02</h4>
+                            <p>
+                                If <code>./venv/bin/activate</code> <strong>Does Not Work</strong>
+                                run
+                            </p>
+                            <div class="code-container  w-80">
+                                <pre tabindex="1" class="copy-code">
+source ./venv/bin/activate</pre>
+                            </div>
+            
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/05-02.png">
+                        </div>
+                    </div>
+                    <!-- 05-03-->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h4>03</h4>
+                            <p>
+                                Go to <a target="_blank" href="https://developers.google.com/gmail/api/quickstart/python">
+                                    https://developers.google.com/gmail/api/quickstart/python
+                                </a>,
+                                and install the client libraries
+                            </p>
+                            <div class="code-container ">
+                                <pre tabindex="1" class="copy-code">
+pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib</pre>
+                            </div>
+                        </div>
+                        <div class="step-img">
+                            <img class="xlg-enlarge" src="imagesVideos/05-03.png">
+                        </div>
+                    </div>
+                    <!-- 05-04 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h4>04</h4>
+                            <p>
+                                To deactivate and exit the venv type,
+                            </p>
+                            <div class="code-container ">
+                                <pre tabindex="1" class="copy-code">
+deactivate</pre>
+                            </div>
+                            
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/05-04.png">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- Part 6 - Gmail Api -> Quickstarts -> python ->  (token.json)-->
+            <div class="part">
+                <a tabindex="1" href="#" class="dropPart rbshadow "><h3>Part 6 - Gmail Api -> Quickstarts -> python -> (<code class="gr">token.json</code>)</h3></a>
+                <div class="steps-container">
+                    <!-- 06-01 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h4>01</h4>
+                            <p>
+                                To get started quick copy and paste the code into your script from the Gmail Api -> Quickstarts -> python page
+                                <br>
+                                <a target="_blank" href="https://developers.google.com/gmail/api/quickstart/python
+                                ">https://developers.google.com/gmail/api/quickstart/python</a>
+                            </p>
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/06-01.png">
+                        </div>
+                    </div>
+                    <!-- 06-02 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h4>02</h4>
+                            <p>
+                                &emsp;Make sure you change the name of <code class="m">credentials.json</code> to your client_secret
+                                file name, and Keep <code>creds</code> = to None
+                            </p>
+                            <div class="code-container asc">
+                                <pre tabindex="1" class="copy-code sm-code">
+import os.path
+
+from google.auth.transport.requests import Request
+from google.oauth2.credentials import Credentials
+from google_auth_oauthlib.flow import InstalledAppFlow
+from googleapiclient.discovery import build
+from googleapiclient.errors import HttpError
+
+# If modifying these scopes, delete the file token.json.
+SCOPES = ["https://www.googleapis.com/auth/gmail.readonly"]
+
+
+def main():
+  """Shows basic usage of the Gmail API.
+  Lists the user's Gmail labels.
+  """
+  creds = None
+  # The file token.json stores the user's access and refresh tokens, and is
+  # created automatically when the authorization flow completes for the first
+  # time.
+  if os.path.exists("token.json"):
+    creds = Credentials.from_authorized_user_file("token.json", SCOPES)
+  # If there are no (valid) credentials available, let the user log in.
+  if not creds or not creds.valid:
+    if creds and creds.expired and creds.refresh_token:
+      creds.refresh(Request())
+    else:
+      flow = InstalledAppFlow.from_client_secrets_file(
+          "<span class="m md-code">credentials.json</span> ", SCOPES
+      )
+      creds = flow.run_local_server(port=0)
+    # Save the credentials for the next run
+    with open("token.json", "w") as token:
+      token.write(creds.to_json())
+
+  try:
+    # Call the Gmail API
+    service = build("gmail", "v1", credentials=creds)
+    results = service.users().labels().list(userId="me").execute()
+    labels = results.get("labels", [])
+
+    if not labels:
+      print("No labels found.")
+      return
+    print("Labels:")
+    for label in labels:
+      print(label["name"])
+
+  except HttpError as error:
+    # TODO(developer) - Handle errors from gmail API.
+    print(f"An error occurred: {error}")
+
+
+if __name__ == "__main__":
+  main()</pre>
+                            </div>
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/06-02.png">
+                        </div>
+                    </div>
+                    <!-- 06-03 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h4>03</h4>
+                            <p>
+                                Run the python script and the browser will open to this page showing gmail accounts, 
+                                <span class="r">**Only test users</span> assigned in <a href="#part04">part 4 - add Test user</a>
+                            </p>
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/06-03.png">
+                        </div>
+                    </div>
+                    <!-- 06-04 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h4>04</h4>
+                            <p>
+                            Click <i><q>Continue</q></i>
+                            </p>
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/06-04.png">
+                        </div>
+                    </div>
+                    <!-- 06-05 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h4>05</h4>
+                            <p>
+                            Click <i><q>Continue</q></i>
+                            </p>
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/06-05.png">
+                        </div>
+                    </div>
+                    <!-- 06-06 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h4>06</h4>
+                            <p>
+                                When you see this page, you can now use the data in your script
+                            </p>
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/06-06.png">
+                        </div>
+                    </div>
+                    <!-- 06-07 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h4>07</h4>
+                            <p>
+                                A <code class="gr">token.json</code>
+                                will be downloaded into the same directory as the script
+                            </p>
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/06-07.png">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- Part 7 - Python Code - python Code get token.json -->
+            <div class="part">
+                <a tabindex="1" href="#" class="dropPart"><h3>Part 7 - Project - Python Code get <code class="gr">token.json</code> - ( step 1 )</h3> </a>
+                <div class="steps-container">
+                <!-- 07-01 -->
+                    <div class="step-col">
+                        <div tabindex="1"   class="step-txt">
+                            <h4>01</h4>
+                            <h3 class="r">Fix tabindexes for images only step-col & and img-4-container img sizes</h3>
+                            <p>
+                                Import the client libraies and add the scope
+                            </p>
+                        </div>
+                        <div class="img-2-container">
+                            <div class="code-container ">
+                                <pre tabindex="1" class="copy-code ">
+import os.path
+from google.auth.transport.requests import Request
+from google.oauth2.credentials import Credentials
+from google_auth_oauthlib.flow import InstalledAppFlow
+from googleapiclient.discovery import build
+from googleapiclient.errors import HttpError
+
+SCOPES = ["https://www.googleapis.com/auth/gmail.readonly"]</pre>
+                            </div>                          
+                            <div class="step-img">
+                                <img src="imagesVideos/07-01.png">
+                            </div>
+                        </div>
+                    </div>
+                <!-- 07-02 -->
+                    <div class="step-col">
+                        <div   tabindex="1" class="step-txt xxmd-txt-p">
+                            <h4>02</h4>
+                            <h5 class="r">(this code doesn't not work alone)</h5>
+                            <p>
+                                &emsp;Write the function <code class="gr">myEmails()</code>
+                                <br>
+                                1. First, check if <code class="m"><strong>os.path</strong></code> exist between script and api, And, 
+                                if there is a <code class="gr"><strong>token.json</strong></code>
+                                (which right now there is no <code class="gr">token.json</code> ) <span class="r">**this code will do nothing</span>
+                            </p>
+                            <p>
+                                &emsp; <code class="vs-code" ><strong class="m">creds</strong></code>'s value will be assigned
+                                a <code class="vs-code"><strong class="lsg">Credentials</strong></code> object with a <code class="vs-code">from_authorized_user_file</code> method and <code class="gr">token.json</code>
+                                and <code class="vs-code">SCOPES</code> as arguments.
+                            </p>
+                        </div>
+                        <div class="img-2-container">
+                            <div class="code-container ">
+                                <pre tabindex="1" class="copy-code">
+import <span class="m">os.path</span>
+from google.auth.transport.requests import Request
+from google.oauth2.credentials import <span class="lsg">Credentials</span>
+from google_auth_oauthlib.flow import InstalledAppFlow
+from googleapiclient.discovery import build
+from googleapiclient.errors import HttpError
+
+SCOPES = ["https://www.googleapis.com/auth/gmail.readonly"]
+
+def myEmails():
+  creds = None
+  if <span class="m">os.path.exists</span>('<span class="gr">token.json</span>'):
+    <code class="vs-code"><strong class="m">creds</strong></code> = <span class="lsg">Credentials</span>.<code class="vs-code"><strong class="xmd-txt">from_authorized_user_file</strong></code>('token.js',SCOPES)</pre>
+                            </div>
+                            <div class="step-img">
+                                <img src="imagesVideos/07-02.png">
+                            </div>
+                        </div>
+                    </div>
+                <!-- 07-03 -->
+                    <div class="step-col">
+                        <div   tabindex="1" class="step-txt xxmd-txt-p">
+                            <h4>03</h4>
+                            <h5 class="r">(this code doesn't not work alone)</h5>
+                            <p>
+                                &emsp;The next conditional checks if <code class="vs-code"><strong class="m">creds</strong></code> does <code class="vs-code rb"><strong>not</strong></code>
+                                and if <code>creds</code> is <code class="vs-code"><strong class="rb">not</strong></code> valid. 
+                                <br>
+                                If So,
+                                <br> 
+                                &emsp;the nested condition checks if <code class="vs-code"><strong class="m">creds</strong></code> 
+                                <code class="vs-code"><strong class="l">exist</strong></code>,
+                                <code class="vs-code"><strong class="l">expired</strong></code>, and 
+                                for a
+                                <code class="vs-code"><strong class="l">refresh_token</strong></code>
+                                which will be in the <span class="gr">token.json</span>, and refreshes <code class="m">creds</code>
+                                with a <code class="vs-code"><span class="lsg">Request()</span></code> function in the <code class="vs-code"><span class="r">refresh</span></code>
+                                method
+                                
+                            </p>
+                            <p>
+                                &emsp;Otherwise if everything exists, the <code class="m">else</code> statement assignes the <code
+                                    class="m">InstallAppFlow</code> class
+                                with the <code class="vs-code"><strong>from_client_secrets_file</strong></code> method to <code>flow</code>
+                                (this makes the request)
+                            </p>
+                            <p>
+                                &emsp;and assigns <code>flow</code> with a <code class="vs-code"><strong>run_local_server</strong></code>
+                                 method with <code class="vs-code"><strong>port=0</strong></code> to
+                                <code>creds</code>
+                            </p>
+
+                        </div>
+                        <div class="img-2-container">
+                            <div class="code-container ">
+                                <pre tabindex="1" class="copy-code md-code">
+import os.path
+from google.auth.transport.requests import <span class="lsg">Request</span>
+from google.oauth2.credentials import Credentials
+from google_auth_oauthlib.flow import InstalledAppFlow
+from googleapiclient.discovery import build
+from googleapiclient.errors import HttpError
+
+SCOPES = ["https://www.googleapis.com/auth/gmail.readonly"]
+
+def myEmails():
+    creds = None
+    if os.path.exists(<span class="gr">'token.json'</span>):
+        <code class="vs-code"><strong class="m">creds</strong></code> = Credentials.from_authorized_user_file(<span class="gr">'token.json'</span>,SCOPES)
+    if <code class="vs-code"><strong class="rb">not</strong></code> <code class="vs-code"><strongclass="m">creds</strongclass=></code> or <code class="vs-code"><strong class="rb">not</strong></code> <code class="vs-code"><strong class="m">creds</strong></code>.valid:
+        if <span class="m">creds</span> and <span class="m">creds</span>.<code class="vs-code"><strong class="l">expired</strong> </code>and <span class="m">creds</span>.<code class="vs-code"><strong class="l">refresh_token</strong></code>:
+            creds.<span class="r">refresh</span>(<span class="lsg">Request()</span>)
+    <span class="m">else</span>:
+        flow = InstalledAppFlow.<code class="vs-code"><strong>from_client_secrets_file</strong></code>('client_secret.json',SCOPES)
+        creds = flow.<code class="vs-code"><strong>run_local_server</strong></code>(<code class="vs-code"><strong>port=0</strong></code> )</pre>
+                            </div>
+                            <div class="step-img">
+                                <img src="imagesVideos/07-03.png">
+                            </div>
+                        </div>
+                    </div>
+                <!-- 07-04 -->
+                    <div class="step-col">
+                        <div tabindex="1" class="step-txt ">
+                            <h4>04</h4>
+                            <h3>Working code</h3>
+                            <p class="r">(This will not work if <code class="gr">token.js</code> already exists)</p>
+                            <p>
+                                Write the <code class="m">creds</code> to a file called <span class="gr">token.js</span>,
+                                The first time the script runs, the <span class="gr">token.json</span>
+                                file will be created. Therefore after that, we can use the data from the api
+                            </p>
+                            <p>
+                                Run the script and the browser will open with emails ( <span class="r">** Remember</span> )
+                                you can only use emails assigned as <strong>Test Users</strong> as seen in 
+                                <a href="#part04">part 4</a>
+                            </p>
+
+                        </div>
+                        <div class="img-2-container">
+                            <div class="code-container asc">
+                                <pre tabindex="1" class="copy-code xmd-code">
+import os.path
+from google.auth.transport.requests import Request
+from google.oauth2.credentials import Credentials
+from google_auth_oauthlib.flow import InstalledAppFlow
+from googleapiclient.discovery import build
+from googleapiclient.errors import HttpError
+
+SCOPES = ["https://www.googleapis.com/auth/gmail.readonly"]
+
+def myEmails():
+    creds = None
+    if os.path.exists('token.json'):
+        creds = Credentials.from_authorized_user_file('token.json', SCOPES)
+    if not creds or not creds.valid:
+        if creds and creds.expired and creds.refresh_token:
+            creds.refresh(Request())
+        else:
+            flow = InstalledAppFlow.from_client_secrets_file('credentials.json', SCOPES)
+            cred = flow.run_local_server(port=0)
+        <span class="gr">with</span> open ('<span class="gr">token.json</span> ','w') as <span class="gr">token</span>:
+            <span class="gr">token</span>.write(<span class="m">creds</span>.to_json())
+myEmails()</pre>    
+                            </div>                          
+                            <div class="step-img">
+                                <img src="imagesVideos/07-04.png">
+                            </div>
+                        </div>
+                    </div>
+                <!-- 07-05 -->
+                    <div class="step-col">
+                        <div tabindex="1" class="step-txt">
+                            <h4>05</h4>
+                            <p>
+                                Select the email and hit continues on each page, until the page tells you can close the window.
+                            </p>
+                            <p class="r">Fix these images</p>
+                        </div>
+                        <div class="img-4-container">
+                            <div class="step-img ">
+                                <img class="lg-enlarge" src="imagesVideos/06-03.png" alt="">
+                            </div>
+                            <div class="step-img ">
+                                <img class="lg-enlarge" src="imagesVideos/06-04.png" alt="">
+                            </div>
+                            <div class="step-img ">
+                                <img class="lg-enlarge"  src="imagesVideos/06-05.png" alt="">
+                            </div>
+                            <div class="step-img ">
+                                <img class="lg-enlarge" src="imagesVideos/06-06.png" alt="">
+                            </div>
+                        </div>
+
+                    </div>
+                <!-- 07-06 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h4>06</h4>
+                            <p>
+                                The <code class="gr">token.js</code> file will appear in the same directory as the script
+                            </p>
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/07-06.png">
+                        </div>
+                    </div>
+                </div>              
+            </div>
+        <!-- Part 8 - Python Code - service = build('gmail','api',) -->
+            <div class="part">
+                <a tabindex="1" href="#" class="dropPart"><h3>Part 8 - Python Code - <code>service = build('gmail','v1',Credentials=creds)</code> - (step 2)</h3></a>
+                <div class="steps-container">
+                    <!-- 08-01 -->
+                    <div class="step-col">
+                        <div  tabindex="1" class="step-txt ">
+                            <h4></h4>
+                            <h4>01</h4>
+                            <p>
+                                The <code class="md-blue">build</code> function from <code>googleapiclient.discovery</code> will check if
+                                <code>creds</code>
+                                exists, and connect to the api, here we can print out the first message
+                            </p>
+                            <p>
+                                Go to <a target="_blank" href="https://developers.google.com/gmail/api/reference/rest">https://developers.google.com/gmail/api/reference/rest</a>
+                                for more details on <code>users()</code>,<code>messages()</code>,<code>list()</code> and the <code class="m">get()</code>
+                                function
+                            </p>
+                        </div>
+                        <div class="img-2-container">
+                            <div class="code-container">
+                                <pre tabindex="1" class="copy-code md-txt">
+import os.path
+from google.auth.transport.requests import Request
+from google.oauth2.credentials import Credentials
+from google_auth_oauthlib.flow import InstalledAppFlow
+from googleapiclient.discovery import build
+from googleapiclient.errors import HttpError
+
+SCOPES = ["https://www.googleapis.com/auth/gmail.readonly"]
+
+def myEmails():
+    creds = None
+    if os.path.exists('token.json'):
+        creds = Credentials.from_authorized_user_file('token.json', SCOPES)
+    if not creds or not creds.valid:
+        if creds and creds.expired and creds.refresh_token:
+            creds.refresh(Request())
+        else:
+            flow = InstalledAppFlow.from_client_secrets_file('credentials.json', SCOPES)
+            cred = flow.run_local_server(port=0)
+        with open ('token.json ','w') as token:
+            token.write(creds.to_json())
+    try:
+        service = <span class="md-blue">build</span>('gmail','v1',credentials=creds)
+        result = service.users().messages().list(userId='me').execute()
+        messages = result.get('messages')
+        print(messages[0])
+    except HttpError as error:
+        print('err',error)
+
+myEmails()</pre>
+                            </div>
+                            <div class="step-img">
+                                <img src="imagesVideos/08-01.png"> 
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 08-02 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h4>02</h4>
+                            <p>
+                                Within <code>try:</code>
+                                we can loop through the messages
+                            </p>
+                            <div class="code-container asc">
+                                <pre tabindex="1" class="copy-code">
+try:
+    service = build('gmail','v1',credentials=creds)
+    result = service.users().messages().list(userId='me').execute()
+    messages = result.get('messages')
+    for i in messages:
+        print(i)
+except HttpError as error:
+    print('err',error)</pre>
+                            </div>
+                            
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/08-02.png">
+                        </div>
+                    </div>
+                    <!-- 08-03 -->
+                    <div class="step">
+                        <div   tabindex="1" class="step-txt playVid-click">
+                            <h4>03</h4>
+                            <p>
+                                As we are loopin throught the messages, we can use the <code class="m">'id'</code>'s
+                                in the <code><span class="md-blue">get</span>()</code> function to retrieve the 
+                                <code class="gr">payload</code>,
+                                <br>
+                                <span class="r">Figure out what a payload means</span>
+                            </p>
+                            <div class="code-container ">
+                                <pre tabindex="1" class="copy-code">
+try:
+    service = build('gmail','v1',credentials=creds)
+    result = service.users().messages().list(userId='me').execute()
+    messages = result.<span class="md-blue">get</span>('messages')
+    for i in messages:
+        txt = service.users().messages().<span class="md-blue">get</span>(userId='me',id=i[<span class="m">'id'</span>]).execute()</span>
+        payload = txt[<span class="gr">'payload'</span>]
+        print(payload)
+except HttpError as error:
+    print('err',error)</pre>
+                            </div>
+                            <p>
+                                You can see at the bottom of the video the console in vs code, printing all the contents of the 
+                                <code class="gr">payload</code>
+                            </p>
+                            
+                        </div>
+                        <div class="step-vid">
+                            <video src="imagesVideos/08-03.mov"></video>
+                        </div>
+                    </div>
+                    <!-- 08-04 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt playVid-click ">
+                            <h4>04</h4>
+                            <p>
+                                The <code>'payload'</code> contains the <code class="gr">headers</code>
+                                which contains the <code class="gr">'subjects'</code> and <code class="gr">'senders'</code>  for each messages in gmail. 
+                            </p>
+                            <div class="code-container">
+                                <pre tabindex="1" class="copy-code">
+try:
+    service = build('gmail','v1',credentials=creds)
+    result = service.users().messages().list(userId='me').execute()
+    messages = result.get('messages')
+    for i in messages:
+        txt = service.users().messages().get(userId='me',id=i['id']).execute()
+        payload = txt['payload']
+        headers = payload[<span class="gr">'headers'</span>]
+        print(headers)
+except HttpError as error:
+    print('err',error)</pre>
+
+                            </div>
+                            <p>
+                                This shows the content in <code class="gr">headers</code> being printed out
+                            </p>
+                        </div>
+                        <div class="step-vid">
+                            <video src="imagesVideos/08-04.mov">
+                        </div>
+                    </div>
+                    <!-- 08-05 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h4>05</h4>
+                            <p>
+                                We can query the <code>'headers'</code> and search for the attribute
+                                <code class="m">'name'</code> to find email's 'senders' <code class="gr">'From'</code>  and 'subjects' <code class="gr">'Subject</code>
+                                to get their <code class="m">'value'</code>
+                            </p>
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/08-05.png">
+                        </div>
+                    </div>
+                    <!-- 08-06 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h4>06</h4>
+
+                            <p>
+                                Create 3 empty list to add to for
+                            </p>
+                            <ul>
+                                <li><code class="gr">subject</code></li>
+                                <li><code class="gr">senders</code></li>
+                                <li><code class="gr">body</code></li>
+                            </ul>
+                            <p>and add to the list for each loop</p>
+                            <div class="code-container">
+                                <pre tabindex="1" class="copy-code">
+subjects = []
+senders = []
+body = []                       </pre>
+                            </div>
+                            
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/08-06.png">
+                        </div>
+                    </div>
+                    <!-- 08-07 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h4>07</h4>
+                            <p>
+                                Loop through <code>'headers'</code> and Query with a conditional and search for <code class="m">name</code>
+                                for <code class="gr">'Subject'</code>, append to <code>subjects</code> and <code class="gr">From</code>, append to 
+                                <code>senders</code>
+                            </p>
+                            <div class="code-container">
+                                <pre tabindex="1" class="copy-code">
+try:
+    service = build('gmail','v1',credentials=creds)
+    result = service.users().messages().list(userId='me').execute()
+    messages = result.get('messages')
+    for i in messages:
+        txt = service.users().messages().get(userId='me',id=i['id']).execute()
+        payload = txt['payload'] 
+        headers = payload['headers']
+        for i in headers:
+            if i['name'] == 'Subject':
+                subjects.append(i['value'])
+            if i ['name'] == 'From':
+                senders.append(i['value'])
+    print(subjects[0])
+    print(senders[0])</pre>
+                            </div>
+                            
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/08-07.png">
+                        </div>
+                    </div>
+                    <!-- 08-08 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h4>08</h4>
+                            <p>
+                                The body of the email is the email itself, It is located in 
+                                <code class="m">parts</code> which is located back in <span class="gr">payload</span>
+                            </p>
+                            <div class="code-container">
+                                <pre tabindex="1" class="copy-code">
+try:
+    service = build('gmail','v1',credentials=creds)
+    result = service.users().messages().list(userId='me').execute()
+    messages = result.get('messages')
+    for i in messages:
+        txt = service.users().messages().get(userId='me',id=i['id']).execute()
+        payload = txt.get('payload')
+        headers = payload.get('headers')
+        for i in headers:
+            if i['name'] == 'Subject':
+                subjects.append(i['value'])
+            if i['name'] == 'From':
+                senders.append(i['value'])
+        parts = payload.get('parts')
+        print(parts)</pre>
+                            </div>
+                            <p>The <code class="m">parts</code>
+                                is very long because it contains the email, if you scroll up you 
+                                can see the <code class="m">'body</code></code> with the <code class="gr">data</code>
+                                attribute which contains the email content.
+                            </p>
+                            
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/08-08.png">
+                        </div>
+                    </div>
+                    <!-- 08-09 -->
+                    <div class="step ">
+                        <div tabindex="1" class="step-txt rbshadow">
+                            <h4>10</h4>
+                            <p>
+                                <span class="r">** This code will cause an error because empty messages with have a 
+                                    <code style="color:black">Nonetype</code>
+                                </span>
+                                We must replact and Decode the body.'data' attribute,
+                                using the library <code class="md-blue">base64</code>
+                                seen at the top of script.
+                                <code>import base64</code>
+                            </p>
+                            <div class="code-container">
+                                <pre tabindex="1" class="copy-code">
+try:
+    service = build('gmail','v1',credentials=creds)
+    result = service.users().messages().list(userId='me').execute()
+    messages = result.get('messages')
+    for i in messages:
+        txt = service.users().messages().get(userId='me',id=i['id']).execute()
+        payload = txt['payload']
+        headers = payload['headers']
+        for i in headers:
+            if i['name'] == 'Subject':
+                subjects.append(i['value'])
+            if i['name'] == 'From':
+                senders.append(i['value'])
+        parts = payload.get('parts')[0]
+        data = parts['body']['data']
+        data = data.replace('-','+').replace('_','/')
+        decode_data = base64.b64decode(data)
+        body.append(decode_data)
+        
+        print(data)    
+            </pre>
+                            </div>
+                            
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/08-09.png">
+                        </div>
+                    </div>
+                    <!-- 08-10-->
+                    <div class="step ">
+                        <div tabindex="1" class="step-txt rbshadow">
+                            <h4>10</h4>
+                            <p>
+                                Check for a none type, and here is the full code 
+                            </p>
+                            <p class="r">
+                                This code doesn't work entirely you can print each message but,
+                                if none it breaks
+                            </p>
+                            <p>
+                                Move on to jieJenn to find new approach,
+                                <a href="../../../jieJienn/00-googleDriveApiPython/01-gettingStarted/01-gettingStarted.htm">jieJenn-01-gettingStarted</a>
+                            </p>
+                            <div class="code-container">
+                                <pre tabindex="1" class="copy-code">
+    import os.path
+    from google.auth.transport.requests import Request
+    from google.oauth2.credentials import Credentials
+    from google_auth_oauthlib.flow import InstalledAppFlow
+    from googleapiclient.discovery import build
+    from googleapiclient.errors import HttpError
+    import base64
+    import email
+    
+    SCOPES = ["https://www.googleapis.com/auth/gmail.readonly"]
+    subjects = []
+    senders = []
+    body = []
+    
+    def myEmails():
+        creds = None
+        if os.path.exists('token.json'):
+            creds = Credentials.from_authorized_user_file('token.json', SCOPES)
+        if not creds or not creds.valid:
+            if creds and creds.expired and creds.refresh_token:
+                creds.refresh(Request())
+            else:
+                flow = InstalledAppFlow.from_client_secrets_file('credentials.json', SCOPES)
+                creds = flow.run_local_server(port=0)
+            with open('token.json', 'w') as token:
+                token.write(creds.to_json())
+    
+        try:
+            service = build('gmail', 'v1', credentials=creds)
+            result = service.users().messages().list(userId='me').execute()
+            messages = result.get('messages')
+            for i in messages:
+                txt = service.users().messages().get(userId='me', id=i['id']).execute()
+                payload = txt['payload']
+                headers = payload['headers']
+                for i in headers:
+                    if i['name'] == 'Subject':
+                        subjects.append(i['value'])
+                    if i['name'] == 'From':
+                        senders.append(i['value'])
+                parts = payload.get('parts')
+                if parts:
+                    parts = parts[0]
+                    data = parts['body']['data']
+                    data = data.replace('-', '+').replace('_', '/')
+                    decode_data = base64.b64decode(data)
+                    print(decode_data)
+                    body.append(decode_data)
+
+        if body:
+            print(body[0].decode('utf-8'))  # Decode the bytes to string
+            # print(body[2])  # Decode the bytes to string
+    
+        except HttpError as error:
+            print('err', error)
+    
+    myEmails()
+    
+                                </pre>
+                            </div>
+                            
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/08-10.png">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+</body>
+</html>

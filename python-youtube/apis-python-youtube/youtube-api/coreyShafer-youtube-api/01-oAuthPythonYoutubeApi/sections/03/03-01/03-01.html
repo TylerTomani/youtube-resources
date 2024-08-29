@@ -1,0 +1,101 @@
+<div class="steps-container">
+    <h2>03-01 <code class="b">build()</code> object
+    </h2>
+    <h3>github documentation & youtube api documentation</h3>
+    <!-- 01-01 -->
+    <div class="step col-reverse">
+        <div tabindex="1" class="step-txt fb-70">
+            <h4>01</h4>
+            <div class="code-container ">
+                <pre  class="copy-code">
+from googleapiclient.discovery import build
+import json
+api_key = 'AIzaSyDzHXVBwo9IA0Y_kBHjmoEf9l66ngoj4Ag'
+
+youtube = <span class="b-fix">build</span>('youtube', 'v3', developerKey=api_key)
+
+</pre>
+            </div>
+            <p>
+                The <code class="b">build()</code> object sends a request to the youtube api, and returns 
+                a <code>request</code> object called <code>&lt;googleapiclient.discovery.Resource</code>. 
+            </p>
+            <p>
+                We use <strong class="lgtxt">'Instance methods'</strong> on the <code>request</code> object to interact with the data.
+            </p>
+        </div>
+        <div class="step-img">
+            <img src="sections/03/03-01/images/01.png">
+        </div>
+        
+    </div>        
+    <!-- 02 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt ">
+            <h4 class="jss">02</h4>
+            <p>
+                <strong>Documentation</strong> for the <code class="b">build()</code> object can be found if you scroll down 
+                on the
+                <a href="https://github.com/googleapis/google-api-python-client">google-client-python api</a> github main,
+                Go to 'docs folder', then <br>
+                <br> 'Getting Started'.
+                <br>
+                Scroll down until you see <code>build()</code> and click the link.
+            </p>
+            <p>
+                or you can go directly there clicking this link
+                <br>
+                <a href="https://github.com/googleapis/google-api-python-client/blob/main/docs/start.md#:~:text=Build%20the%20service%20object">https://github.com/googleapis/google-api-python-client/blob/main/docs/start.md</a>
+            </p>
+        </div>
+        <div class="step-vid">
+            <video src="sections/03/03-01/images/02.mov">
+        </div>
+    </div>
+    <!-- 03 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>03</h4>
+            <p>
+                The required parameters for <code class="b">build()</code> are the <code class="r">serviceName</code> which is <code>youtube</code>,
+                and the <code class="r">version</code> which is 3. 
+            </p>
+            <p>
+                The <code class="m">developerKey</code> is optional, but this is where the <code>api_key</code> goes if you want to access specific data.
+            </p>
+
+
+        </div>
+        <div class="step-img">
+            <img src="sections/03/03-01/images/03.png">
+        </div>
+    </div>
+    <div class="step col-reverse">
+        <div tabindex="1" class="step-txt fb-70">
+            <h4>01</h4>
+            <div class="code-container ">
+                <pre class="copy-code">
+from googleapiclient.discovery import build
+import json
+api_key = 'AIzaSyDzHXVBwo9IA0Y_kBHjmoEf9l66ngoj4Ag'
+
+youtube = <span class="b-fix">build</span>('youtube', 'v3', developerKey=api_key)
+    
+                </pre>
+            </div>
+            <p>
+                The <code class="b">build()</code> object sends a request to the youtube api, and returns a
+                a <code>request</code> object called <code>&lt;googleapiclient.discovery.Resource</code>.
+            </p>
+            <p>
+                We use 'Instance methods' on the <code class="b">build()</code> <code>request</code> object to interact with the data
+            </p>
+        </div>
+        <div class="step-img">
+            <img src="sections/03/03-01/images/01.png">
+        </div>
+    
+    </div>
+    
+    <button tabindex="1" id="nxtLesson">next lesson</button>
+</div>

@@ -1,0 +1,195 @@
+<div class="steps-container">
+    <header>
+        <h2>03-02 convert total seconds back into hours, minutes , and seconds <span class="lsg">divmod</span>
+        </h2>
+    </header>
+    <!-- 01-01 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>01</h4>
+            <p>
+                Inside the loop of videos, add up total seconds of each video into a global variable
+                <code class="m">total_seconds</code>, at the bottom outside the while loop, cast it into 
+                an integer.
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code mdtxt">
+from datetime import timedelta
+import re
+import os
+from googleapiclient.discovery import build
+import json
+# Get new api key this one is fake
+api_key = 'AIzaSyBycc_eAr1_P3NWDzR08IHkCA3_44wKEDM'
+youtube = build('youtube', 'v3', developerKey=api_key)
+playlist_id = 'PL-osiE80TeTsWmV9i9c58mdDCSskIFdDS'
+channel_id = 'UCCezIgC97PvUuR4_gbFUs5g'
+hours_pattern = re.compile(r'(\d+)H')
+mins_pattern = re.compile(r'(\d+)M')
+secs_pattern = re.compile(r'(\d+)S')
+
+<div class="code-container"><pre tabindex="1" class="copy-code">total_seconds = 0</pre></div>
+nextPageToken = None
+while True:
+    playlistItems_request = youtube.playlistItems().list(
+        part='contentDetails',
+        playlistId=playlist_id,
+        maxResults=50,
+        pageToken=nextPageToken
+    )
+    playlistItems_response = playlistItems_request.execute()
+
+    vid_ids = []
+    for pl_item in playlistItems_response['items']:
+        vid_ids.append(pl_item['contentDetails']['videoId'])
+    videos_request = youtube.videos().list(
+        part="contentDetails,snippet",
+        id=','.join(vid_ids),
+    )
+    os.system('clear')
+    videos_response = videos_request.execute()
+    for vid in videos_response['items']:
+        duration = vid['contentDetails']['duration']
+        hours = hours_pattern.search(duration)
+        mins = mins_pattern.search(duration)
+        secs = secs_pattern.search(duration)
+
+        hours = int(hours.group(1)) if hours else 0
+        mins = int(mins.group(1)) if mins else 0
+        secs = int(secs.group(1)) if secs else 0
+
+        video_seconds = timedelta(
+        hours = hours,
+        minutes=mins,
+        seconds=secs
+        ).total_seconds()
+        <div class="code-container"><pre tabindex="1" class="copy-code">total_seconds += video_seconds</pre></div>
+        
+    nextPageToken = playlistItems_response.get('nextPageToken')
+    if not nextPageToken:
+        break
+<div class="code-container"><pre tabindex="1" class="copy-code">total_seconds = int(total_seconds)</pre></div>
+
+print(total_seconds,type(total_seconds))
+</pre>
+            </div>
+            
+        </div>
+        <div class="step-img ac jc">
+            <img src="sections/03/03-02/images/01.png">
+        </div>
+    </div>
+    <!-- 01-02 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>02</h4>
+            <p>
+                convert the seconds back into hours, minutes, and seconds
+                with <span class="lsg">divmod</span>.
+            </p>
+            <p>
+                First do a simple example to get minuets and seconds, because neither or None in this example
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+minutes,seconds = divmod(total_seconds,60)
+print(minutes,seconds)</pre>
+            </div>
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/03/03-02/images/02.png">
+        </div>
+    </div>
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>03</h4>
+            <p>
+                Do the same thing with minuets to get the hours
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+minutes,seconds = divmod(total_seconds,60)
+hours,minutes = divmod(minutes,60)
+print(f'{hours}:{minutes}:{seconds}')</pre>
+            </div>
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/03/03-02/images/03.png">
+        </div>
+    </div>
+    <div class="step-col">
+        <div tabindex="1" class="step-txt">
+            <h4>04</h4>
+            <h5>full code</h5>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code mdtxt">
+                    from datetime import timedelta
+import re
+import os
+from googleapiclient.discovery import build
+import json
+# Get new api key this one is fake
+api_key = 'AIzaSyBycc_eAr1_P3NWDzR08IHkCA3_44wKEDM'
+youtube = build('youtube', 'v3', developerKey=api_key)
+playlist_id = 'PL-osiE80TeTsWmV9i9c58mdDCSskIFdDS'
+channel_id = 'UCCezIgC97PvUuR4_gbFUs5g'
+hours_pattern = re.compile(r'(\d+)H')
+mins_pattern = re.compile(r'(\d+)M')
+secs_pattern = re.compile(r'(\d+)S')
+
+total_seconds = 0
+nextPageToken = None
+while True:
+    playlistItems_request = youtube.playlistItems().list(
+        part='contentDetails',
+        playlistId=playlist_id,
+        maxResults=50,
+        pageToken=nextPageToken
+    )
+    playlistItems_response = playlistItems_request.execute()
+
+    vid_ids = []
+    for pl_item in playlistItems_response['items']:
+        vid_ids.append(pl_item['contentDetails']['videoId'])
+    videos_request = youtube.videos().list(
+        part="contentDetails,snippet",
+        id=','.join(vid_ids),
+    )
+    os.system('clear')
+    videos_response = videos_request.execute()
+    for vid in videos_response['items']:
+        duration = vid['contentDetails']['duration']
+        hours = hours_pattern.search(duration)
+        mins = mins_pattern.search(duration)
+        secs = secs_pattern.search(duration)
+
+        hours = int(hours.group(1)) if hours else 0
+        mins = int(mins.group(1)) if mins else 0
+        secs = int(secs.group(1)) if secs else 0
+
+        video_seconds = timedelta(
+        hours = hours,
+        minutes=mins,
+        seconds=secs
+        ).total_seconds()
+        
+        total_seconds += video_seconds
+    nextPageToken = playlistItems_response.get('nextPageToken')
+    if not nextPageToken:
+        break
+total_seconds = int(total_seconds)
+minutes,seconds = divmod(total_seconds,60)
+hours,minutes = divmod(minutes,60)
+print(f'{hours}:{minutes}:{seconds}')</pre>
+            </div>
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/">
+        </div>
+    </div>
+    
+    <button tabindex="1" id="nxtLesson">next lesson</button>
+</div>

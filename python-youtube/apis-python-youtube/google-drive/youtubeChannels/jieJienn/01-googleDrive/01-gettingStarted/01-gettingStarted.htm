@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jiejenn-01-GettingStarted-</title>
+    <link rel="stylesheet" href="../../../../../../../../css/colors.css" />
+    <link rel="stylesheet" href="../../../../../../../../css/font-sizes.css" />
+    <link rel="stylesheet" href="../../../../../../../css/resource-header-temp.css" />
+    <link rel="stylesheet" href="../../../../../../../css/tutorial-temp-v2.css" />
+    <link rel="stylesheet" href="../../../../../../../../css/copy-code.css">
+    <link rel="stylesheet" href="../../../../../../../../css/imgAnimate-v2.css">
+    <script src="../../../../../../../js/letterFocus-tutorial.js" defer></script>
+    <script src="../../../../../../../../js/copy-code.js" defer></script>
+    <script src="../../../../../../../js/dropPartStepFocus-v2.js" defer></script>
+    <script src="../../../../../../../js/loadpageNewTab.js" defer></script>
+    <script type="module" src="../../../../../../../js/autofocusLoad.js" defer></script>
+    <script type="module" src="../../../../../../../js/play-enlarge-video.js" defer></script>
+    <script type="module" src="../../../../../../../js/img-enlarge-v1.js" defer></script>
+    <script type="module" src="../../../../../../../js/addRemoveTabs-v1.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="home-link">
+            <a id="homeLink" tabindex="1" href="../../jie-jenn-googeDrive.htm">(home)gmail-api-jieJenn</a>
+        </div>
+        <div class="title-container">
+            <h1>Jie Jenn - 01-gettingStarted</h1>
+            <h2>1. Google Drive API in Python | Getting Started</h2>
+        </div>
+        <div class="page-logo">
+            <img src="https://i.ytimg.com/vi/9K2P2bWEd90/maxresdefault.jpg">
+            <a id="tutorialLink" tabindex="1" target="_blank" href="https://www.youtube.com/watch?v=9K2P2bWEd90&list=PL3JVwFmb_BnTamTxXbmlwpspYdpmaHdbz">tutorial</a>
+        </div>
+    </header>
+    <main>
+        <div class="parts-container">
+            <!-- Part 1 - Create Project, OAuth, and Venv  -->
+            <div class="part">
+                <a id="part01" tabindex="1" href="#" class="dropPart"><h3>Part 1 Create Project, OAuth, and Venv</h3></a>
+                <div class="steps-container ">
+                    <!-- 01-01 -->
+                    <div class="step">
+                        <div id="step01" tabindex="1" class="step-txt">
+                            <h4>01</h4>
+                            <p>
+                                Review <a target="_blank" href="../../../../../gmail-api/youtubeChannels/jieJienn/01-gettingStarted/01-gettingStarted.htm">
+                                    jie jenn gmail getting started</a>
+                                and <a target="_blank" href="../../../../../gmail-api/youtubeChannels/codeTops/00-howGetStartGmailAPI/01-howGetStartGmailAPI/01-howGetStartGmailAPI.htm">
+                                    codeTops gmail getting started</a>.
+                                The instructions are located here under <q>Guides</q> &rarr; <q>Quickstarts</q> &rarr; <q>Python</q>
+                                <br>
+                                <a target="_blank" href="https://developers.google.com/drive/api/quickstart/python">https://developers.google.com/drive/api/quickstart/python</a>
+                            </p>
+                            <p>
+                                Use tstudystuff gmail for practice
+                            </p>
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/01-01.png">
+                        </div>
+                    </div>
+                    <!-- 01-02 -->
+                    <div class="step-col">
+                        <div tabindex="1" class="step-txt">
+                            <h4>02</h4>
+                            <p>
+                                Create Project,
+                            </p>
+                        </div>
+                        <div class="img-2-container">
+                            <div class="step-img">
+                                <img src="imagesVideos/01-02a.png">
+                            </div>
+                            <div class="step-img">
+                                <img src="imagesVideos/01-02b.png">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 01-03 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h4>03</h4>
+                            <p>
+                                Enable Drive under <q>Library</q>
+                            </p>
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/01-03.png">
+                        </div>
+                    </div>
+                    <!-- 01-04 -->
+                    <div class="step-col">
+                        <div tabindex="1" class="step-txt">
+                            <h4>04</h4>
+                            <p>
+                                Follow the instructions from <q>Quickstarts</q> &rarr; <q>Python</q>
+                                for setting up OAUTH and credentials, review jie jenn and code tops if confused seen in 
+                                <a href="#step01">step 1 </a> at top of this part
+                            </p>
+                            <p>
+                                add the following scope found at 
+                                <a target="_blank" href="https://developers.google.com/drive/api/guides/api-specific-auth">https://developers.google.com/drive/api/guides/api-specific-auth</a>
+                            </p>
+                            <div class="code-container">
+                                <pre tabindex="1" class="copy-code">
+https://www.googleapis.com/auth/drive</pre>
+                            </div>
+                            
+                        </div>
+                        <div class="img-2-container">
+                            <div class="step-img">
+                                <img src="imagesVideos/01-04a.png">
+                            </div>
+                            <div class="step-img">
+                                <img src="imagesVideos/01-04b.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Part 2  - Starting Scripts-->
+            <div class="part">
+                <a id="" tabindex="1" href="#" class="dropPart"><h3>Part 2</h3></a>
+                <div class="steps-container ">
+                    <!-- 02-01 -->
+                    <div class="step-col">
+                        <div tabindex="1" class="step-txt">
+                            <h4>01</h4>
+                            <p>
+                                Put the two scripts in the same directory
+                            </p>
+                        </div>
+                        <div class="img-2-container">
+                            <div class="code-container">
+                                <pre tabindex="1" class="copy-code">
+import os.path
+
+from google.auth.transport.requests import Request
+from google.oauth2.credentials import Credentials
+from google_auth_oauthlib.flow import InstalledAppFlow
+from googleapiclient.discovery import build
+from googleapiclient.errors import HttpError
+
+def create_service(client_secret,api_name,api_version,*scopes):
+    CLIENT_SECRET = client_secret
+    API_NAME = api_name
+    API_VERSION = api_version
+    SCOPES = [scope for scope in scopes[0]]
+
+    creds = None
+    if os.path.exists('token.json'):
+        creds = Credentials.from_authorized_user_file('token.json',SCOPES)
+    if not creds or not creds.valid:
+        if creds and creds.expired and creds.refresh_token:
+            creds.refresh(Request())
+        else:
+            flow = InstalledAppFlow.from_client_secrets_file('credentials.json',SCOPES)
+            creds = flow.run_local_server(port=0)
+        with open ('token.json','w') as token:
+            token.write(creds.to_json())
+    try:
+        service = build(API_NAME,API_VERSION,credentials=creds)
+        return service
+    except HttpError as e:
+        print('error', e)
+                                
+                                </pre>
+                            </div>
+                            <div class="code-container">
+                                <pre tabindex="1" class="copy-code">
+from googleServiceCreate import create_service
+CLIENT_SECRET = 'credentials.json'
+API_NAME = 'drive'
+API_VERSION = 'v3'
+SCOPES = ['https://www.googleapis.com/auth/drive']
+
+service = create_service(CLIENT_SECRET,API_NAME,API_VERSION,SCOPES)
+
+                                </pre>
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                    <!-- 02-02 -->
+                    <div class="step">
+                        <div tabindex="1" class="step-txt">
+                            <h4>02</h4>
+                            <p>
+                                The <code class="m">dir()</code> functions shows the 
+                                attributes and methods of the service object, this works for all apis services
+                            </p>
+                            <div class="code-container">
+                                <pre tabindex="1" class="copy-code">
+from googleServiceCreate import create_service
+CLIENT_SECRET = 'credentials.json'
+API_NAME = 'drive'
+API_VERSION = 'v3'
+SCOPES = ['https://www.googleapis.com/auth/drive']
+
+service = create_service(CLIENT_SECRET,API_NAME,API_VERSION,SCOPES)
+
+print(<span class="m">dir</span>(service))
+                                </pre>
+                            </div>
+                            
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/02-02.png">
+                        </div>
+                    </div>
+                    <!-- 02-03 -->
+                    <div class="step-col">
+                        <div tabindex="1" class="step-txt">
+                            <h4>03  </h4>
+                            <p>
+                                If you go to the reference page <a target="_blank" href="https://developers.google.com/drive/api/reference/rest/v3">
+                                    https://developers.google.com/drive/api/reference/rest/v3
+                                </a>
+                                you can see they are listed here as well.
+                                
+                            </p>
+                        </div>
+                        <div class="img-2-container">
+                            <div class="step-img">
+                                <img src="imagesVideos/02-03a">
+                            </div>
+                            <div class="step-img">
+                                <img src="imagesVideos/02-02.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </main>
+
+</body>
+</html>

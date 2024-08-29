@@ -1,0 +1,736 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01-02-FHIR via HTTP</title>
+    <link rel="stylesheet" href="../../../../../../../../css/font-sizes.css" />
+    <link rel="stylesheet" href="../../../../../../../../css/colors.css" />
+    <link rel="stylesheet" href="../../../../../../../css/resource-header-temp.css" />
+    <link rel="stylesheet" href="../../../../../../../css/tutorial-temp-v1.css" />
+    <link rel="stylesheet" href="../../../../../../../../css/copy-code.css">
+    <link rel="stylesheet" href="../../../../../../../../css/imgAnimate-v2.css">
+    <script src="../../../../../../../js/letterFocus-tutorial.js" defer></script>
+    <script src="../../../../../../../../js/copy-code.js" defer></script>
+    <script src="../../../../../../../js/dropPartStepFocus-v2.js" defer></script>
+    <script src="../../../../../../../js/loadpageNewTab.js" defer></script>
+    <script type="module" src="../../../../../../../js/play-enlarge-video.js" defer></script>
+    <script type="module" src="../../../../../../../js/autofocusLoad.js" defer></script>
+    <script type="module" src="../../../../../../../js/img-enlarge-v1.js" defer></script>
+    <script type="module" src="../../../../../../../js/addRemoveTabs-v1.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="home-link">
+            <a id="homeLink" tabindex="1" href="../../ginoCannessa-fhir.htm">Home</a>
+        </div>
+        <!-- <div class="notes">
+            <h2>Notes</h2>
+            <textarea id="notesTextArea" class="r" >
+figure out way to save typed text next time i open the page
+and fix it so that hitting 'n' in this text area doesn't clear typed text
+            </textarea>
+        </div> -->
+        <div class="page-title">
+            <h1>FHIR for Developers - FHIR vs HTTP</h1>
+            <img src="../gino.png" alt="">
+            <a id="tutorialLink" tabindex="1" target="_blank" href="https://www.youtube.com/watch?v=eBAQYMT2KtM&list=PLsR-zcO--dypwthv7_QXwLMXKkdqsQvAm&index=2
+                ">tutorial</a>
+        </div>
+    </header>
+    <main>
+        <!-- Part 1 - rest api/resources - postman & HAPI -->
+        <div class="part">
+            <a id="part01" tabindex="1" href="#" class="dropPart"><h2>Part 1 - RestApi/Resources - postman & HAPI  </h2></a>
+            <div class="steps-container ">  
+                <!-- 01-00 -->
+                <div class="step-col">
+                    <div tabindex="1" class="step-txt">
+                        <h3>00</h3>
+                        <p>
+                            This tutorials uses <a target="1" href="https://crimson-crater-96407.postman.co/workspace/8441745f-4af2-4885-9e36-37279f02dd04/request/create?requestId=e7746b8b-b542-4e09-b055-af15e68ea1c7">Postman</a> and the free server 
+                            <a target="_blank" href="https://confluence.hl7.org/display/FHIR/Public+Test+Servers#:~:text=HAPI%20FHIR%20Reference%20Server">HAPI</a> at 
+                            at <a target="_blank" href="https://confluence.hl7.org/display/FHIR">https://confluence.hl7.org/display/FHIR</a>
+                        </p>
+                    </div>
+                    <div class="img-2-container">
+                        <div class="step-img">
+                            <img  class="img-l" src="imagesVideos/00-a.png" alt="">
+                        </div>
+                        <div class="step-img">
+                            <img class="img-r" src="imagesVideos/00-b.png" alt="">
+                        </div>
+                    </div>
+                </div>                
+                <!-- 01-01 -->
+                <div class="step">
+                    <div tabindex="1" class="step-txt step-vid playVid-click">
+                        <h4>01</h4>
+                        <p>
+                            Go to RESTful Api page in the 'Documentation' tab
+                            <a target="_blank" href="https://hl7.org/fhir/http.html">https://hl7.org/fhir/http.html</a>
+                        </p>
+                    </div>
+                    <div class="step-vid">
+                        <video class="lg-enlarge" src="imagesVideos/01-01.mov"></video>
+                    </div>
+                </div>
+                <!-- 01-02 -->
+                <div class="step">
+                    <div tabindex="1" class="step-txt">
+                        <h4>02</h4>
+                        <p>
+                            The <strong>Whole System Interactions</strong> occurs on the base url ex,
+                        </p>
+                        <div class="code-container">
+                            <pre tabindex="1" class="copy-code">
+GET http://hapi.fhir.org/baseR4</pre>
+                        </div>
+                        <p>
+                            Adding <code class="m">metadata</code> at the end shows the capablities of the 
+                            <code>baseurl</code>
+                        </p>
+                        <div class="code-container">
+                            <pre tabindex="1" class="copy-code">GET http://hapi.fhir.org/baseR4/<span class="m">metadata</span></pre>
+                        </div>
+                    </div>
+                    <div class="step-img">
+                        <img src="imagesVideos/01-02.png">
+                    </div>
+                </div>
+                <!-- 01-03 -->
+                <div class="step">
+                    <div tabindex="1" class="step-txt">
+                        <h4>03</h4>
+                        <p>
+                            <strong>Type Level Interactions</strong> occur on the <span class="m">resource</span> returned from the whole system
+                        </p>
+                        <div class="code-container">
+                            <pre tabindex="1" class="copy-code">GET http://hapi.fhir.org/baseR4/<span class="m">Patient</span> ....
+                            </pre>
+                        </div>
+                    </div>
+                    <div class="step-img">
+                        <img src="imagesVideos/01-03.png">
+                    </div>
+                </div>
+                <!-- 01-04 -->
+                <div class="step">
+                    <div tabindex="1" class="step-txt rbshadow">
+                        <h4>04</h4>
+                        <p>
+                            <span class="r"> I don't get this yet</span> it think,
+                            <br>
+                            <strong class="gr">Instance Level Interactions</strong> act as methods to the resource that have an id on them
+                        </p>
+                        <div class="code-container">
+                            <pre tabindex="1" class="copy-code">https://hapi.fhir/baseR4/Patient? params <span class="gr">instance</span> </pre>
+                        </div>
+                        
+                    </div>
+                    <div class="step-img">
+                        <img src="imagesVideos/01-04.png">
+                    </div>
+                </div>
+                <!-- 01-05 -->
+                <div class="step">
+                    <div   tabindex="1" class="step-txt">
+                        <h4>05</h4>
+                        <h5><code> VERB [base]/[type]/[id] {?_format=[mime-type]}</code></h5>
+                        <ul>
+                            <li><code>VERB</code> - <span class="mdcode"><code>GET</code>,<code>POST</code>,<code>PUT</code>, <code>PATCH</code>,
+                                <code>DELETE</code>...</span>
+                            </li>
+                            <li><code>[base]</code> - <code class="smmdcode">http://hapi.fhir.org/baseR4 (example) </code></li>
+                            <li><code>[type]</code> <code class="mdcode"><span class="m">Patient</span>, imaging study, medications</code>  </li>
+                        </ul>
+                    </div>
+                    <div class="step-img">
+                        <img class="lg-enlarge" src="imagesVideos/01-05.png" alt="">
+                    </div>
+                </div>                
+            </div>
+        </div>
+        <!-- Part 2 - Perfered Header Confluence example data & OperationOutcome-->
+        <div class="part">
+            <a id="" tabindex="1" href="#" class="dropPart"><h2>Part 2 -  <span class="r">Perfered Header</span> / Confluence example data & OperationOutcome <code>read</code></h2></a>
+            <div class="steps-container ">  
+                <!-- 02-00 -->
+                <div class="step ">
+                    <div tabindex="1" class="step-txt rbshadow">
+                        <h4>00</h4>
+                        <h5>'prefer header'</h5>
+                        <p>
+                            I'm not sure if this applies to getting resources, it looks like this  header is only applicable to <code>CREATE</code>
+                            and <code>UPDATE</code>, the documentation is discussed here,
+                            <br>
+                            <a href="https://hl7.org/fhir/http.html#:~:text=These%20interactions%20are%20performed,Bundle.entry.resource%20values.">https://hl7.org/fhir/http.html</a>
+                            <br>
+                            and it is discussed at 6:30 in <a target="_blank" href="https://www.youtube.com/watch?v=eBAQYMT2KtM&list=PLsR-zcO--dypwthv7_QXwLMXKkdqsQvAm&index=2">
+                                tutorial
+                            </a>
+                        </p>
+                        <p>
+                            BUT, these are the mime types
+                        </p>
+                        <p class="smtxt">xml</p>
+                        <div class="code-container">
+                            <pre tabindex="1" class="copy-code">XML: application/fhir+xml</pre>
+                        </div>
+                        <p class="smtxt">json</p>
+                        <div class="code-container">
+                            <pre tabindex="1" class="copy-code">JSON: application/fhir+json</pre>
+                        </div>
+                    </div>
+                    <div class="step-img">
+                        <img class="lg-enlarge" src="imagesVideos/02-00.png">
+                    </div>
+                </div>
+                <!-- 02-01 -->
+                <div class="step">
+                    <div tabindex="1" class="step-txt ">
+                        <h4>01</h4>
+                        <p>
+                           USE the 'Hapi' free test Servers at,
+                           <br>
+                            <a target="_blank" href="https://confluence.hl7.org/display/FHIR/Public+Test+Servers#:~:text=HAPI%20FHIR%20Reference%20Server">https://confluence.hl7.org/</a>                  
+                        </p>
+                    </div>
+                    <div class="step-img">
+                        <img src="imagesVideos/02-01.png" alt="">
+                    </div>
+                </div>
+                <!-- 02-02 -->
+                <div class="step ">
+                    <div tabindex="1" class="step-txt playVid-click">
+                        <h4>02</h4>
+                        <p>
+                            Copy and paste from <a target="_blank" href="https://confluence.hl7.org/display/FHIR/Public+Test+Servers#:~:text=HAPI%20FHIR%20Reference%20Server
+                            ">https://confluence.hl7.org/display/FHIR</a>
+                        </p>
+                        <div class="code-container bb1">
+                            <pre class="copy-code online ">
+http://hapi.fhir.org/baseR4 </pre>	
+                        </div>
+                        <p>
+                            as a <code>GET</code> reuqest in <a target="_blank" href="https://crimson-crater-96407.postman.co/workspace/HAPI~8441745f-4af2-4885-9e36-37279f02dd04/request/create?requestId=54c1dcd1-a327-400b-be28-3faa669ca943
+                            ">postman</a>
+                        </p>
+                    </div>
+                    <div class="step-vid">
+                        <video src="imagesVideos/02-02.mp4" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Part 3 - OperationOutcome & CapabilityStatement & SearchParameters  /baseR4/metadata-->
+        <div class="part">
+            <a id="" tabindex="1" href="#" class="dropPart"><h2>Part 3 - CapabilityStatement & SearchParameters <code>/baseR4/<span class="m">metadata</span></code></h2></a>
+            <div class="steps-container ">
+                <!-- 03-01 -->
+                <div class="step">
+                    <div tabindex="1" class="step-txt playVid-click">
+                        <h4>01</h4>
+                        <p>
+                            To get the <q>capabilities</q> from the request, we must add <code>metata</code> to the end of the url
+                        </p>
+                        <div class="code-container">
+                            <pre class="copy-code">
+http://hapi.fhir.org/baseR4/<span class="m">metadata</span></pre>	
+                        </div>
+                    </div>
+                    <div class="step-vid">
+                        <video src="imagesVideos/03-01.mp4"></video>
+                    </div>
+                </div>
+                <!-- 03-02 -->
+                <div class="step">
+                    <div tabindex="1" class="step-txt playVid-click">
+                        <h4>02</h4>
+                        <p>
+                            &emsp;Each <q class="m">Resources/types</q> can be found within the response under <code class="b xlgtxt"><q>rest</q></code>.
+                            for example,
+                            is a <code class="m"><q>Resource</q></code> such as <code class="gr"><q>Account</q></code>, or <code class="gr"><q>Patient</q></code>
+                        </p>
+                    </div>
+                    <div class="step-vid">
+                        <video class="lg-enlarge" src="imagesVideos/03-02.mp4"></video>
+                    </div>
+                </div>
+                <!-- 03-03 -->
+                <div class="step">
+                    <div  tabindex="1" class="step-txt playVid-click">
+                        <h4>03</h4>
+                        <p>
+                            &emsp;The documentation for resources/types, such as <q>Patient</q>, 
+                            can be found at
+                            <br>
+                            <a target="_blank" href="https://hl7.org/fhir/patient.html#:~:text=8.1.13%20Search%20Parameters
+                            ">https://hl7.org/fhir/patient.html#:~:text=8.1.13%20Search%20Parameters</a>
+                            <br>
+                            Along with the <strong class="xlgtxt"><q>Search parameters</q></strong> at the bottom
+                        </p>
+                    </div>
+                    <div class="step-vid">
+                        <video src="imagesVideos/03-03.mp4"></video>
+                    </div>
+                </div>
+                <!-- 03-04 -->
+                <div class="step">
+                    <div tabindex="1" class="step-txt playVid-click">
+                        <h4>04</h4>
+                        <p>
+                            Also in <code class="b">rest</code> is <code class="m">searchInclude</code> and in patient we can find 
+                            <strong class="gr lgtxt">"Patient: general-practitioner"</strong>
+                        </p>
+                    </div>
+                    <div class="step-vid">
+                        <video src="imagesVideos/03-04.mov">
+                    </div>
+                </div>
+                <!-- 03-05 -->
+                <div class="step">
+                    <div tabindex="1" class="step-txt playVid-click">
+                        <h4>05</h4>
+                        <p>
+                            The <strong class="xlgtxt"><q>Search parameters</q></strong> are also located within the <code><q>type</q></code> inside <code><q>rest</q></code>,
+                            labled as <strong><code class="b lgtxt">searchParam</code></strong>
+                        </p>
+                    </div>
+                    <div class="step-vid">
+                        <video src="imagesVideos/03-05.mp4" >
+                    </div>
+                </div>
+                <div class="step-col">
+                    <div tabindex="1" class="step-txt">
+                        <p>
+                            <strong><q>SearchParameters</q></strong> in the doc 
+                            <br>
+                            <a target="_blank" href="https://hl7.org/fhir/patient.html">https://hl7.org/fhir/patient.html</a>
+                            <br>
+                            compared to the response in postman
+                        </p>
+                    </div>
+                    <div class="img-2-container">
+                        <div class="step-img">
+                            <img  class="img-l" src="imagesVideos/03-05a.png" alt="">
+                        </div>
+                        <div class="step-img">
+                            <img  class="img-l" src="imagesVideos/03-05b.png" alt="">
+                        </div>
+                    </div>
+                </div>                
+            </div>
+        </div>
+        <!-- Part 4 - File Format XML vs JSON & curl -->
+        <div class="part">
+            <a tabindex="1" href="#" class="dropPart"><h2>Part 4 - <span class="xlgtxt r rbshadow">CURL HEADER</span> File Format XML vs JSON & <code>curl</code></h2></a>
+            <div class="steps-container ">
+                <!-- 04-01 -->
+                <div class="step">
+                    <div tabindex="1" class="step-txt">
+                        <h4>01</h4>
+                        <p>
+                            We can change the format from <code>JSON</code>
+                            to <code>XML</code>
+                            using an <code>Accept:</code> clause in the postman's workspace
+                            <strong><q>Header</q></strong>
+                        </p>
+                        <div class="code-container">
+                            <pre class="copy-code">
+<span class="lgcode">application/fhir+xml</span></pre>	
+                        </div>
+                    </div>
+                    <div class="step-img">
+                        <img class="lg-enlarge" src="imagesVideos/04-01.png" alt="">
+                    </div>
+                </div>
+                <!-- 04-02 -->
+                <div class="step">
+                    <div tabindex="1" class="step-txt">
+                        <h4>02</h4>
+                        <p>
+                            Or you can change it to 
+                        </p>
+                        <div class="code-container">
+                            <pre class="copy-code">
+application/fhir+json</pre>	
+                        </div>
+                    </div>
+                    <div class="step-img">
+                        <img class="lg-enlarge" src="imagesVideos/04-02.png" >
+                    </div>
+                </div>
+                <!-- 04-03 -->
+                <div class="step">
+                    <div tabindex="1" class="step-txt">
+                        <h4>03</h4>
+                        <p>
+                            Override the <code>Accept</code> in the <code>header</code> by including a <strong><code class="xlgtxt m">?</code></strong> at the end of the url which will over-ride the <code>Accept</code>
+                            clause
+                        </p>
+                        <div class="code-container">
+                            <pre class="copy-code">
+http://hapi.fhir.org/baseR4/metadata<span class="m xlgcode">?</span>_format=application/fhir+json</pre>	
+                        </div>
+                    </div>
+                    <div class="step-img">
+                        <img class="lg-enlarge" src="imagesVideos/04-03.png" >
+                    </div>
+                </div>
+                <!-- 04-04 -->
+                <div class="step">
+                    <div tabindex="1" class="step-txt rbshadow">
+                        <h4>04</h4>
+                        <p>
+                            Do the same using curl with the following,
+                        </p>
+                        <div class="code-container">
+                            <pre class="copy-code">
+curl --location --request GET http://hapi.fhir.org/baseR4/metadata --header 'Accept: application/fhir+json'</pre>	
+                        </div>
+                    </div>
+                    <div class="step-img">
+                        <img src="imagesVideos/04-04.png" >
+                    </div>
+                </div>
+                <!-- 04-05 -->
+                <div class="step">
+                    <div tabindex="1" class="step-txt step-vid playVid-click">
+                        <h3>05</h3>
+                        <p>
+                            You can also make request to the server in confluence's HAPI pages,
+                            <br>
+                            <a target="_blank" href="https://hapi.fhir.org/">https://hapi.fhir.org/</a>
+                        </p>
+
+                    </div>
+                    <div class="step-vid">
+                        <video src="imagesVideos/04-05.mp4" >
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Part 5 - Bundle and NextPage Tokens -->
+        <div class="part">
+            <a tabindex="1" href="#" class="dropPart"><h2>Part 5 - Hapi Web UI, Bundle and next page tokens</h2></a>
+            <div class="steps-container ">
+                <!-- 05-01 -->
+                <div class="step">
+                    <div tabindex="1" class="step-txt step-vid playVid-click">
+                        <h3>01</h3>
+                        <p>
+                            Click on the Web UI for Hapi's public test server
+                            <br>
+                            <a target="_blank" href="https://hapi.fhir.org/">https://hapi.fhir.org/</a>
+                        </p>
+                    </div>
+                    <div class="step-vid">
+                        <video src="imagesVideos/05-01.mp4" >
+                    </div>
+                </div>
+                <!-- 05-02 -->
+                <div class="step">
+                    <div tabindex="1" class="step-txt step-vid playVid-click">
+                        <h3>02</h3>
+                        <p>
+                            The <strong><q>Conformance Statement</q></strong> is the old name for <strong><code>CapabilityStatement</code></strong> 
+                        </p>
+                    </div>
+                    <div class="step-vid">
+                        <video src="imagesVideos/05-02.mp4" >
+                    </div>
+                </div>
+                <div class="step-col">
+                    <div tabindex="1" class="step-txt ">
+                        <p>
+                           Hapi web UI shows the same data as in  postman 
+                        </p>
+                    </div>
+                    <div class="img-2-container">
+                        <div class="step-img">
+                            <img  class="img-l" src="imagesVideos/05-02a.png" alt="">
+                        </div>
+                        <div class="step-img">
+                            <img class="img-r" src="imagesVideos/05-02b.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <!-- 05-03-->
+                <div class="step">
+                    <div tabindex="1" class="step-txt step-vid playVid-click">
+                        <h3>03</h3>
+                        <p>
+                            Click on the <strong><code>Patient</code></strong> <strong>Resource</strong>
+                            and click search,
+                            <br>
+                        </p>
+                    </div>
+                    <div class="step-vid">
+                        <!-- <video src="imagesVideos/0504.mp4" > -->
+                    </div>
+                </div>
+                <!-- 05-04 -->
+                <div class="step">
+                    <div   tabindex="1" class="step-txt">
+                        <h3>04</h3>
+                        <p>
+                            This returns a <strong><code><q>Bundle</q></code></strong>
+                        </p>
+                    </div>
+                    <div class="step-img">
+                        <img src="imagesVideos/05-04.png" >
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Part 6 - Query in Hapi Web UI -->
+        <div class="part">
+            <a tabindex="1" href="#" class="dropPart"><h2>Part 6 - Query in Hapi Web UI</h2></a>
+            <div class="steps-container ">
+                <!-- 06-01 -->
+                <div class="step">
+                    <div  tabindex="1" class="step-txt step-vid playVid-click">
+                        <h3>01</h3>
+                        <p>
+                            Get to the Hapi Web UI
+                            <br>
+                            <a target="_blank" href="https://hapi.fhir.org/">https://hapi.fhir.org/</a>
+                            <br>Click Patient, (double click to get search to work)
+                        </p>
+                    </div>
+                    <div class="step-vid">
+                        <video src="imagesVideos/06-01.mp4" >
+                    </div>
+                </div>
+                <!-- 06-02 -->
+                <div class="step">
+                    <div tabindex="1" class="step-txt step-vid playVid-click">
+                        <h3>02</h3>
+                        <p>
+                            Enter paramters, <q>test</q> for name
+                            <br>
+                            Click Search, (double click if it doesn't work)
+                            <br>
+                        </p>
+                    </div>
+                    <div class="step-vid">
+                        <video src="imagesVideos/06-02.mp4" >
+                    </div>
+                </div>
+                <!-- 06-03 -->
+                <div class="step">
+                    <div tabindex="1" class="step-txt">
+                        <h3>03</h3>
+                        <p>
+                            This returns a <strong><code><q>Bundle</q></code></strong> of type <strong><q>Patient</q></strong>
+                            containing the string <code><q>test</q></code> for <code><q>name</q></code>
+                        </p>
+                    </div>
+                    <div class="step-img">
+                        <img src="imagesVideos/06-03.png" >
+                    </div>
+                </div>
+                <!-- 06-04 -->
+                <div class="step">
+                    <div tabindex="1" class="step-txt">
+                        <h3>04</h3>
+                        <p>
+                            &emsp; Notice the <code><q>link</q></code> parameter containing , <code><q>relation</q></code>
+                            and <code><q>url</q></code>
+                            <br>
+                            &emsp; This allows us to <q>page</q> through results, when available
+
+                        </p>
+
+                    </div>
+                    <div class="step-img">
+                        <img src="imagesVideos/06-04.png" >
+                    </div>
+                </div>
+                <!-- 06-05 -->
+                <div class="step-col">
+                    <div tabindex="1" class="step-txt">
+                        <h3>05</h3>
+                        <p>
+                            Hapi's Web UI compared FHIR Documentation of <strong>Bundle</strong>
+                            <br>
+                            <a target="_blank" href="https://hl7.org/fhir/bundle.html">https://hl7.org/fhir/bundle.html</a>
+                        </p>
+                    </div>
+                    <div class="img-2-container">
+                        <div class="step-img">
+                            <img  class="img-l" src="imagesVideos/06-05a.png" alt="">
+                        </div>
+                        <div class="step-img">
+                            <img class="img-r" src="imagesVideos/06-05b.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <!-- 06-06 -->
+                <div class="step">
+                    <div tabindex="1" class="step-txt step-vid playVid-click">
+                        <h3>06</h3>
+                        <p>
+                            The <strong><code><q>Bundle</q></code></strong> <strong>Resource</strong>
+                            has different types,
+                        </p>
+                    </div>
+                    <div class="step-vid">
+                        <video src="imagesVideos/06-06.mp4" >
+                    </div>
+                </div>
+                <!-- 06-07 -->
+                <div class="step">
+                    <div tabindex="1" class="step-txt">
+                        <h3>07</h3>
+                        <p>
+                            We are interested in the <strong><code><q>searchSet</q></code></strong> type
+                        </p>
+                    </div>
+                    <div class="step-img">
+                        <img src="imagesVideos/06-07.png" >
+                    </div>
+                </div>
+                <!-- 06-08    -->
+                <div class="step">
+                    <div tabindex="1" class="step-txt">
+                        <h3>08</h3>
+                        <p>
+                            which appears in the servers response
+                            (The Last two steps seem irrelevant, but keep going to , search by id of patient)
+                        </p>
+                    </div>
+                    <div class="step-img">
+                        <img src="imagesVideos/06-08.png" >
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Part 7 - Search Full URL Patient Id -->
+        <div class="part">
+            <a   tabindex="1" href="#" class="dropPart"><h2>Part 7 - search Full URL Patient ID Bundle Vs Resource</h2></a>
+            <div class="steps-container ">
+                <!-- 07-01 -->
+                <div class="step">
+                    <div tabindex="1" class="step-txt step-vid playVid-click">
+                        <h3>01</h3>
+                        <p>
+                            Use the full UR of a <strong>Patient</strong> in request
+                        </p>
+                        <div class="code-container">
+                            <pre class="copy-code">
+https://hapi.fhir.org/baseR4/Patient/37</pre>	
+                        </div>
+                    </div>
+                    <div class="step-vid">
+                        <video src="imagesVideos/07-01.mp4" >
+                    </div>
+                </div>
+                <!-- 07-02 -->
+                <div class="step">
+                    <div tabindex="1" class="step-txt">
+                        <h3>02</h3>
+                        <p>
+                            This code returns the <strong><code><q>Patient</q></code></strong>
+                            <strong>Resource</strong>
+                        </p>
+                        <div class="code-container">
+                            <pre class="copy-code">
+GET http://hapi.fhir.org/baseR4/<span class="b">Patient/37</span></pre>	
+                        </div>
+                    </div>
+                    <div class="step-img">
+                        <img src="imagesVideos/07-02.png" >
+                    </div>
+                </div>
+                <!-- 07-03 -->
+                <div class="step">
+                    <div tabindex="1" class="step-txt">
+                        <h3>02</h3>
+                        <p>
+                            Format reutrns the <strong><code><q>Bundle </q></code></strong>
+                            <strong>Resource</strong>
+                        </p>
+                        <div class="code-container">
+                            <pre class="copy-code">
+http://hapi.fhir.org/baseR4/<span class="b">Patient?_id=37</span></pre>	
+                        </div>
+                    </div>
+                    <div class="step-img">
+                        <img src="imagesVideos/07-03.png" >
+                    </div>
+                </div>
+                <!-- 07-04 -->
+                <div class="step">
+                    <div tabindex="1" class="step-txt">
+                        <h3>04</h3>
+                        <p>
+                            The 
+                        </p>
+                    </div>
+                    <div class="step-img">
+                        <img src="imagesVideos" >
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Part - 8 Bundle Resource Extension -> 'relation' & 'url' -->
+        <div class="part">
+            <a tabindex="1" href="#" class="dropPart"><h2>Part 8 Bundle Resource Extension -> 'relation' & 'url' / curl </h2></a>
+            <div class="steps-container">
+                <!-- 08-01 -->
+                <div class="step">
+                    <div tabindex="1" class="step-txt">
+                        <h3>01</h3>
+                        <p>
+                            The Bundle is a container with the result, and has a parameter?(right word)?? 
+                            <br>
+                            <code><q>extension</q></code> that has <code><q>relation</q></code> and <code><q>url</q></code>
+                        </p>
+                    </div>
+                    <div class="step-img">
+                        <img src="imagesVideos" >
+                    </div>
+                </div>
+                <!-- 08-02 -->
+                <div class="step">
+                    <div tabindex="1" class="step-txt">
+                        <h3>02</h3>
+                        <p>
+                            Curl command to do the above examples, <span class="r">This page is a mess maybe go back and do after, Seach Videos Playlists</span>
+                        </p>
+                        <div class="code-container">
+                            <pre class="copy-code">
+curl --location --request GET http://hapi.fhir.org/baseR4/metadata --header 'Accept: application/fhir+json'</pre>	
+                        </div>
+                    </div>
+                    <div class="step-img">
+                        <img src="imagesVideos/08-02.png" >
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- Part 9 - POST , create a "Patient" -->
+        <div class="part">
+            <a tabindex="1" href="#" class="dropPart"><h2>Part 9 - POST , create a "Patient"</h2></a>
+            <div class="steps-container">
+                <!-- 01 -->
+                <div class="step-col">
+                    <div tabindex="1" class="step-txt">
+                        <h3>01</h3>
+                        <p>
+                            Maybe go back and do this, not related to what i have to do
+                        </p>
+                    </div>
+                    <div class="step-img">
+                        <!-- <img src="imagesVideos" > -->
+                    </div>
+                </div>
+            </div>
+        </div>     
+    </main>
+    <footer tabindex="1" id="footer"></footer>
+    
+</body>
+</html>

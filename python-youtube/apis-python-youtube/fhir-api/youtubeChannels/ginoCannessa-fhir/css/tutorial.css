@@ -1,0 +1,193 @@
+* {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+body > header {
+    display: flex;
+    border-bottom: 2px solid black;
+    /* justify-content: space-between; */
+    padding: 1% 2.5%;
+    align-items: center;
+    
+}
+body > header > .home-link > a{
+    border: 1px solid black;
+    display: inline-block;
+    font-size: 1.2rem;
+    padding: 25% 50%;
+    /* justify-self: flex-start; */
+}
+body > header > .page-title {
+    display: flex;
+    /* border: 2px solid blue; */
+    margin-left: 50%;
+    /* justify-self: flex-end; */
+    /* align-items: flex-end; */
+}
+.page-title > h1 {
+    /* box-shadow: 0 0 3px 3px orange; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-basis: 80%;
+    /* width: 80%; */
+    margin-right: 5%;
+}
+body > header > .page-title > .page-logo > img  {
+    flex-basis: 5%;
+    /* margin-left: 5%; */
+    max-width: 200px;
+    max-height: 100px;
+}
+.part {
+    /* border: 1px solid black; */
+    margin: 2% 2.5%;
+    display: flex;
+    flex-direction: column;
+}
+.steps-container{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid blue;
+}
+.steps-container > .step-col > .step-img > img {
+    max-width: 350px;
+}
+.steps-container > .step-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1% 0;
+}
+.step-col > .step-txt {
+    border: 1px solid black;
+    padding: 1.5%;
+    margin: 1.5% 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.question-txt {
+    font-family:   sans-serif, Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
+    border: 1px solid black;
+    display: flex;
+    width: 75%;
+    max-height: 250px;
+    /* justify-content: space-around; */
+    padding: 2.5%;
+    padding-bottom: 1%;
+}
+
+.question-txt > img {
+    width: 100%;
+    max-width: 50px;
+}
+.question-txt > p {
+    display: inline-block;
+    align-self: center;
+    margin-left: 5%;
+    padding-bottom: 2.5%;
+    /* border: 1px solid red; */
+}
+.answer-container {
+    font-family:   sans-serif, Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
+    border: 1px solid black;
+    display: flex;
+    width: 90%;
+    max-height: 550px;
+    overflow-y: scroll;
+    margin-top: .5%;
+    padding-top: 1.25%;
+}
+.answer-container > .answer-txt {
+    display: flex;
+    flex-direction: column;
+    /* align-self: center; */
+    margin-left: 5%;
+    /* padding-top: 15%; */
+    /* border: 1px solid red; */
+}
+
+/* .answer-container > .answer-txt{} */
+
+
+.part > .steps-container > .step {
+    /* border: 1px solid blue; */
+    display: flex;
+    justify-self: space-around;
+}
+.part > .steps-container > .step > .step-txt{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+
+
+}
+.part > .steps-container > .step > .step-txt > h3 {
+    align-self: flex-start;
+}
+.part > .steps-container > .step > .step-txt,
+.part > .steps-container > .step > .step-img,
+.part > .steps-container > .step > .step-vid{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1% 2.5%;
+    margin: 1% 2.5%;
+    flex-basis: 45%;
+    border: 1px solid orange;
+}
+.part > .steps-container > .step > .step-vid> video,
+.part > .steps-container > .step > .step-img > img {
+    width: 100%;
+    max-width: 500px;
+    max-height: 500px;
+}
+
+
+img:active,img:focus,img:hover,
+.step-txt:active,.step-txt:focus,.step-txt:hover,
+.question-txt:active,.question-txt:focus,.question-txt:hover,
+.dropPart:active,.dropPart:focus,.dropPart:hover{
+    box-shadow: 2px 2px 5px 2px blue;
+}
+.question:active,.question:focus,.question:hover{
+    box-shadow: 2px 2px 5px 2px red;
+}
+
+.background-change {
+    background-color: lightgray;
+}
+
+.my-question {
+    font-weight: 900;
+    padding: 1% 2%
+}
+
+.hide {
+    display: none;
+}
+.show {
+    display: inline-block;
+}
+
+
+
+footer {
+    padding: 0 2.5%;
+    margin-bottom: 5%;
+}
+
+.question {
+    box-shadow: 0 0 20px 5px rgb(255,0,0,.8);
+}
+
+.mdtxt {
+    font-size: .75rem !important;
+}
+
+.copy-code.full-width {
+    width: 100% !important;
+}
