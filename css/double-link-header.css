@@ -34,9 +34,6 @@ body > header > .img-container > img {
     padding: 5% 5%;
     padding-right:25%;
     text-wrap: nowrap;
-    /* white-space: none; */
-    /* width: fit-content; */
-    /* width: 15%; */
     text-decoration: none;
     font-size: bold;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
