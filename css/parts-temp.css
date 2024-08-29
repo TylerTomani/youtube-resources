@@ -1,0 +1,296 @@
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-bottom: 1px solid black;
+}
+header > .mainLinks {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* min-height: 15vh; */
+}
+header > .mainLinks > a{
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: whitesmoke;
+}
+header > .title-container {
+    flex-basis: 40%;
+    font-size: 70%;
+}
+header>.img-container {
+    flex-basis: 20%;
+    display: flex;
+    flex-direction: column;
+}
+
+header>.img-container>img {
+    height: 50%;
+    width: 60%;
+}
+.w-80 {
+    width: 80% !important;
+    min-width: 500px;
+}
+.w-100 {
+    width: 100% !important;
+    min-width: 500px;
+}
+
+.code-container {
+    background-color: lightyellow;
+    /* border: 1px solid black; */
+    max-width: 550px;
+    width: 98%;
+    margin-right: 2.5%;
+    max-height: 450px;
+    margin: 2.5% 2.5%;
+    width: 95%;
+    
+}
+
+.code-container>pre.copy-code {
+    background-color: black;
+    border:1px solid black;
+    color: white;
+    display: block;
+    font-size: 1rem;
+    padding: .5% 1%;
+    padding-left: 2%;
+    margin: .5% 1%;
+    margin-left: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: scroll;
+    display: inline-block;
+    font-size: .78rem;
+}
+.step-txt > .step {
+    margin: 1% 0;
+    display: flex;
+    width: 80%;
+    /* justify-content: space-between; */
+    border: 1px solid blue;
+}
+.step-txt > .step > .step-txt,
+.step-txt > .step > .step-img{
+    width: 50%;
+}
+.step-txt > .step > .step-txt {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 2.5%
+}
+.step-txt > .step > .step-img img {
+    width: 50%;
+}
+.img-2-container > .code-container > .copy-code:active,
+.img-2-container > .code-container > .copy-code:focus{
+    box-shadow: 0 0 4px 4px blue;
+}
+* {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.steps-container {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid blue;
+}
+
+.steps-container>.step {
+    /* border: 1px solid blue; */
+    display: flex;
+    justify-self: space-around;
+}
+
+.steps-container>.step>.step-txt {
+    flex-basis: 50%;
+    max-width: 50%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+.steps-container>.step>.step-txt>h3 {
+    align-self: flex-start;
+    justify-self: flex-start;
+    border: 3px solid red;
+}
+
+.steps-container>.step>.step-txt,
+.steps-container>.step>.step-img,
+.steps-container>.step>.step-vid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1% 2.5%;
+    margin: 1% 2.5%;
+    flex-basis: 50%;
+    border: 1px solid orange;
+}
+
+.part>.steps-container>.step>.step-img>img {
+    border: 1px solid black;
+}
+.part>.steps-container>.step>.step-vid>video {
+    border: 3px solid black;
+}
+.steps-container>.step>.step-vid>video,
+.steps-container>.step>.step-img>img {
+    width: 100%;
+}
+.steps-container>.step-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1% 0;
+}
+
+.step-col>.step-txt {
+    border: 1px solid black;
+    padding: 1.5%;
+    margin: 1.5% 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.img-4-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+.img-4-container > .step-img {
+    flex-basis: 30%;
+    max-height: 200px;
+    max-width: 200px;
+}
+.img-4-container > .step-img > img{
+    width: 90%;
+}
+.img-2-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 5%;
+}
+.img-2-container > .code-container{
+    /* justify-self: flex-start; */
+    /* border: 2px solid red; */
+    /* width: 98%; */
+}
+.img-2-container>.step-img>img,
+.img-2-container>.step-vid>video {
+    width: 80%;
+    max-height: 300px;
+}
+.part > .dropPart{
+    margin: .75% 0;
+}
+.part {
+    margin: 2% 2.5%;
+    display: flex;
+    flex-direction: column;
+}
+.steps-container>.step-col>.step-img>img {
+    max-width: 350px;
+}
+.steps-container>.step-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1% 0;
+}
+.step-col>.step-txt {
+    border: 1px solid black;
+    padding: 1.5%;
+    margin: 1.5% 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.img-2-container {
+    display: flex;
+    justify-content: center;
+}
+
+img:active,img:focus,
+img:hover,
+.step-txt:active,.step-txt:focus,
+.step-txt:hover,
+.question-txt:active,.question-txt:focus,
+.question-txt:hover,
+.dropPart:active,
+.dropPart:focus{
+    box-shadow: 2px 2px 4px 4px blue;
+    /* text-decoration: none; */
+}
+.step-txt:hover{
+
+    box-shadow: 1px 1px 4px 4px black !important;
+}
+.question:active,
+.question:focus,
+.question:hover {
+    box-shadow: 2px 2px 5px 2px red;
+}
+.background-change {
+    background-color: lightgray;
+}
+.hide {
+    display: none !important;
+}
+.show {
+    display: inline-block !important;
+}
+footer {
+    padding: 0 2.5%;
+    margin-bottom: 5%;
+}
+
+@media screen and (max-width: 909px) {
+    .steps-container > .step{
+        display: flex;
+    }
+    .steps-container>.step>.step-txt,
+    .steps-container>.step>.step-img,
+    .steps-container>.step>.step-vid {
+        /* background-color: blue; */
+        border: 2px dashed white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        /* padding: 1% 2.5%; */
+        /* margin: 1% 2.5%; */
+        width: 50%;
+        flex-basis: 50% !important;
+        border: 1px solid orange;
+    }
+    .step-txt > p {
+        width: 100%;
+        white-space: wrap;
+        overflow: scroll;
+        font-size: .8rem;
+    }
+    .step-txt > .code-container {
+        margin: 0 0 !important;
+        padding: 0 0 !important;
+        width: 100%;
+    }
+    .step-txt > .code-container > .copy-code{
+        /* margin: 0 0 !important; */
+        padding: 0 0 !important;
+        font-size: .8rem;
+    }
+    .step-col > .img-2-container >.code-container {
+        font-size: .65rem;
+        max-width: 40vmax;
+    }
+
+        
+}

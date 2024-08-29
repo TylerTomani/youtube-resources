@@ -1,0 +1,135 @@
+* {
+    margin: 0; padding: 0;
+}
+body > header {
+    border-bottom: 2px solid black;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0 2.5%;
+    align-items: center;
+    padding: .5% 0;
+    
+}
+header > #homeLink,
+header > #mainHomeLink {
+    border: 1px solid black;
+    padding: .5%;
+}
+body>header>.page-title>h1 {
+    font-size: 1.75rem;
+    align-self: flex-start;
+    border: 1px soli red;
+}
+
+header img {
+    max-height: 100px;
+    margin-top: 2.5%;
+}
+body>header>.page-logo {
+    display: flex;
+    flex-direction: column;
+
+}
+body>header> .page-logo>img {
+    flex-basis: 5%;
+    /* margin-left: 5%; */
+    max-width: 200px;
+    /* max-height: 100px !important; */
+    max-height: 100px !important;
+    /* border: 2px solid red; */
+    align-self: flex-end;
+    max-height: 124px;
+}
+
+.page-title {
+    display: flex;
+    flex-direction: column;
+}
+
+body >header > .title-container  > h1 {
+    
+}
+body >header > .title-container  > h2 {
+    font-size: .75rem;
+}
+
+body > header > .page-title > h2 {
+    font-size: .5rem;
+    align-self: flex-start;
+    border: 1px soli red;
+}
+#mainHomeLink{
+    border: 1px solid black;
+}
+#homeLink > a{
+    font-size: 1.2rem;
+    border: 1px solid black;
+    display: inline-block;
+    padding: 25% 50%;
+    height: 100%;
+    font-size: 1.2rem;
+    justify-self: flex-start;
+}
+body > header > .page-title {
+    display: flex;
+    margin-right: 5%;
+    gap: 1rem;
+}
+body > header > .notes {
+    display: flex;
+    flex-direction: column;
+    
+}
+body > header > .notes > textarea{
+    width: 100%;
+    min-width: 500px;
+    min-height: 80px;
+
+}
+body > header > .notes > h2{
+    font-size: .8rem;
+}
+textarea{
+    padding:  2.5%;
+    padding-top: 0;
+}
+
+.notes > #notesTextArea:active,.notes > #notesTextArea:focus,
+#homeLink:active,#homeLink:focus,
+#mainHomeLink:active,#mainHomeLink:focus{
+    box-shadow: 0px 0px 10px 5px orange;
+}
+
+@media screen and (max-width: 680px){
+    body > header > .home-link > #homeLink {
+        font-size: .7rem;
+        white-space: nowrap
+    }
+    body > header > .title-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        /* padding-left: 5%; */
+        align-items: center;
+    }
+    body > header > .title-container > h1{
+        font-size: .5rem !important;
+        padding-left: 5%;
+        align-self:  flex-start;
+        /* display: none; */
+    }
+    body > header > .title-container > h2 {
+        width: 80%;
+        white-space: wrap
+    }
+    body > header > .page-logo > img {
+        max-height: 60px !important;
+        /* display: none; */
+    }
+}
+@media screen and (max-width: 680px) {
+    body > header >.title-container > h1,
+    body > header >.title-container > h2{
+        display: none;
+    }
+}
