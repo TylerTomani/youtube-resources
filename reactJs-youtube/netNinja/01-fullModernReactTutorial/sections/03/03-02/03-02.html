@@ -1,0 +1,115 @@
+<div class="steps-container">
+    <h2>03-02 inline style {} css</h2>
+    <!-- 01-01 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>01</h4>
+            <p>
+
+                To add inline styles to an object, insert it into the <code>style</code> attribute as an object
+            </p>
+<div class="code-container">
+                <pre tabindex="1" class="copy-code">
+import './App.css';
+
+
+function App() {
+return (
+&lt;div className="App">
+ &lt;header className="App-header">
+  &lt;p>
+   Edit &lt;code>src/App.js&lt;/code> and save to reload.
+  &lt;/p>
+  &lt;<span class="m">a style={{ 
+    padding: '10rem' , 
+    background: 'white' , 
+    color: 'magenta' , 
+    }</span>}      
+   className="App-link"
+   href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
+   Learn React
+  &lt;/a>
+  &lt;/header>
+&lt;/div>
+);
+}
+
+export default App;
+</pre>
+            </div>
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/03/03-02/images/01.png">
+        </div>
+    </div>
+    <!-- 01-02 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>02</h4>
+            <p>
+                <span class="r">**Remember</span>
+                <code>class</code> is a keyword in javascript so we use <code class="m">className</code> camelcased
+                <!-- which get converted to class in react when displaye on the page -->
+            </p>
+        </div>
+        <div class="step-img">
+            <img src="sections/03/03-01/images/05.png">
+        </div>
+    </div>
+    <!-- 01-03 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>03</h4>
+            <p>
+                Clear the <code>App.css</code> files
+            </p>
+        </div>
+        <div class="step-img">
+            <img src="sections/03/03-02/images/03.png">
+        </div>
+    </div>
+    <!-- 01-04 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>04</h4>
+            <p>
+                Get css from his repo and paste it in,
+                or make your own
+            </p>
+            <p>
+                Create basic page in <code>App.js</code>
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+import './App.css';
+
+function App() {
+return (
+&lt;div className="App">
+    &lt;div className="content">
+        &lt;h1>App Content&lt;/h1>
+    &lt;/div>
+&lt;/div>
+);
+}
+
+export default App;</pre>
+            </div>
+            
+            <p>
+                <span class="r">
+                    Make sure you have an  
+                </span>
+                <code>export default App</code>
+                <span class="r">        
+                at the bottom</span>
+            </p>
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/03/03-02/images/04.png">
+        </div>
+    </div>
+    <button tabindex="1" id="nxtLesson">next lesson</button>
+</div>

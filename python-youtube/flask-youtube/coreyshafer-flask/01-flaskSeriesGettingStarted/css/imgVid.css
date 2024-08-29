@@ -1,0 +1,67 @@
+.img-2-container {
+    display: flex;
+    /* gap: 1rem; */
+    margin: 1% 0;
+}
+.img-2-container > .step-img,
+.img-2-container > .step-vid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-basis: 47.5;
+}
+.img-2-container > .step-img > img,
+.img-2-container > .step-vid > video{
+    width: 80%;
+}
+
+
+.answer-container > img {
+    width: 80%;
+    max-width: 40px;
+    margin: 0 1%;
+    margin-left: 3.3%;
+    /* min-height: 56px; */
+    max-height: 56px;
+}
+
+.enlargeImg{
+    position: relative;
+    top: -5%;
+    transform: scale(1.62);
+    transition: all 1s;
+}
+.denlargeImg {
+    position: static;
+    top:0;
+    transform: scale(1);
+    transition: all .55s;
+}
+.left-enlargeImg{
+    position: relative;
+    top: -5%;
+    transform: scale(1.62);
+    transition: all 1s;
+}
+.right-enlargeImg{
+    position: relative;
+    top: -5%;
+    transform: scale(1.62);
+    transition: all 1s;
+}
+
+
+.animate {
+    position: relative;
+    margin-right: 50%;
+    transform: scale(3.05);
+    transition: all .3s;
+    z-index: 1;
+}
+.deanimate {
+    position: static;
+    margin-right: 0;
+    transform: scale(1);
+    transition: all .3s;
+    z-index: 0;
+}

@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02-templates</title>
+    <link rel="stylesheet" href="../../../../../css/tutorial-temp-v2.css" />
+    <link rel="stylesheet" href="../../../../../css/resource-header-temp.css" />
+    <link rel="stylesheet" href="../../../../../../css/imgAnimate-v2.css">
+    <link rel="stylesheet" href="../../../../../../css/colors.css">
+    <link rel="stylesheet" href="../../../../../../css/copy-code.css">
+    <script module src="../../../../../../js/copy-code.js" defer></script>
+    <script module src="../../../../../js/letterFocus-docs.js" defer></script>
+    <script src="../../../../../js/playEnlargeVid.js" defer></script>
+    <script src="../../../../../js/dropPartStepFocus-v2.js" defer></script>
+    <script src="../../../../../js/loadpageNewTab.js" defer></script>
+    <script type="module" src="../../../../../js/img-enlarge-v1.js" defer></script>
+    <script type="module" src="../../../../../js/addRemoveTabs-v1.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="home-link">
+            <a tabindex="1" id="homeLink" href="../../corey-flask.htm">home&nbsp;-&nbsp;flask</a>
+        </div>
+        <div class="page-title">
+            <h1>coreyShafer</h1>
+            <h2>2 - Python Flask Tutorial: Full-Featured Web App Part 2 - Templates</h2>
+        </div>
+        <div class="page-logo">
+            <img class="img-logo" src="02.png" alt="">
+            <a tabindex="1" id="tutorial"  target="_blank" href="https://www.youtube.com/watch?v=QnDWIZuWYW0&list=PL-osiE80TeTs4UjLw5MM6OjgkjFeUxCYH&index=2
+        ">tutorial</a>
+        </div>
+    </header>
+    <main>
+    <!-- Part 1 - return full html (Templates)   -->
+        <div class="part">
+            <a id="part01" tabindex="1" href="#" class="dropPart"><h3>Part 1 - return full html (Templates) </h3></a>
+            <div class="steps-container ">
+                <!-- 01-01 -->
+                <div class="step">
+                    <div tabindex="1" class="step-txt">
+                        <h4>01</h4>
+                        <p>
+                            We use <code><span class="m">'''</span> <span class="m">'''</span></code>
+                            triple quotes to return multiple lines of htmm
+                        </p>
+                        <div class="code-container">
+                            <pre class="copy-code">
+from flask import Flask
+app = Flask(__name__)
+@app.route('/')
+@app.route('/home')
+def home():
+    return <span class="m">'''</span> 
+    &lt;h1>Home&lt;/h1>
+    &lt;p> Lorem ipsum dolor sit amet consectetur adipisicing elit...&lt;/p>
+    <span class="m">'''</span>	
+@app.route('/about')
+def about():
+    return '&lt;h1>About&lt;/h1>'
+
+if __name__ == '__main__':
+    app.run(debug=True)</pre>
+                        </div>
+                        <p>
+                            But this will get ugly fast
+                        </p>
+                    </div>
+                    <div class="step-img">
+                        <img src="imagesVideos/01-01.png" alt="">
+                    </div>
+                </div>
+                <!-- 01-02 -->
+                <div class="step">
+                    <h4>02</h4>
+                    <div tabindex="1" class="step-txt">
+                        <p>
+                            We can use templates by creating a templates folder within our directory. Create 
+                            a htm or html file for both <q>home</q> and <q>about</q>
+                        </p>
+                        <p class="r">You have to save html files in directory named "templates"</p>
+                        <p>
+                            Other wise it will NOT work
+                        </p>
+    
+                    </div>
+                    <div class="step-img">
+                        <img src="imagesVideos/01-02.png"></img>
+                    </div>
+                </div>
+                <!-- 01-03 -->
+                <div class="step">
+                    <div tabindex="1" class="step-txt">
+                        <h4>03</h4>
+                        <p>
+                            Now import <code class="mdblue">render_template</code> function from <code>flask</code>
+                            and use the <code>render_template</code> function in the <code class="m">return</code>
+                        </p>
+                        
+                        <div class="code-container">
+                            <pre class="copy-code">
+    from flask import Flask, <span class="mdblue">render_template</span>
+    app = Flask(__name__)
+    @app.route('/')
+    @app.route('/home')
+    def home():
+        <span class="m">return</span> <span class="mdblue">render_template</span>('home.htm')
+
+    if __name__ == '__main__':
+        app.run(debug=True)</pre>
+                        </div>
+                        <p>
+                            Do the same thing for the about page
+                        </p>
+                    </div>
+                    <div class="step-img">
+                        <img src="imagesVideos/01-03.png"></img>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Part 2 - using python data in HTML  (dummy data)-->
+        <div class="part">            
+            <a id="" tabindex="1" href="#" class="dropPart"><h3>Part 2 - using python data in HTML (dummy data)</h3></a>       
+            <div class="steps-container  ">
+                <!-- 02-01 -->
+                <div class="step">
+                    <div tabindex="1" class="step-txt">
+                        <h4>01</h4>
+                        <p>
+                            We can place python data into the html as a <span class="r">second argument</span> to 
+                            <code class="lc">render_template</code> 
+                        </p>
+                        <p>
+                            Then use <span class="r">{% for post in posts %}</span>
+                            and <code class="r">{% endfor %}</code>.
+                        </p>
+                        <div class="code-container">
+                            <pre class="copy-code">
+from flask import Flask, render_template
+app = Flask(__name__)
+
+posts = [{
+        'author': 'Corey Schafer',
+        'title': 'Blog Post 1',
+        'content': 'First post content',
+        'date_posted': 'April 20, 2018'
+    },
+    {
+        'author': 'Jane Doe',
+        'title': 'Blog Post 2',
+        'content': 'Second post content',
+        'date_posted': 'April 21, 2018'
+    }
+]
+
+@app.route('/')
+@app.route('/home')
+def home():
+    return <span class="lc">render_template</span>('home.htm', posts=<span class="r">posts</span> )
+@app.route('/about')
+def about():
+    return '&lt;h1>About&lt;/h1>'
+
+if __name__ == '__main__':
+    app.run(debug=True)</pre>
+                        </div>
+                    </div>
+                    <div class="step-img">
+                        <img src="imagesVideos/02-01.png" alt="">
+                    </div>
+                </div>
+                <!-- 02-02 -->
+                <div class="step">
+                    <div tabindex="1" class="step-txt">
+                        <h4>02</h4>
+                        <p>
+                            Now in the HTML do the following to use it
+                        </p>
+                        <div class="code-container">
+                            <pre class="copy-code">
+&lt;!DOCTYPE html>
+&lt;html lang="en">
+&lt;head>
+&lt;meta charset="UTF-8">
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0">
+&lt;title>Home&lt;/title>
+&lt;/head>
+&lt;body>
+&lt;h1>Home (rendered)&lt;/h1>
+{% for post in <span class="r">posts</span>%}
+    &lt;h1> {{ post.title }} &lt;/h1>
+    &lt;p> By {{ post.author }} on {{ post.data_posted }} &lt;/p>
+    &lt;p> {{ post.content }} &lt;/p>
+{% endfor %}
+&lt;/body>
+&lt;/html>             </pre>
+                        </div>
+                    </div>
+                    <div class="step-img">
+                        <img src="imagesVideos/02-02.png"></img>
+                    </div>
+                </div>
+            </div>
+        </div>
+       <!-- Part 3 - {% if title %}   -->
+       <div class="part">
+            <a id="" tabindex="1" href="#" class="dropPart"><h3> Part 3 - <code>{% if title %}</code> </h3></a>   
+            <div class="steps-container">   
+                <!-- 03-01 -->
+                <div class="step">
+                    <div tabindex="1" class="step-txt">
+                        <h4>01</h4>
+                        <p>
+                            We can use if conditionals, for example with the title, we can pass in 
+                            another variable into <code class="lc">render_template</code>, 
+                        </p>
+                        <div class="code-container">
+                            <pre class="copy-code">
+from flask import Flask, render_template
+app = Flask(__name__)
+
+posts = [
+    {
+        'author': 'Corey Schafer',
+        'title': 'Blog Post 1',
+        'content': 'First post content',
+        'date_posted': 'April 20, 2018'
+    },
+    {
+        'author': 'Jane Doe',
+        'title': 'Blog Post 2',
+        'content': 'Second post content',
+        'date_posted': 'April 21, 2018'
+    }
+]
+
+@app.route('/')
+@app.route('/home')
+def home():
+    return render_template('home.htm', posts=posts )
+@app.route('/about')
+def about():
+    return render_template('about.htm', <span class="r">title='about'</span>)
+
+if __name__ == '__main__':
+    app.run(debug=True)</pre>
+                        </div>
+                    </div>
+                    <div class="step-img">
+                        <img src="imagesVideos/03-01.png"></img>
+                    </div>
+                </div>
+                <!-- 03-02 -->
+                <div class="step">
+                    <div tabindex="1" class="step-txt">
+                        <p>
+                            Place the code below in the <q>home.htm</q> and <q>about.htm</q>
+                        </p>
+                        <div class="code-container">
+                            <pre class="copy-code">
+{% if title %}
+    &lt;title>Flask_Blog {{ title }}&lt;/title>
+{% else %}
+    &lt;title>{{ title }}&lt;/title>
+{% endif %}</pre>
+                        </div>
+                    </div>
+                    <div class="step-img">
+                        <img src="imagesVideos/03-02.png"></img>
+                    </div>
+                </div>
+                <!-- 03-03 -->
+                <div class="step">
+                    <div tabindex="1" class="step-txt">
+                        <p>
+                            If we change to url to the about page, we can see the title has changed
+                        </p>
+                    </div>
+                    <div class="step-img">
+                        <img src="imagesVideos/03-03.png"></img>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Part 4 - Template Comparitives   -->
+       <div class="part">
+            <a id="" tabindex="1" href="#" class="dropPart"><h3> Part 4 - Template Comparitives</h3></a>   
+            <div class="steps-container ">
+                <!-- 04-01 -->
+                <div class="step">
+                    <div tabindex="1" class="step-txt ">
+                        <h4>01</h4>
+                        <p>
+                            Create a new html or htm file and call it <q>layout.htm</q>,
+                            Copy and paste the html from 'about' or 'home' and delete any html that 
+                            is unique to the page
+                        </p>
+                        <div class="code-container">
+                            <pre class="copy-code">
+&lt;!DOCTYPE html>
+&lt;html lang="en">
+&lt;head>
+    &lt;meta charset="UTF-8">
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% if title %}
+    &lt;title>Flask_Blog {{ title }}&lt;/title>
+    {% else %}
+        &lt;title>{{ title }}&lt;/title>
+    {% endif %}    
+&lt;/head>
+&lt;body>
+
+&lt;/body>
+&lt;/html></pre>
+                        </div>
+                        <p>
+                            We now only have the html that is shared between 'about' and 'home' in the <q>layout.htm</q>
+                            file
+                        </p>
+                    </div>
+                    <div class="step-img">
+                        <img src="imagesVideos/04-01.png"></img>
+                    </div>
+                </div>
+                <!-- 04-02 -->
+                <div class="step">
+                    <div tabindex="1" class="step-txt">
+                        <p>
+                            Create a block within the <q>layout.htm</q> file where the html  unique to the page
+                            will be contained. Here we call the block <q>content</q>. 
+                        </p>
+                        <div class="code-container">
+                            <pre class="copy-code">
+&lt;!DOCTYPE html>
+&lt;html lang="en">
+&lt;head>
+    &lt;meta charset="UTF-8">
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% if title %}
+    &lt;title>Flask_Blog {{ title }}&lt;/title>
+    {% else %}
+        &lt;title>{{ title }}&lt;/title>
+    {% endif %}    
+&lt;/head>
+&lt;body>
+    {% block content %}{% endblock %}
+    
+&lt;/body>
+&lt;/html></pre>
+                        </div>
+                    </div>
+                    <div class="step-img">
+                        <img src="imagesVideos/04-02.png"></img>
+                    </div>
+                </div>
+                <!-- 04-03 -->
+                <div class="step">
+                    <div tabindex="1" class="step-txt step-vid playVid-click">
+                        <p>
+                            Within about and home, delete the html that is contained within the <q>layout.htm</q>
+                            file. Use the <code class="m">extends "layout.htm"</code> keyword and the about and home will 
+                            inherit the html from layout
+                        </p>
+                        <div class="code-container">
+                            <pre class="copy-code">
+{% extends 'layout.htm' %}
+{% block content %}
+    &lt;h1>Home (rendered)&lt;/h1>
+    {% for post in posts%}
+        &lt;h2> {{ post.title }} &lt;/h2>
+        &lt;p> By {{ post.author }} on {{ post.data_posted }} &lt;/p>
+        &lt;p> {{ post.content }} &lt;/p>
+    {% endfor %}
+{% endblock content %}
+          </pre>
+                        </div>
+                    </div>
+                    <div class="fi step-vid">
+                        <video src="imagesVideos/04-03.mp4"></video>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Part 5 -  add bootstrap to each page  -->
+       <div class="part">
+            <a id="" tabindex="1" href="#" class="dropPart"><h3>Part 5 - add bootstrap to each page</h3></a>   
+            <div class="steps-container ">
+                <!-- 05-01 -->
+                <div class="step-col">
+                    <div tabindex="1" class="step-txt">
+                        <h4>01</h4>
+                        <p>
+                            Visit <a target="_blank" href="https://getbootstrap.com/docs/5.3/getting-started/introduction/">getbootstrap.com</a>
+                            to copy the cdn links and javascript links then paste them into your layout.htm or html file so they can be applied to each page of your site.
+                            Place the following code into the <code>layout.htm</code> template
+                        </p>
+                        <div class="code-container">
+                            <pre class="copy-code">
+    &lt;meta charset="utf-8">
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1">
+    &lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+                        </div>
+                        <div class="code-container">
+                            <pre class="copy-code">
+    &lt;script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">&lt;/script>
+    &lt;script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">&lt;/script>
+    &lt;script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous">&lt;/script></pre>	
+                        </div>
+                        <div class="code-container">
+                            <h5>layout.htm</h5>
+                            <pre class="copy-code">
+&lt;!DOCTYPE html>
+&lt;html lang="en">
+&lt;head>
+    &lt;meta charset="utf-8">
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1">
+    &lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+    {% if title %}
+    &lt;title>Flask_Blog {{ title }}&lt;/title>
+    {% else %}
+        &lt;title>{{ title }}&lt;/title>
+    {% endif %}    
+&lt;/head>
+&lt;body>
+    &lt;div class="<span class="m">container</span>">
+
+        {% block content %}{% endblock %}
+    &lt;/div>
+    &lt;script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">&lt;/script>
+    &lt;script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">&lt;/script>
+    &lt;script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous">&lt;/script>
+&lt;/body>
+&lt;/html></pre>	
+                        </div>
+                    </div>
+                </div>
+                <!-- 05-02 -->
+                <div class="step">
+                    <div tabindex="1" class="step-txt rbshadow">
+                        <h4>02</h4>
+                        <p>
+                            The <span class="m">container</span> class is a standard class from bootstrap,
+                            <span class="r">This might be out of date</span>
+                        </p>
+                        <div class="code-container">
+                            <pre tabindex="1" class="copy-code">
+&lt;!DOCTYPE html>
+&lt;html lang="en">
+&lt;head>
+&lt;meta charset="utf-8">
+&lt;meta name="viewport" content="width=device-width, initial-scale=1">
+&lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+{% if title %}
+&lt;title>Flask_Blog {{ title }}&lt;/title>
+{% else %}
+&lt;title>{{ title }}&lt;/title>
+{% endif %}
+&lt;/head>
+
+&lt;body>
+&lt;div class="<span class="m">container</span>">
+{% block content %}{% endblock %}
+&lt;/div>
+&lt;script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+crossorigin="anonymous">&lt;/script>
+&lt;script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+crossorigin="anonymous">&lt;/script>
+&lt;script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"
+integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa"
+crossorigin="anonymous">&lt;/script>
+&lt;/body>
+
+&lt;/html>
+                            </pre>
+                        </div>        
+                    </div>
+                    <div class="step-img">
+                        <img src="imagesVideos/">
+                    </div>
+                </div>
+                <!-- 05-03 -->
+                <div class="step">
+                    <div tabindex="1" class="step-txt">
+                        <h4>03</h4>
+                        <p>
+                            To use css file, create a static folder and place the file in there
+                        </p>
+                        <div class="code-container">
+                            <h5>static &rarr; css &rarr; styles.css</h5>
+                            <pre tabindex="1" class="copy-code">
+.container {
+    margin: 0 5%;
+    width: 80%;
+    border: 2px solid black ;
+}
+                            </pre>
+                        </div>
+                        
+                    </div>
+                    <div class="step-img">
+                        <img src="imagesVideos/05-03.png">
+                    </div>
+                </div>
+                <!-- 05-03b -->
+                <div class="step-col">
+                    <div tabindex="1" class="step-txt">
+                        <h4>03b</h4>
+                    </div>
+                    <div class="img-2-container">
+                        <div class="step-img">
+                            <img src="imagesVideos/05-03a.png"></img>
+                        </div>
+                        <div class="step-img">
+                            <img src="imagesVideos/05-03b.png"></img>
+                        </div>
+                    </div>
+                </div>
+             </div>
+         </div>
+
+        <!-- Part 6  - add nav bar header  -->
+        <div class="part">
+            <a tabindex="1" href="#" class="dropPart"><h3>Part 6 - add header navbar, sidebar</h3></a>
+            <div class="steps-container">
+                <!-- 06-01 -->
+                <div class="step">
+                    <div tabindex="1" class="step-txt">
+                        <h4>01</h4>
+                        <p>
+                            Add this header to the layout.htm file, you can find the source codes at 
+                            <br>
+                            <a target="_blank" href="https://github.com/CoreyMSchafer/code_snippets/blob/master/Python/Flask_Blog/snippets/navigation.html">python/.....</a>
+                        </p>
+                        <div class="code-container">
+                            <pre tabindex="1" class="copy-code">
+    &lt;header class="site-header">
+        &lt;nav class="navbar navbar-expand-md bg-steel ">
+            &lt;div class="container">
+            &lt;a class="navbar-brand mr-4" href="/">Flask Blog&lt;/a>
+            &lt;button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+                &lt;span class="navbar-toggler-icon">&lt;/span>
+            &lt;/button>
+            &lt;div class="collapse navbar-collapse" id="navbarToggle">
+                &lt;div class="navbar-nav mr-auto">
+                &lt;a class="nav-item nav-link" href="/">Home&lt;/a>
+                &lt;a class="nav-item nav-link" href="/about">About&lt;/a>
+                &lt;/div>
+                &lt;!-- Navbar Right Side --&gt;
+                &lt;div class="navbar-nav">
+                &lt;a class="nav-item nav-link" href="/login">Login&lt;/a>
+                &lt;a class="nav-item nav-link" href="/register">Register&lt;/a>
+                &lt;/div>
+            &lt;/div>
+            &lt;/div>
+        &lt;/nav>
+    &lt;/header>
+                            </pre>
+                        </div>
+                        
+                    </div>
+                    <div class="step-img">
+                        <img src="imagesVideos/06-01.png">
+                    </div>
+                </div>
+                <!-- 06-02 -->
+                <div class="step">
+                    <div tabindex="1" class="step-txt">
+                        <h4>02</h4>
+                        <p>
+                            replace the <code>{% block content %}</code> with the following, 
+                            you can find the source codes at
+                            <br>
+                            <a target="_blank"
+                                href="https://github.com/CoreyMSchafer/code_snippets/blob/master/Python/Flask_Blog/snippets/main.html">python/.....</a>
+                        </p>
+                        <div class="code-container">
+                            <pre tabindex="1" class="copy-code">
+&lt;main role="main" class="container">
+    &lt;div class="row">
+        &lt;div class="col-md-8">
+            {% block content %}{% endblock %}
+        &lt;/div>
+        &lt;div class="col-md-4">
+            &lt;div class="content-section">
+                &lt;h3>Our Sidebar&lt;/h3>
+                &lt;p class='text-muted'>You can put any information here you'd like.
+                &lt;ul class="list-group">
+                    &lt;li class="list-group-item list-group-item-light">Latest Posts&lt;/li>
+                    &lt;li class="list-group-item list-group-item-light">Announcements&lt;/li>
+                    &lt;li class="list-group-item list-group-item-light">Calendars&lt;/li>
+                    &lt;li class="list-group-item list-group-item-light">etc&lt;/li>
+                &lt;/ul>
+                &lt;/p>
+            &lt;/div>
+        &lt;/div>
+    &lt;/div>
+&lt;/main>
+                            </pre>
+                        </div>
+                        
+                    </div>
+                    <div class="step-img">
+                        <img src="imagesVideos/06-02.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Part 7 - add custome css  -->
+       <div class="part">
+        <a id="" tabindex="1" href="#" class="dropPart"><h3>Part 7 - add custom css</h3></a>   
+        <div class="steps-container ">
+            <!-- 07-01 -->
+            <div class="step">
+                <div tabindex="1" class="step-txt">
+                    <h4>01</h4>
+                    <p>
+                        To use css file, create a static folder and place the file in there
+                    </p>
+                    <div class="code-container">
+                        <h5>static &rarr; css &rarr; styles.css</h5>
+                        <pre tabindex="1" class="copy-code">
+.container {
+    margin: 0 5%;
+    width: 80%;
+    border: 2px solid black ;
+}
+                        </pre>
+                    </div>
+            
+                </div>
+                <div class="step-img">
+                    <img src="imagesVideos/05-03.png">
+                </div>
+            </div>
+            <!-- 07-01 -->
+            <div class="step">
+                <div tabindex="1" class="step-txt">
+                    <h4>02</h4>
+                    <p>
+                        This is the styles on his github, copy and paste it into your styles.css script
+                    </p>
+                    <div class="code-container">
+                        <pre tabindex="1" class="copy-code">
+body {
+  background: #fafafa;
+  color: #333333;
+  margin-top: 5rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #444444;
+}
+
+.bg-steel {
+  background-color: #5f788a;
+}
+
+.site-header .navbar-nav .nav-link {
+  color: #cbd5db;
+}
+
+.site-header .navbar-nav .nav-link:hover {
+  color: #ffffff;
+}
+
+.site-header .navbar-nav .nav-link.active {
+  font-weight: 500;
+}
+
+.content-section {
+  background: #ffffff;
+  padding: 10px 20px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  margin-bottom: 20px;
+}
+
+.article-title {
+  color: #444444;
+}
+
+a.article-title:hover {
+  color: #428bca;
+  text-decoration: none;
+}
+
+.article-content {
+  white-space: pre-line;
+}
+
+.article-img {
+  height: 65px;
+  width: 65px;
+  margin-right: 16px;
+}
+
+.article-metadata {
+  padding-bottom: 1px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid #e3e3e3
+}
+
+.article-metadata a:hover {
+  color: #333;
+  text-decoration: none;
+}
+
+.article-svg {
+  width: 25px;
+  height: 25px;
+  vertical-align: middle;
+}
+
+.account-img {
+  height: 125px;
+  width: 125px;
+  margin-right: 20px;
+  margin-bottom: 16px;
+}
+
+.account-heading {
+  font-size: 2.5rem;
+}
+                        </pre>
+                    </div>
+                    
+                </div>
+                <div class="step-img">
+                    <img src="imagesVideos/07-02.png">
+                </div>
+            </div>
+            <div class="step">
+                <div tabindex="1" class="step-txt">
+                    <p>
+                        Fix the margin and padding on your own accord, for now this is what it should look from the script
+                        above
+                    </p>
+         
+                </div>
+                <div class="step-img">
+                    <img src="imagesVideos/07-02b.png"></img>
+                </div>
+            </div>
+            <div class="step">
+                <div tabindex="1" class="step-txt">
+                    <p class="r">
+                        This lesson is super long, I'm having an anxiety mental breakdown but i'm calm i'm writing, Place custom css in a directory called 
+                        <strong><span class="m">static</span></strong> call the file <q>main.css</q>
+                    </p>
+                </div>
+                <div class="step-img">
+                    <img src="imagesVideos/14.png"></img>
+                </div>
+            </div>
+
+            <div class="step">
+                <div tabindex="1" class="step-txt">
+                    <p>
+                        add the <code class="m">url_for</code> in the <q>flaskblog.py</q> script
+                    </p>
+                </div>
+                <div class="step-img">
+                    <img src="imagesVideos/15.png"></img>
+                </div>
+            </div>
+            <div class="step">
+                <div tabindex="1" class="step-txt">
+                    <p>
+                        <Strong>Please for the love of god last step</Strong>,
+                        use the <code class="m">url_for</code> function class whatever the hell it is, in 
+                        a  link tag in the head of the <q>layout.htm</q>
+                    </p>
+                    <div class="code-container">
+                        <pre class="copy-code">
+&lt;!DOCTYPE html>
+&lt;html lang="en">
+&lt;head>
+    &lt;meta charset="utf-8">
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1">
+    &lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <span class="m">&lt;link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}"></span>
+    {% if title %}
+    &lt;title>Flask_Blog {{ title }}&lt;/title>
+    {% else %}
+        &lt;title>{{ title }}&lt;/title>
+    {% endif %}    
+&lt;/head></pre>
+                    </div>
+                    <p>
+                        Add the above <span class="m">code</span> to the head in <q>layout.htm</q> or html and the page will look the same
+                    </p>
+                </div>
+                <div class="step-img">
+                    <img src="imagesVideos/16.png"></img>
+                </div>
+            </div>
+         </div>
+         <h1 class="r">Go back and add article blog html and style to {% block content %}</h1></h5>
+
+
+    </main>
+</body>
+</html>

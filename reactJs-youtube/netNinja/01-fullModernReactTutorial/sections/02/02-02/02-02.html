@@ -1,0 +1,190 @@
+<div class="steps-container">
+    <h2>02-02 Start NodeJs</h2>
+    <!-- 01-01 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>01</h4>
+            <p>
+                Change into the directory of the location of the node project
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+cd nodeProjects</pre>
+            </div>
+            <p>
+                Create a react app project with 
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+npx create-react-app <span class="m">dojo-blog</span></pre>
+            </div>
+            <p>
+                <code class="m">dojo-blog</code> is the name of the react app being created
+            </p>
+        </div>
+        <div class="step-img">
+            <img src="sections/02/02-02/images/01.png">
+        </div>
+    </div>
+    <!-- 01-02 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>02</h4>
+            <p>
+                Change into the directory of the project
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+cd nodeProjects</pre>
+            </div>
+            <p>
+                open the <code>dojo-blog</code> in code
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+code dojo-blog</pre>
+            </div>
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/02/02-02/images/01-02.png">
+        </div>
+    </div>
+    <!-- 01-03 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>03</h4>
+            <p>
+                The <code>node_modules</code> directorys contains everything for node, is a large file, 
+                and often not included in git repos, if so, install it 
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+npm install</pre>
+            </div>
+            
+        </div>
+        <div class="step-vid">
+            <video src="sections/02/02-02/images/01-03.mov">
+        </div>
+    </div>
+    <!-- 01-04 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>04</h4>
+            <p>
+                The scripts to run the react index file are in the <code>package.json</code>
+                file in <code>scripts :</code>
+            </p>
+            <p>
+                You can run the following scripts command in the console
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+npm run start</pre>
+            </div>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+npm run build</pre>
+            </div>
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/02/02-02/images/01-04.png">
+        </div>
+    </div>
+    <!-- 01-05 -->
+    <div class="step">
+    <div tabindex="1" class="step-txt playVid-click">
+        <h4>05</h4>
+        <p>
+            Use the following script command to open <code>index.html</code>
+            in a browswer
+        </p>
+        <div class="code-container">
+            <pre tabindex="1" class="copy-code">
+npm run start</pre>
+        </div>
+        
+    </div>
+    <div class="step-vid">
+        <video src="sections/02/02-02/images/01-05.mov">
+    </div>
+    </div>
+    <!-- 01-06 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt playVid-click">
+            <h4>06</h4>
+            <p>
+                Make a change to <code>App.js</code> files, 
+                <code>App.js</code> is injected into <code>index.js</code>
+                which grabs the <code>div id="root"</code> element and injects 
+                itself with the <code>function App()</code> from <code>App.js</code>
+            </p>
+        </div>
+        <div class="step-vid">
+            <video src="sections/02/02-02/images/01-06.mov">
+        </div>
+    </div>
+    <!-- 01-07 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt playVid-click">
+            <h4>07</h4>
+            <p>
+                Delete uneccesary files we are not using 
+            </p>
+            <ul>
+                <li><code>App.text.js</code></li>
+            </ul>
+            <p>
+                and 
+            </p>
+            <ul>
+                <li><code>reportWebVitals.js</code></li>
+            </ul>
+            <p class="r">
+                make sure to remove the import from <code>index.js</code>
+            </p>
+        </div>
+        <div class="step-vid">
+            <video src="sections/02/02-02/images/01-07.mov">
+        </div>
+    </div>
+    <!-- 01-08 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt playVid-click">
+            <h4>08</h4>
+            <p>
+                If you delete anything, make sure you delete it from any scripts, like
+                the <code>logo.png</code>
+            </p>
+        </div>
+        <div class="step-vid">
+            <video src="sections/02/02-02/images/01-08.mov">
+        </div>
+    </div>
+    <!-- 01-09 -->
+    <div class="step">
+        <div tabindex="1" class="step-txt">
+            <h4>09</h4>
+            <h3>summary</h3>
+            <p>
+                The <code>index.js</code> script gets injected into the <code>div id='root'</code> element.
+                The <code class="lsg">App()</code> function gets put in the <code>index.js</code> by doing the following 
+            </p>
+            <div class="code-container">
+                <pre tabindex="1" class="copy-code">
+root.render(
+&lt;React.StrictMode>
+    <span class="lsg">&lt;App /></span>
+&lt;/React.StrictMode>
+);</pre>
+            </div>
+            
+        </div>
+        <div class="step-img">
+            <img src="sections/">
+        </div>
+    </div>
+    <button tabindex="1" id="nxtLesson">next lesson</button>
+</div>

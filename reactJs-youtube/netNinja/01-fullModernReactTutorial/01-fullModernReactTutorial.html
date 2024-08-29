@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01-fullModernReactTutorial-netNinja-</title>
+    <link rel="stylesheet" href="css/tutorial-temp.css">
+    <link rel="stylesheet" href="css/lesson-temp.css">
+    <link rel="stylesheet" href="css/colorsFonts.css">
+    <link rel="stylesheet" href="../../../../../../../css/documentation-templates/copy-code.css">
+    <script type="module" src="../../../../../Resources/js/sections-temp-2.js" defer></script>
+    <script type="module" src="../../../../../Resources/js/lessons-temp-2.js" defer></script>
+    <script type="module" src="../../../../../Resources/js/copy-code-resources.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav id="mainLinksContainer">
+            <div id="mainLinks">
+                <a tabindex="1" id="backlink" href="../../reactJs-youtube.html">&larr;back</a>
+                <a tabindex="1" id="homelink" href="../../../../../index.html">Home (main)</a>
+                <a tabindex="1" id="regexCmds" target="_blank" href="../../../../../Shortcuts/regex-cmds/regex-cmds.html">regex</a>
+                <a tabindex="1" id="programShorcuts" target="_blank"
+                    href="../../../../../Shortcuts/programShorcuts.html">program Shorcuts</a>
+            </div>
+            <div class="img-container">
+                <a tabindex="1" id="tutorialLink" target="_blank" href="https://www.youtube.com/watch?v=j942wKiXFu8&list=PL4cUxeGkcC9gZD-Tvwfod2gaISzfRiP9d">
+                    <img src="data:image/jpeg;base64,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">
+                </a>
+            </div>
+        </nav>
+        <h1>01- Full Modern React Tutorial</h1>    
+    </header>
+    <nav tabindex="1" class="section-lesson-title">
+        <span id="section-lesson-titles"><span id="section-title">Section</span><span id="lesson-title">&rarr;lesson</span></span>
+    </nav>
+    <main>
+        <aside tabindex="1">
+            <ul class="sections-container">
+                <!-- s1 - Intro / Install -->
+                <li class="section-container">
+                    <a  tabindex="1" class="section" href="sections/01/01.html">Full React Tutorial #1 - Introduction</a>
+                </li>
+                <!-- s2 -->
+                <li class="section-container">
+                    <a tabindex="1" class="section" href="sections/02/02.html">
+                        Full React Tutorial #2 - Creating a React Application (node.js)
+                    </a>
+                    <ul class="sub-section ">
+                        <li><a tabindex="1" href="sections/02/02-01/02-01.html">1. Install NodeJs
+                             </span>
+                        </a></li>
+                        <li><a tabindex="1" href="sections/02/02-02/02-02.html">2. Start NodeJs
+                             </span>
+                        </a></li>
+                    </ul>
+                </li>
+                <!-- s3 -->
+                <li class="section-container">
+                    <a  tabindex="1" class="section" href="sections/03/03.html">
+                        Full React Tutorial #3 - Components & Templates
+                    </a>
+                    <ul class="sub-section ">
+                        <li><a  tabindex="1" href="sections/03/03-01/03-01.html">1. React Components
+                            </a>
+                        </li>                        
+                        <li><a  tabindex="1" href="sections/03/03-02/03-02.html">1. inline styles {} css</span>
+                            </a>
+                        </li>                        
+                
+                    </ul>
+                </li>
+                <!-- s4 -->
+                <li class="section-container">
+                    <a  tabindex="1" class="section" href="sections/4/04.html">
+                        Full React Tutorial #4 - Dynamic Values in Templates (variables)
+                    </a>
+                </li>
+                <!-- s5 -->
+                <li class="section-container">
+                    <a  tabindex="1" class="section" href="sections/5/05.html">
+                        Full React Tutorial #5 - Multiple Components
+                    </a>
+                </li>
+                <!-- s6 -->
+                <li class="section-container">
+                    <a tabindex="1" class="section" href="sections/6/06.html">
+                        Full React Tutorial #6 - Adding Styles (css and inline)
+                    </a>
+                </li>
+                <!-- s7 -->
+                <li class="section-container">
+                    <a  tabindex="1" class="section" href="sections/7/07.html">
+                        Full React Tutorial #7 - Click Events
+                    </a>
+                </li>
+            </ul>
+        </aside>
+        <div tabindex="1" id="mainTargetDiv">
+            <h3>Welcome </h3>
+            <p>
+                This contains the code and examples from the net ninja's youtube playlist
+            </p>
+            <h4>01- Full Modern React Tutorial</h4> 
+            <div id="mainPlaceholder" class="steps-container ">
+                <div class="step">
+                    <div tabindex="1" class="step-txt">
+                        <p>
+                            Click here for full playlist Full Playlist
+                            <br>
+                            <a tabindex="1" target="1"
+                                href="https://www.youtube.com/watch?v=j942wKiXFu8&list=PL4cUxeGkcC9gZD-Tvwfod2gaISzfRiP9d">Full
+                                Modern React Playlist</a>
+                            or the picture in the top right corner of the page
+                        </p>
+                    </div>
+                    <div class="step-img">
+                        <img src="images/playlist-screenshot.png">
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+    </main>
+    
+    
+</body>
+</html>
