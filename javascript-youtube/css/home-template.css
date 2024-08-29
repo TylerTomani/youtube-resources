@@ -1,0 +1,64 @@
+* {margin: 0;padding: 0;}
+header > .home-link{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+header > .home-link > a {
+    display: inline-block;
+    font-size: 1.5rem;
+    text-decoration: none;
+    border: 1px solid black;
+    padding: 10% 25%;
+}
+header > .home-link > a:active,header>.home-link>a:focus,
+header>.home-link>a:hover {
+    box-shadow: 0 0 3px 3px blue;
+}
+header {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 2px solid blue;
+}
+header > img {
+    max-width: 100px;
+    max-height: 100px;
+}
+
+.webpages-container {
+    padding: 1% 2.5%;
+    
+}
+.webpage {
+    display: flex;
+    flex-direction: column;
+}
+.webpages-container > .webpage > a{
+    border: 2px solid blue;
+    padding-left: 2.5%;
+    display: inline-block;
+}
+.webpage img {
+    max-width: 150px;
+    max-height: 150px;
+}
+.webpage-tutorials {
+    display: flex;
+    /* margin: 0% 5%; */
+    /* margin-left: .5%; */
+    /* padding: 0 2.5%; */
+}
+.webpage-tutorials >.tutorial-page {
+    border: 1px solid blue;
+    flex-basis: 10%;
+    /* margin: 1% 0%; */
+    padding: 1% 2.5%;
+}
+
+.hide {
+    display: none;
+}
+.tutorial-page:active,.tutorial-page:focus,.tutorial-page:hover,
+.webpage > a:active,.webpage>a:focus,.webpage>a:hover{
+    box-shadow: 0 0 4px 4px blue;
+}

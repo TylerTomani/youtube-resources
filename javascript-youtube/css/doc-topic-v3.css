@@ -1,0 +1,112 @@
+* {margin:0; padding:0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+main {
+    margin: 0 2.5%;
+    padding: 0 2.5%;
+    padding-left: 0;
+}
+.resources-container {
+    display: flex;
+    flex-direction: column;
+}
+.resources-container > .resource-container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 1% 0;
+}
+.resource-container> header {
+    display: inline-block;
+    width: 90%;
+    max-height: 100px;
+    padding-left: 1.5%;
+    display: flex;
+    border: 2px solid blue;
+    align-items: center;
+}
+.resource-container> header > h3{
+    font-size: 2rem;
+}
+.resource-container> header > img {
+    /* border: 4px solid red; */
+    width: 10%;
+    align-self: flex-end;
+}
+.sub-resources-container{
+    display: flex;
+    border: 1px solid black;
+    /* border-top: 0; */
+    /* border-right: 0; */
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: .5%;
+    margin-left: 1.25%;
+    width: 85%;
+    padding: .5% 0 ;
+    padding-left: 1.25%;
+}
+.sub-resource-container{
+    flex-basis: 15%;
+    margin: 0 2.5%;
+}
+.sub-resource-container > .sub-resource{
+    margin: 1% 2%;
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 1%;
+    white-space: none;
+    padding: 0 2.5%;
+    max-width: 200px;
+    max-height: 125px;
+    border: 1px solid black;
+}
+
+.sub-resource>img {
+    width: 100%;
+    /* height: 50% !important; */
+    max-height: 100px;
+    margin-bottom: 2.5%;
+    /* margin: 2.5%; */
+}
+.sub-resource > .tutorials-container {
+    margin-top: 1%;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+
+
+.sub-resource:active,.sub-resource:focus{
+    box-shadow: 0px 0px 5px 5px yellow;
+    background-color: lightblue;
+    border: 2px solid blue;
+    background-color: white;
+    position: relative;
+    bottom: 2%;
+    z-index: 20;
+    transition: all 250ms;
+}
+.session:active,.session:focus,
+.project:active,.project:focus,.project:hover,
+.playlist-container:active,.playlist-container:focus,
+.resource:active,.resource:focus{
+        box-shadow: 2px 3px 3px 5px lightblue;
+        background-color: lightblue;
+        border: 2px solid blue;
+        background-color: white;
+        position: relative;
+        bottom: 2%;
+        z-index: 20;
+        transition: all 250ms;
+}
+/* Sessions */
+.hide {
+    display: none !important;
+}
+.show {
+    display: inline-block;
+}
