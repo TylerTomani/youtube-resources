@@ -7,8 +7,8 @@ const c = canvas.getContext('2d')
 
 <div class="code-container"><pre tabindex="0" class="copy-code">
 const gravity = 1.5
-const <span class="m">playerSpeed</span> = 9
-let <span class="y">backgroundSpeed</span> = 5</pre></div>    
+const <span class="m">playerSpeed</span> = 20
+let <span class="y">backgroundSpeed</span> = 10</pre></div>    
 let <span class="gr">scrollOffset</span> = 0</pre></div>    
 <div class="code-container"><pre tabindex="0" class="copy-code">
 const keys = {
@@ -46,7 +46,7 @@ class Player {
     update() {
         this.position.x += this.velocity.x
         this.position.y += this.velocity.y
-        if (player.position.y + player.height + player.velocity.y < canvas.height) { 
+        if (player.position.y + player.height + player.velocity.y &lt; canvas.height) { 
             this.velocity.y += gravity 
         } else {
             this.velocity.y = 0

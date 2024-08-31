@@ -93,6 +93,17 @@ addEventListener('keydown', e => {
             }
         }   
     }
+
+    if(!isNaN(letter)){
+        let intLetter = parseInt(letter)
+        if(intLetter <= arrScripts.length){
+
+            htmlScript = arrScripts[intLetter]
+            htmlScript = `./scripts-html/${htmlScript}`
+            loadScript(htmlScript)
+            displayPartTitle(intLetter - 1)        
+        }
+    }
 })
 
 nxtBtn.addEventListener('click', e => {
@@ -130,7 +141,6 @@ function loadScript(injectScript) {
         })
         .catch(error => console.error('Error loading script:', error));
 }
-
 function displayPartTitle(iScript){
     iScript += 1
     footer.innerHTML = ``
@@ -150,8 +160,7 @@ function displayPartTitle(iScript){
             partTitle.innerText = 'part 4 - platform'
             break
         case 5:
-            partTitle.innerHTML = `part 5 - platform(s) & screen move
-            <br> win screen `
+            partTitle.innerHTML = `part 5 - platform(s) & screen move & win screen `
             footer.innerHTML = `<p> Once the player moves 5,000 pixels to the right 
             make win screen for now, using <code class='gr'>scrolOffset</code>
             to track player position
@@ -243,7 +252,8 @@ function displayPartTitle(iScript){
             removePopup()
             break
         case 10:
-            partTitle.innerHTML = `10-(Full Code Tap) Go back and add sprite movement
+            partTitle.innerHTML = `Part 10 - (Full Code Tap)`
+            titleTxt.innerHTML = ` Go back and add sprite movement
             <br> <span class='r'> Fix Logic for mouse down and up</span>`
 
             removePopup()
