@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 body {
-    /* background-color: rgb(173, 216, 230,.2); */
+    background-color: rgb(173, 216, 230);
 
 }
 body > header a:focus,
