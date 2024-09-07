@@ -110,9 +110,7 @@ mainAside.addEventListener('keydown', e => {
     }
     
 })
-navBar.addEventListener('focus', e => {
-    targetDivFocused = false    
-})
+navBar.addEventListener('focus', e => {targetDivFocused = false    })
 navBar.addEventListener('keydown', e => {
     let letter = e.key.toLowerCase()
     let key = e.keyCode
@@ -179,12 +177,7 @@ targetDiv.addEventListener('keydown', e => {
         
             
     }    
-    // if(letter == 'c'){
-    //     const mainCode = document.querySelector('#mainCode')
-    //     if(mainCode){
-    //         mainCode.focus()
-    //     }
-    // }
+    
 })
 export function getSectionContainer(parent){
     if(parent.classList.contains('section-container')){
@@ -272,9 +265,10 @@ sections.forEach(el => {
             scrollTo(0, 0)
         }
         if(letter == 'c'){
-            // const mainCode = document.querySelector('#mainCode')
             targetDivFocused = true
+        
         }        
+        
         if(letter == 'j'){
             const sectionContainer = getSectionContainer(e.target)
             const lessons = sectionContainer.querySelectorAll('.sub-section > li > a')
@@ -331,6 +325,7 @@ lessons.forEach(el => {
     })
     el.addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
+        
         if (letter == 's') {
             const subSection = getSectionContainer(e.target)
             const section = subSection.querySelector('.section')
@@ -344,6 +339,7 @@ lessons.forEach(el => {
         }
         if(letter == 'c'){
             targetDivFocused = true
+            
             
         }
         
@@ -421,8 +417,8 @@ addEventListener('keydown', e => {
             // regexCmdsLink.scrollIntoView({ behavior: 'smooth', block: 'start' });
             break   
         case 'p':
-            if(!keys.shift.pressed){
-                programShorcutsLink.focus()
+            if(!keys.shift.pressed ){
+                // programShorcutsLink.focus()
             }
             break
         case 't':

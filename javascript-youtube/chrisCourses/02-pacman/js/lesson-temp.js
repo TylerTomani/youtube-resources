@@ -42,10 +42,12 @@ export function stepTxtListeners(){
 
         el.addEventListener('keydown', e => {
             let letter = e.key.toLowerCase()
-            if(letter == 'c' && !keys.meta.pressed){
+            if (letter == 'c' && !keys.meta.pressed) {
                 const mainCode = document.querySelector('#mainCode')
+                console.log(mainCode)
                 if (mainCode && !mainCodesFocused && !stepFocused) {
                     mainCode.focus()
+
                 }
             }
             
@@ -58,10 +60,12 @@ export function stepTxtListeners(){
         })
         el.addEventListener('keydown', e => {
             let letter = e.key.toLowerCase()
-            if (letter == 'c' && !keys.meta.pressed ){
+            if (letter == 'c' && !keys.meta.pressed) {
                 const mainCode = document.querySelector('#mainCode')
-                if(mainCode && !mainCodesFocused){
+                console.log(mainCode)
+                if (mainCode && !mainCodesFocused && !stepFocused) {
                     mainCode.focus()
+                    
                 }
             }
             
@@ -171,7 +175,7 @@ export function stepTxtListeners(){
         el.addEventListener('keydown', e => {
             let letter = e.key.toLowerCase()
             // console.log(keys.shift.pressed)
-            console.log(keys.shift.pressed)
+            // console.log(keys.shift.pressed)
             cycleCodes(letter,e)
             
         });
