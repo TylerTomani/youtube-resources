@@ -1,0 +1,99 @@
+
+<div class="steps-container">
+    <h4>03-01 - Draw Player</h4>
+    <h5>import image</h5>
+    <!-- 01-->
+    <div class="step">
+        <div tabindex="0" class="step-txt">
+            <h4>01</h4>
+            <p>
+                Get the block image from his repo at
+                <a target="_blank" href="https://github.com/codebasics/python_projects/tree/main/1_snake_game/resources">
+                    https://github.com/codebasics/python_projects/tree/main/1_snake_game/resources
+                </a>
+                save it in the same directory as project script
+            </p>
+        </div>
+        <div class="step-img">
+            <img src="sections/03/03-01/images/01.png">
+        </div>
+    </div>
+    <!-- 02-->
+    <div class="step-col ">
+        <div class="step">
+            <div tabindex="0" class="step-txt">
+                <h4>02</h4>
+                <p>
+                    import the image into the <code class="m-fix">block</code> with 
+                    <code><span class="m-fix">pygame.image.load()</span> .<span class="r-fix">convert</span>()</code>,
+                    Don't Forget <span class="r">convert()</span> at the end
+                    variable
+                </p>
+                <div class="code-container">
+                    <pre tabindex="0" class="copy-code mdtxt main-code">
+<span class="b-fix">block</span> = <span class="m-fix lgtxt">pygame.image.load</span>('images/block.jpeg').<span class="r-fix">convert()</span>
+block_x = 100
+block_y = 100
+surface.blit(block,(block_x, block_y))
+                </div>
+                <p>
+                    Documentation for <code class="m-fix">pygame.image.load()</code>
+                    is here
+                    <a target="_blank"
+                        href="https://www.pygame.org/docs/ref/image.html?highlight=frombuffer#:~:text=pygame.image.load-,load%20new%20image%20from%20a%20file%20(or%20file%2Dlike%20object),-pygame.image.save">
+                        https://www.pygame.org/docs/ref/image.html?highlight=frombuffer
+                    </a>
+                </p>
+            </div>
+            <div class="step-img">
+                <img src="sections/03/03-01/images/02.png" alt="">
+            </div>
+        </div>
+        <div class="step-col-in">
+            <div class="step-txt-in">
+                <p>
+                    draw the <span class="b-fix">block</span> after 
+                    <code>surface.<span class="y-fix">fill((255,255,255))</span></code>.
+                    use the <span class="o-fix">blit()</span> method to draw it on
+                    the surface. Take the image as first argument, then x and y in <span class="lsg">(x,y)</span>
+                </p>
+                <p class="r">** Make this code so if clicked, you can focus to invidiual parts like 
+                    in mario chris courses
+                </p>
+                <div class="code-container">
+                    <pre tabindex="0" class="copy-code main-code mdtxt" id="mainCode">
+<div class="code-container"><pre class="copy-code">
+import pygame
+from pygame.locals import *
+if __name__ == '__main__':
+    pygame.init()
+    surface = pygame.display.set_mode((900,300))</span>
+    surface.<span class="y-fix">fill((255,255,255))</span></pre></div>
+
+    <span class="b-fix">block</span> = <span class="m-fix">pygame.image.load</span>('images/block.jpg').<span class="r-fix">convert()</span>
+    <span class="lsg-fix">block_x</span> = 100
+    <span class="lsg-fix">block_y</span> = 100
+    surface.blit(<span class="o-fix">block</span>,(<span class="lsg-fix">block_x</span>,<span class="lsg-fix">block_y</span>))
+    pygame.display.flip()
+
+    running = True
+    while running:
+
+        for event in pygame.event.get():
+            if event.type == KEYDOWN:
+                if event.key == K_ESCAPE or event.key == K_q:
+                    running = False
+            if event.type == QUIT:
+                running = False</pre>
+        
+        
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    
+    <button tabindex="0" id="nxtLesson">next lesson</button>
+</div>

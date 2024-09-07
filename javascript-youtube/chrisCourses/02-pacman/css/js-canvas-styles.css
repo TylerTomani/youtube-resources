@@ -3,12 +3,12 @@ main {
 }
 canvas {
     border: 1px solid black;
-    width: 100%; 
+    /* width: 50%;  */
     /* flex-grow: 1; */
     /* height: 50vh;  */
     z-index: 5; 
     overflow: hidden;
-    background-color: blue !important;
+    /* background-color: blue !important; */
 }
 #jsCanvasScriptContainer {
     width: 100%;
@@ -19,7 +19,7 @@ canvas {
 
 }
 #scriptsContainer {
-    background-color: black;
+    background-color: darkslategray;
     overflow: hidden;
     scroll-behavior: none;
     /* max-width: 400px; */
@@ -44,6 +44,10 @@ canvas {
     justify-content: flex-end;
     background-color: (0,0,0,0);
 }
+#scriptsContainer>#xExitContainer> #xBtn:active,#scriptsContainer>#xExitContainer>#xBtn:focus,
+#scriptsContainer>#xExitContainer>#xBtn:hover{
+    box-shadow: 1px -2px 2px 3px cyan;
+}
 #scriptsContainer>#xExitContainer> #xBtn{
     position: absolute;
     margin-right: 1%;
@@ -59,7 +63,7 @@ canvas {
 .popped-up {
     position: absolute;
     width: 50%;
-    max-width: 400px;
+    max-width: 330px;
     font-size: 40% !important;
     top: 0;
     right: 0;

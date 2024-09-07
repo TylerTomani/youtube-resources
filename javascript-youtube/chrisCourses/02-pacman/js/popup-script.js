@@ -19,12 +19,18 @@ export function popScriptWindow(){
         if(letter == 'shift'){
             keys.shift.pressed  = true
         }
+        
+        
         if(keys.shift.pressed && letter == 'p'){
             togglePopUp()
         }
         
     })
     xBtn.addEventListener('keydown', e => {
+        togglePopUp()
+    })
+    xBtn.addEventListener('click', e => {
+        e.preventDefault()
         togglePopUp()
     })
 
@@ -36,6 +42,7 @@ export function popScriptWindow(){
         } else {
             xExitContainer.classList.add('display-none')
         }
+        scrollTo(0, 0)
 
         
     }

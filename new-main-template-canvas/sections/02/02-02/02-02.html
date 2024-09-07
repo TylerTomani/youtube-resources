@@ -1,0 +1,145 @@
+
+<div class="steps-container">
+    <h3>02-02 - Create Window</h3>
+    <!-- 01 -->
+    <div class="step">
+        <div tabindex="0" class="step-txt">
+            <h4>01</h4>
+            <p>
+                &emsp;Keep the window up using a <code><span class="o">while</span> <span class="b-fix">True</span></code>
+                loop with the <code class="b-fix">running</code> variable. Import
+                <code class="m-fix">from pygame.locals import *</code>.
+                to get keyboard events to use
+                <a target="_blank"
+                    href="https://www.pygame.org/docs/ref/locals.html#:~:text=pygame%20constants%20with%20a%20from%20pygame.locals%20import%20*.">
+                    https://www.pygame.org/docs/ref/locals.html
+                </a>
+            </p>
+        
+        </div>
+        <div class="step-vid">
+            <video
+            poster="sections/02/02-02/images/01-thumb.png"
+             src="sections/02/02-02/images/01.mov">
+        </div>
+    </div>
+    <!-- 02 -->
+    <div class="step-col ">
+        <div class="step">
+            <div tabindex="0" class="step-txt">
+                <h3>02</h3>
+                <sup class="r">** Make this video faster</sup>
+                <p>
+                    &emsp;While <code class="b-fix">runing</code>, loop through the <code>pygame.<span class="lsg-fix">event</span>.<span class="r">get()</span></code>
+                    method and get the <code><span class="lsg-fix">event</span>.<span class="r">type</span></code>
+                </p>
+                <p>
+                    &emsp;We can check and print out the <code class="r">type</code> <code class="g">KEYDOWN</code>
+                    and check <code><span class="m">event</span>.<span class="y-fix">key</span></code>
+                </p>
+    
+    
+            </div>
+            <div class="step-vid">
+                <video 
+                poster="sections/02/02-02/images/02-thumb.png" 
+                src="sections/02/02-02/images/02.mp4">
+            </div>
+        </div>
+        <div class="step-col-in">
+            <div class="step-txt-in">
+                <p>
+                    Notice how the window doesn't close, but the ASCI numbers are being printed
+                    <span class="r">** You will have to restart vs code if you do this</span>
+                </p>
+                <div class="code-container">
+                    <pre tabindex="0" class="copy-code main-code">
+import pygame
+<span class="m-fix">from pygame.locals import *</span>
+
+if __name__ == '__main__':
+    pygame.inti()
+    surface = pygame.display.set_mode((900,300))
+    pygame.display.flip()
+
+    running = <span class="b-fix">True</span>
+    <span class="o">while</span> <span class="b-fix">running</span>:
+    for <span class="m-fix">event</span> in pygame.<span class="m-fix">event</span>.<span class="r-fix">get</span>():
+        if <span class="m-fix">event</span>.<span class="r-fix">type</span> == <span class="l">KEYDOWN</span>:
+            print(event.<span class="y-fix">key</span>)
+                    </pre>
+    
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 03 -->
+    <div class="step-col ">
+        <div class="step">
+            <div tabindex="0" class="step-txt">
+                <h3>03</h3>
+                <p>
+                    To close the window check for the <code><span class="m-fix">type</span></code> <code><span class="g">QUIT</span></code>
+                    and or <code><span class="y-fix">key</span></code> <code><span class="g">K_ESCAPE</span></code>
+                </p>
+            </div>
+            <div class="step-vid">
+                <video poster="sections/02/02-02/images/03-thumb.png" 
+                src="sections/02/02-02/images/03.mov">
+            </div>
+        </div>
+        <div class="step-col-in">
+            <div class="step-txt-in">
+                <p>
+                    Now we can click the x or hit the escape (ASCII 27) to close the window, remember to set <code class="b-fix">running</code>
+                    to <code>False</code>, and use <code>surface.<span class="r-fix">fill()</span></code> to change background color. 
+                    Do before <code class="r">flip()</code>
+                </p>
+                <div class="code-container">
+                    <pre tabindex="0" class="copy-code main-code" id="mainCode">
+import pygame 
+from pygame.locals import *
+
+if __name__ == "__main__":
+    pygame.init()
+    surface = pygame.display.set_mode((800,400))
+    surface.<span class="r">fill</span>((255,255,255))
+
+    pygame.display.<span class="r">flip()</span>
+
+    running = True
+    while running:
+        for event in pygame.event.get():
+            if event.type == KEYDOWN:
+                print(event.key)
+                if <span class="m-fix">event</span>.<span class="y-fix">key</span> == K_ESCAPE:
+                    running = False
+            if event.type == QUIT:
+                running = False
+
+                        
+                    </pre>
+    
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 04 -->
+    <div class="step">
+        <div tabindex="0" class="step-txt">
+            <h4>04</h4>
+            <p>
+                Find the documentation for pygame.event's <code class="m">events</code> and <code class="y-fix">keys</code>
+                under the pygame.locals documentation from here or googling pygame locals
+                <a target="_blank" href=""></a>
+
+
+            </p>
+        </div>
+        <div class="step-vid">
+            <video poster="sections/02/02-02/images/04-thumb.png" src="sections/02/02-02/images/04.mov">
+        </div>
+    </div>
+
+    <button tabindex="0" id="nxtLesson">next lesson</button>
+</div>

@@ -1,7 +1,7 @@
 import { addCopyCodes } from "./copy-code.js"
 import { stepTxtListeners } from "./lesson-temp.js"
 import { popScriptWindow } from "./popup-script.js"
-import { injectJsScripts } from "./canvas-js-scripts/loadJsScripts.js"
+import { injectJsScripts } from "../sections/loadJsScripts.js"
 
 
 export const navBar = document.querySelector('.section-lesson-title')

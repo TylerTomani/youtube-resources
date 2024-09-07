@@ -1,0 +1,105 @@
+
+<div class="steps-container">
+    <h3>02-01 - Create Window</h3>    
+    <!-- 01 -->
+    <div class="step-col ">
+        <div class="step">
+            <div tabindex="0" class="step-txt">
+                <h4>01</h4>
+                <p>
+                    We use <code class="b-fix">init()</code>, 
+                    <code class="g">set_mode</code> to 
+                    create the window,
+                </p>
+                <div class="code-container">
+                    <pre tabindex="0" class="copy-code">
+pygame.<span class="b-fix">init()</span>
+surface = pygame.display.<span class="g">set_mode</span>((900,300))
+pygame.display.<span class="gr">flip</span>()</pre>
+                </div>
+                <p>
+                    <code class="gr">flip()</code> is needed to display 
+                    it <strong>But</strong>
+                </p>
+            </div>
+            <div class="step-vid">
+                <video poster="sections/02/02-01/images/01-thumb.png" 
+                src="sections/02/02-01/images/01.mov">
+            </div>
+        </div>
+        <div class="step-col-in">
+            <div class="step-txt-in">
+                <p>
+                    <span class="r">**NOTICE in the Video</span>
+                    the screen appears briefly behind vs code and in front of the browser,
+                    <span class="r">AND IF IT DOESN'T WORK</span> change
+                     python interpreter from 3.10.9, or back to 3.13 and
+                    (Install pygame in venv) if not working from default
+                </p>
+                <div class="code-container">
+                    <pre tabindex="0" class="copy-code main-code" id="">
+import pygame
+
+if __name__ == '__main__':
+    pygame.<span class="b-fix">init()</span>
+    surface = pygame.display.<code class="g">set_mode(</code>(900,300)<span class="g">)</span>
+    pygame.display.flip()</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 02 -->
+    <div class="step-col ">
+        <div class="step">
+            <div tabindex="0" class="step-txt">
+                <h4>02</h4>
+                <p>
+                    import the time library and use sleep for 3 seconds
+                </p>
+                
+                
+            </div>
+            <div class="step-vid">
+                <video poster="sections/02/02-01/images/02-thumb.png" src="sections/02/02-01/images/02.mov">
+            </div>
+        </div>
+        <div class="step-col-in">
+            <div class="step-txt-in">
+                <p>
+                  <span class="r">NOTICE</span> how it now stays open for 2 seconds.
+                </p>
+                <div class="code-container">
+                    <pre tabindex="0" class="copy-code main-code" id="mainCode">
+import pygame
+
+if __name__ == '__main__':
+    pygame.<span class="b-fix">init()</span>
+    surface = pygame.display.<code class="g">set_mode(</code>(900,300)<span class="g">)</span>
+    pygame.display.flip()</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 03 -->
+    <div class="step-col">
+        <div tabindex="0" class="step-txt">
+            <h4>03</h4>
+            <p>
+                Visit Pygame documentation <a target="_blank" href="https://www.pygame.org/docs/">https://www.pygame.org/docs/</a> for infomation on function, methods, flag ...
+            </p>
+            <p>
+                It's a little confusing, you have to dig around, review documentation on the the above
+            </p>
+            <ul>
+                <li>pygame.init()</li>
+                <li>pygame.display.set_mode</li>
+                <li>pygame.display.flip()</li>
+            </ul>
+        </div>
+        <!-- <div class="step-vid">
+            <video poster="sections/02/02-01/images/03-thumb.png" src="sections/02/02-01/images/03.mov">
+        </div> -->
+    </div>
+    <button tabindex="0" id="nxtLesson">next lesson</button>
+</div>

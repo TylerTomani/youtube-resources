@@ -1,0 +1,52 @@
+
+<div class="steps-container">
+    <h3>02 - Start Game & Documentation</h3>
+    <!-- 01 -->
+    <div class="step-col">
+        <div tabindex="0" class="step-txt">
+            <h4>01</h4>
+            <h5>Open & Close window surface</h5>
+            <div class="code-container">
+                <pre tabindex="0" id="mainCode" class="copy-code ">
+import pygame 
+from pygame.locals import *
+
+if __name__ == "__main__":
+    pygame.init()
+    surface = pygame.display.set_mode((800,400))
+    pygame.display.flip()
+
+    running = True
+    while running:
+        for event in pygame.event.get():
+            if event.type == KEYDOWN:
+                print(event.key)
+                if <span class="m-fix">event</span>.<span class="y-fix">key</span> == K_ESCAPE:
+                    running = False
+            if event.type == QUIT:
+                running = False
+
+            </div>
+            
+        </div>
+        <div class="step-img">
+            <!-- <img src="sections/01/images/01.png"> -->
+        </div>
+    </div>
+    <!-- 02 -->
+    <div class="step">
+        <div tabindex="0" class="step-txt">
+            <h4 class="r">02 WARNING</h4>
+            <p>
+                If pygame isn't working, try swtiching the compiler or 
+                creating a venv in the directory and installing pygame there,
+            </p>
+        </div>
+        <div class="step-vid">
+            <video 
+            poster="sections/02/images/01-thumb.png"
+            src="sections/02/images/01.mov">
+        </div>
+    </div>
+    <button tabindex="0" id="nxtLesson">next lesson</button>
+</div>
