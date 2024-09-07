@@ -1,19 +1,9 @@
 
 export function injectJsScripts(){
-    // let injectScript = `./js/canvas-js-scripts/03-js-drawMove.html`;
-    const scripts = []
-    // let injectScript2 = `./js/canvas-js-scripts/03-js-drawMove.js`;
-    // ./01/01-01 /01-01 - js.js
-    
     const jsCanvasScriptContainer = document.querySelector('#jsCanvasScriptContainer')
-    const jsParenCode = jsCanvasScriptContainer.querySelector(' #mainCode')
+    const jsParenCode = jsCanvasScriptContainer.querySelector(' #mainCodeInject')
     const tempScript = document.getElementById('tempScript')
     const titleJsScript = document.getElementById('titleJsScript')
-
-    // const injectScript = `./sections/01/01-js.js`;
-    // let pathscript = `./sections/${titleJsScript.textContent}`
-    // loadScript(pathscript);
-    // console.log(pathscript)
     let injectScript = `./sections/${titleJsScript.textContent}`;
     console.log(injectScript);
     loadScript(injectScript);

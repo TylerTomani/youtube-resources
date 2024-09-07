@@ -6,6 +6,8 @@ export function popScriptWindow(){
     const scriptsContainer = document.querySelector("#scriptsContainer")
     const xExitContainer = document.querySelector("#xExitContainer")
     const xBtn = document.querySelector('#xBtn')
+    const mainCode = document.querySelector('#mainCode')
+    const popUp = document.querySelector('.popup')
     const keys = {
         shift : {
             pressed : false
@@ -27,7 +29,14 @@ export function popScriptWindow(){
         
     })
     xBtn.addEventListener('keydown', e => {
-        togglePopUp()
+        let letter = e.key.toLowerCase()
+        if(letter == 'enter'){   
+            togglePopUp()
+        }
+        if(letter == 'tab'){
+            e.target.setAttribute('tabindex','-1')
+            mainCode.focus()
+        }
     })
     xBtn.addEventListener('click', e => {
         e.preventDefault()
@@ -40,11 +49,16 @@ export function popScriptWindow(){
         if(scriptsContainer.classList.contains('popped-up')){
             xExitContainer.classList.remove('display-none')
         } else {
-            xExitContainer.classList.add('display-none')
+            // xExitContainer.classList.add('display-none')
         }
-        scrollTo(0, 0)
-
-        
+        scrollTo(0, 0)       
     }
+    popUp.addEventListener('keydown', e => {
+        let letter = e.key.toLowerCase()
+        if(letter == 'tab'){
+            e.preventDefault()
+            xBtn.focus()
+        }
+    })
 
 }

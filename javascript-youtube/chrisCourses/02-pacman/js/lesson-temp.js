@@ -20,6 +20,9 @@ export function stepTxtListeners(){
     const targetDiv = document.getElementById('targetDiv')
     const stepTxtInsCopyCodes = document.querySelectorAll('.step-txt-in > .code-container > .copy-code')
     const keys = {
+        shift: {
+            pressed: false
+        },
         meta: {
             pressed: false
         }
@@ -167,15 +170,29 @@ export function stepTxtListeners(){
         });
         el.addEventListener('keydown', e => {
             let letter = e.key.toLowerCase()
-            if ((letter == 'c' && !keys.meta.pressed) && mainCodesFocused) {
-                console.log(iMainCode)
-                e.preventDefault()
-                iMainCode = (iMainCode + 1) % mainCodes.length
-                mainCodes[iMainCode].focus()
-                console.log(mainCodes[iMainCode])
-            }
+            // console.log(keys.shift.pressed)
+            console.log(keys.shift.pressed)
+            cycleCodes(letter,e)
+            
         });
     })
+    function cycleCodes(letter,e){
+        if (!keys.shift.pressed) {
+            if ((letter == 'c' && !keys.meta.pressed) && mainCodesFocused) {
+                console.log('C')
+                // e.preventDefault()
+                iMainCode = (iMainCode + 1) % mainCodes.length
+                mainCodes[iMainCode].focus()
+            }
+        } else if(keys.shift.pressed){
+            if ((letter == 'c' && !keys.meta.pressed) && mainCodesFocused) {
+                console.log('C')
+                // e.preventDefault()
+                iMainCode = (iMainCode + mainCodes.length - 1) % mainCodes.length
+                mainCodes[iMainCode].focus()
+            }
+        }
+    }
     stepTxts.forEach(el => {    
         el.addEventListener('focus', e => {
             mainCodesFocused = false
@@ -225,7 +242,6 @@ export function stepTxtListeners(){
         })    
     })
     stepTxtInsCopyCodes.forEach(el => {    
-        
         el.addEventListener('keydown', e => {
             let key = e.keyCode
             let letter = e.key.toLowerCase()
@@ -245,12 +261,7 @@ export function stepTxtListeners(){
             if(img){
                 handleImg(img,key, e)
             }
-            // if(letter == 'c' && !stepFocused && mainCodesFocused){
-            //     if(mainCodes.length > 0){
-            //         mainCodes[iMainCode].focus()
-            //         iMainCode = (iMainCode + 1) % mainCodes.length
-            //     }
-            // }
+            
             
         })    
     })
@@ -262,7 +273,6 @@ export function stepTxtListeners(){
             if (e.target.classList.contains('main-code')) {
                 toggleImgSize(vid, true,e)
             }
-
         }
     }
     function toggleImgSize(img,zoomBack,e) {
@@ -290,7 +300,6 @@ export function stepTxtListeners(){
 
     }
     // video handling
-    
     allVideos.forEach(el => {
         el.addEventListener('click', e => {
             e.preventDefault()
@@ -392,6 +401,15 @@ export function stepTxtListeners(){
             keys.meta.pressed = false
         }
     })
+    targetDiv.addEventListener('keyup', e => {
+        let letter = e.key.toLowerCase()
+        if(letter == 'meta'){
+            keys.meta.pressed = false
+        }
+        if (letter == 'shift') {
+            keys.shift.pressed = false
+        }
+    })
     targetDiv.addEventListener('focus', e => { targetDivFocus = true })
     targetDiv.addEventListener('focusin', e => { targetDivFocus = true })
     targetDiv.addEventListener('focusout', e => {
@@ -415,6 +433,10 @@ export function stepTxtListeners(){
         if(letter == 'meta'){
             keys.meta.pressed = true        
         }
+        if (letter == 'shift') {
+            keys.shift.pressed = true
+        }
+        
         if(letter != 'n'){
             if(!isNaN(letter)){
                 denlargeAllImages()
@@ -486,7 +508,8 @@ export function stepTxtListeners(){
             if(letter == 'a'){
                 lastFocusedElement.focus()
             }
-            if(letter == 'enter'){   
+            if(letter == 'shift'){   
+                keys.shift.pressed = true
             }
         })
     }
