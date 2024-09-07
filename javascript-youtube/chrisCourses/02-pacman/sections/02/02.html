@@ -1,52 +1,61 @@
 
 <div class="steps-container">
-    <h3>02 - Start Game & Documentation</h3>
-    <!-- 01 -->
-    <div class="step-col">
-        <div tabindex="0" class="step-txt">
-            <h4>01</h4>
-            <h5>Open & Close window surface</h5>
-            <div class="code-container">
-                <pre tabindex="0" id="mainCode" class="copy-code ">
-import pygame 
-from pygame.locals import *
-
-if __name__ == "__main__":
-    pygame.init()
-    surface = pygame.display.set_mode((800,400))
-    pygame.display.flip()
-
-    running = True
-    while running:
-        for event in pygame.event.get():
-            if event.type == KEYDOWN:
-                print(event.key)
-                if <span class="m-fix">event</span>.<span class="y-fix">key</span> == K_ESCAPE:
-                    running = False
-            if event.type == QUIT:
-                running = False
-
+    <h3>01-01 - Constructor Parameter
+    as {} object</h3>    
+    <h4 id="titleJsScript">02/02-js.html</h4>
+    <div id="jsCanvasScriptContainer">
+        <canvas id="canvas" class="" tabindex="0"></canvas>
+        <div id="scriptsContainer" class="popup">
+            <div id="" class="code-container ">
+                <pre tabindex="0" class="copy-code main-code" id="mainCode">
+    
+                </pre>
             </div>
-            
-        </div>
-        <div class="step-img">
-            <!-- <img src="sections/01/images/01.png"> -->
+            <div id="xExitContainer" class="">
+                <button tabindex="0" id="xBtn">x</button>
+            </div>
         </div>
     </div>
     <!-- 02 -->
-    <div class="step">
-        <div tabindex="0" class="step-txt">
-            <h4 class="r">02 WARNING</h4>
-            <p>
-                If pygame isn't working, try swtiching the compiler or 
-                creating a venv in the directory and installing pygame there,
-            </p>
+    <div class="step-col ">
+        <div class="step">
+            <div tabindex="0" class="step-txt">
+                <h4>02</h4>
+                <p>
+    TBD
+                </p>
+                
+            </div>
+            <div class="step-img">
+                <img
+                src="sections/01/01-01/images/02.png">
+            </div>
         </div>
-        <div class="step-vid">
-            <video 
-            poster="sections/02/images/01-thumb.png"
-            src="sections/02/images/01.mov">
+        <div class="step-col-in">
+            <div class="step-txt-in">
+                <p>
+                TBD
+                </p>
+                <div class="code-container">
+                    <pre tabindex="0" class="copy-code main-code" id="">
+class <span class="lsg">PacMan</span>{
+    constructor(<span class="m-fix">{position</span><span class="m">}</span>){
+        this.position = position
+        this.width = 40
+        this.height = 40
+    }
+    draw(){
+        c.fillStyle = 'blue'
+        c.fillRect(this.position.x, this.position.y, this.width,this.height)
+
+    }
+}</pre>
+</pre>
+                </div>
+            </div>
         </div>
     </div>
+    
+    
     <button tabindex="0" id="nxtLesson">next lesson</button>
 </div>

@@ -1,0 +1,44 @@
+(function(){
+const canvas = document.querySelector('canvas')
+const c = canvas.getContext('2d')
+canvas.width = innerWidth
+canvas.height = innerHeight * .7
+c.fillStyle = 'black'
+c.fillRect(0, 0, canvas.width, canvas.height)
+class <span class="lsg-fix">Boundary</span>{
+    <span class="gr">constructor</span>(<span class="m-fix">{position</span><span class="m">}</span>){
+        this.position = position
+        this.width = 40
+        this.height = 40
+    }
+    draw(){
+        c.fillStyle = 'blue'
+        c.fillRect(this.position.x, this.position.y, this.width,this.height)
+
+    }
+}
+const <span class="b-fix">boundaries</span> = [
+    new Boundary({<span class="m-fix">position</span> : {
+            x: 40,
+            y: 40
+        }
+    }),
+    new Boundary({
+        <span class="m-fix">position</span> : {
+            x: 80,
+            y: 40
+        }
+    }),
+    new Boundary({
+        <span class="m-fix">position</span> : {
+            x: 120,
+            y: 40
+        }
+    })
+    
+]
+boundaries.forEach(el => {
+    el.<span class="r-fix">draw()</span>
+})
+
+}())
