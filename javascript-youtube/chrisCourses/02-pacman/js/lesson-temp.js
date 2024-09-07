@@ -11,6 +11,7 @@ let currentSection
 let stepTxts = document.querySelectorAll('.step-txt')
 export function stepTxtListeners(){
     const navbar = document.querySelector('.section-lesson-title')
+    const canvas = document.querySelector('#canvas')
     stepTxts = document.querySelectorAll('.step-txt')
     const allImages = document.querySelectorAll(".step-img > img")
     const allVideos = document.querySelectorAll(".step-vid > video")
@@ -519,5 +520,9 @@ export function stepTxtListeners(){
     }
 }
 export function stepNumFocus(intLetter) {
-    stepTxts[intLetter - 1].focus()
+    if(intLetter == 1){
+        canvas.focus()
+    } else {
+        stepTxts[intLetter - 2].focus()
+    }
 }

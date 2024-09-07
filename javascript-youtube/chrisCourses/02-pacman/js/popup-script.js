@@ -9,6 +9,9 @@ export function popScriptWindow(){
     const xBtn = document.querySelector('#xBtn')
     const mainCodeInject = document.querySelector('#mainCodeInject')    
     const popUp = document.querySelector('.popup')
+    let targetDivFocus = false
+    const copyCodes = document.querySelectorAll('.copy-code')
+    
     const keys = {
         meta : {
             pressed : false
@@ -17,6 +20,9 @@ export function popScriptWindow(){
             pressed : false
         }
     }
+    targetDiv.addEventListener('focus', e => {
+        targetDivFocus = true
+    })
     targetDiv.addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
         if (letter == 'm' ) {
@@ -24,6 +30,11 @@ export function popScriptWindow(){
             console.log(canvas)
 
         }
+        if(letter == 'c' && !targetDiv){
+            mainCode.focus()
+            
+        }
+        
 
     });
     addEventListener('keyup', e =>{
