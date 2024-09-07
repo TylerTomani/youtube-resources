@@ -56,6 +56,9 @@ export function popScriptWindow(){
         if(!scriptsContainer.classList.contains('popUp')){
             scriptsContainer.classList.add('popUp')
             scriptsContainer.style.position ='absolute'
+            scriptsContainer.style.maxHeight = '50vh'
+            scriptsContainer.style.maxWidth = '50vh'
+            // scriptsContainer.style.overflowY = 'scroll'
         } else {
             scriptsContainer.classList.remove('popUp')
             scriptsContainer.style.position = 'relative'
