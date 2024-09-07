@@ -72,6 +72,10 @@ export function popScriptWindow(){
             togglePopUp()
         }
     })
+    xBtn.addEventListener('click', e => {
+        e.preventDefault()
+            togglePopUp()
+    })
     function togglePopUp(){
         console.log('pop')
         // scriptsContainer.classList.toggle('popUp')       

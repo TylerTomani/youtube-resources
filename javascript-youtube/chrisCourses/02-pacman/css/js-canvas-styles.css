@@ -10,7 +10,7 @@ position: relative;
 }
 #canvas {
     border: 1px solid black;
-    width: 100%;
+    width: 99%;
     /* flex-grow: 1; */
     height: 50vh; 
     z-index: 5; 

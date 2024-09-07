@@ -20,6 +20,10 @@ export function stepTxtListeners(){
     const nextLesson = document.getElementById('nxtLesson') ? document.getElementById('nxtLesson') : null
     const targetDiv = document.getElementById('targetDiv')
     const stepTxtInsCopyCodes = document.querySelectorAll('.step-txt-in > .code-container > .copy-code')
+    const stepsContainer = document.querySelector('.steps-container')
+    stepsContainer.addEventListener('click', e =>{
+        targetDivFocus= true
+    })
     const keys = {
         shift: {
             pressed: false
@@ -273,7 +277,7 @@ export function stepTxtListeners(){
     function handleImg(vid, key, e) {
         if (key == 13) {
             if (e.target.classList.contains('step-txt')) {
-                toggleImgSize(vid, false, e)
+                toggleImgSize(vid, true, e)
             }
             if (e.target.classList.contains('main-code')) {
                 toggleImgSize(vid, true,e)

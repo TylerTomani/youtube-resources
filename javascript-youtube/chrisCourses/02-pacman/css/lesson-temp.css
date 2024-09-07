@@ -153,8 +153,11 @@ body {padding-bottom: 5%;}
 #nxtLesson:active,
 #nxtLesson:focus {box-shadow: 0 0 5px 5px lightseagreen;}
 @media screen and (max-width: 500px) {
+
     .steps-container {
-        width: 100%;
+        overflow: hidden;
+        /* overflow-x:; */
+        width: 100% !important;
     }
     .step-txt>p {
         font-size: 80%;

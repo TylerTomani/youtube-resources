@@ -26,7 +26,7 @@ const keys = {
     }
 }
 let  iSection,iLesson,currentSection,intLetter,sectionsFocused,lessonsFocused, sectionClicked,asideFocused,targetDivFocused,currentLesson,shiftS
-[mainAside, navBar, targetDiv, backlink].forEach(el => {
+[mainAside, navBar, backlink].forEach(el => {
     el.addEventListener('focus', () => { scrollTo(0, 0) });
 })
 function setLetVariables(){
@@ -179,6 +179,7 @@ targetDiv.addEventListener('keydown', e => {
     }    
     
 })
+
 export function getSectionContainer(parent){
     if(parent.classList.contains('section-container')){
         return parent
@@ -427,6 +428,7 @@ addEventListener('keydown', e => {
             
     }
 });
+
 
 function fetchLessonHref(href){
     fetch(href)

@@ -6,10 +6,12 @@
     c.fillStyle = 'black'
     c.fillRect(0, 0, canvas.width, canvas.height)
     class Boundary {
+        static width = 30
+        static height = 30
         constructor({ position }) {
             this.position = position
-            this.width = 40
-            this.height = 40
+            this.width = 30
+            this.height = 30
         }
         draw() {
             c.fillStyle = 'blue'
@@ -17,17 +19,29 @@
 
         }
     }
-    const boundaries = [
-        new Boundary({
-            position: {
-                x: 40,
-                y: 40
-            }
-        }),
-        new Boundary({
-            position: {x: 80,y: 40}}),
-        new Boundary({position: {x: 120,y: 40}})
+    const map = [
+        ['-', '-', '-', '-', '-', '-'],
+        ['-', ' ', ' ', ' ', ' ', '-'],
+        ['-', ' ', '-', '-', ' ', '-'],
+        ['-', ' ', ' ', ' ', ' ', '-'],
+        ['-', '-', '-', '-', '-', '-'],
     ]
+    const boundaries = []
+    map.forEach((row,i) =>{
+        row.forEach((symbol,j) =>{
+            switch (symbol){
+                case '-':
+                    boundaries.push(new Boundary({
+                        position:{
+                            x: Boundary.width * j,
+                            y: Boundary.height * i
+                        }
+                    }))
+                    break
+            }
+        })
+    })
+    
     boundaries.forEach(el => {
         el.draw()
     })
