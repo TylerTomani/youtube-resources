@@ -116,6 +116,7 @@ body {padding-bottom: 5%;}
     position: relative;
     transform: scale(2.2);
     right: 50%;
+    z-index: 20
 }
 
 .code-container {
