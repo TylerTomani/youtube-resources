@@ -1,6 +1,8 @@
+import { targetDiv } from "./side-sections-temp.js"
 export function popScriptWindow(){
     // I need to figure strict out
     // 'use strict' 
+    const canvas = document.querySelector('#canvas')
     const scriptsContainer = document.querySelector("#scriptsContainer")
     const xExitContainer = document.querySelector("#xExitContainer")
     const mainCode = document.querySelector('#mainCode')
@@ -15,6 +17,15 @@ export function popScriptWindow(){
             pressed : false
         }
     }
+    targetDiv.addEventListener('keydown', e => {
+        let letter = e.key.toLowerCase()
+        if (letter == 'm' ) {
+            canvas.focus()
+            console.log(canvas)
+
+        }
+
+    });
     addEventListener('keyup', e =>{
         let letter = e.key.toLowerCase()
         if(letter == 'shift'){
@@ -56,8 +67,8 @@ export function popScriptWindow(){
         if(!scriptsContainer.classList.contains('popUp')){
             scriptsContainer.classList.add('popUp')
             scriptsContainer.style.position ='absolute'
-            scriptsContainer.style.maxHeight = '50vh'
-            scriptsContainer.style.maxWidth = '50vh'
+            // scriptsContainer.style.maxHeight = '50vh'
+            // scriptsContainer.style.maxWidth = '50vh'
             // scriptsContainer.style.overflowY = 'scroll'
         } else {
             scriptsContainer.classList.remove('popUp')

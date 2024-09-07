@@ -8,6 +8,7 @@ export function injectJsScripts(){
     console.log(injectScript);
     loadScript(injectScript);
     
+    
     function loadScript(injectScript) {
         // Fetch the JavaScript file content
         fetch(injectScript)

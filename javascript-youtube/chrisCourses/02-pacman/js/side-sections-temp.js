@@ -19,7 +19,7 @@ const allEls = document.querySelectorAll('body *')
 const sectionTitle = document.getElementById('section-title')
 const lessonTitle = document.getElementById('lesson-title')
 const subSections = document.querySelectorAll('.sub-section')
-const targetDiv = document.getElementById('targetDiv')
+export const targetDiv = document.getElementById('targetDiv')
 const keys = {
     shift: {
         pressed: false
