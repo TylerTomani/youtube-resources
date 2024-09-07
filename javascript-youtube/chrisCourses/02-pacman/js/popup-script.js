@@ -52,7 +52,14 @@ export function popScriptWindow(){
     })
     function togglePopUp(){
         console.log('pop')
-        scriptsContainer.classList.toggle('popUp')       
+        // scriptsContainer.classList.toggle('popUp')       
+        if(!scriptsContainer.classList.contains('popUp')){
+            scriptsContainer.classList.add('popUp')
+            scriptsContainer.style.position ='absolute'
+        } else {
+            scriptsContainer.classList.remove('popUp')
+            scriptsContainer.style.position = 'relative'
+        }
         scrollTo(0,0)
     }
 }
