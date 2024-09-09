@@ -109,7 +109,7 @@ body {padding-bottom: 5%;}
 .step-txt:focus {box-shadow: 0 0 3px 3px lightseagreen;}
 .enlarge {
     position: relative;
-    transform: scale(2.2);
+    transform: scale(2);
     right: 50%;
 }
 .enlarge-vid {
@@ -192,7 +192,7 @@ body {padding-bottom: 5%;}
 
     .enlarge-vid {
         position: relative;
-        transform: scale(3.2);
+        transform: scale(2.8);
         /* margin-right: 50%; */
         width: 150px !important;
         /* height: 150px !important; */

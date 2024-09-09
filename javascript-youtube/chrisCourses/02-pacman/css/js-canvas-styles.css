@@ -8,15 +8,17 @@ position: relative;
     align-items: center;
     width: 100%;
 }
+canvas:active,canvas:focus{
+    border: 2px solid oranges;
+    z-index: 20;
+    box-shadow: 0 0 3px 2px yellow;
+}
 #canvas {
     border: 1px solid black;
     width: 99%;
-    /* flex-grow: 1; */
     height: 50vh; 
     z-index: 5; 
     overflow: hidden;
-    /* scroll-behavior: none; */
-    /* background-color: blue !important; */
 }
 
 
@@ -31,9 +33,7 @@ position: relative;
 }
 
 #xExitContainer {
-    /* position: absolute; */
     background-color: rgb(255, 255, 255, 0);
-    /* z-index: 11; */
     top: 1%;
     right: 15%;
 }
@@ -70,27 +70,3 @@ position: relative;
     padding: 25%;
 }
 
-#scriptsContainer {
-    align-self: flex-start;
-    margin-left: .5%;
-    position: relative;
-    width: 90%;
-    overflow: scroll;
-    
-    
-    overflow: hidden;
-    overflow-y: scroll;
-}
-
-.popUp {
-    /* #scriptsContainer { */
-    /* position: absolute; */
-    top: 0;
-    background-color: white;
-    right: 0;
-    z-index: 10;
-    /* min-width: 300px; */
-    max-width: 300px !important;
-    max-height: 300px;
-    overflow-x: scroll;
-}

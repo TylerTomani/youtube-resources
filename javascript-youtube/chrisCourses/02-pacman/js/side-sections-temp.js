@@ -9,6 +9,7 @@ export const mainAside = document.querySelector('main > aside')
 export const sections = document.querySelectorAll('.section')
 export const lessons = document.querySelectorAll('.sub-section > li > a')
 export const header = document.querySelector('header')
+const backToTopBtn = document.querySelector('#backToTopBtn')
 const jsCanvasLessons = document.querySelectorAll('.js-canvas-lesson')
 const backlink = document.getElementById('backlink')
 const homelink = document.getElementById('homelink')
@@ -25,6 +26,14 @@ const keys = {
         pressed: false
     }
 }
+addEventListener('scroll', e => {
+    console.log(window.scrollY)
+    if(window.scrollY > 150){
+        backToTopBtn.classList.remove('hide')
+    } else {
+        backToTopBtn.classList.add('hide')
+    }
+})
 let  iSection,iLesson,currentSection,intLetter,sectionsFocused,lessonsFocused, sectionClicked,asideFocused,targetDivFocused,currentLesson,shiftS
 [mainAside, navBar, backlink].forEach(el => {
     el.addEventListener('focus', () => { scrollTo(0, 0) });

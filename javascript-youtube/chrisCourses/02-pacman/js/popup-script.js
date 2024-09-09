@@ -8,7 +8,7 @@ export function popScriptWindow(){
     const mainCode = document.querySelector('#mainCode')
     const xBtn = document.querySelector('#xBtn')
     const mainCodeInject = document.querySelector('#mainCodeInject')    
-    const popUp = document.querySelector('.popup')
+    const popup = document.querySelector('.popup')
     let targetDivFocus = false
     const copyCodes = document.querySelectorAll('.copy-code')
     
@@ -20,6 +20,7 @@ export function popScriptWindow(){
             pressed : false
         }
     }
+
     targetDiv.addEventListener('focus', e => {
         targetDivFocus = true
     })
@@ -77,18 +78,9 @@ export function popScriptWindow(){
             togglePopUp()
     })
     function togglePopUp(){
-        console.log('pop')
-        // scriptsContainer.classList.toggle('popUp')       
-        if(!scriptsContainer.classList.contains('popUp')){
-            scriptsContainer.classList.add('popUp')
-            scriptsContainer.style.position ='absolute'
-            // scriptsContainer.style.maxHeight = '50vh'
-            // scriptsContainer.style.maxWidth = '50vh'
-            // scriptsContainer.style.overflowY = 'scroll'
-        } else {
-            scriptsContainer.classList.remove('popUp')
-            scriptsContainer.style.position = 'relative'
-        }
+        scriptsContainer.classList.toggle('popup')
         scrollTo(0,0)
     }
+    // togglePopUp()
+
 }

@@ -1,0 +1,22 @@
+#scriptsContainer {
+    /* align-self: flex-start; */
+    /* margin-left: .5%; */
+    /* position: relative; */
+    width: 90%;
+    /* overflow: scroll; */
+    /* overflow: hidden; */
+    /* overflow-y: scroll; */
+}
+
+.popup {
+    /* #scriptsContainer { */
+    position: absolute;
+    top: 0;
+    background-color: white;
+    right: 0;
+    z-index: 10;
+    /* min-width: 300px; */
+    max-width: 300px !important;
+    max-height: 300px;
+    overflow-x: scroll;
+}

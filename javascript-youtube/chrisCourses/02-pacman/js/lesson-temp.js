@@ -47,7 +47,7 @@ export function stepTxtListeners(){
 
         el.addEventListener('keydown', e => {
             let letter = e.key.toLowerCase()
-            if (letter == 'c' && !keys.meta.pressed) {
+            if (letter == 'c' && (!keys.meta.pressed || !keys.shift.pressed)) {
                 const mainCode = document.querySelector('#mainCode')
                 console.log(mainCode)
                 if (mainCode && !mainCodesFocused && !stepFocused) {
@@ -65,7 +65,7 @@ export function stepTxtListeners(){
         })
         el.addEventListener('keydown', e => {
             let letter = e.key.toLowerCase()
-            if (letter == 'c' && !keys.meta.pressed) {
+            if (letter == 'c' && (!keys.meta.pressed || !keys.shift.pressed)) {
                 const mainCode = document.querySelector('#mainCode')
                 console.log(mainCode)
                 if (mainCode && !mainCodesFocused && !stepFocused) {
@@ -78,7 +78,7 @@ export function stepTxtListeners(){
     })
     header.addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
-        if (letter == 'c' && !keys.meta.pressed) {
+        if (letter == 'c' && (!keys.meta.pressed || !keys.shift.pressed)) {
             if (mainCodes.length > 0) {
                 mainCodes[iMainCode].focus()
             }
@@ -100,7 +100,7 @@ export function stepTxtListeners(){
                 stepNumFocus(intLetter)
             }
         }  
-        if (letter == 'c' && !keys.meta.pressed) {
+        if (letter == 'c' && (!keys.meta.pressed && !keys.shift.pressed)) {
             if (mainCodes.length > 0) {
                 mainCodes[iMainCode].focus()
             }
@@ -187,14 +187,14 @@ export function stepTxtListeners(){
     })
     function cycleCodes(letter,e){
         if (!keys.shift.pressed) {
-            if ((letter == 'c' && !keys.meta.pressed) && mainCodesFocused) {
+            if ((letter == 'c' && (!keys.meta.pressed && !keys.shift.pressed)) && mainCodesFocused) {
                 console.log('C')
                 // e.preventDefault()
                 iMainCode = (iMainCode + 1) % mainCodes.length
                 mainCodes[iMainCode].focus()
             }
         } else if(keys.shift.pressed){
-            if ((letter == 'c' && !keys.meta.pressed) && mainCodesFocused) {
+            if (letter == 'c' && (!keys.meta.pressed && !keys.shift.pressed) && mainCodesFocused) {
                 console.log('C')
                 // e.preventDefault()
                 iMainCode = (iMainCode + mainCodes.length - 1) % mainCodes.length
@@ -277,7 +277,7 @@ export function stepTxtListeners(){
     function handleImg(vid, key, e) {
         if (key == 13) {
             if (e.target.classList.contains('step-txt')) {
-                toggleImgSize(vid, true, e)
+                toggleImgSize(vid, false, e)
             }
             if (e.target.classList.contains('main-code')) {
                 toggleImgSize(vid, true,e)
@@ -289,7 +289,7 @@ export function stepTxtListeners(){
             if (!img.classList.contains('enlarge')) {
                 img.classList.add('enlarge')
                 img.style.zIndex = 10
-                img.scrollIntoView({ behavior: "smooth", block: "end", inline: "end" });
+                // img.scrollIntoView({ behavior: "smooth", block: "end", inline: "end" });
             } else {
                 // e.target.scrollIntoView({ behavior: "smooth", block: "center", inline: "end" });
                 img.classList.remove('enlarge')
@@ -409,6 +409,9 @@ export function stepTxtListeners(){
         if(letter == 'meta'){
             keys.meta.pressed = false
         }
+        if(letter == 'shift'){
+            keys.shift.pressed = false
+        }
     })
     targetDiv.addEventListener('keyup', e => {
         let letter = e.key.toLowerCase()
@@ -429,7 +432,7 @@ export function stepTxtListeners(){
     targetDiv.addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
         let key = e.keyCode
-        if (letter == 'c' && !keys.meta.pressed ) {
+        if (letter == 'c' && (!keys.meta.pressed || !keys.shift.pressed) ) {
             if(mainCodes.length > 0){
                 mainCodes[iMainCode].focus()
             }
@@ -504,7 +507,7 @@ export function stepTxtListeners(){
         })
         nextLesson.addEventListener('keydown', e => {
             let letter = e.key.toLowerCase()
-            if(letter == 'c'){
+            if (letter == 'c' && (!keys.meta.pressed && !keys.shift.pressed)){
                 if(mainCodes.length > 0){
                     // console.log('slkjd')
                     // console.log(mainCodes[0])
@@ -524,9 +527,6 @@ export function stepTxtListeners(){
     }
 }
 export function stepNumFocus(intLetter) {
-    if(intLetter == 1){
-        canvas.focus()
-    } else {
-        stepTxts[intLetter - 2].focus()
-    }
+
+    stepTxts[intLetter - 1].focus()
 }

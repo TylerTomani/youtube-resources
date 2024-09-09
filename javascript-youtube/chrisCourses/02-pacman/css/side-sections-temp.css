@@ -3,7 +3,11 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+#backToTopBtn{
+    position: sticky;
+    bottom: 0;
+    right: 0;
+}
 body {
     /* background-color: rgb(173, 216, 230,.2); */
     overflow: hidden;
@@ -47,31 +51,28 @@ header>nav#mainLinksContainer>#mainLinks {
     align-items: center;
 }
 
-#tutorialLink>img {
+#tutorialLink>img{
     min-width: 150px;
     max-width: 200px;
     min-height: 60px;
     max-height: 50px;
 }
 #targetDiv {
-    width: 100vw;
+    /* width: 100vw;
     flex-basis: 78%;
-     display: flex;;
-     flex-direction: column;
-     align-items: center;
-     width: 100%;
-     flex-grow: 1;
- }
-
-#tutorialLink>img {
-    min-width: 150px;
-    max-width: 200px;
-    min-height: 60px;
-    max-height: 50px;
+    display: flex;;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    flex-grow: 1; */
 }
 nav.section-lesson-title {
     border-top: 1px solid black;
     border-bottom: 1px solid black;
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 10;
 }
 main {
     display: flex;
@@ -100,13 +101,13 @@ nav:active,nav:focus{box-shadow: 0 0 3px 3px lightseagreen;}
     color: black;
     overflow: wrap;
 }
-.section-container{
+.section-container {
     display: flex;
     flex-direction: column;
     margin: 4% 0;
     width: fit-content;
     flex-wrap: wrap;
-    list-style:none;
+    list-style: none;
 }
 .section-container > .section {    
     width: fit-content;
@@ -193,7 +194,7 @@ nav:active,nav:focus{box-shadow: 0 0 3px 3px lightseagreen;}
         overflow-x: hidden;
     }
     body > header {
-        width: fit-content;
+        /* width: fit-content; */
     }
     main>aside {
         flex-basis: 20%;
