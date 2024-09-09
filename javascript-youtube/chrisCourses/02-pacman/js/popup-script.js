@@ -23,6 +23,7 @@ export function popScriptWindow(){
 
     targetDiv.addEventListener('focus', e => {
         targetDivFocus = true
+        
     })
     targetDiv.addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
@@ -67,20 +68,24 @@ export function popScriptWindow(){
             togglePopUp()
         }
     })
-    // xBtn.addEventListener('click', e => {
-    //     e.preventDefault()
-    //         togglePopUp()
-    // })
+    xBtn.addEventListener('click', e => {
+        e.preventDefault()
+            togglePopUp()
+    })
     xBtn.addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
         if (letter == 'enter') {
+            e.preventDefault()
             togglePopUp()
         }
     })
     function togglePopUp(){
-        scriptsContainer.classList.toggle('popup')
+        if(scriptsContainer.classList.contains('popup')){
+            scriptsContainer.classList.remove('popup')
+        } else {
+            scriptsContainer.classList.add('popup')
+        }
         scrollTo(0,0)
     }
-    // togglePopUp()
 
 }

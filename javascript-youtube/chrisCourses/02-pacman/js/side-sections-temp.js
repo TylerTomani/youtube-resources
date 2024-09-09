@@ -27,7 +27,6 @@ const keys = {
     }
 }
 addEventListener('scroll', e => {
-    console.log(window.scrollY)
     if(window.scrollY > 150){
         backToTopBtn.classList.remove('hide')
     } else {
@@ -35,7 +34,7 @@ addEventListener('scroll', e => {
     }
 })
 let  iSection,iLesson,currentSection,intLetter,sectionsFocused,lessonsFocused, sectionClicked,asideFocused,targetDivFocused,currentLesson,shiftS
-[mainAside, navBar, backlink].forEach(el => {
+[mainAside, backlink].forEach(el => {
     el.addEventListener('focus', () => { scrollTo(0, 0) });
 })
 function setLetVariables(){
@@ -182,6 +181,9 @@ targetDiv.addEventListener('keydown', e => {
     if(targetDivFocused){
         if (letter == 's' || letter == 'a' ){
             lastFocusedElement.focus()
+        }
+        if (letter == 's' ){
+            showAside()
         }
         
             

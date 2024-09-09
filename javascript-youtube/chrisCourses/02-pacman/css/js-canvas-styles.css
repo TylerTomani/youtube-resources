@@ -1,6 +1,5 @@
 main {
     position: relative;
-    background-color: lightyellow;
 }
 #jsCanvasScriptContainer {
     position: relative;
@@ -33,16 +32,7 @@ canvas:active,canvas:focus{
     width: 100%;
 }
 
-#xExitContainer {
-    background-color: rgb(255, 255, 255, 0);
-    top: 1%;
-    right: 15%;
-}
 
-#xBtn {
-    display: inline-block;
-    padding: 25%;
-}
 
 #jsCanvasScriptContainer {
     width: 100%;
@@ -58,16 +48,5 @@ canvas:active,canvas:focus{
     width: 100%;
 }
 
-#xExitContainer {
-    position: absolute;
-    background-color: rgb(255, 255, 255, 0);
-    z-index: 11;
-    top: 1%;
-    right: 15%;
-}
 
-#xBtn {
-    display: inline-block;
-    padding: 25%;
-}
 

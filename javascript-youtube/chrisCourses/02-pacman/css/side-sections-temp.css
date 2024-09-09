@@ -9,26 +9,26 @@
     right: 0;
 }
 body {
-    /* background-color: rgb(173, 216, 230,.2); */
+    background-color: rgb(173, 216, 230,.2);
     overflow: hidden;
     overflow-y: scroll;
 
 }
-
+body>header {
+    max-height: 10vh;
+}
 body>header a:focus,
 body>header a:active {
     box-shadow: 0 0 10px 6px rgb(116, 183, 180, 1);
 }
-
 body>header>h1 {
     font-size: 120%;
 }
 
-body>header {}
-
 body>header>nav#mainLinksContainer {
     width: 100%;
     display: flex;
+    align-items: flex-start;
     width: 100% !important;
 
 }
@@ -44,6 +44,7 @@ header>nav#mainLinksContainer>#mainLinks {
 #mainLinks>a {
     flex-basis: 40%;
     border: 1px solid black;
+    border-bottom: none;
     border-top: none;
     display: inline-flex;
     padding: 0 5%;
@@ -69,6 +70,9 @@ header>nav#mainLinksContainer>#mainLinks {
 nav.section-lesson-title {
     border-top: 1px solid black;
     border-bottom: 1px solid black;
+    height: 30px;
+    display: flex;
+    align-items: center;
     position: sticky;
     top: 0;
     background-color: white;
