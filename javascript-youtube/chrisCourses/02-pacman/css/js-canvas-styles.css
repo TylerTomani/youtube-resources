@@ -1,6 +1,6 @@
 main {
     position: relative;
-    background-color: lightskyblue;
+    /* background-color: lightskyblue; */
 }
 
 canvas:active,canvas:focus{
