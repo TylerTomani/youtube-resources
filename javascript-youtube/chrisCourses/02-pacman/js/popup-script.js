@@ -28,6 +28,9 @@ export function popScriptWindow(){
         }
         
     })
+    if(scriptsContainer.classList.contains('popup-start')){
+        togglePopUp()
+    }
     addEventListener('keydown', e =>{
         let letter = e.key.toLowerCase()
         if(letter == 'shift'){

@@ -420,6 +420,11 @@ addEventListener('keydown', e => {
             // regexCmdsLink.scrollIntoView({ behavior: 'smooth', block: 'start' });
             break   
         case 'p':
+            const mainCode = document.querySelector("#mainCode")
+            if(mainCode){
+                mainCode.focus()
+                targetDivFocused = true
+            }
             if(!keys.shift.pressed){
                 // programShorcutsLink.focus()
             }

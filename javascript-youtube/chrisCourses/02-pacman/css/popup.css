@@ -19,6 +19,16 @@
     background-color: white;
     z-index: 10;
 }
+.popup {
+    max-width: 300px !important;
+    max-height: 300px;
+    overflow-x: scroll;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: white;
+    z-index: 10;
+}
 #xExitContainer {
     position: absolute;
     background-color: rgb(255, 255, 255, 0);
