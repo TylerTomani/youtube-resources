@@ -151,6 +151,11 @@ export function showAside(){
         mainAside.classList.remove('hide')
     }
 }
+export function hideAside(){
+    if(!mainAside.classList.contains('hide')){
+        mainAside.classList.add('hide')
+    }
+}
 navBar.addEventListener('click', e => {
     if(!mainAside.classList.contains('hide')){
         mainAside.classList.add('hide')

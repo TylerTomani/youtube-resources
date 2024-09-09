@@ -109,7 +109,7 @@ body {padding-bottom: 5%;}
 .step-txt:focus {box-shadow: 0 0 3px 3px lightseagreen;}
 .enlarge {
     position: relative;
-    transform: scale(1.1);
+    transform: scale(2.1);
     border: 2px solid rgb(0,0,255,.7);
     right: 50%;
 }
@@ -177,7 +177,7 @@ body {padding-bottom: 5%;}
 
     .enlarge {
         position: relative;
-        transform: scale(3.2);
+        transform: scale(2.2);
         width: 400px;
         height: 150px;
         max-width: 500px !important;

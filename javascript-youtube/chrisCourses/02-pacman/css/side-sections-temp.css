@@ -9,7 +9,8 @@
     right: 0;
 }
 body {
-    background-color: rgb(173, 216, 230,.2);
+    background-color: lime;
+    /* background-color: rgb(173, 216, 230,.2); */
     overflow: hidden;
     overflow-y: scroll;
 

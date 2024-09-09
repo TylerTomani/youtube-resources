@@ -1,9 +1,10 @@
 import { lastFocusedElement } from "./side-sections-temp.js"
 import { getSectionContainer } from "./side-sections-temp.js"
 import { mainAside } from "./side-sections-temp.js"
+import { showAside } from "./side-sections-temp.js"
+import { hideAside } from "./side-sections-temp.js"
 import { getSubSection } from "./side-sections-temp.js"
 import { sections,lessons } from "./side-sections-temp.js"
-import { showAside } from "./side-sections-temp.js"
 import { header } from "./side-sections-temp.js"
 let iSection = 0
 let iMainCode = 0
@@ -257,7 +258,7 @@ export function stepTxtListeners(){
     function handleImg(vid, key, e) {
         if (key == 13) {
             if (e.target.classList.contains('step-txt')) {
-                toggleImgSize(vid, false, e)
+                toggleImgSize(vid, true, e)
             }
             if (e.target.classList.contains('main-code')) {
                 toggleImgSize(vid, true,e)
@@ -269,8 +270,9 @@ export function stepTxtListeners(){
         if (!zoomBack) {
             if (!img.classList.contains('enlarge')) {
                 img.classList.add('enlarge')
+                hideAside()
                 img.style.zIndex = 10
-                img.scrollIntoView({ behavior: "smooth", block: "end", inline: "end" });
+                // img.scrollIntoView({ behavior: "instant", block: "center", inline: "end" });
             } else {
                 // e.target.scrollIntoView({ behavior: "smooth", block: "center", inline: "end" });
                 img.classList.remove('enlarge')
@@ -279,7 +281,8 @@ export function stepTxtListeners(){
         } else {
             if (!img.classList.contains('enlarge')) {
                 img.classList.add('enlarge')
-                img.scrollIntoView({ behavior: "smooth", block: "center", inline: "end" });
+
+                // img.scrollIntoView({ behavior: "smooth", block: "center", inline: "end" });
                 img.style.zIndex = 10
             } else {
                 e.target.scrollIntoView({ behavior: "smooth", block: "center", inline: "end" });
