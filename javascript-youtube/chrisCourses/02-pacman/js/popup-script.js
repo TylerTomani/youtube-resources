@@ -57,6 +57,12 @@ export function popScriptWindow(){
         }
     })
     // scriptsContainer.style.position = 'relative'
+    scriptsContainer.addEventListener('focus', e => {
+        scriptsContainer.zIndex = 100
+    })
+    scriptsContainer.addEventListener('focusout', e => {
+        // scriptsContainer.zIndex = 0
+    })
     function togglePopUp(letter){
         
         if(scriptsContainer.classList.contains('popup-start')){
@@ -69,7 +75,6 @@ export function popScriptWindow(){
         } else {
             scriptsContainer.classList.add('popup')
             xBtn.innerText = 'x'
-            console.log(xBtn)
             scriptsContainer.style.position = 'absolute'
             if(!stepsFocused){
                 scrollTo(0,0)

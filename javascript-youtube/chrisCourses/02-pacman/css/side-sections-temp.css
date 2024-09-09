@@ -9,7 +9,7 @@
     right: 0;
 }
 body {
-    background-color: lime;
+    /* background-color: lime; */
     /* background-color: rgb(173, 216, 230,.2); */
     overflow: hidden;
     overflow-y: scroll;
@@ -77,6 +77,7 @@ nav.section-lesson-title {
     align-items: center;
     position: sticky;
     top: 0;
+    font-size: 80%;
     background-color: white;
     z-index: 10;
 }

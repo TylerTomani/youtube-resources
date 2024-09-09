@@ -31,6 +31,8 @@ body {padding-bottom: 5%;}
 }
 .step-col>.step-txt {
     display: flex;
+    background-color: white !important;
+    
     flex-direction: column;
     padding-top: .5%;
     padding-left: .5%;
@@ -47,7 +49,8 @@ body {padding-bottom: 5%;}
     padding-top: 0;
 }
 .step-txt {
-    
+
+    background-color: white;
 }
 .step-txt>p {
     width: 100%;

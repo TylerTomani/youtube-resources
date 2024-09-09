@@ -15,8 +15,8 @@ const tutorialLink = document.getElementById('tutorialLink')
 const regexCmdsLink = document.getElementById('regexCmds')
 const programShorcutsLink = document.getElementById('programShorcuts')
 const allEls = document.querySelectorAll('body *')
-const sectionTitle = document.getElementById('section-title')
-const lessonTitle = document.getElementById('lesson-title')
+let sectionTitle = document.getElementById('section-title')
+let lessonTitle = document.getElementById('lesson-title')
 const subSections = document.querySelectorAll('.sub-section')
 export const targetDiv = document.getElementById('targetDiv')
 const keys = {
@@ -25,7 +25,7 @@ const keys = {
     }
 }
 let  iSection,iLesson,currentSection,intLetter,sectionsFocused,lessonsFocused, sectionClicked,asideFocused,targetDivFocused,currentLesson,shiftS
-[mainAside, navBar, backlink].forEach(el => {
+[mainAside, backlink].forEach(el => {
     el.addEventListener('focus', () => { scrollTo(0, 0) });
 })
 function setLetVariables(){
@@ -331,17 +331,23 @@ lessons.forEach(el => {
         e.stopPropagation()
         clickLesson(e)
         fetchLessonHref(e.target.href)
-        currentLesson = e.target
+        // lessonTitle = e.target.innerText
+        console.log(lessonTitle)
 
     })
     el.addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
+        const subSection = getSectionContainer(e.target)
+        const section = subSection.querySelector('.section')
         if (letter == 's') {
-            const subSection = getSectionContainer(e.target)
-            const section = subSection.querySelector('.section')
             section.focus()
         }
         
+        if(letter == 'enter'){
+            sectionTitle.innerText = section.innerText
+            lessonTitle.innerText = e.target.innerText
+            
+        }
         
         if (lessonsFocused) {
             navLessons(e, letter)

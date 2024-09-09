@@ -327,6 +327,7 @@ lessons.forEach(el => {
         clickLesson(e)
         fetchLessonHref(e.target.href)
         currentLesson = e.target
+        lessonTitle = e.target.innerText
 
     })
     el.addEventListener('keydown', e => {

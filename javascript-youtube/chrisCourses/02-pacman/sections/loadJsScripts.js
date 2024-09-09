@@ -6,7 +6,6 @@ export function injectJsScripts(){
     const titleJsScript = document.getElementById('titleJsScript')
 
     let injectScript = `./sections/${titleJsScript.textContent}`;
-    console.log(injectScript);
     loadScript(injectScript);
     
     

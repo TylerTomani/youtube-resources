@@ -14,7 +14,7 @@
     max-width: 300px !important;
     max-height: 300px;
     overflow-x: scroll;
-    position: absolute;
+    position: sticky;
     top: 0;
     right: 0;
     background-color: white;
@@ -26,14 +26,14 @@
     overflow-x: scroll;
     position: relative;
     top: 10px;
-    right: 0;
+    left: 0;
     background-color: white;
-    z-index: 10;
+    /* z-index: 10; */
 }
 #xExitContainer {
     position: relative;
     background-color: rgb(255, 255, 255, 0);
-    z-index: 11;
+    /* z-index: 11; */
     top: 1%;
     /* right: 15%; */
     left: 0;
@@ -46,15 +46,15 @@
     max-height: 20px !important;
     /* margin-right: 1%; */
     top: 0px;
-    z-index: 44;
+    /* z-index: 44; */
     /* left: 0; */
-    right: 0;
+    left: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 18px;
-    height: 18px;
-    padding: .25%;
+    width: 5px;
+    height: 5px;
+    /* padding: .5%; */
 }
 @media screen and (max-width: 634px) {
     #xExitContainer {
@@ -70,9 +70,11 @@
     
         #xBtn {
             /* max-height: 20px !important; */
-            width: 18px;
+            width: 12px;
+            height: 12px;
+            padding: .5%;
             right: 25%;
-            height: 18px;
+            left:  -1%;
         }
     
 }

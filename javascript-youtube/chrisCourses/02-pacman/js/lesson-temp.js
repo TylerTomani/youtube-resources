@@ -185,9 +185,12 @@ export function stepTxtListeners(){
             denlargeAllImages()
             pauseAllVideos()
             e.target.scrollIntoView({ behavior: "smooth", block: "center", inline: "end" });
+            e.target.style.zIndex = 10
+
         })
         el.addEventListener('focusout', e => {
             denlargeAllImages()
+            e.target.style.zIndex = 0
         })
         el.addEventListener('click', e => {
             e.preventDefault()
@@ -272,7 +275,7 @@ export function stepTxtListeners(){
                 img.classList.add('enlarge')
                 hideAside()
                 img.style.zIndex = 10
-                // img.scrollIntoView({ behavior: "instant", block: "center", inline: "end" });
+                img.scrollIntoView({ behavior: "instant", block: "center", inline: "end" });
             } else {
                 // e.target.scrollIntoView({ behavior: "smooth", block: "center", inline: "end" });
                 img.classList.remove('enlarge')
