@@ -1,12 +1,15 @@
+#titleJsScript{
+    font-size: 50%;
+}
 main {
     position: relative;
 }
 #jsCanvasScriptContainer {
     width: 100%;
 }
+
 canvas:active,canvas:focus{
     border: 2px solid orange;
-    z-index: 20;
     box-shadow: 0 0 3px 2px yellow;
 }
 #canvas {

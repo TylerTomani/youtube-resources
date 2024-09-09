@@ -63,8 +63,9 @@ class <span class="lsg">Boundary</span>{
                 <h4>02</h4>
                 <p>
                     Put instances of the <code class="lsg">Boundary</code> class into a 
-                    <code class="b-fix">boundaries</code> []. Then <code class="y-fix">forEach</code> thru <div class="b-fix">boundaries</div>
-                    and <code class="r">draw()</code>
+                    <code class="b-fix">boundaries</code> []. 
+                    Use <code class="y-fix">forEach</code> on <div class="b-fix">boundaries</div>
+                    and evoke the <code class="r">draw()</code> method for each new <span class="lsg-fix">Boundary</span>
                 </p>
                 
                 
@@ -76,21 +77,21 @@ class <span class="lsg">Boundary</span>{
         <div class="step-col-in">
             <div class="step-txt-in">
                 <p>
-                  <span class="r">NOTICE</span> TBD
+
                 </p>
                 <div class="code-container">
                     <pre tabindex="0" class="copy-code main-code" >
 const <span class="b-fix">boundaries</span> = [
-    new Boundary({position : {
+    new <span class="lsg-fix">Boundary</span>({position : {
             x: 40,
             y: 40
         }
     }),
-    new Boundary({
-       position: {
+    new <span class="lsg-fix">Boundary</span>({
+       <span class="m-fix">position: {</span>
             x: 80,
             y: 40
-        }
+        <span class="m-fix">}</span>
     }),
 ]
 <span class="b-fix">boundaries</span>.<span class="y-fix">forEach</span>( el => {

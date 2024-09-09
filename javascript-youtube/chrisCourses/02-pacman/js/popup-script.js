@@ -3,6 +3,7 @@ export function popScriptWindow(){
     // I need to figure strict out
     // 'use strict' 
     const scriptsContainer = document.querySelector("#scriptsContainer")
+    const canvas = document.querySelector('#canvas')
     const xExitContainer = document.querySelector("#xExitContainer")
     const xBtn = document.querySelector('#xBtn')
     const keys = {
@@ -11,6 +12,9 @@ export function popScriptWindow(){
         }
     } 
     let stepsFocused = false
+    canvas.addEventListener('click', e => {
+        hidePopUp()
+    })
     stepTxts.forEach(el => {
         el.addEventListener('focus', e => {
             stepsFocused = true
@@ -80,6 +84,16 @@ export function popScriptWindow(){
                 scrollTo(0,0)
                 xBtn.focus()
             }
+        }
+    }
+    function hidePopUp(){
+        if(scriptsContainer.classList.contains('popup-start')){
+            scriptsContainer.classList.remove('popup-start')
+        }
+        if(scriptsContainer.classList.contains('popup')){
+            scriptsContainer.classList.remove('popup')
+            scriptsContainer.style.position = 'relative'
+            xBtn.innerText = 'O'
         }
     }
 

@@ -156,6 +156,12 @@ body {padding-bottom: 5%;}
 }
 #nxtLesson:active,
 #nxtLesson:focus {box-shadow: 0 0 5px 5px lightseagreen;}
+@media screen and (max-width: 600px) {
+    .step-txt-in > .code-container .copy-code {
+        font-size: 70% !important;
+    }
+
+}
 @media screen and (max-width: 500px) {
 
     .steps-container {
