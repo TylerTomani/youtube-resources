@@ -1,5 +1,6 @@
 main {
     position: relative;
+    background-color: limegreen;
 }
 
 canvas:active,canvas:focus{
