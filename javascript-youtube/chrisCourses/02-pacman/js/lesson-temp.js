@@ -289,20 +289,24 @@ export function stepTxtListeners(){
             if (!img.classList.contains('enlarge')) {
                 img.classList.add('enlarge')
                 img.style.zIndex = 10
+                mainAside.classList.add('hide')
                 // img.scrollIntoView({ behavior: "smooth", block: "end", inline: "end" });
             } else {
                 // e.target.scrollIntoView({ behavior: "smooth", block: "center", inline: "end" });
                 img.classList.remove('enlarge')
+                mainAside.classList.remove('hide')
                 img.style.zIndex = 0
             }
         } else {
             if (!img.classList.contains('enlarge')) {
                 img.classList.add('enlarge')
+                mainAside.classList.add('hide')
                 img.scrollIntoView({ behavior: "smooth", block: "center", inline: "end" });
                 img.style.zIndex = 10
             } else {
                 e.target.scrollIntoView({ behavior: "smooth", block: "center", inline: "end" });
                 img.classList.remove('enlarge')
+                mainAside.classList.remove('hide')
                 img.style.zIndex = 0
             }
         }

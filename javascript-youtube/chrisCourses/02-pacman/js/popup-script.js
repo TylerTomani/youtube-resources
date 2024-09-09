@@ -67,15 +67,15 @@ export function popScriptWindow(){
             togglePopUp()
         }
     })
+    // xBtn.addEventListener('click', e => {
+    //     e.preventDefault()
+    //         togglePopUp()
+    // })
     xBtn.addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
         if (letter == 'enter') {
             togglePopUp()
         }
-    })
-    xBtn.addEventListener('click', e => {
-        e.preventDefault()
-            togglePopUp()
     })
     function togglePopUp(){
         scriptsContainer.classList.toggle('popup')
