@@ -15,6 +15,7 @@ export function injectJsScripts(){
         fetch(injectScript)
             .then(response => response.text())
             .then(data => {
+                scrollTo(0,0)
                 jsParenCode.innerHTML = data
                 // // Remove old script elements if they exist
                 const tempDiv = document.createElement('div');

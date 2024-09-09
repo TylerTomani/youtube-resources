@@ -13,12 +13,12 @@
     <link rel="stylesheet" href="css/colorsFonts.css">
     <link rel="stylesheet" href="../../../css/colors.css">
     <!-- dropLoad.js is original side-sections-temp -->
-    <script type="module" src="sections/loadJsScripts.js" defer></script>
-    <script id="tempScript" defer></script>
+    <!-- <script type="module" src="sections/loadJsScripts.js" defer></script> -->
+    <!-- <script id="tempScript" defer></script> -->
     <script type="module" src="js/side-sections-temp.js" defer></script>
-    <script type="module" src="js/popup-script.js" defer></script>
-    <script type="module" src="js/lesson-temp.js" defer></script>
-    <script type="module" src="js/copy-code.js" defer></script>
+    <!-- <script type="module" src="js/popup-script.js" defer></script> -->
+    <!-- <script type="module" src="js/lesson-temp.js" defer></script> -->
+    <!-- <script type="module" src="js/copy-code.js" defer></script> -->
     <!-- <link rel="icon" href="favicon.ico"> -->
 </head>
 <body>
@@ -29,15 +29,15 @@
                 <a tabindex="0" id="homelink" href="https://tylertomani.github.io/main-homepage/">Home (main)</a>
                 <a tabindex="0" id="regexCmds" target="_blank"  href="../../../../Shortcuts/regex-cmds/regex-cmds.html">regex </a>
             </div>
-            <div class="img-container">
-                <a tabindex="0" id="tutorialLink" target="_blank" href="
-                https://www.youtube.com/watch?v=5IMXpp3rohQ
-                ">
-                <img src="https://i.ytimg.com/vi/5IMXpp3rohQ/maxresdefault.jpg">
-                </a>
-            </div>
+            <h1 id="title">02 Pacman</h1>
         </nav>
-        <h1>02 Pacman</h1>
+        <div class="img-container">
+            <a tabindex="0" id="tutorialLink" target="_blank" href="
+            https://www.youtube.com/watch?v=5IMXpp3rohQ
+            ">
+            <img src="https://i.ytimg.com/vi/5IMXpp3rohQ/maxresdefault.jpg">
+            </a>
+        </div>
     </header>
     <nav tabindex="0" class="section-lesson-title">
         <!-- Make this the h2 b/c h3 should be sections / lessons h4 = .js scripts -->
@@ -51,11 +51,10 @@
             <ul class="sections-container">
                 <!-- s1 -->
                 <li class="section-container">
-                    <!-- <a autofocus tabindex="0" class="section" href="sections/01/01-01/01-01.html">Section 1 -->
-                    <a  tabindex="0" class="section" href="sections/01/01.html">Section 1
+                    <a autofocus  tabindex="0" class="section" href="sections/01/01.html">Section 1
                     Setup / Create Boundaries</a>
-                    <ul class="sub-section ">
-                        <li><a  tabindex="0" href="sections/01/01-01/01-01.html">1. Constructor Parameter 
+                    <ul class="sub-section show">
+                        <li><a tabindex="0" href="sections/01/01-01/01-01.html">1. Constructor Parameter 
                             as <span class="m-fix">{}</span> object
                         </a></li>
                         <li><a tabindex="0" href="sections/01/01-02/01-02.html">1. Build Boundary Rows
@@ -67,10 +66,10 @@
                 
                 <!-- s2 --->
                 <li class="section-container">
-                    <a tabindex="0" class="section" href="sections/02/02.html">Section 2
+                    <a  tabindex="0" class="section" href="sections/02/02.html">Section 2
                     Draw Player & Movement</a>
                     <ul class="sub-section show">
-                        <li><a autofocus  tabindex="0" href="sections/02/02-01/02-01.html">1. Draw Player</a>
+                        <li><a   tabindex="0" href="sections/02/02-01/02-01.html">1. Draw Player</a>
                             <ul>
                                 <li><code>import image</code></li>
                                 <li><code>sufrace.blit()</code></li>

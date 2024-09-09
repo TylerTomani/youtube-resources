@@ -15,30 +15,31 @@ body {
 
 }
 body>header {
-    max-height: 10vh;
+    /* max-height:10vh; */
+    display: flex;
 }
 body>header a:focus,
 body>header a:active {
     box-shadow: 0 0 10px 6px rgb(116, 183, 180, 1);
 }
-body>header>h1 {
-    font-size: 120%;
+h1#title {
+    font-size: 100%;
+    margin-left: 2%;
+    padding-top: 2.5%;
 }
 
 body>header>nav#mainLinksContainer {
     width: 100%;
     display: flex;
-    align-items: flex-start;
+    flex-direction: column;
     width: 100% !important;
-
 }
 
 header>nav#mainLinksContainer>#mainLinks {
     display: flex;
+    align-items: flex-start;
     width: 100%;
     justify-content: space-around;
-    /* flex-basis: 80%;     */
-    /* border: 3px solid black; */
 }
 
 #mainLinks>a {

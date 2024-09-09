@@ -16,12 +16,7 @@ export function popScriptWindow(){
         }
     })
     xBtn.addEventListener('keydown', e => {
-        let letter = e.key.toLowerCase()
-        if(letter == 'enter'){
-            e.preventDefault()
-            togglePopUp()
-        }
-        
+        togglePopUp()
     })
     addEventListener('keydown', e =>{
         let letter = e.key.toLowerCase()
@@ -31,25 +26,21 @@ export function popScriptWindow(){
         if(letter == 'p'){
             const mainCode = document.getElementById('mainCode')
             mainCode.focus()
-            // mainCode.scrollIntoView({behavior: 'smooth',block: 'start'})
         }
         if(letter == 'p' && keys.shift.pressed ){
 
             togglePopUp(letter)
         }
     })
-    // scriptsContainer.style.position = 'relative'
+
     function togglePopUp(letter){
-        mainCode.focus()
+        scriptsContainer.focus()
         if(scriptsContainer.classList.contains('popup')){
             scriptsContainer.classList.remove('popup')
-            scriptsContainer.style.position = 'relative'
+            // xExitContainer.classList.remove('popup')
         } else {
             scriptsContainer.classList.add('popup')
-            scriptsContainer.style.position = 'absolute'
-            scrollTo(0,0)
         }
-        xBtn.focus()
     }
 
 }

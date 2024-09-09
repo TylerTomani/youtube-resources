@@ -1,15 +1,9 @@
 main {
     position: relative;
 }
-#jsCanvasScriptContainer {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-}
+
 canvas:active,canvas:focus{
-    border: 2px solid oranges;
+    border: 2px solid orange;
     z-index: 20;
     box-shadow: 0 0 3px 2px yellow;
 }
