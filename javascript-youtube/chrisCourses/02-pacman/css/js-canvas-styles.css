@@ -30,6 +30,9 @@ canvas:active,canvas:focus{
 #scriptsContainer>.code-container>#mainCode {
     width: 100%;
 }
+#scriptsContainer>.code-container>#mainCode > .code-container{
+    border: none;
+}
 
 
 

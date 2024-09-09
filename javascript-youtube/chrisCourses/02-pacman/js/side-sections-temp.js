@@ -2,6 +2,7 @@ import { addCopyCodes } from "./copy-code.js"
 import { stepTxtListeners } from "./lesson-temp.js"
 import { popScriptWindow } from "./popup-script.js"
 import { injectJsScripts } from "../sections/loadJsScripts.js"
+import { handleCodeFocus } from "../../js/handleCodeFocus.js"
 
 export const navBar = document.querySelector('.section-lesson-title')
 export const mainAside = document.querySelector('main > aside')
@@ -458,6 +459,7 @@ function fetchLessonHref(href){
             addCopyCodes()
             popScriptWindow()
             injectJsScripts()
+            handleCodeFocus()
     })
     .catch(error => console.log('Error fetching content.html:', error));   
 }

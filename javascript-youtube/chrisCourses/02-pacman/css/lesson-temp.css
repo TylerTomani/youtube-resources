@@ -135,12 +135,18 @@ body {padding-bottom: 5%;}
     overflow: hidden;
 
 }
+.step-txt>.code-container > .copy-code{
+    font-size: 50%
+}
 .step-txt>.code-container,
 .step-txt-in>.code-container {
     background-color: rgb(33, 38, 38);
     color: white;;
-
-
+    /* scroll-behavior: none; */
+    
+    overflow-y: hidden;
+    overflow-x: scroll;
+    scrollbar-width:none;
 }
 .copy-code {
     font-size: .68rem;
@@ -149,7 +155,10 @@ body {padding-bottom: 5%;}
     padding-top: 1.5%;
 }
 .copy-code:active,
-.copy-code:focus {box-shadow: 0 0 6px 6px lightseagreen;}
+.copy-code:focus {
+    box-shadow: 0 0 16px 16px lightseagreen;
+    border: 5px solid lightseagreen;
+}
 #nxtLesson {
     /* margin-left: 2.5%;
     padding: .5% 1.5% */

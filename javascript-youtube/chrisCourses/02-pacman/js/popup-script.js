@@ -50,15 +50,33 @@ export function popScriptWindow(){
         if(letter == 'shift'){
             keys.shift.pressed  = true
         }
+        if(letter == 'f'){
+            if (scriptsContainer.classList.contains('popup-start')) {
+                scriptsContainer.classList.remove('popup-start')
+            }
+            if(!scriptsContainer.classList.contains('full-screen')){
+                scriptsContainer.classList.add('full-screen')
+                scriptsContainer.style.position = 'absolute'
+                scriptsContainer.style.zIndex = '100'
+                scriptsContainer.style.width = '100vmax !important'
+                
+            } else if (scriptsContainer.classList.contains('full-screen')){
+                scriptsContainer.classList.remove('full-screen')
+                scriptsContainer.style.position = 'relative'
+                scriptsContainer.style.zIndex = '50'
+                scriptsContainer.style.width = '100%'
+            }
+            
+        } else 
         if(letter == 'p'){
             const mainCode = document.getElementById('mainCode')
             mainCode.focus()
             // mainCode.scrollIntoView({behavior: 'smooth',block: 'start'})
         }
         if(letter == 'p' && keys.shift.pressed ){
-
             togglePopUp(letter)
         }
+        
     })
     // scriptsContainer.style.position = 'relative'
     scriptsContainer.addEventListener('focus', e => {

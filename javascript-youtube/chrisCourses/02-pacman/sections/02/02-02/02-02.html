@@ -1,10 +1,10 @@
 
 <div class="steps-container">
-    <h3>02-01 - Create Pacman class</h3>    
-    <h4 id="titleJsScript">02/02-01/02-01-js.html</h4>
+    <h3>02-02 - Move Player</h3>    
+    <h4 id="titleJsScript">02/02-02/02-02-js.js</h4>
     <div id="jsCanvasScriptContainer">
         <canvas id="canvas" class="" tabindex="0"></canvas>
-        <div id="scriptsContainer" class="popup-start">
+        <div id="scriptsContainer" class="">
             <div id="xExitContainer" class="">
                 <button tabindex="0" id="xBtn">x</button>
             </div>
@@ -21,61 +21,109 @@
             <div tabindex="0" class="step-txt">
                 <h4>01</h4>
                 <p>
-                    Create a <code class="lsg-fix">Pacman</code> class, and create an instance of it in the
-                    variable <code class="y-fix">pacman</code>. And use the static variables 
-                    <code class="y-fix">width </code> & <code class="y-fix">height</code>
-                    from <code class="lsg-fix">Boundary</code> to set position for <code class="y-fix">pacman</code>
-                    correctly
+                    Creat a <code>const keys</code>, then keyup and keydown
                 </p>
+                <div class="code-container">
+                    <pre tabindex="0" class="copy-code main-code">
+const keys = {
+    up:{
+        pressed: false
+    },
+    right:{
+        pressed: false
+    },
+    down: {
+        pressed: false
+    }
+    ,
+    left:{
+        pressed: false
+    }
+}
+        </pre>
+                </div>
                 
             </div>
             <div class="step-img">
                 <img src="sections/02/02-01/images/01.png">
             </div>
         </div>
-        <div class="step-col-in">
+
+        <div class="step-col">
             <div class="step-txt-in">
                 <p>
-                    Use <code class="m-fix">position</code>
-                    and <code class="m-fix">velocity</code>
-                    as parameters, set <code class="r-fix">velocity</code> for <code class="r-fix">x</code>
-                     and <code class="r-fix">y</code> to 0 for now.
-                    
                 </p>
-                <div class="code-container">
+            </div>
+        </div>
+        <div class="step-col">
+            <div tabindex="0" class="step-txt">
+                <h4>2</h4>
+                <p>
+                    Create keyup and keydown event
+                </p>
+            </div>
+            <div class="step">
+                <div class="step-txt">
+                    <div class="code-container">
                     <pre tabindex="0" class="copy-code main-code">
-class <span class="lsg-fix">Pacman</span> {
-    constructor(<span class="m-fix">{position,velocity}</span>){
-        this.position = position
-        this.velocity = velocity
-        this.radius = 15
+addEventListener('keydown', e => {
+    let key = e.keyCode
+    switch (key){
+        case 34:
+            keys.up.pressed = true
+            lastKey = 'up'
+            break
+        case 39:
+            keys.right.pressed = true
+            lastKey = 'right'
+            break
+        case 40:
+            keys.down.pressed = true
+            lastKey = 'down'
+            break
+        case 37:
+            keys.left.pressed = true
+            lastKey = 'left'
+            break
     }
-    draw(){
-        c.beginPath()
-        c.fillStyle = 'yellow'
-        c.arc(this.position.x, this.position.y, this.radius, 0, Math.PI * 2)
-        c.fill()
-        c.closePath()
+})
+</pre>
+                </div>
+                </div>
+                <div class="step-txt">
+                        <div class="code-container">
+                    <pre tabindex="0" class="copy-code main-code">
+addEventListener('keydown', e => {
+    let key = e.keyCode
+    switch (key){
+        case 38:
+            keys.up.pressed = false
+            lastKey = 'up'
+            break
+        case 39:
+            keys.right.pressed = false
+            lastKey = 'right'
+            break
+        case 40:
+            keys.down.pressed = false
+            lastKey = 'down'
+            break
+        case 37:
+            keys.left.pressed = false
+            lastKey = 'left'
+            break
     }
-}
-const <span class="y-fix">pacman</span> = new  <span class="lsg-fix">Pacman</span>({
-    position : {
-        x: 30,
-        y: 30
-    },
-    <span class="r-fix">velocity: {
-        x: 0,
-        y: 0
-    }</span>
-}) </pre>
+})
+</pre>
+                </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- 02 -->
+    <!-- 03 -->
     <div class="step">
         <div tabindex="0" class="step-txt">
-            <h4>02</h4>
+            <h4>03</h4>
             <p>
                 If you draw it before drawing the <code class="b-fix">boundaries</code> it will appear behind.
             </p>
@@ -83,7 +131,7 @@ const <span class="y-fix">pacman</span> = new  <span class="lsg-fix">Pacman</spa
                 <pre tabindex="0" class="copy-code">
 <span style="text-decoration: line-through; background-color: rgb(200,0,0.2);"><span class="y-fix">pacman</span>.draw()</span>
 boundaries.forEach(el => {
-el.draw()
+    el.draw()
 })</pre></div>        
         </div>
         <div class="step-img">
@@ -120,7 +168,8 @@ boundaries.forEach(el => {
                     from <code class="lsg-fix">Boundary</code> to set position for <code class="y-fix">pacman</code>
                     correctly
                 </p>
-<div class="code-container"><pre tabindex="0" class="copy-code main-code" id="">
+                <div class="code-container">
+                    <pre tabindex="0" class="copy-code main-code" id="">
 class Boundary{
     static width = 30
     static height = 30
@@ -136,7 +185,7 @@ class Boundary{
     }
 }</pre></div>
 //Pacman
-<div class="code-container"><pre  class="copy-code main-code">
+<div class="code-container"><pre  class="copy-code">
 class <span class="lsg-fix">Pacman</span>{
     <span class="gr">constructor</span>(<span class="m-fix">{position, velocity</span><span class="m">}</span>){
         this.position = position
@@ -161,7 +210,7 @@ const <span class="y-fix">pacman</span> = new <span class="lsg-fix">Pacman</span
         y: 0
     }
 })</pre></div>
-<div class="code-container"><pre tabindex="0" class="copy-code main-code">
+<div class="code-container"><pre tabindex="0" class="copy-code">
 const map = [
     ['-','-','-','-','-','-'],
     ['-',' ',' ',' ',' ','-'],
@@ -187,7 +236,9 @@ map.forEach((row,i) => {
 boundaries.forEach(el => {
     el.<span class="r-fix">draw()</span>
 })
-pacman.draw()</pre>
+pacman.draw()
+
+</pre>
                 </div>
             </div>
         </div>
