@@ -15,6 +15,11 @@ export function popScriptWindow(){
 
         }
     })
+    xBtn.addEventListener('click', e => {
+        e.preventDefault()
+        togglePopUp()
+        
+    })
     xBtn.addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
         if(letter == 'enter'){

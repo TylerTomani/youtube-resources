@@ -1,6 +1,6 @@
 main {
     position: relative;
-    background-color: limegreen;
+    background-color: lightskyblue;
 }
 
 canvas:active,canvas:focus{
@@ -20,6 +20,7 @@ canvas:active,canvas:focus{
 #scriptsContainer>.code-container {
     border: 1px solid black;
     align-self: flex-start;
+    background-color: white;
     width: 100%;
 }
 
