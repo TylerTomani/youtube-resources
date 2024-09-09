@@ -1,5 +1,6 @@
 main {
-position: relative;
+    position: relative;
+    background-color: lightsteelblue;
 }
 #jsCanvasScriptContainer {
     position: relative;
