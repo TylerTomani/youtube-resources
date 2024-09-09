@@ -22,6 +22,49 @@ const keys = {
         pressed: false
     }
 }
+addEventListener('keyup', e => {
+    let key = e.keyCode
+    switch (key){
+        case 38:
+            keys.up.pressed = false
+            lastKey = 'up'
+            break
+        case 39:
+            keys.right.pressed = false
+            lastKey = 'right'
+            break
+        case 40:
+            keys.down.pressed = false
+            lastKey = 'down'
+            break
+        case 37:
+            keys.left.pressed = false
+            lastKey = 'left'
+            break
+    }    
+});
+addEventListener('keydown', e => {
+    let key = e.keyCode
+    console.log(key)
+    switch (key){
+        case 38:
+            e.preventDefault()
+            keys.up.pressed = true
+            break
+        case 39:
+            e.preventDefault()
+            keys.right.pressed = true
+            break
+        case 40:
+            e.preventDefault()
+            keys.down.pressed = true
+            break
+        case 37:
+            e.preventDefault()
+            keys.left.pressed = true
+            break
+    }    
+});
 //Boundaries
 class Boundary {
     static width = 30
@@ -112,47 +155,5 @@ function animate(){
 }
 animate()
 
-addEventListener('keyup', e => {
-    let key = e.keyCode
-    switch (key){
-        case 38:
-            keys.up.pressed = false
-            lastKey = 'up'
-            break
-        case 39:
-            keys.right.pressed = false
-            lastKey = 'right'
-            break
-        case 40:
-            keys.down.pressed = false
-            lastKey = 'down'
-            break
-        case 37:
-            keys.left.pressed = false
-            lastKey = 'left'
-            break
-    }    
-});
-addEventListener('keydown', e => {
-    let key = e.keyCode
-    console.log(key)
-    switch (key){
-        case 38:
-            e.preventDefault()
-            keys.up.pressed = true
-            break
-        case 39:
-            e.preventDefault()
-            keys.right.pressed = true
-            break
-        case 40:
-            e.preventDefault()
-            keys.down.pressed = true
-            break
-        case 37:
-            e.preventDefault()
-            keys.left.pressed = true
-            break
-    }    
-});
+
 }())

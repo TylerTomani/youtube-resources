@@ -51,10 +51,12 @@ export function popScriptWindow(){
             keys.shift.pressed  = true
         }
         if(letter == 'f'){
+            
             if (scriptsContainer.classList.contains('popup-start')) {
                 scriptsContainer.classList.remove('popup-start')
             }
             if(!scriptsContainer.classList.contains('full-screen')){
+                scroll(0, 0)
                 scriptsContainer.classList.add('full-screen')
                 scriptsContainer.style.position = 'absolute'
                 scriptsContainer.style.zIndex = '100'
@@ -76,6 +78,9 @@ export function popScriptWindow(){
         if(letter == 'p' && keys.shift.pressed ){
             togglePopUp(letter)
         }
+        if(!isNaN(letter)){
+            hidePopUp()
+        }
         
     })
     // scriptsContainer.style.position = 'relative'
@@ -85,6 +90,7 @@ export function popScriptWindow(){
     scriptsContainer.addEventListener('focusout', e => {
         // scriptsContainer.zIndex = 0
     })
+    
     function togglePopUp(letter){
         
         if(scriptsContainer.classList.contains('popup-start')){
@@ -114,5 +120,4 @@ export function popScriptWindow(){
             xBtn.innerText = 'O'
         }
     }
-
 }

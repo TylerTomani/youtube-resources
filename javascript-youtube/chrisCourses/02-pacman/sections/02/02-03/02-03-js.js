@@ -1,13 +1,13 @@
-(function () {
-<div class="code-container"><pre tabindex="0" class="copy-code">
+ (function () {
+
 const canvas = document.querySelector('canvas')
 const c = canvas.getContext('2d')
 canvas.width = innerWidth
-canvas.height = innerHeight * .7</pre>
-</div>
+canvas.height = innerHeight * .7
 
 let lastKey = ''
 let playerSpeed = 2
+let clickedX,clickedY
 const keys = {
     up:{
         pressed: false
@@ -23,6 +23,7 @@ const keys = {
         pressed: false
     }
 }
+
 //Boundaries
 class Boundary {
     static width = 30
@@ -70,11 +71,13 @@ const pacman = new Pacman({
 })
 
 const map = [
-    ['-', '-', '-', '-', '-', '-'],
-    ['-', ' ', ' ', ' ', ' ', '-'],
-    ['-', ' ', '-', '-', ' ', '-'],
-    ['-', ' ', ' ', ' ', ' ', '-'],
-    ['-', '-', '-', '-', '-', '-']
+    ['-', '-', '-', '-', '-', '-', '-', '-'],
+    ['-', ' ',' ', ' ', ' ', ' ',' ', '-'],
+    ['-', ' ',' ', ' ', ' ', ' ',' ', '-'],
+    ['-', ' ',' ', '-', '-', ' ',' ', '-'],
+    ['-', ' ',' ', ' ', ' ', ' ',' ', '-'],
+    ['-', ' ',' ', ' ', ' ', ' ',' ', '-'],
+    ['-', '-', '-', '-', '-', '-', '-', '-']
 ]
 const boundaries = []
 map.forEach((row, i) => {
@@ -112,48 +115,38 @@ function animate(){
     pacman.update()
 }
 animate()
+canvas.addEventListener('click', e => {
+    const rect = canvas.getBoundingClientRect();
+    const clickedX = event.clientX - rect.left;
+    const clickY = event.clientY - rect.top;
+    if(clickedX > pacman.position.x){
+        keys.right.pressed = true
+    } else if (clickedX < pacman.position.x){
+        keys.left.pressed = true
+    }
+    
+});
 
-addEventListener('keyup', e => {
-    let key = e.keyCode
-    switch (key){
-        case 38:
-            keys.up.pressed = false
-            lastKey = 'up'
-            break
-        case 39:
-            keys.right.pressed = false
-            lastKey = 'right'
-            break
-        case 40:
-            keys.down.pressed = false
-            lastKey = 'down'
-            break
-        case 37:
-            keys.left.pressed = false
-            lastKey = 'left'
-            break
-    }    
-});
-addEventListener('keydown', e => {
-    let key = e.keyCode
-    console.log(key)
-    switch (key){
-        case 38:
-            e.preventDefault()
-            keys.up.pressed = true
-            break
-        case 39:
-            e.preventDefault()
-            keys.right.pressed = true
-            break
-        case 40:
-            e.preventDefault()
-            keys.down.pressed = true
-            break
-        case 37:
-            e.preventDefault()
-            keys.left.pressed = true
-            break
-    }    
-});
+// addEventListener('keyup', e => {
+//     let key = e.keyCode
+//     switch (key){
+//         case 38:
+//             keys.up.pressed = false
+//             lastKey = 'up'
+//             break
+//         case 39:
+//             keys.right.pressed = false
+//             lastKey = 'right'
+//             break
+//         case 40:
+//             keys.down.pressed = false
+//             lastKey = 'down'
+//             break
+//         case 37:
+//             keys.left.pressed = false
+//             lastKey = 'left'
+//             break
+//     }    
+// });
+
 }())
