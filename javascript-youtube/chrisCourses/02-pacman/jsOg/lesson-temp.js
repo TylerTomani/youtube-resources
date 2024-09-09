@@ -402,6 +402,11 @@ export function stepTxtListeners(){
     targetDiv.addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
         let key = e.keyCode
+        if(letter == 'p'){
+            targetDivFocus = true
+            
+        }
+        
         if (letter == 'c' && !keys.meta.pressed ) {
             if(mainCodes.length > 0){
                 mainCodes[iMainCode].focus()

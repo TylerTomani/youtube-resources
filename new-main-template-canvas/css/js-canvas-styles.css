@@ -25,31 +25,14 @@ canvas {
     /* max-width: 400px; */
     width: 100%;
 }
-#scriptsContainer > #xExitContainer{
-    /* position: relative;
-    top: 0;
-    display: flex;
-    justify-content: flex-end;
-    position: relative;
-    border: 2px solid blue; */
-}
 #scriptsContainer>.code-container {
     border: 1px solid black;
     color: white;
     overflow: hidden;
     scroll-behavior: none;
 }
-#scriptsContainer>#xExitContainer{
-    display: flex;
-    justify-content: flex-end;
-    background-color: (0,0,0,0);
-}
-#scriptsContainer>#xExitContainer> #xBtn{
-    position: absolute;
-    margin-right: 1%;
-    width: 20px;
-    border-radius: 2px;
-}
+
+
 #scriptsContainer>.code-container >.copy-code{
     overflow: hidden;
     overflow-x: scroll;

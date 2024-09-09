@@ -8,7 +8,7 @@ import { header } from "./side-sections-temp.js"
 let iSection = 0
 let iMainCode = 0
 let currentSection
-let stepTxts = document.querySelectorAll('.step-txt')
+export let stepTxts = document.querySelectorAll('.step-txt')
 export function stepTxtListeners(){
     const navbar = document.querySelector('.section-lesson-title')
     stepTxts = document.querySelectorAll('.step-txt')

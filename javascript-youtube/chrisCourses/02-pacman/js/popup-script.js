@@ -1,3 +1,4 @@
+import { stepTxts } from "./lesson-temp.js"
 export function popScriptWindow(){
     // I need to figure strict out
     // 'use strict' 
@@ -8,7 +9,16 @@ export function popScriptWindow(){
         shift : {
             pressed : false
         }
-    }
+    } 
+    let stepsFocused = false
+    stepTxts.forEach(el => {
+        el.addEventListener('focus', e => {
+            stepsFocused = true
+        })
+        el.addEventListener('foucusout', e => {
+            stepsFocused = false
+        })
+    })
     addEventListener('keyup', e =>{
         if(keys.shift.pressed){
             keys.shift.pressed = false
@@ -48,16 +58,24 @@ export function popScriptWindow(){
     })
     // scriptsContainer.style.position = 'relative'
     function togglePopUp(letter){
-        mainCode.focus()
+        
+        if(scriptsContainer.classList.contains('popup-start')){
+            scriptsContainer.classList.remove('popup-start')
+        }
         if(scriptsContainer.classList.contains('popup')){
             scriptsContainer.classList.remove('popup')
             scriptsContainer.style.position = 'relative'
+            xBtn.innerText = 'O'
         } else {
             scriptsContainer.classList.add('popup')
+            xBtn.innerText = 'x'
+            console.log(xBtn)
             scriptsContainer.style.position = 'absolute'
-            scrollTo(0,0)
+            if(!stepsFocused){
+                scrollTo(0,0)
+                xBtn.focus()
+            }
         }
-        xBtn.focus()
     }
 
 }
