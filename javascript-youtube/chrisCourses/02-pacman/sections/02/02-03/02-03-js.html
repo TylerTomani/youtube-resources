@@ -104,13 +104,13 @@ map.forEach((row, i) => {
 })</pre></div>
 // Mouse Click
 <div class="code-container"><pre tabindex="0" class="copy-code">
-canvas.addEventListener('mouseup', e => {
+canvas.addEventListener('pointerup', e => {
     keys.up.pressed = false
     keys.right.pressed = false
     keys.down.pressed = false
     keys.left.pressed = false
 })
-canvas.addEventListener('mousedown', e => {
+canvas.addEventListener('pointerdown', e => {
     canavsRect = canvas.getBoundingClientRect();
     clickX = e.clientX - canavsRect.left;
     clickY = e.clientY - canavsRect.top;

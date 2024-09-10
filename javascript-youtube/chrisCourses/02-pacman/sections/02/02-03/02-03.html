@@ -3,7 +3,7 @@
     <h3>02-03 - Move Player (click)</h3>    
     <h4 id="titleJsScript">02/02-03/02-03-js.js</h4>
     <div id="jsCanvasScriptContainer">
-        <canvas id="canvas" class="" tabindex="0"></canvas>
+        <canvas autofocus  id="canvas" class="" tabindex="0"></canvas>
         <div id="scriptsContainer" class="">
             <div id="xExitContainer" class="">
                 <button tabindex="0" id="xBtn">x</button>
@@ -52,7 +52,7 @@
                         <li><code class="r-fix">keys.up.pressed</code></li>
                         <li><code class="r-fix">keys.down.pressed</code> .. etc</li>
                     </ul>
-                    to <code class="b-fix">false</code> in the <span class="m-fix">mouseup</span> <span class="y-fix">eventListener</span>
+                    to <code class="b-fix">false</code> in the <span class="m-fix">pointerup</span> <span class="y-fix">eventListener</span>
                     <sup class="r">We are using keys so We can also change it back to keyboard movement</sup>
                 </p>
                 
@@ -68,7 +68,7 @@
                     <div class="code-container">
                         <pre tabindex="0" class="copy-code main-code smtxt">
 <span class="o-fix">canvas</span>.<span class="y-fix">addEventListener(</span><span
-    class="m-fix">'mousedown'</span>, e => {
+    class="m-fix">'pointerdown'</span>, e => {
  <span class="lsg-fix">canavsRect</span> = canvas.getBoundingClientRect();
  <span class="lsg-fix">clickX</span> = e.clientX - canavsRect.left;
  <span class="lsg-fix">clickY</span> = e.clientY - canavsRect.top;
@@ -76,7 +76,7 @@
                 </div>
                 <div class="step-txt-in">
                     <div class="code-container"><pre tabindex="0" class="copy-code main-code">
-canvas.addEventListener(<span class="m-fix">'mouseup'</span>, e => {
+canvas.addEventListener(<span class="m-fix">'pointerup'</span>, e => {
  <span class="r-fix">keys.up.pressed</span> =  <span class="b-fix">false</span>
  <span class="r-fix">keys.right.pressed</span> = <span class="b-fix">false</span>
  <span class="r-fix">keys.down.pressed</span> = <span class="b-fix">false</span>
@@ -92,7 +92,7 @@ canvas.addEventListener(<span class="m-fix">'mouseup'</span>, e => {
         <div tabindex="0" class="step-txt">
             <h4>03</h4>
             <p>
-                Now assigne the keys.pressed event within the <code class="m-fix">mousedown</code>
+                Now assigne the keys.pressed event within the <code class="m-fix">pointerdown</code>
                 event based on the <code class="lsg-fix">clickX</code>
                 and <code class="lsg-fix">clickY</code> variables
             </p>
