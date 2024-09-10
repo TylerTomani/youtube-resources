@@ -1,22 +1,18 @@
-(function () {
-<div class="code-container"><pre tabindex="0" class="copy-code">
+(function () {<div class="code-container"><pre tabindex="0" class="copy-code">
 const canvas = document.querySelector('canvas')
 const c = canvas.getContext('2d')
 canvas.width = innerWidth
 canvas.height = innerHeight * .7
-<div class="code-container"><pre tabindex="0" class="copy-code">
-<span class="b-fix">let</span> <span class="lsg-fix">canavsRect</span>
+<div class="code-container"><pre tabindex="0" class="copy-code"><span class="b-fix">let</span> <span class="lsg-fix">canavsRect</span>
 <span class="b-fix">let</span> <span class="lsg-fix">clickX</span>
 <span class="b-fix">let</span> <span class="lsg-fix">clickY</span>
 <span class="g">/** Get this so when first container is clicked this 
     gets focused, AND when steps are clicked, this pop up follows the 
     step-txt and shows the change in the code in this popup
-*/
-</span>
-</pre></div>
-
+*/</span></pre></div>
 let lastKey = ''
 let playerSpeed = 2</pre></div>
+<div class="code-container"><pre tabindex="0" class="copy-code">
 const keys = {
     up:{
         pressed: false
@@ -31,50 +27,8 @@ const keys = {
     left:{
         pressed: false
     }
-}
-addEventListener('keyup', e => {
-    let key = e.keyCode
-    switch (key){
-        case 38:
-            keys.up.pressed = false
-            lastKey = 'up'
-            break
-        case 39:
-            keys.right.pressed = false
-            lastKey = 'right'
-            break
-        case 40:
-            keys.down.pressed = false
-            lastKey = 'down'
-            break
-        case 37:
-            keys.left.pressed = false
-            lastKey = 'left'
-            break
-    }    
-});
-addEventListener('keydown', e => {
-    let key = e.keyCode
-    switch (key){
-        case 38:
-            e.preventDefault()
-            keys.up.pressed = true
-            break
-        case 39:
-            e.preventDefault()
-            keys.right.pressed = true
-            break
-        case 40:
-            e.preventDefault()
-            keys.down.pressed = true
-            break
-        case 37:
-            e.preventDefault()
-            keys.left.pressed = true
-            break
-    }    
-});</pre></div>
-//Boundaries
+}</pre></div>
+//Boundary Class
 <div class="code-container"><pre tabindex="0" class="copy-code">
 
 class Boundary {
@@ -91,7 +45,7 @@ class Boundary {
 
     }
 }</pre></div>
-//Pacman
+//Pacman Class
 <div class="code-container">
     <pre tabindex="0" class="copy-code">
 //Pacman
@@ -113,9 +67,8 @@ class Pacman {
         this.position.y += this.velocity.y
         this.draw()
     }
-}</pre></div>
-<div class="code-container"><pre tabindex="0" class="copy-code">
-    const pacman = new Pacman({
+}
+const pacman = new Pacman({
     position: {
         x: Boundary.width + (Boundary.width * .5),
         y: Boundary.height + (Boundary.height * .5),
@@ -124,8 +77,9 @@ class Pacman {
         x: 0,
         y: 0
     }
-})
-
+})</pre></div>
+// Boundaries & Map
+<div class="code-container"><pre tabindex="0" class="copy-code">
 const map = [
     ['-', '-', '-', '-', '-', '-'],
     ['-', ' ', ' ', ' ', ' ', '-'],
@@ -147,8 +101,21 @@ map.forEach((row, i) => {
                 break
         }
     })
+})</pre></div>
+// Mouse Click
+<div class="code-container"><pre tabindex="0" class="copy-code">
+canvas.addEventListener('mouseup', e => {
+    keys.up.pressed = false
+    keys.right.pressed = false
+    keys.down.pressed = false
+    keys.left.pressed = false
 })
-</pre>
+canvas.addEventListener('mousedown', e => {
+    canavsRect = canvas.getBoundingClientRect();
+    clickX = e.clientX - canavsRect.left;
+    clickY = e.clientY - canavsRect.top;
+});</pre></div>
+
 </div>
 <div class="code-container"><pre tabindex="0" class="copy-code">
 function animate(){

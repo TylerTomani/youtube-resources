@@ -1,12 +1,12 @@
-(function () {
-<div class="code-container"><pre tabindex="0" class="copy-code">
+(function () {<div class="code-container"><pre tabindex="0" class="copy-code">
 const canvas = document.querySelector('canvas')
 const c = canvas.getContext('2d')
 canvas.width = innerWidth
-canvas.height = innerHeight * .7</pre></div>
-<div class="code-container"><pre tabindex="0" class="copy-code">
+canvas.height = innerHeight * .7
 let lastKey = ''
-let playerSpeed = 2
+let playerSpeed = 2</pre></div>
+// keys and keydown event listeners
+<div class="code-container"><pre tabindex="0" class="copy-code">
 const keys = {
     up:{
         pressed: false
@@ -64,10 +64,8 @@ addEventListener('keydown', e => {
             break
     }    
 });</pre></div>
-//Boundaries
-<div class="code-container"><pre tabindex="0" class="copy-code">
-
-class Boundary {
+//Boundary Class
+<div class="code-container"><pre tabindex="0" class="copy-code">class Boundary {
     static width = 30
     static height = 30
     constructor({ position }) {
@@ -80,11 +78,8 @@ class Boundary {
         c.fillRect(this.position.x, this.position.y, this.width, this.height)
 
     }
-}</pre></div>
-//Pacman
-<div class="code-container">
-    <pre tabindex="0" class="copy-code">
-//Pacman
+}</pre></div>//Pacman Class and pacman
+<div class="code-container"><pre tabindex="0" class="copy-code">
 class Pacman {
     constructor({ position, velocity }) {
         this.position = position
@@ -103,9 +98,8 @@ class Pacman {
         this.position.y += this.velocity.y
         this.draw()
     }
-}</pre></div>
-<div class="code-container"><pre tabindex="0" class="copy-code">
-    const pacman = new Pacman({
+}
+const pacman = new Pacman({
     position: {
         x: Boundary.width + (Boundary.width * .5),
         y: Boundary.height + (Boundary.height * .5),
@@ -114,8 +108,7 @@ class Pacman {
         x: 0,
         y: 0
     }
-})
-
+})</pre></div><div class="code-container"><pre tabindex="0" class="copy-code">//Maps & Boundaries
 const map = [
     ['-', '-', '-', '-', '-', '-'],
     ['-', ' ', ' ', ' ', ' ', '-'],
