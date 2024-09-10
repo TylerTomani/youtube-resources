@@ -26,6 +26,7 @@ const keys = {
     }
 }
 let  iSection,iLesson,currentSection,intLetter,sectionsFocused,lessonsFocused, sectionClicked,asideFocused,targetDivFocused,currentLesson,shiftS
+
 [mainAside, backlink].forEach(el => {
     el.addEventListener('focus', () => { scrollTo(0, 0) });
 })
@@ -45,6 +46,7 @@ function setLetVariables(){
 /** This function, set let variable values, saves space 
 in top part of the code */
 setLetVariables()
+
 header.addEventListener('focusin', e => { sectionsFocused = false})
 header.addEventListener('keydown', e => {
     let letter = e.key.toLowerCase()
@@ -136,8 +138,8 @@ navBar.addEventListener('keydown', e => {
     }    
     
 })
-function toggleAside(){
-    const jsCanvasScriptContainer = document.querySelector('#jsCanvasScriptContainer')
+export function toggleAside(){
+    // const jsCanvasScriptContainer = document.querySelector('#jsCanvasScriptContainer')
     if (!mainAside.classList.contains('hide')){
         mainAside.classList.add('hide')
         // jsCanvasScriptContainer.style.alignSelf = 'center'

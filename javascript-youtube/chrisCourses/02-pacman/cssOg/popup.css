@@ -1,0 +1,90 @@
+
+#jsCanvasScriptContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 99%;
+}
+#scriptsContainer {
+    position: relative;
+    width: 99%;
+}
+.popup {
+    max-width: 250px !important;
+    max-height: 300px;
+    overflow-x: scroll;
+    position: sticky;
+    top: 0;
+    right: 0;
+    background-color: white;
+    z-index: 5;
+}
+.popup-start {
+    max-width: 300px !important;
+    max-height: 300px;
+    overflow-x: scroll;
+    position: relative;
+    top: 10px;
+    left: 0;
+    background-color: white;
+    /* z-index: 10; */
+}
+#xExitContainer {
+    position: relative;
+    background-color: rgb(255, 255, 255, 0);
+    /* z-index: 11; */
+    top: 1%;
+    /* right: 15%; */
+    left: 0;
+    display: flex;
+    background-color: (0, 0, 0, 0);
+}
+
+#xBtn {
+    position: absolute;
+    max-height: 20px !important;
+    /* margin-right: 1%; */
+    top: 0px;
+    /* z-index: 44; */
+    /* left: 0; */
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 5px;
+    height: 5px;
+    /* padding: .5%; */
+}
+.full-screen {
+    /* width: 100vmax  !important;
+    height: 100vmax !important;
+    position: absolute;
+    background-color: blue !important;
+    z-index: 100 */
+
+}
+@media screen and (max-width: 634px) {
+    #xExitContainer {
+            position: relative;
+            /* background-color: rgb(255, 255, 255, 0); */
+            /* z-index: 11; */
+            /* top: 1%; */
+            /* right: 15%; */
+            left: 0;
+            display: flex;
+            justify-content: center;
+        }
+    
+        #xBtn {
+            /* max-height: 20px !important; */
+            width: 12px;
+            height: 12px;
+            padding: .5%;
+            right: 25%;
+            left:  -1%;
+        }
+    
+}
+
+

@@ -6,6 +6,7 @@ export function popScriptWindow(){
     const canvas = document.querySelector('#canvas')
     const xExitContainer = document.querySelector("#xExitContainer")
     const xBtn = document.querySelector('#xBtn')
+    let mainCode = document.querySelector('#mainCode')
     const keys = {
         shift : {
             pressed : false
@@ -40,6 +41,13 @@ export function popScriptWindow(){
             e.preventDefault()
             togglePopUp()
         }
+        if(letter == 'p'){
+            mainCode.focus()
+            // mainCode.scrollIntoView({ behavior: 'smooth', block: 'start' })
+            scrollTo(0,0)
+            
+        }
+        
         
     })
     if(scriptsContainer.classList.contains('popup-start')){
@@ -71,15 +79,16 @@ export function popScriptWindow(){
             
         } else 
         if(letter == 'p'){
-            const mainCode = document.getElementById('mainCode')
-            mainCode.focus()
-            // mainCode.scrollIntoView({behavior: 'smooth',block: 'start'})
+             mainCode = document.getElementById('mainCode')
+            // mainCode.focus()
+            mainCode.scrollIntoView({behavior: 'smooth',block: 'start',block: 'start'})
         }
         if(letter == 'p' && keys.shift.pressed ){
+            
             togglePopUp(letter)
         }
         if(!isNaN(letter)){
-            hidePopUp()
+            // hidePopUp()
         }
         
     })

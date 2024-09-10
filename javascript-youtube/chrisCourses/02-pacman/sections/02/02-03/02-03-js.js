@@ -5,6 +5,10 @@ const c = canvas.getContext('2d')
 canvas.width = innerWidth
 canvas.height = innerHeight * .7
 
+let canavsRect
+let clickX
+let clickY
+
 let lastKey = ''
 let playerSpeed = 2
 let clickedX,clickedY
@@ -23,7 +27,6 @@ const keys = {
         pressed: false
     }
 }
-
 //Boundaries
 class Boundary {
     static width = 30
@@ -94,12 +97,18 @@ map.forEach((row, i) => {
         }
     })
 })
+canvas.addEventListener('mousedown', e => {
+    canavsRect = canvas.getBoundingClientRect();
+    clickX = event.clientX - canavsRect.left;
+    clickY = event.clientY - canavsRect.top;
+});
 function animate(){
     requestAnimationFrame(animate)
     c.fillStyle = 'black'
     c.fillRect(0, 0, canvas.width, canvas.height)
     pacman.velocity.x = 0
     pacman.velocity.y = 0
+    console.log(clickX)
     if (keys.up.pressed && lastKey != 'up') {
         pacman.velocity.y -= playerSpeed
     }else if(keys.right.pressed && lastKey != 'right'){
@@ -115,38 +124,15 @@ function animate(){
     pacman.update()
 }
 animate()
-canvas.addEventListener('click', e => {
-    const rect = canvas.getBoundingClientRect();
-    const clickedX = event.clientX - rect.left;
-    const clickY = event.clientY - rect.top;
-    if(clickedX > pacman.position.x){
-        keys.right.pressed = true
-    } else if (clickedX < pacman.position.x){
-        keys.left.pressed = true
-    }
-    
-});
+canvas.addEventListener('mouseup', e => { 
+    console.log('up')
+    console.log(pacman.velocity.x)
+    keys.up.pressed = false
+    keys.right.pressed = false
+    keys.down.pressed = false
+    keys.left.pressed = false
+})
 
-// addEventListener('keyup', e => {
-//     let key = e.keyCode
-//     switch (key){
-//         case 38:
-//             keys.up.pressed = false
-//             lastKey = 'up'
-//             break
-//         case 39:
-//             keys.right.pressed = false
-//             lastKey = 'right'
-//             break
-//         case 40:
-//             keys.down.pressed = false
-//             lastKey = 'down'
-//             break
-//         case 37:
-//             keys.left.pressed = false
-//             lastKey = 'left'
-//             break
-//     }    
-// });
+
 
 }())

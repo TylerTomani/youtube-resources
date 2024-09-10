@@ -1,6 +1,6 @@
 import { lastFocusedElement } from "./side-sections-temp.js"
 import { getSectionContainer } from "./side-sections-temp.js"
-import { mainAside } from "./side-sections-temp.js"
+import { mainAside,toggleAside } from "./side-sections-temp.js"
 import { showAside } from "./side-sections-temp.js"
 import { hideAside } from "./side-sections-temp.js"
 import { getSubSection } from "./side-sections-temp.js"
@@ -31,7 +31,9 @@ export function stepTxtListeners(){
     let targetDivFocus = false
     let stepFocused = false
     let playing = false
-    
+    if (mainAside.classList.contains('hide')) {
+        // targetDivFocus = true
+    }    
     sections.forEach(el => {
         el.addEventListener('focus', e => {
             mainCodesFocused = false
@@ -410,9 +412,9 @@ export function stepTxtListeners(){
         let key = e.keyCode
         if(letter == 'p'){
             targetDivFocus = true
+            // const 
             
         }
-        
         if (letter == 'c' && !keys.meta.pressed ) {
             if(mainCodes.length > 0){
                 mainCodes[iMainCode].focus()
@@ -423,6 +425,9 @@ export function stepTxtListeners(){
                 nextLesson.focus()
             }
         }   
+        if(letter == 's' ){
+            toggleAside()
+        }
         if(letter == 'meta'){
             keys.meta.pressed = true        
         }
@@ -503,5 +508,7 @@ export function stepTxtListeners(){
     }
 }
 export function stepNumFocus(intLetter) {
-    stepTxts[intLetter - 1].focus()
+    if(stepTxts.length > 0 && stepTxts[intLetter - 1]){
+        stepTxts[intLetter - 1].focus()
+    }
 }

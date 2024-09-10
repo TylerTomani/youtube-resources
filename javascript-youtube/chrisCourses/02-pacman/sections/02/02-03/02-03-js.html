@@ -3,10 +3,20 @@
 const canvas = document.querySelector('canvas')
 const c = canvas.getContext('2d')
 canvas.width = innerWidth
-canvas.height = innerHeight * .7</pre></div>
+canvas.height = innerHeight * .7
 <div class="code-container"><pre tabindex="0" class="copy-code">
+<span class="b-fix">let</span> <span class="lsg-fix">canavsRect</span>
+<span class="b-fix">let</span> <span class="lsg-fix">clickX</span>
+<span class="b-fix">let</span> <span class="lsg-fix">clickY</span>
+<span class="g">/** Get this so when first container is clicked this 
+    gets focused, AND when steps are clicked, this pop up follows the 
+    step-txt and shows the change in the code in this popup
+*/
+</span>
+</pre></div>
+
 let lastKey = ''
-let playerSpeed = 2
+let playerSpeed = 2</pre></div>
 const keys = {
     up:{
         pressed: false

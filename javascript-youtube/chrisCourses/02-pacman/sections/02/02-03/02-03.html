@@ -1,7 +1,7 @@
 
 <div class="steps-container">
     <h3>02-03 - Move Player (click)</h3>    
-    <h4 id="titleJsScript">02/02-03/02-03-js.js</h4>
+    <h4 id="titleJsScript">02/02-03/02-03-js.html</h4>
     <div id="jsCanvasScriptContainer">
         <canvas id="canvas" class="" tabindex="0"></canvas>
         <div id="scriptsContainer" class="">
@@ -20,15 +20,88 @@
         <div tabindex="0" class="step-txt">
             <h4>01</h4>
             <p>
-                This is my adjustment to allow for clicking to move pacman
+                Add 3 <code class="b-fix">let</code> variables for 
+                <code class="lsg-fix">canasRect</code>,<code class="lsg-fix">clickX</code>,
+                and <code class="lsg-fix">clickY</code>
             </p>
+            <div class="code-container">
+                <pre tabindex="0" class="copy-code">
+<span class="b-fix">let</span> <span class="lsg-fix">canavsRect</span>
+<span class="b-fix">let</span> <span class="lsg-fix">clickX</span>
+<span class="b-fix">let</span> <span class="lsg-fix">clickY</span></pre>
+            </div>
+            
         </div>
         <div class="step-img">
-            <img src="sections/">
+            <img src="sections/02/02-03/images/01.png">
         </div>
     </div>
+    <!-- 02 -->
+    <div class="step-col ">
+        <div class="step">
+            <div tabindex="0" class="step-txt">
+                <h4>02</h4>
+                <p>
+                    &emsp;Use the above 3 variables,in the <code class="m-fix">mousdown</code>
+                    <code class="y-fix">addEventListener</code>, to the clicked x and y position
+                    on the canvas.
+                </p>
+                <p>
+                    &emsp;Also, set the <code class="r-fix">keys.up.pressed</code>, <code class="r-fix">keys.down.pressed</code> .. etc
+                    to false in the <span class="m">mouseup</span> <span class="y-fix">eventListener</span>
+                    <sup class="r">We are using keys so We can also change it back to keyboard movement</sup>
+                </p>
+                
+            </div>
+            <div class="step-img">
+                <img src="sections/02/02-02/images/01.png">
+            </div>
+        </div>
+        <div class="step-col">
+            
+            <div class="step">
+                <div class="step-txt-in">
+                    <div class="code-container">
+                        <pre tabindex="0" class="copy-code main-code">
+<span class="o-fix">canvas</span>.<span class="y-fix">addEventListener(</span><span
+    class="m-fix">'mousedown'</span>, e => {
+    <span class="lsg-fix">canavsRect</span> = canvas.getBoundingClientRect();
+    <span class="lsg-fix">clickX</span> = event.clientX - canavsRect.left;
+    <span class="lsg-fix">clickY</span> = event.clientY - canavsRect.top;
+}<span class="y-fix">)</span> ;
+                        </pre>
+                    </div>
+                    
     
-    
+                </div>
+                <div class="step-txt-in">
+                    <div class="code-container"><pre tabindex="0" class="copy-code main-code">
+addEventListener('keyup', e => {
+    let key = e.keyCode
+    switch (key){
+        case 38:
+            keys.up.pressed = false
+            <span class="y-fix">lastKey</span> = 'up'
+            break
+        case 39:
+            keys.right.pressed = false
+            <span class="y-fix">lastKey</span> = 'right'
+            break
+        case 40:
+            keys.down.pressed = false
+            <span class="y-fix">lastKey</span> = 'down'
+            break
+        case 37:
+            keys.left.pressed = false
+            <span class="y-fix">lastKey</span> = 'left'
+            break
+    }    
+});
+</pre></div>
+                </div>
+            </div>
+        </div>
+    </div>
     <button tabindex="0" id="nxtLesson">next lesson</button>
 </div>
 
