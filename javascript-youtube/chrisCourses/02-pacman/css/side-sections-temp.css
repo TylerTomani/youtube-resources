@@ -9,8 +9,8 @@
     right: 0;
 }
 body {
-    background-color: lime;
-    /* background-color: rgb(173, 216, 230,.2); */
+    /* background-color: lime; */
+    background-color: orchid;
     overflow: hidden;
     overflow-y: scroll;
 

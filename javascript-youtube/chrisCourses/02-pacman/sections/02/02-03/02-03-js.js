@@ -148,7 +148,7 @@
 
     // Mouse Click
 
-    canvas.addEventListener('mouseup', e => {
+    canvas.addEventListener('pointerup', e => {
         keys.up.pressed = false
         keys.right.pressed = false
         keys.down.pressed = false
@@ -156,7 +156,7 @@
         lastKey = ''
 
     })
-    canvas.addEventListener('mousedown', e => {
+    canvas.addEventListener('pointerdown', e => {
         canavsRect = canvas.getBoundingClientRect();
         clickX = e.clientX - canavsRect.left;
         clickY = e.clientY - canavsRect.top;
