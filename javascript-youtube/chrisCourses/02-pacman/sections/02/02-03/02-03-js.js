@@ -3,15 +3,20 @@
     const c = canvas.getContext('2d')
     canvas.width = innerWidth
     canvas.height = innerHeight * .7
+
     let canavsRect
     let clickX
     let clickY
+    let lastDirection = ''
     /** Get this so when first container is clicked this 
         gets focused, AND when steps are clicked, this pop up follows the 
         step-txt and shows the change in the code in this popup
     */
+
     let lastKey = ''
     let playerSpeed = 2
+
+
     const keys = {
         up: {
             pressed: false
@@ -27,50 +32,10 @@
             pressed: false
         }
     }
-    addEventListener('keyup', e => {
-        let key = e.keyCode
-        switch (key) {
-            case 38:
-                keys.up.pressed = false
-                lastKey = 'up'
-                break
-            case 39:
-                keys.right.pressed = false
-                lastKey = 'right'
-                break
-            case 40:
-                keys.down.pressed = false
-                lastKey = 'down'
-                break
-            case 37:
-                keys.left.pressed = false
-                lastKey = 'left'
-                break
-        }
-    });
-    addEventListener('keydown', e => {
-        let key = e.keyCode
-        switch (key) {
-            case 38:
-                e.preventDefault()
-                keys.up.pressed = true
-                break
-            case 39:
-                e.preventDefault()
-                keys.right.pressed = true
-                break
-            case 40:
-                e.preventDefault()
-                keys.down.pressed = true
-                break
-            case 37:
-                e.preventDefault()
-                keys.left.pressed = true
-                break
-        }
-    });
 
     //Boundary Class
+
+
     class Boundary {
         static width = 30
         static height = 30
@@ -124,12 +89,12 @@
     // Boundaries & Map
 
     const map = [
-        [' ',' ', ' ', ' ', ' ', ' ', ' '],
-        [' ','-', '-', '-', '-', '-', '-'],
-        [' ','-', ' ', ' ', ' ', ' ', '-'],
-        [' ','-', ' ', '-', '-', ' ', '-'],
-        [' ','-', ' ', ' ', ' ', ' ', '-'],
-        [' ','-', '-', '-', '-', '-', '-']
+        [' ', ' ', ' ', ' ', ' ', ' ', ' '],
+        [' ', '-', '-', '-', '-', '-', '-'],
+        [' ', '-', ' ', ' ', ' ', ' ', '-'],
+        [' ', '-', ' ', '-', '-', ' ', '-'],
+        [' ', '-', ' ', ' ', ' ', ' ', '-'],
+        [' ', '-', '-', '-', '-', '-', '-']
     ]
     const boundaries = []
     map.forEach((row, i) => {
@@ -148,29 +113,22 @@
     })
 
     // Mouse Click
-    
+
     canvas.addEventListener('pointerup', e => {
         keys.up.pressed = false
         keys.right.pressed = false
         keys.down.pressed = false
         keys.left.pressed = false
-        // lastKey = ''
-
     })
-    let lastDirection = ''
+
     canvas.addEventListener('pointerdown', e => {
         e.preventDefault()
         canavsRect = canvas.getBoundingClientRect();
         clickX = e.clientX - canavsRect.left;
         clickY = e.clientY - canavsRect.top;
-        // console.log(boundaries.length * Boundary.width)
-        // console.log('pacman.x', pacman.position.x)
-        // console.log('pacman.y', pacman.position.y - (pacman.radius * 2))
-        // console.log('clickX',clickX)
-        // console.log('clickY',clickY)
         if (clickX > pacman.position.x) {
             lastDirection = 'r';
-        } else if (clickX < (pacman.position.x - (pacman.radius)) 
+        } else if (clickX < (pacman.position.x - (pacman.radius))
         ) {
             lastDirection = 'l';
         } else if (clickY < pacman.position.y) {
@@ -178,35 +136,16 @@
         } else if (clickY > pacman.position.y) {
             lastDirection = 'd';
         }
-
-        console.log(lastDirection)
-
-        if(lastDirection == 'r'){
+        if (lastDirection == 'r') {
             keys.right.pressed = true
-        } else if(lastDirection == 'd'){
+        } else if (lastDirection == 'd') {
             keys.down.pressed = true
-        } else if(lastDirection == 'l'){
+        } else if (lastDirection == 'l') {
             keys.left.pressed = true
         } else if (lastDirection == 'u') {
             keys.up.pressed = true
         }
-        
-
-
-        
-        
-        
     });
-    canvas.addEventListener('keydown', e =>{
-        let letter = e.key.toLowerCase()
-        if(letter == 'enter'){
-            // console.log('map.length:',map.length)
-            console.log('boundaries.length',map[0].length)
-            console.log('length * width :', map[0].length * Boundary.width)
-            console.log('Boundary.width',Boundary.width)
-        }
-        
-    })
     function animate() {
         requestAnimationFrame(animate)
         c.fillStyle = 'black'
@@ -228,5 +167,7 @@
         pacman.update()
     }
     animate()
+
+
 
 }())

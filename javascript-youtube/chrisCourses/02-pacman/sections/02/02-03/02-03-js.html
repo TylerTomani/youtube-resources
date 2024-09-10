@@ -6,6 +6,7 @@ canvas.height = innerHeight * .7
 <div class="code-container"><pre tabindex="0" class="copy-code"><span class="b-fix">let</span> <span class="lsg-fix">canavsRect</span>
 <span class="b-fix">let</span> <span class="lsg-fix">clickX</span>
 <span class="b-fix">let</span> <span class="lsg-fix">clickY</span>
+<span class="b-fix">let</span><span class="l"> lastDirection = ''</span>
 <span class="g">/** Get this so when first container is clicked this 
     gets focused, AND when steps are clicked, this pop up follows the 
     step-txt and shows the change in the code in this popup
@@ -81,11 +82,12 @@ const pacman = new Pacman({
 // Boundaries & Map
 <div class="code-container"><pre tabindex="0" class="copy-code">
 const map = [
-    ['-', '-', '-', '-', '-', '-'],
-    ['-', ' ', ' ', ' ', ' ', '-'],
-    ['-', ' ', '-', '-', ' ', '-'],
-    ['-', ' ', ' ', ' ', ' ', '-'],
-    ['-', '-', '-', '-', '-', '-']
+    [' ',' ', ' ', ' ', ' ', ' ', ' '],
+    [' ','-', '-', '-', '-', '-', '-'],
+    [' ','-', ' ', ' ', ' ', ' ', '-'],
+    [' ','-', ' ', '-', '-', ' ', '-'],
+    [' ','-', ' ', ' ', ' ', ' ', '-'],
+    [' ','-', '-', '-', '-', '-', '-']
 ]
 const boundaries = []
 map.forEach((row, i) => {
@@ -105,39 +107,58 @@ map.forEach((row, i) => {
 // Mouse Click
 <div class="code-container"><pre tabindex="0" class="copy-code">
 canvas.addEventListener('pointerup', e => {
-    keys.up.pressed = false
-    keys.right.pressed = false
-    keys.down.pressed = false
-    keys.left.pressed = false
-})
-canvas.addEventListener('pointerdown', e => {
-    canavsRect = canvas.getBoundingClientRect();
-    clickX = e.clientX - canavsRect.left;
-    clickY = e.clientY - canavsRect.top;
-});</pre></div>
-
-</div>
-<div class="code-container"><pre tabindex="0" class="copy-code">
-function animate(){
-    requestAnimationFrame(animate)
-    c.fillStyle = 'black'
-    c.fillRect(0, 0, canvas.width, canvas.height)
-    pacman.velocity.x = 0
-    pacman.velocity.y = 0
-    if (keys.up.pressed && lastKey != 'up') {
-        pacman.velocity.y -= playerSpeed
-    }else if(keys.right.pressed && lastKey != 'right'){
-        pacman.velocity.x += playerSpeed
-    } else if (keys.left.pressed && lastKey != 'left'){
-        pacman.velocity.x -= playerSpeed
-    }else if (keys.down.pressed && lastKey != 'down'){
-        pacman.velocity.y += playerSpeed
-    } 
-    boundaries.forEach(el => {
-        el.draw()
+        keys.up.pressed = false
+        keys.right.pressed = false
+        keys.down.pressed = false
+        keys.left.pressed = false
     })
-    pacman.update()
-}
-animate()</pre></div>
+    
+    canvas.addEventListener('pointerdown', e => {
+        e.preventDefault()
+        canavsRect = canvas.getBoundingClientRect();
+        clickX = e.clientX - canavsRect.left;
+        clickY = e.clientY - canavsRect.top;
+        if (clickX > pacman.position.x) {
+            <span class='l'>lastDirection</span> = 'r';
+        } else if (clickX &LT; (pacman.position.x - (pacman.radius)) 
+        ) {
+            <span class='l'>lastDirection</span> = 'l';
+        } else if (clickY &LT; pacman.position.y) {
+            <span class='l'>lastDirection</span> = 'u';
+        } else if (clickY > pacman.position.y) {
+            <span class='l'>lastDirection</span> = 'd';
+        }
+        if(<span class='l'>lastDirection</span> == 'r'){
+            keys.right.pressed = true
+        } else if(<span class='l'>lastDirection</span> == 'd'){
+            keys.down.pressed = true
+        } else if(<span class='l'>lastDirection</span> == 'l'){
+            keys.left.pressed = true
+        } else if (<span class='l'>lastDirection</span> == 'u') {
+            keys.up.pressed = true
+        }
+    });
+    function animate() {
+        requestAnimationFrame(animate)
+        c.fillStyle = 'black'
+        c.fillRect(0, 0, canvas.width, canvas.height)
+        pacman.velocity.x = 0
+        pacman.velocity.y = 0
+        if (keys.up.pressed && lastKey != 'up') {
+            pacman.velocity.y -= playerSpeed
+        } else if (keys.right.pressed && lastKey != 'right') {
+            pacman.velocity.x += playerSpeed
+        } else if (keys.left.pressed && lastKey != 'left') {
+            pacman.velocity.x -= playerSpeed
+        } else if (keys.down.pressed && lastKey != 'down') {
+            pacman.velocity.y += playerSpeed
+        }
+        boundaries.forEach(el => {
+            el.draw()
+        })
+        pacman.update()
+    }
+    animate()
+</pre></div>
 
 }())

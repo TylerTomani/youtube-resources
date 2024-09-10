@@ -22,13 +22,15 @@
             <p>
                 Add 3 <code class="b-fix">let</code> variables for 
                 <code class="lsg-fix">canasRect</code>,<code class="lsg-fix">clickX</code>,
-                and <code class="lsg-fix">clickY</code>
+                and <code class="lsg-fix">clickY</code>, and also 
+                <code class="g">let lastDirection = ''</code>
             </p>
             <div class="code-container">
                 <pre tabindex="0" class="copy-code">
 <span class="b-fix">let</span> <span class="lsg-fix">canavsRect</span>
 <span class="b-fix">let</span> <span class="lsg-fix">clickX</span>
-<span class="b-fix">let</span> <span class="lsg-fix">clickY</span></pre>
+<span class="b-fix">let</span> <span class="lsg-fix">clickY</span>
+<span class="b-fix">let</span><span class="l"> lastDirection = ''</span></pre>
             </div>
             
         </div>
@@ -42,70 +44,106 @@
             <div tabindex="0" class="step-txt xmdtxt">
                 <h4>02</h4>
                 <p>
-                    &emsp;Use the above 3 variables,in the <code class="m-fix">mousdown</code>
-                    <code class="y-fix">addEventListener</code>, to the clicked x and y position
-                    on the canvas.
+                    &emsp;Use the 
+                    <code class="m-fix">pointerdown</code>
+                    <code class="y-fix">addEventListener</code>, 
+                    and get the values for <code class="lsg-fix">clientX</code>
+                    and <code class="lsg-fix">clientY</code>. Adjust the 
+                    <code class="g">lastDirection</code> accordingly.
+                    
                 </p>
                 <p>
-                    &emsp;Also, set the 
+                    <span class="**Also"></span>, for the 
+                    <code class="m-fix">pointerup</code> <code class="y-fix">event</code>
+                    set ,
                     <ul>
                         <li><code class="r-fix">keys.up.pressed</code></li>
-                        <li><code class="r-fix">keys.down.pressed</code> .. etc</li>
+                        <li><code class="r-fix">keys.down.pressed</code></li>
+                        <li>ect ... to <code class="b-fix">false</code></li>
                     </ul>
-                    to <code class="b-fix">false</code> in the <span class="m-fix">pointerup</span> <span class="y-fix">eventListener</span>
-                    <sup class="r">We are using keys so We can also change it back to keyboard movement</sup>
                 </p>
-                
-            </div>
-            <div class="step-img">
-                <img src="sections/02/02-02/images/01.png">
-            </div>
-        </div>
-        <div class="step-col">
-            
-            <div class="step">
-                <div class="step-txt-in">
-                    <div class="code-container">
-                        <pre tabindex="0" class="copy-code main-code smtxt">
-<span class="o-fix">canvas</span>.<span class="y-fix">addEventListener(</span><span
-    class="m-fix">'pointerdown'</span>, e => {
- <span class="lsg-fix">canavsRect</span> = canvas.getBoundingClientRect();
- <span class="lsg-fix">clickX</span> = e.clientX - canavsRect.left;
- <span class="lsg-fix">clickY</span> = e.clientY - canavsRect.top;
-}<span class="y-fix">)</span> ;</pre></div>
-                </div>
-                <div class="step-txt-in">
-                    <div class="code-container"><pre tabindex="0" class="copy-code main-code">
+                <div class="code-container"><pre tabindex="0" class="copy-code main-code">
 canvas.addEventListener(<span class="m-fix">'pointerup'</span>, e => {
  <span class="r-fix">keys.up.pressed</span> =  <span class="b-fix">false</span>
  <span class="r-fix">keys.right.pressed</span> = <span class="b-fix">false</span>
  <span class="r-fix">keys.down.pressed</span> = <span class="b-fix">false</span>
  <span class="r-fix">keys.left.pressed</span> = <span class="b-fix">false</span>
-})
-</pre></div>
-                </div>
+})</pre></div>
+                
+            </div>
+            <div class="step-img">
+                <img src="sections/02/02-03/images/02.png">
+            </div>
+        </div>
+        <div class="step-col-in">
+            <div class="step-txt-in">
+                <p class="mdtxt">
+                    <span class="r">**Right now the UP and Down</span>
+                    function only works when directly below or above
+                    <span class="r">Go back and fix after figuring out </span>
+                    cosine and lightsaber tutorial 
+                </p>
+                <div class="code-container">
+                    <pre tabindex="0" class="copy-code main-code smtxt">
+<span class="o-fix">canvas</span>.<span class="y-fix">addEventListener(</span><span
+class="m-fix">'pointerdown'</span>, e => {
+    e.preventDefault()
+    <span class="lsg-fix">canavsRect</span> = canvas.getBoundingClientRect();
+    <span class="lsg-fix">clickX</span> = e.clientX - canavsRect.left;
+    <span class="lsg-fix">clickY</span> = e.clientY - canavsRect.top;
+    if (clickX > pacman.position.x) {
+        <span class='l'>lastDirection</span> = 'r';
+    } else if (clickX &LT; (pacman.position.x - (pacman.radius)) 
+    ) {
+        <span class='l'>lastDirection</span> = 'l';
+    } else if (clickY &LT; pacman.position.y) {
+        <span class='l'>lastDirection</span> = 'u';
+    } else if (clickY > pacman.position.y) {
+        <span class='l'>lastDirection</span> = 'd';
+    }
+    if(<span class='l'>lastDirection</span> == 'r'){
+        keys.right.pressed = true
+    } else if(<span class='l'>lastDirection</span> == 'd'){
+        keys.down.pressed = true
+    } else if(<span class='l'>lastDirection</span> == 'l'){
+        keys.left.pressed = true
+    } else if (<span class='l'>lastDirection</span> == 'u') {
+        keys.up.pressed = true
+}
+}<span class="y-fix">)</span> ;</pre></div>
             </div>
         </div>
     </div>
-    <!-- 03 -->
-    <div class="step">
+    <!-- 3 -->
+    <div class="step-col">
         <div tabindex="0" class="step-txt">
-            <h4>03</h4>
+            <h4>3</h4>
             <p>
-                Now assigne the keys.pressed event within the <code class="m-fix">pointerdown</code>
-                event based on the <code class="lsg-fix">clickX</code>
-                and <code class="lsg-fix">clickY</code> variables
+                <span class="r">**Imporant note</span>      
+                use this code in the .css script to prevent highlighting the canvas when your fingers
+                hold down on mobile devices
             </p>
             <div class="code-container">
-                <pre tabindex="0" class="copy-code">
-</pre>
+                <pre tabindex="0" class="copy-code bgw">
+canvas {
+    -webkit-user-select: none;
+    /* Disable text selection in Safari */
+    -webkit-touch-callout: none;
+    /* Disable callout, like the text copy/paste popup */
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    /* Disable the highlight color */
+    user-select: none;
+    /* Disable text selection in other browsers */
+    touch-action: none;
+    /* Disable the default touch behavior */
+}</pre>
             </div>
             
         </div>
-        <div class="step-img">
-            <img src="sections/">
-        </div>
     </div>
+    
+
+    
     <button tabindex="0" id="nxtLesson">next lesson</button>
 </div>
 
