@@ -159,6 +159,7 @@
     })
     let lastDirection = ''
     canvas.addEventListener('pointerdown', e => {
+        e.preventDefault()
         canavsRect = canvas.getBoundingClientRect();
         clickX = e.clientX - canavsRect.left;
         clickY = e.clientY - canavsRect.top;
