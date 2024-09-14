@@ -114,35 +114,50 @@
 
     // Mouse Click
 
+    function getMousePosition(event) {
+        const rect = canvas.getBoundingClientRect();
+        return {
+            x: event.clientX - rect.left,
+            y: event.clientY - rect.top
+        };
+    }
+    function calculateAngle(mouseX, mouseY, pacmanX, pacmanY) {
+        const dx = mouseX - pacmanX;
+        const dy = mouseY - pacmanY;
+        let angle = Math.atan2(dy, dx) * (180 / Math.PI); // Angle in degrees
+    
+        // Normalize angle to be between 0 and 360 degrees
+        if (angle < 0) {
+            angle += 360;
+        }
+        
+        return angle;
+    }
+    
     canvas.addEventListener('pointerup', e => {
-        keys.up.pressed = false
         keys.right.pressed = false
         keys.down.pressed = false
+        keys.up.pressed = false
         keys.left.pressed = false
-    })
 
+    })
     canvas.addEventListener('pointerdown', e => {
-        e.preventDefault()
-        canavsRect = canvas.getBoundingClientRect();
-        clickX = e.clientX - canavsRect.left;
-        clickY = e.clientY - canavsRect.top;
-        if (clickX > pacman.position.x) {
-            lastDirection = 'r';
-        } else if (clickX < (pacman.position.x - (pacman.radius))
-        ) {
-            lastDirection = 'l';
-        } else if (clickY < pacman.position.y) {
-            lastDirection = 'u';
-        } else if (clickY > pacman.position.y) {
-            lastDirection = 'd';
-        }
-        if (lastDirection == 'r') {
+        const mousePoint = getMousePosition(e);
+        const pacmanCenterX = pacman.position.x;
+        const pacmanCenterY = pacman.position.y;
+        const angle = calculateAngle(mousePoint.x, mousePoint.y, pacmanCenterX, pacmanCenterY);
+        console.log('Angle:', angle.toFixed(2), 'degrees');
+        if(angle > 340 || angle < 45){
             keys.right.pressed = true
-        } else if (lastDirection == 'd') {
+        } else
+        if(angle > 45 && angle < 135){
             keys.down.pressed = true
-        } else if (lastDirection == 'l') {
+            
+        } else
+        if(angle > 135 && angle < 214){
             keys.left.pressed = true
-        } else if (lastDirection == 'u') {
+        } else
+        if(angle > 214 && angle < 340){
             keys.up.pressed = true
         }
     });
