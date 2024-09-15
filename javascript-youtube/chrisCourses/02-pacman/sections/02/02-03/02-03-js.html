@@ -119,13 +119,20 @@ map.forEach((row, i) => {
         let angle = Math.atan2(dy, dx) * (180 / Math.PI); // Angle in degrees
     
         // Normalize angle to be between 0 and 360 degrees
-        if (angle < 0) {
+        if (angle &lt; 0) {
             angle += 360;
         }
         
         return angle;
     }
     
+    canvas.addEventListener('mouseup', e => {
+        keys.right.pressed = false
+        keys.down.pressed = false
+        keys.up.pressed = false
+        keys.left.pressed = false
+
+    })
     canvas.addEventListener('pointerup', e => {
         keys.right.pressed = false
         keys.down.pressed = false
@@ -139,18 +146,17 @@ map.forEach((row, i) => {
         const pacmanCenterY = pacman.position.y;
         const angle = calculateAngle(mousePoint.x, mousePoint.y, pacmanCenterX, pacmanCenterY);
         console.log('Angle:', angle.toFixed(2), 'degrees');
-        if(angle > 340 || angle < 45){
+        if(angle > 315 || angle &LT; 45){
             keys.right.pressed = true
         } else
-        if(angle > 45 && angle < 135){
-            keys.down.pressed = true
-            
-        } else
-        if(angle > 135 && angle < 214){
-            keys.left.pressed = true
-        } else
-        if(angle > 214 && angle < 340){
+        if(angle > 215 && angle &LT; 315){
             keys.up.pressed = true
+        } else
+        if(angle > 135 && angle &LT; 215){
+            keys.left.pressed = true
+        } else 
+        if(angle > 45 && angle &LT; 135){
+            keys.down.pressed = true
         }
     });
 </pre></div>

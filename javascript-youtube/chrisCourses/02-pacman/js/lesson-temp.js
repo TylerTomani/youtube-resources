@@ -426,7 +426,10 @@ export function stepTxtListeners(){
             }
         }   
         if(letter == 's' ){
-            toggleAside()
+            showAside()
+            if(lastFocusedElement){
+                lastFocusedElement.focus()
+            }
         }
         if(letter == 'meta'){
             keys.meta.pressed = true        
