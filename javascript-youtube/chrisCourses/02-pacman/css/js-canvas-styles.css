@@ -21,7 +21,7 @@ canvas:active,canvas:focus{
         /* Disable the highlight color */
         user-select: none;
         /* Disable text selection in other browsers */
-        touch-action: none;
+        /* touch-action: none; */
         /* Disable the default touch behavior */
     border: 1px solid black;
     width: 99%;

@@ -15,29 +15,7 @@
     
         </div>
     </div>
-    <!-- 1 -->
-    <div class="step">
-        <div tabindex="0" class="step-txt">
-            <h4>01</h4>
-            <p>
-                Add 3 <code class="b-fix">let</code> variables for 
-                <code class="lsg-fix">canasRect</code>,<code class="lsg-fix">clickX</code>,
-                and <code class="lsg-fix">clickY</code>, and also 
-                <code class="g">let lastDirection = ''</code>
-            </p>
-            <div class="code-container">
-                <pre tabindex="0" class="copy-code">
-<span class="b-fix">let</span> <span class="lsg-fix">canavsRect</span>
-<span class="b-fix">let</span> <span class="lsg-fix">clickX</span>
-<span class="b-fix">let</span> <span class="lsg-fix">clickY</span>
-<span class="b-fix">let</span><span class="l"> lastDirection = ''</span></pre>
-            </div>
-            
-        </div>
-        <div class="step-img">
-            <img src="sections/02/02-03/images/01.png">
-        </div>
-    </div>
+    
     <!-- 2 -->
     <div class="step-col ">
         <div class="step">
@@ -48,8 +26,7 @@
                     <code class="m-fix">pointerdown</code>
                     <code class="y-fix">addEventListener</code>, 
                     and get the values for <code class="lsg-fix">clientX</code>
-                    and <code class="lsg-fix">clientY</code>. Adjust the 
-                    <code class="g">lastDirection</code> accordingly.
+                    and <code class="lsg-fix">clientY</code> in 
                     
                 </p>
                 <p>
@@ -78,39 +55,48 @@ canvas.addEventListener(<span class="m-fix">'pointerup'</span>, e => {
         <div class="step-col-in">
             <div class="step-txt-in">
                 <p class="mdtxt">
-                    <span class="r">**Right now the UP and Down</span>
-                    function only works when directly below or above
-                    <span class="r">Go back and fix after figuring out </span>
-                    cosine and lightsaber tutorial 
+                    
                 </p>
                 <div class="code-container">
                     <pre tabindex="0" class="copy-code main-code smtxt">
-<span class="o-fix">canvas</span>.<span class="y-fix">addEventListener(</span><span
-class="m-fix">'pointerdown'</span>, e => {
-    e.preventDefault()
-    <span class="lsg-fix">canavsRect</span> = canvas.getBoundingClientRect();
-    <span class="lsg-fix">clickX</span> = e.clientX - canavsRect.left;
-    <span class="lsg-fix">clickY</span> = e.clientY - canavsRect.top;
-    if (clickX > pacman.position.x) {
-        <span class='l'>lastDirection</span> = 'r';
-    } else if (clickX &LT; (pacman.position.x - (pacman.radius)) 
-    ) {
-        <span class='l'>lastDirection</span> = 'l';
-    } else if (clickY &LT; pacman.position.y) {
-        <span class='l'>lastDirection</span> = 'u';
-    } else if (clickY > pacman.position.y) {
-        <span class='l'>lastDirection</span> = 'd';
-    }
-    if(<span class='l'>lastDirection</span> == 'r'){
-        keys.right.pressed = true
-    } else if(<span class='l'>lastDirection</span> == 'd'){
-        keys.down.pressed = true
-    } else if(<span class='l'>lastDirection</span> == 'l'){
-        keys.left.pressed = true
-    } else if (<span class='l'>lastDirection</span> == 'u') {
-        keys.up.pressed = true
+function getMousePosition(event) {
+    const rect = canvas.getBoundingClientRect();
+    return {
+        x: event.clientX - rect.left,
+        y: event.clientY - rect.top
+    };
 }
-}<span class="y-fix">)</span> ;</pre></div>
+function calculateAngle(mouseX, mouseY, pacmanX, pacmanY) {
+    const dx = mouseX - pacmanX;
+    const dy = mouseY - pacmanY;
+    let angle = Math.atan2(dy, dx) * (180 / Math.PI); // Angle in degrees
+
+    // Normalize angle to be between 0 and 360 degrees
+    if (angle < 0) {
+        angle += 360;
+    }
+    
+    return angle;
+}
+addEventListener('pointerdown', e => {
+    const mousePoint = getMousePosition(e);
+    const blockCenterX = block.position.x 
+    const blockCenterY = block.position.y 
+    const angle = calculateAngle(mousePoint.x, mousePoint.y, blockCenterX, blockCenterY);
+    console.log('Angle:', angle.toFixed(2), 'degrees');
+    if(angle > 315 || angle < 45){
+        block.velocity.x = block.width
+    } else
+    if(angle > 215 && angle < 315){
+        block.velocity.y = (block.width * -1)
+    } else
+    if(angle > 135 && angle < 215){
+        block.velocity.x = (block.width * -1)
+    } else 
+    if(angle > 45 && angle < 135){
+        block.velocity.y = block.width
+    }
+});</pre></div>
             </div>
         </div>
     </div>
