@@ -281,7 +281,7 @@ export function stepTxtListeners(){
         if (!zoomBack) {
             if (!img.classList.contains('enlarge')) {
                 img.classList.add('enlarge')
-                hideAside()
+                // hideAside()
                 img.style.zIndex = 10
                 img.scrollIntoView({ behavior: "instant", block: "center", inline: "end" });
             } else {
