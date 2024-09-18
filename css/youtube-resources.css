@@ -140,5 +140,7 @@ a:focus,a:active{
     }
     .topics-container > .topic {
         margin: 2.5% 0;
+        font-size: 50% ;
     }
+    
 }
