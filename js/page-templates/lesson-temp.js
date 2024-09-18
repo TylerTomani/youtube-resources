@@ -150,8 +150,8 @@ export function stepTxtListeners(){
                 }
             })
             allVideos.forEach(el => {
-                if (el.classList.contains('enlarge-vid')) {
-                    el.classList.remove('enlarge-vid')
+                if (el.classList.contains('enlarge')) {
+                    el.classList.remove('enlarge')
                     el.pause()
                 }
             })
@@ -206,10 +206,13 @@ export function stepTxtListeners(){
             const vid = step.querySelector('.step-vid > video')
             const img = step.querySelector('.step-img > img')
             if (vid) {
-                handleVideo(vid, key,e)
+                console.log(key)
+                if(key == 32){
+                    e.preventDefault()
+                }
+                toggleImgSize(vid)
                 videoPlayKeyDown(vid, key, e)
             }
-            
             if(key === 13){
                 addTabIndex(as)
                 handleCopyCodes(e)
@@ -235,7 +238,10 @@ export function stepTxtListeners(){
             const vid = step.querySelector('.step-vid > video')
             const img = step.querySelector('.step-img > img')
             if (vid) {
-                handleVideo(vid, key,e)
+                console.log(key)
+                if(key == 32){
+                    e.preventDefault()
+                }
                 videoPlayKeyDown(vid, key, e)
             }
             if(key === 13){
@@ -270,6 +276,14 @@ export function stepTxtListeners(){
         }
         
     }
+    function handleVideo(img){
+        if(!img.classList.contains('enlarge')){
+            img.classList.add('enlarge')
+        }else {
+            img.classList.remove('enlarge')
+        }
+        
+    }
 
        // image handling
     allImages.forEach(el => {
@@ -278,46 +292,7 @@ export function stepTxtListeners(){
             toggleImgSize(e.target)
         })
     })
-    // function handleImg(vid, key, e) {
-    //     if (key == 13) {
-    //         if (e.target.classList.contains('step-txt')) {
-    //             toggleImgSize(vid, true, e)
-    //         }
-    //         if (e.target.classList.contains('main-code')) {
-    //             toggleImgSize(vid, true,e)
-    //         }
 
-    //     }
-    // }
-
-    // function toggleImgSize(img,zoomBack,e) {
-    //     if (!zoomBack) {
-    //         if (!img.classList.contains('enlarge')) {
-    //             img.classList.add('enlarge')
-    //             hideAside()
-    //             img.style.zIndex = 10
-    //             img.scrollIntoView({ behavior: "instant", block: "center", inline: "end" });
-    //         } else {
-    //             // e.target.scrollIntoView({ behavior: "smooth", block: "center", inline: "end" });
-    //             img.classList.remove('enlarge')
-    //             img.style.zIndex = 0
-    //         }
-    //     } else {
-    //         if (!img.classList.contains('enlarge')) {
-    //             img.classList.add('enlarge')
-
-    //             // img.scrollIntoView({ behavior: "smooth", block: "center", inline: "end" });
-    //             img.style.zIndex = 10
-    //         } else {
-    //             e.target.scrollIntoView({ behavior: "smooth", block: "center", inline: "end" });
-    //             img.classList.remove('enlarge')
-    //             img.style.zIndex = 0
-    //         }
-    //     }
-
-    // }
-    // video handling
-    
     allVideos.forEach(el => {
         el.addEventListener('click', e => {
             e.preventDefault()
@@ -337,41 +312,8 @@ export function stepTxtListeners(){
         toggleVideoSize(vid)
         playPauseVideo(vid)
     }
-    function handleVideo(vid,key,e){
-        if(key == 13){
-            if(e.target.classList.contains('step-txt')){
-                toggleVideoSize(vid,false)
-            } 
-            if(e.target.classList.contains('main-code')){
-                toggleVideoSize(vid, true,e)
-            }
-            
-        }
-    }
-    function toggleVideoSize(vid,zoomBack,e){
-        if(!zoomBack){
-            if (!vid.classList.contains('enlarge-vid')) {
-                vid.classList.add('enlarge-vid')
-                vid.scrollIntoView({ behavior: "smooth", block: "end", inline: "end" });
-                playing = true
-                // console.log(key)
-            } else {
-                vid.classList.remove('enlarge-vid')
-                playing = false
-            }
-        } else {
-            if (!vid.classList.contains('enlarge-vid')) {
-                vid.classList.add('enlarge-vid')
-                vid.scrollIntoView({ behavior: "smooth", block: "center", inline: "end" });
-                playing = true
-                // console.log(key)
-            } else {
-                e.target.scrollIntoView({ behavior: "smooth", block: "center", inline: "end" });
-                vid.classList.remove('enlarge-vid')
-                playing = false
-            }
-        }
-    }
+    
+    
     function videoPlayKeyDown(vid,key,e){
         if (key == 32) {
             e.preventDefault()
