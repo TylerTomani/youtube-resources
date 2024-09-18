@@ -139,12 +139,7 @@ export function stepTxtListeners(){
             el.setAttribute('tabindex','-1')
         })
     }
-    // image handling
-    allImages.forEach(el => {
-        el.addEventListener('click', e => {
-            toggleImgSize(e = e.target)
-        })
-    })
+ 
 
     /** Go BACK and ADD video denlarge here!!!! */
     function denlargeAllImages() {
@@ -214,15 +209,11 @@ export function stepTxtListeners(){
                 handleVideo(vid, key,e)
                 videoPlayKeyDown(vid, key, e)
             }
-            if(img){
-                toggleImgSize(e)
-            }
+            
             if(key === 13){
-                // console.log(as)
                 addTabIndex(as)
                 handleCopyCodes(e)
-                
-                
+                handleImg(e)
             } 
             if((letter == 'c' && !keys.meta.pressed) &&  stepFocused && !mainCodesFocused){
                 if(step.parentElement.classList.contains('step-col')){
@@ -263,30 +254,42 @@ export function stepTxtListeners(){
             
         })    
     })
-    function handleImg(vid, key, e) {
-        if (key == 13) {
-            if (e.target.classList.contains('step-txt')) {
-                toggleImgSize(vid, true, e)
-            }
-            if (e.target.classList.contains('main-code')) {
-                toggleImgSize(vid, true,e)
-            }
-
+    function handleImg(e){
+        if(e.target.classList.contains('step-txt')){
+            const step = getStep(e.target.parentElement)
+            const img = step.querySelector('.step-img > img')
+            console.log( e.target)
+            toggleImgSize(img)
         }
     }
-    function toggleImgSize(e){
-        const step = getStep(e.target.parentElement)
-        if(step){
-            const img = step.querySelector('.step-img > img') 
-            console.log(img)
-            if (!img.classList.contains('enlarge')) {
-                img.classList.add('enlarge')
-            } else {
-                img.classList.remove('enlarge')
-            }
-
+    function toggleImgSize(img){
+        if(!img.classList.contains('enlarge')){
+            img.classList.add('enlarge')
+        }else {
+            img.classList.remove('enlarge')
         }
+        
     }
+
+       // image handling
+    allImages.forEach(el => {
+        el.addEventListener('click', e => {
+            console.log(e.tar)
+            toggleImgSize(e.target)
+        })
+    })
+    // function handleImg(vid, key, e) {
+    //     if (key == 13) {
+    //         if (e.target.classList.contains('step-txt')) {
+    //             toggleImgSize(vid, true, e)
+    //         }
+    //         if (e.target.classList.contains('main-code')) {
+    //             toggleImgSize(vid, true,e)
+    //         }
+
+    //     }
+    // }
+
     // function toggleImgSize(img,zoomBack,e) {
     //     if (!zoomBack) {
     //         if (!img.classList.contains('enlarge')) {
@@ -493,14 +496,17 @@ export function stepTxtListeners(){
                 const lessons = subSection.querySelectorAll('li > a')
                 let iLesson = [...lessons].indexOf(lastFocusedElement) + 1
                 if(lessons[iLesson]){
-                    lessons[iLesson].focus()
+                    lessons[iLesson].scrollIntoView()
+                    scrollTo(0,0)
                 } else {
                     lastFocusedElement.focus()
                 }
             } else {
                 console.log(currentSection)
                 if(sections[iSection + 1]){
+                    // sections[iSection + 1].scrollIntoView({behavior:'auto',inline: 'start'})
                     sections[iSection + 1].focus()
+                    scrollTo(0,0)
                 } else {
                     sections[0].focus()
                 }
