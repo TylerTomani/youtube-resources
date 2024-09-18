@@ -32,6 +32,8 @@ main>aside {
      align-items: center;
      width: 100%;
      flex-grow: 1;
+     overflow: hidden;
+     overflow-x:hidden;
  }
 header>nav#mainLinksContainer {
     display: flex;
