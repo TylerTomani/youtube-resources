@@ -197,9 +197,9 @@ export function stepTxtListeners(){
         el.addEventListener('click', e => {
             e.preventDefault()
             denlargeAllImages()
-            // toggleImgSize(e)
-            // handleVideo(vid)
-            // pauseAllVideos()
+            toggleImgSize(e)
+            handleVideo(e)
+            pauseAllVideos()
             
         })
         el.addEventListener('keydown', e => {
@@ -209,20 +209,23 @@ export function stepTxtListeners(){
             const as = stepTxt.querySelectorAll('a')
             const step = getStep(stepTxt.parentElement)
             const vid = step.querySelector('.step-vid > video')
-            const img = step.querySelector('.step-img > img')
             if (vid) {
                 handleVideo(vid, key,e)
                 videoPlayKeyDown(vid, key, e)
             }
-            if(img){
-                toggleImgSize(e)
-            }
             if(key === 13){
-                // console.log(as)
                 addTabIndex(as)
                 handleCopyCodes(e)
-                
-                
+                if(step){
+                    const img = step.querySelector('.step-img > img')
+                    const vid = step.querySelector('.step-vid > video')
+                    if(img){
+                        handleImg(img, key, e)
+                    }
+                    if(vid){
+                        handleVideo(vid,key,e)
+                    }
+                }
             } 
             if((letter == 'c' && !keys.meta.pressed) &&  stepFocused && !mainCodesFocused){
                 if(step.parentElement.classList.contains('step-col')){
@@ -274,45 +277,33 @@ export function stepTxtListeners(){
 
         }
     }
-    function toggleImgSize(e){
-        const step = getStep(e.target.parentElement)
-        if(step){
-            const img = step.querySelector('.step-img > img') 
-            console.log(img)
+    function toggleImgSize(img,zoomBack,e) {
+        if (!zoomBack) {
+            if (!img.classList.contains('enlarge')) {
+                console.log('now')
+                img.classList.add('enlarge')
+                // hideAside()
+                // img.style.zIndex = 10
+                img.scrollIntoView({ behavior: "instant", block: "center", inline: "end" });
+            } else {
+                // e.target.scrollIntoView({ behavior: "smooth", block: "center", inline: "end" });
+                img.classList.remove('enlarge')
+                img.style.zIndex = 0
+            }
+        } else {
             if (!img.classList.contains('enlarge')) {
                 img.classList.add('enlarge')
+
+                // img.scrollIntoView({ behavior: "smooth", block: "center", inline: "end" });
+                // img.style.zIndex = 10
             } else {
+                e.target.scrollIntoView({ behavior: "smooth", block: "center", inline: "end" });
                 img.classList.remove('enlarge')
+                img.style.zIndex = 0
             }
-
         }
+
     }
-    // function toggleImgSize(img,zoomBack,e) {
-    //     if (!zoomBack) {
-    //         if (!img.classList.contains('enlarge')) {
-    //             img.classList.add('enlarge')
-    //             hideAside()
-    //             img.style.zIndex = 10
-    //             img.scrollIntoView({ behavior: "instant", block: "center", inline: "end" });
-    //         } else {
-    //             // e.target.scrollIntoView({ behavior: "smooth", block: "center", inline: "end" });
-    //             img.classList.remove('enlarge')
-    //             img.style.zIndex = 0
-    //         }
-    //     } else {
-    //         if (!img.classList.contains('enlarge')) {
-    //             img.classList.add('enlarge')
-
-    //             // img.scrollIntoView({ behavior: "smooth", block: "center", inline: "end" });
-    //             img.style.zIndex = 10
-    //         } else {
-    //             e.target.scrollIntoView({ behavior: "smooth", block: "center", inline: "end" });
-    //             img.classList.remove('enlarge')
-    //             img.style.zIndex = 0
-    //         }
-    //     }
-
-    // }
     // video handling
     
     allVideos.forEach(el => {
@@ -335,9 +326,10 @@ export function stepTxtListeners(){
         playPauseVideo(vid)
     }
     function handleVideo(vid,key,e){
-        if(key == 13){
+        if(key == 13 && key != 32 ){
+            console.log('go') 
             if(e.target.classList.contains('step-txt')){
-                toggleVideoSize(vid,false)
+                toggleVideoSize(vid,false,e)
             } 
             if(e.target.classList.contains('main-code')){
                 toggleVideoSize(vid, true,e)
