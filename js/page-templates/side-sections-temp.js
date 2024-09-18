@@ -245,10 +245,22 @@ sections.forEach(el => {
         e.preventDefault()
         e.stopPropagation()
         toggleSubSections(e)
-        fetchLessonHref(e.target.href)
+        // fetchLessonHref(e.target.href)
         sectionTitle.innerText = e.target.innerText
         lessonTitle.innerText = ''
         currentSection = e.target
+        const childs = e.target.querySelectorAll('*')
+        if(childs){
+            childs.forEach(el => {
+                el.addEventListener('click', e =>{
+                    toggleSubSections(e)
+                    fetchLessonHref(el.parentElement.href)
+                    sectionTitle.innerText = el.parentElement.innerText
+                    lessonTitle.innerText = ''
+                    currentSection = e.parentElement
+                })
+            })
+        }
     })
     el.addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()       
@@ -332,10 +344,23 @@ lessons.forEach(el => {
     el.addEventListener('click', e => {
         e.preventDefault()
         e.stopPropagation()
-        clickLesson(e)
-        fetchLessonHref(e.target.href)
-        // lessonTitle = e.target.innerText
-        console.log(lessonTitle)
+
+        const childs = e.target.querySelectorAll('*')
+        if(childs){
+            childs.forEach(el => {
+                // console.log(el)
+                el.addEventListener('click', e =>{
+                    console.log(e.target.parentElement.href)
+                    fetchLessonHref(el.parentElement.href)
+                    // sectionTitle.innerText = el.parentElement.innerText
+                    // lessonTitle.innerText = ''
+                    // currentSection = e.parentElement
+                })
+            })
+        } else{
+            clickLesson(e)
+            fetchLessonHref(e.target.href)
+        }
 
     })
     el.addEventListener('keydown', e => {
@@ -465,4 +490,3 @@ function fetchLessonHref(href){
     })
     .catch(error => console.log('Error fetching content.html:', error));   
 }
-

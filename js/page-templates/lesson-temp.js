@@ -218,7 +218,13 @@ export function stepTxtListeners(){
                 handleCopyCodes(e)
                 if(step){
                     const img = step.querySelector('.step-img > img')
-                    handleImg(img, key, e)
+                    const vid = step.querySelector('.step-vid > video')
+                    if(img){
+                        handleImg(img, key, e)
+                    }
+                    if(vid){
+                        handleVideo(vid,key,e)
+                    }
                 }
             } 
             if((letter == 'c' && !keys.meta.pressed) &&  stepFocused && !mainCodesFocused){
@@ -319,9 +325,10 @@ export function stepTxtListeners(){
         playPauseVideo(vid)
     }
     function handleVideo(vid,key,e){
-        if(key == 13){
+        if(key == 13 && key != 32 ){
+            console.log('go') 
             if(e.target.classList.contains('step-txt')){
-                toggleVideoSize(vid,false)
+                toggleVideoSize(vid,false,e)
             } 
             if(e.target.classList.contains('main-code')){
                 toggleVideoSize(vid, true,e)
