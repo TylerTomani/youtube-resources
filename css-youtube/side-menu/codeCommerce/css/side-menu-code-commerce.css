@@ -5,9 +5,6 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 body > header{
-    position: relative;
-}
-body > header{
     /* position: relative; */
 }
 .user-img {
@@ -17,24 +14,23 @@ body > header{
 }
 .side-bar {
     position: relative;
-    border-right: 2px solid black;
+    border-right: 20px solid black;
     top: 0;
-    left: 0;
-    width: 820px;
-    height: 100vh;
+    /* left: 0; */
+    width: 80px;
+    /* height: 100vh; */
     /* background-color: #12171e; */
-    color: black;
+    /* color: black; */
     /* padding: .4rem .8rem; */
     /* transition: all .4s ease; */
 }
 .side-bar.active ~ .main-content{
-    /* left: 250px; */
-    /* width: calc(100% - 250px); */
-    
-    /* border-right: 2px solid black; */
+    left: 250px;
+    width: calc(100% - 250px);   
+    border-right: 2px solid blue;
 }
 .side-bar.active{
-    /* width: 250px; */
+    width: 250px;
 }
 .side-bar > #button {
     /* position: relative; */
@@ -52,6 +48,9 @@ body > header{
 .side-bar.active > .top > .logo{
     /* color: #fff; */
     display: flex
+}
+.side-bar > ul {
+    /* position: relative; */
 }
 .hide {
     display: none;
