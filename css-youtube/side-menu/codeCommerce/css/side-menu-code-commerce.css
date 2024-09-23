@@ -5,13 +5,12 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 body > header{
-    /* position: absolute; */
+    position: relative;
 }
 body > header{
     /* position: relative; */
 }
 .user-img {
-    /* position: relative; */
     width: 50px;
     border-radius: 100%;
     border: 1px solid #eee;
@@ -21,35 +20,39 @@ body > header{
     border-right: 2px solid black;
     top: 0;
     left: 0;
-    width: 80px;
+    width: 820px;
     height: 100vh;
     /* background-color: #12171e; */
     color: black;
-    padding: .4rem .8rem;
-    transition: all .4s ease;
+    /* padding: .4rem .8rem; */
+    /* transition: all .4s ease; */
 }
 .side-bar.active ~ .main-content{
     /* left: 250px; */
     /* width: calc(100% - 250px); */
-
+    
+    /* border-right: 2px solid black; */
 }
 .side-bar.active{
-    width: 250px;
+    /* width: 250px; */
 }
 .side-bar > #button {
-    position: relative;
-    top: .4rem;
+    /* position: relative; */
+    /* top: .4rem; */
     /* color: #fff; */
-    left: 50%;
-    font-size: 1.2rem;
-    line-height: 50px;
-    transform: translateX(-50%);
-    cursor: pointer;
+    /* left: 50%; */
+    /* font-size: 1.2rem; */
+    /* line-height: 50px; */
+    /* transform: translateX(-50%); */
+    /* cursor: pointer; */
 }
 .side-bar.active > #button{
-    left: 90%;
+    /* left: 90%; */
 }
 .side-bar.active > .top > .logo{
     /* color: #fff; */
     display: flex
+}
+.hide {
+    display: none;
 }

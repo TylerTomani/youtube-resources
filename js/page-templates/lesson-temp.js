@@ -206,11 +206,12 @@ export function stepTxtListeners(){
             const vid = step.querySelector('.step-vid > video')
             const img = step.querySelector('.step-img > img')
             if (vid) {
-                console.log(key)
-                if(key == 32){
-                    e.preventDefault()
+                e.preventDefault()
+                if(key == 13){
+                    console.log(key)
+
+                    toggleImgSize(vid)
                 }
-                toggleImgSize(vid)
                 videoPlayKeyDown(vid, key, e)
             }
             if(key === 13){
