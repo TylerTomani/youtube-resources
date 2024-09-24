@@ -1,0 +1,21 @@
+const idEls = document.querySelectorAll('[id]')
+let currentLetter
+let letterIds = []
+addEventListener('keydown', e => {
+    let letter = e.key.toLowerCase() 
+    letterIds = []
+    if(letter != currentLetter){
+        console.log(currentLetter)
+        idEls.forEach(el => {
+            if(el.id[0] == letter){
+                letterIds.push(el)
+            }
+        })
+        letterIds[0].focus()
+    } else {
+ 
+    }
+
+    
+    currentLetter = letter
+})

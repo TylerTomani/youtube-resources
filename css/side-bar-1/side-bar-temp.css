@@ -1,0 +1,13 @@
+:root{
+    --width-side-active: 150px;
+    --width-side-bar: 50px;
+}
+.side-bar{
+    width: var(--width-side-bar);
+    background-color: #254757;
+    color: rgb(229, 218, 218);
+}
+.side-bar.active {
+    width: var(--width-side-active);
+    
+}
