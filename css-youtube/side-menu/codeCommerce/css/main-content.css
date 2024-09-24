@@ -1,0 +1,23 @@
+.main-content {
+    display: flex;
+    flex-direction: column;
+    margin-left: 2%;
+}
+.main-content > .code-containers{
+    display: flex;
+    flex-wrap: wrap;
+    /* width: 100%; */
+}
+.code-containers >
+.code-container {
+    background-color: yellow;
+    border: 1px solid black;
+    font-size: .8rem;
+    width: 40%;
+    /* flex-basis: 50%; */
+    /* margin: 0 auto; */
+    overflow: scroll;
+}
+#htmlCode {
+    max-height: 60vh
+}

@@ -7,6 +7,9 @@
 body > header{
     /* position: relative; */
 }
+main{
+    display: flex;
+}
 .user-img {
     position: relative;
     width: 50px;
@@ -90,7 +93,7 @@ body > header{
     position: relative;
     list-style-type: none;
     height: 50px;
-    width: 90%;
+    /* width: 90%; */
     margin: 0.8rem auto;
     line-height: 50px;
 }
@@ -101,28 +104,33 @@ body > header{
     align-items: center;
     text-decoration: none;
     border-radius: 0.8rem;
+    width: fit-content;
 }
-.side-bar ul li a:hover,.side-bar ul li a:active,.side-bar ul li a:focus{
+
+.side-bar ul li a:hover,
+.side-bar ul li a:active,.side-bar ul li a:focus{
     background-color: #eee;
+    color: black;
     /* color: ; */
+    border: 0px solid black;
 }
 .side-bar ul li a i{
     min-width: 60px;
     text-align: center;
     height: 50px;
     line-height: 50px;
-
+    
 }
 .side-bar .nav-item{
-    opacity: 0;
+    display: none;
 }
 .side-bar.active .nav-item{
-    opacity: 1
+    display: inline-flex;
 }
 .side-bar  .tooltip{
     opacity: 0;
 }
-.side-bar li a:hover ~ .tooltip{
+.side-bar li a:active ~ .tooltip,.side-bar li a:hover ~ .tooltip{
     opacity: 1;
     position: absolute;
     color: black;
