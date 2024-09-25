@@ -13,7 +13,7 @@ main {
 }
 .side-bar ~ .main-content{
     width: calc(100% - var(--width-side-bar));
-    margin-right: 4%;
+    margin: 0 auto;
 }
 .side-bar ~ .main-content{
     /* width: calc(100% - var(--width-side-bar)); */
@@ -29,5 +29,9 @@ main {
 }
 ul li a {
     text-decoration: none;
+    color: white;
+}
+ul li .tooltip{
+    display: none;
     color: white;
 }
