@@ -1,13 +1,33 @@
 :root{
     --width-side-active: 150px;
-    --width-side-bar: 50px;
+    --width-side-bar: 60px;
+}
+main {
+    display: flex
 }
 .side-bar{
     width: var(--width-side-bar);
     background-color: #254757;
     color: rgb(229, 218, 218);
+    height: 100vh;
+}
+.side-bar ~ .main-content{
+    width: calc(100% - var(--width-side-bar));
+    margin-right: 4%;
+}
+.side-bar ~ .main-content{
+    /* width: calc(100% - var(--width-side-bar)); */
+    /* margin-right: 4%; */
 }
 .side-bar.active {
     width: var(--width-side-active);
-    
+    transition: all .2s ease;
+}
+.main-content {
+    border: 1px solid black;
+    /* background-color: blue; */
+}
+ul li a {
+    text-decoration: none;
+    color: white;
 }
