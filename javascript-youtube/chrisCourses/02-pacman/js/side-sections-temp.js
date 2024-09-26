@@ -110,7 +110,12 @@ mainAside.addEventListener('keydown', e => {
         }    
         
     }
-    
+})
+mainAside.addEventListener('click', e => {
+    e.preventDefault() 
+    if(e.target == mainAside){
+        toggleAside()
+    }
 })
 navBar.addEventListener('focus', e => {
     targetDivFocused = false    
