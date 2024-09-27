@@ -20,6 +20,7 @@ let sectionTitle = document.getElementById('section-title')
 let lessonTitle = document.getElementById('lesson-title')
 const subSections = document.querySelectorAll('.sub-section')
 export const targetDiv = document.getElementById('targetDiv')
+
 const keys = {
     shift: {
         pressed: false
