@@ -18,6 +18,7 @@ body {
 }
 body>header {
     /* max-height:10vh; */
+    width: 100%;
     display: flex;
 }
 body>header a:focus,

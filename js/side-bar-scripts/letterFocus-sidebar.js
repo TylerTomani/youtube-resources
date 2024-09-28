@@ -4,6 +4,7 @@ export const parts = document.querySelectorAll('.side-bar ul > li > a')
 let currentLetter
 let letterIds = []
 let iLetterIds = 0
+
 const keys = {
     shift : {
         pressed: false
@@ -67,3 +68,4 @@ sideBarBtn.addEventListener('keydown',e => {
         parts[0].focus()
     }
 })
+

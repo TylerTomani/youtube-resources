@@ -18,6 +18,7 @@ const programShorcutsLink = document.getElementById('programShorcuts')
 const allEls = document.querySelectorAll('body *')
 let sectionTitle = document.getElementById('section-title')
 let lessonTitle = document.getElementById('lesson-title')
+
 const subSections = document.querySelectorAll('.sub-section')
 export const targetDiv = document.getElementById('targetDiv')
 const keys = {
