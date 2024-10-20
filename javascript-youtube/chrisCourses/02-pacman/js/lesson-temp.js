@@ -415,6 +415,14 @@ export function stepTxtListeners(){
             // const 
             
         }
+        if(letter == 'enter'){
+            targetDivFocus = true
+            const canvas = document.querySelector('#canvas')
+            if(canvas){
+                canvas.focus()
+            }
+        }
+        
         if (letter == 'c' && !keys.meta.pressed ) {
             if(mainCodes.length > 0){
                 mainCodes[iMainCode].focus()
