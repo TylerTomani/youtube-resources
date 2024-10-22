@@ -1,0 +1,123 @@
+&LT;head>
+    &LT;meta charset="UTF-8">
+    &LT;meta name="viewport" content="width=device-width, initial-scale=1.0">
+    &LT;title>codeCommerce-side-menu&LT;/title>
+    &LT;link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+&LT;/head>
+&LT;body>
+    &LT;header class="">
+        &LT;div class="main-links">
+            &LT;a tabindex="0" id="homelink" href="https://tylertomani.github.io/main-homepage/index.html">Home (main)&LT;/a>
+            &LT;a tabindex="0" id="backlink" href="../../css-youtube.html">&larr;back&LT;/a>
+        &LT;/div>
+        &LT;div class="page-title">
+            &LT;h1>Code Commerce - side - menu -youtube &LT;/h1>            
+        &LT;/div>
+        &LT;div class="page-logo">
+            &LT;a tabindex="0" target="_blank" id="tutorialLink" href="https://www.youtube.com/watch?v=uy1tgKOnPB0">
+                &LT;img src="https://yt3.ggpht.com/VWBZ360UFEUxVD-Udx81wsl2QpcMwWIievwhz34vRdACTr7S_tVkflfCzV2tOoOo_Fy95URJmQ=s88-c-k-c0x00ffffff-no-rj">
+            &LT;/a>
+        &LT;/div>
+    &LT;/header>
+    &LT;main>
+        &LT;div class="side-bar">
+            &LT;div class="top">
+                &LT;div class="logo">
+                    &LT;span>Code Commerce&LT;/span>
+                &LT;/div>
+                &LT;!-- Don't know how to use boxicons correctly 
+                 &LT;i autofocus  id="sidebarbtn" tabindex="0" class="bx bx-menu">&LT;/i>
+                
+            &LT;/div>
+            &LT;div class="user">
+                &LT;img src="https://yt3.ggpht.com/VWBZ360UFEUxVD-Udx81wsl2QpcMwWIievwhz34vRdACTr7S_tVkflfCzV2tOoOo_Fy95URJmQ=s88-c-k-c0x00ffffff-no-rj" alt=""
+                class="user-img">
+                &LT;div>
+                    &LT;p class="bold">Clint C.&LT;/p>
+                    &LT;p>Admin&LT;/p>
+                &LT;/div>
+            &LT;/div>
+            &LT;ul>
+                &LT;li>
+                    &LT;a href="#">
+                        &LT;i class="bx bxs-grid-alt">&LT;/i>
+                        &LT;span class="nav-item">Dashboard&LT;/span>
+                    &LT;/a>
+                    &LT;span class="tooltip">Dashboard&LT;/span>
+                &LT;/li>
+                &LT;li>
+                    &LT;a href="#">
+                        &LT;i class="bx bx-shopping-bag">&LT;/i>
+                        &LT;span class="nav-item">Products&LT;/span>
+                    &LT;/a>
+                    &LT;span class="tooltip">Products&LT;/span>
+                &LT;/li>
+                &LT;li>
+                    &LT;a href="#">
+                        &LT;i class="bx bx-list-check">&LT;/i>
+                        &LT;span class="nav-item">Catagories&LT;/span>
+                    &LT;/a>
+                    &LT;span class="tooltip">Catagories&LT;/span>
+                &LT;/li>
+                &LT;li>
+                    &LT;a href="#">
+                        &LT;i class="bx bx-food-menu">&LT;/i>
+                        &LT;span class="nav-item">Orders&LT;/span>
+                    &LT;/a>
+                    &LT;span class="tooltip">Orders&LT;/span>
+                &LT;/li>
+                &LT;li>
+                    &LT;a href="#">
+                        &LT;i class="bx bx-body">&LT;/i>
+                        &LT;span class="nav-item">Customers&LT;/span>
+                    &LT;/a>
+                    &LT;span class="tooltip">Customers&LT;/span>
+                &LT;/li>
+                &LT;li>
+                    &LT;a href="#">
+                        &LT;i class="bx bx-location-plus">&LT;/i>
+                        &LT;span class="nav-item">Shipping&LT;/span>
+                    &LT;/a>
+                    &LT;span class="tooltip">Shipping&LT;/span>
+                &LT;/li>
+                &LT;li>
+                    &LT;a href="#">
+                        &LT;i class="bx bx-cog">&LT;/i>
+                        &LT;span class="nav-item">Settings&LT;/span>
+                    &LT;/a>
+                    &LT;span class="tooltip">Settings&LT;/span>
+                &LT;/li>
+                &LT;li>
+                    &LT;a href="#">
+                        &LT;i class="bx bx-log-out">&LT;/i>
+                        &LT;span class="nav-item">Logout&LT;/span>
+                    &LT;/a>
+                    &LT;span class="tooltip">Logout&LT;/span>
+                &LT;/li>
+    
+            &LT;/ul>
+        &LT;/div>
+        &LT;div class="main-content">
+            
+        &LT;/div>
+    &LT;/main>
+    &LT;script>
+        const btn = document.querySelector('#sidebarbtn')
+        const sideBar = document.querySelector('.side-bar')
+        btn.onclick = function(){
+            sideBar.classList.toggle('active')
+            console.log('lkjd')
+
+        }
+        btn.addEventListener('keydown', e => {
+            let letter = e.key.toLowerCase()
+            if(letter == 'enter'){
+                sideBar.classList.toggle('active')
+                console.log('enter')
+                
+            }     
+        })
+        
+    &LT;/script>
+&LT;/body>
+&LT;/html>

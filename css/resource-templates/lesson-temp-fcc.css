@@ -10,6 +10,7 @@
     margin: 0 5%;
 }
 .step {
+    
     display: flex;
     gap: 2.5%;
     justify-content: center;

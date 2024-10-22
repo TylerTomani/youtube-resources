@@ -20,6 +20,7 @@ let sectionTitle = document.getElementById('section-title')
 let lessonTitle = document.getElementById('lesson-title')
 const subSections = document.querySelectorAll('.sub-section')
 export const targetDiv = document.getElementById('targetDiv')
+
 const keys = {
     shift: {
         pressed: false
@@ -110,7 +111,12 @@ mainAside.addEventListener('keydown', e => {
         }    
         
     }
-    
+})
+mainAside.addEventListener('click', e => {
+    e.preventDefault() 
+    if(e.target == mainAside){
+        toggleAside()
+    }
 })
 navBar.addEventListener('focus', e => {
     targetDivFocused = false    

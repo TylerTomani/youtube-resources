@@ -1,7 +1,7 @@
 
 <div class="steps-container">
     <h3>02 - Draw Player & Movement</h3>    
-    <h4 id="titleJsScript">02/02-js.html</h4>
+    <h4 id="titleJsScript">02/02-03/02-03-js.html</h4>
     <div id="jsCanvasScriptContainer">
         <canvas tabindex="0" id="canvas"></canvas>
         <div id="scriptsContainer">
@@ -20,34 +20,68 @@
         <div class="step">
             <div tabindex="0" class="step-txt">
                 <h4>02</h4>
-                <p>
-    TBD
-                </p>
-                
-            </div>
-            <div class="step-img">
-                <!-- <img src="sections/01/01-01/images/02.png"> -->
+                <p>This is perfect, code for mousdown movement 360 degrees</p>
             </div>
         </div>
         <div class="step-col-in">
             <div class="step-txt-in">
-                <p>
-                TBD
-                </p>
+                
                 <div class="code-container">
                     <pre tabindex="0" class="copy-code main-code" id="">
-class <span class="lsg">PacMan</span>{
-    constructor(<span class="m-fix">{position</span><span class="m">}</span>){
-        this.position = position
-        this.width = 40
-        this.height = 40
+    function getMousePosition(event) {
+        const rect = canvas.getBoundingClientRect();
+        return {
+            x: event.clientX - rect.left,
+            y: event.clientY - rect.top
+        };
     }
-    draw(){
-        c.fillStyle = 'blue'
-        c.fillRect(this.position.x, this.position.y, this.width,this.height)
+    function calculateAngle(mouseX, mouseY, pacmanX, pacmanY) {
+        const dx = mouseX - pacmanX;
+        const dy = mouseY - pacmanY;
+        let angle = Math.atan2(dy, dx) * (180 / Math.PI); // Angle in degrees
+    
+        // Normalize angle to be between 0 and 360 degrees
+        if (angle < 0) {
+            angle += 360;
+        }
+        
+        return angle;
+    }
+    
+    canvas.addEventListener('mouseup', e => {
+        keys.right.pressed = false
+        keys.down.pressed = false
+        keys.up.pressed = false
+        keys.left.pressed = false
 
-    }
-}</pre>
+    })
+    canvas.addEventListener('pointerup', e => {
+        keys.right.pressed = false
+        keys.down.pressed = false
+        keys.up.pressed = false
+        keys.left.pressed = false
+
+    })
+    canvas.addEventListener('pointerdown', e => {
+        const mousePoint = getMousePosition(e);
+        const pacmanCenterX = pacman.position.x;
+        const pacmanCenterY = pacman.position.y;
+        const angle = calculateAngle(mousePoint.x, mousePoint.y, pacmanCenterX, pacmanCenterY);
+        console.log('Angle:', angle.toFixed(2), 'degrees');
+        if(angle > 315 || angle < 45){
+            keys.right.pressed = true
+        } else
+        if(angle > 215 && angle < 315){
+            keys.up.pressed = true
+        } else
+        if(angle > 135 && angle < 215){
+            keys.left.pressed = true
+        } else 
+        if(angle > 45 && angle < 135){
+            keys.down.pressed = true
+        }
+    });
+</pre>
 </pre>
                 </div>
             </div>
