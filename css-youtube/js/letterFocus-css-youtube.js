@@ -1,10 +1,17 @@
 let allEls = document.querySelectorAll('[id]');
-
+const sideBarBtn = document.getElementById('sidebarbtn')
 let elsLettered = []
 let iLetter = 0
 let currentLetter
 addEventListener('keydown', e => {
     let letter = e.key.toLowerCase()
+    if(letter == 'a'){
+        sideBarBtn.focus()
+    }
+    if(letter == 'm'){
+        e.preventDefault()
+        scrollTo(0,0)
+    }
     if(letter != currentLetter){
         iLetter = 0
         elsLettered = []

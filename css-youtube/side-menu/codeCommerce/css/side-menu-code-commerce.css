@@ -10,6 +10,7 @@ body > header{
 main{
     display: flex;
 }
+
 .user-img {
     position: relative;
     width: 50px;

@@ -8,9 +8,12 @@
     flex-wrap: wrap;
     /* width: 100%; */
 }
+.code-containers pre {
+    max-height: 80vh;
+}
 .code-containers >
 .code-container {
-    background-color: yellow;
+    /* background-color: yellow; */
     border: 1px solid black;
     font-size: .8rem;
     width: 40%;
