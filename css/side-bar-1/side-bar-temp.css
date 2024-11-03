@@ -3,6 +3,7 @@
     --width-side-bar: 60px;
 }
 main {
+    
     display: flex
 }
 .side-bar{

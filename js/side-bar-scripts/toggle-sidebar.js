@@ -6,10 +6,17 @@ function toggleSideBar(){
 }
 
 
+sideBar.addEventListener('click', e => {
+    e.preventDefault()
+    if (e.target == sideBar) {
+
+        toggleSideBar()
+
+    }
+})
 sideBarBtn.addEventListener('click', e => {
     e.preventDefault()
     toggleSideBar()
-
 })
 sideBarBtn.addEventListener('keydown', e => {
     let letter = e.key.toLowerCase() 
