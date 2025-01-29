@@ -1,6 +1,6 @@
-import { addCopyCodes } from "./copy-code.js"
 import { stepTxtListeners } from "./lesson-temp.js"
 import { popScriptWindow } from "./popup-script.js"
+import { addCopyCodes } from "./copy-code.js"
 import { injectJsScripts } from "../sections/loadJsScripts.js"
 import { handleCodeFocus } from "../../js/handleCodeFocus.js"
 

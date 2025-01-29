@@ -9,7 +9,6 @@ function toggleSideBar(){
 sideBar.addEventListener('click', e => {
     e.preventDefault()
     if (e.target == sideBar) {
-
         toggleSideBar()
 
     }
