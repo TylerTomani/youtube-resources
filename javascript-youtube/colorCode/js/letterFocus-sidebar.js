@@ -5,20 +5,17 @@ document.addEventListener('DOMContentLoaded', () => {
     let sidebarLinks = document.querySelectorAll('aside.side-bar ul > li > a');
     const mainContent = document.querySelector('.main-content');
     let currentLinkIndex = 0;
-    
     let lastFocusedLink = null;
     let lastClickedLink = null 
     let sidebarLinksFocused = false;
-    
     sidebarLinks = [...sidebarLinks]
     // Track focus state of the sidebar
     sidebarLinks.forEach((el, i, arr) => {        
         el.addEventListener('focusin', e => {
             sidebarLinksFocused = true;
             currentLinkIndex = arr.indexOf(el)
-            console.log(arr.indexOf(el))
+            
         });
-    
         el.addEventListener('focusout', () => {
             sidebarLinksFocused = false;
             lastFocusedLink = ''
@@ -27,19 +24,12 @@ document.addEventListener('DOMContentLoaded', () => {
             let letter = e.key.toLowerCase()
             if(letter == 'enter'){
                 lastClickedLink = e.target
-                injectContent(e);
-                
+                injectContent(e);   
             }
-            
         });
     })
-    mainContent.addEventListener('focusin', () => {
-        mainContentFocused = true;
-    });
-
-    mainContent.addEventListener('focusout', () => {
-        mainContentFocused = false;
-    });
+    mainContent.addEventListener('focusin', () => {mainContentFocused = true;});
+    mainContent.addEventListener('focusout', () => {mainContentFocused = false;});
     // Toggle sidebar active state
     function toggleSidebar() {
         const sidebar = document.querySelector('aside.side-bar');
@@ -91,21 +81,20 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             // Navigate within the sidebar links
             const isShiftPressed = e.shiftKey;
-            focusSidebarLink(!isShiftPressed);
-            if (lastClickedLink) {
-                console.log(lastClickedLink)
+            if (lastClickedLink && !sidebarLinksFocused) {
                 lastClickedLink.focus();
             } else {
+                focusSidebarLink(!isShiftPressed);
                 sidebarLinks[currentLinkIndex].focus(); // Default to the current index
             }
-            if (!sidebarLinksFocused) {
+            if (sidebarLinksFocused) {
                 // Return focus to the last clicked sidebar link
             }
         } else {
             elIdsFocus(e);
         }
-        if (!mainContentFocused){
-            // console.log(mainContentFocused)
+        if (!mainContentFocused ){
+            // 
             if(!isNaN(letter)){
                 e.preventDefault()
                 let intLet = parseInt(letter)
@@ -127,7 +116,6 @@ document.addEventListener('DOMContentLoaded', () => {
             lastFocusedLink.focus()
         }
     });
-
     sidebarLinks.forEach((link, index) => {
         link.addEventListener('click', (e) => {
             injectContent(e);
@@ -140,6 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Focus elements by their ID's first letter
+
     function elIdsFocus(e) {
         const letter = e.key.toLowerCase();
         const elIds = document.querySelectorAll('[id]');
