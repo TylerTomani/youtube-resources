@@ -23,6 +23,15 @@ document.addEventListener('DOMContentLoaded', () => {
             sidebarLinksFocused = false;
             lastFocusedLink = ''
         });
+        el.addEventListener('keydown', (e) => {
+            let letter = e.key.toLowerCase()
+            if(letter == 'enter'){
+                lastClickedLink = e.target
+                injectContent(e);
+                
+            }
+            
+        });
     })
     mainContent.addEventListener('focusin', () => {
         mainContentFocused = true;
@@ -83,8 +92,9 @@ document.addEventListener('DOMContentLoaded', () => {
             // Navigate within the sidebar links
             const isShiftPressed = e.shiftKey;
             focusSidebarLink(!isShiftPressed);
-            if (lastFocusedLink) {
-                lastFocusedLink.focus();
+            if (lastClickedLink) {
+                console.log(lastClickedLink)
+                lastClickedLink.focus();
             } else {
                 sidebarLinks[currentLinkIndex].focus(); // Default to the current index
             }
