@@ -32,7 +32,7 @@ export function stepTxtListeners(){
         endNxtLesson.addEventListener('click', e => {
             const subSection = getSubSection(lastClickedLesson)
             // const lessons = subSection.querySelectorAll('li > a')
-            console.log(subSection)
+            
             if(subSection.classList.contains('hide')){
                 subSection.classList.remove('hide')
             }
@@ -190,8 +190,8 @@ export function stepTxtListeners(){
 
     function toggleStepImgSize(step) {
         const stepImg = step.querySelector('.step-img')
-        const img = stepImg.querySelector('img')
-        if(img){
+        if(stepImg){
+            const img = stepImg.querySelector('img')
 
             img.style.zIndex = "1"
             if(!img.classList.contains('lg-enlarge')){
@@ -235,12 +235,12 @@ export function stepTxtListeners(){
         //     targetDivFocusIN = true
         //     if (letter == 'm' && lastStep) {
         //         lastStep.focus()
-        //         console.log(lastStep)
+        //         
         //     }
 
         // })
         if (letter == 'm' && lastStep) {
-            // console.log(e.target)
+            // 
             lastStep.focus()
         }       
     });
