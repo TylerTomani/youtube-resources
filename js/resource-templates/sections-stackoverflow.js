@@ -19,7 +19,7 @@ let mainTargetDivFocus = false
 let pageStarted = false
 let iSection = 0
 let iLesson = 0
-export let lastFocusedSelection
+// export let lastFocusedSelection
 export let lastClickedLesson
 export let lastClickedSection
 const keys = {
@@ -177,7 +177,8 @@ lessons.forEach(el => {
         const subSection = getSubSection(el.parentElement)
         const lessons = subSection.querySelectorAll('li > a')
         iLesson = [...lessons].indexOf(el)
-
+        lessonsFocused = true
+        sectionsFocused = false
     }
     el.addEventListener('focus', e => {
         sectionsFocused = false

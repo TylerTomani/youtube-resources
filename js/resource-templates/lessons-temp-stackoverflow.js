@@ -33,7 +33,7 @@ export function stepTxtListeners(){
             let index
             if (subSection) {
                 if (!currentClickedSelection) {
-                    lastFocusedSelection.focus()
+                    lastClickedSection.focus()
                 } else if (currentClickedSelection) {
                     let index = [...lessons].indexOf(currentClickedSelection)
                     if(lessons[index + 1]){
@@ -217,7 +217,7 @@ export function stepTxtListeners(){
         }
         if(letter == 'a'){
              e.preventDefault()
-            console.log(lastFocusedSelection)
+            console.log(lastClickedSection)
             
         }
         
