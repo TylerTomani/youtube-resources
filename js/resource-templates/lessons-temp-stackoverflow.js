@@ -32,14 +32,11 @@ export function stepTxtListeners(){
         endNxtLesson.addEventListener('click', e => {
             const subSection = getSubSection(lastClickedLesson)
             // const lessons = subSection.querySelectorAll('li > a')
-            
             if(subSection.classList.contains('hide')){
                 subSection.classList.remove('hide')
             }
             lastClickedLesson.focus()
             scrollTo(0,0)
-            
-            
         })   
     }
     // This is overkill, target is set to _blank in html
@@ -50,7 +47,6 @@ export function stepTxtListeners(){
         stepTxtsFocused = false
     })
     mainTargetDiv.addEventListener('focusin', e => {targetDivFocusIN = true})
-    
     mainTargetDiv.addEventListener('focusout', e => {
         targetDivFocusIN = false
         denlargeAllImages()
@@ -74,13 +70,11 @@ export function stepTxtListeners(){
         stepTxts[intLetter - 1].focus()
     }
     // The code below handle img enlarge and code within step txt
-    
     copyCodes.forEach(el => {
         el.addEventListener('focus', e => {
             denlargeAllImages()
         })
     })
-    
     function denlargeAllImages() {
         allImages.forEach(el => {
             el.style.zIndex = "0"
@@ -132,8 +126,6 @@ export function stepTxtListeners(){
             return null
         }
     }
-
-    
     stepTxts.forEach(el => {
         el.addEventListener('focusout', e => {
         })
@@ -187,12 +179,10 @@ export function stepTxtListeners(){
         }
         imgIndex = (imgIndex + 1) % (images.length + 1)
     }
-
     function toggleStepImgSize(step) {
         const stepImg = step.querySelector('.step-img')
         if(stepImg){
             const img = stepImg.querySelector('img')
-
             img.style.zIndex = "1"
             if(!img.classList.contains('lg-enlarge')){
                 img.classList.toggle('enlarge')
