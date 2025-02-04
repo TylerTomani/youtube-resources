@@ -136,6 +136,7 @@ function sectionsCycles(shiftKey = false) {
     }
     sections[iSection].focus()
 }
+
 sections.forEach(el => {
     el.addEventListener('focus', e => {
         asideFocused = true
@@ -203,7 +204,28 @@ lessons.forEach(el => {
                 section.focus()
                 
             }
+            if(letter == 'a' && lessonsFocused){
+                let isShiftPressed = e.shiftKey
+                console.log(isShiftPressed)
+                lessonsCycle(lessons,e.shiftKey)
+                
+            }
         }
         
     })
 })
+function lessonsCycle(lessons,shiftKey = false) {
+    console.log(shiftKey)
+    if (shiftKey) {
+        iLesson--
+        if (iLesson < 0) {
+            iLesson = lessons.length - 1
+        }
+    } else {
+        iLesson++
+        if (iLesson >= lessons.length) {
+            iLesson = 0
+        }
+    }
+    lessons[iLesson].focus()
+}
