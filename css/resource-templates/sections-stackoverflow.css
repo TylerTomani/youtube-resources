@@ -21,7 +21,7 @@ main>aside {
 }
 
 #mainTargetDiv {
-    flex-basis: 100%;
+    flex-basis: 80%;
     /* padding: 0 2.5%; */
 }
 body>header>nav#mainLinksContainer {

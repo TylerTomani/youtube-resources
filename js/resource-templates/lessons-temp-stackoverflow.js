@@ -5,6 +5,7 @@ export const header = document.querySelector('header')
 import { sections } from './sections-stackoverflow.js'
 import { lessons } from './sections-stackoverflow.js'
 export let targetDivFocusIN = false
+export let lastStep
 import { getSubSection }  from './sections-stackoverflow.js'
 import { lastClickedLesson }  from './sections-stackoverflow.js'
 import { lastClickedSection }  from './sections-stackoverflow.js'
@@ -29,10 +30,10 @@ export function stepTxtListeners(){
     if(endNxtLesson){
         endNxtLesson.addEventListener('click', e => {
             // const lessons = subSection.querySelectorAll('li > a')
-            console.log(lastClickedLesson.parentElement)
+            
             // const subSection = getSubSection(lastClickedSection)
             
-            // console.log(subSection)
+            // 
             // if (subSection) {
             //     if (!lastClickedSection) {
             //         lastClickedSection.focus()
@@ -56,6 +57,8 @@ export function stepTxtListeners(){
     mainTargetDiv.addEventListener('focusin', e => {targetDivFocusIN = true})
     mainTargetDiv.addEventListener('keydown', e => {targetDivFocusIN = true})
     mainTargetDiv.addEventListener('focusout', e => {
+        
+        lastStep = e.target
         targetDivFocusIN = false
         denlargeAllImages()
 
@@ -144,7 +147,7 @@ export function stepTxtListeners(){
             removeAllTabs()
             imgIndex = 0
             currentStepIndex = [...stepTxts].indexOf(e.target)
-            console.log(currentStepIndex)
+            
             // el.scrollIntoView()
         })
         el.addEventListener('keydown', e => {
@@ -219,7 +222,7 @@ export function stepTxtListeners(){
         }
         if(letter == 'a'){
              e.preventDefault()
-            console.log(lastClickedSection)
+            
             
         }
         
