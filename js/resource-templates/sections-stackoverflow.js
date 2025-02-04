@@ -1,3 +1,4 @@
+import { stepTxtListeners } from "./lessons-temp-stackoverflow.js"
 const navBar = document.querySelector('nav.section-lesson-title')
 const mainTargetDiv = document.querySelector('#mainTargetDiv')
 const header = document.querySelector('header')
@@ -9,8 +10,8 @@ const vsCodeShortRegex = document.querySelector('#vsCodeShortRegex')
 const programShortcuts = document.querySelector('#programShortcuts')
 const tutorialLink = document.querySelector('#tutorialLink')
 
-const sections = document.querySelectorAll('.section')
-const lessons = document.querySelectorAll('.section-container > ul > li > a')
+export  const sections = document.querySelectorAll('.section')
+export const lessons = document.querySelectorAll('.section-container > ul > li > a')
 let asideFocused = false;
 let sectionsFocused = true
 let lessonsFocused = false
@@ -62,7 +63,7 @@ function toggleSubSection(subSection){
         subSection.classList.toggle('hide')
     }
 }
- function getSectionContainer(parent){
+export function getSectionContainer(parent){
      if (parent.classList.contains('section-container')){
         return parent
     } else if (parent.parentElement){
@@ -71,7 +72,7 @@ function toggleSubSection(subSection){
         return null
     }
 }
- function getSubSection(parent){
+ export function getSubSection(parent){
     if(parent.classList.contains('sub-section')){
         return parent
     } else if (parent.parentElement){
@@ -87,7 +88,7 @@ function fetchLessonHref(href) {
             // Inject the retrieved HTML into the target div
             mainTargetDiv.innerHTML = html;
             ////////////// This function is located in lesson-temp.js ////////////////////////////////////////////////////////////////////////////////////
-            // stepTxtListeners()
+            stepTxtListeners()
             addCopyCodes()
         })
         .catch(error => console.log('Error fetching content.html:', error));
@@ -107,7 +108,6 @@ function elIdsFocus(e) {
         }
     });
 }
-
 sections.forEach(el => {
     if(el.hasAttribute('autofocus')){
         iSection = [...sections].indexOf(el)
@@ -126,7 +126,6 @@ sections.forEach(el => {
         const subSection = sectionContainer.querySelector('.sub-section')
         toggleSubSection(subSection)
         lastClickedSection = e.target
-
     })
     el.addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
@@ -155,8 +154,6 @@ sections.forEach(el => {
         if(letter == 'enter'){
             lastClickedSection = e.target
         }
-        
-        
     })
 })
 function sectionsCycles(shiftKey = false) {
@@ -195,9 +192,7 @@ lessons.forEach(el => {
         let lessons = subSection.querySelectorAll('ul  > li > a') 
         if(lessons){
             if(!isNaN(letter)){
-                
                 let intLet = parseInt(letter)
-                
                 if(lessons[intLet - 1]){
                     lessons[intLet - 1].focus()
                 }
@@ -205,17 +200,13 @@ lessons.forEach(el => {
             if(letter == 's' && lessonsFocused){
                 let section = sectionContainer.querySelector('.section')
                 section.focus()
-                
             }
             if(letter == 'a' && lessonsFocused){
                 let isShiftPressed = e.shiftKey
-                
                 lessonsCycle(lessons,e.shiftKey)
-                
             }
-            if(letter == 'enter' ){
-                
-            }   
+            // if(letter == 'enter' ){ 
+            // }   
         }
     })
 })
