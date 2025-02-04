@@ -65,6 +65,9 @@ body>header>.title-tutorialLink-container {
     border-top: 1px solid black;
 }
 nav.section-lesson-title {
+    position: sticky;
+    top: 0;
+    background-color: white;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
 }

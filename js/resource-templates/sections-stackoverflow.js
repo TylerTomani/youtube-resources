@@ -251,7 +251,7 @@ addEventListener('keydown', e => {
         }
     }
     if (letter == 'a' && !asideFocused) {
-        aside.classList.toggle('hide')  
+        // aside.classList.toggle('hide')  
         if (lastClickedLesson) {
             lastClickedLesson.focus()
         } else if(!lastClickedLesson && lastClickedSection){
@@ -261,8 +261,6 @@ addEventListener('keydown', e => {
     
     elIdsFocus(e)
     if (letter == 'r') { vsCodeShortRegex.focus() }
-    if (letter == 'm' && lastStep) {
-        lastStep.focus()
-    }
+    
 
 });

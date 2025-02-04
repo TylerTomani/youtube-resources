@@ -12,6 +12,7 @@ import { lastClickedSection }  from './sections-stackoverflow.js'
 export function stepTxtListeners(){
     const allImages = document.querySelectorAll('.step-img > img') ? document.querySelectorAll('.step-img > img') : document.querySelectorAll('.step-video > video')
     const stepTxts = document.querySelectorAll('.step-txt')
+    let stepTxtsFocused =false
     const endNxtLesson = document.getElementById('endNxtLesson')
     const copyCodes = document.querySelectorAll('.copy-code') 
     const codesStepTxtCol = document.querySelectorAll('.step-txt > .code-container .copy-code ')
@@ -54,15 +55,15 @@ export function stepTxtListeners(){
     // This is overkill, target is set to _blank in html
     function openNewTab(e) {open(e.target.href, '_blank')}
     // this redundancy make it work, i think only focus out and keydown is needed but did overkill on this
-    mainTargetDiv.addEventListener('focus', e => {targetDivFocusIN = true})
+    mainTargetDiv.addEventListener('focus', e => {
+        targetDivFocusIN = true
+        stepTxtsFocused = false
+    })
     mainTargetDiv.addEventListener('focusin', e => {targetDivFocusIN = true})
-    mainTargetDiv.addEventListener('keydown', e => {targetDivFocusIN = true})
+    
     mainTargetDiv.addEventListener('focusout', e => {
-        
-        lastStep = e.target
         targetDivFocusIN = false
         denlargeAllImages()
-
     })
     nav.addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
@@ -144,8 +145,12 @@ export function stepTxtListeners(){
 
     
     stepTxts.forEach(el => {
+        el.addEventListener('focusout', e => {
+        })
         el.addEventListener('focus', e => {
             removeAllTabs()
+            lastStep = e.target
+            stepTxtsFocused = true
             imgIndex = 0
             currentStepIndex = [...stepTxts].indexOf(e.target)
             
@@ -156,7 +161,7 @@ export function stepTxtListeners(){
             if (letter == 'enter') {
                 handleImgSize(e)
                 handleStepTabIndex(e)
-
+                addTabs(e.target)
             }
             if (letter == 'tab') {
                 denlargeAllImages()
@@ -216,6 +221,12 @@ export function stepTxtListeners(){
             if(stepTxts.length > 0){
                 stepTxts[currentStepIndex].scrollIntoView({block: 'center'})
             }
+            if(letter == 'n'){
+                nav.focus()
+                scrollTo(0,0)
+                
+            }
+            
         }
         if (letter == 'e') {
             endNxtLesson.focus()
@@ -226,7 +237,19 @@ export function stepTxtListeners(){
             
             
         }
-        
+        // mainTargetDiv.addEventListener('keydown', e => {
+        //     let letter = e.key.toLowerCase()
+        //     targetDivFocusIN = true
+        //     if (letter == 'm' && lastStep) {
+        //         lastStep.focus()
+        //         console.log(lastStep)
+        //     }
+
+        // })
+        if (letter == 'm' && lastStep) {
+            // console.log(e.target)
+            lastStep.focus()
+        }       
     });
      
 }
