@@ -25,18 +25,13 @@ const keys = {
         pressed: false
     }
 }
-aside.addEventListener('focusin', e => {
-    asideFocused = true
-})
-aside.addEventListener('focusout', e => {
-    asideFocused = false
-    console.log('out')
-})
+aside.addEventListener('focusin', e => {asideFocused = true})
+aside.addEventListener('focusout', e => {asideFocused = false    })
 
 function hideSubSections(){
     sections.forEach(el => {
+        const sectionContainer = getSectionContainer(el.parentElement)
         if(!el.classList.contains('show')){
-            const sectionContainer = getSectionContainer(el.parentElement)
             const subSection = sectionContainer.querySelector('.sub-section')
             if(subSection){
                 if(!subSection.classList.contains('show')){
@@ -52,8 +47,6 @@ function toggleSubSection(subSection){
         subSection.classList.toggle('hide')
     }
 }
-// hideSubSections()
-
  function getSectionContainer(parent){
      if (parent.classList.contains('section-container')){
         return parent
@@ -79,20 +72,14 @@ function fetchLessonHref(href) {
             // Inject the retrieved HTML into the target div
             mainTargetDiv.innerHTML = html;
             ////////////// This function is located in lesson-temp.js ////////////////////////////////////////////////////////////////////////////////////
-            // stepTxtListeners()
+            stepTxtListeners()
             addCopyCodes()
         })
         .catch(error => console.log('Error fetching content.html:', error));
 }
-
-
 mainTargetDiv.addEventListener('focusin', e => {
-    // console.log('kljdf')
-    console.log('mainTargetDiv focusin')
 
 })
-
-
 function elIdsFocus(e) {
     const letter = e.key.toLowerCase();
     const elIds = document.querySelectorAll('[id]');
@@ -106,38 +93,10 @@ function elIdsFocus(e) {
     });
 }
 
-addEventListener('keydown', e => {
-    let letter = e.key.toLowerCase()
-    if (letter == 's' && !asideFocused) {
-        // console.log('yes')
-        if(!lastClicked){
-            sections[0].focus()
-        } else {
-            lastClicked.focus()
-        }
-    } 
-    elIdsFocus(e)
-    if(letter == 'r'){vsCodeShortRegex.focus()}
-
-});
-
-function sectionsCycles(shiftKey = false) {
-    console.log(shiftKey)
-    if (shiftKey) {
-        iSection--
-        if (iSection < 0) {
-            iSection = sections.length - 1
-        }
-    } else {
-        iSection++
-        if (iSection >= sections.length) {
-            iSection = 0
-        }
-    }
-    sections[iSection].focus()
-}
-
 sections.forEach(el => {
+    if(el.hasAttribute('autofocus')){
+        iSection = [...sections].indexOf(el)
+    }
     el.addEventListener('focus', e => {
         asideFocused = true
         sectionsFocused = true
@@ -157,7 +116,9 @@ sections.forEach(el => {
         let lessons = sectionContainer.querySelectorAll('ul.sub-section  > li > a')
         if(lessons[0]){
             if(letter == 'a' && sectionsFocused){
-                lessons[0].focus()
+                if(!lastClicked){
+                    lessons[0].focus()
+                } else lastClicked.focus()
             }
         }
         if (!isNaN(letter)) {
@@ -174,7 +135,20 @@ sections.forEach(el => {
         
     })
 })
-
+function sectionsCycles(shiftKey = false) {
+    if (shiftKey) {
+        iSection--
+        if (iSection < 0) {
+            iSection = sections.length - 1
+        }
+    } else {
+        iSection++
+        if (iSection >= sections.length) {
+            iSection = 0
+        }
+    }
+    sections[iSection].focus()
+}
 lessons.forEach(el => {
     el.addEventListener('focus', e => {
         sectionsFocused = false
@@ -184,6 +158,11 @@ lessons.forEach(el => {
         e.preventDefault()
         e.stopPropagation()
         fetchLessonHref(e.target.href)
+        if(e.target == lastClicked){
+            mainTargetDiv.focus()
+            scrollTo(0,0)
+        }
+        lastClicked = e.target
     })
     el.addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
@@ -192,9 +171,9 @@ lessons.forEach(el => {
         let lessons = subSection.querySelectorAll('ul  > li > a') 
         if(lessons){
             if(!isNaN(letter)){
-                console.log(letter)
+                
                 let intLet = parseInt(letter)
-                console.log(lessons[intLet - 1])
+                
                 if(lessons[intLet - 1]){
                     lessons[intLet - 1].focus()
                 }
@@ -206,16 +185,17 @@ lessons.forEach(el => {
             }
             if(letter == 'a' && lessonsFocused){
                 let isShiftPressed = e.shiftKey
-                console.log(isShiftPressed)
+                
                 lessonsCycle(lessons,e.shiftKey)
                 
             }
+            if(letter == 'enter' ){
+                
+            }   
         }
-        
     })
 })
 function lessonsCycle(lessons,shiftKey = false) {
-    console.log(shiftKey)
     if (shiftKey) {
         iLesson--
         if (iLesson < 0) {
@@ -229,3 +209,24 @@ function lessonsCycle(lessons,shiftKey = false) {
     }
     lessons[iLesson].focus()
 }
+addEventListener('keydown', e => {
+    let letter = e.key.toLowerCase()
+    if (letter == 's' && !asideFocused) {
+        // 
+        if (!lastClicked) {
+            sections[0].focus()
+        } else {
+            lastClicked.focus()
+        }
+    }
+    if (letter == 'a' && !asideFocused) {
+        if (lastClicked) {
+            console.log(lastClicked)
+            lastClicked.focus()
+            // sections[0].focus()
+        }
+    }
+    elIdsFocus(e)
+    if (letter == 'r') { vsCodeShortRegex.focus() }
+
+});
