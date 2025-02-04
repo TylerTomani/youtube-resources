@@ -171,6 +171,14 @@ function sectionsCycles(shiftKey = false) {
     sections[iSection].focus()
 }
 lessons.forEach(el => {
+    if(el.hasAttribute('autofocus')){
+        fetchLessonHref(el.href)
+        lastClickedLesson = el
+        const subSection = getSubSection(el.parentElement)
+        const lessons = subSection.querySelectorAll('li > a')
+        iLesson = [...lessons].indexOf(el)
+
+    }
     el.addEventListener('focus', e => {
         sectionsFocused = false
         lessonsFocused = true
