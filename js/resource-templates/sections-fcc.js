@@ -19,7 +19,8 @@ let pageStarted = false
 let iSection = 0
 let iLesson = 0
 export let lastFocusedSelection
-export let lastClicked
+export let lastClickedLesson
+export let lastClickedSection
 const keys = {
     shift: {
         pressed: false
@@ -72,7 +73,7 @@ function fetchLessonHref(href) {
             // Inject the retrieved HTML into the target div
             mainTargetDiv.innerHTML = html;
             ////////////// This function is located in lesson-temp.js ////////////////////////////////////////////////////////////////////////////////////
-            stepTxtListeners()
+            // stepTxtListeners()
             addCopyCodes()
         })
         .catch(error => console.log('Error fetching content.html:', error));
@@ -96,8 +97,10 @@ function elIdsFocus(e) {
 sections.forEach(el => {
     if(el.hasAttribute('autofocus')){
         iSection = [...sections].indexOf(el)
+        lastClickedLesson
     }
     el.addEventListener('focus', e => {
+        iSection = [...sections].indexOf(e.target)
         asideFocused = true
         sectionsFocused = true
         lessonsFocused = false
@@ -108,6 +111,7 @@ sections.forEach(el => {
         const sectionContainer = getSectionContainer(e.target)
         const subSection = sectionContainer.querySelector('.sub-section')
         toggleSubSection(subSection)
+        lastClickedSection = e.target
 
     })
     el.addEventListener('keydown', e => {
@@ -116,9 +120,9 @@ sections.forEach(el => {
         let lessons = sectionContainer.querySelectorAll('ul.sub-section  > li > a')
         if(lessons[0]){
             if(letter == 'a' && sectionsFocused){
-                if(!lastClicked){
+                if(!lastClickedLesson){
                     lessons[0].focus()
-                } else lastClicked.focus()
+                } else lastClickedLesson.focus()
             }
         }
         if (!isNaN(letter)) {
@@ -132,6 +136,10 @@ sections.forEach(el => {
             let isShiftPressed = e.shiftKey
             sectionsCycles(e.shiftKey)          
         }
+        if(letter == 'enter'){
+            lastClickedSection = e.target
+        }
+        
         
     })
 })
@@ -158,11 +166,11 @@ lessons.forEach(el => {
         e.preventDefault()
         e.stopPropagation()
         fetchLessonHref(e.target.href)
-        if(e.target == lastClicked){
+        if(e.target == lastClickedLesson){
             mainTargetDiv.focus()
             scrollTo(0,0)
         }
-        lastClicked = e.target
+        lastClickedLesson = e.target
     })
     el.addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
@@ -213,17 +221,20 @@ addEventListener('keydown', e => {
     let letter = e.key.toLowerCase()
     if (letter == 's' && !asideFocused) {
         // 
-        if (!lastClicked) {
+        if (!lastClickedLesson) {
+            if(lastClickedSection){
+                lastClickedSection.focus()
+                console.log(lastClickedSection)
+            }else
             sections[0].focus()
-        } else {
-            lastClicked.focus()
+        }  else {
+            lastClickedLesson.focus()
         }
     }
     if (letter == 'a' && !asideFocused) {
-        if (lastClicked) {
-            console.log(lastClicked)
-            lastClicked.focus()
-            // sections[0].focus()
+        if (lastClickedLesson) {
+            console.log(lastClickedLesson)
+            lastClickedLesson.focus()
         }
     }
     elIdsFocus(e)
