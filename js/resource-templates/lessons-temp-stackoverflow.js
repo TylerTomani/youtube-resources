@@ -28,19 +28,19 @@ export function stepTxtListeners(){
     pAs.forEach(el => {el.setAttribute('tabindex','-1')})
     if(nxtLesson){
         nxtLesson.addEventListener('click', e => {
-            const subSection = getSubSection(currentClickedSelection)
+            const subSection = getSubSection(lastClickedSection)
             const lessons = subSection.querySelectorAll('li > a')
             let index
             if (subSection) {
-                if (!currentClickedSelection) {
+                if (!lastClickedSection) {
                     lastClickedSection.focus()
-                } else if (currentClickedSelection) {
-                    let index = [...lessons].indexOf(currentClickedSelection)
+                } else if (lastClickedSection) {
+                    let index = [...lessons].indexOf(lastClickedSection)
                     if(lessons[index + 1]){
                         lessons[index + 1].focus()
                     } else {
                         // make this so it goes to next section
-                        currentClickedSelection.focus()
+                        lastClickedSection.focus()
                         
                     }
                 }
