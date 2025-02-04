@@ -30,6 +30,7 @@ export function stepTxtListeners(){
     if(endNxtLesson){
         endNxtLesson.addEventListener('click', e => {
             // const lessons = subSection.querySelectorAll('li > a')
+            lastClickedLesson.focus()
             
             // const subSection = getSubSection(lastClickedSection)
             

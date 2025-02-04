@@ -7,8 +7,9 @@
 main {
     display: flex;
     border: 19x solid red;
+    overflow: none;
     margin: 0 .24%;
-
+    
 }
 
 main>aside {
@@ -21,8 +22,8 @@ main>aside {
 }
 
 #mainTargetDiv {
-    flex-basis: 80%;
-    /* padding: 0 2.5%; */
+    flex-grow: 1;
+    flex-basis: 100%;
 }
 body>header>nav#mainLinksContainer {
     display: flex;

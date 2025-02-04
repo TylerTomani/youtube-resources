@@ -238,7 +238,7 @@ function lessonsCycle(lessons,shiftKey = false) {
 addEventListener('keydown', e => {
     let letter = e.key.toLowerCase()
     if (letter == 's' && !asideFocused) {
-        // 
+        aside.classList.toggle('hide')  
         if (!lastClickedLesson) {
             if(lastClickedSection){
                 lastClickedSection.focus()
@@ -251,6 +251,7 @@ addEventListener('keydown', e => {
         }
     }
     if (letter == 'a' && !asideFocused) {
+        aside.classList.toggle('hide')  
         if (lastClickedLesson) {
             lastClickedLesson.focus()
         } else if(!lastClickedLesson && lastClickedSection){
