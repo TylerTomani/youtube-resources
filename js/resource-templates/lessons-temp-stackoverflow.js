@@ -30,26 +30,16 @@ export function stepTxtListeners(){
     pAs.forEach(el => {el.setAttribute('tabindex','-1')})
     if(endNxtLesson){
         endNxtLesson.addEventListener('click', e => {
+            const subSection = getSubSection(lastClickedLesson)
             // const lessons = subSection.querySelectorAll('li > a')
+            console.log(subSection)
+            if(subSection.classList.contains('hide')){
+                subSection.classList.remove('hide')
+            }
             lastClickedLesson.focus()
+            scrollTo(0,0)
             
-            // const subSection = getSubSection(lastClickedSection)
             
-            // 
-            // if (subSection) {
-            //     if (!lastClickedSection) {
-            //         lastClickedSection.focus()
-            //     } else if (lastClickedSection) {
-            //         let index = [...lessons].indexOf(lastClickedSection)
-            //         if(lessons[index + 1]){
-            //             lessons[index + 1].focus()
-            //         } else {
-            //             // make this so it goes to next section
-            //             lastClickedSection.focus()
-                        
-            //         }
-            //     }
-            // }
         })   
     }
     // This is overkill, target is set to _blank in html
@@ -201,11 +191,14 @@ export function stepTxtListeners(){
     function toggleStepImgSize(step) {
         const stepImg = step.querySelector('.step-img')
         const img = stepImg.querySelector('img')
-        img.style.zIndex = "1"
-        if(!img.classList.contains('lg-enlarge')){
-            img.classList.toggle('enlarge')
-        } else if(img.classList.contains('lg-enlarge')){
-            img.classList.toggle('enlarged-lg')
+        if(img){
+
+            img.style.zIndex = "1"
+            if(!img.classList.contains('lg-enlarge')){
+                img.classList.toggle('enlarge')
+            } else if(img.classList.contains('lg-enlarge')){
+                img.classList.toggle('enlarged-lg')
+            }
         }
     }
     addEventListener('keydown', e => {

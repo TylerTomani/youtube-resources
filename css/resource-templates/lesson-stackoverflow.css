@@ -17,6 +17,7 @@
 .step>* {
     border: 1px solid black;
     flex-basis: 50%;
+    width: 50%;
 }
 .step-col {
     display: flex;
@@ -75,6 +76,7 @@
 .step-img > img,
 .step-vid > video {
     /* position: static; */
+    width: 100%;
     max-width: 400px;
     object-fit: scale-down;
 }
