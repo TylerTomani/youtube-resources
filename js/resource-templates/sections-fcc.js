@@ -120,6 +120,22 @@ addEventListener('keydown', e => {
     if(letter == 'r'){vsCodeShortRegex.focus()}
 
 });
+
+function sectionsCycles(shiftKey = false) {
+    console.log(shiftKey)
+    if (shiftKey) {
+        iSection--
+        if (iSection < 0) {
+            iSection = sections.length - 1
+        }
+    } else {
+        iSection++
+        if (iSection >= sections.length) {
+            iSection = 0
+        }
+    }
+    sections[iSection].focus()
+}
 sections.forEach(el => {
     el.addEventListener('focus', e => {
         asideFocused = true
@@ -138,8 +154,10 @@ sections.forEach(el => {
         let letter = e.key.toLowerCase()
         let sectionContainer = getSectionContainer(e.target.parentElement)
         let lessons = sectionContainer.querySelectorAll('ul.sub-section  > li > a')
-        if(letter == 'a' && sectionsFocused){
-            lessons[0].focus()
+        if(lessons[0]){
+            if(letter == 'a' && sectionsFocused){
+                lessons[0].focus()
+            }
         }
         if (!isNaN(letter)) {
             let intLet = parseInt(letter)
@@ -155,21 +173,7 @@ sections.forEach(el => {
         
     })
 })
-function sectionsCycles(shiftKey = false){
-    console.log(shiftKey)
-    if(shiftKey){
-        iSection--
-        if(iSection < 0){
-            iSection = sections.length - 1
-        }
-    } else {
-        iSection++
-        if(iSection >= sections.length){
-            iSection = 0
-        }
-    }
-    sections[iSection].focus()
-}
+
 lessons.forEach(el => {
     el.addEventListener('focus', e => {
         sectionsFocused = false
@@ -183,11 +187,13 @@ lessons.forEach(el => {
     el.addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
         let sectionContainer = getSectionContainer(e.target.parentElement)  
-        let lessons = sectionContainer.querySelectorAll('ul  > li > a') 
+        let subSection = sectionContainer.querySelector('.sub-section')
+        let lessons = subSection.querySelectorAll('ul  > li > a') 
         if(lessons){
-
             if(!isNaN(letter)){
+                console.log(letter)
                 let intLet = parseInt(letter)
+                console.log(lessons[intLet - 1])
                 if(lessons[intLet - 1]){
                     lessons[intLet - 1].focus()
                 }
