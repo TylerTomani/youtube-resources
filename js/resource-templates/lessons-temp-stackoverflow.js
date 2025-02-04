@@ -11,7 +11,7 @@ import { lastClickedSection }  from './sections-stackoverflow.js'
 export function stepTxtListeners(){
     const allImages = document.querySelectorAll('.step-img > img') ? document.querySelectorAll('.step-img > img') : document.querySelectorAll('.step-video > video')
     const stepTxts = document.querySelectorAll('.step-txt')
-    const nxtLesson = document.getElementById('nxtLesson')
+    const endNxtLesson = document.getElementById('endNxtLesson')
     const copyCodes = document.querySelectorAll('.copy-code') 
     const codesStepTxtCol = document.querySelectorAll('.step-txt > .code-container .copy-code ')
     const pAs = document.querySelectorAll('p a') 
@@ -26,25 +26,27 @@ export function stepTxtListeners(){
     sections.forEach(el => { el.addEventListener('focus', e => { targetDivFocusIN = false }) })
     lessons.forEach(el => { el.addEventListener('focus', e => { targetDivFocusIN = false }) })
     pAs.forEach(el => {el.setAttribute('tabindex','-1')})
-    if(nxtLesson){
-        nxtLesson.addEventListener('click', e => {
-            const subSection = getSubSection(lastClickedSection)
-            const lessons = subSection.querySelectorAll('li > a')
-            let index
-            if (subSection) {
-                if (!lastClickedSection) {
-                    lastClickedSection.focus()
-                } else if (lastClickedSection) {
-                    let index = [...lessons].indexOf(lastClickedSection)
-                    if(lessons[index + 1]){
-                        lessons[index + 1].focus()
-                    } else {
-                        // make this so it goes to next section
-                        lastClickedSection.focus()
+    if(endNxtLesson){
+        endNxtLesson.addEventListener('click', e => {
+            // const lessons = subSection.querySelectorAll('li > a')
+            console.log(lastClickedLesson.parentElement)
+            // const subSection = getSubSection(lastClickedSection)
+            
+            // console.log(subSection)
+            // if (subSection) {
+            //     if (!lastClickedSection) {
+            //         lastClickedSection.focus()
+            //     } else if (lastClickedSection) {
+            //         let index = [...lessons].indexOf(lastClickedSection)
+            //         if(lessons[index + 1]){
+            //             lessons[index + 1].focus()
+            //         } else {
+            //             // make this so it goes to next section
+            //             lastClickedSection.focus()
                         
-                    }
-                }
-            }
+            //         }
+            //     }
+            // }
         })   
     }
     // This is overkill, target is set to _blank in html
@@ -68,8 +70,8 @@ export function stepTxtListeners(){
             denlargeAllImages()
             stepNumberFocus(intLetter)
         } else {
-            if(nxtLesson){
-                nxtLesson.focus()
+            if(endNxtLesson){
+                endNxtLesson.focus()
             }
         }
     }
@@ -205,15 +207,15 @@ export function stepTxtListeners(){
                 stepFocus(letter)
             }
             if (letter == 'e') {
-                nxtLesson.focus()
+                endNxtLesson.focus()
             }
             if(stepTxts.length > 0){
                 stepTxts[currentStepIndex].scrollIntoView({block: 'center'})
             }
         }
         if (letter == 'e') {
-            nxtLesson.focus()
-            nxtLesson.scrollIntoView()
+            endNxtLesson.focus()
+            endNxtLesson.scrollIntoView()
         }
         if(letter == 'a'){
              e.preventDefault()
