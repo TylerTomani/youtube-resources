@@ -35,7 +35,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const sidebar = document.querySelector('aside.side-bar');
         sidebar.classList.toggle('active');
     }
-
     // Focus on the next or previous link
     /* next if false when shift is pressed down*/
     function focusSidebarLink(next = true) {
@@ -128,7 +127,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Focus elements by their ID's first letter
-
     function elIdsFocus(e) {
         const letter = e.key.toLowerCase();
         const elIds = document.querySelectorAll('[id]');
