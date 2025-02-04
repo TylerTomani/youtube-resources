@@ -1,4 +1,4 @@
-const nav = document.querySelector('nav.section-lesson-title')
+const navBar = document.querySelector('nav.section-lesson-title')
 const mainTargetDiv = document.querySelector('#mainTargetDiv')
 const header = document.querySelector('header')
 import { addCopyCodes } from "./copy-code-resources.js"
@@ -26,6 +26,23 @@ const keys = {
         pressed: false
     }
 }
+navBar.addEventListener('click', e => {
+    aside.classList.toggle('hide')
+})
+aside.addEventListener('focusin', e => {asideFocused = true})
+navBar.addEventListener('keydown', e => {
+    let letter = e.key.toLowerCase()
+    if(letter == 'enter'){
+        aside.classList.toggle('hide')
+        
+    }
+    if(letter == 'a'){
+        aside.classList.toggle('hide')
+    }
+    if(letter == 's'){
+        aside.classList.toggle('hide')
+    }
+})
 aside.addEventListener('focusin', e => {asideFocused = true})
 aside.addEventListener('focusout', e => {asideFocused = false    })
 
@@ -121,9 +138,11 @@ sections.forEach(el => {
         let lessons = sectionContainer.querySelectorAll('ul.sub-section  > li > a')
         if(lessons[0]){
             if(letter == 'a' && sectionsFocused){
+                lessons[0].focus()
                 if(!lastClickedLesson){
-                    lessons[0].focus()
-                } else lastClickedLesson.focus()
+                } 
+                // else 
+                // lastClickedLesson.focus()
             }
         }
         if (!isNaN(letter)) {
@@ -224,7 +243,6 @@ addEventListener('keydown', e => {
         // 
         if (!lastClickedLesson) {
             if(lastClickedSection){
-                console.log(lastClickedSection)
                 lastClickedSection.focus()
             }else{
 
@@ -237,7 +255,9 @@ addEventListener('keydown', e => {
     if (letter == 'a' && !asideFocused) {
         if (lastClickedLesson) {
             console.log(lastClickedLesson)
-            // lastClickedLesson.focus()
+            lastClickedLesson.focus()
+        } else if(!lastClickedLesson && lastClickedSection){
+            lastClickedSection.focus()
         }
     }
     elIdsFocus(e)
