@@ -4,6 +4,26 @@
     padding: 0;
     box-sizing: border-box;
 }
+main {
+    display: flex;
+    border: 19x solid red;
+    margin: 0 .24%;
+
+}
+
+main>aside {
+    flex-basis: 20%;
+    /* height: 100vh; */
+    border-right: 1px solid black;
+    padding-top: 1%;
+    padding-left: .5%;
+    padding-right: 2%;
+}
+
+#mainTargetDiv {
+    flex-basis: 100%;
+    /* padding: 0 2.5%; */
+}
 body>header>nav#mainLinksContainer {
     display: flex;
 }
@@ -137,23 +157,7 @@ li > code {
 .hide {
     display: none;
 }
-main {
-    display: flex;
-}
 
-main>aside {
-    flex-basis: 20%;
-    /* height: 100vh; */
-    border-right: 1px solid black;
-    padding-top: 1%;
-    padding-left: .5%;
-    padding-right: 2%;
-}
-
-#mainTargetDiv {
-    flex-basis: 100%;
-    /* padding: 0 2.5%; */
-}
 @media screen and (max-width: 641px){
     .section-lesson-title {padding-left: 1%;}
     main > aside {

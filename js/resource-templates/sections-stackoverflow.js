@@ -176,13 +176,13 @@ lessons.forEach(el => {
         lastClickedLesson = el
         const subSection = getSubSection(el.parentElement)
         const lessons = subSection.querySelectorAll('li > a')
-        iLesson = [...lessons].indexOf(el)
         lessonsFocused = true
         sectionsFocused = false
     }
     el.addEventListener('focus', e => {
         sectionsFocused = false
         lessonsFocused = true
+        // iLesson = [...lessons].indexOf(el)
     })
     el.addEventListener('click', e => {
         e.preventDefault()
@@ -205,6 +205,7 @@ lessons.forEach(el => {
                 if(lessons[intLet - 1]){
                     lessons[intLet - 1].focus()
                 }
+                iLesson = intLet - 1
             }
             if(letter == 's' && lessonsFocused){
                 let section = sectionContainer.querySelector('.section')
