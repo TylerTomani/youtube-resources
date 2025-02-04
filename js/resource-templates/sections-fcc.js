@@ -44,6 +44,7 @@ function hideSubSections(){
 }
 hideSubSections()
 function toggleSubSection(subSection){
+    hideSubSections()
     if(subSection){
         subSection.classList.toggle('hide')
     }
@@ -97,7 +98,7 @@ function elIdsFocus(e) {
 sections.forEach(el => {
     if(el.hasAttribute('autofocus')){
         iSection = [...sections].indexOf(el)
-        lastClickedLesson
+        lastClickedSection = el
     }
     el.addEventListener('focus', e => {
         iSection = [...sections].indexOf(e.target)
@@ -223,10 +224,12 @@ addEventListener('keydown', e => {
         // 
         if (!lastClickedLesson) {
             if(lastClickedSection){
-                lastClickedSection.focus()
                 console.log(lastClickedSection)
-            }else
-            sections[0].focus()
+                lastClickedSection.focus()
+            }else{
+
+                // sections[0].focus()
+            }
         }  else {
             lastClickedLesson.focus()
         }
@@ -234,7 +237,7 @@ addEventListener('keydown', e => {
     if (letter == 'a' && !asideFocused) {
         if (lastClickedLesson) {
             console.log(lastClickedLesson)
-            lastClickedLesson.focus()
+            // lastClickedLesson.focus()
         }
     }
     elIdsFocus(e)
