@@ -29,12 +29,11 @@ const keys = {
     }
 }
 const homeIntroPage = '/python-youtube/apis-python-youtube/stackoverflow-api/calebCurry-stackOflow-api/01-RESTApiCrashIntroFullPythonApiTutorial/home-intro.html'
-function fetchLessonHref(href = homeIntroPage) {
-    console.log(href)
+function fetchLessonHref(href) {
     fetch(href)
-
-        .then(response => response.text())
+    .then(response => response.text())
         .then(html => {
+            console.log(html)
             // Inject the retrieved HTML into the target div
             mainTargetDiv.innerHTML = html;
             ////////////// This function is located in lesson-temp.js ////////////////////////////////////////////////////////////////////////////////////
