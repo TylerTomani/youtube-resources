@@ -12,7 +12,6 @@ const programShortcuts = document.querySelector('#programShortcuts')
 const tutorialLink = document.querySelector('#tutorialLink')
 export  const sections = document.querySelectorAll('.section')
 export const lessons = document.querySelectorAll('.section-container > ul > li > a')
-// let headerFocused = false;
 let asideFocused = false;
 let sectionsFocused = true
 let lessonsFocused = false
@@ -20,7 +19,6 @@ let mainTargetDivFocus = false
 let pageStarted = false
 let iSection = 0
 let iLesson = 0
-// export let lastFocusedSelection
 export let lastClickedLesson
 export let lastClickedSection
 const keys = {
@@ -32,7 +30,7 @@ function fetchLessonHref(href) {
     fetch(href)
     .then(response => response.text())
         .then(html => {
-            console.log(html)
+            
             // Inject the retrieved HTML into the target div
             mainTargetDiv.innerHTML = html;
             ////////////// This function is located in lesson-temp.js ////////////////////////////////////////////////////////////////////////////////////
@@ -42,13 +40,6 @@ function fetchLessonHref(href) {
         .catch(error => console.log('Error fetching content.html:', error));
 
 }
-// header.addEventListener('focusin', e=>{
-//     headerFocused = true
-// })
-// header.addEventListener('focusout', e=>{
-//     headerFocused = true
-    
-// })
 navBar.addEventListener('click', e => {aside.classList.toggle('hide')})
 aside.addEventListener('focusin', e => {asideFocused = true})
 navBar.addEventListener('keydown', e => {
@@ -98,7 +89,7 @@ export function getSectionContainer(parent){
         return null
     }
 }
- export function getSubSection(parent){
+export function getSubSection(parent){
     if(parent.classList.contains('sub-section')){
         return parent
     } else if (parent.parentElement){
@@ -107,7 +98,6 @@ export function getSectionContainer(parent){
         return null
     }
 }
-
 mainTargetDiv.addEventListener('focusin', e => {
 
 })
@@ -250,10 +240,8 @@ function lessonsCycle(lessons,shiftKey = false) {
     lessons[iLesson].focus()
 }
 addEventListener('keydown', e => {
-    let letter = e.key.toLowerCase()
-    
+    let letter = e.key.toLowerCase()   
     if (letter == 's' && !asideFocused) {
-        // aside.classList.toggle('hide')  
         if(lastClickedSection){
             lastClickedSection.focus()
         }
@@ -262,7 +250,6 @@ addEventListener('keydown', e => {
         }else {
             sections[0].focus()
         }
-        
     }
     if (letter == 'a' && !asideFocused) {
         // aside.classList.toggle('hide')  
@@ -274,15 +261,7 @@ addEventListener('keydown', e => {
     }
     elIdsFocus(e)
     if (letter == 'r') { vsCodeShortRegex.focus() }
-    if (!lastClickedLesson || !lastClickedSection && !asideFocused) {
-        if (letter == 'a' || letter == 's') {
-            // sections[0].focus()
-            // sectionsFocused = true
-            // console.log(sectionsFocused)
-            
-        }
-
-    }
+    
 });
 /// I don't know if i need this here
 stepTxtListeners()
