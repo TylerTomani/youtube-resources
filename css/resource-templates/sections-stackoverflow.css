@@ -4,6 +4,7 @@
     padding: 0;
     box-sizing: border-box;
     /* color: white; */
+    background-color: lightgreen;
 }
 body{overflow-x: hidden;}
 main {
