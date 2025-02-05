@@ -2,13 +2,13 @@ export const nav = document.querySelector('nav.section-lesson-title')
 export const mainTargetDiv  = document.querySelector('#mainTargetDiv')
 export const aside = document.querySelector('aside')
 export const header = document.querySelector('header')
-import { sections } from './sections-stackoverflow.js'
-import { lessons } from './sections-stackoverflow.js'
 export let targetDivFocusIN = false
 export let lastStep
 import { getSubSection }  from './sections-stackoverflow.js'
 import { lastClickedLesson }  from './sections-stackoverflow.js'
 import { lastClickedSection }  from './sections-stackoverflow.js'
+import { sections } from './sections-stackoverflow.js'
+import { lessons } from './sections-stackoverflow.js'
 export function stepTxtListeners(){
     const allImages = document.querySelectorAll('.step-img > img') ? document.querySelectorAll('.step-img > img') : document.querySelectorAll('.step-video > video')
     const stepTxts = document.querySelectorAll('.step-txt')
@@ -25,8 +25,8 @@ export function stepTxtListeners(){
             e.target.classList.toggle('enlarge')
         })
     })
-    sections.forEach(el => { el.addEventListener('focus', e => { targetDivFocusIN = false }) })
-    lessons.forEach(el => { el.addEventListener('focus', e => { targetDivFocusIN = false }) })
+    // sections.forEach(el => { el.addEventListener('focus', e => { targetDivFocusIN = false }) })
+    // lessons.forEach(el => { el.addEventListener('focus', e => { targetDivFocusIN = false }) })
     pAs.forEach(el => {el.setAttribute('tabindex','-1')})
     if(endNxtLesson){
         endNxtLesson.addEventListener('click', e => {
@@ -242,5 +242,6 @@ export function stepTxtListeners(){
             lastStep.focus()
         }       
     });
-     
+    
 }
+stepTxtListeners()

@@ -28,7 +28,8 @@ const keys = {
         pressed: false
     }
 }
-const homeIntroPage = '/python-youtube/apis-python-youtube/stackoverflow-api/calebCurry-stackOflow-api/01-RESTApiCrashIntroFullPythonApiTutorial/home-intro.html'
+
+
 function fetchLessonHref(href) {
     fetch(href)
     .then(response => response.text())
@@ -41,8 +42,9 @@ function fetchLessonHref(href) {
             addCopyCodes()
         })
         .catch(error => console.log('Error fetching content.html:', error));
+
 }
-fetchLessonHref(homeIntroPage)
+
 
 navBar.addEventListener('click', e => {aside.classList.toggle('hide')})
 aside.addEventListener('focusin', e => {asideFocused = true})
