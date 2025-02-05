@@ -1,5 +1,6 @@
 * {
     margin: 0;
+    background-color: orange;
     padding: 0;
 }
 .section-page > .step {padding-top: 5%;}
@@ -139,6 +140,10 @@
     display: inline-block;
     overflow-x: scroll;
     overflow: scroll;
+}
+#endNxtLesson{
+    padding: 2% 0;
+    margin-bottom: 2%;
 }
 @media screen and (max-width: 961px) {
     .step-col > .img-container{
