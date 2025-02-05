@@ -5,6 +5,7 @@
     box-sizing: border-box;
     /* color: white; */
 }
+body{overflow-x: hidden;}
 main {
     display: flex;
     border: 19x solid red;
