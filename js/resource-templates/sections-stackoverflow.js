@@ -28,6 +28,23 @@ const keys = {
         pressed: false
     }
 }
+const homeIntroPage = '/python-youtube/apis-python-youtube/stackoverflow-api/calebCurry-stackOflow-api/01-RESTApiCrashIntroFullPythonApiTutorial/home-intro.html'
+function fetchLessonHref(href = homeIntroPage) {
+    console.log(href)
+    fetch(href)
+
+        .then(response => response.text())
+        .then(html => {
+            // Inject the retrieved HTML into the target div
+            mainTargetDiv.innerHTML = html;
+            ////////////// This function is located in lesson-temp.js ////////////////////////////////////////////////////////////////////////////////////
+            stepTxtListeners()
+            addCopyCodes()
+        })
+        .catch(error => console.log('Error fetching content.html:', error));
+}
+fetchLessonHref(homeIntroPage)
+
 navBar.addEventListener('click', e => {aside.classList.toggle('hide')})
 aside.addEventListener('focusin', e => {asideFocused = true})
 navBar.addEventListener('keydown', e => {
@@ -36,7 +53,9 @@ navBar.addEventListener('keydown', e => {
         aside.classList.toggle('hide')   
     }
     if(letter == 'a'){
-        aside.classList.toggle('hide')
+        if(aside.classList.contains('hide')){
+            aside.classList.remove('hide')
+        }
     }
     if(letter == 's'){
         aside.classList.toggle('hide')
@@ -82,18 +101,7 @@ export function getSectionContainer(parent){
         return null
     }
 }
-function fetchLessonHref(href) {
-    fetch(href)
-        .then(response => response.text())
-        .then(html => {
-            // Inject the retrieved HTML into the target div
-            mainTargetDiv.innerHTML = html;
-            ////////////// This function is located in lesson-temp.js ////////////////////////////////////////////////////////////////////////////////////
-            stepTxtListeners()
-            addCopyCodes()
-        })
-        .catch(error => console.log('Error fetching content.html:', error));
-}
+
 mainTargetDiv.addEventListener('focusin', e => {
 
 })
