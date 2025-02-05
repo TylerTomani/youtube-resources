@@ -10,9 +10,9 @@ const homelink = document.querySelector('#homelink')
 const vsCodeShortRegex = document.querySelector('#vsCodeShortRegex')
 const programShortcuts = document.querySelector('#programShortcuts')
 const tutorialLink = document.querySelector('#tutorialLink')
-
 export  const sections = document.querySelectorAll('.section')
 export const lessons = document.querySelectorAll('.section-container > ul > li > a')
+// let headerFocused = false;
 let asideFocused = false;
 let sectionsFocused = true
 let lessonsFocused = false
@@ -28,8 +28,6 @@ const keys = {
         pressed: false
     }
 }
-
-
 function fetchLessonHref(href) {
     fetch(href)
     .then(response => response.text())
@@ -44,8 +42,13 @@ function fetchLessonHref(href) {
         .catch(error => console.log('Error fetching content.html:', error));
 
 }
-
-
+// header.addEventListener('focusin', e=>{
+//     headerFocused = true
+// })
+// header.addEventListener('focusout', e=>{
+//     headerFocused = true
+    
+// })
 navBar.addEventListener('click', e => {aside.classList.toggle('hide')})
 aside.addEventListener('focusin', e => {asideFocused = true})
 navBar.addEventListener('keydown', e => {
@@ -59,7 +62,9 @@ navBar.addEventListener('keydown', e => {
         }
     }
     if(letter == 's'){
-        aside.classList.toggle('hide')
+        if(aside.classList.contains('hide')){
+            aside.classList.remove('hide')
+        }
     }
 })
 aside.addEventListener('focusin', e => {asideFocused = true})
@@ -246,18 +251,18 @@ function lessonsCycle(lessons,shiftKey = false) {
 }
 addEventListener('keydown', e => {
     let letter = e.key.toLowerCase()
+    
     if (letter == 's' && !asideFocused) {
-        aside.classList.toggle('hide')  
-        if (!lastClickedLesson) {
-            if(lastClickedSection){
-                lastClickedSection.focus()
-            }else{
-
-                // sections[0].focus()
-            }
-        }  else {
-            lastClickedLesson.focus()
+        // aside.classList.toggle('hide')  
+        if(lastClickedSection){
+            lastClickedSection.focus()
         }
+         else if(lastClickedLesson){
+            lastClickedLesson.focus()
+        }else {
+            sections[0].focus()
+        }
+        
     }
     if (letter == 'a' && !asideFocused) {
         // aside.classList.toggle('hide')  
@@ -267,9 +272,17 @@ addEventListener('keydown', e => {
             lastClickedSection.focus()
         }
     }
-    
     elIdsFocus(e)
     if (letter == 'r') { vsCodeShortRegex.focus() }
-    
+    if (!lastClickedLesson || !lastClickedSection && !asideFocused) {
+        if (letter == 'a' || letter == 's') {
+            // sections[0].focus()
+            // sectionsFocused = true
+            // console.log(sectionsFocused)
+            
+        }
 
+    }
 });
+/// I don't know if i need this here
+stepTxtListeners()
