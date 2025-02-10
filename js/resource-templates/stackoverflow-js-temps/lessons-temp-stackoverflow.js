@@ -61,12 +61,10 @@ export function stepTxtListeners(){
     function stepFocus(letter) {
         const intLetter = parseInt(letter)
         if (intLetter <= stepTxts.length) {
-            denlargeAllImages()
+            // denlargeAllImages()
             stepNumberFocus(intLetter)
         } else {
-            // endNxtLesson.focus()
-            if(endNxtLesson){
-            }
+            
         }
     }
     function stepNumberFocus(intLetter) {
@@ -75,7 +73,7 @@ export function stepTxtListeners(){
     // The code below handle img enlarge and code within step txt
     copyCodes.forEach(el => {
         el.addEventListener('focus', e => {
-            denlargeAllImages()
+            // denlargeAllImages()
         })
     })
     function handleStepTabIndex(e) {
@@ -124,8 +122,6 @@ export function stepTxtListeners(){
             stepTxtsFocused = true
             imgIndex = 0
             currentStepIndex = [...stepTxts].indexOf(e.target)
-            
-            // el.scrollIntoView()
         })
         el.addEventListener('keydown', e => {
             let letter = e.key.toLowerCase()
@@ -135,7 +131,7 @@ export function stepTxtListeners(){
                 addTabs(e.target)
             }
             if (letter == 'tab') {
-                denlargeAllImages()
+                // denlargeAllImages()
             }
         })
     })
@@ -178,14 +174,13 @@ export function stepTxtListeners(){
                 img.classList.toggle('enlarged-lg')
             }
             handleAsideWithImg(img)
-
         }
     }
     function toggleStepColImages(stepCol) {
         const imgContainer = stepCol.querySelector('.img-container')
         const images = imgContainer.querySelectorAll('.step-img > img')
         const img = images[imgIndex]
-        denlargeAllImages()
+        // denlargeAllImages()
         if (imgIndex < 2) {
             img.classList.add('enlarge-col')
             img.style.zIndex = '1'

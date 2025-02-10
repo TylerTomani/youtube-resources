@@ -36,7 +36,9 @@ function resourcesFocus(e,letter){
         })
     } else if(!isNaN(letter) && !currentResourceFocus){
         const intLet = parseInt(letter)
-        if(resources.length >= 0 && intLet > 0){
+        // Meaning if there is more than 1 tutorial resources, numbers will work to navigate to resources
+        // first, when resource is focused, numbers work for tutorials
+        if(resources.length >= 2 && intLet > 0){
             resources[intLet - 1].focus()
         }
     }

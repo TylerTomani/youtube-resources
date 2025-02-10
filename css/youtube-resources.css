@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-main {   border: 2px solid lightseagreen ;
+main {   
          margin: 0 1.5%;
          padding: 0 5%;
 }
@@ -118,12 +118,12 @@ a:focus,a:active{
     display: none !important;
 }
 
-@media screen and (max-width: 600px){
+@media screen and (max-width: 652px){
     header{
-        margin-bottom:5%;
+        /* margin-bottom:5%; */
     }
     main {
-        padding-top: 5%;
+        /* padding-top: 5%; */
     }
     .resources-container{
         flex-direction: column;
@@ -134,12 +134,13 @@ a:focus,a:active{
         margin: 2% 0;
     }
     .resource-container > .topics-container {
-        padding-top: 2.5%;
+        /* padding-top: 2.5%; */
         gap: 5%;
         
     }
     .topics-container > .topic {
-        margin: 2.5% 0;
+        /* margin: 2.5% 0; */
+        flex-basis: 25%;
         font-size: 50% ;
     }
     
