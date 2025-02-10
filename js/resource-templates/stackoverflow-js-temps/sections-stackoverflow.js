@@ -244,6 +244,7 @@ function lessonsCycle(lessons,shiftKey = false) {
             iLesson = 0
         }
     }
+    lessons[iLesson].scrollIntoView({ behavior: 'instant', block: 'center' })
     lessons[iLesson].focus()
 }
 addEventListener('keydown', e => {
