@@ -10,7 +10,7 @@ import { lastClickedSection }  from './sections-stackoverflow.js'
 import { sections } from './sections-stackoverflow.js'
 import { lessons } from './sections-stackoverflow.js'
 export function stepTxtListeners(){
-    const allImages = document.querySelectorAll('.step-img > img') 
+    const allImages = document.querySelectorAll('.step-img > img') ? document.querySelectorAll('.step-img > img') : document.querySelectorAll('.step-video > video')
     const stepTxts = document.querySelectorAll('.step-txt')
     let stepTxtsFocused =false
     const endNxtLesson = document.getElementById('endNxtLesson')
@@ -39,8 +39,6 @@ export function stepTxtListeners(){
             }
             lastClickedLesson.focus()
             scrollTo(0,0)
-            
-            
         })   
     }
     // This is overkill, target is set to _blank in html
@@ -212,6 +210,12 @@ export function stepTxtListeners(){
         if (letter == 'm' && lastStep) {
             lastStep.focus()
         }       
+        console.log(e.target)
+        if(letter == 'e' && endNxtLesson){
+            endNxtLesson.scrollIntoView({behavior:'instant',block:'center'})
+            
+        }
+        
     });
     function handleAsideWithImg(img){
         console.log(img)

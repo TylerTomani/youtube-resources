@@ -10,8 +10,9 @@ import { lastClickedSection }  from './sections-stackoverflow.js'
 import { sections } from './sections-stackoverflow.js'
 import { lessons } from './sections-stackoverflow.js'
 export function stepTxtListeners(){
-    const allImages = document.querySelectorAll('.step-img > img') ? document.querySelectorAll('.step-img > img') : document.querySelectorAll('.step-video > video')
+    const allImages = document.querySelectorAll('.step-img > img') 
     const stepTxts = document.querySelectorAll('.step-txt')
+    const allVideos = document.querySelectorAll(".step-vid > video")
     let stepTxtsFocused =false
     const endNxtLesson = document.getElementById('endNxtLesson')
     const copyCodes = document.querySelectorAll('.copy-code') 

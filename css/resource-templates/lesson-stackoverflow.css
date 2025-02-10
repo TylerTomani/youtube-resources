@@ -1,6 +1,7 @@
 * {
     margin: 0;
-    /* background-color: #201b1b; */
+    background-color: #201b1b;
+    color: white;
     padding: 0;
 }
 
@@ -101,8 +102,8 @@
 }
 .enlarge {
     position: relative;
-    z-index: 2;
-    /* margin-right: 50%; */
+    z-index: 5;
+    margin-right: 50%;
     max-height: 30vh;
     /* border: 2px solid red; */
     transform: scale(2.5);
