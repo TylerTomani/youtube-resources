@@ -50,7 +50,6 @@ export function stepTxtListeners(){
         stepTxtsFocused = false
     })
     mainTargetDiv.addEventListener('focusin', e => {targetDivFocusIN = true})
-    
     mainTargetDiv.addEventListener('focusout', e => {
         targetDivFocusIN = false
         denlargeAllImages()
@@ -74,27 +73,11 @@ export function stepTxtListeners(){
         stepTxts[intLetter - 1].focus()
     }
     // The code below handle img enlarge and code within step txt
-    
     copyCodes.forEach(el => {
         el.addEventListener('focus', e => {
             denlargeAllImages()
         })
     })
-    
-    function denlargeAllImages() {
-        allImages.forEach(el => {
-            el.style.zIndex = "0"
-            if (el.classList.contains('enlarge')) {
-                el.classList.remove('enlarge')
-            }
-            if (el.classList.contains('enlarge-col')) {
-                el.classList.remove('enlarge-col')
-            }
-            if (el.classList.contains('enlarged-lg')) {
-                el.classList.remove('enlarge-col')
-            }
-        })
-    }    
     function handleStepTabIndex(e) {
         // const stepTxt = getStepTxt(e.target.parentElement)
         const copyCodes = e.target.querySelectorAll('.code-container > .copy-code')
@@ -132,8 +115,6 @@ export function stepTxtListeners(){
             return null
         }
     }
-
-    
     stepTxts.forEach(el => {
         el.addEventListener('focusout', e => {
         })
@@ -169,11 +150,41 @@ export function stepTxtListeners(){
             toggleStepColImages(stepCol)
         }
     }
+    function denlargeAllImages() {
+        if (aside.classList.contains('hide')) {
+            aside.classList.remove('hide')
+        }
+        allImages.forEach(el => {
+            el.style.zIndex = "0"
+            if (el.classList.contains('enlarge')) {
+                el.classList.remove('enlarge')
+            }
+            if (el.classList.contains('enlarge-col')) {
+                el.classList.remove('enlarge-col')
+            }
+            if (el.classList.contains('enlarged-lg')) {
+                el.classList.remove('enlarge-col')
+            }
+        })
+    }    
+    function toggleStepImgSize(step) {
+        const stepImg = step.querySelector('.step-img')
+        const img = stepImg.querySelector('img')
+        if (img) {
+            img.style.zIndex = "1"
+            if (!img.classList.contains('lg-enlarge')) {
+                img.classList.toggle('enlarge')
+            } else if (img.classList.contains('lg-enlarge')) {
+                img.classList.toggle('enlarged-lg')
+            }
+            handleAsideWithImg(img)
+
+        }
+    }
     function toggleStepColImages(stepCol) {
         const imgContainer = stepCol.querySelector('.img-container')
         const images = imgContainer.querySelectorAll('.step-img > img')
         const img = images[imgIndex]
-        // imgIndex = (imgIndex +  )
         denlargeAllImages()
         if (imgIndex < 2) {
             img.classList.add('enlarge-col')
@@ -186,20 +197,6 @@ export function stepTxtListeners(){
             // stepCol.scrollIntoView()
         }
         imgIndex = (imgIndex + 1) % (images.length + 1)
-    }
-
-    function toggleStepImgSize(step) {
-        const stepImg = step.querySelector('.step-img')
-        const img = stepImg.querySelector('img')
-        if(img){
-
-            img.style.zIndex = "1"
-            if(!img.classList.contains('lg-enlarge')){
-                img.classList.toggle('enlarge')
-            } else if(img.classList.contains('lg-enlarge')){
-                img.classList.toggle('enlarged-lg')
-            }
-        }
     }
     addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
@@ -220,5 +217,16 @@ export function stepTxtListeners(){
             lastStep.focus()
         }       
     });
+    function handleAsideWithImg(img){
+        console.log(img)
+        if(img){
+            if (img.classList.contains('enlarge')){
+                aside.classList.add('hide')
+            } else {
+                aside.classList.remove('hide')
+            }
+        }
+    }
 }
+
 stepTxtListeners()
