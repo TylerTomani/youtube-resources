@@ -201,7 +201,6 @@ lessons.forEach(el => {
         fetchLessonHref(e.target.href)
         if(e.target == lastClickedLesson){
             mainTargetDiv.scrollIntoView({behavior:'instant', block:'center'})
-            
         }
         lastClickedLesson = e.target
     })
@@ -220,6 +219,7 @@ lessons.forEach(el => {
             }
             if(letter == 's' && lessonsFocused){
                 let section = sectionContainer.querySelector('.section')
+                section.scrollIntoView({behavior:'instant',block:'center'})
                 section.focus()
             }
             if(letter == 'a' && lessonsFocused){

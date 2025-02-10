@@ -10,8 +10,9 @@ import { lastClickedSection }  from './sections-stackoverflow.js'
 import { sections } from './sections-stackoverflow.js'
 import { lessons } from './sections-stackoverflow.js'
 export function stepTxtListeners(){
-    const allImages = document.querySelectorAll('.step-img > img') ? document.querySelectorAll('.step-img > img') : document.querySelectorAll('.step-video > video')
+    const allImages = document.querySelectorAll('.step-img > img') 
     const stepTxts = document.querySelectorAll('.step-txt')
+    const allVideos = document.querySelectorAll(".step-vid > video")
     let stepTxtsFocused =false
     const endNxtLesson = document.getElementById('endNxtLesson')
     const copyCodes = document.querySelectorAll('.copy-code') 
@@ -33,7 +34,7 @@ export function stepTxtListeners(){
         endNxtLesson.addEventListener('click', e => {
             const subSection = getSubSection(lastClickedLesson)
             // const lessons = subSection.querySelectorAll('li > a')
-            console.log(subSection)
+            
             if(aside.classList.contains('hide'))  {
                 aside.classList.remove('hide')
             }
@@ -210,7 +211,7 @@ export function stepTxtListeners(){
         if (letter == 'm' && lastStep) {
             lastStep.focus()
         }       
-        console.log(e.target)
+        
         if(letter == 'e' && endNxtLesson){
             endNxtLesson.scrollIntoView({behavior:'instant',block:'center'})
             
@@ -218,7 +219,7 @@ export function stepTxtListeners(){
         
     });
     function handleAsideWithImg(img){
-        console.log(img)
+        
         if(img){
             if (img.classList.contains('enlarge')){
                 aside.classList.add('hide')
