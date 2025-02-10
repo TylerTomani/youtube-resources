@@ -3,8 +3,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #201b1b;
-        color: white;
+    /* background-color: #201b1b; */
+        color: black;
 }
 body{overflow-x: hidden;}
 main {
@@ -77,8 +77,8 @@ nav.section-lesson-title {
     top: 0;
     padding: 1% 0;
     /* background-color: white; */
-    border-top: 1px solid    white;
-    border-bottom: 1px solid white;
+    border-top: 1px solid    black;
+    border-bottom: 1px solid black;
 }
 
 
@@ -147,7 +147,7 @@ nav.section-lesson-title {
     white-space: nowrap;
     color: black;
     font-size: 95%;
-    color: white;
+    /* color: white; */
     
     
 }
