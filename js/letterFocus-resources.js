@@ -95,9 +95,7 @@ addEventListener('keydown', e => {
                     topics[intLet - 1].focus()
                 }
             })
-
         }
-
     }
     if (rFocus) {
         resourcesFocus(e, letter)
@@ -107,7 +105,6 @@ addEventListener('keydown', e => {
     }
     topics.forEach(el => {
         if (!el.classList.contains('hide')) {
-            // console.log(el)
             currentResourceFocus = true
         }
     })
@@ -115,8 +112,6 @@ addEventListener('keydown', e => {
     if (letter == 'h') {
         scrollTo(0, 0)
     }
-
-
     allIdEls.forEach(el => {
         if (letter == el.id[0].toLowerCase() && !el.classList.contains('hide')) {
             letterIds.push(el)
