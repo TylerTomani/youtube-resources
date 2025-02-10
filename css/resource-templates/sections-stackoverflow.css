@@ -18,7 +18,6 @@ main {
 main>aside {
     flex-basis: 20%;
     /* height: 100vh; */
-    background:lightblue;
     height: 100vmax;
     border-right: 1px solid black;
     padding-top: 1%;
