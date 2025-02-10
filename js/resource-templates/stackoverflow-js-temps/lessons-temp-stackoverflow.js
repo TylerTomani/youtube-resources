@@ -129,6 +129,7 @@ export function stepTxtListeners(){
                 handleImgSize(e)
                 handleStepTabIndex(e)
                 addTabs(e.target)
+                handleVideos(e)
             }
             if (letter == 'tab') {
                 // denlargeAllImages()
@@ -165,15 +166,18 @@ export function stepTxtListeners(){
     }    
     function toggleStepImgSize(step) {
         const stepImg = step.querySelector('.step-img')
-        const img = stepImg.querySelector('img')
-        if (img) {
-            img.style.zIndex = "1"
-            if (!img.classList.contains('lg-enlarge')) {
-                img.classList.toggle('enlarge')
-            } else if (img.classList.contains('lg-enlarge')) {
-                img.classList.toggle('enlarged-lg')
+        if(stepImg){
+            const img = stepImg.querySelector('img')
+            if (img) {
+                img.style.zIndex = "1"
+                if (!img.classList.contains('lg-enlarge')) {
+                    img.classList.toggle('enlarge')
+                } else if (img.classList.contains('lg-enlarge')) {
+                    img.classList.toggle('enlarged-lg')
+                }
+                handleAsideWithImg(img)
             }
-            handleAsideWithImg(img)
+
         }
     }
     function toggleStepColImages(stepCol) {
@@ -197,7 +201,7 @@ export function stepTxtListeners(){
         let letter = e.key.toLowerCase()
         if (targetDivFocusIN) {
             let letter = e.key.toLowerCase()
-            if (!isNaN(letter)) {
+            if(!isNaN(letter)) {
                 stepFocus(letter)
             }
             if(stepTxts.length > 0){
@@ -211,21 +215,45 @@ export function stepTxtListeners(){
         if (letter == 'm' && lastStep) {
             lastStep.focus()
         }       
-        
         if(letter == 'e' && endNxtLesson){
-            endNxtLesson.scrollIntoView({behavior:'instant',block:'center'})
-            
+            endNxtLesson.scrollIntoView({behavior:'instant',block:'center'})   
         }
-        
     });
     function handleAsideWithImg(img){
-        
         if(img){
-            if (img.classList.contains('enlarge')){
+            if (img.classList.contains('enlarge') || img.classList.contains('enlarge-play-vid')){
                 aside.classList.add('hide')
             } else {
                 aside.classList.remove('hide')
             }
+        }
+    }
+    function handleVideos(e) {
+        const step = getStep(e.target.parentElement)
+        const vid = step.querySelector('.step-vid > video')
+        if(vid){
+            vid.classList.toggle('enlarge-play-vid')
+            handleAsideWithImg(vid)
+            playPauseVideo(e,vid)
+        }
+
+    }
+    function playPauseVideo(e,vid){
+        if (vid.classList.contains('enlarge-play-vid')){
+            vid.play()
+        } else {
+            vid.pause()
+        }
+        let key = e.target.key
+        console.log(key)
+    }
+    function getStep(parent) {
+        if (parent.classList.contains('step')) {
+            return parent
+        } else if (parent.parentElement) {
+            return getStep(parent.parentElement)
+        } else {
+            return null
         }
     }
 }
