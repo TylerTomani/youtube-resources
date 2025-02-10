@@ -152,8 +152,8 @@ sections.forEach(el => {
         }
         if (!isNaN(letter)) {
             let intLet = parseInt(letter)
+            sections[intLet - 1].focus()
             if (sections[intLet - 1]) {
-                sections[intLet - 1].focus()
             }
         }
         if(letter == 's' && sectionsFocused){
@@ -192,7 +192,7 @@ lessons.forEach(el => {
     el.addEventListener('focus', e => {
         sectionsFocused = false
         lessonsFocused = true
-        iLesson = [...lessons].indexOf(el)
+        // iLesson = [...lessons].indexOf(el)
         // iLesson += 1
     })
     el.addEventListener('click', e => {
