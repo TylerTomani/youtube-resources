@@ -254,15 +254,17 @@ addEventListener('keydown', e => {
             lastClickedSection.focus()
         }
          else if(lastClickedLesson){
+            lastClickedLesson.scrollIntoView({ behavior: 'instant', block: 'center' })
             lastClickedLesson.focus()
         }else {
+            sections[0].scrollIntoView({ behavior: 'instant', block: 'center' })
             sections[0].focus()
         }
     }
     if (letter == 'a' && !asideFocused) {
         if (lastClickedLesson) {
             lastClickedLesson.focus()
-            lastClickedLesson.scrollIntoView({behavior:'smooth',block:'center'})
+            lastClickedLesson.scrollIntoView({behavior:'instant',block:'center'})
         } else if(!lastClickedLesson && lastClickedSection){
             lastClickedSection.focus()
         }
