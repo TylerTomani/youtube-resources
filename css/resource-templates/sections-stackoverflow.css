@@ -18,6 +18,8 @@ main {
 main>aside {
     flex-basis: 20%;
     /* height: 100vh; */
+    background:lightblue;
+    height: 100vmax;
     border-right: 1px solid black;
     padding-top: 1%;
     padding-left: .5%;
@@ -182,5 +184,7 @@ li > code {
     #mainTargetDiv{       
         flex-basis: 100%;
     }
-    
+    main>aside.active { 
+        
+    }
 }

@@ -60,6 +60,11 @@ navBar.addEventListener('keydown', e => {
 })
 aside.addEventListener('focusin', e => {asideFocused = true})
 aside.addEventListener('focusout', e => {asideFocused = false})
+aside.addEventListener('click', e => {
+    asideFocused = true
+    aside.classList.toggle('hide')
+    console.log('click')
+})
 function hideSubSections(){
     sections.forEach(el => {
         const sectionContainer = getSectionContainer(el.parentElement)
@@ -252,7 +257,6 @@ addEventListener('keydown', e => {
         }
     }
     if (letter == 'a' && !asideFocused) {
-        // aside.classList.toggle('hide')  
         if (lastClickedLesson) {
             lastClickedLesson.focus()
         } else if(!lastClickedLesson && lastClickedSection){
@@ -261,6 +265,11 @@ addEventListener('keydown', e => {
     }
     elIdsFocus(e)
     if (letter == 'r') { vsCodeShortRegex.focus() }
+    if (letter == 'a' || letter == 's') {
+        if (aside.classList.contains('hide')) {
+            aside.classList.remove('hide')
+        } 
+    }
     
 });
 /// I don't know if i need this here
