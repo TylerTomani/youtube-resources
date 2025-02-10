@@ -1,9 +1,9 @@
-import { stepTxtListeners } from "./lessons-temp-stackoverflow.js"
+import { nav, stepTxtListeners } from "./lessons-temp-stackoverflow.js"
 import { lastStep } from "./lessons-temp-stackoverflow.js"
 const navBar = document.querySelector('nav.section-lesson-title')
 const mainTargetDiv = document.querySelector('#mainTargetDiv')
 const header = document.querySelector('header')
-import { addCopyCodes } from "./copy-code-resources.js"
+import { addCopyCodes } from "../copy-code-resources.js"
 const aside = document.querySelector('aside')
 const backlink = document.querySelector('#backlink')
 const homelink = document.querySelector('#homelink')
@@ -192,7 +192,8 @@ lessons.forEach(el => {
     el.addEventListener('focus', e => {
         sectionsFocused = false
         lessonsFocused = true
-        // iLesson = [...lessons].indexOf(el)
+        iLesson = [...lessons].indexOf(el)
+        // iLesson += 1
     })
     el.addEventListener('click', e => {
         e.preventDefault()
@@ -226,6 +227,7 @@ lessons.forEach(el => {
                 lessonsCycle(lessons,e.shiftKey)
             }
             // if(letter == 'enter' ){ 
+                
             // }   
         }
     })
@@ -259,6 +261,7 @@ addEventListener('keydown', e => {
     if (letter == 'a' && !asideFocused) {
         if (lastClickedLesson) {
             lastClickedLesson.focus()
+            lastClickedLesson.scrollIntoView({behavior:'smooth',block:'center'})
         } else if(!lastClickedLesson && lastClickedSection){
             lastClickedSection.focus()
         }
@@ -269,6 +272,11 @@ addEventListener('keydown', e => {
         if (aside.classList.contains('hide')) {
             aside.classList.remove('hide')
         } 
+    }
+    if(aside.classList.contains('hide')){
+        const toggleSideBtmBtn = document.querySelector('#toggleSideBtmBtn')
+        console.log(toggleSideBtmBtn)
+        toggleSideBtmBtn.classList.add('active')
     }
     
 });

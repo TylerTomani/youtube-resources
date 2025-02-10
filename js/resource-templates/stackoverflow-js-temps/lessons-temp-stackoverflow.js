@@ -63,8 +63,8 @@ export function stepTxtListeners(){
             denlargeAllImages()
             stepNumberFocus(intLetter)
         } else {
+            // endNxtLesson.focus()
             if(endNxtLesson){
-                endNxtLesson.focus()
             }
         }
     }
@@ -207,7 +207,9 @@ export function stepTxtListeners(){
                 stepFocus(letter)
             }
             if (letter == 'e') {
-                endNxtLesson.focus()
+                if(endNxtLesson){
+                    // endNxtLesson.focus()
+                }
             }
             if(stepTxts.length > 0){
                 stepTxts[currentStepIndex].scrollIntoView({block: 'center'})
@@ -216,32 +218,11 @@ export function stepTxtListeners(){
                 nav.focus()
                 scrollTo(0,0)
                 
-            }
-            
+            }     
         }
-        if (letter == 'e') {
-            endNxtLesson.focus()
-            endNxtLesson.scrollIntoView()
-        }
-        if(letter == 'a'){
-             e.preventDefault()
-            
-            
-        }
-        // mainTargetDiv.addEventListener('keydown', e => {
-        //     let letter = e.key.toLowerCase()
-        //     targetDivFocusIN = true
-        //     if (letter == 'm' && lastStep) {
-        //         lastStep.focus()
-        //         console.log(lastStep)
-        //     }
-
-        // })
         if (letter == 'm' && lastStep) {
-            // console.log(e.target)
             lastStep.focus()
         }       
     });
-    
 }
 stepTxtListeners()
