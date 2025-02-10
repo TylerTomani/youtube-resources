@@ -3,7 +3,9 @@
     /* color: white; */
     padding: 0;
 }
-
+body a {
+    color: wheat;
+}
 .section-page > .step {padding-top: 5%;}
 .steps-container {
     display: flex;

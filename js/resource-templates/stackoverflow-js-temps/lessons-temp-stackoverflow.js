@@ -10,6 +10,7 @@ import { lastClickedSection }  from './sections-stackoverflow.js'
 import { sections } from './sections-stackoverflow.js'
 import { lessons } from './sections-stackoverflow.js'
 export function stepTxtListeners(){
+    let playing = false
     const allImages = document.querySelectorAll('.step-img > img') 
     const stepTxts = document.querySelectorAll('.step-txt')
     const allVideos = document.querySelectorAll(".step-vid > video")
@@ -239,13 +240,56 @@ export function stepTxtListeners(){
 
     }
     function playPauseVideo(e,vid){
-        if (vid.classList.contains('enlarge-play-vid')){
-            vid.play()
-        } else {
-            vid.pause()
-        }
-        let key = e.target.key
+        // if (vid.classList.contains('enlarge-play-vid')){
+        //     vid.play()
+        // } else {
+        //     vid.pause()
+        // }
+        let key = e.keyCode
         console.log(key)
+        switch (key) {
+            case 32:
+                e.preventDefault()
+                // 
+                if (!playing) {
+                    vid.play()
+                    vid.style.border = "2px solid blue"
+                } else if (!playing) {
+                    vid.pause()
+                    vid.style.border = "1px dotted red"
+                }
+                playing = !playing
+                break;
+            // left arrow
+            case 37:
+                e.preventDefault()
+                if (vid.currentTime > 0) {
+                    vid.currentTime = vid.currentTime - 1
+                }
+                if (vid.currentTime < vid.duration) {
+                    vid.style.border = '2px solid blue'
+                }
+                break
+            case 39:
+                vid.currentTime = vid.currentTime + 2
+                if (vid.currentTime >= vid.duration) {
+                    vid.style.border = '14px solid red'
+                    vid.pause()
+                    vid.currentTime = vid.duration()
+                }
+                break
+            default:
+                playing = !playing
+        }
+        if (playing) {
+            vid.play()
+            vid.style.border = "1px solid blue"
+        } else if (!playing) {
+            vid.pause()
+            vid.style.border = "1px dotted red"
+        }
+        
+
     }
     function getStep(parent) {
         if (parent.classList.contains('step')) {
