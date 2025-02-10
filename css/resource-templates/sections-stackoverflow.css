@@ -72,6 +72,7 @@ body>header>.title-tutorialLink-container {
 }
 nav.section-lesson-title {
     position: sticky;
+    z-index: 2;
     top: 0;
     padding: 1% 0;
     background-color: white;
@@ -178,7 +179,8 @@ li > code {
 #toggleSideBtmBtn.active{
     display: inline-block;
     position: absolute;
-    bottom: 0px;
+    z-index: 2;
+    bottom: -10px;
     border: 1px solid black;
     background-color: white;
 }

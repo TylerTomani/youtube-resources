@@ -214,7 +214,6 @@ export function stepTxtListeners(){
         if(letter == 'e' && endNxtLesson){
             endNxtLesson.scrollIntoView({behavior:'instant',block:'center'})
             
-            
         }
         
     });
