@@ -72,7 +72,7 @@ body>header>.title-tutorialLink-container {
 }
 nav.section-lesson-title {
     position: sticky;
-    z-index: 2;
+    z-index: 1;
     top: 0;
     padding: 1% 0;
     background-color: white;

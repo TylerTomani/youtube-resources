@@ -34,7 +34,7 @@ export function stepTxtListeners(){
         endNxtLesson.addEventListener('click', e => {
             const subSection = getSubSection(lastClickedLesson)
             // const lessons = subSection.querySelectorAll('li > a')
-            console.log(subSection)
+            
             if(aside.classList.contains('hide'))  {
                 aside.classList.remove('hide')
             }
@@ -211,7 +211,7 @@ export function stepTxtListeners(){
         if (letter == 'm' && lastStep) {
             lastStep.focus()
         }       
-        console.log(e.target)
+        
         if(letter == 'e' && endNxtLesson){
             endNxtLesson.scrollIntoView({behavior:'instant',block:'center'})
             
@@ -219,7 +219,7 @@ export function stepTxtListeners(){
         
     });
     function handleAsideWithImg(img){
-        console.log(img)
+        
         if(img){
             if (img.classList.contains('enlarge')){
                 aside.classList.add('hide')

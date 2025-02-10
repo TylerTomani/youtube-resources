@@ -1,7 +1,7 @@
 * {
     margin: 0;
-    background-color: #201b1b;
-    color: white;
+    /* background-color: #201b1b;
+    color: white; */
     padding: 0;
 }
 
@@ -102,7 +102,7 @@
 }
 .enlarge {
     position: relative;
-    z-index: 5;
+    z-index: 3;
     margin-right: 50%;
     max-height: 30vh;
     /* border: 2px solid red; */
@@ -110,7 +110,7 @@
 }
 .enlarged-lg {
     position: relative;
-    z-index: 2;
+    z-index: 3;
     margin-right: 50%;
     transform: scale(3);
 }
