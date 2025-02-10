@@ -25,6 +25,8 @@ export function stepTxtListeners(){
         el.addEventListener('click', e => {
             e.target.classList.toggle('enlarge')
             handleAsideWithImg(e.target)
+            e.target.classList.toggle('active')
+            // addTabs(e.target)
         })
     })
     // sections.forEach(el => { el.addEventListener('focus', e => { targetDivFocusIN = false }) })
@@ -67,9 +69,7 @@ export function stepTxtListeners(){
             
         }
     }
-    function stepNumberFocus(intLetter) {
-        stepTxts[intLetter - 1].focus()
-    }
+    function stepNumberFocus(intLetter) {stepTxts[intLetter - 1].focus()}
     // The code below handle img enlarge and code within step txt
     copyCodes.forEach(el => {
         el.addEventListener('focus', e => {

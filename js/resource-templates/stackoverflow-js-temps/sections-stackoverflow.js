@@ -40,7 +40,10 @@ function fetchLessonHref(href) {
         .catch(error => console.log('Error fetching content.html:', error));
 
 }
-navBar.addEventListener('click', e => {aside.classList.toggle('hide')})
+navBar.addEventListener('click', e => {
+    aside.classList.toggle('hide')
+    toggleSidBarBtn()
+})
 aside.addEventListener('focusin', e => {asideFocused = true})
 navBar.addEventListener('keydown', e => {
     let letter = e.key.toLowerCase()
@@ -276,11 +279,15 @@ addEventListener('keydown', e => {
             aside.classList.remove('hide')
         } 
     }
-    if(aside.classList.contains('hide')){
-        const toggleSideBtmBtn = document.querySelector('#toggleSideBtmBtn')
-        toggleSideBtmBtn.classList.add('active')
-    } else toggleSideBtmBtn.classList.remove('active')
+    toggleSidBarBtn()
     
 });
 /// I don't know if i need this here
 stepTxtListeners()
+
+function toggleSidBarBtn(){
+    if (aside.classList.contains('hide')) {
+        const toggleSideBtmBtn = document.querySelector('#toggleSideBtmBtn')
+        toggleSideBtmBtn.classList.add('active')
+    } else toggleSideBtmBtn.classList.remove('active')
+}
