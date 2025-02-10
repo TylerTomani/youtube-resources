@@ -23,6 +23,7 @@ export function stepTxtListeners(){
     allImages.forEach(el => {
         el.addEventListener('click', e => {
             e.target.classList.toggle('enlarge')
+            handleAsideWithImg(e.target)
         })
     })
     // sections.forEach(el => { el.addEventListener('focus', e => { targetDivFocusIN = false }) })
