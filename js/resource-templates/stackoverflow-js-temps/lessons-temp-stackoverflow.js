@@ -33,7 +33,9 @@ export function stepTxtListeners(){
             const subSection = getSubSection(lastClickedLesson)
             // const lessons = subSection.querySelectorAll('li > a')
             console.log(subSection)
-            
+            if(aside.classList.contains('hide'))  {
+                aside.classList.remove('hide')
+            }
             lastClickedLesson.focus()
             scrollTo(0,0)
             
