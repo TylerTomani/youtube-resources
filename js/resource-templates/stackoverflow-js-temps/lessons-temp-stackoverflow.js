@@ -206,18 +206,12 @@ export function stepTxtListeners(){
             if (!isNaN(letter)) {
                 stepFocus(letter)
             }
-            if (letter == 'e') {
-                if(endNxtLesson){
-                    // endNxtLesson.focus()
-                }
-            }
             if(stepTxts.length > 0){
                 stepTxts[currentStepIndex].scrollIntoView({block: 'center'})
             }
             if(letter == 'n'){
                 nav.focus()
-                scrollTo(0,0)
-                
+                scrollTo(0,0)   
             }     
         }
         if (letter == 'm' && lastStep) {

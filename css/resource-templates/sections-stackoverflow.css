@@ -175,8 +175,10 @@ li > code {
     display: none;
 }
 #toggleSideBtmBtn.active{
+    display: inline-block;
     position: absolute;
-    bottom: 0;
+    bottom: -5px;
+    border: 1px solid black;
     background-color: white;
 }
 @media screen and (max-width: 641px){

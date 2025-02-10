@@ -275,9 +275,8 @@ addEventListener('keydown', e => {
     }
     if(aside.classList.contains('hide')){
         const toggleSideBtmBtn = document.querySelector('#toggleSideBtmBtn')
-        console.log(toggleSideBtmBtn)
         toggleSideBtmBtn.classList.add('active')
-    }
+    } else toggleSideBtmBtn.classList.remove('active')
     
 });
 /// I don't know if i need this here
