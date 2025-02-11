@@ -23,11 +23,12 @@ main>aside {
     position: relative;
     /* z-index: 0; */
     flex-basis: 20%;
-    height: 100vmax;
+    background-color: lightblue;
     border-right: 1px solid black;
     padding-top: 1%;
     padding-left: .5%;
     padding-right: 2%;
+    height: 100vhmax;
 }
 aside ~ *{
     position: relative;
