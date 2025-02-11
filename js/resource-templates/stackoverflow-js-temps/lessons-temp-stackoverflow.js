@@ -24,9 +24,9 @@ export function stepTxtListeners(){
     let imgIndex = 0
     allImages.forEach(el => {
         el.addEventListener('click', e => {
-            e.target.classList.toggle('enlarge')
-            handleAsideWithImg(e.target)
-            e.target.classList.toggle('active')
+            handleImgSize(e)
+            handleStepTabIndex(e)
+            addTabs(e.target)
             // addTabs(e.target)
         })
     })
@@ -130,7 +130,7 @@ export function stepTxtListeners(){
                 handleImgSize(e)
                 handleStepTabIndex(e)
                 addTabs(e.target)
-                handleVideos(e)
+                // handleVideos(e)
             }
             if (letter == 'tab') {
                 // denlargeAllImages()

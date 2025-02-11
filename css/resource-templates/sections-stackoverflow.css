@@ -188,6 +188,8 @@ li > code {
     display: inline-block;
     position: absolute;
     z-index: 2;
+    margin-left: 1%;
+    margin-bottom: 1%;
     bottom: -1px;
     border: 1px solid black;
     background-color: white;

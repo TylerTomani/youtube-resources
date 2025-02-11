@@ -3,6 +3,7 @@ import { lastStep } from "./lessons-temp-stackoverflow.js"
 const navBar = document.querySelector('nav.section-lesson-title')
 const mainTargetDiv = document.querySelector('#mainTargetDiv')
 const header = document.querySelector('header')
+const toggleSideBtmBtn = document.querySelector('#toggleSideBtmBtn')
 import { addCopyCodes } from "../copy-code-resources.js"
 const aside = document.querySelector('aside')
 const backlink = document.querySelector('#backlink')
@@ -113,6 +114,7 @@ function elIdsFocus(e) {
     const letter = e.key.toLowerCase();
     const elIds = document.querySelectorAll('[id]');
     elIds.forEach(el => {
+        if (el.parentElement.id == 'nav-section-lesson-titles'){return}
         if (letter === el.id[0]) {
             el.focus();
         }
@@ -252,6 +254,7 @@ function lessonsCycle(lessons,shiftKey = false) {
 }
 addEventListener('keydown', e => {
     let letter = e.key.toLowerCase()   
+    console.log(e.target)
     if (letter == 's' && !asideFocused) {
         if(lastClickedSection){
             lastClickedSection.focus()
@@ -287,7 +290,11 @@ stepTxtListeners()
 
 function toggleSidBarBtn(){
     if (aside.classList.contains('hide')) {
-        const toggleSideBtmBtn = document.querySelector('#toggleSideBtmBtn')
         toggleSideBtmBtn.classList.add('active')
-    } else toggleSideBtmBtn.classList.remove('active')
+        toggleSideBtmBtn.setAttribute('tabindex', 0)
+
+    } else{
+        toggleSideBtmBtn.removeAttribute('tabindex')
+        toggleSideBtmBtn.classList.remove('active')
+    }
 }
