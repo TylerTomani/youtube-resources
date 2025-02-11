@@ -1,0 +1,14 @@
+:root{
+    --bg-primary: #201d1d ;
+}
+.dark-mode {
+    background-color: var(--bg-primary); 
+    color: wheat !important;
+}
+.dark-mode nav#nav-section-lesson-titles{
+    background-color: var(--bg-primary)
+
+}
+.dark-mode a {
+    color: wheat;
+}

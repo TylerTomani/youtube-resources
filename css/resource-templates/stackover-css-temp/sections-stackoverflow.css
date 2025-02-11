@@ -3,7 +3,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* background-color: #201b1b; */
         /* color: wheat; */
     /* background-color: lawngreen; */
 }
@@ -23,7 +22,6 @@ main>aside {
     position: relative;
     /* z-index: 0; */
     flex-basis: 20%;
-    background-color: lightblue;
     border-right: 1px solid black;
     padding-top: 1%;
     padding-left: .5%;

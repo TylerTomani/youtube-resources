@@ -67,7 +67,7 @@ aside.addEventListener('focusout', e => {asideFocused = false})
 aside.addEventListener('click', e => {
     asideFocused = true
     aside.classList.toggle('hide')
-    console.log('click')
+    
 })
 function hideSubSections(){
     sections.forEach(el => {
@@ -251,7 +251,7 @@ function lessonsCycle(lessons,shiftKey = false) {
 }
 addEventListener('keydown', e => {
     let letter = e.key.toLowerCase()   
-    console.log(e.target)
+    
     if (letter == 's' && !asideFocused) {
         if(lastClickedSection){
             lastClickedSection.focus()
