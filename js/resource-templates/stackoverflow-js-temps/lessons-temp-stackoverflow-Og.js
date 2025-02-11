@@ -32,9 +32,7 @@ export function stepTxtListeners(){
         })
     })
     // sections.forEach(el => { el.addEventListener('focus', denlargeAllImages )
-    aside.addEventListener('focus', e => {
-        denlargeAllImages()
-    });
+    
     pAs.forEach(el => {el.setAttribute('tabindex','-1')})
     if(endNxtLesson){
         endNxtLesson.addEventListener('click', e => {
@@ -94,7 +92,6 @@ export function stepTxtListeners(){
         })
         as.forEach(el => addTabs(el))
     }
-    
     function addTabs(el) {el.setAttribute('tabindex', '0')}
     function removeTabs(el) {el.setAttribute('tabindex','-1')}
     function removeAllTabs() {
@@ -131,7 +128,6 @@ export function stepTxtListeners(){
         })
         el.addEventListener('keydown', e => {
             let letter = e.key.toLowerCase()
-            
             if (letter == 'enter') {
                 handleImgSize(e,letter)
                 handleStepTabIndex(e)
@@ -141,6 +137,7 @@ export function stepTxtListeners(){
             if (letter == 'tab') {
             }
         })
+        el.addEventListener('click',denlargeAllImages)
     })
     // Below-  handling of img and video size enlarge and denlarge
     function denlargeAllImages() {
@@ -254,6 +251,7 @@ export function stepTxtListeners(){
         }
         
 
-    }    
+    }
+    aside.addEventListener('focusin', denlargeAllImages)    
 }
 stepTxtListeners()

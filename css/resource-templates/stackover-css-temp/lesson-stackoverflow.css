@@ -158,8 +158,8 @@
     overflow: scroll;
 }
 #endNxtLesson{
-    padding: 4% 0;
-    margin:1.5% 0;
+    padding: 1.5% 0;
+    margin:1.5% 1%;
 }
 @media screen and (max-width: 961px) {
     .step-col > .img-container{
