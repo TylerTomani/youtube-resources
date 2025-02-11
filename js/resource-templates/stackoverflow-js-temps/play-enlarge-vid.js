@@ -2,8 +2,9 @@
 
 export function playEnlargeVideos(){
     let playing = false
-    const stepVids = document.querySelectorAll('.step-vid')
-    stepVids.forEach(el => {
+    const stepVidsSteps = document.querySelectorAll('.step-vid')
+    const vids = document.querySelectorAll('.step-vid > video')
+    stepVidsSteps.forEach(el => {
         const step = getStepVidStep(el.parentElement)
         const stepTxt = step.querySelector('.step-txt')
         stepTxt.addEventListener('keydown', e => {
@@ -13,11 +14,19 @@ export function playEnlargeVideos(){
             
         })
     })
+    vids.forEach(vid => {
+        vid.addEventListener('click', e =>{
+            playPauseVideo(e, vid)
+        })
+    })
     function playPauseVideo(e, vid) {
         let key = e.keyCode
         console.log(key)
         
         switch (key) {
+            case 13:
+                vid.classList.toggle('enlarge-vid')
+                break
             case 32:
                 e.preventDefault()
                 // 
@@ -61,25 +70,6 @@ export function playEnlargeVideos(){
             vid.pause()
             vid.style.border = "1px dotted red"
         }
-        const canvas = document.getElementById('thumbCanvas');
-        const ctx = canvas.getContext('2d');
-
-        video.addEventListener('loadeddata', () => {
-            // Set canvas dimensions to match the video
-            canvas.width = video.videoWidth;
-            canvas.height = video.videoHeight;
-
-            // Seek to 0 seconds (should be the first frame)
-            video.currentTime = 0;
-        });
-
-        video.addEventListener('seeked', () => {
-            // Draw the first frame to the canvas
-            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-            // Optionally, you could convert this to an image data URL:
-            // const dataURL = canvas.toDataURL();
-            // Then use dataURL as a src for an <img> element if needed.
-        });
         // playing = !playing
     }
 }
