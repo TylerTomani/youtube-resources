@@ -1,9 +1,10 @@
 :root{
     --bg-primary: #201d1d ;
+    --font-primary: whitesmoke;
 }
 .dark-mode {
     background-color: var(--bg-primary); 
-    color: wheat !important;
+    color: var(--font-primary)
 }
 .dark-mode nav#nav-section-lesson-titles{
     background-color: var(--bg-primary)
@@ -15,4 +16,7 @@
 .dark-mode,h4
 .dark-mode p {
     color: whitesmoke;
+}
+.dark-mode > aside{
+    border-radius: 1px solid whitesmoke;
 }
