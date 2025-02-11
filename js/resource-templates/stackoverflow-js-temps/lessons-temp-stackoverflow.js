@@ -55,6 +55,7 @@ export function stepTxtListeners(){
     mainTargetDiv.addEventListener('focusin', e => {targetDivFocusIN = true})
     mainTargetDiv.addEventListener('focusout', e => {
         targetDivFocusIN = false
+        console.log('out')
         denlargeAllImages()
     })
     nav.addEventListener('keydown', e => {
@@ -122,6 +123,9 @@ export function stepTxtListeners(){
         })
         el.addEventListener('keydown', e => {
             let letter = e.key.toLowerCase()
+            if(!isNaN(letter)){
+                
+            }
             if (letter == 'enter') {
                 handleImgSize(e)
                 handleStepTabIndex(e)
