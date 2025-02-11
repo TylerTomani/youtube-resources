@@ -63,11 +63,13 @@ export function playEnlargeVideos(){
         if (playing) {
             // const stepVid = vid.parentElement
             vid.classList.add('enlarge-vid')
+            vid.style.zIndex = '5'
             vid.play()
             vid.style.border = "1px solid blue"
         } else if (!playing) {
             // vid.classList.remove('enlarge-vid')
             vid.pause()
+            vid.style.zIndex = '2'
             vid.style.border = "1px dotted red"
         }
         // playing = !playing

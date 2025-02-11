@@ -30,6 +30,7 @@ export function stepTxtListeners(){
             // addTabs(e.target)
         })
     })
+    
     // sections.forEach(el => { el.addEventListener('focus', denlargeAllImages )
     
     pAs.forEach(el => {el.setAttribute('tabindex','-1')})
@@ -114,6 +115,8 @@ export function stepTxtListeners(){
                 handleImgSize(e,letter)
                 handleStepTabIndex(e)
                 addTabs(e.target)
+                denlargeAllVideos()
+
                 // handleVideos(e)
             }
             if (letter == 'tab') {
@@ -129,7 +132,22 @@ export function stepTxtListeners(){
                 el.classList.remove('enlarge')
             }
         })
+        allVideos.forEach(el => {
+            el.style.zIndex = "0"
+            if (el.classList.contains('enlarge-vid')) {
+                el.classList.remove('enlarge-vid')
+            }
+        })
     }    
+    function denlargeAllVideos(){
+        allVideos.forEach(el => {
+            el.style.zIndex = "0"
+            if (el.classList.contains('enlarge-vid')) {
+                el.classList.remove('enlarge-vid')
+                el.pause()
+            }
+        })
+    }
     function handleImgSize(e,letter) {
         const step = getStepContainer(e.target.parentElement)
         if (step && isNaN(letter)) {
