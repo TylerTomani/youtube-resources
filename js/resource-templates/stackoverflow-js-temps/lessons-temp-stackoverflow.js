@@ -13,6 +13,7 @@ export function stepTxtListeners(){
     let playing = false
     const allImages = document.querySelectorAll('.step-img > img') 
     const stepTxts = document.querySelectorAll('.step-txt')
+    const asStepTxt = document.querySelectorAll('.step-txt a')
     const allVideos = document.querySelectorAll(".step-vid > video")
     let stepTxtsFocused =false
     const endNxtLesson = document.getElementById('endNxtLesson')
@@ -56,7 +57,7 @@ export function stepTxtListeners(){
     mainTargetDiv.addEventListener('focusout', e => {
         targetDivFocusIN = false
         console.log('out')
-        denlargeAllImages()
+        // denlargeAllImages()
     })
     nav.addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
@@ -73,6 +74,11 @@ export function stepTxtListeners(){
     function stepNumberFocus(intLetter) {stepTxts[intLetter - 1].focus()}
     // The code below handle img enlarge and code within step txt
     copyCodes.forEach(el => {
+        el.addEventListener('focus', e => {
+            denlargeAllImages()
+        })
+    })
+    asStepTxt.forEach(el => {
         el.addEventListener('focus', e => {
             denlargeAllImages()
         })
@@ -123,11 +129,9 @@ export function stepTxtListeners(){
         })
         el.addEventListener('keydown', e => {
             let letter = e.key.toLowerCase()
-            if(!isNaN(letter)){
-                
-            }
+            
             if (letter == 'enter') {
-                handleImgSize(e)
+                handleImgSize(e,letter)
                 handleStepTabIndex(e)
                 addTabs(e.target)
                 // handleVideos(e)
@@ -145,13 +149,12 @@ export function stepTxtListeners(){
             }
         })
     }    
-    function handleImgSize(e) {
+    function handleImgSize(e,letter) {
         const step = getStepContainer(e.target.parentElement)
-        if (step) {
+        if (step && isNaN(letter)) {
             toggleStepImgSize(step)
         }
     }
-    
     function toggleStepImgSize(step) {
         const stepImg = step.querySelector('.step-img')
         if(stepImg){
@@ -163,10 +166,8 @@ export function stepTxtListeners(){
                     aside.classList.add('hide')
                 } else aside.classList.remove('hide')
             }
-
         }
-    }
-    
+    }   
     addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
         if (targetDivFocusIN) {
@@ -251,8 +252,6 @@ export function stepTxtListeners(){
         }
         
 
-    }
-    
+    }    
 }
-
 stepTxtListeners()
