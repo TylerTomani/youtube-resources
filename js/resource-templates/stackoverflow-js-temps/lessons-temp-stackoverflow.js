@@ -67,7 +67,6 @@ export function stepTxtListeners(){
             // denlargeAllImages()
             stepNumberFocus(intLetter)
         } else {
-            
         }
     }
     function stepNumberFocus(intLetter) {stepTxts[intLetter - 1].focus()}
@@ -86,10 +85,7 @@ export function stepTxtListeners(){
         })
         as.forEach(el => addTabs(el))
     }
-    function handleStepCOLTabIndex() {
-        const copyCodes = e.target.querySelectorAll('.code-container > .copy-code')
-        copyCodes.forEach(el => addTabs(el))
-    }
+    
     function addTabs(el) {el.setAttribute('tabindex', '0')}
     function removeTabs(el) {el.setAttribute('tabindex','-1')}
     function removeAllTabs() {
@@ -105,11 +101,11 @@ export function stepTxtListeners(){
             return null
         }
     }
-    function getStepColContainer(parent) {
-        if (parent.classList.contains('step-col')) {
+    function getStep(parent) {
+        if (parent.classList.contains('step')) {
             return parent
         } else if (parent.parentElement) {
-            return getStepColContainer(parent.parentElement)
+            return getStep(parent.parentElement)
         } else {
             return null
         }
@@ -133,25 +129,21 @@ export function stepTxtListeners(){
                 // handleVideos(e)
             }
             if (letter == 'tab') {
-                // denlargeAllImages()
             }
         })
     })
     // This will handle img and video size enlarge and denlarge
     function handleImgSize(e) {
         const step = getStepContainer(e.target.parentElement)
-        const stepCol = getStepColContainer(e.target.parentElement)
+        
         if (step) {
             toggleStepImgSize(step)
         }
-        if (stepCol) {
-            toggleStepColImages(stepCol)
-        }
     }
     function denlargeAllImages() {
-        if (aside.classList.contains('hide')) {
-            aside.classList.remove('hide')
-        }
+        // if (aside.classList.contains('hide')) {
+        //     aside.classList.remove('hide')
+        // }
         allImages.forEach(el => {
             el.style.zIndex = "0"
             if (el.classList.contains('enlarge')) {
@@ -168,15 +160,13 @@ export function stepTxtListeners(){
     function toggleStepImgSize(step) {
         const stepImg = step.querySelector('.step-img')
         if(stepImg){
-            const img = stepImg.querySelector('img')
+            const img = stepImg.querySelector('img') ? stepImg.querySelector('img') : stepImg.querySelector('video')
             if (img) {
                 img.style.zIndex = "1"
-                if (!img.classList.contains('lg-enlarge')) {
-                    img.classList.toggle('enlarge')
-                } else if (img.classList.contains('lg-enlarge')) {
-                    img.classList.toggle('enlarged-lg')
-                }
-                handleAsideWithImg(img)
+                img.classList.toggle('enlarge')
+                if(img.classList.contains('enlarge')){
+                    aside.classList.add('hide')
+                } else aside.classList.remove('hide')
             }
 
         }
@@ -220,15 +210,7 @@ export function stepTxtListeners(){
             endNxtLesson.scrollIntoView({behavior:'instant',block:'center'})   
         }
     });
-    function handleAsideWithImg(img){
-        if(img){
-            if (img.classList.contains('enlarge') || img.classList.contains('enlarge-play-vid')){
-                aside.classList.add('hide')
-            } else {
-                aside.classList.remove('hide')
-            }
-        }
-    }
+    
     function handleVideos(e) {
         const step = getStep(e.target.parentElement)
         const vid = step.querySelector('.step-vid > video')
@@ -291,15 +273,7 @@ export function stepTxtListeners(){
         
 
     }
-    function getStep(parent) {
-        if (parent.classList.contains('step')) {
-            return parent
-        } else if (parent.parentElement) {
-            return getStep(parent.parentElement)
-        } else {
-            return null
-        }
-    }
+    
 }
 
 stepTxtListeners()

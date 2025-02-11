@@ -231,9 +231,6 @@ lessons.forEach(el => {
                 let isShiftPressed = e.shiftKey
                 lessonsCycle(lessons,e.shiftKey)
             }
-            // if(letter == 'enter' ){ 
-                
-            // }   
         }
     })
 })
@@ -282,7 +279,7 @@ addEventListener('keydown', e => {
             aside.classList.remove('hide')
         } 
     }
-    toggleSidBarBtn()
+    // toggleSidBarBtn()
     
 });
 /// I don't know if i need this here
