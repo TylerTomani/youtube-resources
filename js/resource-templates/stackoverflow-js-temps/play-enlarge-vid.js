@@ -61,9 +61,30 @@ export function playEnlargeVideos(){
             vid.pause()
             vid.style.border = "1px dotted red"
         }
+        const canvas = document.getElementById('thumbCanvas');
+        const ctx = canvas.getContext('2d');
+
+        video.addEventListener('loadeddata', () => {
+            // Set canvas dimensions to match the video
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+
+            // Seek to 0 seconds (should be the first frame)
+            video.currentTime = 0;
+        });
+
+        video.addEventListener('seeked', () => {
+            // Draw the first frame to the canvas
+            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+            // Optionally, you could convert this to an image data URL:
+            // const dataURL = canvas.toDataURL();
+            // Then use dataURL as a src for an <img> element if needed.
+        });
         // playing = !playing
     }
 }
+const video = document.getElementById('myVideo');
+
 function getStepVidStep(parent){
     if(parent.classList.contains('step')){
         return parent
