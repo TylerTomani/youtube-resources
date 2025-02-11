@@ -10,5 +10,9 @@
 
 }
 .dark-mode a {
-    color: wheat;
+    color: white;
+}
+.dark-mode,h4
+.dark-mode p {
+    color: whitesmoke;
 }

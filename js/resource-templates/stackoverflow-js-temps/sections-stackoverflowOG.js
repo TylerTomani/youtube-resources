@@ -205,7 +205,7 @@ lessons.forEach(el => {
         e.stopPropagation()
         fetchLessonHref(e.target.href)
         if(e.target == lastClickedLesson){
-            mainTargetDiv.scrollIntoView({behavior:'instant', block:'center'})
+            mainTargetDiv.scrollIntoView({behavior:'instant', block:'start'})
         }
         lastClickedLesson = e.target
     })
