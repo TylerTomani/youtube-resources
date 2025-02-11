@@ -73,7 +73,7 @@ export function stepTxtListeners(){
     // The code below handle img enlarge and code within step txt
     copyCodes.forEach(el => {
         el.addEventListener('focus', e => {
-            // denlargeAllImages()
+            denlargeAllImages()
         })
     })
     function handleStepTabIndex(e) {
@@ -132,31 +132,22 @@ export function stepTxtListeners(){
             }
         })
     })
-    // This will handle img and video size enlarge and denlarge
-    function handleImgSize(e) {
-        const step = getStepContainer(e.target.parentElement)
-        
-        if (step) {
-            toggleStepImgSize(step)
-        }
-    }
+    // Below-  handling of img and video size enlarge and denlarge
     function denlargeAllImages() {
-        // if (aside.classList.contains('hide')) {
-        //     aside.classList.remove('hide')
-        // }
         allImages.forEach(el => {
             el.style.zIndex = "0"
             if (el.classList.contains('enlarge')) {
                 el.classList.remove('enlarge')
             }
-            if (el.classList.contains('enlarge-col')) {
-                el.classList.remove('enlarge-col')
-            }
-            if (el.classList.contains('enlarged-lg')) {
-                el.classList.remove('enlarge-col')
-            }
         })
     }    
+    function handleImgSize(e) {
+        const step = getStepContainer(e.target.parentElement)
+        if (step) {
+            toggleStepImgSize(step)
+        }
+    }
+    
     function toggleStepImgSize(step) {
         const stepImg = step.querySelector('.step-img')
         if(stepImg){
@@ -171,23 +162,7 @@ export function stepTxtListeners(){
 
         }
     }
-    function toggleStepColImages(stepCol) {
-        const imgContainer = stepCol.querySelector('.img-container')
-        const images = imgContainer.querySelectorAll('.step-img > img')
-        const img = images[imgIndex]
-        // denlargeAllImages()
-        if (imgIndex < 2) {
-            img.classList.add('enlarge-col')
-            img.style.zIndex = '1'
-            // img.scrollIntoView({ behavior: 'smooth', block: 'end' })
-            // scrollTo(0, 2000)
-
-        } else {
-            stepCol.focus()
-            // stepCol.scrollIntoView()
-        }
-        imgIndex = (imgIndex + 1) % (images.length + 1)
-    }
+    
     addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
         if (targetDivFocusIN) {

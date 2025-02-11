@@ -10,8 +10,10 @@ import { lastClickedSection }  from './sections-stackoverflow.js'
 import { sections } from './sections-stackoverflow.js'
 import { lessons } from './sections-stackoverflow.js'
 export function stepTxtListeners(){
+    let playing = false
     const allImages = document.querySelectorAll('.step-img > img') 
     const stepTxts = document.querySelectorAll('.step-txt')
+    const allVideos = document.querySelectorAll(".step-vid > video")
     let stepTxtsFocused =false
     const endNxtLesson = document.getElementById('endNxtLesson')
     const copyCodes = document.querySelectorAll('.copy-code') 
@@ -22,8 +24,10 @@ export function stepTxtListeners(){
     let imgIndex = 0
     allImages.forEach(el => {
         el.addEventListener('click', e => {
-            e.target.classList.toggle('enlarge')
-            handleAsideWithImg(e.target)
+            handleImgSize(e)
+            handleStepTabIndex(e)
+            addTabs(e.target)
+            // addTabs(e.target)
         })
     })
     // sections.forEach(el => { el.addEventListener('focus', e => { targetDivFocusIN = false }) })
@@ -33,14 +37,12 @@ export function stepTxtListeners(){
         endNxtLesson.addEventListener('click', e => {
             const subSection = getSubSection(lastClickedLesson)
             // const lessons = subSection.querySelectorAll('li > a')
-            console.log(subSection)
+            
             if(aside.classList.contains('hide'))  {
                 aside.classList.remove('hide')
             }
             lastClickedLesson.focus()
             scrollTo(0,0)
-            
-            
         })   
     }
     // This is overkill, target is set to _blank in html
@@ -65,16 +67,13 @@ export function stepTxtListeners(){
             // denlargeAllImages()
             stepNumberFocus(intLetter)
         } else {
-            
         }
     }
-    function stepNumberFocus(intLetter) {
-        stepTxts[intLetter - 1].focus()
-    }
+    function stepNumberFocus(intLetter) {stepTxts[intLetter - 1].focus()}
     // The code below handle img enlarge and code within step txt
     copyCodes.forEach(el => {
         el.addEventListener('focus', e => {
-            // denlargeAllImages()
+            denlargeAllImages()
         })
     })
     function handleStepTabIndex(e) {
@@ -86,10 +85,7 @@ export function stepTxtListeners(){
         })
         as.forEach(el => addTabs(el))
     }
-    function handleStepCOLTabIndex() {
-        const copyCodes = e.target.querySelectorAll('.code-container > .copy-code')
-        copyCodes.forEach(el => addTabs(el))
-    }
+    
     function addTabs(el) {el.setAttribute('tabindex', '0')}
     function removeTabs(el) {el.setAttribute('tabindex','-1')}
     function removeAllTabs() {
@@ -105,11 +101,11 @@ export function stepTxtListeners(){
             return null
         }
     }
-    function getStepColContainer(parent) {
-        if (parent.classList.contains('step-col')) {
+    function getStep(parent) {
+        if (parent.classList.contains('step')) {
             return parent
         } else if (parent.parentElement) {
-            return getStepColContainer(parent.parentElement)
+            return getStep(parent.parentElement)
         } else {
             return null
         }
@@ -130,75 +126,48 @@ export function stepTxtListeners(){
                 handleImgSize(e)
                 handleStepTabIndex(e)
                 addTabs(e.target)
+                // handleVideos(e)
             }
             if (letter == 'tab') {
-                // denlargeAllImages()
             }
         })
     })
-    // This will handle img and video size enlarge and denlarge
-    function handleImgSize(e) {
-        const step = getStepContainer(e.target.parentElement)
-        const stepCol = getStepColContainer(e.target.parentElement)
-        if (step) {
-            toggleStepImgSize(step)
-        }
-        if (stepCol) {
-            toggleStepColImages(stepCol)
-        }
-    }
+    // Below-  handling of img and video size enlarge and denlarge
     function denlargeAllImages() {
-        if (aside.classList.contains('hide')) {
-            aside.classList.remove('hide')
-        }
         allImages.forEach(el => {
             el.style.zIndex = "0"
             if (el.classList.contains('enlarge')) {
                 el.classList.remove('enlarge')
             }
-            if (el.classList.contains('enlarge-col')) {
-                el.classList.remove('enlarge-col')
-            }
-            if (el.classList.contains('enlarged-lg')) {
-                el.classList.remove('enlarge-col')
-            }
         })
     }    
+    function handleImgSize(e) {
+        const step = getStepContainer(e.target.parentElement)
+        if (step) {
+            toggleStepImgSize(step)
+        }
+    }
+    
     function toggleStepImgSize(step) {
         const stepImg = step.querySelector('.step-img')
-        const img = stepImg.querySelector('img')
-        if (img) {
-            img.style.zIndex = "1"
-            if (!img.classList.contains('lg-enlarge')) {
+        if(stepImg){
+            const img = stepImg.querySelector('img') ? stepImg.querySelector('img') : stepImg.querySelector('video')
+            if (img) {
+                img.style.zIndex = "1"
                 img.classList.toggle('enlarge')
-            } else if (img.classList.contains('lg-enlarge')) {
-                img.classList.toggle('enlarged-lg')
+                if(img.classList.contains('enlarge')){
+                    aside.classList.add('hide')
+                } else aside.classList.remove('hide')
             }
-            handleAsideWithImg(img)
-        }
-    }
-    function toggleStepColImages(stepCol) {
-        const imgContainer = stepCol.querySelector('.img-container')
-        const images = imgContainer.querySelectorAll('.step-img > img')
-        const img = images[imgIndex]
-        // denlargeAllImages()
-        if (imgIndex < 2) {
-            img.classList.add('enlarge-col')
-            img.style.zIndex = '1'
-            // img.scrollIntoView({ behavior: 'smooth', block: 'end' })
-            // scrollTo(0, 2000)
 
-        } else {
-            stepCol.focus()
-            // stepCol.scrollIntoView()
         }
-        imgIndex = (imgIndex + 1) % (images.length + 1)
     }
+    
     addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
         if (targetDivFocusIN) {
             let letter = e.key.toLowerCase()
-            if (!isNaN(letter)) {
+            if(!isNaN(letter)) {
                 stepFocus(letter)
             }
             if(stepTxts.length > 0){
@@ -212,17 +181,74 @@ export function stepTxtListeners(){
         if (letter == 'm' && lastStep) {
             lastStep.focus()
         }       
-    });
-    function handleAsideWithImg(img){
-        console.log(img)
-        if(img){
-            if (img.classList.contains('enlarge')){
-                aside.classList.add('hide')
-            } else {
-                aside.classList.remove('hide')
-            }
+        if(letter == 'e' && endNxtLesson){
+            endNxtLesson.scrollIntoView({behavior:'instant',block:'center'})   
         }
+    });
+    
+    function handleVideos(e) {
+        const step = getStep(e.target.parentElement)
+        const vid = step.querySelector('.step-vid > video')
+        if(vid){
+            vid.classList.toggle('enlarge-play-vid')
+            handleAsideWithImg(vid)
+            playPauseVideo(e,vid)
+        }
+
     }
+    function playPauseVideo(e,vid){
+        // if (vid.classList.contains('enlarge-play-vid')){
+        //     vid.play()
+        // } else {
+        //     vid.pause()
+        // }
+        let key = e.keyCode
+        console.log(key)
+        switch (key) {
+            case 32:
+                e.preventDefault()
+                // 
+                if (!playing) {
+                    vid.play()
+                    vid.style.border = "2px solid blue"
+                } else if (!playing) {
+                    vid.pause()
+                    vid.style.border = "1px dotted red"
+                }
+                playing = !playing
+                break;
+            // left arrow
+            case 37:
+                e.preventDefault()
+                if (vid.currentTime > 0) {
+                    vid.currentTime = vid.currentTime - 1
+                }
+                if (vid.currentTime < vid.duration) {
+                    vid.style.border = '2px solid blue'
+                }
+                break
+            case 39:
+                vid.currentTime = vid.currentTime + 2
+                if (vid.currentTime >= vid.duration) {
+                    vid.style.border = '14px solid red'
+                    vid.pause()
+                    vid.currentTime = vid.duration()
+                }
+                break
+            default:
+                playing = !playing
+        }
+        if (playing) {
+            vid.play()
+            vid.style.border = "1px solid blue"
+        } else if (!playing) {
+            vid.pause()
+            vid.style.border = "1px dotted red"
+        }
+        
+
+    }
+    
 }
 
 stepTxtListeners()
