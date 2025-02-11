@@ -17,6 +17,11 @@
 .dark-mode p {
     color: whitesmoke;
 }
-.dark-mode > aside{
-    border-radius: 1px solid whitesmoke;
+.dark-mode #nav-section-lesson-titles{
+    border-top: 1px solid whitesmoke; 
+    border-bottom: 1px solid whitesmoke ; 
+
+}
+.dark-mode main > aside{
+    border-right: 1px solid whitesmoke ; 
 }
