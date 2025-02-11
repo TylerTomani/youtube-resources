@@ -1,6 +1,6 @@
 import { nav, stepTxtListeners } from "./lessons-temp-stackoverflow.js"
 import { lastStep } from "./lessons-temp-stackoverflow.js"
-const navBar = document.querySelector('nav.section-lesson-title')
+export const navBar = document.querySelector('nav.section-lesson-title')
 const mainTargetDiv = document.querySelector('#mainTargetDiv')
 const header = document.querySelector('header')
 const toggleSideBtmBtn = document.querySelector('#toggleSideBtmBtn')

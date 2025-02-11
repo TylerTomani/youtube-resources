@@ -31,8 +31,10 @@ export function stepTxtListeners(){
             // addTabs(e.target)
         })
     })
-    // sections.forEach(el => { el.addEventListener('focus', e => { targetDivFocusIN = false }) })
-    // lessons.forEach(el => { el.addEventListener('focus', e => { targetDivFocusIN = false }) })
+    // sections.forEach(el => { el.addEventListener('focus', denlargeAllImages )
+    aside.addEventListener('focus', e => {
+        denlargeAllImages()
+    });
     pAs.forEach(el => {el.setAttribute('tabindex','-1')})
     if(endNxtLesson){
         endNxtLesson.addEventListener('click', e => {
@@ -56,7 +58,7 @@ export function stepTxtListeners(){
     mainTargetDiv.addEventListener('focusin', e => {targetDivFocusIN = true})
     mainTargetDiv.addEventListener('focusout', e => {
         targetDivFocusIN = false
-        console.log('out')
+        
         // denlargeAllImages()
     })
     nav.addEventListener('keydown', e => {
@@ -208,7 +210,7 @@ export function stepTxtListeners(){
         //     vid.pause()
         // }
         let key = e.keyCode
-        console.log(key)
+        
         switch (key) {
             case 32:
                 e.preventDefault()
