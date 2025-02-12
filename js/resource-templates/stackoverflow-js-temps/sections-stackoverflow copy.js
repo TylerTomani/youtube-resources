@@ -1,5 +1,6 @@
 import { nav, stepTxtListeners } from "./lessons-temp-stackoverflow.js"
 import { lastStep } from "./lessons-temp-stackoverflow.js"
+import { playEnlargeVideos } from "./play-enlarge-vid.js"
 export const navBar = document.querySelector('nav.section-lesson-title')
 const mainTargetDiv = document.querySelector('#mainTargetDiv')
 const header = document.querySelector('header')
@@ -36,6 +37,7 @@ function fetchLessonHref(href) {
             mainTargetDiv.innerHTML = html;
             ////////////// This function is located in lesson-temp.js ////////////////////////////////////////////////////////////////////////////////////
             stepTxtListeners()
+            playEnlargeVideos()
             addCopyCodes()
         })
         .catch(error => console.log('Error fetching content.html:', error));

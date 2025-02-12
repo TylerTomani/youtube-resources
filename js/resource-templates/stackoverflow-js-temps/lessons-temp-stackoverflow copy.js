@@ -10,9 +10,8 @@ import { lastClickedSection }  from './sections-stackoverflow.js'
 import { sections } from './sections-stackoverflow.js'
 import { lessons } from './sections-stackoverflow.js'
 export function stepTxtListeners(){
-    let playing = false
-    const allImages = document.querySelectorAll('.step-img > img') 
     const stepTxts = document.querySelectorAll('.step-txt')
+    const allImages = document.querySelectorAll('.step-img > img') 
     const asStepTxt = document.querySelectorAll('.step-txt a')
     const allVideos = document.querySelectorAll(".step-vid > video")
     let stepTxtsFocused =false
@@ -31,6 +30,7 @@ export function stepTxtListeners(){
             // addTabs(e.target)
         })
     })
+    
     // sections.forEach(el => { el.addEventListener('focus', denlargeAllImages )
     
     pAs.forEach(el => {el.setAttribute('tabindex','-1')})
@@ -98,24 +98,7 @@ export function stepTxtListeners(){
         copyCodes.forEach(el => { el.setAttribute('tabindex','-1') })
         pAs.forEach(el => { el.setAttribute('tabindex','-1') })
     }
-    function getStepContainer(parent) {
-        if (parent.classList.contains('step')) {
-            return parent
-        } else if (parent.parentElement) {
-            return getStepContainer(parent.parentElement)
-        } else {
-            return null
-        }
-    }
-    function getStep(parent) {
-        if (parent.classList.contains('step')) {
-            return parent
-        } else if (parent.parentElement) {
-            return getStep(parent.parentElement)
-        } else {
-            return null
-        }
-    }
+    
     stepTxts.forEach(el => {
         el.addEventListener('focusout', e => {
         })
@@ -125,6 +108,13 @@ export function stepTxtListeners(){
             stepTxtsFocused = true
             imgIndex = 0
             currentStepIndex = [...stepTxts].indexOf(e.target)
+            let step = getStep(e.target.parentElement)
+            console.log(step)
+            let img = step.querySelector('.step-img > img')
+            if(img){
+                img.style.zIndex = 10
+                allVideos.forEach(el => {el.style.zIndex = 5})
+            }
         })
         el.addEventListener('keydown', e => {
             let letter = e.key.toLowerCase()
@@ -132,6 +122,8 @@ export function stepTxtListeners(){
                 handleImgSize(e,letter)
                 handleStepTabIndex(e)
                 addTabs(e.target)
+                denlargeAllVideos()
+
                 // handleVideos(e)
             }
             if (letter == 'tab') {
@@ -147,7 +139,22 @@ export function stepTxtListeners(){
                 el.classList.remove('enlarge')
             }
         })
+        allVideos.forEach(el => {
+            el.style.zIndex = "0"
+            if (el.classList.contains('enlarge-vid')) {
+                el.classList.remove('enlarge-vid')
+            }
+        })
     }    
+    function denlargeAllVideos(){
+        allVideos.forEach(el => {
+            el.style.zIndex = "0"
+            if (el.classList.contains('enlarge-vid')) {
+                el.classList.remove('enlarge-vid')
+                el.pause()
+            }
+        })
+    }
     function handleImgSize(e,letter) {
         const step = getStepContainer(e.target.parentElement)
         if (step && isNaN(letter)) {
@@ -190,68 +197,26 @@ export function stepTxtListeners(){
         }
     });
     
-    function handleVideos(e) {
-        const step = getStep(e.target.parentElement)
-        const vid = step.querySelector('.step-vid > video')
-        if(vid){
-            vid.classList.toggle('enlarge-play-vid')
-            handleAsideWithImg(vid)
-            playPauseVideo(e,vid)
-        }
-
-    }
-    function playPauseVideo(e,vid){
-        // if (vid.classList.contains('enlarge-play-vid')){
-        //     vid.play()
-        // } else {
-        //     vid.pause()
-        // }
-        let key = e.keyCode
-        
-        switch (key) {
-            case 32:
-                e.preventDefault()
-                // 
-                if (!playing) {
-                    vid.play()
-                    vid.style.border = "2px solid blue"
-                } else if (!playing) {
-                    vid.pause()
-                    vid.style.border = "1px dotted red"
-                }
-                playing = !playing
-                break;
-            // left arrow
-            case 37:
-                e.preventDefault()
-                if (vid.currentTime > 0) {
-                    vid.currentTime = vid.currentTime - 1
-                }
-                if (vid.currentTime < vid.duration) {
-                    vid.style.border = '2px solid blue'
-                }
-                break
-            case 39:
-                vid.currentTime = vid.currentTime + 2
-                if (vid.currentTime >= vid.duration) {
-                    vid.style.border = '14px solid red'
-                    vid.pause()
-                    vid.currentTime = vid.duration()
-                }
-                break
-            default:
-                playing = !playing
-        }
-        if (playing) {
-            vid.play()
-            vid.style.border = "1px solid blue"
-        } else if (!playing) {
-            vid.pause()
-            vid.style.border = "1px dotted red"
-        }
-        
-
-    }
+    
     aside.addEventListener('focusin', denlargeAllImages)    
 }
 stepTxtListeners()
+
+function getStepContainer(parent) {
+    if (parent.classList.contains('step')) {
+        return parent
+    } else if (parent.parentElement) {
+        return getStepContainer(parent.parentElement)
+    } else {
+        return null
+    }
+}
+function getStep(parent) {
+    if (parent.classList.contains('step')) {
+        return parent
+    } else if (parent.parentElement) {
+        return getStep(parent.parentElement)
+    } else {
+        return null
+    }
+}
