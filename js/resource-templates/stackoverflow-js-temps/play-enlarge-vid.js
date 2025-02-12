@@ -9,23 +9,37 @@ export function playEnlargeVideos(){
         const stepTxt = step.querySelector('.step-txt')
         stepTxt.addEventListener('keydown', e => {
             let letter = e.key.toLowerCase()
+            let key = e.keyCode
             const vid = step.querySelector('video')
             if(letter == 'enter'){
                 toggleVidSize(vid)
-            } else {
-                let key = e.keyCode
-                console.log(key)
-                videoControls(key,vid)
+            } 
+            console.log(key)
+            if(key == 32){
+                e.preventDefault()
+                playPause(vid)
+            }
+            else {
+                // videoControls(key,vid,e)
             }
         })
         stepTxt.addEventListener('click', e => {
             e.preventDefault()
             const step = getStepVidStep(e.target)
             const vid = step.querySelector('video')
-            toggleVidSize(vid)
+            playPause(vid)
+            
         })
     })
-    function videoControls(key,vid){
+    function playPause(vid){
+        if (!playing) {
+            vid.play()
+        } else {
+            vid.pause()
+        }
+        playing = !playing
+    }
+    function videoControls(key,vid,e){
         switch (key) {
             case 13:
                 break
@@ -54,7 +68,7 @@ export function playEnlargeVideos(){
             default:
                 playing = !playing
         }
-        if (playing) {
+        if (!playing) {
             vid.play()
         } else {
             vid.pause()
