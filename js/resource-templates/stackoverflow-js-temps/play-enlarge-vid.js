@@ -4,6 +4,7 @@ export function playEnlargeVideos(){
     let playing = false
     const stepVidsSteps = document.querySelectorAll('.step-vid')
     const vids = document.querySelectorAll('.step-vid > video')
+    const images = document.querySelector('.step-img > img')
     stepVidsSteps.forEach(el => {
         const step = getStepVidStep(el.parentElement)
         const stepTxt = step.querySelector('.step-txt')

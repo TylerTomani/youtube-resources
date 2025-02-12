@@ -108,6 +108,13 @@ export function stepTxtListeners(){
             stepTxtsFocused = true
             imgIndex = 0
             currentStepIndex = [...stepTxts].indexOf(e.target)
+            let step = getStep(e.target.parentElement)
+            console.log(step)
+            let img = step.querySelector('.step-img > img')
+            if(img){
+                img.style.zIndex = 10
+                allVideos.forEach(el => {el.style.zIndex = 5})
+            }
         })
         el.addEventListener('keydown', e => {
             let letter = e.key.toLowerCase()
