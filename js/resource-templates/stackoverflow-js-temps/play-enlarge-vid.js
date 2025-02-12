@@ -80,6 +80,9 @@ export function playEnlargeVideos(){
             e.preventDefault()
             toggleVidSize(e.target)
         })
+        vid.addEventListener('webkitbeginfullscreen', e =>{
+            e.preventDefault()
+        })
     })
     function toggleVidSize(vid){
         if (!playing) {
