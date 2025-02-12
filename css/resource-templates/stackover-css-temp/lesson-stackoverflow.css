@@ -103,17 +103,7 @@
     width: 100%;
     height: 100%;
 }
-.enlarge-play-vid + .step-vid {
-    position: relative;
-    z-index: 3;
-    margin-right: 50%;
-    max-height: 30vh;
-    /* border: 2px solid red; */
-    transform: scale(2.75);
-    width: 100%;
-    height: 100%;
-    border: 2px solid blue;
-}
+
 .enlarge {
     position: relative;
     z-index: 3;

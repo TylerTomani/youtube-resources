@@ -9,34 +9,28 @@ export function playEnlargeVideos(){
         const stepTxt = step.querySelector('.step-txt')
         stepTxt.addEventListener('keydown', e => {
             let letter = e.key.toLowerCase()
-            const video = step.querySelector('video')
-            playPauseVideo(e,video)
-            
+            const vid = step.querySelector('video')
+            if(letter == 'enter'){
+                toggleVidSize(vid)
+            } else {
+                let key = e.keyCode
+                console.log(key)
+                videoControls(key,vid)
+            }
+        })
+        stepTxt.addEventListener('click', e => {
+            e.preventDefault()
+            const step = getStepVidStep(e.target)
+            const vid = step.querySelector('video')
+            toggleVidSize(vid)
         })
     })
-    vids.forEach(vid => {
-        vid.addEventListener('click', e =>{
-            playPauseVideo(e, vid)
-        })
-    })
-    function playPauseVideo(e, vid) {
-        let key = e.keyCode
-        console.log(key)
-        
+    function videoControls(key,vid){
         switch (key) {
             case 13:
-                vid.classList.toggle('enlarge-vid')
                 break
             case 32:
                 e.preventDefault()
-                // 
-                if (!playing) {
-                    vid.play()
-                    vid.style.border = "2px solid blue"
-                } else if (!playing) {
-                    vid.pause()
-                    vid.style.border = "1px dotted red"
-                }
                 playing = !playing
                 break;
             // left arrow
@@ -61,22 +55,33 @@ export function playEnlargeVideos(){
                 playing = !playing
         }
         if (playing) {
-            // const stepVid = vid.parentElement
+            vid.play()
+        } else {
+            vid.pause()
+        }
+    }
+    
+    vids.forEach(vid => {
+        vid.addEventListener('click', e =>{
+            e.preventDefault()
+            toggleVidSize(e.target)
+        })
+    })
+    function toggleVidSize(vid){
+        if (!playing) {
             vid.classList.add('enlarge-vid')
             vid.style.zIndex = '5'
             vid.play()
             vid.style.border = "1px solid blue"
-        } else if (!playing) {
-            // vid.classList.remove('enlarge-vid')
+        } else if (playing) {
+            vid.classList.remove('enlarge-vid')
             vid.pause()
             vid.style.zIndex = '2'
             vid.style.border = "1px dotted red"
         }
-        // playing = !playing
+        playing = !playing
     }
 }
-const video = document.getElementById('myVideo');
-
 function getStepVidStep(parent){
     if(parent.classList.contains('step')){
         return parent
