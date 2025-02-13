@@ -2,6 +2,7 @@
 
 export function playEnlargeVideos(){
     let playing = false
+    let imgFocused = false
     const stepVidsSteps = document.querySelectorAll('.step-vid')
     const vids = document.querySelectorAll('.step-vid > video')
     const images = document.querySelector('.step-img > img')
@@ -15,7 +16,6 @@ export function playEnlargeVideos(){
             if(letter == 'enter'){
                 toggleVidSize(vid)
             } 
-            console.log(key)
             if(key == 32){
                 e.preventDefault()
                 playPause(vid)
@@ -81,6 +81,10 @@ export function playEnlargeVideos(){
             e.preventDefault()
             toggleVidSize(e.target)
         })
+        vid.addEventListener('focus', e =>{
+            e.preventDefault()
+            imgFocused = true
+        })
         vid.addEventListener('webkitbeginfullscreen', e =>{
             e.preventDefault()
         })
@@ -99,6 +103,13 @@ export function playEnlargeVideos(){
         }
         playing = !playing
     }
+    addEventListener('keydown', e => {
+        let key = e.keyCode
+        if(imgFocused && key == 32){
+            e.preventDefault()
+
+        }
+    })
 }
 function getStepVidStep(parent){
     if(parent.classList.contains('step')){

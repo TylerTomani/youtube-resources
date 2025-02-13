@@ -70,14 +70,12 @@
 .step > .step-img,
 .step > .step-vid {
     display: flex;
-    /* position: relative; */
     justify-content: center;
     align-items: center;
     
 }
 .step-img > img,
 .step-vid > video {
-    /* position: static; */
     width: 100%;
     max-width: 400px;
     object-fit: scale-down;
@@ -90,7 +88,6 @@
 .step-col > .img-container>.step-img,
 .step-col > .img-container>.step-vid{
     /* display: flex; */
-    position: relative;
 
 }
 .step-col > .img-container>.step-img > img,
@@ -105,7 +102,6 @@
 }
 
 .enlarge {
-    position: relative;
     z-index: 3;
     margin-right: 50%;
     max-height: 30vh;
@@ -113,7 +109,6 @@
     transform: scale(2.5);
 }
 .enlarge-vid {
-    position: relative;
     z-index: 3;
     margin-right: 50%;
     max-height: 30vh;
@@ -121,13 +116,11 @@
     transform: scale(2.15);
 }
 .enlarged-lg {
-    position: relative;
     z-index: 3;
     margin-right: 50%;
     transform: scale(3);
 }
 .enlarge-col {
-    position: relative;
     /* z-index: 4; */
     /* margin-right: 50%; */
     margin-left: 25%;

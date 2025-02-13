@@ -109,7 +109,6 @@ export function stepTxtListeners(){
             imgIndex = 0
             currentStepIndex = [...stepTxts].indexOf(e.target)
             let step = getStep(e.target.parentElement)
-            console.log(step)
             let img = step.querySelector('.step-img > img')
             if(img){
                 img.style.zIndex = 10
@@ -176,6 +175,7 @@ export function stepTxtListeners(){
     }   
     addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
+        let key = e.keyCode
         if (targetDivFocusIN) {
             let letter = e.key.toLowerCase()
             if(!isNaN(letter)) {
@@ -188,6 +188,7 @@ export function stepTxtListeners(){
                 nav.focus()
                 scrollTo(0,0)   
             }     
+            
         }
         if (letter == 'm' && lastStep) {
             lastStep.focus()
