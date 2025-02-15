@@ -186,7 +186,7 @@ li > code {
 
 }
 #toggleSideBtmBtn.active{
-    /* display: inline-block; */
+    display: inline-block;
     position: absolute;
     z-index: 20;
     margin-left: 1%;

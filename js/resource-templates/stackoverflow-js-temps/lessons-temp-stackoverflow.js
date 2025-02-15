@@ -9,6 +9,7 @@ import { lastClickedLesson }  from './sections-stackoverflow.js'
 import { lastClickedSection }  from './sections-stackoverflow.js'
 import { sections } from './sections-stackoverflow.js'
 import { lessons } from './sections-stackoverflow.js'
+import { toggleSideBtmBtn } from './sections-stackoverflow.js'
 export function stepTxtListeners(){
     const stepTxts = document.querySelectorAll('.step-txt')
     const allImages = document.querySelectorAll('.step-img > img') 
@@ -180,7 +181,11 @@ export function stepTxtListeners(){
             }     
         }
         if (letter == 'm' && lastStep) {lastStep.focus()}       
-        if(letter == 'e' && endNxtLesson){endNxtLesson.scrollIntoView({behavior:'instant',block:'center'})}
+        if(letter == 'e' && endNxtLesson){
+            endNxtLesson.scrollIntoView({behavior:'instant',block:'center'})
+        } else if (letter == 'e' && !endNxtLesson && toggleSideBtmBtn){
+            toggleSideBtmBtn.focus()
+        }
     });
     aside.addEventListener('focusin', denlargeAllImages)    
 }

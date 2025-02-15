@@ -4,7 +4,7 @@ import { playEnlargeVideos } from "./play-enlarge-vid.js"
 export const navBar = document.querySelector('nav.section-lesson-title')
 const mainTargetDiv = document.querySelector('#mainTargetDiv')
 const header = document.querySelector('header')
-const toggleSideBtmBtn = document.querySelector('#toggleSideBtmBtn')
+export const toggleSideBtmBtn = document.querySelector('#toggleSideBtmBtn')
 import { addCopyCodes } from "../copy-code-resources.js"
 const aside = document.querySelector('aside')
 const backlink = document.querySelector('#backlink')
@@ -286,7 +286,7 @@ addEventListener('keydown', e => {
             aside.classList.remove('hide')
         } 
     }
-    // toggleSidBarBtn()
+    toggleSidBarBtn()
     
 });
 /// I don't know if i need this here
@@ -302,3 +302,12 @@ function toggleSidBarBtn(){
         toggleSideBtmBtn.classList.remove('active')
     }
 }
+toggleSideBtmBtn.addEventListener('click', e => {
+    aside.classList.toggle('hide')
+})
+toggleSideBtmBtn.addEventListener('keydown', e => {
+    let letter = e.key.toLowerCase()
+    if(letter == 'enter'){   
+        aside.classList.toggle('hide')
+    }
+})
