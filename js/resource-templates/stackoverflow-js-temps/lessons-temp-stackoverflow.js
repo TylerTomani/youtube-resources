@@ -27,7 +27,9 @@ export function stepTxtListeners(){
             handleImgSize(e)
             handleStepTabIndex(e)
             addTabs(e.target)
-            // addTabs(e.target)
+            allVideos.forEach(el => {
+                el.style.zIndex = '1'
+            })
         })
     })
     
@@ -37,11 +39,7 @@ export function stepTxtListeners(){
     if(endNxtLesson){
         endNxtLesson.addEventListener('click', e => {
             const subSection = getSubSection(lastClickedLesson)
-            // const lessons = subSection.querySelectorAll('li > a')
-            
-            if(aside.classList.contains('hide'))  {
-                aside.classList.remove('hide')
-            }
+            if(aside.classList.contains('hide')){aside.classList.remove('hide')}
             lastClickedLesson.focus()
             scrollTo(0,0)
         })   
@@ -56,7 +54,6 @@ export function stepTxtListeners(){
     mainTargetDiv.addEventListener('focusin', e => {targetDivFocusIN = true})
     mainTargetDiv.addEventListener('focusout', e => {
         targetDivFocusIN = false
-        
         // denlargeAllImages()
     })
     nav.addEventListener('keydown', e => {
@@ -111,8 +108,8 @@ export function stepTxtListeners(){
             let step = getStep(e.target.parentElement)
             let img = step.querySelector('.step-img > img')
             if(img){
-                img.style.zIndex = 10
-                allVideos.forEach(el => {el.style.zIndex = 5})
+                img.style.zIndex = 2
+                allVideos.forEach(el => {el.style.zIndex = 0})
             }
         })
         el.addEventListener('keydown', e => {
@@ -121,9 +118,6 @@ export function stepTxtListeners(){
                 handleImgSize(e,letter)
                 handleStepTabIndex(e)
                 addTabs(e.target)
-                denlargeAllVideos()
-
-                // handleVideos(e)
             }
             if (letter == 'tab') {
             }
@@ -145,15 +139,15 @@ export function stepTxtListeners(){
             }
         })
     }    
-    function denlargeAllVideos(){
-        allVideos.forEach(el => {
-            el.style.zIndex = "0"
-            if (el.classList.contains('enlarge-vid')) {
-                el.classList.remove('enlarge-vid')
-                el.pause()
-            }
-        })
-    }
+    // function denlargeAllVideos(){
+    //     allVideos.forEach(el => {
+    //         el.style.zIndex = "0"
+    //         if (el.classList.contains('enlarge-vid')) {
+    //             el.classList.remove('enlarge-vid')
+    //             el.pause()
+    //         }
+    //     })
+    // }
     function handleImgSize(e,letter) {
         const step = getStepContainer(e.target.parentElement)
         if (step && isNaN(letter)) {
@@ -165,7 +159,7 @@ export function stepTxtListeners(){
         if(stepImg){
             const img = stepImg.querySelector('img') ? stepImg.querySelector('img') : stepImg.querySelector('video')
             if (img) {
-                img.style.zIndex = "1"
+                img.style.zIndex = "2"
                 img.classList.toggle('enlarge')
                 if(img.classList.contains('enlarge')){
                     aside.classList.add('hide')
@@ -178,31 +172,19 @@ export function stepTxtListeners(){
         let key = e.keyCode
         if (targetDivFocusIN) {
             let letter = e.key.toLowerCase()
-            if(!isNaN(letter)) {
-                stepFocus(letter)
-            }
-            if(stepTxts.length > 0){
-                stepTxts[currentStepIndex].scrollIntoView({block: 'center'})
-            }
+            if(!isNaN(letter)) {stepFocus(letter)}
+            if(stepTxts.length > 0){stepTxts[currentStepIndex].scrollIntoView({block: 'center'})}
             if(letter == 'n'){
                 nav.focus()
                 scrollTo(0,0)   
             }     
-            
         }
-        if (letter == 'm' && lastStep) {
-            lastStep.focus()
-        }       
-        if(letter == 'e' && endNxtLesson){
-            endNxtLesson.scrollIntoView({behavior:'instant',block:'center'})   
-        }
+        if (letter == 'm' && lastStep) {lastStep.focus()}       
+        if(letter == 'e' && endNxtLesson){endNxtLesson.scrollIntoView({behavior:'instant',block:'center'})}
     });
-    
-    
     aside.addEventListener('focusin', denlargeAllImages)    
 }
 stepTxtListeners()
-
 function getStepContainer(parent) {
     if (parent.classList.contains('step')) {
         return parent

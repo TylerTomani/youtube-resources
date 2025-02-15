@@ -28,8 +28,7 @@ export function playEnlargeVideos(){
             e.preventDefault()
             const step = getStepVidStep(e.target)
             const vid = step.querySelector('video')
-            playPause(vid)
-            
+            playPause(vid)            
         })
     })
     function playPause(vid){
@@ -75,7 +74,6 @@ export function playEnlargeVideos(){
             vid.pause()
         }
     }
-    
     vids.forEach(vid => {
         vid.addEventListener('click', e =>{
             e.preventDefault()
@@ -85,6 +83,8 @@ export function playEnlargeVideos(){
             e.preventDefault()
             imgFocused = true
         })
+        /** ************** 
+         * STOPS VIDEOS  from opeing FULL screen on Mobile*/
         vid.addEventListener('webkitbeginfullscreen', e =>{
             e.preventDefault()
         })
@@ -92,13 +92,13 @@ export function playEnlargeVideos(){
     function toggleVidSize(vid){
         if (!playing) {
             vid.classList.add('enlarge-vid')
-            vid.style.zIndex = '5'
+            vid.style.zIndex = '2'
             vid.play()
             vid.style.border = "1px solid blue"
         } else if (playing) {
             vid.classList.remove('enlarge-vid')
             vid.pause()
-            vid.style.zIndex = '2'
+            vid.style.zIndex = '0'
             vid.style.border = "1px dotted red"
         }
         playing = !playing

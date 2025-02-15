@@ -125,10 +125,15 @@ function elIdsFocus(e) {
         }
     });
 }
+const homePageLink = document.getElementById('homePageLink')
 sections.forEach(el => {
     if(el.hasAttribute('autofocus')){
         iSection = [...sections].indexOf(el)
         lastClickedSection = el
+    } else {
+        // THIS IS AWFUL, BUT I JUST WANT THIS WORKING SO home page is able to have
+        // same fucntions especiialy copycode
+        fetchLessonHref(homePageLink.href)
     }
     el.addEventListener('focus', e => {
         iSection = [...sections].indexOf(e.target)
