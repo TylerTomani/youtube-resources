@@ -108,7 +108,7 @@
     transform: scale(2.5);
 }
 .enlarge-vid {
-    z-index: 3;
+    z-index: 2;
     margin-right: 50%;
     max-height: 30vh;
     transform: scale(2.15);

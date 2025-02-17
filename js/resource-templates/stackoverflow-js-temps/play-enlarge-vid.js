@@ -1,4 +1,5 @@
 import { aside } from "./lessons-temp-stackoverflow.js"
+import { nav } from "./lessons-temp-stackoverflow.js"
 
 export function playEnlargeVideos(){
     let playing = false
@@ -6,6 +7,17 @@ export function playEnlargeVideos(){
     const stepVidsSteps = document.querySelectorAll('.step-vid')
     const vids = document.querySelectorAll('.step-vid > video')
     const images = document.querySelector('.step-img > img')
+    function stopAllVids(){
+        vids.forEach(el =>{el.pause()})
+    }
+    nav.addEventListener('click', stopAllVids)
+    nav.addEventListener('keydown', e => {
+        let letter = e.key.toLowerCase()
+        if(letter == 'enter'){
+            stopAllVids()
+        }
+        
+    })
     stepVidsSteps.forEach(el => {
         const step = getStepVidStep(el.parentElement)
         const stepTxt = step.querySelector('.step-txt')
