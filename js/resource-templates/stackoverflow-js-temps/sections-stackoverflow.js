@@ -14,6 +14,7 @@ const programShortcuts = document.querySelector('#programShortcuts')
 const tutorialLink = document.querySelector('#tutorialLink')
 export  const sections = document.querySelectorAll('.section')
 export const lessons = document.querySelectorAll('.section-container > ul > li > a')
+const homePageLink = document.getElementById('homePageLink')
 let asideFocused = false;
 let sectionsFocused = true
 let lessonsFocused = false
@@ -23,6 +24,23 @@ let iSection = 0
 let iLesson = 0
 export let lastClickedLesson
 export let lastClickedSection
+let autoFocused
+addEventListener('DOMContentLoaded', e => {
+    lessons.forEach(el => {
+        if(el.hasAttribute('autofocus')){
+            autoFocused = true
+        }
+    })
+    sections.forEach(el => {
+        if(el.hasAttribute('autofocus')){
+            autoFocused = true
+        }
+    })
+    if(!autoFocused){
+
+        fetchLessonHref(homePageLink.href)
+    }
+});
 const keys = {
     shift: {
         pressed: false
@@ -109,9 +127,7 @@ export function getSubSection(parent){
         return null
     }
 }
-mainTargetDiv.addEventListener('focusin', e => {
 
-})
 function elIdsFocus(e) {
     const letter = e.key.toLowerCase();
     const elIds = document.querySelectorAll('[id]');
@@ -125,16 +141,11 @@ function elIdsFocus(e) {
         }
     });
 }
-const homePageLink = document.getElementById('homePageLink')
 sections.forEach(el => {
     if(el.hasAttribute('autofocus')){
         iSection = [...sections].indexOf(el)
         lastClickedSection = el
-    } else {
-        // THIS IS AWFUL, BUT I JUST WANT THIS WORKING SO home page is able to have
-        // same fucntions especiialy copycode
-        fetchLessonHref(homePageLink.href)
-    }
+    } 
     el.addEventListener('focus', e => {
         iSection = [...sections].indexOf(e.target)
         asideFocused = true
@@ -194,12 +205,15 @@ function sectionsCycles(shiftKey = false) {
 }
 lessons.forEach(el => {
     if(el.hasAttribute('autofocus')){
-        fetchLessonHref(el.href)
         lastClickedLesson = el
         const subSection = getSubSection(el.parentElement)
         const lessons = subSection.querySelectorAll('li > a')
         lessonsFocused = true
         sectionsFocused = false
+        fetchLessonHref(el.href)
+    } else {
+        
+        // fetchLessonHref(homePageLink.href)
     }
     el.addEventListener('focus', e => {
         sectionsFocused = false
