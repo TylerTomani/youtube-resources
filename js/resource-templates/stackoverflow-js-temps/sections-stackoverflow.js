@@ -63,7 +63,7 @@ function fetchLessonHref(href) {
 }
 navBar.addEventListener('click', e => {
     aside.classList.toggle('hide')
-    toggleSidBarBtn()
+    showToggleSidBarBtn()
 })
 aside.addEventListener('focusin', e => {asideFocused = true})
 navBar.addEventListener('keydown', e => {
@@ -87,7 +87,7 @@ aside.addEventListener('focusout', e => {asideFocused = false})
 aside.addEventListener('click', e => {
     asideFocused = true
     aside.classList.toggle('hide')
-    toggleSidBarBtn()
+    showToggleSidBarBtn()
     
 })
 function hideSubSections(){
@@ -305,13 +305,14 @@ addEventListener('keydown', e => {
             aside.classList.remove('hide')
         } 
     }
-    toggleSidBarBtn()
+    
+    showToggleSidBarBtn()
     
 });
 /// I don't know if i need this here
 stepTxtListeners()
 
-function toggleSidBarBtn(){
+function showToggleSidBarBtn(){
     if (aside.classList.contains('hide')) {
         toggleSideBtmBtn.classList.add('active')
         toggleSideBtmBtn.setAttribute('tabindex', 0)
@@ -323,7 +324,9 @@ function toggleSidBarBtn(){
 }
 toggleSideBtmBtn.addEventListener('click', e => {
     e.preventDefault()
-    aside.classList.toggle('hide')
+    if(aside.classList.contains('hide')){
+        aside.classList.remove('hide')
+    }
 })
 toggleSideBtmBtn.addEventListener('keydown', e => {
     let letter = e.key.toLowerCase()
