@@ -303,6 +303,7 @@ function toggleSidBarBtn(){
     }
 }
 toggleSideBtmBtn.addEventListener('click', e => {
+    e.preventDefault()
     aside.classList.toggle('hide')
 })
 toggleSideBtmBtn.addEventListener('keydown', e => {
