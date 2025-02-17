@@ -273,7 +273,7 @@ function lessonsCycle(lessons,shiftKey = false) {
 addEventListener('keydown', e => {
     let letter = e.key.toLowerCase()   
     
-    if (letter == 's' && !asideFocused) {
+    if ((letter == 's' || letter == 'a') && !asideFocused) {
         if(lastClickedSection){
             lastClickedSection.focus()
         }
