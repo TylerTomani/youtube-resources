@@ -23,7 +23,7 @@ export function playEnlargeVideos(){
             let letter = e.key.toLowerCase()
             let key = e.keyCode
             const vid = step.querySelector('video')
-            videoControls(key,vid,e)
+            videoControls(e,vid,key)
         })
         stepTxt.addEventListener('click', e => {
             e.preventDefault()
@@ -41,10 +41,9 @@ export function playEnlargeVideos(){
             vid.pause()
         }
     }
-    function videoControls(key,vid,e){
+    function videoControls(e, vid, key){
         switch (key) {
             case 13:
-                console.log('enter')
                 toggleVidSize(vid)
                 playing = true
                 break
@@ -79,7 +78,10 @@ export function playEnlargeVideos(){
     vids.forEach(vid => {
         vid.addEventListener('click', e =>{
             e.preventDefault()
-            toggleVidSize(e.target)
+            let step = getStepVidStep(e.target.parentElement)
+            let vid = step.querySelector('.step-vid video')
+            videoControls(e,vid)
+            toggleVidSize(vid)
         })
         vid.addEventListener('focus', e =>{
             e.preventDefault()
