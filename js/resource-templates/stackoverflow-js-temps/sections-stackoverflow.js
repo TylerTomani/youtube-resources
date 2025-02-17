@@ -6,7 +6,7 @@ const mainTargetDiv = document.querySelector('#mainTargetDiv')
 const header = document.querySelector('header')
 export const toggleSideBtmBtn = document.querySelector('#toggleSideBtmBtn')
 import { addCopyCodes } from "../copy-code-resources.js"
-const aside = document.querySelector('aside')
+export const aside = document.querySelector('aside')
 const backlink = document.querySelector('#backlink')
 const homelink = document.querySelector('#homelink')
 const vsCodeShortRegex = document.querySelector('#vsCodeShortRegex')

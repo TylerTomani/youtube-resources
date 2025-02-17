@@ -1,4 +1,4 @@
-
+import { aside } from "./lessons-temp-stackoverflow.js"
 
 export function playEnlargeVideos(){
     let playing = false
@@ -34,7 +34,9 @@ export function playEnlargeVideos(){
     function playPause(vid){
         if (!playing) {
             vid.play()
+            vid.style.border = "none"
         } else {
+            vid.style.border = "1px solid blue"
             vid.pause()
         }
         playing = !playing
@@ -90,16 +92,17 @@ export function playEnlargeVideos(){
         })
     })
     function toggleVidSize(vid){
+        
         if (!playing) {
             vid.classList.add('enlarge-vid')
             vid.style.zIndex = '2'
             vid.play()
-            vid.style.border = "1px solid blue"
+            aside.classList.add('hide')
         } else if (playing) {
+            aside.classList.remove('hide')
             vid.classList.remove('enlarge-vid')
             vid.pause()
             vid.style.zIndex = '0'
-            vid.style.border = "1px dotted red"
         }
         playing = !playing
     }
