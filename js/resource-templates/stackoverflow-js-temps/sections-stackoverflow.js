@@ -87,6 +87,7 @@ aside.addEventListener('focusout', e => {asideFocused = false})
 aside.addEventListener('click', e => {
     asideFocused = true
     aside.classList.toggle('hide')
+    toggleSidBarBtn()
     
 })
 function hideSubSections(){

@@ -95,7 +95,11 @@ export function playEnlargeVideos(){
         vid.classList.toggle('enlarge-vid')
         if(vid.classList.contains('enlarge-vid')){
             aside.classList.add('hide')
-        } else aside.classList.remove('hide')
+            vid.style.zIndex = 3
+        } else {
+            vid.style.zIndex = 1
+            aside.classList.remove('hide')
+        }
     }
     addEventListener('keydown', e => {
         let key = e.keyCode

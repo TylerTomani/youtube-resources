@@ -7,9 +7,7 @@ export function playEnlargeVideos(){
     const stepVidsSteps = document.querySelectorAll('.step-vid')
     const vids = document.querySelectorAll('.step-vid > video')
     const images = document.querySelector('.step-img > img')
-    function stopAllVids(){
-        vids.forEach(el =>{el.pause()})
-    }
+    function stopAllVids(){vids.forEach(el =>{el.pause()})}
     nav.addEventListener('click', stopAllVids)
     nav.addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
@@ -25,16 +23,7 @@ export function playEnlargeVideos(){
             let letter = e.key.toLowerCase()
             let key = e.keyCode
             const vid = step.querySelector('video')
-            if(letter == 'enter'){
-                toggleVidSize(vid)
-            } 
-            if(key == 32){
-                e.preventDefault()
-                playPause(vid)
-            }
-            else {
-                // videoControls(key,vid,e)
-            }
+            videoControls(key,vid,e)
         })
         stepTxt.addEventListener('click', e => {
             e.preventDefault()
@@ -44,18 +33,20 @@ export function playEnlargeVideos(){
         })
     })
     function playPause(vid){
-        if (!playing) {
+        if (playing) {
             vid.play()
             vid.style.border = "none"
         } else {
             vid.style.border = "1px solid blue"
             vid.pause()
         }
-        playing = !playing
     }
     function videoControls(key,vid,e){
         switch (key) {
             case 13:
+                console.log('enter')
+                toggleVidSize(vid)
+                playing = true
                 break
             case 32:
                 e.preventDefault()
@@ -71,6 +62,7 @@ export function playEnlargeVideos(){
                     vid.style.border = '2px solid blue'
                 }
                 break
+            // right arrow
             case 39:
                 vid.currentTime = vid.currentTime + 2
                 if (vid.currentTime >= vid.duration) {
@@ -82,11 +74,7 @@ export function playEnlargeVideos(){
             default:
                 playing = !playing
         }
-        if (!playing) {
-            vid.play()
-        } else {
-            vid.pause()
-        }
+        playPause(vid)
     }
     vids.forEach(vid => {
         vid.addEventListener('click', e =>{
@@ -104,25 +92,19 @@ export function playEnlargeVideos(){
         })
     })
     function toggleVidSize(vid){
-        
-        if (!playing) {
-            vid.classList.add('enlarge-vid')
-            vid.style.zIndex = '2'
-            vid.play()
+        vid.classList.toggle('enlarge-vid')
+        if(vid.classList.contains('enlarge-vid')){
             aside.classList.add('hide')
-        } else if (playing) {
+            vid.style.zIndex = 3
+        } else {
+            vid.style.zIndex = 1
             aside.classList.remove('hide')
-            vid.classList.remove('enlarge-vid')
-            vid.pause()
-            vid.style.zIndex = '0'
         }
-        playing = !playing
     }
     addEventListener('keydown', e => {
         let key = e.keyCode
         if(imgFocused && key == 32){
             e.preventDefault()
-
         }
     })
 }
