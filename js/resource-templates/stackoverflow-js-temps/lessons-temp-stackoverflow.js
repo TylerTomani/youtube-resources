@@ -159,7 +159,7 @@ export function stepTxtListeners(){
         if(stepImg){
             const img = stepImg.querySelector('img') ? stepImg.querySelector('img') : stepImg.querySelector('video')
             if (img) {
-                img.style.zIndex = "2"
+                img.style.zIndex = "3"
                 img.classList.toggle('enlarge')
                 if(img.classList.contains('enlarge')){
                     aside.classList.add('hide')
