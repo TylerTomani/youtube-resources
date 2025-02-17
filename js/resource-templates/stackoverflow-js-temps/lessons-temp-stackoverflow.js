@@ -11,7 +11,7 @@ import { sections } from './sections-stackoverflow.js'
 import { lessons } from './sections-stackoverflow.js'
 import { toggleSideBtmBtn } from './sections-stackoverflow.js'
 export function stepTxtListeners(){
-    const stepTxts = document.querySelectorAll('.step-txt')
+    const stepTxts = document.querySelectorAll('.step > .step-txt')
     const allImages = document.querySelectorAll('.step-img > img') 
     const asStepTxt = document.querySelectorAll('.step-txt a')
     const allVideos = document.querySelectorAll(".step-vid > video")
@@ -95,7 +95,9 @@ export function stepTxtListeners(){
         copyCodes.forEach(el => { el.setAttribute('tabindex','-1') })
         pAs.forEach(el => { el.setAttribute('tabindex','-1') })
     }
-    
+    function dropZindex(){
+        allImages.forEach(el => {el.style.zIndex = 1})
+    }
     stepTxts.forEach(el => {
         el.addEventListener('focusout', e => {
         })
@@ -108,6 +110,7 @@ export function stepTxtListeners(){
             let step = getStep(e.target.parentElement)
             let img = step.querySelector('.step-img > img')
             if(img){
+                dropZindex()
                 img.style.zIndex = 2
                 allVideos.forEach(el => {el.style.zIndex = 0})
             }

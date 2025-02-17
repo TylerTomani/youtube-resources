@@ -4,7 +4,7 @@
     padding: 0;
 }
 
-.section-page > .step {padding-top: 5%;}
+
 .steps-container {
     display: flex;
     flex-direction: column;
@@ -12,8 +12,10 @@
     /* margin: 0 5%; */
 }
 .step {    
+    padding-top: 5%;
     display: flex;
     /* gap: 2.5%; */
+    flex-wrap: wrap;
     justify-content: space-between
 }
 .step>* {
@@ -31,6 +33,7 @@
 .step-txt {
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
 }
 .step-txt>p a {
     word-break: break-all;
