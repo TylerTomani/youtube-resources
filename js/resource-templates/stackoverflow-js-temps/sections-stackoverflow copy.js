@@ -4,9 +4,9 @@ import { playEnlargeVideos } from "./play-enlarge-vid.js"
 export const navBar = document.querySelector('nav.section-lesson-title')
 const mainTargetDiv = document.querySelector('#mainTargetDiv')
 const header = document.querySelector('header')
-const toggleSideBtmBtn = document.querySelector('#toggleSideBtmBtn')
+export const toggleSideBtmBtn = document.querySelector('#toggleSideBtmBtn')
 import { addCopyCodes } from "../copy-code-resources.js"
-const aside = document.querySelector('aside')
+export const aside = document.querySelector('aside')
 const backlink = document.querySelector('#backlink')
 const homelink = document.querySelector('#homelink')
 const vsCodeShortRegex = document.querySelector('#vsCodeShortRegex')
@@ -14,6 +14,7 @@ const programShortcuts = document.querySelector('#programShortcuts')
 const tutorialLink = document.querySelector('#tutorialLink')
 export  const sections = document.querySelectorAll('.section')
 export const lessons = document.querySelectorAll('.section-container > ul > li > a')
+const homePageLink = document.getElementById('homePageLink')
 let asideFocused = false;
 let sectionsFocused = true
 let lessonsFocused = false
@@ -23,6 +24,23 @@ let iSection = 0
 let iLesson = 0
 export let lastClickedLesson
 export let lastClickedSection
+let autoFocused
+addEventListener('DOMContentLoaded', e => {
+    lessons.forEach(el => {
+        if(el.hasAttribute('autofocus')){
+            autoFocused = true
+        }
+    })
+    sections.forEach(el => {
+        if(el.hasAttribute('autofocus')){
+            autoFocused = true
+        }
+    })
+    if(!autoFocused){
+
+        fetchLessonHref(homePageLink.href)
+    }
+});
 const keys = {
     shift: {
         pressed: false
@@ -109,9 +127,7 @@ export function getSubSection(parent){
         return null
     }
 }
-mainTargetDiv.addEventListener('focusin', e => {
 
-})
 function elIdsFocus(e) {
     const letter = e.key.toLowerCase();
     const elIds = document.querySelectorAll('[id]');
@@ -129,7 +145,7 @@ sections.forEach(el => {
     if(el.hasAttribute('autofocus')){
         iSection = [...sections].indexOf(el)
         lastClickedSection = el
-    }
+    } 
     el.addEventListener('focus', e => {
         iSection = [...sections].indexOf(e.target)
         asideFocused = true
@@ -189,12 +205,15 @@ function sectionsCycles(shiftKey = false) {
 }
 lessons.forEach(el => {
     if(el.hasAttribute('autofocus')){
-        fetchLessonHref(el.href)
         lastClickedLesson = el
         const subSection = getSubSection(el.parentElement)
         const lessons = subSection.querySelectorAll('li > a')
         lessonsFocused = true
         sectionsFocused = false
+        fetchLessonHref(el.href)
+    } else {
+        
+        // fetchLessonHref(homePageLink.href)
     }
     el.addEventListener('focus', e => {
         sectionsFocused = false
@@ -254,7 +273,7 @@ function lessonsCycle(lessons,shiftKey = false) {
 addEventListener('keydown', e => {
     let letter = e.key.toLowerCase()   
     
-    if (letter == 's' && !asideFocused) {
+    if ((letter == 's' || letter == 'a') && !asideFocused) {
         if(lastClickedSection){
             lastClickedSection.focus()
         }
@@ -281,7 +300,7 @@ addEventListener('keydown', e => {
             aside.classList.remove('hide')
         } 
     }
-    // toggleSidBarBtn()
+    toggleSidBarBtn()
     
 });
 /// I don't know if i need this here
@@ -297,3 +316,13 @@ function toggleSidBarBtn(){
         toggleSideBtmBtn.classList.remove('active')
     }
 }
+toggleSideBtmBtn.addEventListener('click', e => {
+    e.preventDefault()
+    aside.classList.toggle('hide')
+})
+toggleSideBtmBtn.addEventListener('keydown', e => {
+    let letter = e.key.toLowerCase()
+    if(letter == 'enter'){   
+        aside.classList.toggle('hide')
+    }
+})

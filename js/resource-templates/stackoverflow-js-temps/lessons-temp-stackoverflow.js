@@ -32,10 +32,8 @@ export function stepTxtListeners(){
                 el.style.zIndex = '1'
             })
         })
-    })
-    
+    })    
     // sections.forEach(el => { el.addEventListener('focus', denlargeAllImages )
-    
     pAs.forEach(el => {el.setAttribute('tabindex','-1')})
     if(endNxtLesson){
         endNxtLesson.addEventListener('click', e => {
@@ -60,6 +58,7 @@ export function stepTxtListeners(){
     nav.addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
         stepFocus(letter)
+        denlargeAllImages()
     })
     function stepFocus(letter) {
         const intLetter = parseInt(letter)

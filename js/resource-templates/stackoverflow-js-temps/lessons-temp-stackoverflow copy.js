@@ -9,6 +9,7 @@ import { lastClickedLesson }  from './sections-stackoverflow.js'
 import { lastClickedSection }  from './sections-stackoverflow.js'
 import { sections } from './sections-stackoverflow.js'
 import { lessons } from './sections-stackoverflow.js'
+import { toggleSideBtmBtn } from './sections-stackoverflow.js'
 export function stepTxtListeners(){
     const stepTxts = document.querySelectorAll('.step-txt')
     const allImages = document.querySelectorAll('.step-img > img') 
@@ -27,21 +28,17 @@ export function stepTxtListeners(){
             handleImgSize(e)
             handleStepTabIndex(e)
             addTabs(e.target)
-            // addTabs(e.target)
+            allVideos.forEach(el => {
+                el.style.zIndex = '1'
+            })
         })
-    })
-    
+    })    
     // sections.forEach(el => { el.addEventListener('focus', denlargeAllImages )
-    
     pAs.forEach(el => {el.setAttribute('tabindex','-1')})
     if(endNxtLesson){
         endNxtLesson.addEventListener('click', e => {
             const subSection = getSubSection(lastClickedLesson)
-            // const lessons = subSection.querySelectorAll('li > a')
-            
-            if(aside.classList.contains('hide'))  {
-                aside.classList.remove('hide')
-            }
+            if(aside.classList.contains('hide')){aside.classList.remove('hide')}
             lastClickedLesson.focus()
             scrollTo(0,0)
         })   
@@ -56,12 +53,12 @@ export function stepTxtListeners(){
     mainTargetDiv.addEventListener('focusin', e => {targetDivFocusIN = true})
     mainTargetDiv.addEventListener('focusout', e => {
         targetDivFocusIN = false
-        
         // denlargeAllImages()
     })
     nav.addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
         stepFocus(letter)
+        denlargeAllImages()
     })
     function stepFocus(letter) {
         const intLetter = parseInt(letter)
@@ -109,11 +106,10 @@ export function stepTxtListeners(){
             imgIndex = 0
             currentStepIndex = [...stepTxts].indexOf(e.target)
             let step = getStep(e.target.parentElement)
-            console.log(step)
             let img = step.querySelector('.step-img > img')
             if(img){
-                img.style.zIndex = 10
-                allVideos.forEach(el => {el.style.zIndex = 5})
+                img.style.zIndex = 2
+                allVideos.forEach(el => {el.style.zIndex = 0})
             }
         })
         el.addEventListener('keydown', e => {
@@ -122,9 +118,6 @@ export function stepTxtListeners(){
                 handleImgSize(e,letter)
                 handleStepTabIndex(e)
                 addTabs(e.target)
-                denlargeAllVideos()
-
-                // handleVideos(e)
             }
             if (letter == 'tab') {
             }
@@ -146,15 +139,15 @@ export function stepTxtListeners(){
             }
         })
     }    
-    function denlargeAllVideos(){
-        allVideos.forEach(el => {
-            el.style.zIndex = "0"
-            if (el.classList.contains('enlarge-vid')) {
-                el.classList.remove('enlarge-vid')
-                el.pause()
-            }
-        })
-    }
+    // function denlargeAllVideos(){
+    //     allVideos.forEach(el => {
+    //         el.style.zIndex = "0"
+    //         if (el.classList.contains('enlarge-vid')) {
+    //             el.classList.remove('enlarge-vid')
+    //             el.pause()
+    //         }
+    //     })
+    // }
     function handleImgSize(e,letter) {
         const step = getStepContainer(e.target.parentElement)
         if (step && isNaN(letter)) {
@@ -166,7 +159,7 @@ export function stepTxtListeners(){
         if(stepImg){
             const img = stepImg.querySelector('img') ? stepImg.querySelector('img') : stepImg.querySelector('video')
             if (img) {
-                img.style.zIndex = "1"
+                img.style.zIndex = "2"
                 img.classList.toggle('enlarge')
                 if(img.classList.contains('enlarge')){
                     aside.classList.add('hide')
@@ -176,32 +169,26 @@ export function stepTxtListeners(){
     }   
     addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
+        let key = e.keyCode
         if (targetDivFocusIN) {
             let letter = e.key.toLowerCase()
-            if(!isNaN(letter)) {
-                stepFocus(letter)
-            }
-            if(stepTxts.length > 0){
-                stepTxts[currentStepIndex].scrollIntoView({block: 'center'})
-            }
+            if(!isNaN(letter)) {stepFocus(letter)}
+            if(stepTxts.length > 0){stepTxts[currentStepIndex].scrollIntoView({block: 'center'})}
             if(letter == 'n'){
                 nav.focus()
                 scrollTo(0,0)   
             }     
         }
-        if (letter == 'm' && lastStep) {
-            lastStep.focus()
-        }       
+        if (letter == 'm' && lastStep) {lastStep.focus()}       
         if(letter == 'e' && endNxtLesson){
-            endNxtLesson.scrollIntoView({behavior:'instant',block:'center'})   
+            endNxtLesson.scrollIntoView({behavior:'instant',block:'center'})
+        } else if (letter == 'e' && !endNxtLesson && toggleSideBtmBtn){
+            toggleSideBtmBtn.focus()
         }
     });
-    
-    
     aside.addEventListener('focusin', denlargeAllImages)    
 }
 stepTxtListeners()
-
 function getStepContainer(parent) {
     if (parent.classList.contains('step')) {
         return parent
