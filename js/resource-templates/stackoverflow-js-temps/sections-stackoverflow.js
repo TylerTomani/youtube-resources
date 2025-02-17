@@ -208,6 +208,9 @@ lessons.forEach(el => {
     if(el.hasAttribute('autofocus')){
         lastClickedLesson = el
         const subSection = getSubSection(el.parentElement)
+        if(subSection.classList.contains('hide')){
+            subSection.classList.remove('hide')
+        }
         const lessons = subSection.querySelectorAll('li > a')
         lessonsFocused = true
         sectionsFocused = false
@@ -274,12 +277,13 @@ function lessonsCycle(lessons,shiftKey = false) {
 addEventListener('keydown', e => {
     let letter = e.key.toLowerCase()   
     
-    if ((letter == 's' || letter == 'a') && !asideFocused) {
+    if (letter == 's'  && !asideFocused) {
+        console.log(lastClickedLesson)
         if(lastClickedSection){
             lastClickedSection.focus()
         }
          else if(lastClickedLesson){
-            lastClickedLesson.scrollIntoView({ behavior: 'instant', block: 'center' })
+            // lastClickedLesson.scrollIntoView({ behavior: 'instant', block: 'center' })
             lastClickedLesson.focus()
         }else {
             sections[0].scrollIntoView({ behavior: 'instant', block: 'center' })
