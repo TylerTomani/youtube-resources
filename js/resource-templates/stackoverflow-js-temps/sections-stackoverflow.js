@@ -1,5 +1,5 @@
-import { nav, stepTxtListeners } from "./lessons-temp-stackoverflow.js"
-import { lastStep } from "./lessons-temp-stackoverflow.js"
+import { nav, stepTxtListeners } from "./step-focus-img-temp.js"
+import { lastStep } from "./step-focus-img-temp.js"
 import { playEnlargeVideos } from "./play-enlarge-vid.js"
 export const navBar = document.querySelector('nav.section-lesson-title')
 const mainTargetDiv = document.querySelector('#mainTargetDiv')
@@ -178,8 +178,8 @@ sections.forEach(el => {
         }
         if (!isNaN(letter)) {
             let intLet = parseInt(letter)
-            sections[intLet - 1].focus()
             if (sections[intLet - 1]) {
+                sections[intLet - 1].focus()
             }
         }
         if(letter == 's' && sectionsFocused){

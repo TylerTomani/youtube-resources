@@ -97,10 +97,11 @@ export function stepTxtListeners(){
         pAs.forEach(el => { el.setAttribute('tabindex','-1') })
     }
     function dropZindex(){
-        allImages.forEach(el => {el.style.zIndex = 0})
+        allImages.forEach(el => {el.style.zIndex = 2})
     }
     stepTxts.forEach(el => {
         el.addEventListener('focusout', e => {
+            dropZindex()
             
         })
         el.addEventListener('focus', e => {
@@ -110,25 +111,26 @@ export function stepTxtListeners(){
             imgIndex = 0
             currentStepIndex = [...stepTxts].indexOf(e.target)
             let step = getStep(e.target.parentElement)
-            let img = step.querySelector('.step-img > img')
-            let vid = step.querySelector('.step-vid > video')
-            
+            let img = step.querySelector('.step-img img')
+            let vid = step.querySelector('.step-vid video')
             if(img){
                 dropZindex()
-                img.style.zIndex = 3
-                console.log(img)
                 allVideos.forEach(el => {el.style.zIndex = 0})
+                img.style.zIndex = 3       
+                console.log(img)
             }
             if(vid){
                 dropZindex()
-                vid.style.zIndex = 3
-                // console.log(img)
                 allImages.forEach(el => {el.style.zIndex = 0})
+                vid.style.zIndex = 3
             }
         })
         el.addEventListener('keydown', e => {
             let letter = e.key.toLowerCase()
             if (letter == 'enter') {
+                let step = getStep(e.target.parentElement)
+                let img = step.querySelector('.step-img  img')
+                console.log(img)
                 handleImgSize(e,letter)
                 handleStepTabIndex(e)
                 addTabs(e.target)
@@ -173,8 +175,7 @@ export function stepTxtListeners(){
         if(stepImg){
             const img = stepImg.querySelector('img') ? stepImg.querySelector('img') : stepImg.querySelector('video')
             if (img) {
-                
-                img.style.zIndex = "3"
+                // img.style.zIndex = "3"
                 nav.style.zIndex ="0"
                 img.classList.toggle('enlarge')
                 if(img.classList.contains('enlarge')){

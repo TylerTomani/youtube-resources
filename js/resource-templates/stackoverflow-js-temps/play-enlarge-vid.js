@@ -1,5 +1,5 @@
-import { aside } from "./lessons-temp-stackoverflow.js"
-import { nav } from "./lessons-temp-stackoverflow.js"
+import { aside } from "./step-focus-img-temp.js"
+import { nav } from "./step-focus-img-temp.js"
 
 export function playEnlargeVideos(){
     let playing = false
@@ -29,6 +29,7 @@ export function playEnlargeVideos(){
             e.preventDefault()
             const step = getStepVidStep(e.target)
             const vid = step.querySelector('video')
+            playing = !playing
             playPause(vid)            
         })
     })
@@ -72,8 +73,6 @@ export function playEnlargeVideos(){
                     vid.currentTime = vid.duration()
                 }
                 break
-            default:
-                playing = !playing
         }
         playPause(vid)
     }
@@ -103,7 +102,12 @@ export function playEnlargeVideos(){
         } else {
             vid.style.zIndex = 1
             aside.classList.remove('hide')
+            // vid.pause()
+            // playing = !playing
+            // playPause(vid)
+            // console.log(vid.stop)
         }
+        
     }
     addEventListener('keydown', e => {
         let key = e.keyCode
