@@ -218,15 +218,10 @@ lessons.forEach(el => {
         lessonsFocused = true
         sectionsFocused = false
         fetchLessonHref(el.href)
-    } else {
-        
-        // fetchLessonHref(homePageLink.href)
     }
     el.addEventListener('focus', e => {
         sectionsFocused = false
         lessonsFocused = true
-        // iLesson = [...lessons].indexOf(el)
-        // iLesson += 1
         lastFocusedItem = e.target
     })
     el.addEventListener('click', e => {
@@ -288,7 +283,7 @@ function lessonsCycle(lessons,shiftKey = false) {
 }
 addEventListener('keydown', e => {
     let letter = e.key.toLowerCase()   
-    
+    let key = e.keyCode
     if (letter == 's'  && !asideFocused) {
         console.log(lastClickedLesson)
         if(lastClickedSection){
@@ -317,9 +312,7 @@ addEventListener('keydown', e => {
             aside.classList.remove('hide')
         } 
     }
-    
     showToggleSidBarBtn()
-    
 });
 /// I don't know if i need this here
 stepTxtListeners()

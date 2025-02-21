@@ -146,15 +146,6 @@ export function stepTxtListeners(){
             }
         })
     }    
-    // function denlargeAllVideos(){
-    //     allVideos.forEach(el => {
-    //         el.style.zIndex = "0"
-    //         if (el.classList.contains('enlarge-vid')) {
-    //             el.classList.remove('enlarge-vid')
-    //             el.pause()
-    //         }
-    //     })
-    // }
     allImages.forEach(el => {
         el.addEventListener('click', e => { 
             handleImgSize(e)
@@ -188,6 +179,7 @@ export function stepTxtListeners(){
             }
         }
     }   
+    
     addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
         let key = e.keyCode
@@ -201,6 +193,13 @@ export function stepTxtListeners(){
                 nav.focus()
                 scrollTo(0,0)   
             }     
+        } else {
+            // Figure out way to pause play videos when step txt isn't
+            if(key === 32){
+                allVideos.forEach(vid => {
+                    vid.pause()
+                })
+            }
         }
         if (letter == 'm' && lastStep) {lastStep.focus()}       
         if(letter == 'e' && endNxtLesson){
