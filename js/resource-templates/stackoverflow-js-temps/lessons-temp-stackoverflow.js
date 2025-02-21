@@ -25,6 +25,7 @@ export function stepTxtListeners(){
     let imgIndex = 0
     allImages.forEach(el => {
         el.addEventListener('click', e => {
+            // console.log('img')
             handleImgSize(e)
             handleStepTabIndex(e)
             addTabs(e.target)
@@ -96,10 +97,11 @@ export function stepTxtListeners(){
         pAs.forEach(el => { el.setAttribute('tabindex','-1') })
     }
     function dropZindex(){
-        allImages.forEach(el => {el.style.zIndex = 1})
+        allImages.forEach(el => {el.style.zIndex = 0})
     }
     stepTxts.forEach(el => {
         el.addEventListener('focusout', e => {
+            
         })
         el.addEventListener('focus', e => {
             removeAllTabs()
@@ -109,11 +111,19 @@ export function stepTxtListeners(){
             currentStepIndex = [...stepTxts].indexOf(e.target)
             let step = getStep(e.target.parentElement)
             let img = step.querySelector('.step-img > img')
-            console.log(img)
+            let vid = step.querySelector('.step-vid > video')
+            
             if(img){
                 dropZindex()
                 img.style.zIndex = 3
+                console.log(img)
                 allVideos.forEach(el => {el.style.zIndex = 0})
+            }
+            if(vid){
+                dropZindex()
+                vid.style.zIndex = 3
+                // console.log(img)
+                allImages.forEach(el => {el.style.zIndex = 0})
             }
         })
         el.addEventListener('keydown', e => {

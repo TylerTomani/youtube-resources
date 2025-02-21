@@ -177,6 +177,7 @@
 }
 .step-float .step-img {
     /* border: 4px solid magenta; */
+    /* z-index: 1; */
     width: 40%;
     float: right;   
 }
