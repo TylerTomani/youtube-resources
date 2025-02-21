@@ -109,9 +109,10 @@ export function stepTxtListeners(){
             currentStepIndex = [...stepTxts].indexOf(e.target)
             let step = getStep(e.target.parentElement)
             let img = step.querySelector('.step-img > img')
+            console.log(img)
             if(img){
                 dropZindex()
-                img.style.zIndex = 2
+                img.style.zIndex = 3
                 allVideos.forEach(el => {el.style.zIndex = 0})
             }
         })
@@ -162,11 +163,15 @@ export function stepTxtListeners(){
         if(stepImg){
             const img = stepImg.querySelector('img') ? stepImg.querySelector('img') : stepImg.querySelector('video')
             if (img) {
+                
                 img.style.zIndex = "3"
+                nav.style.zIndex ="0"
                 img.classList.toggle('enlarge')
                 if(img.classList.contains('enlarge')){
                     aside.classList.add('hide')
-                } else aside.classList.remove('hide')
+                } else {
+                    aside.classList.remove('hide')
+                }
             }
         }
     }   

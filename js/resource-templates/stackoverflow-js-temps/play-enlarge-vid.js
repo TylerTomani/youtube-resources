@@ -33,12 +33,14 @@ export function playEnlargeVideos(){
         })
     })
     function playPause(vid){
-        if (playing) {
-            vid.play()
-            vid.style.border = "none"
-        } else {
-            vid.style.border = "1px solid blue"
-            vid.pause()
+        if(vid){
+            if (playing) {
+                vid.play()
+                vid.style.border = "none"
+            } else {
+                vid.style.border = "1px solid blue"
+                vid.pause()
+            }
         }
     }
     function videoControls(e, vid, key){
