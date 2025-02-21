@@ -24,6 +24,7 @@ let iSection = 0
 let iLesson = 0
 export let lastClickedLesson
 export let lastClickedSection
+let lastFocusedItem  
 let autoFocused
 addEventListener('DOMContentLoaded', e => {
     lessons.forEach(el => {
@@ -152,6 +153,7 @@ sections.forEach(el => {
         asideFocused = true
         sectionsFocused = true
         lessonsFocused = false
+        lastFocusedItem
     })
     el.addEventListener('click', e => {
         e.preventDefault()
@@ -186,6 +188,7 @@ sections.forEach(el => {
             sectionsCycles(e.shiftKey)          
         }
         if(letter == 'enter'){
+            
             lastClickedSection = e.target
         }
     })
@@ -224,6 +227,7 @@ lessons.forEach(el => {
         lessonsFocused = true
         // iLesson = [...lessons].indexOf(el)
         // iLesson += 1
+        lastFocusedItem = e.target
     })
     el.addEventListener('click', e => {
         e.preventDefault()
@@ -256,6 +260,14 @@ lessons.forEach(el => {
                 let isShiftPressed = e.shiftKey
                 lessonsCycle(lessons,e.shiftKey)
             }
+            if(letter == 'enter'){
+                if (e.target == lastFocusedItem && e.target == lastClickedLesson){
+                    mainTargetDiv.focus()
+                }
+                lastClickedLesson = e.target
+                
+            }
+            
         }
     })
 })

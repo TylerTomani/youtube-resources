@@ -98,13 +98,13 @@
 
 }
 .enlarge {
-    z-index: 2;
+    /* z-index: 2; */
     margin-right: 50%;
     max-height: 30vh;
     transform: scale(2.5);
 }
 .enlarge-vid {
-    z-index: 2;
+    /* z-index: 2; */
     margin-right: 50%;
     max-height: 30vh;
     transform: scale(3.25);

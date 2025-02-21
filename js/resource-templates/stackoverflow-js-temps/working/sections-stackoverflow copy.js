@@ -63,7 +63,7 @@ function fetchLessonHref(href) {
 }
 navBar.addEventListener('click', e => {
     aside.classList.toggle('hide')
-    toggleSidBarBtn()
+    showToggleSidBarBtn()
 })
 aside.addEventListener('focusin', e => {asideFocused = true})
 navBar.addEventListener('keydown', e => {
@@ -87,6 +87,7 @@ aside.addEventListener('focusout', e => {asideFocused = false})
 aside.addEventListener('click', e => {
     asideFocused = true
     aside.classList.toggle('hide')
+    showToggleSidBarBtn()
     
 })
 function hideSubSections(){
@@ -207,6 +208,9 @@ lessons.forEach(el => {
     if(el.hasAttribute('autofocus')){
         lastClickedLesson = el
         const subSection = getSubSection(el.parentElement)
+        if(subSection.classList.contains('hide')){
+            subSection.classList.remove('hide')
+        }
         const lessons = subSection.querySelectorAll('li > a')
         lessonsFocused = true
         sectionsFocused = false
@@ -273,12 +277,13 @@ function lessonsCycle(lessons,shiftKey = false) {
 addEventListener('keydown', e => {
     let letter = e.key.toLowerCase()   
     
-    if ((letter == 's' || letter == 'a') && !asideFocused) {
+    if (letter == 's'  && !asideFocused) {
+        console.log(lastClickedLesson)
         if(lastClickedSection){
             lastClickedSection.focus()
         }
          else if(lastClickedLesson){
-            lastClickedLesson.scrollIntoView({ behavior: 'instant', block: 'center' })
+            // lastClickedLesson.scrollIntoView({ behavior: 'instant', block: 'center' })
             lastClickedLesson.focus()
         }else {
             sections[0].scrollIntoView({ behavior: 'instant', block: 'center' })
@@ -300,13 +305,14 @@ addEventListener('keydown', e => {
             aside.classList.remove('hide')
         } 
     }
-    toggleSidBarBtn()
+    
+    showToggleSidBarBtn()
     
 });
 /// I don't know if i need this here
 stepTxtListeners()
 
-function toggleSidBarBtn(){
+function showToggleSidBarBtn(){
     if (aside.classList.contains('hide')) {
         toggleSideBtmBtn.classList.add('active')
         toggleSideBtmBtn.setAttribute('tabindex', 0)
@@ -318,7 +324,9 @@ function toggleSidBarBtn(){
 }
 toggleSideBtmBtn.addEventListener('click', e => {
     e.preventDefault()
-    aside.classList.toggle('hide')
+    if(aside.classList.contains('hide')){
+        aside.classList.remove('hide')
+    }
 })
 toggleSideBtmBtn.addEventListener('keydown', e => {
     let letter = e.key.toLowerCase()

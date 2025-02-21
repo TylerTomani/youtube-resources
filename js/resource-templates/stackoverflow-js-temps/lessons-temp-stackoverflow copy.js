@@ -11,7 +11,7 @@ import { sections } from './sections-stackoverflow.js'
 import { lessons } from './sections-stackoverflow.js'
 import { toggleSideBtmBtn } from './sections-stackoverflow.js'
 export function stepTxtListeners(){
-    const stepTxts = document.querySelectorAll('.step-txt')
+    const stepTxts = document.querySelectorAll('.step > .step-txt')
     const allImages = document.querySelectorAll('.step-img > img') 
     const asStepTxt = document.querySelectorAll('.step-txt a')
     const allVideos = document.querySelectorAll(".step-vid > video")
@@ -25,6 +25,7 @@ export function stepTxtListeners(){
     let imgIndex = 0
     allImages.forEach(el => {
         el.addEventListener('click', e => {
+            // console.log('img')
             handleImgSize(e)
             handleStepTabIndex(e)
             addTabs(e.target)
@@ -95,9 +96,12 @@ export function stepTxtListeners(){
         copyCodes.forEach(el => { el.setAttribute('tabindex','-1') })
         pAs.forEach(el => { el.setAttribute('tabindex','-1') })
     }
-    
+    function dropZindex(){
+        allImages.forEach(el => {el.style.zIndex = 0})
+    }
     stepTxts.forEach(el => {
         el.addEventListener('focusout', e => {
+            
         })
         el.addEventListener('focus', e => {
             removeAllTabs()
@@ -107,9 +111,19 @@ export function stepTxtListeners(){
             currentStepIndex = [...stepTxts].indexOf(e.target)
             let step = getStep(e.target.parentElement)
             let img = step.querySelector('.step-img > img')
+            let vid = step.querySelector('.step-vid > video')
+            
             if(img){
-                img.style.zIndex = 2
+                dropZindex()
+                img.style.zIndex = 3
+                console.log(img)
                 allVideos.forEach(el => {el.style.zIndex = 0})
+            }
+            if(vid){
+                dropZindex()
+                vid.style.zIndex = 3
+                // console.log(img)
+                allImages.forEach(el => {el.style.zIndex = 0})
             }
         })
         el.addEventListener('keydown', e => {
@@ -159,11 +173,15 @@ export function stepTxtListeners(){
         if(stepImg){
             const img = stepImg.querySelector('img') ? stepImg.querySelector('img') : stepImg.querySelector('video')
             if (img) {
-                img.style.zIndex = "2"
+                
+                img.style.zIndex = "3"
+                nav.style.zIndex ="0"
                 img.classList.toggle('enlarge')
                 if(img.classList.contains('enlarge')){
                     aside.classList.add('hide')
-                } else aside.classList.remove('hide')
+                } else {
+                    aside.classList.remove('hide')
+                }
             }
         }
     }   
