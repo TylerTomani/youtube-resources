@@ -87,21 +87,13 @@ export function stepTxtListeners(){
         pAs.forEach(el => { el.setAttribute('tabindex','-1') })
     }
     function dropZindex(excludedImg = null) {
-        // allImages.forEach(el => {
-        //     if (el !== excludedImg) {
-        //         el.style.zIndex = 1;
-        //     }
-        // });
+        allImages.forEach(el => {
+            if (el !== excludedImg) el.style.zIndex = 2;
+        });
     }
     stepTxts.forEach(el => {
         el.addEventListener('focusout', e => {
             // dropZindex()          
-            let step = getStep(e.target.parentElement);
-            let img = step.querySelector('.step-img img');
-            let vid = step.querySelector('.step-vid video');
-            if(img){
-                img.style.zIndex = 1; 
-            }
         })
         el.addEventListener('focus', e => {
             lastStep = e.target;
@@ -111,15 +103,16 @@ export function stepTxtListeners(){
             let step = getStep(e.target.parentElement);
             let img = step.querySelector('.step-img img');
             let vid = step.querySelector('.step-vid video');
+
             if (img) {
-                console.log(img)
-                img.style.zIndex = 50; // Highest z-index
+                dropZindex(img);
+                img.style.zIndex = 100; // Highest z-index
             }
+
             if (vid) {
+                dropZindex();
                 allImages.forEach(el => { el.style.zIndex = 0 });
-            }
-            if (step.classList.contains('step-float')) {
-                step.style.zIndex = 50; // Ensure step-float rises above others
+                vid.style.zIndex = 3;
             }
         });
         el.addEventListener('keydown', e => {
@@ -141,13 +134,13 @@ export function stepTxtListeners(){
     // Below-  handling of img and video size enlarge and denlarge
     function denlargeAllImages() {
         allImages.forEach(el => {
-            el.style.zIndex = "0"
+            // el.style.zIndex = "0"
             if (el.classList.contains('enlarge')) {
                 el.classList.remove('enlarge')
             }
         })
         allVideos.forEach(el => {
-            el.style.zIndex = "0"
+            // el.style.zIndex = "0"
             if (el.classList.contains('enlarge-vid')) {
                 el.classList.remove('enlarge-vid')
             }
@@ -174,13 +167,14 @@ export function stepTxtListeners(){
         if(stepImg){
             const img = stepImg.querySelector('img') ? stepImg.querySelector('img') : stepImg.querySelector('video')
             if (img) {
+                img.style.zIndex = "3"
+                nav.style.zIndex ="0"
                 img.classList.toggle('enlarge')
+                console.log(img)
                 if(img.classList.contains('enlarge')){
-                    nav.style.zIndex ="0"
                     aside.classList.add('hide')
                 } else {
                     aside.classList.remove('hide')
-                    nav.style.zIndex = "0"
                 }
             }
         }
@@ -213,10 +207,6 @@ export function stepTxtListeners(){
         } else if (letter == 'e' && !endNxtLesson && toggleSideBtmBtn){
             toggleSideBtmBtn.focus()
         }
-        
-        let step = getStep(e.target.parentElement);
-        let img = step.querySelector('.step-img img');
-        console.log(img)
     });
     aside.addEventListener('focusin', denlargeAllImages)    
 }
