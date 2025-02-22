@@ -155,6 +155,7 @@ sections.forEach(el => {
         sectionsFocused = true
         lessonsFocused = false
         lastFocusedItem
+        iLesson = 0
     })
     el.addEventListener('click', e => {
         e.preventDefault()
@@ -216,12 +217,11 @@ lessons.forEach(el => {
             subSection.classList.remove('hide')
         }
         if(subSection){
-
             const lessons = subSection.querySelectorAll('li > a')
             lessonsFocused = true
             sectionsFocused = false
+            fetchLessonHref(el.href)
         }
-        fetchLessonHref(el.href)
         
     }
     el.addEventListener('focus', e => {
@@ -233,9 +233,9 @@ lessons.forEach(el => {
         e.preventDefault()
         e.stopPropagation()
         fetchLessonHref(e.target.href)
-        if(e.target == lastClickedLesson){
-            mainTargetDiv.scrollIntoView({behavior:'instant', block:'start'})
-        }
+        // if(e.target == lastClickedLesson){
+        //     mainTargetDiv.scrollIntoView({behavior:'instant', block:'start'})
+        // }
         lastClickedLesson = e.target
     })
     el.addEventListener('keydown', e => {
@@ -264,10 +264,9 @@ lessons.forEach(el => {
                 if (e.target == lastFocusedItem && e.target == lastClickedLesson){
                     mainTargetDiv.focus()
                 }
-                lastClickedLesson = e.target
-                
+                lastClickedLesson = e.target             
             }
-            
+        console.log(iLesson)      
         }
     })
 })
