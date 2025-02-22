@@ -340,8 +340,8 @@ toggleSideBtmBtn.addEventListener('click', e => {
     // e.preventDefault()
     if(aside.classList.contains('hide')){
         aside.classList.remove('hide')
-        toggleSideBtmBtn.classList.add('hide')
     }
+    toggleSideBtmBtn.classList.add('hide')
 })
 toggleSideBtmBtn.addEventListener('keydown', e => {
     let letter = e.key.toLowerCase()
@@ -353,5 +353,6 @@ addEventListener('click', e => {
     console.log(e.target)
     if (!aside.classList.contains('hide')) {
         toggleSideBtmBtn.classList.add('hide')
+        toggleSideBtmBtn.classList.remove('active')
     }
 });

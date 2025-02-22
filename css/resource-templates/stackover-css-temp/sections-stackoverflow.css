@@ -182,8 +182,12 @@ li > code {
 }
 
 #toggleSideBtmBtn{
-    display: none;
-
+    /* display: none; */
+    z-index: 50
+    
+}
+#toggleSideBtmBtn.active{
+    z-index: 100
 }
 #toggleSideBtmBtn.active{
     display: inline-block;

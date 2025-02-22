@@ -1,5 +1,5 @@
-import { nav, stepTxtListeners } from "./lessons-temp-stackoverflow.js"
-import { lastStep } from "./lessons-temp-stackoverflow.js"
+import { nav, stepTxtListeners } from "./step-focus-img-temp.js"
+import { lastStep } from "./step-focus-img-temp.js"
 import { playEnlargeVideos } from "./play-enlarge-vid.js"
 export const navBar = document.querySelector('nav.section-lesson-title')
 const mainTargetDiv = document.querySelector('#mainTargetDiv')
@@ -132,10 +132,11 @@ export function getSubSection(parent){
 
 function elIdsFocus(e) {
     const letter = e.key.toLowerCase();
+    const isShift = e.shiftKey
     const elIds = document.querySelectorAll('[id]');
     elIds.forEach(el => {
         if (el.parentElement.id == 'nav-section-lesson-titles'){return}
-        if (letter === el.id[0]) {
+        if (letter === el.id[0] && !isShift){
             el.focus();
         }
         if (letter === 'm') {
@@ -178,8 +179,8 @@ sections.forEach(el => {
         }
         if (!isNaN(letter)) {
             let intLet = parseInt(letter)
-            sections[intLet - 1].focus()
             if (sections[intLet - 1]) {
+                sections[intLet - 1].focus()
             }
         }
         if(letter == 's' && sectionsFocused){
@@ -214,19 +215,18 @@ lessons.forEach(el => {
         if(subSection.classList.contains('hide')){
             subSection.classList.remove('hide')
         }
-        const lessons = subSection.querySelectorAll('li > a')
-        lessonsFocused = true
-        sectionsFocused = false
+        if(subSection){
+
+            const lessons = subSection.querySelectorAll('li > a')
+            lessonsFocused = true
+            sectionsFocused = false
+        }
         fetchLessonHref(el.href)
-    } else {
         
-        // fetchLessonHref(homePageLink.href)
     }
     el.addEventListener('focus', e => {
         sectionsFocused = false
         lessonsFocused = true
-        // iLesson = [...lessons].indexOf(el)
-        // iLesson += 1
         lastFocusedItem = e.target
     })
     el.addEventListener('click', e => {
@@ -283,12 +283,14 @@ function lessonsCycle(lessons,shiftKey = false) {
             iLesson = 0
         }
     }
-    lessons[iLesson].scrollIntoView({ behavior: 'instant', block: 'center' })
-    lessons[iLesson].focus()
+    if(lessons[iLesson]){
+        lessons[iLesson].scrollIntoView({ behavior: 'instant', block: 'center' })
+        lessons[iLesson].focus()
+    }
 }
 addEventListener('keydown', e => {
     let letter = e.key.toLowerCase()   
-    
+    let key = e.keyCode
     if (letter == 's'  && !asideFocused) {
         console.log(lastClickedLesson)
         if(lastClickedSection){
@@ -317,10 +319,10 @@ addEventListener('keydown', e => {
             aside.classList.remove('hide')
         } 
     }
-    
     showToggleSidBarBtn()
     
 });
+
 /// I don't know if i need this here
 stepTxtListeners()
 
@@ -335,9 +337,10 @@ function showToggleSidBarBtn(){
     }
 }
 toggleSideBtmBtn.addEventListener('click', e => {
-    e.preventDefault()
+    // e.preventDefault()
     if(aside.classList.contains('hide')){
         aside.classList.remove('hide')
+        toggleSideBtmBtn.classList.add('hide')
     }
 })
 toggleSideBtmBtn.addEventListener('keydown', e => {
@@ -346,3 +349,9 @@ toggleSideBtmBtn.addEventListener('keydown', e => {
         aside.classList.toggle('hide')
     }
 })
+addEventListener('click', e => {
+    console.log(e.target)
+    if (!aside.classList.contains('hide')) {
+        toggleSideBtmBtn.classList.add('hide')
+    }
+});

@@ -11,7 +11,7 @@ import { sections } from './sections-stackoverflow.js'
 import { lessons } from './sections-stackoverflow.js'
 import { toggleSideBtmBtn } from './sections-stackoverflow.js'
 export function stepTxtListeners(){
-    const stepTxts = document.querySelectorAll('.step > .step-txt')
+    const stepTxts = document.querySelectorAll('.step  .step-txt')
     const allImages = document.querySelectorAll('.step-img > img') 
     const asStepTxt = document.querySelectorAll('.step-txt a')
     const allVideos = document.querySelectorAll(".step-vid > video")
@@ -23,17 +23,7 @@ export function stepTxtListeners(){
     let colCodesFocused = false
     let currentStepIndex = 0
     let imgIndex = 0
-    allImages.forEach(el => {
-        el.addEventListener('click', e => {
-            // console.log('img')
-            handleImgSize(e)
-            handleStepTabIndex(e)
-            addTabs(e.target)
-            allVideos.forEach(el => {
-                el.style.zIndex = '1'
-            })
-        })
-    })    
+    
     // sections.forEach(el => { el.addEventListener('focus', denlargeAllImages )
     pAs.forEach(el => {el.setAttribute('tabindex','-1')})
     if(endNxtLesson){
@@ -96,41 +86,47 @@ export function stepTxtListeners(){
         copyCodes.forEach(el => { el.setAttribute('tabindex','-1') })
         pAs.forEach(el => { el.setAttribute('tabindex','-1') })
     }
-    function dropZindex(){
-        allImages.forEach(el => {el.style.zIndex = 2})
+    function dropZindex(excludedImg = null) {
+        // allImages.forEach(el => {
+        //     if (el !== excludedImg) {
+        //         el.style.zIndex = 1;
+        //     }
+        // });
     }
     stepTxts.forEach(el => {
         el.addEventListener('focusout', e => {
-            dropZindex()
-            
+            // dropZindex()          
+            let step = getStep(e.target.parentElement);
+            let img = step.querySelector('.step-img img');
+            let vid = step.querySelector('.step-vid video');
+            if(img){
+                img.style.zIndex = 1; 
+            }
         })
         el.addEventListener('focus', e => {
-            removeAllTabs()
-            lastStep = e.target
-            stepTxtsFocused = true
-            imgIndex = 0
-            currentStepIndex = [...stepTxts].indexOf(e.target)
-            let step = getStep(e.target.parentElement)
-            let img = step.querySelector('.step-img img')
-            let vid = step.querySelector('.step-vid video')
-            if(img){
-                dropZindex()
-                allVideos.forEach(el => {el.style.zIndex = 0})
-                img.style.zIndex = 3       
+            lastStep = e.target;
+            stepTxtsFocused = true;
+            currentStepIndex = [...stepTxts].indexOf(e.target);
+
+            let step = getStep(e.target.parentElement);
+            let img = step.querySelector('.step-img img');
+            let vid = step.querySelector('.step-vid video');
+            if (img) {
                 console.log(img)
+                img.style.zIndex = 50; // Highest z-index
             }
-            if(vid){
-                dropZindex()
-                allImages.forEach(el => {el.style.zIndex = 0})
-                vid.style.zIndex = 3
+            if (vid) {
+                allImages.forEach(el => { el.style.zIndex = 0 });
             }
-        })
+            if (step.classList.contains('step-float')) {
+                step.style.zIndex = 50; // Ensure step-float rises above others
+            }
+        });
         el.addEventListener('keydown', e => {
             let letter = e.key.toLowerCase()
             if (letter == 'enter') {
                 let step = getStep(e.target.parentElement)
                 let img = step.querySelector('.step-img  img')
-                console.log(img)
                 handleImgSize(e,letter)
                 handleStepTabIndex(e)
                 addTabs(e.target)
@@ -138,7 +134,9 @@ export function stepTxtListeners(){
             if (letter == 'tab') {
             }
         })
-        el.addEventListener('click',denlargeAllImages)
+        el.addEventListener('click', e => {
+
+        })
     })
     // Below-  handling of img and video size enlarge and denlarge
     function denlargeAllImages() {
@@ -155,15 +153,16 @@ export function stepTxtListeners(){
             }
         })
     }    
-    // function denlargeAllVideos(){
-    //     allVideos.forEach(el => {
-    //         el.style.zIndex = "0"
-    //         if (el.classList.contains('enlarge-vid')) {
-    //             el.classList.remove('enlarge-vid')
-    //             el.pause()
-    //         }
-    //     })
-    // }
+    allImages.forEach(el => {
+        el.addEventListener('click', e => { 
+            handleImgSize(e)
+            handleStepTabIndex(e)
+            addTabs(e.target)
+            allVideos.forEach(el => {
+                el.style.zIndex = '1'
+            })
+        })
+    })    
     function handleImgSize(e,letter) {
         const step = getStepContainer(e.target.parentElement)
         if (step && isNaN(letter)) {
@@ -175,28 +174,38 @@ export function stepTxtListeners(){
         if(stepImg){
             const img = stepImg.querySelector('img') ? stepImg.querySelector('img') : stepImg.querySelector('video')
             if (img) {
-                // img.style.zIndex = "3"
-                nav.style.zIndex ="0"
                 img.classList.toggle('enlarge')
                 if(img.classList.contains('enlarge')){
+                    nav.style.zIndex ="0"
                     aside.classList.add('hide')
                 } else {
                     aside.classList.remove('hide')
+                    nav.style.zIndex = "0"
                 }
             }
         }
     }   
+    
     addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
         let key = e.keyCode
         if (targetDivFocusIN) {
             let letter = e.key.toLowerCase()
             if(!isNaN(letter)) {stepFocus(letter)}
-            if(stepTxts.length > 0){stepTxts[currentStepIndex].scrollIntoView({block: 'center'})}
+            if(stepTxts.length > 0){
+                stepTxts[currentStepIndex].scrollIntoView({block: 'center'})
+            }
             if(letter == 'n'){
                 nav.focus()
                 scrollTo(0,0)   
             }     
+        } else {
+            // Figure out way to pause play videos when step txt isn't
+            if(key === 32){
+                allVideos.forEach(vid => {
+                    vid.pause()
+                })
+            }
         }
         if (letter == 'm' && lastStep) {lastStep.focus()}       
         if(letter == 'e' && endNxtLesson){
@@ -204,6 +213,10 @@ export function stepTxtListeners(){
         } else if (letter == 'e' && !endNxtLesson && toggleSideBtmBtn){
             toggleSideBtmBtn.focus()
         }
+        
+        let step = getStep(e.target.parentElement);
+        let img = step.querySelector('.step-img img');
+        console.log(img)
     });
     aside.addEventListener('focusin', denlargeAllImages)    
 }

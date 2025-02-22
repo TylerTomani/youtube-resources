@@ -112,7 +112,6 @@ export function stepTxtListeners(){
             let img = step.querySelector('.step-img img');
             let vid = step.querySelector('.step-vid video');
             if (img) {
-                console.log(img)
                 img.style.zIndex = 50; // Highest z-index
             }
             if (vid) {
@@ -214,9 +213,6 @@ export function stepTxtListeners(){
             toggleSideBtmBtn.focus()
         }
         
-        let step = getStep(e.target.parentElement);
-        let img = step.querySelector('.step-img img');
-        console.log(img)
     });
     aside.addEventListener('focusin', denlargeAllImages)    
 }
