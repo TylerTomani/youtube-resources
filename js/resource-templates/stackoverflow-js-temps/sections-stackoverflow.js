@@ -155,7 +155,6 @@ sections.forEach(el => {
         sectionsFocused = true
         lessonsFocused = false
         lastFocusedItem
-        iLesson = 0
     })
     el.addEventListener('click', e => {
         e.preventDefault()
@@ -266,7 +265,7 @@ lessons.forEach(el => {
                 }
                 lastClickedLesson = e.target             
             }
-        console.log(iLesson)      
+        // console.log(il)      
         }
     })
 })
