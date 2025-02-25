@@ -86,16 +86,9 @@ export function stepTxtListeners(){
         copyCodes.forEach(el => { el.setAttribute('tabindex','-1') })
         pAs.forEach(el => { el.setAttribute('tabindex','-1') })
     }
-    function dropZindex(excludedImg = null) {
-        // allImages.forEach(el => {
-        //     if (el !== excludedImg) {
-        //         el.style.zIndex = 1;
-        //     }
-        // });
-    }
+    
     stepTxts.forEach(el => {
         el.addEventListener('focusout', e => {
-            // dropZindex()          
             let step = getStep(e.target.parentElement);
             let img = step.querySelector('.step-img img');
             let vid = step.querySelector('.step-vid video');
@@ -107,7 +100,6 @@ export function stepTxtListeners(){
             lastStep = e.target;
             stepTxtsFocused = true;
             currentStepIndex = [...stepTxts].indexOf(e.target);
-
             let step = getStep(e.target.parentElement);
             let img = step.querySelector('.step-img img');
             let vid = step.querySelector('.step-vid video');
@@ -156,10 +148,38 @@ export function stepTxtListeners(){
         el.addEventListener('click', e => { 
             handleImgSize(e)
             handleStepTabIndex(e)
-            addTabs(e.target)
-            allVideos.forEach(el => {
-                el.style.zIndex = '1'
-            })
+            addTabs(e.target) 
+            lastStep = e.target;
+            stepTxtsFocused = true;
+            currentStepIndex = [...stepTxts].indexOf(e.target);
+            let step = getStep(e.target.parentElement);
+            let img = step.querySelector('.step-img img');
+            let vid = step.querySelector('.step-vid video');
+            if (img) {
+                img.style.zIndex = 50; // Highest z-index
+            }
+            if (vid) {
+                allImages.forEach(el => { el.style.zIndex = 0 });
+            }
+            if (step.classList.contains('step-float')) {
+                step.style.zIndex = 50; // Ensure step-float rises above others
+            }
+        })
+    })    
+    allVideos.forEach(el => {
+        el.addEventListener('click', e => { 
+            let step = getStep(e.target.parentElement);
+            let img = step.querySelector('.step-img img');
+            let vid = step.querySelector('.step-vid video');
+            if (img) {
+                img.style.zIndex = 50; // Highest z-index
+            }
+            if (vid) {
+                allImages.forEach(el => { el.style.zIndex = 0 });
+            }
+            if (step.classList.contains('step-float')) {
+                step.style.zIndex = 50; // Ensure step-float rises above others
+            }
         })
     })    
     function handleImgSize(e,letter) {
@@ -174,7 +194,14 @@ export function stepTxtListeners(){
             const img = stepImg.querySelector('img') ? stepImg.querySelector('img') : stepImg.querySelector('video')
             if (img) {
                 img.classList.toggle('enlarge')
+                allImages.forEach(el => {
+                    el.style.zIndex = "0"
+                })
+                allVideos.forEach(el => {
+                    el.style.zIndex = "0"
+                })
                 if(img.classList.contains('enlarge')){
+                    img.style.zIndex = 50; // Highest z-index
                     nav.style.zIndex ="0"
                     aside.classList.add('hide')
                 } else {
@@ -212,7 +239,6 @@ export function stepTxtListeners(){
         } else if (letter == 'e' && !endNxtLesson && toggleSideBtmBtn){
             toggleSideBtmBtn.focus()
         }
-        
     });
     aside.addEventListener('focusin', denlargeAllImages)    
 }
