@@ -9,6 +9,12 @@ document.addEventListener('DOMContentLoaded', () => {
     let lastClickedLink = null 
     let sidebarLinksFocused = false;
     sidebarLinks = [...sidebarLinks]
+    aside.addEventListener('click', e => {
+        if(e.target == aside){
+            toggleSidebar()
+        }
+    }
+    )
     // Track focus state of the sidebar
     sidebarLinks.forEach((el, i, arr) => {        
         el.addEventListener('focusin', e => {
