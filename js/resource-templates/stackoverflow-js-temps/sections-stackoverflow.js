@@ -265,7 +265,6 @@ lessons.forEach(el => {
                 }
                 lastClickedLesson = e.target             
             }
-        // console.log(il)      
         }
     })
 })
@@ -289,7 +288,7 @@ function lessonsCycle(lessons,shiftKey = false) {
 addEventListener('keydown', e => {
     let letter = e.key.toLowerCase()   
     let key = e.keyCode
-    if (letter == 's'  && !asideFocused) {
+    if ((letter == 's' || letter == 'a')  && !asideFocused) {
         console.log(lastClickedLesson)
         if(lastClickedSection){
             lastClickedSection.focus()
