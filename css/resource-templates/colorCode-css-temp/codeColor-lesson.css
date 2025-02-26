@@ -27,15 +27,17 @@
 .step-txt p{
     padding: 1%;
 }
-.step-txt .code-container {
+.step-txt textarea {
     margin: 1%;
     border-radius: 6px;
-}
-.step-txt .code-container .copy-code {
     padding-left: 1%;
     padding-bottom: 1%;
-    text-wrap: wrap;
+    padding-top: 0;
+    /* text-wrap: wrap; */
+    min-height: 50px;
+    
 }
+
 
 .console {
     position: sticky;
