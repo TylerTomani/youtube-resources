@@ -1,9 +1,9 @@
-export let mainContentFocused = false;
+export let targetDivFocused = false;
+export const sideBarBtn = document.getElementById('sideBarBtn');
 document.addEventListener('DOMContentLoaded', () => {
     const aside = document.querySelector('aside');
-    const sideBarBtn = document.getElementById('sideBarBtn');
     let sidebarLinks = document.querySelectorAll('aside.side-bar ul > li > a');
-    const mainContent = document.querySelector('.main-content');
+    const targetDiv = document.querySelector('#targetDiv');
     let currentLinkIndex = 0;
     let lastFocusedLink = null;
     let lastClickedLink = null 
@@ -34,8 +34,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     })
-    mainContent.addEventListener('focusin', () => {mainContentFocused = true;});
-    mainContent.addEventListener('focusout', () => {mainContentFocused = false;});
+    targetDiv.addEventListener('focusin', () => {targetDivFocused = true;});
+    targetDiv.addEventListener('focusout', () => {targetDivFocused = false;});
     // Toggle sidebar active state
     function toggleSidebar() {
         const sidebar = document.querySelector('aside.side-bar');
@@ -62,9 +62,9 @@ document.addEventListener('DOMContentLoaded', () => {
         fetch(href)
             .then(response => response.text())
             .then(html => {
-                mainContent.innerHTML = html;
+                targetDiv.innerHTML = html;
                 if (targetLink.dataset.clickedOnce) {
-                    mainContent.focus();
+                    targetDiv.focus();
                 } else {
                     targetLink.dataset.clickedOnce = true;
                     setTimeout(() => delete targetLink.dataset.clickedOnce, 500);
@@ -98,8 +98,8 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             elIdsFocus(e);
         }
-        if (!mainContentFocused ){
-            // 
+        if (!targetDivFocused ){
+            //
             if(!isNaN(letter)){
                 e.preventDefault()
                 let intLet = parseInt(letter)
@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', (e) => {
             injectContent(e);
             if(e.target == lastFocusedLink){
-                mainContent.focus()
+                targetDiv.focus()
             }
             lastFocusedLink = e.target; // Store the last clicked link
             currentLinkIndex = index;  // Update the current index

@@ -1,0 +1,31 @@
+:root {
+    --bg-primary: #254757;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* background-color: var(--bg-primary); */
+}
+.header-codeColor-lesson{
+    display: flex
+}
+.main-container-codeColor {
+    position: absolute;
+    border: 3px dashed magenta;
+}
+.console {
+    border: 2px solid white;
+    background-color: var(--bg-primary);
+    color: white;
+    height: 25vh;
+    width: 50vw;
+    float: right;
+
+}
+.steps-container {
+    border: 2px solid blue;
+}
+.step-txt .code-container .copy-code {
+    text-wrap: wrap;
+}

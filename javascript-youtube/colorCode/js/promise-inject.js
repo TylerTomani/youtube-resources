@@ -1,4 +1,5 @@
 import { parts } from "./side-bar-scripts/letterFocus-sidebar.js";
+import { sideBarBtn } from "./letterFocus-sidebar.js";
 const body = document.querySelector('body')
 const mainContent = document.querySelector('.main-content')
 let currentClicked
@@ -26,6 +27,7 @@ function clickLesson(e) {
 }
 parts.forEach(el => {
     if(el.hasAttribute('autofocus')){
+        console.log(el.innerText)
         fetchHref(el.href)
     }
     el.addEventListener('click', e => {
