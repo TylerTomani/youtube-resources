@@ -1,6 +1,3 @@
-:root {
-    --bg-primary: #254757;
-}
 * {
     margin: 0;
     padding: 0;
@@ -8,24 +5,50 @@
     /* background-color: var(--bg-primary); */
 }
 .header-codeColor-lesson{
-    display: flex
+    display: flex;
+    justify-content: space-between;
+    height: 5vh;
+    border: 1px solid black;
+    height: 20px;
 }
-.main-container-codeColor {
-    position: absolute;
-    border: 3px dashed magenta;
+.tutorial-vid-container video{
+    border: 1px solid blue;
+    width: 100%;
+    height: 100%;
 }
-.console {
-    border: 2px solid white;
-    background-color: var(--bg-primary);
-    color: white;
-    height: 25vh;
-    width: 50vw;
-    float: right;
-
+.step {
+    border: 1px solid black;
+    position: relative;
+    clear: both;
 }
 .steps-container {
     border: 2px solid blue;
 }
+.step-txt p{
+    padding: 1%;
+}
+.step-txt .code-container {
+    margin: 1%;
+    border-radius: 6px;
+}
 .step-txt .code-container .copy-code {
+    padding-left: 1%;
+    padding-bottom: 1%;
     text-wrap: wrap;
+}
+
+.console {
+    position: sticky;
+    top: 0;
+    border: 2px solid whitesmoke;
+    background-color: rgb(28, 26, 26);
+    height: 10vh;
+    width: 50%;
+    float: right;
+}
+
+@media screen and (max-width: 600px) {
+    .code-container .copy-code{
+        font-size: 70%;
+    }
 }

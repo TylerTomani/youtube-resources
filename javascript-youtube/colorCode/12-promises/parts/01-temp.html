@@ -4,72 +4,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>01-temp</title>
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="../../../../css/resource-templates/colorCode-css-temp/codeColor-colors.css">
     <link rel="stylesheet" href="../../../../css/resource-templates/colorCode-css-temp/codeColor-lesson.css">
-    <script src="../../../../js/resource-templates/codeColor-js-temps/lesson-codeColor.js" defer></script>
+    <script src="../../../../js/resource-templates/codeColor-js-temps/codeColor-stepTxts.js " defer></script>
 </head>
 <body>
-<h3>Basic Promise</h3>\
-
-<header class="header-codeColor-lesson">
-    <div class="tutorial-vid-container">
-        <p class="r">
-            put clip of video part that explains code in the video, have it 
-            slow play and get better, if focus leaves, pause video, and return to 
-            to step-txt immediately (** i can't spell immediately)
-        </p>
-        <video src=""></video>
-    </div>
-</header>
-<div class="main-container-codeColor">
-    <div class="console">
-        <p>
-            This will display code alterations made in example code
-        </p>
-    </div>
-    <div class="steps-container">
-        <div class="step">
-            <div tabindex="0" class="step-txt">     
-                <h3>01</h2>
-                <p>
-                    <code class="gr">Promise()</code> Takes two functions as arugments,
-                    <code class="m">resolve()</code>, and <code class="r">reject()</code>
-                </p>
-                <div class="code-container">
-                    <pre tabindex="0" class="copy-code"> 
-    const <span class="m">response</span> = <span class="gr">fetch('</span>someApi.com<span class="gr">')</span>
-                    </pre>
+    <header class="header-codeColor-lesson">
+        <h3>Basic Promise</h3>
+        
+    </header>
+    <div class="main-container-codeColor">
+        <div class="steps-container">
+            <!-- 01 -->
+            <div class="step">
+                <div class="console">
+                    <p>
+                        Place Code result here of example in step, if code is changed, show changed in this console
+                    </p>
+                </div>
+                <div tabindex="0" class="step-txt">     
+                    <h3>01</h2>
+                    <p>
+                        <code class="b">Promise()</code> Takes two functions as arugments,
+                        <code class="o">resolve()</code>, and <code class="r">reject()</code>
+                    </p>
+                    <div class="code-container">
+                        <pre tabindex="0" class="copy-code"> 
+<span class="p">function</span> getWeather(){
+    <span class="p">return</span> <span class="p">new</span> <span class="b">Promise</span>(<span class="p">function</span>(<span class="o">resolve</span>, <span class="r">reject</span> ))
+}</pre>
+                    </div>
+                    <p>
+                        <code class="b">Promise()</code> Takes two functions as arugments,
+                        <code class="m">resolve()</code>, and <code class="r">reject()</code>
+                    </p>
+                    <div class="code-container">
+                        <pre tabindex="0" class="copy-code"> 
+    <span class="p">function</span> getWeather(){
+        <span class="p">return</span> <span class="p">new</span> <span class="b">Promise</span>(<span class="p">function</span>(<span class="r">resolve</span>, <span class="r">reject</span> ))
+    }</pre>
+                    </div>
+                </div>  
+            </div>
+            <!-- 02 -->
+            
+            <div class="step">
+                <div tabindex="0" class="step-txt">
+                    <h3>03</h2>
+                    <p>
+                        A <code class="b">Promise()</code> returns <code>... Pending</code> data, because functions can NOT 
+                        return nothing. A Promise allows us to wait for data
+                    </p>
+                    <p>
+                        
+                    </p>
+                </div>
+                <div class="step-img">
+                    <div class="code-container"><pre tabindex="0" class="copy-code"> 
+<pre tabindex="0" class="copy-code"> <span class="p">function</span> getWeather(){
+    <span class="p">return</span> <span class="p">new</span> <span class="b">Promise</span>()
+}</pre>
+        
+                    </pre></div>
                 </div>
             </div>
-            
-        </div>
-        <!-- 02 -->
-        <div class="step">
-            <div tabindex="0" class="step-txt">
-                <h3>02</h2>
-                <p>
-                    But behind the scenes it is a <code class="r">{ Reponse } </code> object 
-                    creates a <span class="lsg">Request</span> class
-                    and uses the 'someApi.com' link passed in.
-                </p>
-                <p>
-                    this is how you can use different methods and header
-                </p>
-            </div>
-            <div class="step-img">
-                <div class="code-container"><pre tabindex="0" class="copy-code"> 
-    const <span class="r">{ Response }</span>  = <span class="gr">fetch(</span><span class="r">{ Request }</span><span class="gr">)</span>
-    const request = 
-        new Request('someApi.com', {
-            method : get
-        })
-    
-                </pre></div>
-            </div>
-        </div>
-        <!-- <script id="addScript"  src="parts/01.js"></script> -->
+        </div>    
     </div>
-    
-</div>
 </body>
 </html>
