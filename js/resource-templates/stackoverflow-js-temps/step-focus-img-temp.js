@@ -146,6 +146,7 @@ export function stepTxtListeners(){
     }    
     allImages.forEach(el => {
         el.addEventListener('click', e => { 
+            playing = !playing
             handleImgSize(e)
             handleStepTabIndex(e)
             addTabs(e.target) 
@@ -164,6 +165,7 @@ export function stepTxtListeners(){
             if (step.classList.contains('step-float')) {
                 step.style.zIndex = 50; // Ensure step-float rises above others
             }
+            
         })
     })    
     allVideos.forEach(el => {
