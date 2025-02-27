@@ -1,13 +1,16 @@
 :root{
-    --bg-primary: #201d1d ;
-    --font-primary: whitesmoke;
+    --bg-primary-db: #201d1d ;
+    --font-primary-db: whitesmoke;
 }
 .dark-mode {
-    background-color: var(--bg-primary); 
-    color: var(--font-primary)
+    background-color: var(--bg-primary-db); 
+    color: var(--font-primary-db)
+}
+.dark-mode .section-container>.section {
+    color: var(--font-primary-db);
 }
 .dark-mode nav#nav-section-lesson-titles{
-    background-color: var(--bg-primary)
+    background-color: var(--bg-primary-db)
 
 }
 .dark-mode a {

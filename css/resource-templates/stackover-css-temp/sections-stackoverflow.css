@@ -1,14 +1,15 @@
+:root {
+    --bg-primary: whitesmoke;
+    --font-primary: #201d1d;
+}
 * {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-        /* color: wheat; */
+    
     /* background-color: lawngreen; */
 }
-
-
-
 body{overflow-x: hidden;}
 main {
     display: flex;
@@ -30,6 +31,7 @@ main>aside {
 }
 aside ~ *{
     position: relative;
+    
 }
 #mainTargetDiv {
     /* flex-grow: 1; */
@@ -104,6 +106,7 @@ nav.section-lesson-title {
     list-style:none;
 }
 .section-container > .section {    
+    color: var(--font-primary);
     box-shadow: 0 0 2px  black;
     padding-top: 1%;
     padding-left: 1%;
@@ -169,12 +172,12 @@ nav.section-lesson-title {
     display: flex;
     width: 100%;
     flex-wrap: wrap;
-    white-space: wrap
+    white-space: wrap;
 }
 
 li > code {
     background-color: lightgrey;
-
+    
 }
 
 .hide {
