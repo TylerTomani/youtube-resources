@@ -10,6 +10,8 @@ import { lastClickedSection }  from './sections-stackoverflow.js'
 import { sections } from './sections-stackoverflow.js'
 import { lessons } from './sections-stackoverflow.js'
 import { toggleSideBtmBtn } from './sections-stackoverflow.js'
+
+// import { playing } from './play-enlarge-vid.js'
 export function stepTxtListeners(){
     const stepTxts = document.querySelectorAll('.step  .step-txt')
     const allImages = document.querySelectorAll('.step-img > img') 
@@ -146,7 +148,6 @@ export function stepTxtListeners(){
     }    
     allImages.forEach(el => {
         el.addEventListener('click', e => { 
-            playing = !playing
             handleImgSize(e)
             handleStepTabIndex(e)
             addTabs(e.target) 
@@ -170,6 +171,7 @@ export function stepTxtListeners(){
     })    
     allVideos.forEach(el => {
         el.addEventListener('click', e => { 
+            
             let step = getStep(e.target.parentElement);
             let img = step.querySelector('.step-img img');
             let vid = step.querySelector('.step-vid video');

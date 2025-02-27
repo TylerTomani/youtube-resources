@@ -23,6 +23,15 @@ export function playEnlargeVideos(){
             let letter = e.key.toLowerCase()
             let key = e.keyCode
             const vid = step.querySelector('video')
+            if(letter == 'enter'){
+                playing = true
+                
+            }
+            // if(key == 32){
+            //     playing = !playing
+                
+            // }
+            
             videoControls(e,vid,key)
         })
         stepTxt.addEventListener('click', e => {
@@ -34,7 +43,7 @@ export function playEnlargeVideos(){
         })
     })
     function playPause(vid){
-        if(vid){
+                if(vid){
             if (playing) {
                 vid.play()
                 vid.style.border = "none"
@@ -45,6 +54,7 @@ export function playEnlargeVideos(){
         }
     }
     function videoControls(e, vid, key){
+       
         switch (key) {
             case 13:
                 toggleVidSize(vid)
@@ -78,11 +88,20 @@ export function playEnlargeVideos(){
     }
     vids.forEach(vid => {
         vid.addEventListener('click', e =>{
+            // playing = !playing
             e.preventDefault()
             let step = getStepVidStep(e.target.parentElement)
             let vid = step.querySelector('.step-vid video')
             videoControls(e,vid)
             toggleVidSize(vid)
+            
+        })
+        vid.addEventListener('keydown', e =>{
+            let step = getStepVidStep(e.target.parentElement)
+            let vid = step.querySelector('.step-vid video')
+            console.log(e.target)
+            // videoControls(e,vid)
+            
         })
         vid.addEventListener('focus', e =>{
             e.preventDefault()
@@ -98,7 +117,7 @@ export function playEnlargeVideos(){
         vid.classList.toggle('enlarge-vid')
         if(vid.classList.contains('enlarge-vid')){
             aside.classList.add('hide')
-            vid.style.zIndex = 3
+            vid.style.zIndex = 5
         } else {
             vid.style.zIndex = 1
             aside.classList.remove('hide')
@@ -111,9 +130,11 @@ export function playEnlargeVideos(){
     }
     addEventListener('keydown', e => {
         let key = e.keyCode
-        if(imgFocused && key == 32){
-            e.preventDefault()
-        }
+        console.log(e.target)
+        // if(!imgFocused && key == 13){
+        //     // e.preventDefault()
+        //     playing = !playing
+        // }
     })
 }
 function getStepVidStep(parent){

@@ -257,7 +257,7 @@ lessons.forEach(el => {
             }
             if(letter == 'a' && lessonsFocused){
                 let isShiftPressed = e.shiftKey
-                lessonsCycle(lessons,e.shiftKey)
+                lessonsCycle(lessons,isShiftPressed)
             }
             if(letter == 'enter'){
                 if (e.target == lastFocusedItem && e.target == lastClickedLesson){
@@ -347,7 +347,6 @@ toggleSideBtmBtn.addEventListener('keydown', e => {
     }
 })
 addEventListener('click', e => {
-    console.log(e.target)
     if (!aside.classList.contains('hide')) {
         toggleSideBtmBtn.classList.add('hide')
         toggleSideBtmBtn.classList.remove('active')
