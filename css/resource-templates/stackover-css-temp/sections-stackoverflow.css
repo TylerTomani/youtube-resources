@@ -29,7 +29,7 @@ main>aside {
     padding-top: 1%;
     padding-left: .5%;
     padding-right: 2%;
-    height: 100vhmax;
+    height: 100vmax;
 }
 aside ~ *{
     position: relative;
