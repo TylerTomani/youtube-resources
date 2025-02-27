@@ -26,6 +26,7 @@
 }
 .step-txt p{
     padding: 1%;
+    font-size: 90%;
 }
 .step-txt textarea {
     margin: 1%;
@@ -38,7 +39,12 @@
     
 }
 
+textarea.copy-code {
+    border: 2px solid red;
+    display: flex;
 
+    flex-grow: 1;
+}
 .console {
     position: sticky;
     top: 0;

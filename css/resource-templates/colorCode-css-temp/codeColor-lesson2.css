@@ -1,0 +1,35 @@
+.step {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.console {
+    float: right;
+    width: 250px;
+    /* Fixed width */
+    min-height: 10px;
+    height: 50%;
+    background: #222;
+    color: white;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.step-txt {
+    flex-grow: 1;
+    width: calc(100% - 260px);
+    /* Adjusting width dynamically */
+    max-width: 90%;
+    /* Ensures it stays within the step */
+    padding-left: 10px;
+    /* Space between console and text */
+}
+
+.copy-code {
+    width: 100%;
+    /* Takes the full width of step-txt */
+    max-width: 100%;
+    min-height: 80px;
+    resize: vertical;
+}

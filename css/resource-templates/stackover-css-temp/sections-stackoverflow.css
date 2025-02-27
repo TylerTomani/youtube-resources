@@ -10,7 +10,9 @@
     
     /* background-color: lawngreen; */
 }
-body{overflow-x: hidden;}
+body{
+    margin-right:  5%;
+    overflow-x: hidden;}
 main {
     display: flex;
     border: 19x solid red;
@@ -202,6 +204,11 @@ li > code {
     background-color: blue;
     border: 1px solid black;
     background-color: white;
+}
+@media screen and (max-width: 720px){
+    body {
+        margin-right: 0%
+    }
 }
 @media screen and (max-width: 641px){
     .section-lesson-title {padding-left: 1%;}
