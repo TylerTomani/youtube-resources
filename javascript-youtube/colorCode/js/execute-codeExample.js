@@ -31,26 +31,13 @@ export function executeCodeExample() {
             }
 
             button.addEventListener("click", runCode);
-
+            button.addEventListener("touchstart", runCode)
             textarea.addEventListener("keydown", function (event) {
                 if (((event.metaKey || event.ctrlKey) && event.shiftKey) && event.key === "Enter") {
                     console.log('go')
                     event.preventDefault();
                     runCode();
                 }
-                // if ((event.metaKey || event.ctrlKey) && event.key === "Enter") {
-                //     event.preventDefault(); // Prevent the default action (e.g., form submission)
-
-                //     // Get the current cursor position
-                //     const start = textarea.selectionStart;
-                //     const end = textarea.selectionEnd;
-
-                //     // Insert a newline at the cursor position
-                //     textarea.value = textarea.value.substring(0, start) + "\n" + textarea.value.substring(end);
-
-                //     // Move the cursor to the new position
-                //     textarea.selectionStart = textarea.selectionEnd = start + 1;
-                // }
                 if ( !event.shiftKey && (event.metaKey || event.ctrlKey) && event.key === "Enter") {
                     event.preventDefault(); // Prevent the default action
 
