@@ -1,35 +1,28 @@
+.main-container-codeColor {
+}
 .step {
-    display: flex;
-    flex-wrap: wrap;
     position: relative;
+    border: 1px solid black;
 }
 
 .console {
     float: right;
-    width: 250px;
-    /* Fixed width */
-    min-height: 10px;
-    height: 50%;
-    background: #222;
-    color: white;
+    /* This floats the console to the right */
+    background-color: black;
+    height: 15vh;
+    width: 40%;
+    /* Adjust as needed */
+    margin-left: 10px;
+    /* Optional: adds space between console and text */
     padding: 10px;
-    box-sizing: border-box;
+    /* Optional: adds padding inside console */
 }
 
-.step-txt {
-    flex-grow: 1;
-    width: calc(100% - 260px);
-    /* Adjusting width dynamically */
-    max-width: 90%;
-    /* Ensures it stays within the step */
-    padding-left: 10px;
-    /* Space between console and text */
-}
-
-.copy-code {
-    width: 100%;
-    /* Takes the full width of step-txt */
-    max-width: 100%;
-    min-height: 80px;
-    resize: vertical;
+.step textarea,
+.step .code-container,
+.step .copy-code,
+.step h3,
+.step p {
+    display: block;
+    /* Ensures wrapping around floated element */
 }
