@@ -1,5 +1,7 @@
-import { parts } from "./side-bar-scripts/letterFocus-sidebar.js";
+// import { parts } from "./side-bar-scripts/letterFocus-sidebar.js";
+// import { parts } from "./letterFocus-sidebar.js";
 import { sideBarBtn } from "./letterFocus-sidebar.js";
+import { executeCodeExample } from "./js-temps/execute-codeExample.js";
 const body = document.querySelector('body')
 const mainContent = document.querySelector('.main-content')
 let currentClicked
@@ -16,6 +18,7 @@ function fetchHref(href) {
         .then(hrefText)
         .then(displayHtml)
         .then(findScriptTag)
+        
 }
 function clickLesson(e) {
     let href = e.target.href
@@ -25,21 +28,22 @@ function clickLesson(e) {
     }
     currentClicked = e.target
 }
-parts.forEach(el => {
-    if(el.hasAttribute('autofocus')){
-        console.log(el.innerText)
-        fetchHref(el.href)
-    }
-    el.addEventListener('click', e => {
-        e.preventDefault()
-        let href = e.target.href
-        let promise = clickLesson(e)
-    })
-})
+// parts.forEach(el => {
+//     if(el.hasAttribute('autofocus')){
+//         console.log(el.innerText)
+//         fetchHref(el.href)
+//     }
+//     el.addEventListener('click', e => {
+//         e.preventDefault()
+//         let href = e.target.href
+//         let promise = clickLesson(e)
+//     })
+// })
 function findScriptTag(html){
     let scriptTag = mainContent.querySelector('#addScript')
     if (scriptTag){
         mainContent.querySelector('.steps-container').removeChild(scriptTag)
+        executeCodeExample()
     }
     body.append(scriptTag)
 }

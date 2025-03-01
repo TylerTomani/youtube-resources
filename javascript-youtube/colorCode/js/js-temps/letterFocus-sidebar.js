@@ -1,6 +1,6 @@
 export let targetDivFocused = false;
 export const sideBarBtn = document.getElementById('sideBarBtn');
-import {executeCodeExample} from './execute-codeExample.js'
+
 document.addEventListener('DOMContentLoaded', () => {
     const aside = document.querySelector('aside');
     let sidebarLinks = document.querySelectorAll('aside.side-bar ul > li > a');
@@ -66,7 +66,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 targetDiv.innerHTML = html;
                 if (targetLink.dataset.clickedOnce) {
                     targetDiv.focus();
-                    executeCodeExample()
                 } else {
                     targetLink.dataset.clickedOnce = true;
                     setTimeout(() => delete targetLink.dataset.clickedOnce, 500);
