@@ -1,5 +1,6 @@
 export let targetDivFocused = false;
 export const sideBarBtn = document.getElementById('sideBarBtn');
+
 document.addEventListener('DOMContentLoaded', () => {
     const aside = document.querySelector('aside');
     let sidebarLinks = document.querySelectorAll('aside.side-bar ul > li > a');
@@ -82,6 +83,11 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             sideBarBtn.focus();
         }
+        if (letter === 'm') {
+            e.preventDefault();
+            targetDiv.focus();
+            scrollTo(0, 0);
+        }
         if (letter === 'a') {
             e.preventDefault();
             // Navigate within the sidebar links
@@ -126,6 +132,19 @@ document.addEventListener('DOMContentLoaded', () => {
             injectContent(e);
             if(e.target == lastFocusedLink){
                 targetDiv.focus()
+                scrollTo(0, 0);
+            }
+            lastFocusedLink = e.target; // Store the last clicked link
+            currentLinkIndex = index;  // Update the current index
+        });
+        link.addEventListener('keydown', (e) => {
+            // injectContent(e);
+            let letter = e.key.toLowerCase()
+            if(letter == 'enter'){
+                if(e.target == lastFocusedLink){
+                    targetDiv.focus()
+                    scrollTo(0, 0);
+                }
             }
             lastFocusedLink = e.target; // Store the last clicked link
             currentLinkIndex = index;  // Update the current index
@@ -139,9 +158,6 @@ document.addEventListener('DOMContentLoaded', () => {
         elIds.forEach(el => {
             if (letter === el.id[0]) {
                 el.focus();
-            }
-            if (letter === 'm') {
-                scrollTo(0, 0);
             }
         });
     }
