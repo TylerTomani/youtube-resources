@@ -1,6 +1,7 @@
 export let targetDivFocused = false;
 export const sideBarBtn = document.getElementById('sideBarBtn');
-
+import {executeCodeExample} from './execute-codeExample.js'
+let stepTextAreasCodeFocused = false
 document.addEventListener('DOMContentLoaded', () => {
     const aside = document.querySelector('aside');
     let sidebarLinks = document.querySelectorAll('aside.side-bar ul > li > a');
@@ -9,7 +10,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let lastFocusedLink = null;
     let lastClickedLink = null 
     let sidebarLinksFocused = false;
+    
     sidebarLinks = [...sidebarLinks]
+    
     aside.addEventListener('click', e => {
         if(e.target == aside){
             toggleSidebar()
@@ -40,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Toggle sidebar active state
     function toggleSidebar() {
         const sidebar = document.querySelector('aside.side-bar');
-        sidebar.classList.toggle('active');
+        sidebar.classList.toggle('deactive');
     }
     // Focus on the next or previous link
     /* next if false when shift is pressed down*/
@@ -66,6 +69,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 targetDiv.innerHTML = html;
                 if (targetLink.dataset.clickedOnce) {
                     targetDiv.focus();
+                    executeCodeExample()
+                    trackTextAreaCodeFocus()
                 } else {
                     targetLink.dataset.clickedOnce = true;
                     setTimeout(() => delete targetLink.dataset.clickedOnce, 500);
@@ -79,30 +84,33 @@ document.addEventListener('DOMContentLoaded', () => {
     // Keydown event listener
     document.addEventListener('keydown', (e) => {
         const letter = e.key.toLowerCase();
-        if (letter === 's') {
-            e.preventDefault();
-            sideBarBtn.focus();
-        }
-        if (letter === 'm') {
-            e.preventDefault();
-            targetDiv.focus();
-            scrollTo(0, 0);
-        }
-        if (letter === 'a') {
-            e.preventDefault();
-            // Navigate within the sidebar links
-            const isShiftPressed = e.shiftKey;
-            if (lastClickedLink && !sidebarLinksFocused) {
-                lastClickedLink.focus();
+        if (!stepTextAreasCodeFocused) {
+            if (letter === 's') {
+                e.preventDefault();
+                sideBarBtn.focus();
+            }
+            if (letter === 'm') {
+                e.preventDefault();
+                targetDiv.focus();
+                scrollTo(0, 0);
+            }
+            if (letter === 'a') {
+                e.preventDefault();
+                // Navigate within the sidebar links
+                const isShiftPressed = e.shiftKey;
+                if (lastClickedLink && !sidebarLinksFocused) {
+                    lastClickedLink.focus();
+                } else {
+                    focusSidebarLink(!isShiftPressed);
+                    sidebarLinks[currentLinkIndex].focus(); // Default to the current index
+                }
+                if (sidebarLinksFocused) {
+                    // Return focus to the last clicked sidebar link
+                }
             } else {
-                focusSidebarLink(!isShiftPressed);
-                sidebarLinks[currentLinkIndex].focus(); // Default to the current index
+                
+                elIdsFocus(e);
             }
-            if (sidebarLinksFocused) {
-                // Return focus to the last clicked sidebar link
-            }
-        } else {
-            elIdsFocus(e);
         }
         if (!targetDivFocused ){
             //
@@ -162,3 +170,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+function trackTextAreaCodeFocus(){
+    let stepTextAreasCode = document.querySelectorAll('.step textarea')
+    stepTextAreasCode.forEach(el => {
+        el.addEventListener('focusin', () => {
+            stepTextAreasCodeFocused = true;
+        });
+        el.addEventListener('focusout', () => {
+            stepTextAreasCodeFocused = false;
+        });
+    })
+}

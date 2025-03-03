@@ -1,6 +1,6 @@
 :root {
-    --width-side-active: 150px;
-    --width-side-bar: 60px;
+    --width-side-deactive: 0;
+    --width-side-bar: 150px;
 }
 #backToTopBtn {
     position: sticky;
@@ -22,19 +22,28 @@ main {
 }
 .side-bar ~ #targetDiv{
     width: calc(100% - var(--width-side-bar));
-    margin: 0 auto;
+    /* margin: 0 auto; */
 }
 .side-bar ~ #targetDiv{
-    /* width: calc(100% - var(--width-side-bar)); */
+    width: calc(100% - var(--width-side-bar));
     /* margin-right: 4%; */
 }
-.side-bar.active {
-    width: var(--width-side-active);
+.side-bar{
+    color: white;
+}
+.side-bar.deactive{   
+    width: var(--width-side-deactive);
+    opacity: 0;
+}
+.side-bar {
+    width: var(--width-side-bar);
     transition: all .2s ease;
 }
 #targetDiv {
     border: 1px solid black;
-    /* background-color: blue; */
+}
+ul {
+    padding: 0
 }
 ul li a {
     text-decoration: none;
