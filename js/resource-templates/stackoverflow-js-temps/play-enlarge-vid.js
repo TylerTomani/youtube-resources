@@ -128,13 +128,13 @@ export function playEnlargeVideos(){
         }
         
     }
-    addEventListener('keydown', e => {
+    addEventListener('click', e => {
         let key = e.keyCode
-        console.log(e.target)
-        // if(!imgFocused && key == 13){
-        //     // e.preventDefault()
-        //     playing = !playing
-        // }
+        vids.forEach(vid => {
+            if(vid.classList.contains('enlarge-vid')){
+                vid.play()
+            }
+        })
     })
 }
 function getStepVidStep(parent){
