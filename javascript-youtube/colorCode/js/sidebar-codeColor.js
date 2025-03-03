@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     aside.addEventListener('click', e => {
         if(e.target == aside){
+            console.log('aside clicked')
             toggleSidebar()
         }
     }
@@ -43,6 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Toggle sidebar active state
     function toggleSidebar() {
         const sidebar = document.querySelector('aside.side-bar');
+        console.log(sidebar.classList)
         sidebar.classList.toggle('deactive');
     }
     // Focus on the next or previous link

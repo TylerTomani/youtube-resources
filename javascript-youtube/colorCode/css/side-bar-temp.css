@@ -33,7 +33,8 @@ main {
 }
 .side-bar.deactive{   
     width: var(--width-side-deactive);
-    opacity: 0;
+    color: black;
+    /* opacity: 0; */
 }
 .side-bar {
     width: var(--width-side-bar);
