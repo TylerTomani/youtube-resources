@@ -123,7 +123,16 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
-
+    // Focus elements by their ID's first letter
+    function elIdsFocus(e) {
+        const letter = e.key.toLowerCase();
+        const elIds = document.querySelectorAll('[id]');
+        elIds.forEach(el => {
+            if (letter === el.id[0]) {
+                el.focus();
+            }
+        });
+    }
     // Event listeners for sidebar button and links
     sideBarBtn.addEventListener('click', toggleSidebar);
     sideBarBtn.addEventListener('keydown', (e) => {
@@ -159,16 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Focus elements by their ID's first letter
-    function elIdsFocus(e) {
-        const letter = e.key.toLowerCase();
-        const elIds = document.querySelectorAll('[id]');
-        elIds.forEach(el => {
-            if (letter === el.id[0]) {
-                el.focus();
-            }
-        });
-    }
+    
 });
 function trackTextAreaCodeFocus(){
     let stepTextAreasCode = document.querySelectorAll('.step textarea')
