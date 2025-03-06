@@ -1,11 +1,11 @@
-export let targetDivFocused = false;
+export let mainTargetDivFocused = false;
 export const sideBarBtn = document.getElementById('sideBarBtn');
 import {executeCodeExample} from './execute-codeExample.js'
 let stepTextAreasCodeFocused = false
 document.addEventListener('DOMContentLoaded', () => {
     const aside = document.querySelector('aside');
     let sidebarLinks = document.querySelectorAll('aside.side-bar ul > li > a');
-    const targetDiv = document.querySelector('#targetDiv');
+    const mainTargetDiv = document.querySelector('#mainTargetDiv');
     let currentLinkIndex = 0;
     let lastFocusedLink = null;
     let lastClickedLink = null 
@@ -38,8 +38,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     })
-    targetDiv.addEventListener('focusin', () => {targetDivFocused = true;});
-    targetDiv.addEventListener('focusout', () => {targetDivFocused = false;});
+    mainTargetDiv.addEventListener('focusin', () => {mainTargetDivFocused = true;});
+    mainTargetDiv.addEventListener('focusout', () => {mainTargetDivFocused = false;});
     // Toggle sidebar active state
     function toggleSidebar() {
         const sidebar = document.querySelector('aside.side-bar');
@@ -66,9 +66,9 @@ document.addEventListener('DOMContentLoaded', () => {
         fetch(href)
             .then(response => response.text())
             .then(html => {
-                targetDiv.innerHTML = html;
+                mainTargetDiv.innerHTML = html;
                 if (targetLink.dataset.clickedOnce) {
-                    targetDiv.focus();
+                    mainTargetDiv.focus();
                     executeCodeExample()
                     trackTextAreaCodeFocus()
                 } else {
@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             if (letter === 'm') {
                 e.preventDefault();
-                targetDiv.focus();
+                mainTargetDiv.focus();
                 scrollTo(0, 0);
             }
             if (letter === 'a') {
@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 elIdsFocus(e);
             }
         }
-        if (!targetDivFocused ){
+        if (!mainTargetDivFocused ){
             //
             if(!isNaN(letter)){
                 e.preventDefault()
@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
         elIds.forEach(el => {
             if (letter === el.id[0]) {
                 el.focus();
-                console.log(e)
+                console.log(el)
             }
         });
     }
@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', (e) => {
             injectContent(e);
             if(e.target == lastFocusedLink){
-                targetDiv.focus()
+                mainTargetDiv.focus()
                 scrollTo(0, 0);
             }
             lastFocusedLink = e.target; // Store the last clicked link
@@ -161,7 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let letter = e.key.toLowerCase()
             if(letter == 'enter'){
                 if(e.target == lastFocusedLink){
-                    targetDiv.focus()
+                    mainTargetDiv.focus()
                     scrollTo(0, 0);
                 }
             }

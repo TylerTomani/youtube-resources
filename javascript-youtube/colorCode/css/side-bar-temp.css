@@ -20,11 +20,11 @@ main {
     color: rgb(229, 218, 218);
     height: 100vh;
 }
-.side-bar ~ #targetDiv{
+.side-bar ~ #mainTargetDiv{
     width: calc(100% - var(--width-side-bar));
     /* margin: 0 auto; */
 }
-.side-bar ~ #targetDiv{
+.side-bar ~ #mainTargetDiv{
     width: calc(100% - var(--width-side-bar));
     /* margin-right: 4%; */
 }
@@ -40,7 +40,7 @@ main {
     width: var(--width-side-bar);
     transition: all .2s ease;
 }
-#targetDiv {
+#mainTargetDiv {
     border: 1px solid black;
 }
 ul {
