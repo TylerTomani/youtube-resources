@@ -1,7 +1,7 @@
 // import { parts } from "./side-bar-scripts/letterFocus-sidebar.js";
 // import { parts } from "./letterFocus-sidebar.js";
 import { sideBarBtn } from "./letterFocus-sidebar.js";
-import { executeCodeExample } from "./js-temps/execute-codeExample.js";
+import { executeCodeExample } from "./execute-codeExample.js";
 const body = document.querySelector('body')
 const mainContent = document.querySelector('.main-content')
 let currentClicked

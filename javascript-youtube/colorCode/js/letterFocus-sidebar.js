@@ -119,6 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 let intLet = parseInt(letter)
                 if(intLet <= sidebarLinks.length){
                     sidebarLinks[intLet - 1].focus()
+                    
                 }
             }
         }
@@ -130,6 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
         elIds.forEach(el => {
             if (letter === el.id[0]) {
                 el.focus();
+                console.log(e)
             }
         });
     }
