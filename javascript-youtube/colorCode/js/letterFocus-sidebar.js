@@ -113,7 +113,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
         if (!mainTargetDivFocused ){
-            //
             if(!isNaN(letter)){
                 e.preventDefault()
                 let intLet = parseInt(letter)
@@ -122,6 +121,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     
                 }
             }
+        } else {
+            return
         }
     });
     // Focus elements by their ID's first letter
@@ -131,7 +132,6 @@ document.addEventListener('DOMContentLoaded', () => {
         elIds.forEach(el => {
             if (letter === el.id[0]) {
                 el.focus();
-                console.log(el)
             }
         });
     }
@@ -148,8 +148,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     sidebarLinks.forEach((link, index) => {
         link.addEventListener('click', (e) => {
-            injectContent(e);
             if(e.target == lastFocusedLink){
+                injectContent(e);
                 mainTargetDiv.focus()
                 scrollTo(0, 0);
             }
@@ -161,6 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let letter = e.key.toLowerCase()
             if(letter == 'enter'){
                 if(e.target == lastFocusedLink){
+                    // injectContent(e);
                     mainTargetDiv.focus()
                     scrollTo(0, 0);
                 }

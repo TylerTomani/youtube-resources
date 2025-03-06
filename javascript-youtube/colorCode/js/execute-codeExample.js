@@ -1,5 +1,4 @@
 export function executeCodeExample() {
-
         document.querySelectorAll(".step").forEach(step => {
             const button = step.querySelector(".run-btn");
             const textarea = step.querySelector(".copy-code");
