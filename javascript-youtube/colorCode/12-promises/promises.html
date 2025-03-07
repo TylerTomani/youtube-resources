@@ -12,12 +12,14 @@
     <link rel="stylesheet" href="../../../css/colors.css">
     <link rel="stylesheet" href="../../../css/resource-templates/dark-mode-stackoverflow.css">
     <script type="module" src="../../../js/resource-templates/dark-mode.js" defer></script>    
-
+    
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <!-- <script type="module" src="../js/letterFocus-sidebar.js" defer></script>     -->
-    <script type="module" src="../js/sidebar-codeColor.js" defer></script>    
-    <script type="module" src="../js/promise-inject.js" defer></script>    
+    <!-- <script type="module" src="../js/sidebar-codeColor.js" defer></script>     -->
+    <!-- <script type="module" src="../js/promise-inject.js" defer></script>     -->
     <!-- <script type="module" src="scripts/getWheather.js" defer></script>     -->
+    <script type="module" src="../js/letterFocus-sidebar.js" defer></script>    
+    <script type="modele" src="../../../js/copy-code.js" defer></script>    
+    <link rel="stylesheet" href="../../../css/copy-code-fcc.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="icon" href="favicon.ico">
 </head>
@@ -48,17 +50,17 @@
             <div class="top">
                 <i id="sideBarBtn" tabindex="0" class="bx bx-menu"></i>
                 <!-- partsTxt is an awful name -->
-                <h2 tabindex="0" id="partsTxt">Parts</h2>
             </div>
-            <ul>
-                <!-- <li><a autofocus  tabindex="0" href="parts/01.html">1. Basic Promise</a>
-                <span class="tooltip">what fetch() does</span></li> -->
-                <li><a autofocus  tabindex="0" href="parts/01-temp.html">1. Basic Promise</a>
-                <span class="tooltip">what fetch() does</span></li>
-                <li><a  tabindex="0" href="parts/02.html">2. Tbd</a>
-                    <span class="tooltip">tbd</span></li>
-                <li><a  tabindex="0" href="">3. Tbd</a></li>
-            </ul>
+            <div class="sections">
+                <h2 tabindex="0" id="partsTxt">Parts</h2>
+                <ul>
+                    <li><a autofocus  tabindex="0" href="parts/01-temp.html">1. Basic Promise</a>
+                    <span class="tooltip">what fetch() does</span></li>
+                    <li><a  tabindex="0" href="parts/02.html">2. Tbd</a>
+                        <span class="tooltip">tbd</span></li>
+                    <li><a  tabindex="0" href="">3. Tbd</a></li>
+                </ul>
+            </div>
         </aside>
         <div tabindex="0" id="mainTargetDiv" class="">
     

@@ -1,7 +1,9 @@
 export let mainTargetDivFocused = false;
 export const sideBarBtn = document.getElementById('sideBarBtn');
 import {executeCodeExample} from './execute-codeExample.js'
-let stepTextAreasCodeFocused = false
+import { stepTextAreasCodeFocused } from './codeColor-stepTxts.js';
+import { stepTxt } from './codeColor-stepTxts.js';
+import { addCopyCodes } from '../../../js/copy-code.js';
 document.addEventListener('DOMContentLoaded', () => {
     const aside = document.querySelector('aside');
     let sidebarLinks = document.querySelectorAll('aside.side-bar ul > li > a');
@@ -11,8 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let lastClickedLink = null 
     let sidebarLinksFocused = false;
     
-    sidebarLinks = [...sidebarLinks]
-    
+    sidebarLinks = [...sidebarLinks]    
     aside.addEventListener('click', e => {
         if(e.target == aside){
             toggleSidebar()
@@ -70,7 +71,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (targetLink.dataset.clickedOnce) {
                     mainTargetDiv.focus();
                     executeCodeExample()
-                    trackTextAreaCodeFocus()
+                    stepTxt()
+                    addCopyCodes()
                 } else {
                     targetLink.dataset.clickedOnce = true;
                     setTimeout(() => delete targetLink.dataset.clickedOnce, 500);
@@ -84,16 +86,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // Keydown event listener
     document.addEventListener('keydown', (e) => {
         const letter = e.key.toLowerCase();
+        console.log(stepTextAreasCodeFocused)
+        console.log('kjldlf')
         if (!stepTextAreasCodeFocused) {
             if (letter === 's') {
                 e.preventDefault();
                 sideBarBtn.focus();
-            }
+            } else
             if (letter === 'm') {
                 e.preventDefault();
                 mainTargetDiv.focus();
                 scrollTo(0, 0);
-            }
+            } else
             if (letter === 'a') {
                 e.preventDefault();
                 // Navigate within the sidebar links
@@ -161,7 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let letter = e.key.toLowerCase()
             if(letter == 'enter'){
                 if(e.target == lastFocusedLink){
-                    // injectContent(e);
+                    injectContent(e);
                     mainTargetDiv.focus()
                     scrollTo(0, 0);
                 }
@@ -173,14 +177,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
     
 });
-function trackTextAreaCodeFocus(){
-    let stepTextAreasCode = document.querySelectorAll('.step textarea')
-    stepTextAreasCode.forEach(el => {
-        el.addEventListener('focusin', () => {
-            stepTextAreasCodeFocused = true;
-        });
-        el.addEventListener('focusout', () => {
-            stepTextAreasCodeFocused = false;
-        });
-    })
-}

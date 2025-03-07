@@ -31,6 +31,7 @@ export function executeCodeExample() {
 
             button.addEventListener("click", runCode);
             button.addEventListener("touchstart", runCode, {passive:true})
+            // button.addEventListener("touchstart", runCode)
             button.addEventListener("mousedown", runCode)
             textarea.addEventListener("keydown", function (event) {
                 if (((event.metaKey || event.ctrlKey) && event.shiftKey) && event.key === "Enter") {
