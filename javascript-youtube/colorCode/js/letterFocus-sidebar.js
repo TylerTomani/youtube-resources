@@ -1,8 +1,8 @@
 export let mainTargetDivFocused = false;
 export const sideBarBtn = document.getElementById('sideBarBtn');
 import {executeCodeExample} from './execute-codeExample.js'
-import { stepTextAreasCodeFocused } from './codeColor-stepTxts.js';
-import { stepTxt } from './codeColor-stepTxts.js';
+import { stepTextAreasCodeFocused } from './step-focus-codeColor.js';
+import { stepTxt } from './step-focus-codeColor.js';
 import { addCopyCodes } from '../../../js/copy-code.js';
 document.addEventListener('DOMContentLoaded', () => {
     const aside = document.querySelector('aside');
