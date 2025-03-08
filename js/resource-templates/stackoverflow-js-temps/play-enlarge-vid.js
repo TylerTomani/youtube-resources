@@ -7,7 +7,11 @@ export function playEnlargeVideos(){
     const stepVidsSteps = document.querySelectorAll('.step-vid')
     const vids = document.querySelectorAll('.step-vid > video')
     const images = document.querySelector('.step-img > img')
+
+    
+    
     function stopAllVids(){vids.forEach(el =>{el.pause()})}
+
     nav.addEventListener('click', stopAllVids)
     nav.addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()

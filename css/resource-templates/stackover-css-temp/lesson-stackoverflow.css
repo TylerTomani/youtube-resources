@@ -180,7 +180,9 @@
     
 }
 .step.step-float p{
-    margin: 0;
+    margin: 1.75% 0 ;
+    margin-left: 2.5%;
+    margin-bottom: 2.5%;
 }
 .step-float > .step-txt{
     /* border: 1px solid orange; */
