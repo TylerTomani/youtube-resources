@@ -125,16 +125,26 @@
 .code-container>.copy-code::-webkit-scrollbar {
     display: none;
 }
-.code-container>.copy-code{
+.step > .step-txt .code-container>.copy-code{
     border: 1px solid black;
     display: inline-block;
     font: 80%;
     width: 100%;
-    height: 100%;
     padding: 1% 0 ;
     padding-left: 1%;
     overflow-x: scroll;
     overflow: scroll;
+}
+.step-float>.step-txt .code-container {
+    display: inline-block;
+    /* border: 1px solid white; */
+    /* width: 0; */
+    min-width: 45%;
+    width:min-content;
+    height: 100%;
+    padding-right: 0;
+    margin-left: 2.5%;
+    
 }
 #endNxtLesson{
     padding: 1.5% 0;
@@ -183,26 +193,17 @@
     width: 50%;
     float: right;   
 }
-.step-float > .step-txt .code-container {
+
+.step-float > .step-txt .code-container > .copy-code {
     display: inline-block;
-    /* border: 1px solid white; */
-    margin-top: .5;
-    margin-left: 2%;
-    width: fit-content;
-    padding-right: 15%;
-    padding-right: 5%;
-}
-.step-float > .step-txt .code-container > pre.copy-code{
-    width: fit-content;
+    /* border: 2px solid orange; */
+    padding-right: 25%;
+    /* width: fit-content; */
 }
 .step-float > .step-txt .code-container:last-child {
     margin-bottom:10%;
 }
-.step-float .code-container > .copy-code{
-    display: inline-block;
-    border: 2px solid red;
-    /* width: fit-content; */
-}
+
 
 .step-float {
     /* position: relative; */
