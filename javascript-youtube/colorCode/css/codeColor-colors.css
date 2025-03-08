@@ -3,6 +3,8 @@
 }
 .b {color: rgb(121, 121, 221);}
 .lb {color: lightblue;}
+.l {color: lime;}
+.m {color: magenta;}
 .o {color: orange;}
 .p {color: rgb(195, 103, 195);}
 .r {color: red;}
@@ -16,8 +18,7 @@
     background-color: rgb(28, 26, 26);
     color: white;
 }
-.code-container {
-    background-color: var(--bg-primary);
+.code-container>.copy-code {
     color: white;
 }
 .step-txt p code,

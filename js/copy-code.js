@@ -5,21 +5,18 @@ export function addCopyCodes(){
     let cmdCarray = []
     codeCopy.forEach(copycode => {
         copycode.addEventListener('keydown' , e => {        
-            
             cmdCarray.unshift(e.keyCode)
             if(cmdCarray.length > 3){
                 cmdCarray.pop()
             }
             if(cmdCarray[0] === 67 && cmdCarray[1] === 91){
-                
-                
+                console.log(e.target.tagName)
                 animate(e)
-
             }
         })
         copycode.addEventListener('click', e => {
             e.preventDefault()
-            
+            // console.log(e.target)
             animate(e)
         })
         copycode.addEventListener('focusin', e  => {
@@ -35,9 +32,7 @@ export function addCopyCodes(){
         });
 
     })
-
-    function animate(e){
-        
+    function animate(e){  
         let el = e.target
         if(el.classList.contains('decopied')){
             el.classList.remove('decopied')

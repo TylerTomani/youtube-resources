@@ -1,8 +1,11 @@
 export let mainTargetDivFocused = false;
 export const sideBarBtn = document.getElementById('sideBarBtn');
-import {executeCodeExample} from './execute-codeExample.js'
+// import {executeCodeExample} from './execute-codeExample.js'
+
 import { stepTextAreasCodeFocused } from './step-focus-codeColor.js';
-import { stepTxt } from './step-focus-codeColor.js';
+import { stepTextAreasCodeFocus } from './step-focus-codeColor.js';
+import { stepTxtsFocus } from './stepTxts-codeColor.js';
+
 import { addCopyCodes } from '../../../js/copy-code.js';
 document.addEventListener('DOMContentLoaded', () => {
     const aside = document.querySelector('aside');
@@ -70,9 +73,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 mainTargetDiv.innerHTML = html;
                 if (targetLink.dataset.clickedOnce) {
                     mainTargetDiv.focus();
-                    executeCodeExample()
-                    stepTxt()
+                    // executeCodeExample()
+                    stepTextAreasCodeFocus()
                     addCopyCodes()
+                    stepTxtsFocus()
                 } else {
                     targetLink.dataset.clickedOnce = true;
                     setTimeout(() => delete targetLink.dataset.clickedOnce, 500);
@@ -86,8 +90,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Keydown event listener
     document.addEventListener('keydown', (e) => {
         const letter = e.key.toLowerCase();
-        console.log(stepTextAreasCodeFocused)
-        console.log('kjldlf')
+        
+        
         if (!stepTextAreasCodeFocused) {
             if (letter === 's') {
                 e.preventDefault();
