@@ -1,6 +1,6 @@
 :root {
     --width-side-deactive: 0;
-    --width-side-bar: 150px;
+    --width-side-bar: 110px;
 }
 #backToTopBtn {
     position: sticky;

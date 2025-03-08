@@ -19,7 +19,7 @@
     color: white;
 }
 .code-container>.copy-code {
-    color: white;
+    /* color: white; */
 }
 .step-txt p code,
 .code-container span{
