@@ -132,8 +132,8 @@ export function getSubSection(parent){
 
 function elIdsFocus(e) {
     const letter = e.key.toLowerCase();
-    const isShift = e.shiftKey
     const elIds = document.querySelectorAll('[id]');
+    const isShift = e.shiftKey
     elIds.forEach(el => {
         if (el.parentElement.id == 'nav-section-lesson-titles'){return}
         if (letter === el.id[0] && !isShift){
@@ -287,7 +287,13 @@ function lessonsCycle(lessons,shiftKey = false) {
 }
 addEventListener('keydown', e => {
     let letter = e.key.toLowerCase()   
+    const isMeta = e.metaKey
     let key = e.keyCode
+    console.log(isMeta)
+    if (!isMeta) {
+        console.log('yes')
+        elIdsFocus(e)
+    }
     if ((letter == 's' )  && !asideFocused) {
         console.log(lastClickedLesson)
         if(lastClickedSection){
@@ -309,7 +315,8 @@ addEventListener('keydown', e => {
             lastClickedSection.focus()
         }
     }
-    elIdsFocus(e)
+    
+    
     if (letter == 'r') { vsCodeShortRegex.focus() }
     if (letter == 'a' || letter == 's') {
         if (aside.classList.contains('hide')) {

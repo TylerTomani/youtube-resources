@@ -26,6 +26,7 @@ export function stepTxtListeners(){
     let currentStepIndex = 0
     let imgIndex = 0
     
+
     // sections.forEach(el => { el.addEventListener('focus', denlargeAllImages )
     pAs.forEach(el => {el.setAttribute('tabindex','-1')})
     if(endNxtLesson){
