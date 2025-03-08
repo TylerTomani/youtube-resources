@@ -190,12 +190,13 @@
     margin-left: 2%;
     width: fit-content;
     padding-right: 15%;
+    padding-right: 5%;
 }
-.step-float > .step-txt .code-container:first-child {
+.step-float > .step-txt .code-container > pre.copy-code{
     width: fit-content;
 }
 .step-float > .step-txt .code-container:last-child {
-    margin-bottom: 3%;
+    margin-bottom:10%;
 }
 .step-float .code-container > .copy-code{
     display: inline-block;

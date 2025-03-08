@@ -24,7 +24,7 @@
     flex-direction: column;
 }
 .step-txt:focus,.step-txt:active{
-    box-shadow: 0 0 5px 5px lightseagreen;
+    /* box-shadow: 0 0 5px 5px lightseagreen; */
 }
 .step-txt {
     display: flex;
