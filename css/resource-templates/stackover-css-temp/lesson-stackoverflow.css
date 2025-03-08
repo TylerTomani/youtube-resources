@@ -211,3 +211,6 @@
 .step-float .step-txt:focus+.step-img img {
     /* z-index: 4 !important; */
 }
+.clear {
+    clear: both;
+}
