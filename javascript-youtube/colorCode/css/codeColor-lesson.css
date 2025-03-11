@@ -165,4 +165,14 @@
     .step-img {
         width: 50%;
     }
+        .enlarge {
+            position: absolute;
+            transform: scale(1.05);
+            left: 2.5%;
+            border: 1px solid white;
+            margin-right: 0;
+            margin-top: 0;
+            min-width: 500px;
+            z-index: 2
+        }
 }
