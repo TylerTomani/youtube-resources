@@ -50,16 +50,15 @@ addEventListener('click', e =>{
     if (e.target.classList.contains('sideBarBtn-container')) {
         sideBar.classList.toggle('deactive')
     }
-    if (e.target.classList.contains('section-lesson-title')) {
-        console.log('kjd')
+})
+navBar.addEventListener('keydown', e => {
+    let letter = e.key.toLowerCase()
+    if (letter == 'enter') {
         sideBar.classList.toggle('deactive')
+
     }
 })
-addEventListener('keydown', e => {
-    let letter = e.key.toLowerCase()
-    if(letter == 'enter'){
-        sideBar.classList.toggle('deactive')
-        
-    }
-    
+navBar.addEventListener('click', e => {
+    e.preventDefault()
+    sideBar.classList.toggle('deactive')
 })
