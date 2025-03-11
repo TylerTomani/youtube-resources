@@ -41,8 +41,8 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         el.addEventListener('click', (e) => {
             e.preventDefault()
+            injectContent(e.target.href);
             if(e.target == lastFocusedLink){
-                injectContent(e.href);
                 lastClickedLink = e.target; // Store the last clicked link
             }
             lastFocusedLink = e.target; // Store the last clicked link
