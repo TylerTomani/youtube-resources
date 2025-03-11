@@ -3,7 +3,7 @@ export const parts = document.querySelectorAll('.parts ul > li > a')
 export const mainTargetDiv = document.querySelector('#mainTargetDiv')
 import { lastClickedLink } from "./inject-content.js";
 import { lastStep } from "./stepTxts-codeColor.js";
-// import { currentLinkIndex } from "./inject-content.js";
+export const navBar = document.querySelector('nav.section-lesson-title')
 export let mainTargetDivFocused = false
 let partsFocused = false
 export function letterFocus(currentLinkIndex){
@@ -51,21 +51,23 @@ export function letterFocus(currentLinkIndex){
             const backlink = document.querySelector('#backlink')
             backlink.focus()
         }
-        if(letter == 'h'){
-            const homelink = document.querySelector('#homelink')
-            homelink.focus()
+        
+        if (letter == 'c') {
+            const chatGpt = document.querySelector('#chatGpt')
+            chatGpt.focus()
         }
         if(letter == 'd'){
             const darkmodeBtn = document.querySelector('#darkmodeBtn')
             darkmodeBtn.focus()
         }
-        if(letter == 'b'){
-            const vsCodeShortRegex = document.querySelector('#vsCodeShortRegex')
-            vsCodeShortRegex.focus()
+        if (letter == 'h') {
+            const homelink = document.querySelector('#homelink')
+            homelink.focus()
         }
-        if(letter == 'c'){
-            const chatGpt = document.querySelector('#chatGpt')
-            chatGpt.focus()
+        if(letter == 'n'){
+            
+            navBar.setAttribute('tabindex', '1')
+            navBar.focus()
         }
         if(letter == 't'){
             const tutorialLink = document.querySelector('#tutorialLink')
@@ -75,7 +77,10 @@ export function letterFocus(currentLinkIndex){
             const sideBarBtn = document.querySelector('#sideBarBtn')
             sideBarBtn.focus()
         }        
-        
+        if (letter == 'v') {
+            const vsCodeShortRegex = document.querySelector('#vsCodeShortRegex')
+            vsCodeShortRegex.focus()
+        }
         
     }
 }

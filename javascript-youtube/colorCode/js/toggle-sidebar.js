@@ -38,17 +38,13 @@ sidebarBtn.addEventListener('keydown', e =>{
     
 })
 
-// addEventListener('mousedown', e =>{
-//     if (e.target.tagName == 'ASIDE') {
-//         console.log('yes')
-//         sideBar.classList.toggle('deactive')
-//     }
-// })
-addEventListener('click', e =>{
-    if (e.target.tagName == 'ASIDE' ){
-        e.preventDefault()
+addEventListener('mousedown', e =>{
+    if (e.target.tagName == 'ASIDE') {
+        console.log('yes')
         sideBar.classList.toggle('deactive')
     }
+})
+addEventListener('click', e =>{
     console.log(e.target)
     if (e.target.classList.contains('sideBarBtn-container')) {
 
