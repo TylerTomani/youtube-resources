@@ -3,6 +3,7 @@ import { addCopyCodes } from "../../../js/copy-code.js";
 import { letterFocus } from "./letterFocus-sidebar.js";
 import { parts } from "./letterFocus-sidebar.js";
 import { mainTargetDiv } from "./letterFocus-sidebar.js";
+import { sideBar } from "./toggle-sidebar.js";
 export let lastFocusedLink = null;
 export let lastClickedLink = null
 let sidebarLinksFocused = false;
@@ -63,6 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentLinkIndex = index;  // Update the current index
             }
             if(!mainTargetDivFocused) {
+                
                 if (letter == 'a' && !e.shiftKey) {
                     currentLinkIndex = (currentLinkIndex + 1) % parts.length
                     parts[currentLinkIndex].focus()

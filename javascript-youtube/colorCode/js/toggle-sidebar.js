@@ -25,7 +25,10 @@ sidebarBtn.addEventListener('keydown', e =>{
         sidebarBtn.classList.toggle('drop')
         sideBar.classList.toggle('deactive')
     }
-    
+    if(letter == 'a' && sideBar.classList.contains('deactive')){
+                    sideBar.classList.remove('deactive')
+                    console.log('yes')
+    }    
     if(letter == 'a' && lastClickedLink){
         lastClickedLink.focus()
         
