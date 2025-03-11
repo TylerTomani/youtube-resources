@@ -6,6 +6,10 @@ main {
     position: relative;
     height: 100vmax;
     display: flex;
+    width: 100%;
+    overflow:hidden;
+    overflow-y: scroll;
+    scrollbar-width: none;
 }
 
 main > .side-bar{
@@ -23,10 +27,12 @@ main > #mainTargetDiv{
     flex-grow: 1;
 }
 main > .side-bar.deactive .parts {
-    width: 0;;
+    flex-basis: 0;
+    width: 0;
     opacity: 0;
     transition: all 250ms;
 }
+
 ul {
     display: flex;
     flex-direction: column;
@@ -34,4 +40,7 @@ ul {
     width: min-content;
     margin-left: 2.5%;
     list-style: none;
+}
+ul li a {
+    text-decoration: none;
 }

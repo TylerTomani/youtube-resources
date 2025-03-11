@@ -10,6 +10,12 @@ let sidebarLinksFocused = false;
 let currentLinkIndex = 0;
 
 document.addEventListener('DOMContentLoaded', () => {
+    let currentWidth = innerWidth
+    addEventListener('resize', e => {
+        // currentWidth = e.target.innerWitdth
+        currentWidth = innerWidth
+        console.log(currentWidth)
+    })
     let mainTargetDivFocused = false
     // Inject link content into main-content
     mainTargetDiv.addEventListener('focusout', e => {
@@ -56,6 +62,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 e.stopPropagation()
                 injectContent(e.target.href);
                 if(e.target == lastFocusedLink){
+                    if(currentWidth < 600){
+                        const sideBar = document.querySelector('.side-bar ')
+                        sideBar.classList.add('deactive')
+
+                    }
                     mainTargetDiv.focus()
                     scrollTo(0, 0);
                 }

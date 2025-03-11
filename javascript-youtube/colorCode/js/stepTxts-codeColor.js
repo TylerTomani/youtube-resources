@@ -9,6 +9,15 @@ export function stepTxtsFocus() {
     // Maybe just keep text area with focus
     const tabIndexElements = document.querySelectorAll('.copy-code')
     const  imgVids = document.querySelectorAll('.step-img > img, .step-vid, video')
+    let currentWidth
+    addEventListener('DOMContentLoaded', e => {
+        currentWidth = innerWidth
+    })
+    addEventListener('resize', e => {
+        // currentWidth = e.target.innerWitdth
+        currentWidth = innerWidth
+        console.log(currentWidth)
+    })
     let partsFocused = false
     parts.forEach(el => {
         el.addEventListener('focus', e => {
@@ -54,11 +63,14 @@ export function stepTxtsFocus() {
         if(img){
             img.classList.toggle('enlarge')
         }
-        if(img.classList.contains('enlarge')){
-            sideBar.classList.add('deactive')
-        } else {
-            sideBar.classList.remove('deactive')
+        if(currentWidth > 600){
 
+            if(img.classList.contains('enlarge')){
+                sideBar.classList.add('deactive')
+            } else {
+                sideBar.classList.remove('deactive')
+                
+            }
         }
         
 
@@ -119,7 +131,6 @@ export function stepTxtsFocus() {
         let letter = e.key.toLowerCase()
         if(letter == 'm' && lastStep){
             lastStep.focus()
-            console.log('kljsd')
         }
         
     })
