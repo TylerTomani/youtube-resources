@@ -9,7 +9,11 @@ export function stepTxtsFocus() {
     const tabIndexElements = document.querySelectorAll('.copy-code')
     const  imgVids = document.querySelectorAll('.step-img > img, .step-vid, video')
     
-    
+    imgVids.forEach(imgVid =>{
+        imgVid.addEventListener('click', e =>{
+            toggleImgVid(e)
+        })
+    })    
     
     tabIndexElements.forEach(el => {
         el.addEventListener('keydown', e => {
@@ -43,6 +47,12 @@ export function stepTxtsFocus() {
         const img = step.querySelector('img')
         if(img){
             img.classList.toggle('enlarge')
+        }
+        if(img.classList.contains('enlarge')){
+            sideBar.classList.add('deactive')
+        } else {
+            sideBar.classList.remove('deactive')
+
         }
         
 
