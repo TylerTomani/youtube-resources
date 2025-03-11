@@ -1,5 +1,6 @@
 import { mainTargetDivFocused } from "./letterFocus-sidebar.js"
 import { sideBar } from "./toggle-sidebar.js"
+import { parts } from "./letterFocus-sidebar.js"
 export let lastStep = null
 export let stepFocused
 export function stepTxtsFocus() {
@@ -8,7 +9,12 @@ export function stepTxtsFocus() {
     // Maybe just keep text area with focus
     const tabIndexElements = document.querySelectorAll('.copy-code')
     const  imgVids = document.querySelectorAll('.step-img > img, .step-vid, video')
-    
+    let partsFocused = false
+    parts.forEach(el => {
+        el.addEventListener('focus', e => {
+            partsFocused = true
+        })
+    })
     imgVids.forEach(imgVid =>{
         imgVid.addEventListener('click', e =>{
             toggleImgVid(e)
@@ -24,13 +30,13 @@ export function stepTxtsFocus() {
             }
         })
         el.addEventListener('focus', e => {
-            deEnlargeAllImgVid()
+            deenlargeAllImgVid()
         })
     })
     steps.forEach(el => {
         el.addEventListener('focus', e => {
             removeAllTabIndexes()
-            deEnlargeAllImgVid()
+            deenlargeAllImgVid()
             lastStep = e.target
         })
         
@@ -68,7 +74,7 @@ export function stepTxtsFocus() {
             el.setAttribute('tabindex', '-1')
         })
     }
-    function deEnlargeAllImgVid(){
+    function deenlargeAllImgVid(){
         imgVids.forEach(el => {
             if(el.classList.contains('enlarge')){
                 el.classList.remove('enlarge')
@@ -95,12 +101,15 @@ export function stepTxtsFocus() {
         }
         
         if (!isNaN(letter) ) {
-            let intLet = parseInt(letter)
-            if (intLet <= steps.length) {
-                steps[intLet - 1].focus()
-            } else {
-                const endNxtLesson = document.querySelector('#endNxtLesson')
-                endNxtLesson.focus()
+            if(!partsFocused){
+
+                let intLet = parseInt(letter)
+                if (intLet <= steps.length) {
+                    steps[intLet - 1].focus()
+                } else {
+                    const endNxtLesson = document.querySelector('#endNxtLesson')
+                    endNxtLesson.focus()
+                }
             }
         }
         
@@ -113,6 +122,11 @@ export function stepTxtsFocus() {
             console.log('kljsd')
         }
         
+    })
+    mainTargetDiv.addEventListener('focusin', e => {
+        partsFocused = false
+        // mainTargetDivFocused = true
+
     })
 }
 

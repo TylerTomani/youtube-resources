@@ -1,10 +1,38 @@
 .main-container-codeColor {
 }
-
-
+#targetDiv{
+    /* border: 2px solid lime; */
+    width: 100%;
+    /* width: fit-content; */
+}
+.steps-container {
+    position: relative;
+    /* width: 50%; */
+    border: 2px solid blue;
+}
 .step-float{
     position: relative;
     border: 1px solid black;
+}
+.step-float .step-img {
+    float: right;    
+}
+.step-float>.step-img,
+.step-float>.step-vid {
+    float: right;
+    /* This floats the img to the right */
+    /* background-color:  ; */
+    /* width: 50%; */
+    /* Adjust as needed */
+    margin-left: 10px;
+    /* Optional: adds space between console and text */
+}
+
+.step-float>.step-img>img,
+.step-float>.step-vid>video {
+    width: 100%;
+    height: 100%;
+    /* min-height: 100px; */
 }
 .step:active,.step:focus, 
 .step-float:active,.step-float:focus{
@@ -46,7 +74,6 @@
     display: block;
     /* Ensures wrapping around floated element */
 }
-
 .step {
     display: flex;
     justify-content: space-between;
@@ -60,22 +87,7 @@
     /* flex-basis: 50%; */
     padding: 0 2%;
 }
-.step-float>.step-img,
-.step-float>.step-vid{
-    float: right;
-    /* This floats the img to the right */
-    /* background-color:  ; */
-    width: 50%;
-    /* Adjust as needed */
-    margin-left: 10px;
-    /* Optional: adds space between console and text */
-}
-.step-float>.step-img>img,
-.step-float>.step-vid > video {
-    width: 100%;
-    height: 100%;
-    min-height: 100px;
-}
+
 
 .step-float > .step-txt > .code-container {
     /* border: 2px solid red; */

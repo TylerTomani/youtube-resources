@@ -75,6 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 if(letter == 'm'){
                     mainTargetDiv.focus()
+                    // denlarge images
                     
                 }
                 
@@ -93,8 +94,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         } else {
 
-            return
+            // return
         }
+        console.log(mainTargetDivFocused)
     });
     
     letterFocus()    

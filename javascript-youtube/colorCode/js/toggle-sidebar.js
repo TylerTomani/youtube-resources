@@ -4,6 +4,7 @@ export const sideBar = document.querySelector('.side-bar')
 import { parts } from "./letterFocus-sidebar.js"
 import { lastClickedLink } from "./inject-content.js"
 import { mainTargetDiv } from "./letterFocus-sidebar.js"
+import { navBar } from "./letterFocus-sidebar.js"
 mainTargetDiv.addEventListener('keydown', e =>{
     let letter = e.key.toLowerCase()
     if(letter == 's' || letter == 'a'){
@@ -47,7 +48,18 @@ addEventListener('mousedown', e =>{
 addEventListener('click', e =>{
     console.log(e.target)
     if (e.target.classList.contains('sideBarBtn-container')) {
-
         sideBar.classList.toggle('deactive')
     }
+    if (e.target.classList.contains('section-lesson-title')) {
+        console.log('kjd')
+        sideBar.classList.toggle('deactive')
+    }
+})
+addEventListener('keydown', e => {
+    let letter = e.key.toLowerCase()
+    if(letter == 'enter'){
+        sideBar.classList.toggle('deactive')
+        
+    }
+    
 })
