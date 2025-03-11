@@ -8,7 +8,6 @@
 .steps-container {
     position: relative;
     /* width: 50%; */
-    border: 2px solid blue;
 }
 .step-float{
     position: relative;
@@ -17,6 +16,7 @@
 .step-float .step-img {
     float: right;    
 }
+
 .step-float>.step-img,
 .step-float>.step-vid {
     float: right;
@@ -66,38 +66,34 @@
     padding-top: .75%;
     padding-left: 1%;
 }
-.step-float-txt-float textarea,
-.step-float-txt-float .code-container,
-.step-float-txt-float .copy-code,
-.step-float-txt-float h3,
-.step-float-txt-float p {
-    display: block;
-    /* Ensures wrapping around floated element */
-}
+
 .step {
     display: flex;
     justify-content: space-between;
     /* border: 2px solid magenta; */
 }
 .step > .step-txt{
-    /* flex-basis: 50%; */
     padding: 1%;
 }
 .step-float > .step-txt{
-    /* flex-basis: 50%; */
     padding: 0 2%;
 }
-.step-float > .step-txt p {
-    /* flex-basis: 50%; */
-    /* margin: 2%; */
+.step-float > .step-txt > p{
+    padding: 0 2%;
+    margin-top: 2%;
+}
+.step-float > p {
+    margin: 1% 2%;
+    margin-top: 2.5%;
+    margin-left: 5%;
+}
+.step-float>.code-container {
+    margin-left: 2.5%;
 }
 
 
-.step-float > .step-txt > .code-container {
-    /* border: 2px solid red; */
 
 
-}
 .step > .step-img,
 .step>.step-vid{
     flex-basis: 50%;
