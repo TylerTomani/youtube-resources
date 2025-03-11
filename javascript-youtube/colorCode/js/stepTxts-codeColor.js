@@ -1,4 +1,5 @@
 import { mainTargetDivFocused } from "./letterFocus-sidebar.js"
+import { sideBar } from "./toggle-sidebar.js"
 export let lastStep = null
 export let stepFocused
 export function stepTxtsFocus() {
@@ -66,6 +67,7 @@ export function stepTxtsFocus() {
     }
     addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
+        
         if(letter == 'm'){
             if(!mainTargetDivFocused && lastStep){    
                 console.log('yes')
@@ -91,6 +93,8 @@ export function stepTxtsFocus() {
                 endNxtLesson.focus()
             }
         }
+        
+        
     })
     mainTargetDiv.addEventListener('keydown', e=>{
         let letter = e.key.toLowerCase()

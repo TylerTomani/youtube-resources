@@ -71,6 +71,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     currentLinkIndex = (currentLinkIndex - 1 + parts.length) % parts.length
                     parts[currentLinkIndex].focus()
                 }
+                if(letter == 'm'){
+                    mainTargetDiv.focus()
+                    
+                }
+                
             }
         });
     })
@@ -85,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         } else {
-            
+
             return
         }
     });

@@ -14,7 +14,8 @@ body {
 }
 main {   
     position: relative;
-    display: flex
+    display: flex;
+    width: 100%;
 }
 .side-bar{
     width: var(--width-side-bar);
