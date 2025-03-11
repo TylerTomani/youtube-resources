@@ -63,7 +63,7 @@ export function stepTxtsFocus() {
         if(img){
             img.classList.toggle('enlarge')
         }
-        if(currentWidth > 600){
+        if(currentWidth >= 601){
 
             if(img.classList.contains('enlarge')){
                 sideBar.classList.add('deactive')
