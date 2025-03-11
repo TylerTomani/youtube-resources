@@ -8,19 +8,8 @@ export function stepTxtsFocus() {
     const tabIndexElements = document.querySelectorAll('.copy-code')
     const  imgVids = document.querySelectorAll('.step-img > img, .step-vid, video')
     
-
-    if(!mainTargetDivFocused){
-        return
-    }
-    // let stepTextAreas = document.querySelectorAll('.step textarea, .code-container > .copy-code')
-    // stepTextAreas.forEach(el => {
-    //     el.addEventListener('focusin', () => {
-    //         stepTextAreasCodeFocused = true;
-    //     });
-    //     el.addEventListener('focusout', () => {
-    //         stepTextAreasCodeFocused = false;
-    //     });
-    // })
+    
+    
     tabIndexElements.forEach(el => {
         el.addEventListener('keydown', e => {
             let letter = e.key.toLowerCase()
@@ -76,13 +65,17 @@ export function stepTxtsFocus() {
     }
     addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
+        if(!mainTargetDivFocused){
+            return    
+            
+        }
         if (letter == 'c' && !e.metaKey) {
             const consoleEntry = document.querySelector('.consoleEntry')
             e.preventDefault()
             consoleEntry.focus()
         }
         
-        if (!isNaN(letter)) {
+        if (!isNaN(letter) ) {
             let intLet = parseInt(letter)
             if (intLet <= steps.length) {
                 steps[intLet - 1].focus()
@@ -93,6 +86,7 @@ export function stepTxtsFocus() {
         }
     })
 }
+
 function getStep(parent){
     // if(parent.classList.contains('step')){
     if (parent.classList.contains('step') || parent.classList.contains('step-float')){

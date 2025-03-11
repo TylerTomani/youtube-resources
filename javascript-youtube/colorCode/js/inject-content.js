@@ -2,16 +2,21 @@ import { stepTxtsFocus } from "./stepTxts-codeColor.js";
 import { addCopyCodes } from "../../../js/copy-code.js";
 import { letterFocus } from "./letterFocus-sidebar.js";
 import { parts } from "./letterFocus-sidebar.js";
-import { mainTargetDivFocused } from "./letterFocus-sidebar.js";
-export const mainTargetDiv = document.querySelector('#mainTargetDiv')
-// export const sidebarLinks = document.querySelectorAll('.parts li a')
+import { mainTargetDiv } from "./letterFocus-sidebar.js";
 export let lastFocusedLink = null;
 export let lastClickedLink = null
 let sidebarLinksFocused = false;
-export let currentLinkIndex = 0;
+let currentLinkIndex = 0;
 
 document.addEventListener('DOMContentLoaded', () => {
+    let mainTargetDivFocused = false
     // Inject link content into main-content
+    mainTargetDiv.addEventListener('focusout', e => {
+        mainTargetDivFocused = false 
+    })
+    mainTargetDiv.addEventListener('focusin', e => {
+        mainTargetDivFocused = true
+    })
     function injectContent(href) {
         fetch(href)
             .then(response => response.text())
@@ -25,15 +30,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.error('Failed to load content:', err);
             });
     }    
-    
     parts.forEach((el, index) => {
         if(el.hasAttribute('autofocus')){
             injectContent(el.href)
             lastFocusedLink = el
             lastClickedLink = el
         }
+        el.addEventListener('focus', (e) => { 
+            mainTargetDivFocused = false
+        })
         el.addEventListener('click', (e) => {
-            e.preventDefault()
+            // e.preventDefault()
             if(e.target == lastFocusedLink){
                 injectContent(e.href);
                 lastClickedLink = e.target; // Store the last clicked link
@@ -41,10 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
             lastFocusedLink = e.target; // Store the last clicked link
             currentLinkIndex = index;  // Update the current index
         });
-        el.addEventListener('focus', e => {
-            currentLinkIndex = [...parts].indexOf(e.target)
-            // console.log(currentLinkIndex)
-        })
         el.addEventListener('keydown', (e) => {
             let letter = e.key.toLowerCase()
             if(letter == 'enter'){
@@ -58,8 +61,34 @@ document.addEventListener('DOMContentLoaded', () => {
                 lastClickedLink = e.target; // Store the last clicked link
                 lastFocusedLink = e.target; // Store the last clicked link
                 currentLinkIndex = index;  // Update the current index
-            }            
+            }
+            if(!mainTargetDivFocused) {
+                if (letter == 'a' && !e.shiftKey) {
+                    currentLinkIndex = (currentLinkIndex + 1) % parts.length
+                    parts[currentLinkIndex].focus()
+
+                } else if (letter == 'a' && e.shiftKey) {
+                    currentLinkIndex = (currentLinkIndex - 1 + parts.length) % parts.length
+                    parts[currentLinkIndex].focus()
+                }
+            }
         });
     })
+    addEventListener('keydown', e => {
+        let letter = e.key.toLowerCase()
+        
+        if (!mainTargetDivFocused) {
+            if(!isNaN(letter)){
+                const intLet = parseInt(letter)
+                if(intLet <= parts.length){
+                    parts[intLet - 1].focus()
+                }
+            }
+        } else {
+            
+            return
+        }
+    });
     
+    letterFocus()    
 });
