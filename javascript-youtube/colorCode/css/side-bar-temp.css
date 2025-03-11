@@ -51,7 +51,7 @@ main {
     opacity: 0;
 }
 
-.top{
+.sideBarBtn-container{
     position: relative;
     background-color: var(--bg-primary);
 }

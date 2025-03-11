@@ -1,4 +1,5 @@
 const sidebarBtn = document.querySelector('#sideBarBtn')
+const sideBarContainer = document.querySelector(".sideBarBtn-container")
 export const sideBar = document.querySelector('.side-bar')
 import { parts } from "./letterFocus-sidebar.js"
 import { lastClickedLink } from "./inject-content.js"
@@ -32,4 +33,15 @@ sidebarBtn.addEventListener('keydown', e =>{
         parts[0].focus()
     }
     
+})
+
+addEventListener('click', e =>{
+    if (e.target.tagName == 'ASIDE' ){
+        sideBar.classList.toggle('deactive')
+    }
+    console.log(e.target)
+    if (e.target.classList.contains('sideBarBtn-container')) {
+
+        sideBar.classList.toggle('deactive')
+    }
 })
