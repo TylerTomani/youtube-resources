@@ -65,7 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     if(currentWidth < 600){
                         const sideBar = document.querySelector('.side-bar ')
                         sideBar.classList.add('deactive')
-
                     }
                     mainTargetDiv.focus()
                     scrollTo(0, 0);
@@ -75,7 +74,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentLinkIndex = index;  // Update the current index
             }
             if(!mainTargetDivFocused) {
-                
                 if (letter == 'a' && !e.shiftKey) {
                     currentLinkIndex = (currentLinkIndex + 1) % parts.length
                     parts[currentLinkIndex].focus()
@@ -85,17 +83,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     parts[currentLinkIndex].focus()
                 }
                 if(letter == 'm'){
-                    mainTargetDiv.focus()
-                    // denlarge images
-                    
+                    mainTargetDiv.focus()   
                 }
-                
             }
         });
     })
     addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
-        
         if (!mainTargetDivFocused) {
             if(!isNaN(letter)){
                 const intLet = parseInt(letter)
@@ -103,11 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     parts[intLet - 1].focus()
                 }
             }
-        } else {
-
-            // return
         }
-        console.log(mainTargetDivFocused)
     });
     
     letterFocus()    

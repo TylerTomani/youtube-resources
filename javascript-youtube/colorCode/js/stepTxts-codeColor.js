@@ -99,7 +99,6 @@ export function stepTxtsFocus() {
         
         if(letter == 'm'){
             if(!mainTargetDivFocused && lastStep){    
-                console.log('yes')
                 lastStep.focus()
             } else {
                 // mainTargetDiv.focus()
