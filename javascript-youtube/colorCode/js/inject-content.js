@@ -4,7 +4,7 @@ import { letterFocus } from "./letterFocus-sidebar.js";
 import { parts } from "./letterFocus-sidebar.js";
 import { mainTargetDiv } from "./letterFocus-sidebar.js";
 export let lastFocusedLink = null;
-export let last`Click`edLink = null
+export let lastClickedLink = null
 let sidebarLinksFocused = false;
 let currentLinkIndex = 0;
 
