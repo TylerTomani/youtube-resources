@@ -39,18 +39,6 @@ sidebarBtn.addEventListener('keydown', e =>{
     
 })
 
-addEventListener('mousedown', e =>{
-    if (e.target.tagName == 'ASIDE') {
-        console.log('yes')
-        sideBar.classList.toggle('deactive')
-    }
-})
-addEventListener('click', e =>{
-    console.log(e.target)
-    if (e.target.classList.contains('sideBarBtn-container')) {
-        sideBar.classList.toggle('deactive')
-    }
-})
 navBar.addEventListener('keydown', e => {
     let letter = e.key.toLowerCase()
     if (letter == 'enter') {
@@ -62,3 +50,11 @@ navBar.addEventListener('click', e => {
     e.preventDefault()
     sideBar.classList.toggle('deactive')
 })
+sideBar.addEventListener('click', e => {
+    e.preventDefault()
+    sideBar.classList.toggle('deactive')
+})
+// sideBar.addEventListener('mousedown', e => {
+//     e.preventDefault()
+//     sideBar.classList.toggle('deactive')
+// })
