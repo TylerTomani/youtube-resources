@@ -4,7 +4,7 @@ import { letterFocus } from "./letterFocus-sidebar.js";
 import { parts } from "./letterFocus-sidebar.js";
 import { mainTargetDiv } from "./letterFocus-sidebar.js";
 export let lastFocusedLink = null;
-export let lastClickedLink = null
+export let last`Click`edLink = null
 let sidebarLinksFocused = false;
 let currentLinkIndex = 0;
 
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
             mainTargetDivFocused = false
         })
         el.addEventListener('click', (e) => {
-            // e.preventDefault()
+            e.preventDefault()
             if(e.target == lastFocusedLink){
                 injectContent(e.href);
                 lastClickedLink = e.target; // Store the last clicked link
