@@ -26,6 +26,7 @@ export function stepTxtsFocus() {
         el.addEventListener('focus', e => {
             removeAllTabIndexes()
             deEnlargeAllImgVid()
+            lastStep = e.target
         })
         
         el.addEventListener('keydown', e => {
@@ -65,9 +66,10 @@ export function stepTxtsFocus() {
     }
     addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
+        if(letter == 'm' && lastStep){
+            lastStep.focus()
+        }
         if(!mainTargetDivFocused){
-            return    
-            
         }
         if (letter == 'c' && !e.metaKey) {
             const consoleEntry = document.querySelector('.consoleEntry')
