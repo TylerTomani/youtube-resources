@@ -38,8 +38,15 @@ sidebarBtn.addEventListener('keydown', e =>{
     
 })
 
+// addEventListener('mousedown', e =>{
+//     if (e.target.tagName == 'ASIDE') {
+//         console.log('yes')
+//         sideBar.classList.toggle('deactive')
+//     }
+// })
 addEventListener('click', e =>{
     if (e.target.tagName == 'ASIDE' ){
+        e.preventDefault()
         sideBar.classList.toggle('deactive')
     }
     console.log(e.target)
