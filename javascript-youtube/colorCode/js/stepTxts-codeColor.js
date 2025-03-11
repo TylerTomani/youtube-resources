@@ -1,11 +1,26 @@
+import { mainTargetDivFocused } from "./letterFocus-sidebar.js"
 export let lastStep = null
+export let stepFocused
 export function stepTxtsFocus() {
-const steps = document.querySelectorAll('.step , .step-float')
-// const tabIndexElements = document.querySelectorAll('.copy-code, textarea')
-// Maybe just keep text area with focus
-const tabIndexElements = document.querySelectorAll('.copy-code')
-const  imgVids = document.querySelectorAll('.step-img > img, .step-vid, video')
-let stepFocused
+    const steps = document.querySelectorAll('.step , .step-float , .step-col3')
+    // const tabIndexElements = document.querySelectorAll('.copy-code, textarea')
+    // Maybe just keep text area with focus
+    const tabIndexElements = document.querySelectorAll('.copy-code')
+    const  imgVids = document.querySelectorAll('.step-img > img, .step-vid, video')
+    
+
+    if(!mainTargetDivFocused){
+        return
+    }
+    // let stepTextAreas = document.querySelectorAll('.step textarea, .code-container > .copy-code')
+    // stepTextAreas.forEach(el => {
+    //     el.addEventListener('focusin', () => {
+    //         stepTextAreasCodeFocused = true;
+    //     });
+    //     el.addEventListener('focusout', () => {
+    //         stepTextAreasCodeFocused = false;
+    //     });
+    // })
     tabIndexElements.forEach(el => {
         el.addEventListener('keydown', e => {
             let letter = e.key.toLowerCase()
@@ -22,43 +37,22 @@ let stepFocused
         el.addEventListener('focus', e => {
             removeAllTabIndexes()
             deEnlargeAllImgVid()
-    
+        })
+        
+        el.addEventListener('keydown', e => {
+            let letter = e.key.toLowerCase()
+            if(letter == 'enter'){   
+                toggleImgVid(e)
+                addTabIndexes(e)
+            }
         })
     })
-    addEventListener('keydown', e => {
-        let letter = e.key.toLowerCase()
-        if(letter == 'c' && !e.shiftKey){
-            const consoleEntry = document.querySelector('.consoleEntry')
-            e.preventDefault()
-            consoleEntry.focus()
-        }
-        
-        if (letter == 'enter') {
-            toggleImgVid(e)
-            addTabIndexes(e)
-        }
-        if(letter == 'm'){
-            const targetDiv = document.querySelector('#targetDiv')
-            targetDiv.focus()
-            
-        }
-        if(!isNaN(letter)){
-            let intLet = parseInt(letter)
-            if(intLet <= steps.length){
-                steps[intLet - 1].focus()
-            } else {
-                const endNxtLesson = document.querySelector('#endNxtLesson')
-                endNxtLesson.focus()
-            }
-        }
-    })
     function toggleImgVid(e){
-        console.log(e)
-        // const step = getStep(e.target)
-        // const img = step.querySelector('img')
-        // if(img){
-        //     img.classList.toggle('enlarge')
-        // }
+        const step = getStep(e.target)
+        const img = step.querySelector('img')
+        if(img){
+            img.classList.toggle('enlarge')
+        }
         
 
     }
@@ -80,6 +74,24 @@ let stepFocused
             }
         })
     }
+    addEventListener('keydown', e => {
+        let letter = e.key.toLowerCase()
+        if (letter == 'c' && !e.metaKey) {
+            const consoleEntry = document.querySelector('.consoleEntry')
+            e.preventDefault()
+            consoleEntry.focus()
+        }
+        
+        if (!isNaN(letter)) {
+            let intLet = parseInt(letter)
+            if (intLet <= steps.length) {
+                steps[intLet - 1].focus()
+            } else {
+                const endNxtLesson = document.querySelector('#endNxtLesson')
+                endNxtLesson.focus()
+            }
+        }
+    })
 }
 function getStep(parent){
     // if(parent.classList.contains('step')){
@@ -91,4 +103,6 @@ function getStep(parent){
         return null
     }
 }
-stepTxtsFocus()
+
+// DELETE THIS when side bar works
+// stepTxtsFocus()

@@ -7,7 +7,7 @@
     <!-- <link rel="stylesheet" href="../../../css/codeColor-colors.css"> -->
     <!-- <link rel="stylesheet" href="../../../css/codeColor-lesson.css"> -->
     <!-- <link rel="stylesheet" href="../../../css/dark-mode-codeColor.css"> -->
-    <!--  -->
+    
     <!-- <script type="module" src="../../../../../js/copy-code.js" defer></script>     -->
     <!-- <link rel="stylesheet" href="../../../../../css/copy-code-fcc.css"> -->
     <!-- <script type="module" src="../../../js/stepTxts-codeColor.js" defer></script> -->
@@ -19,13 +19,17 @@
 
 </head>
 <body class="dark-mode">
-    <div tabindex="0" id="targetDiv">
+    <div id="targetDiv">
         <header class="header-codeColor-lesson">
             <h3>Basic Example</h3>
         </header>
         <div class="main-container-codeColor">
             <div class="steps-container">
-                <div tabindex="0" class="step">
+                <div tabindex="0" class="step-float">
+                    <div class="step-img">
+                        <!-- <img src="images/01.png" alt=""> -->
+                        <img src="parts/01/images/01.png" alt="">
+                    </div>
                     <div  class="step-txt">
                         <h4>01</h4>
                         <p>
@@ -44,10 +48,9 @@ console.log(promise)</pre>
                         </div>
                         
                     </div>
-                    <div class="step-img">
-                        <!-- <img src="images/01.png" alt=""> -->
-                        <img src="parts/01/images/01.png" alt="">
-                    </div>
+                    <p>
+                        We use promises when we need to wait for information or data
+                    </p>
                 </div>
                 <div tabindex="0" class="step-float">
                     <h4>02</h4>
@@ -63,7 +66,7 @@ console.log(promise)</pre>
                             <pre class="copy-code">
 function getWeather(){
 return new Promise(function(<span class="o">resolve</span>,reject){
-    resolve(<span class="l">'Sunny'</span>)
+    <span class="o">resolve</span>(<span class="l">'Sunny'</span>)
 })
 
 }
@@ -73,10 +76,70 @@ promise.<span class="m">then</span>(<span class="o">function</span>(<span class=
 })
     <span class="p"></span>
                             </pre>
+                    </div>
+                </div>
+                <div tabindex="0" class="step">
+                    <div class="step-txt">
+                        <h4>03</h4>
+                        <p>
+                        <p>
+                            The same would work for <code class="r">reject()</code>, if we pass data into the second argument
+                        </p>
+                        <div class="code-container">
+                            <pre class="copy-code">
+function getWeather() {
+    reuturn new Promise(function(resolve,<span class="r">reject</span>){
+        // resolve('Sunny')
+        <span class="r">reject</span>(<span class="l">'error'</span> )
+    })
+}
+const promise = getWeather()
+promise.then(function(data){
+        console.log(data)
+    },<span class="r">function</span>(<span class="l">rejectData</span>){
+        console.log(<span class="l">rejectData</span>)
+    }
+)</pre>
                         </div>
-                    <p>
-                        We use promises when we need to wait for information or data
-                    </p>
+                    </div>
+                    <div class="step-img">
+                        <!-- <img src="images/03.png" alt=""> -->
+                        <img src="parts/01/images/03.png" alt="">
+                    </div>
+                </div>
+                <div tabindex="0" class="step-float">
+                    <div class="step-vid">
+                        <!-- <video src="images/04.mov" alt=""> -->
+                            <img src="parts/01/images/01.png" alt="">
+                    </div>
+                    <div class="step-txt">
+                        <h4>04</h4>
+                        <p>
+                        <p>
+                            A <code class="b">Promise</code> works well with async code, or data not yet recieved, <span class="r">**Note</span>
+                            you can call the function <code>getWeather</code> directly when it returns a promise, <span class="r">and</span>
+                            we can pass other <code class="y">functions</code> into <span class="m">then</span> and the argument is automatically passed in
+                        </p>
+                        <div class="code-container">
+                            <pre class="copy-code">
+function getWeather() {
+    return new Promise(function (resolve, reject) {
+        console.log('...waiting')
+        setTimeout(() => {
+            resolve('Cloudy')
+        }, 90)
+    })
+}
+function <span class="y">weatherSymbols</span>(weather) {
+    if (weather == 'Cloudy') {
+        console.log('☁️')
+    }
+}
+getWeather().<span class="m">then</span>(<span class="y">checkWeather</span>)
+
+                            </pre>
+                        </div>
+                    </div>
                 </div>
                 <div tabindex="0" class="step-float">
                      <h4>03</h4>
@@ -103,10 +166,7 @@ DO NOT USE THIS  on github, desktop only</textarea>
 }
                         </pre>
                     </div>
-                    
                 </div>
-                
-                
                 <div tabindex="0" class="step">
                     <h4>04</h4>
                     <div class="step-txt">
@@ -116,7 +176,6 @@ DO NOT USE THIS  on github, desktop only</textarea>
                     <textarea tabindex='-1' class="copy-code">
     TBD
                     </textarea>
-                    
                     <div class="code-container">
                         <pre  class="copy-code">
     <span class="p">TBD</span> 

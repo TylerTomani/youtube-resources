@@ -10,25 +10,20 @@ export function addCopyCodes(){
                 cmdCarray.pop()
             }
             if(cmdCarray[0] === 67 && cmdCarray[1] === 91){
-                console.log(e.target.tagName)
                 animate(e)
             }
         })
         copycode.addEventListener('click', e => {
             e.preventDefault()
-            // console.log(e.target)
             animate(e)
         })
         copycode.addEventListener('focusin', e  => {
-            
-            if(e.target.classList.contains('long-code')){
-                
+            if(e.target.classList.contains('long-code')){ 
                 e.target.scrollIntoView({ block: "end", inline: "nearest" });
                 if(e.target.classList.contains('long-code')){
                     e.target.scrollIntoView({ block: "start", inline: "nearest" });
                 }
             }
-            
         });
 
     })

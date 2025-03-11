@@ -14,29 +14,29 @@ body {
 main {   
     display: flex
 }
-.side-bar{
+aside.side-bar{
     width: var(--width-side-bar);
     background-color: var(--bg-primary);
     color: rgb(229, 218, 218);
     height: 100vh;
 }
-.side-bar ~ #mainTargetDiv{
+aside.side-bar ~ #mainTargetDiv{
     width: calc(100% - var(--width-side-bar));
     /* margin: 0 auto; */
 }
-.side-bar ~ #mainTargetDiv{
+aside.side-bar ~ #mainTargetDiv{
     width: calc(100% - var(--width-side-bar));
     /* margin-right: 4%; */
 }
-.side-bar{
+aside.side-bar{
     color: white;
 }
-.side-bar.deactive{   
+aside.side-bar.deactive{   
     width: var(--width-side-deactive);
     color: black;
     /* opacity: 0; */
 }
-.side-bar {
+aside.side-bar {
     width: var(--width-side-bar);
     transition: all .2s ease;
 }
