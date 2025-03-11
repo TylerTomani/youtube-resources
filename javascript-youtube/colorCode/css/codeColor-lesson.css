@@ -147,6 +147,9 @@
     }
 }
 @media screen and (max-width:651px) {
+    .side-bar.deactive{
+        /* display: none; */
+    }
     .step h4 {
         margin: 0;
     }

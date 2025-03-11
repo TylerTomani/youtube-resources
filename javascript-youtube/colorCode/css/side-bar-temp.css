@@ -13,6 +13,8 @@ main > .sideBarBtn-container {
     /* background-color: var(--bg-primary); */
 }
 main > .side-bar{
+    position: relative;
+    z-index: 10;
     background-color: var(--bg-primary);
     width: max-content;
     padding-left: 1%;
