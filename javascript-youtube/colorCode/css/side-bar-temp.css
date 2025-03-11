@@ -1,6 +1,6 @@
 :root {
     --width-side-deactive: 0;
-    --width-side-bar: 110px;
+    --width-side-bar: 120px;
 }
 #backToTopBtn {
     position: sticky;
@@ -9,39 +9,56 @@
 }
 body {
     overflow: hidden;
+    overflow-x: hidden;
     overflow-y: scroll;
 }
 main {   
+    position: relative;
     display: flex
 }
-aside.side-bar{
+.side-bar{
     width: var(--width-side-bar);
     background-color: var(--bg-primary);
     color: rgb(229, 218, 218);
     height: 100vh;
 }
-aside.side-bar ~ #mainTargetDiv{
+.side-bar ~ #mainTargetDiv{
     width: calc(100% - var(--width-side-bar));
     /* margin: 0 auto; */
 }
-aside.side-bar ~ #mainTargetDiv{
+.side-bar ~ #mainTargetDiv{
     width: calc(100% - var(--width-side-bar));
     /* margin-right: 4%; */
 }
-aside.side-bar{
+.side-bar{
     color: white;
 }
-aside.side-bar.deactive{   
-    width: var(--width-side-deactive);
-    color: black;
-    /* opacity: 0; */
-}
-aside.side-bar {
+
+.side-bar {
     width: var(--width-side-bar);
     transition: all .2s ease;
 }
+.side-bar .parts.hide {
+    display: none;
+}
 #mainTargetDiv {
     border: 1px solid black;
+}
+.side-bar.deactive {
+    width: 0;
+    color: black;
+    opacity: 0;
+}
+
+.top{
+    position: relative;
+    background-color: var(--bg-primary);
+}
+#sidebarBtn.drop {
+    position: absolute;
+    background-color: var(--);
+    z-index: 1;
+    top: 50%;
 }
 ul {
     padding: 0

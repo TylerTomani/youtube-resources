@@ -66,8 +66,13 @@ export function stepTxtsFocus() {
     }
     addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
-        if(letter == 'm' && lastStep){
-            lastStep.focus()
+        if(letter == 'm'){
+            if(!mainTargetDivFocused && lastStep){    
+                console.log('yes')
+                lastStep.focus()
+            } else {
+                // mainTargetDiv.focus()
+            }
         }
         if(!mainTargetDivFocused){
         }
@@ -86,6 +91,14 @@ export function stepTxtsFocus() {
                 endNxtLesson.focus()
             }
         }
+    })
+    mainTargetDiv.addEventListener('keydown', e=>{
+        let letter = e.key.toLowerCase()
+        if(letter == 'm' && lastStep){
+            lastStep.focus()
+            console.log('kljsd')
+        }
+        
     })
 }
 

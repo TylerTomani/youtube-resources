@@ -6,6 +6,12 @@
     position: relative;
     border: 1px solid black;
 }
+.step:active,.step:focus, 
+.step-float:active,.step-float:focus{
+    font-style: bold;
+    color: white;
+    font-weight: 800;
+}
 .console {
     float: right;
     /* This floats the console to the right */

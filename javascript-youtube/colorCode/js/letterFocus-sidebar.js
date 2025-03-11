@@ -31,7 +31,6 @@ export function letterFocus(currentLinkIndex){
     });
     function elsFocus(letter) {
         if(letter == 'a'){
-            console.log(partsFocused)
             if(!partsFocused){
                 if(lastClickedLink){
                     lastClickedLink.focus()
