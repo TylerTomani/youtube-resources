@@ -27,8 +27,8 @@ main {
     width: calc(100% - var(--width-side-bar));
     /* margin: 0 auto; */
 }
-.side-bar ~ #mainTargetDiv{
-    width: calc(100% - var(--width-side-bar));
+.side-bar.deactive ~ #mainTargetDiv{
+    width: 100%;
     /* margin-right: 4%; */
 }
 .side-bar{
