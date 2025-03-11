@@ -2,17 +2,15 @@ import { lastFocusedLink } from "./inject-content.js";
 export const parts = document.querySelectorAll('.parts ul > li > a')
 export const mainTargetDiv = document.querySelector('#mainTargetDiv')
 import { lastClickedLink } from "./inject-content.js";
+import { lastStep } from "./stepTxts-codeColor.js";
 // import { currentLinkIndex } from "./inject-content.js";
 export let mainTargetDivFocused = false
 let partsFocused = false
 export function letterFocus(currentLinkIndex){
     parts.forEach(el => {
-        el.addEventListener('focusin', e => {
+        el.addEventListener('focus', e => {
             mainTargetDivFocused = false
             partsFocused = true
-        })
-        el.addEventListener('focusout', e => {
-            partsFocused = false
         })
     })
     mainTargetDiv.addEventListener('focusin', e => {
@@ -24,12 +22,12 @@ export function letterFocus(currentLinkIndex){
     })
     document.addEventListener('keydown', e => {
         let letter = e.key.toLowerCase();
-        elsFocus(letter)
+        elsFocus(e,letter)
         
 
         
     });
-    function elsFocus(letter) {
+    function elsFocus(e,letter) {
         if(letter == 'a'){
             if(!partsFocused){
                 if(lastClickedLink){
@@ -40,10 +38,14 @@ export function letterFocus(currentLinkIndex){
             }
 
         }
-        if (letter == 'm') {
-            mainTargetDiv.focus()
-            scrollTo(0, 0)
+        if (letter == 'm' && lastStep) {
             mainTargetDivFocused = true
+            lastStep.focus()
+            if(e.target == lastStep && letter == 'm'){
+                mainTargetDiv.focus()
+                scrollTo(0, 0)
+
+            }
         }
         if(letter == 'b'){
             const backlink = document.querySelector('#backlink')
