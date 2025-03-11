@@ -26,6 +26,7 @@ export function stepTxtsFocus() {
     })
     imgVids.forEach(imgVid =>{
         imgVid.addEventListener('click', e =>{
+            e.preventDefault()
             toggleImgVid(e)
         })
     })    
