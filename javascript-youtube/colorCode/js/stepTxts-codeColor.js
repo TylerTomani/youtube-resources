@@ -9,6 +9,9 @@ export function stepTxtsFocus() {
     // Maybe just keep text area with focus
     const tabIndexElements = document.querySelectorAll('.copy-code')
     const  imgVids = document.querySelectorAll('.step-img > img, .step-vid, video')
+    const sectionLessonTitle = document.querySelector('nav.section-lesson-title')
+    const hiddenH3 = document.querySelector('.header-codeColor-lesson h3')
+    console.log(hiddenH3)
     let currentWidth
     addEventListener('DOMContentLoaded', e => {
         currentWidth = innerWidth

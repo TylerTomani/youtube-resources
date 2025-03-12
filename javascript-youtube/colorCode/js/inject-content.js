@@ -6,6 +6,7 @@ import { mainTargetDiv } from "./letterFocus-sidebar.js";
 import { sideBar } from "./toggle-sidebar.js";
 export let lastFocusedLink = null;
 export let lastClickedLink = null
+const sectionLessonTitle = document.querySelector('nav.section-lesson-title')
 let sidebarLinksFocused = false;
 let currentLinkIndex = 0;
 
@@ -68,6 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                     mainTargetDiv.focus()
                     scrollTo(0, 0);
+                    // const 
                 }
                 lastClickedLink = e.target; // Store the last clicked link
                 lastFocusedLink = e.target; // Store the last clicked link
