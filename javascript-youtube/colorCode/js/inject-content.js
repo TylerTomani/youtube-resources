@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
     addEventListener('resize', e => {
         // currentWidth = e.target.innerWitdth
         currentWidth = innerWidth
-        console.log(currentWidth)
     })
     let mainTargetDivFocused = false
     // Inject link content into main-content
@@ -29,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
         fetch(href)
             .then(response => response.text())
             .then(html => {
+                console.log(href)
                 mainTargetDiv.innerHTML = html;
                 addCopyCodes()
                 letterFocus()            
@@ -98,6 +98,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 if(intLet <= parts.length){
                     parts[intLet - 1].focus()
                 }
+            }
+            if (letter == 'm') {
+                mainTargetDiv.focus()
+                scrollTo(0,0)
             }
         }
     });

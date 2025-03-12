@@ -6,13 +6,28 @@ import { lastStep } from "./stepTxts-codeColor.js";
 export const navBar = document.querySelector('nav.section-lesson-title')
 export let mainTargetDivFocused = false
 let partsFocused = false
-export function letterFocus(currentLinkIndex){
+const header = document.querySelector('body > header')
+export function letterFocus(){
     parts.forEach(el => {
         el.addEventListener('focus', e => {
             mainTargetDivFocused = false
             partsFocused = true
         })
     })
+    // header.addEventListener('keydown', e=> {
+    //     let letter = e.key.toLowerCase()
+    //     if(letter == 'a'){
+    //         console.log(letter)
+    //         if(!partsFocused){
+    //             if(lastClickedLink){
+    //                 lastClickedLink.focus()
+    //             } else {
+    //                 parts[0].focus()
+    //             }
+    //         }
+
+    //     }
+    // })
     mainTargetDiv.addEventListener('focusin', e => {
         mainTargetDivFocused = true
         partsFocused = false

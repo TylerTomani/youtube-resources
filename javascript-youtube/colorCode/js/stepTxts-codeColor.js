@@ -21,7 +21,7 @@ export function stepTxtsFocus() {
     addEventListener('resize', e => {
         // currentWidth = e.target.innerWitdth
         currentWidth = innerWidth
-        console.log(currentWidth)
+        
     })
     parts.forEach(el => {
         el.addEventListener('focus', e => {
@@ -68,7 +68,7 @@ export function stepTxtsFocus() {
         if(img){
             img.classList.toggle('enlarge')
         }
-        console.log(currentWidth)
+        
         if(currentWidth <= 721 && currentWidth >= 601){
             if(img.classList.contains('enlarge')){
                 sideBar.classList.add('deactive')
@@ -162,4 +162,4 @@ function getStep(parent){
 }
 
 // DELETE THIS when side bar works
-// stepTxtsFocus()
+stepTxtsFocus()

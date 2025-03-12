@@ -14,10 +14,11 @@ main {
 body > nav.section-lesson-title{
     padding: 0;
     margin: 0;
+    background-color: var(--bg-primary);
 }
 body > nav.section-lesson-title > h1{
     padding: 0;
-    margin-bottom: 1.75%;
+    padding-bottom: 1.5%;
 }
 main > .side-bar{
     flex-basis: 10%;
@@ -50,6 +51,9 @@ ul {
 }
 ul li a {
     text-decoration: none;
+}
+.hide{
+    display: none;
 }
 @media screen and (min-width:960px){
     main>.side-bar.deactive  {
