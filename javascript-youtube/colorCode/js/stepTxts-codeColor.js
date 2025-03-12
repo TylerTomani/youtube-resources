@@ -9,19 +9,20 @@ export function stepTxtsFocus() {
     // Maybe just keep text area with focus
     const tabIndexElements = document.querySelectorAll('.copy-code')
     const  imgVids = document.querySelectorAll('.step-img > img, .step-vid, video')
-    const sectionLessonTitle = document.querySelector('nav.section-lesson-title')
+    const sectionLessonTitle = document.querySelector('nav.section-lesson-title > h1')
     const hiddenH3 = document.querySelector('.header-codeColor-lesson h3')
-    console.log(hiddenH3)
     let currentWidth
-    addEventListener('DOMContentLoaded', e => {
-        currentWidth = innerWidth
-    })
+    let partsFocused = false
+    sectionLessonTitle.innerText = hiddenH3.innerText
+
+    currentWidth = innerWidth
+
+    
     addEventListener('resize', e => {
         // currentWidth = e.target.innerWitdth
         currentWidth = innerWidth
         console.log(currentWidth)
     })
-    let partsFocused = false
     parts.forEach(el => {
         el.addEventListener('focus', e => {
             partsFocused = true
@@ -67,13 +68,18 @@ export function stepTxtsFocus() {
         if(img){
             img.classList.toggle('enlarge')
         }
-        if(currentWidth >= 601){
-
+        console.log(currentWidth)
+        if(currentWidth <= 721 && currentWidth >= 601){
             if(img.classList.contains('enlarge')){
                 sideBar.classList.add('deactive')
             } else {
                 sideBar.classList.remove('deactive')
                 
+            }
+        }
+        if (currentWidth <= 600) {
+            if (img.classList.contains('enlarge')) {
+                sideBar.classList.add('deactive')
             }
         }
         

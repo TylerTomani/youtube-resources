@@ -108,18 +108,13 @@ promise.then(function(data){
                     </div>
                 </div>
                 <div tabindex="0" class="step-float">
-                    <div class="step-vid">
-                        <!-- <video src="images/04.mov" alt=""> -->
-                            <img src="parts/01/images/01.png" alt="">
-                    </div>
+                    <h4>04</h4>
+                    <p>
+                        A <code class="b">Promise</code> works well with async code, or data not yet recieved, <span class="r">**Note</span>
+                        you can call the function <code>getWeather</code> directly when it returns a promise, <span class="r">and</span>
+                        we can pass other <code class="y">functions</code> into <span class="m">then</span> and the argument is automatically passed in
+                    </p>
                     <div class="step-txt">
-                        <h4>04</h4>
-                        <p>
-                        <p>
-                            A <code class="b">Promise</code> works well with async code, or data not yet recieved, <span class="r">**Note</span>
-                            you can call the function <code>getWeather</code> directly when it returns a promise, <span class="r">and</span>
-                            we can pass other <code class="y">functions</code> into <span class="m">then</span> and the argument is automatically passed in
-                        </p>
                         <div class="code-container">
                             <pre class="copy-code">
 function getWeather() {
@@ -139,6 +134,10 @@ getWeather().<span class="m">then</span>(<span class="y">checkWeather</span>)
 
                             </pre>
                         </div>
+                    </div>
+                    <div class="step-vid">
+                        <!-- <video src="images/04.mov" alt=""> -->
+                        <img src="parts/01/images/01.png" alt="">
                     </div>
                 </div>
                 <div tabindex="0" class="step-float">

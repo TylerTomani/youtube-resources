@@ -150,14 +150,15 @@
     .step-vid {
         width: 50%;
     }
-        .enlarge {
-            position: absolute;
-            transform: scale(1.05);
-            left: 2.5%;
-            border: 1px solid white;
-            margin-right: 0;
-            margin-top: 0;
-            min-width: 500px;
-            z-index: 2
-        }
+    .enlarge {
+        position: absolute;
+        transform: scale(.9);
+        left: 2.5%;
+        border: 1px solid white;
+        margin-right: 0;
+        margin-top: 0;
+        width: 50%;
+        min-width: 300px;
+        border: 2px solid magenta;
+    }
 }

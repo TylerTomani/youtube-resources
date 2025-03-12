@@ -11,7 +11,14 @@ main {
     overflow-y: scroll;
     scrollbar-width: none;
 }
-
+body > nav.section-lesson-title{
+    padding: 0;
+    margin: 0;
+}
+body > nav.section-lesson-title > h1{
+    padding: 0;
+    margin-bottom: 1.75%;
+}
 main > .side-bar{
     position: relative;
     z-index: 10;
@@ -43,4 +50,25 @@ ul {
 }
 ul li a {
     text-decoration: none;
+}
+@media screen and (min-width:960px){
+    main>.side-bar.deactive  {
+        flex-basis: 2.5%;
+        /* width: 2.5%; */
+        /* opacity: 0; */
+        transition: all 250ms;
+        /* background-color: blue !important; */
+    }
+}
+@media screen and (max-width:600px){
+    .parts{
+        margin-left: 1.5%;
+    }
+    .parts h2{
+        margin-left: 2.5%;
+    }
+    body>nav.section-lesson-title>h1 {
+    /* color: blue;s */
+        font-size: 45%%;
+    }
 }
