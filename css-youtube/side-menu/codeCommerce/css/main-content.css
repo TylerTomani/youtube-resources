@@ -1,24 +1,31 @@
 .main-content {
     display: flex;
     flex-direction: column;
-    margin-left: 2%;
+    margin: 0 1.5% ;
+    width: 100%;
 }
 .main-content > .code-containers{
+    border: 3px solid orange;
     display: flex;
+    gap: 2.5%;
     flex-wrap: wrap;
-    /* width: 100%; */
+    width: 100%;
 }
 .code-containers pre {
     max-height: 80vh;
 }
-.code-containers >
+.code-containers 
 .code-container {
-    /* background-color: yellow; */
     border: 1px solid black;
     font-size: .8rem;
-    width: 40%;
-    /* flex-basis: 50%; */
-    /* margin: 0 auto; */
+    flex-basis: 48%;
+    min-width: 0;
+    overflow: scroll;
+    border: 2px solid magenta;
+}
+.main-content > .code-container {
+    border: 1px solid black;
+    font-size: .8rem;
     overflow: scroll;
 }
 #htmlCode {

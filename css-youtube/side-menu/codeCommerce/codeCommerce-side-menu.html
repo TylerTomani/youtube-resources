@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>codeCommerce-side-menu</title>
     <link rel="stylesheet" href="../../../css/double-link-header.css">
-    <link rel="stylesheet" href="../../../css/copy-code-fcc.css">
-    <link rel="stylesheet" href="../../css/css-youtube-styles.css">
-    <link rel="stylesheet" href="css/side-menu-code-commerce.css">
+    <link rel="stylesheet" href="../../../css/resource-templates/copy-code-fcc.css">
+    <!-- <link rel="stylesheet" href="../../css/css-youtube-styles.css"> -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
     <link rel="stylesheet" href="css/main-content.css">
+    <link rel="stylesheet" href="css/side-menu-code-commerce.css">
 
     <script src="../../js/letterFocus-css-youtube.js" defer></script>
-    <script src="../../../js/copy-code.js" defer></script>
+    <script type="module" src="../../../js/copy-code.js" defer></script>
 </head>
 <body>
     <header class="">
@@ -109,13 +110,15 @@
             </ul>
         </div>
         <div tabindex="0" id="mainContent" class="main-content">
-            <h2>Main content</h2>
-            <p style="color: red;">add copy code to theses, have code affect the page when altered, probably use text input/ area</p>
-            <p>fix flex</p>
-            <p>
-                This is the link tag for box icons, or visit this link to get it
-                <a target="_blank" href="https://boxicons.com/?query=">https://boxicons.com/?query=</a>
-            </p>
+            <article>
+                <h2>Main content</h2>
+                <p style="color: red;">add copy code to theses, have code affect the page when altered, probably use text input/ area
+                </p>
+                <p>
+                    This is the link tag for box icons, or visit this link to get it
+                    <a target="_blank" href="https://boxicons.com/?query=">https://boxicons.com/?query=</a>
+                </p>
+            </article>
             <div class="code-container">
                 <pre tabindex="0" class="copy-code">
 &lt;link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'></pre>
@@ -123,7 +126,7 @@
             
             <div class="code-containers">
                 <div id="htmlCode" class="code-container"><pre tabindex="0" class="copy-code"> 
-            &LT;main>
+&LT;main>
     &LT;div class="side-bar">
         &LT;div class="top">
             &LT;div class="logo">
@@ -206,6 +209,22 @@
     &LT;/div>
     &LT;/main>
                 </pre>
+                </div>            
+                <div id="jsCode" class="code-container"><pre tabindex="0" class="copy-code"> 
+const btn = document.querySelector('#sidebarbtn')
+const sideBar = document.querySelector('.side-bar')
+btn.onclick = function(){
+    sideBar.classList.toggle('active')
+    console.log('lkjd')
+
+}
+btn.addEventListener('keydown', e => {
+    let letter = e.key.toLowerCase()
+    if(letter == 'enter'){
+    sideBar.classList.toggle('active')
+    console.log('enter')
+    }
+})</pre>
                 </div>            
                 <div id="cssCode" class="code-container"><pre tabindex="0" class="copy-code"> 
     *{
@@ -358,6 +377,7 @@
                 </pre>
                 </div>
             </div>
+            
         </div>
     </main>
     <script>

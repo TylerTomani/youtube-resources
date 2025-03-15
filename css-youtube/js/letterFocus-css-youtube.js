@@ -9,7 +9,7 @@ addEventListener('keydown', e => {
         sideBarBtn.focus()
     }
     if(letter == 'm'){
-        e.preventDefault()
+        // e.preventDefault()
         scrollTo(0,0)
     }
     if(letter != currentLetter){
