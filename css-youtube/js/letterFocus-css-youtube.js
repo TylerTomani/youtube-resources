@@ -3,10 +3,28 @@ const sideBarBtn = document.getElementById('sidebarbtn')
 let elsLettered = []
 let iLetter = 0
 let currentLetter
+const copyCodes = document.querySelectorAll('.code-containers > .code-container > pre.copy-code')
+let iCopyCodes = 0
+const codeContainers = document.querySelector('.code-containers')
+codeContainers.addEventListener('focusout', e =>{ 
+    console.log('out')
+})
 addEventListener('keydown', e => {
     let letter = e.key.toLowerCase()
     if(letter == 'a'){
         sideBarBtn.focus()
+    }
+    if(letter == 'c' && !e.metaKey){
+        if(!e.shiftKey){
+            copyCodes[iCopyCodes].focus()
+            iCopyCodes = (iCopyCodes + 1) % copyCodes.length
+
+        } else{
+            iCopyCodes = (iCopyCodes - 1 + copyCodes.length) % copyCodes.length
+            
+        }
+        copyCodes[iCopyCodes].focus()
+        console.log(iLetter)
     }
     if(letter == 'm'){
         // e.preventDefault()
@@ -21,7 +39,7 @@ addEventListener('keydown', e => {
             }
         })
         
-        if(elsLettered.length > 0){
+        if(elsLettered.length > 0 && !e.metaKey){
             elsLettered[0].focus()
         }
     }

@@ -17,6 +17,7 @@
     /* ✅ Ensures long code lines wrap */
     word-break: break-word;
 }
+
 .code-containers 
 .code-container {
     border: 1px solid black;
@@ -33,4 +34,10 @@
 }
 #htmlCode {
     max-height: 60vh
+}
+pre.copy-code:focus,
+pre.copy-code:active {
+    box-shadow: 0 0 14px 12px lime;
+    border: 5px solid lime;
+    width: 100%;
 }
