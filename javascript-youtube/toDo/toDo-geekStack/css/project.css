@@ -1,0 +1,61 @@
+:root{
+    /* --bg-grad-prime: #2c2c75; */
+} 
+.project {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    
+}
+.project-container {
+    font-family: 'Poppins', sans-serif;    
+    border: 2px solid blue;
+    height: 70vh;
+    background: linear-gradient(130deg, #153667,#153667,#4e085f);    
+    padding: 10px
+}
+.todo-app{
+    border: 2px solid black;
+    background-color: white;
+    width: 100%;
+    max-width: 540px;
+    margin: 100px auto 20px;
+    padding: 40px 30px 70px ;
+    border-radius: 10px;
+}
+.todo-app h2 {
+    display: flex;
+    align-items: center;
+}
+.todo-app h2 img {
+    width: 10%;
+}
+.todo-app .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #dadce0;
+    border-radius: 20px;
+}
+.todo-app .row input{
+    /* flex 1?? somehow fills the the whole container */
+    flex: 1;
+    /*  */
+    border: none;
+    outline: none;
+    background-color: transparent;
+    padding: 12px 20px;
+    font-weight: 500;
+
+}
+.todo-app .row button{
+    border: none;
+    outline: none;
+    margin: 6px 4px;
+    cursor: pointer;
+    background: #ff5945;
+    color: #fff;
+    font-size: 16px;
+    padding: 16px 30px;
+    border-radius: 20px;
+}
