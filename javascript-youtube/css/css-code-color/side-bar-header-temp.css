@@ -1,10 +1,10 @@
 
 body>header {   
-    color: white;
+    /* color: black; */
     display: flex;
 }
 body>header a{
-    color: white;
+    /* color: black; */
 }
 body>header a:focus,
 body>header a:active {

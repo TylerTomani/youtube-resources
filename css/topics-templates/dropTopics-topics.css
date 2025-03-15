@@ -59,7 +59,6 @@ main {
 }
 .sub-resources-container > ul > li{
     flex-basis: 10%;
-    /* border: 1px solid black; */
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -110,11 +109,3 @@ a.resource:visited{
     max-height: 50px !important;
 }
 
-.course {
-    width: 100px;
-    /* height: 200px !important; */
-}
-.course > img {
-    width: 100% !important;
-    height: 100% !important;
-}

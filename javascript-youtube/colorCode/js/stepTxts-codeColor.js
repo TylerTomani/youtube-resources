@@ -14,15 +14,8 @@ export function stepTxtsFocus() {
     let currentWidth
     let partsFocused = false
     sectionLessonTitle.innerText = hiddenH3.innerText
-
     currentWidth = innerWidth
-
-    
-    addEventListener('resize', e => {
-        // currentWidth = e.target.innerWitdth
-        currentWidth = innerWidth
-        
-    })
+    addEventListener('resize', e => {currentWidth = innerWidth})
     parts.forEach(el => {
         el.addEventListener('focus', e => {
             partsFocused = true
@@ -34,7 +27,6 @@ export function stepTxtsFocus() {
             toggleImgVid(e)
         })
     })    
-    
     tabIndexElements.forEach(el => {
         el.addEventListener('keydown', e => {
             let letter = e.key.toLowerCase()
@@ -105,7 +97,6 @@ export function stepTxtsFocus() {
     }
     addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
-        
         if(letter == 'm'){
             if(!mainTargetDivFocused && lastStep){    
                 lastStep.focus()
@@ -120,7 +111,6 @@ export function stepTxtsFocus() {
             e.preventDefault()
             consoleEntry.focus()
         }
-        
         if (!isNaN(letter) ) {
             if(!partsFocused){
 
