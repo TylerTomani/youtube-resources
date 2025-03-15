@@ -13,6 +13,9 @@
 }
 .code-containers pre {
     max-height: 80vh;
+    white-space: pre-wrap;
+    /* ✅ Ensures long code lines wrap */
+    word-break: break-word;
 }
 .code-containers 
 .code-container {
