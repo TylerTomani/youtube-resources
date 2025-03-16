@@ -6,8 +6,30 @@ import { lastStep } from "./stepTxts-codeColor.js";
 export const navBar = document.querySelector('nav.section-lesson-title')
 export let mainTargetDivFocused = false
 let partsFocused = false
+let enterConsoleFocus = false
+let enterConsole
 const header = document.querySelector('body > header')
+
 export function letterFocus(){
+    // if(enterConsole){
+        //     console.log(enterConsole)
+        
+        // }
+    async function extractElementEnterConsole() {
+        const enterConsole = await getEnterConsole();
+        if (enterConsole) {
+            enterConsole.addEventListener('focus', e => {
+                enterConsoleFocus = true
+            })
+            enterConsole.addEventListener('focusout', e => {
+                enterConsoleFocus = false 
+            })
+        }
+    }
+    extractElementEnterConsole()
+    
+
+
     parts.forEach(el => {
         el.addEventListener('focus', e => {
             mainTargetDivFocused = false
@@ -28,6 +50,7 @@ export function letterFocus(){
 
     //     }
     // })
+
     mainTargetDiv.addEventListener('focusin', e => {
         mainTargetDivFocused = true
         partsFocused = false
@@ -37,7 +60,11 @@ export function letterFocus(){
     })
     document.addEventListener('keydown', e => {
         let letter = e.key.toLowerCase();
-        elsFocus(e,letter)
+        if(enterConsoleFocus){
+            return 
+        } else {
+            elsFocus(e,letter)
+        }
 
         
     });
@@ -68,10 +95,7 @@ export function letterFocus(){
         
         if (!e.shiftKey && letter == 'c') {
             const chatGpt = document.querySelector('#chatGpt')
-            // const enterConsole = getEnterConsole()
-            // if(e.target.id == 'chatGpt'){
-                
-            // }
+            
             chatGpt.focus()
         }
         if(letter == 'd'){
@@ -102,11 +126,11 @@ export function letterFocus(){
         }
         
     }
+    
     function getEnterConsole(){
         return new Promise(function(resolve,reject){
-            resolve(document.querySelector('.consoleEntry'))
+            resolve(document.querySelector('#enterConsole'))
         })
     }
 }
-letterFocus()
 

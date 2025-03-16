@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 console.log('\n') // Restore console.log
             }
 
-            button.addEventListener("click", runCode);
+        button.addEventListener("click", runCode);
 
             textarea.addEventListener("keydown", function (event) {
                 if (((event.metaKey || event.ctrlKey) && event.shiftKey) && event.key === "Enter") {

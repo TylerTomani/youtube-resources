@@ -114,7 +114,7 @@ export function stepTxtsFocus() {
             } else{
 
                 const chagGpt = document.querySelector('#chatGpt')
-                chagGpt.focus()
+                chagGpt.scrollIntoView({behavior: 'smooth', block: 'center'})
             }
         }
         if (!isNaN(letter) ) {
