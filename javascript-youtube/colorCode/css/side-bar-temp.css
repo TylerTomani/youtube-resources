@@ -2,6 +2,9 @@
     margin:  0;
     padding: 0;
 }
+body{
+    overscroll-behavior-x: none;
+}
 main {
     position: relative;
     height: 100vh;
