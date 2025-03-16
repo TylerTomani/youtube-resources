@@ -4,6 +4,7 @@ import { letterFocus } from "./letterFocus-sidebar.js";
 import { parts } from "./letterFocus-sidebar.js";
 import { mainTargetDiv } from "./letterFocus-sidebar.js";
 import { sideBar } from "./toggle-sidebar.js";
+
 export let lastFocusedLink = null;
 export let lastClickedLink = null
 const sectionLessonTitle = document.querySelector('nav.section-lesson-title')
@@ -100,10 +101,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             if (letter == 'm') {
                 mainTargetDiv.focus()
+                // console.log(enterConsoleFocus)
                 scrollTo(0,0)
             }
         }
     });
     
-    letterFocus()    
 });

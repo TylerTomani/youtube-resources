@@ -1,6 +1,7 @@
 import { mainTargetDivFocused } from "./letterFocus-sidebar.js"
 import { sideBar } from "./toggle-sidebar.js"
 import { parts } from "./letterFocus-sidebar.js"
+import { enterConsoleFocus } from "./letterFocus-sidebar.js";
 export let lastStep = null
 export let stepFocused
 export function stepTxtsFocus() {
@@ -117,6 +118,7 @@ export function stepTxtsFocus() {
                 chagGpt.scrollIntoView({behavior: 'smooth', block: 'center'})
             }
         }
+        // xyz
         if (!isNaN(letter) ) {
             if(!partsFocused){
                 let intLet = parseInt(letter)

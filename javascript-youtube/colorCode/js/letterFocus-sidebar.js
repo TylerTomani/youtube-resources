@@ -6,17 +6,28 @@ import { lastStep } from "./stepTxts-codeColor.js";
 export const navBar = document.querySelector('nav.section-lesson-title')
 export let mainTargetDivFocused = false
 let partsFocused = false
-let enterConsoleFocus = false
-let enterConsole
+export let enterConsoleFocus = false
 const header = document.querySelector('body > header')
-
+// async variables
+let enterConsole, endNxtLessonBtn
 export function letterFocus(){
-    // if(enterConsole){
-        //     console.log(enterConsole)
-        
-        // }
+    header.addEventListener('keydown', e => {
+        let letter = e.key.toLowerCase()
+        console.log(letter)
+        if (letter == 'a') {
+            console.log(partsFocused)
+            if (!partsFocused) {
+                if (lastClickedLink) {
+                    lastClickedLink.focus()
+                } else {
+                    parts[0].focus()
+                }
+            }
+
+        }
+    })
     async function extractElementEnterConsole() {
-        const enterConsole = await getEnterConsole();
+        enterConsole = await getEnterConsole();
         if (enterConsole) {
             enterConsole.addEventListener('focus', e => {
                 enterConsoleFocus = true
@@ -28,29 +39,13 @@ export function letterFocus(){
     }
     extractElementEnterConsole()
     
-
-
+    
     parts.forEach(el => {
         el.addEventListener('focus', e => {
             mainTargetDivFocused = false
             partsFocused = true
         })
     })
-    // header.addEventListener('keydown', e=> {
-    //     let letter = e.key.toLowerCase()
-    //     if(letter == 'a'){
-    //         console.log(letter)
-    //         if(!partsFocused){
-    //             if(lastClickedLink){
-    //                 lastClickedLink.focus()
-    //             } else {
-    //                 parts[0].focus()
-    //             }
-    //         }
-
-    //     }
-    // })
-
     mainTargetDiv.addEventListener('focusin', e => {
         mainTargetDivFocused = true
         partsFocused = false
@@ -77,26 +72,33 @@ export function letterFocus(){
                     parts[0].focus()
                 }
             }
-
+        }
+        if (letter == 'e') {
+            async function extractEndNxtLessonBtn() {
+                endNxtLessonBtn = await getEndNxtLessonBtn();
+                if (endNxtLessonBtn) {
+                    endNxtLessonBtn.focus()
+                }
+            }
+            extractEndNxtLessonBtn()
         }
         if (letter == 'm' && lastStep) {
             mainTargetDivFocused = true
             lastStep.focus()
+            console.log('now')
             if(e.target == lastStep && letter == 'm'){
                 mainTargetDiv.focus()
                 scrollTo(0, 0)
-
             }
         }
-        if(letter == 'b'){
-            const backlink = document.querySelector('#backlink')
-            backlink.focus()
-        }
-        
+         
         if (!e.shiftKey && letter == 'c') {
             const chatGpt = document.querySelector('#chatGpt')
-            
             chatGpt.focus()
+        } 
+        if (e.shiftKey && letter == 'c') {
+            const enterConsole = getEnterConsole()
+            console.log(enterConsole)
         }
         if(letter == 'd'){
             const darkmodeBtn = document.querySelector('#darkmodeBtn')
@@ -124,12 +126,16 @@ export function letterFocus(){
             const vsCodeShortRegex = document.querySelector('#vsCodeShortRegex')
             vsCodeShortRegex.focus()
         }
-        
-    }
-    
+    }    
+    // async functions
     function getEnterConsole(){
         return new Promise(function(resolve,reject){
             resolve(document.querySelector('#enterConsole'))
+        })
+    }
+    function getEndNxtLessonBtn(){
+        return new Promise(function(resolve,reject){
+            resolve(document.querySelector('#endNxtLesson'))
         })
     }
 }
