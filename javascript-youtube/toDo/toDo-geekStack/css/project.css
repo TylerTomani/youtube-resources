@@ -1,6 +1,7 @@
 :root{
-    /* --bg-grad-prime: #2c2c75; */
+    --bg-grad-prime: #2c2c75;
 } 
+
 .project {
     border: 1px solid black;
     display: flex;
@@ -10,7 +11,7 @@
 .project-container {
     font-family: 'Poppins', sans-serif;    
     border: 2px solid blue;
-    height: 70vh;
+    height: 100%;
     background: linear-gradient(130deg, #153667,#153667,#4e085f);    
     padding: 10px
 }
@@ -19,8 +20,8 @@
     background-color: white;
     width: 100%;
     max-width: 540px;
-    margin: 100px auto 20px;
-    padding: 40px 30px 70px ;
+    margin: 20px auto 10px;
+    padding: 10px 30px 70px ;
     border-radius: 10px;
 }
 .todo-app h2 {
@@ -48,14 +49,64 @@
     font-weight: 500;
 
 }
-.todo-app .row button{
+.todo-app #addBtn{
     border: none;
     outline: none;
-    margin: 6px 4px;
     cursor: pointer;
-    background: #ff5945;
+    background-color: var(--bg-grad-prime);
     color: #fff;
     font-size: 16px;
-    padding: 16px 30px;
+    margin: 6px 9px;
+        padding: 12px 20px;
     border-radius: 20px;
+}
+#addBtn:active,
+#addBtn:focus {
+    margin: 6px 9px;
+    padding: 12px 20px;
+    box-shadow: 0px 0 6px 1px var(--bg-grad-prime);
+    background: #ff5945;
+}
+#task-container{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* border: 1px solid black; */
+}
+
+#task-container > li.checked {
+    text-decoration: line-through;
+    opacity: .5;
+}
+
+#task-container > li > .checkbox,
+#task-container > li > .xbox{
+    /* display: inline-flex; */
+    border: 2px solid blue;
+    padding: 5px 6px;
+    font-size: 120%;
+    /* margin-bottom: 25%; */
+    margin: 1%;
+}
+#task-container>li:active,
+#task-container>li:focus{
+    box-shadow: 0px 0 6px 1px var(--bg-grad-prime);
+}
+#task-container>li {
+    list-style: none;
+    font-size: 17px;
+    padding: 1px;
+    
+    border: 1px solid black;
+    user-select: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    /* justify-content: flex-start; */
+
+}
+#task-container>li>.xbox {
+    justify-self: flex-end;
+    align-self: flex-end;
+    
 }

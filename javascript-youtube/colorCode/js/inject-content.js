@@ -10,7 +10,6 @@ export let lastClickedLink = null
 const sectionLessonTitle = document.querySelector('nav.section-lesson-title')
 let sidebarLinksFocused = false;
 let currentLinkIndex = 0;
-
 document.addEventListener('DOMContentLoaded', () => {
     let currentWidth = innerWidth
     addEventListener('resize', e => {
