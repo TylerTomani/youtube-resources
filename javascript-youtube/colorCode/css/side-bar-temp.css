@@ -23,7 +23,9 @@ body > nav.section-lesson-title > h1{
     padding: 0;
     padding-bottom: 1.5%;
 }
-main > .side-bar{
+main > aside.side-bar{
+    position:sticky;
+    top: 0;
     flex-basis: 10%;
     background-color: var(--bg-primary);
     /* width: max-content; */
