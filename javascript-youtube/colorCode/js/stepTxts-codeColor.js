@@ -4,7 +4,7 @@ import { parts } from "./letterFocus-sidebar.js"
 export let lastStep = null
 export let stepFocused
 export function stepTxtsFocus() {
-    const steps = document.querySelectorAll('.step , .step-float , .step-col3')
+    const steps = document.querySelectorAll('.steps-container > .step , .step-float , .step-col3')
     // const tabIndexElements = document.querySelectorAll('.copy-code, textarea')
     // Maybe just keep text area with focus
     const tabIndexElements = document.querySelectorAll('.copy-code')
@@ -106,14 +106,19 @@ export function stepTxtsFocus() {
         }
         if(!mainTargetDivFocused){
         }
-        if (letter == 'c' && !e.metaKey) {
-            const consoleEntry = document.querySelector('.consoleEntry')
+        if (!e.metaKey && (e.shiftKey && letter == 'c')) {
             e.preventDefault()
-            consoleEntry.focus()
+            const enterConsole = document.querySelector('#enterConsole')
+            if(enterConsole){
+                enterConsole.focus()
+            } else{
+
+                const chagGpt = document.querySelector('#chatGpt')
+                chagGpt.focus()
+            }
         }
         if (!isNaN(letter) ) {
             if(!partsFocused){
-
                 let intLet = parseInt(letter)
                 if (intLet <= steps.length) {
                     steps[intLet - 1].focus()
@@ -123,8 +128,6 @@ export function stepTxtsFocus() {
                 }
             }
         }
-        
-        
     })
     mainTargetDiv.addEventListener('keydown', e=>{
         let letter = e.key.toLowerCase()

@@ -28,7 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
         fetch(href)
             .then(response => response.text())
             .then(html => {
-                console.log(href)
                 mainTargetDiv.innerHTML = html;
                 addCopyCodes()
                 letterFocus()            

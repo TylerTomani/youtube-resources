@@ -38,7 +38,6 @@ export function letterFocus(){
     document.addEventListener('keydown', e => {
         let letter = e.key.toLowerCase();
         elsFocus(e,letter)
-        
 
         
     });
@@ -67,8 +66,12 @@ export function letterFocus(){
             backlink.focus()
         }
         
-        if (letter == 'c') {
+        if (!e.shiftKey && letter == 'c') {
             const chatGpt = document.querySelector('#chatGpt')
+            // const enterConsole = getEnterConsole()
+            // if(e.target.id == 'chatGpt'){
+                
+            // }
             chatGpt.focus()
         }
         if(letter == 'd'){
@@ -99,7 +102,11 @@ export function letterFocus(){
         }
         
     }
+    function getEnterConsole(){
+        return new Promise(function(resolve,reject){
+            resolve(document.querySelector('.consoleEntry'))
+        })
+    }
 }
-
-// letterFocus()
+letterFocus()
 
