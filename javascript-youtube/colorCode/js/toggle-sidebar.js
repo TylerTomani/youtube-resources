@@ -50,11 +50,8 @@ navBar.addEventListener('click', e => {
     e.preventDefault()
     sideBar.classList.toggle('deactive')
 })
+
 sideBar.addEventListener('click', e => {
-    e.preventDefault()
-    sideBar.classList.toggle('deactive')
-})
-sideBar.addEventListener('click', e => {
-    e.preventDefault()
+    // e.preventDefault()
     sideBar.classList.toggle('deactive')
 })

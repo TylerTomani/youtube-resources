@@ -15,16 +15,15 @@ addEventListener('keydown', e => {
         sideBarBtn.focus()
     }
     if(letter == 'c' && !e.metaKey){
+        console.log(iCopyCodes)
         if(!e.shiftKey){
             copyCodes[iCopyCodes].focus()
             iCopyCodes = (iCopyCodes + 1) % copyCodes.length
 
-        } else{
+        } else if(e.shiftKey){
             iCopyCodes = (iCopyCodes - 1 + copyCodes.length) % copyCodes.length
-            
-        }
-        copyCodes[iCopyCodes].focus()
-        console.log(iLetter)
+            copyCodes[iCopyCodes].focus()
+        }   
     }
     if(letter == 'm'){
         // e.preventDefault()
