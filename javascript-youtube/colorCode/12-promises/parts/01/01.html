@@ -106,6 +106,7 @@ promise.then(function(data){
                         <img src="parts/01/images/03.png" alt="">
                     </div>
                 </div>
+                <!-- GET step inside of step-float, to act like it does in stackoverflow and others -->
                 <div tabindex="0" class="step-float">
                     <h4>04</h4>
                     <p>
@@ -113,34 +114,37 @@ promise.then(function(data){
                         you can call the function <code>getWeather</code> directly when it returns a promise, <span class="r">and</span>
                         we can pass other <code class="y">functions</code> into <span class="m">then</span> and the argument is automatically passed in
                     </p>
-                    <div class="step-txt">
-                        <div class="code-container">
-                            <pre class="copy-code">
-function getWeather() {
-    return new Promise(function (resolve, reject) {
-        console.log('...waiting')
-        setTimeout(() => {
-            resolve('Cloudy')
-        }, 90)
-    })
-}
-function <span class="y">weatherSymbols</span>(weather) {
-    if (weather == 'Cloudy') {
-        console.log('☁️')
+                    <div class="step">
+                        <div class="step-txt">
+                            <div class="code-container">
+                                <pre class="copy-code">
+    function getWeather() {
+        return new Promise(function (resolve, reject) {
+            console.log('...waiting')
+            setTimeout(() => {
+                resolve('Cloudy')
+            }, 90)
+        })
     }
-}
-getWeather().<span class="m">then</span>(<span class="y">checkWeather</span>)
-
-                            </pre>
+    function <span class="y">weatherSymbols</span>(weather) {
+        if (weather == 'Cloudy') {
+            console.log('☁️')
+        }
+    }
+    getWeather().<span class="m">then</span>(<span class="y">checkWeather</span>)
+    
+                                </pre>
+                            </div>
+                        </div>
+                        <div class="step-vid">
+                            <!-- <video src="images/04.mov" alt=""> -->
+                            <img src="parts/01/images/01.png" alt="">
                         </div>
                     </div>
-                    <div class="step-vid">
-                        <!-- <video src="images/04.mov" alt=""> -->
-                        <img src="parts/01/images/01.png" alt="">
-                    </div>
                 </div>
+                <!-- Console -->
                 <div tabindex="0" class="step-float">
-                     <h4>03</h4>
+                     <h4>05 Console</h4>
                     <div class="console"></div>
                     <div class="code-container">
                         <pre tabindex="0" class="copy-code">
@@ -165,26 +169,27 @@ DO NOT USE THIS  on github, desktop only</textarea>
                         </pre>
                     </div>
                 </div>
-                <div tabindex="0" class="step">
-                    <h4>04</h4>
+                <!-- Classic Step with <textarea> instead of <pre> -->
+                <!-- <div tabindex="0" class="step">
+                    <h4>06</h4>
                     <div class="step-txt">
-                    <p>
-                        <code class="b">TBD()</code> <code class="o">TBD()</code>
-                    </p>
-                    <textarea tabindex='-1' class="copy-code">
-    TBD
-                    </textarea>
-                    <div class="code-container">
-                        <pre  class="copy-code">
-    <span class="p">TBD</span> 
-    <span class="p"></span> 
-                           </pre>
-    
-                    </div>
+                        <p>
+                            <code class="b">TBD()</code> <code class="o">TBD()</code>
+                        </p>
+                        <textarea tabindex='-1' class="copy-code">
+        TBD
+                        </textarea>
+                        <div class="code-container">
+                            <pre  class="copy-code">
+        <span class="p">TBD</span> 
+        <span class="p"></span> 
+                            </pre>
+        
+                        </div>
                     </div>
                     <div class="step-img">
                     </div>
-                </div>
+                </div> -->
             </div>
                 
         </div>
