@@ -91,6 +91,7 @@ export function letterFocus(){
         if(letter == 's'){
             const sideBarBtn = document.querySelector('#sideBarBtn')
             sideBarBtn.focus()
+            scrollTo(0,0)
         }        
         if (letter == 'v') {
             const vsCodeShortRegex = document.querySelector('#vsCodeShortRegex')

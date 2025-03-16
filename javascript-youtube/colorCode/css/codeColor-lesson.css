@@ -97,6 +97,7 @@
 .step-img > img,
 .step-vid > video{
     width: 98%;
+    border: 1px solid white;
     /* display: none; */
     max-width: 500px;
 }
@@ -149,6 +150,8 @@
     .step-img,
     .step-vid {
         width: 50%;
+        margin-top: 2.5%;
+        margin-bottom: 2.5%;
     }
     .enlarge {
         position: absolute;
@@ -159,6 +162,6 @@
         margin-top: 0;
         width: 50%;
         min-width: 300px;
-        border: 2px solid magenta;
+        /* border: 2px solid magenta; */
     }
 }
