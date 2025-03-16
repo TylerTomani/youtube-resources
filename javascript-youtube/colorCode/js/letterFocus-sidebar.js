@@ -13,9 +13,9 @@ let enterConsole, endNxtLessonBtn
 export function letterFocus(){
     header.addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
-        console.log(letter)
+        
         if (letter == 'a') {
-            console.log(partsFocused)
+            
             if (!partsFocused) {
                 if (lastClickedLink) {
                     lastClickedLink.focus()
@@ -56,13 +56,13 @@ export function letterFocus(){
     document.addEventListener('keydown', e => {
         let letter = e.key.toLowerCase();
         if(enterConsoleFocus){
+
             return 
         } else {
             elsFocus(e,letter)
         }
-
-        
     });
+    
     function elsFocus(e,letter) {
         if(letter == 'a'){
             if(!partsFocused){
@@ -85,7 +85,7 @@ export function letterFocus(){
         if (letter == 'm' && lastStep) {
             mainTargetDivFocused = true
             lastStep.focus()
-            console.log('now')
+            
             if(e.target == lastStep && letter == 'm'){
                 mainTargetDiv.focus()
                 scrollTo(0, 0)
@@ -97,8 +97,9 @@ export function letterFocus(){
             chatGpt.focus()
         } 
         if (e.shiftKey && letter == 'c') {
-            const enterConsole = getEnterConsole()
-            console.log(enterConsole)
+            // const enterConsole = getEnterConsole()
+            enterConsole.scrollIntoView({behavior: 'smooth', block:'center'})
+            
         }
         if(letter == 'd'){
             const darkmodeBtn = document.querySelector('#darkmodeBtn')

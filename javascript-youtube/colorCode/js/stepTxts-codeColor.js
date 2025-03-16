@@ -1,4 +1,5 @@
 import { mainTargetDivFocused } from "./letterFocus-sidebar.js"
+import { mainTargetDiv } from "./letterFocus-sidebar.js";
 import { sideBar } from "./toggle-sidebar.js"
 import { parts } from "./letterFocus-sidebar.js"
 import { enterConsoleFocus } from "./letterFocus-sidebar.js";
@@ -12,11 +13,33 @@ export function stepTxtsFocus() {
     const  imgVids = document.querySelectorAll('.step-img > img, .step-vid, video')
     const sectionLessonTitle = document.querySelector('nav.section-lesson-title > h1')
     const hiddenH3 = document.querySelector('.header-codeColor-lesson h3')
+    const endNxtLesson = document.querySelector('#endNxtLesson')
     let currentWidth
     let partsFocused = false
     sectionLessonTitle.innerText = hiddenH3.innerText
     currentWidth = innerWidth
     addEventListener('resize', e => {currentWidth = innerWidth})
+    mainTargetDiv.addEventListener('keydown', e => {
+        let letter = e.key.toLowerCase()
+        if (letter == 'm' && lastStep) {
+            lastStep.focus()
+        }
+
+    })
+    mainTargetDiv.addEventListener('focusin', e => {
+        partsFocused = false
+        // mainTargetDivFocused = true
+
+    })
+    endNxtLesson.addEventListener('keydown', e =>{
+        let letter = e.key.toLowerCase()
+        if(letter == 'm'){
+            mainTargetDiv.focus()
+            scrollTo(0,0)
+            
+        }
+        
+    })
     parts.forEach(el => {
         el.addEventListener('focus', e => {
             partsFocused = true
@@ -98,6 +121,7 @@ export function stepTxtsFocus() {
     }
     addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
+        
         if(letter == 'm'){
             if(!mainTargetDivFocused && lastStep){    
                 lastStep.focus()
@@ -119,30 +143,19 @@ export function stepTxtsFocus() {
             }
         }
         // xyz
-        if (!isNaN(letter) ) {
+        if (!isNaN(letter) && !enterConsoleFocus) {
             if(!partsFocused){
                 let intLet = parseInt(letter)
                 if (intLet <= steps.length) {
                     steps[intLet - 1].focus()
                 } else {
-                    const endNxtLesson = document.querySelector('#endNxtLesson')
+                    
                     endNxtLesson.focus()
                 }
             }
         }
     })
-    mainTargetDiv.addEventListener('keydown', e=>{
-        let letter = e.key.toLowerCase()
-        if(letter == 'm' && lastStep){
-            lastStep.focus()
-        }
-        
-    })
-    mainTargetDiv.addEventListener('focusin', e => {
-        partsFocused = false
-        // mainTargetDivFocused = true
-
-    })
+    
 }
 
 function getStep(parent){

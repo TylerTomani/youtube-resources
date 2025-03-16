@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             if (letter == 'm') {
                 mainTargetDiv.focus()
-                // console.log(enterConsoleFocus)
+
                 scrollTo(0,0)
             }
         }
