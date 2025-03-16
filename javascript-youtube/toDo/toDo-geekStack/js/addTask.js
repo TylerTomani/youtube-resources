@@ -3,7 +3,6 @@ export let idEls = document.querySelectorAll('[id]')
 // const inputBox = document.querySelector('#input-box')
 const taskContainer = document.querySelector('#task-container')
 const addBtn = document.querySelector('#addBtn')
-export let tasks = document.querySelectorAll('.tasks-container > li')
 function addTask(){
     if(inputBox.value == ''){
         alert('Write something')
@@ -25,6 +24,7 @@ addBtn.addEventListener('keydown', e => {
         addTask()
     }
 })
+addBtn.addEventListener('click', addTask)
 
  function toCamelCase(str) {
     return str

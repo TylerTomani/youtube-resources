@@ -1,7 +1,12 @@
 import { idEls } from "./addTask.js";
 import { inputBox } from "./addTask.js";
-import { tasks } from "./addTask.js";
 let inputBoxFocused = false
+let tasks = document.querySelectorAll('#task-container > li')
+let tasksFocused = false
+
+let letteredArr = []
+let currentLetter = ''
+let iLetter = 0
 inputBox.addEventListener('focus', e => {
     inputBoxFocused = true
 })
@@ -17,18 +22,25 @@ addEventListener('keydown', e  => {
         if(letter == 'i'){
             e.preventDefault()
         }
-        idEls.forEach(el => {
-            
-            if(letter == el.id[0] ){
+
+        letteredArr = []
+        idEls.forEach(el => {            
+            if(letter == el.id[0]){
+                letteredArr.push(el)
+                console.log(letteredArr)
                 el.focus()
             }
         })
-
-        if(letter == 't'){
-            
-            
-        }
-        
+        if(letteredArr[iLetter])[
+            letteredArr[iLetter].focus()
+        ]
+        currentLetter = letter
     }
 
 });
+
+if(tasks){
+    tasks.forEach(el => {
+        el.addEventListener('focus', e => {tasksFocused = true})
+    })
+}
