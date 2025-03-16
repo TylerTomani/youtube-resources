@@ -25,7 +25,7 @@ addBtn.addEventListener('keydown', e => {
     }
 })
 addBtn.addEventListener('click', addTask)
-addBtn.addEventListener('mousedown', addTask)
+
 
  function toCamelCase(str) {
     return str
