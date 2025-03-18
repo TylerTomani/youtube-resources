@@ -44,3 +44,16 @@ if(tasks){
         el.addEventListener('focus', e => {tasksFocused = true})
     })
 }
+// This page has really good letter focus cycle
+if (letter == 'c' && !e.metaKey) {
+    if (!e.shiftKey) {
+        copyCodes[iCopyCodes].focus()
+        iCopyCodes = (iCopyCodes + 1) % copyCodes.length
+
+    } else {
+        iCopyCodes = (iCopyCodes - 1 + copyCodes.length) % copyCodes.length
+
+    }
+    copyCodes[iCopyCodes].focus()
+    console.log(iLetter)
+}

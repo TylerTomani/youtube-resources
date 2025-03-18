@@ -21,10 +21,14 @@ function addTask(){
 addBtn.addEventListener('keydown', e => {
     let letter = e.key.toLowerCase()
     if(letter == 'enter'){
+        e.preventDefault()
         addTask()
     }
 })
-addBtn.addEventListener('click', addTask)
+addBtn.addEventListener('click', e =>{
+    e.preventDefault()   
+    addTask()
+})
 
 
  function toCamelCase(str) {
