@@ -21,7 +21,7 @@ document.addEventListener('keydown', (e) => {
     // Filter elements that start with the pressed letter
     let letteredArr = idElsArr.filter(el => el.id.startsWith(letter));
 
-    // Ensure letteredArr has at least one element
+    // Ensure letteredArr dv hg has at least one element
     if (letteredArr.length === 0) return;
 
     // Get the currently focused element

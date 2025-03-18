@@ -1,7 +1,7 @@
 export const inputBox = document.querySelector('#input-box')
 export let idEls = document.querySelectorAll('[id]')
 // const inputBox = document.querySelector('#input-box')
-const taskContainer = document.querySelector('#task-container')
+const taskContainer = document.querySelector('.task-container')
 const addBtn = document.querySelector('#addBtn')
 function addTask(){
     if(inputBox.value == ''){
