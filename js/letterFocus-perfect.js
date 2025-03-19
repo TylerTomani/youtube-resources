@@ -12,7 +12,6 @@ let idElsArr = Array.from(idEls);
 inputBox.addEventListener("focus", () => (inputBoxFocused = true));
 inputBox.addEventListener("blur", () => (inputBoxFocused = false));
 
-
 // Keydown event listener
 document.addEventListener("keydown", (e) => {
     if (inputBoxFocused) return; // Ignore if typing in input box
