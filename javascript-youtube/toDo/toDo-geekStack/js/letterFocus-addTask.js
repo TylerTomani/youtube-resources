@@ -1,44 +1,54 @@
 import { idEls, inputBox } from "./addTask.js";
 
 let inputBoxFocused = false;
-let currentLetter = '';
+let lastPressedLetter = "";
 let iLetter = 0;
+let currentIndex = -1;
 
-// Sort elements in natural DOM order
-let idElsArr = Array.from(idEls).sort((a, b) => a.compareDocumentPosition(b) & 2 ? 1 : -1);
+// Convert NodeList to Array for filtering and indexing
+let idElsArr = Array.from(idEls);
 
 // Track input focus
-inputBox.addEventListener('focus', () => inputBoxFocused = true);
-inputBox.addEventListener('blur', () => inputBoxFocused = false);
+inputBox.addEventListener("focus", () => (inputBoxFocused = true));
+inputBox.addEventListener("blur", () => (inputBoxFocused = false));
+
+// Track current focus inside `idEls`
+idEls.forEach((el) => {
+    el.addEventListener("keydown", (e) => {
+        currentIndex = idElsArr.indexOf(e.target);
+    });
+});
 
 // Keydown event listener
-document.addEventListener('keydown', (e) => {
+document.addEventListener("keydown", (e) => {
     if (inputBoxFocused) return; // Ignore if typing in input box
 
     let letter = e.key.toLowerCase();
     if (letter === "i") e.preventDefault(); // Prevent unwanted behavior for "i"
 
     // Filter elements that start with the pressed letter
-    let letteredArr = idElsArr.filter(el => el.id.startsWith(letter));
+    let letteredArr = idElsArr.filter((el) => el.id.toLowerCase().startsWith(letter));
 
-    // Ensure letteredArr dv hg has at least one element
-    if (letteredArr.length === 0) return;
+    if (letteredArr.length === 0) return; // No matching elements, exit
 
-    // Get the currently focused element
     let focusedEl = document.activeElement;
+    let focusedIndex = idElsArr.indexOf(focusedEl);
 
-    // Find the index of the focused element in letteredArr
-    let focusedIndex = letteredArr.indexOf(focusedEl);
-
-    if (focusedIndex === -1) {
-        // If no focused element, start with the first one in the list
-        iLetter = 0;
+    // If pressing a different letter, find the closest match below
+    if (lastPressedLetter !== letter) {
+        let closestIndex = letteredArr.findIndex(el => idElsArr.indexOf(el) > focusedIndex);
+        iLetter = closestIndex !== -1 ? closestIndex : 0; // If none found below, start from first
     } else {
-        // If the same letter is pressed, move to the next element down
-        iLetter = (focusedIndex + 1) % letteredArr.length;
+        // If pressing the same letter, cycle forward
+        iLetter = (letteredArr.indexOf(focusedEl) + 1) % letteredArr.length;
     }
 
-    // Focus the next element
+    // Handle Shift + Letter for backwards cycling
+    if (e.shiftKey) {
+        iLetter = (letteredArr.indexOf(focusedEl) - 1 + letteredArr.length) % letteredArr.length;
+    }
+
+    // Focus the selected element
     letteredArr[iLetter].focus();
-    currentLetter = letter;
+    lastPressedLetter = letter;
 });

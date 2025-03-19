@@ -1,70 +1,54 @@
-import { idEls } from "./addTask.js";
-import { inputBox } from "./addTask.js";
-let inputBoxFocused = false
-let tasks = document.querySelectorAll('#task-container > li')
-let tasksFocused = false
+import { idEls, inputBox } from "./addTask.js";
 
-let letteredArr = []
-let currentLetter = ''
-let iLetter = 0
-inputBox.addEventListener('focus', e => {
-    inputBoxFocused = true
-})
-inputBox.addEventListener('focusout', e => {
-    inputBoxFocused = false
-})
-addEventListener('keydown', e  => {
-    let letter = e.key.toLowerCase()
+let inputBoxFocused = false;
+let lastPressedLetter = "";
+let iLetter = 0;
+let currentIndex = -1;
 
-    if(inputBoxFocused){
-       return  
-    } else {
-        if(letter == 'i'){
-            e.preventDefault()
-        }
+// Convert NodeList to Array for filtering and indexing
+let idElsArr = Array.from(idEls);
 
-        letteredArr = []
-        idEls.forEach(el => {            
-            if(letter == el.id[0]){
-                letteredArr.push(el)
-            }
-        })
-        if(letteredArr[iLetter]){
-            if(letter == currentLetter){
-                if(!e.shiftKey){
-                    letteredArr[iLetter].focus()
-                    iLetter = (iLetter + 1) % letteredArr.length
-                    
-                } else if(e.shiftKey){
-                    console.log('shift')
-                    iLetter = (iLetter - 1 + letteredArr.length) % letteredArr.length
-                    
-                    letteredArr[iLetter].focus()
-                }
-            } else {
-                letteredArr[iLetter].focus()
-            }
-        }
-        currentLetter = letter
-    }
-    
+// Track input focus
+inputBox.addEventListener("focus", () => (inputBoxFocused = true));
+inputBox.addEventListener("blur", () => (inputBoxFocused = false));
+
+// Track current focus inside `idEls`
+idEls.forEach((el) => {
+    el.addEventListener("keydown", (e) => {
+        currentIndex = idElsArr.indexOf(e.target);
+    });
 });
 
-if(tasks){
-    tasks.forEach(el => {
-        el.addEventListener('focus', e => {tasksFocused = true})
-    })
-}
+// Keydown event listener
+document.addEventListener("keydown", (e) => {
+    if (inputBoxFocused) return; // Ignore if typing in input box
 
+    let letter = e.key.toLowerCase();
+    if (letter === "i") e.preventDefault(); // Prevent unwanted behavior for "i"
 
-// This page has really good letter focus cycle
-// if (letter == 'c' && !e.metaKey) {
-//     if (!e.shiftKey) {
-//         copyCodes[iCopyCodes].focus()
-//         iCopyCodes = (iCopyCodes + 1) % copyCodes.length
-//     } else {
-//         iCopyCodes = (iCopyCodes - 1 + copyCodes.length) % copyCodes.length
-//     }
-//     copyCodes[iCopyCodes].focus()
-//     console.log(iLetter)
-// }
+    // Filter elements that start with the pressed letter
+    let letteredArr = idElsArr.filter((el) => el.id.toLowerCase().startsWith(letter));
+
+    if (letteredArr.length === 0) return; // No matching elements, exit
+
+    let focusedEl = document.activeElement;
+    let focusedIndex = idElsArr.indexOf(focusedEl);
+
+    // If pressing a different letter, find the closest match below
+    if (lastPressedLetter !== letter) {
+        let closestIndex = letteredArr.findIndex(el => idElsArr.indexOf(el) > focusedIndex);
+        iLetter = closestIndex !== -1 ? closestIndex : 0; // If none found below, start from first
+    } else {
+        // If pressing the same letter, cycle forward
+        iLetter = (letteredArr.indexOf(focusedEl) + 1) % letteredArr.length;
+    }
+
+    // Handle Shift + Letter for backwards cycling
+    if (e.shiftKey) {
+        iLetter = (letteredArr.indexOf(focusedEl) - 1 + letteredArr.length) % letteredArr.length;
+    }
+
+    // Focus the selected element
+    letteredArr[iLetter].focus();
+    lastPressedLetter = letter;
+});

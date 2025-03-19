@@ -51,6 +51,9 @@ body > header > .page-logo > img {
     /* box-sizing: border-box; */
     text-decoration: none;
 }
+.page-logo img {
+    max-width: 100px;
+}
 @media screen and (max-width: 683px){
     body>header > *{
         flex-basis: 30%;

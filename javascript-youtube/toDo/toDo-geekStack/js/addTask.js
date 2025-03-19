@@ -1,6 +1,5 @@
 export const inputBox = document.querySelector('#input-box')
 export let idEls = document.querySelectorAll('[id]')
-// const inputBox = document.querySelector('#input-box')
 const taskContainer = document.querySelector('.task-container')
 const addBtn = document.querySelector('#addBtn')
 function addTask(){
@@ -9,9 +8,7 @@ function addTask(){
     } else {
         const li = document.createElement('li')
         li.innerHTML= `<span class="checkbox">o</span>${inputBox.value}<span class="xbox">x</span>`
-        console.log(li)
         const id = toCamelCase(inputBox.value)
-        console.log(id)
         li.setAttribute('tabindex', '0')
         li.id = id
         taskContainer.appendChild(li)
