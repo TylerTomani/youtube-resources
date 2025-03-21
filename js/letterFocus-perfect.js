@@ -7,7 +7,6 @@ let currentIndex = -1;
 
 // Convert NodeList to Array for filtering and indexing
 let idElsArr = Array.from(idEls);
-
 // Track input focus
 inputBox.addEventListener("focus", () => (inputBoxFocused = true));
 inputBox.addEventListener("blur", () => (inputBoxFocused = false));
@@ -40,8 +39,9 @@ document.addEventListener("keydown", (e) => {
     if (e.shiftKey) {
         iLetter = (letteredArr.indexOf(focusedEl) - 1 + letteredArr.length) % letteredArr.length;
     }
-
+    
     // Focus the selected element
     letteredArr[iLetter].focus();
+    
     lastPressedLetter = letter;
 });

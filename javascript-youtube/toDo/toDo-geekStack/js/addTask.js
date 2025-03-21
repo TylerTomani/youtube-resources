@@ -1,6 +1,7 @@
 export const inputBox = document.querySelector('#input-box')
 export let idEls = document.querySelectorAll('[id]')
-const taskContainer = document.querySelector('.task-container')
+export const taskContainer = document.querySelector('.task-container')
+export let tasks = taskContainer.querySelectorAll('li')
 const addBtn = document.querySelector('#addBtn')
 function addTask(){
     if(inputBox.value == ''){
@@ -13,6 +14,7 @@ function addTask(){
         li.id = id
         taskContainer.appendChild(li)
         idEls = document.querySelectorAll('[id]')
+        tasks = taskContainer.querySelectorAll('li')
     }
 }
 addBtn.addEventListener('keydown', e => {
