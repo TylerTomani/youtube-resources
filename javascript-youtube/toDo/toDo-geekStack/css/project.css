@@ -5,7 +5,7 @@
 #homelink:active,#homelink:focus,
 #backlink:active,#backlink:focus,
 #tutorialLink:active,#tutorialLink:focus{
-     background-color: blue;
+     background-color: lightcyan;
 }
 .project {
     border: 1px solid black;
@@ -110,4 +110,11 @@
 .task-container>li>.xbox {
     margin-left: auto;
     margin-right: 2.5%;
+}
+
+.checkbox:focus,.checkbox:active{
+    background-color: yellow;
+}
+.xbox:focus,.xbox:active{
+    background-color: tomato;
 }

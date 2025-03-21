@@ -65,5 +65,7 @@ function taskNumFocus(letter){
     const intLetter = parseInt(letter)
     if(intLetter <= tasks.length){
         tasks[intLetter - 1].focus()
+    } else {
+        tasks[tasks.length - 1].focus()
     }
 }
