@@ -1,39 +1,54 @@
-import { idEls, inputBox } from "./addTask.js";
-
+export const inputBox = document.querySelector('#input-box')
+import { tasks } from "./addTask.js";
+import { updateTasks } from "./handleTask.js";
+// import { updateTasks } from "./handleTask.js";
+let taskFocused = false
 let inputBoxFocused = false;
 let todoAppFocused = false;
 let lastPressedLetter = "";
 let iLetter = 0;
 let currentIndex = -1;
-import { taskContainer } from "./addTask.js";
-import { tasks } from "./addTask.js";
-const todoApp = document.querySelector('.todo-app')
-todoApp.addEventListener('focusin', e => {todoAppFocused = true})
-todoApp.addEventListener('focusout', e => {todoAppFocused = false  })
-// Convert NodeList to Array for filtering and indexing
-let idElsArr = Array.from(idEls);
+let idElsArr = []; // Initialize an empty array
+
+// Select the todo app container
+const todoApp = document.querySelector('.todo-app');
+todoApp.addEventListener('focusin', () => { todoAppFocused = true; });
+todoApp.addEventListener('focusout', () => { todoAppFocused = false; });
+
+// Function to update idElsArr dynamically
+export function updateIdElsArr() {
+    idElsArr = Array.from(document.querySelectorAll('[id]')); // Refresh the array
+}
+
+updateIdElsArr();
+
+// tasks.forEach(el => {
+//     el.addEventListener('focus', e => {
+//         taskFocused = true
+            
+//     })
+//     el.addEventListener('focusout', e => {
+//         taskFocused = false
+        
+//     })
+// })
+ 
 // Track input focus
 inputBox.addEventListener("focus", () => (inputBoxFocused = true));
 inputBox.addEventListener("blur", () => (inputBoxFocused = false));
-
 // Keydown event listener
 document.addEventListener("keydown", (e) => {
     if (inputBoxFocused) return; // Ignore if typing in input box
-
     let letter = e.key.toLowerCase();
     if (letter === "i") e.preventDefault(); // Prevent unwanted behavior for "i"
-
-    // Filter elements that start with the pressed letter
-    
+    // Filter elements that start with the pressed letter    
     let letteredArr = idElsArr.filter((el) => el.id.toLowerCase().startsWith(letter));
-
     if (letteredArr.length === 0) {
         if (!isNaN(letter)) {
             taskNumFocus(letter)
         } else {
             return
         }
-
     } // No matching elements, exit
     else {
         let focusedEl = document.activeElement;
@@ -48,21 +63,18 @@ document.addEventListener("keydown", (e) => {
             // If pressing the same letter, cycle forward
             iLetter = (letteredArr.indexOf(focusedEl) + 1) % letteredArr.length;
         }
-    
         // Handle Shift + Letter for backwards cycling
         if (e.shiftKey) {
             iLetter = (letteredArr.indexOf(focusedEl) - 1 + letteredArr.length) % letteredArr.length;
         }
-        
         // Focus the selected element
-        letteredArr[iLetter].focus();
-        
+        letteredArr[iLetter].focus();  
         lastPressedLetter = letter;
     } 
-
 });
 function taskNumFocus(letter){
     const intLetter = parseInt(letter)
+    const tasks = updateTasks()
     if(intLetter <= tasks.length){
         tasks[intLetter - 1].focus()
     } else {

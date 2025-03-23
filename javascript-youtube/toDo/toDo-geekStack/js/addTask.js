@@ -1,8 +1,11 @@
-export const inputBox = document.querySelector('#input-box')
+import { inputBox } from "./letterFocus-addTask.js";
 export let idEls = document.querySelectorAll('[id]')
 export const taskContainer = document.querySelector('.task-container')
 export let tasks = taskContainer.querySelectorAll('li')
-const addBtn = document.querySelector('#addBtn')
+
+import { updateIdElsArr } from "./letterFocus-addTask.js";  // Import the function
+
+import { addBtn } from "./handleTask.js";
 function addTask(){
     if(inputBox.value == ''){
         alert('Write something')
@@ -13,8 +16,10 @@ function addTask(){
         li.setAttribute('tabindex', '0')
         li.id = id
         taskContainer.appendChild(li)
+        // console.log(idEls)
         idEls = document.querySelectorAll('[id]')
         tasks = taskContainer.querySelectorAll('li')
+        updateIdElsArr()
     }
 }
 addBtn.addEventListener('keydown', e => {
