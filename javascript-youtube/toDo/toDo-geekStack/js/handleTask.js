@@ -61,9 +61,8 @@ function handleClick(e) {
     addBoxes(e.target);
 }
 
-function handleFocus(e) {
+function handleFocus() {
     removeBoxesTabs();
-    addBoxes(e.target);
 }
 
 function addBoxes(task) {
