@@ -1,9 +1,16 @@
 import { taskContainer } from "./addTask.js";
 import { updateIdElsArr } from "./letterFocus-addTask.js";
 export const addBtn = document.querySelector('#addBtn')
-let tasks
+
+let tasks,checkboxes,xboxes
 export function updateTasks() {
     return document.querySelectorAll(".task-container > li"); // Always get latest tasks
+}
+export function updateCheckboxes() {
+    return document.querySelectorAll(".task-container > li .checkbox"); // Always get latest tasks
+}
+export function updateXboxes() {
+    return document.querySelectorAll(".task-container > li .xbox"); // Always get latest tasks
 }
 
 function attachTaskEvents() {
@@ -19,14 +26,31 @@ function attachTaskEvents() {
         task.addEventListener("focus", handleFocus);
     });
 
-    const xboxes = document.querySelectorAll(".xbox");
+    const xboxes = updateXboxes();
     xboxes.forEach(xbox => {
         xbox.removeEventListener("click", deleteTask);
         xbox.addEventListener("click", deleteTask);
     });
     xboxes.forEach(xbox => {
         xbox.removeEventListener("keydown", deleteTaskKeydown);
-        xbox.addEventListener("keydown", deleteTaskKeydown);
+        xbox.addEventListener("keydown", e => {
+            let letter = e.key.toLowerCase()
+            deleteTaskKeydown(e)
+            boxFocus(letter, e)
+        });
+    });
+    const checkboxes = updateCheckboxes()
+    checkboxes.forEach(checkbox => {
+        checkbox.removeEventListener("click", deleteTask);
+        checkbox.addEventListener("click", deleteTask);
+    });
+    checkboxes.forEach(checkbox => {
+        checkbox.removeEventListener("keydown", deleteTaskKeydown);
+        checkbox.addEventListener("keydown", e => {
+            let letter = e.key.toLowerCase()
+            boxFocus(letter, e)
+            toggleCheckbox(e)
+        });
     });
 }
 
@@ -47,25 +71,23 @@ addBtn.addEventListener("keydown", e => {
         }, 50);
     }
 });
-
 function handleKeyDown(e) {
     if (e.key.toLowerCase() === "enter") {
         e.preventDefault();
-        addBoxes(e.target);
+        checkboxes = updateCheckboxes()
+        xboxes = updateXboxes()
+        addTabindexBoxes(e.target);
     }
 }
-
 function handleClick(e) {
     e.preventDefault();
     updateIdElsArr();
-    addBoxes(e.target);
+    addTabindexBoxes(e.target);
 }
-
 function handleFocus() {
     removeBoxesTabs();
 }
-
-function addBoxes(task) {
+function addTabindexBoxes(task) {
     const checkbox = task.querySelector(".checkbox");
     const xbox = task.querySelector(".xbox");
 
@@ -94,10 +116,8 @@ function deleteTaskKeydown(e) {
     let letter = e.key.toLowerCase()
     // console.log(e.target)
     tasks = Array.from(updateTasks())
-    if(letter == 'enter'){        
-        
+    if(letter == 'enter'){                
         if (task) {
-            // task.remove();
             let iTask = [...tasks].indexOf(task)
             task.remove(task)
             tasks.splice(iTask,1)
@@ -105,11 +125,33 @@ function deleteTaskKeydown(e) {
                 // attachTaskEvents(); // Reattach event listeners after deletion
                 updateIdElsArr();
                 updateTasks()
-                tasks.forEach(el => console.log(el))
+                
             }, 50);
         }
     }
 }
-
+function boxFocus(letter,e){
+    if(e.target.classList.contains('checkbox') && letter == 'x'){
+        const xbox = e.target.parentElement.querySelector('.xbox')
+        xbox.setAttribute('tabindex','1')
+        xbox.focus()
+        
+    }
+    if(e.target.classList.contains('xbox') && letter == 'c'){
+        const checkbox = e.target.parentElement.querySelector('.checkbox')
+        checkbox.setAttribute('tabindex','1')
+        checkbox.focus()
+        
+    }
+}
+function toggleCheckbox(e){
+        const task = e.target.parentElement
+        let letter = e.key.toLowerCase()
+        if(letter == 'enter'){
+             
+            task.classList.toggle('checked')
+            
+        }
+}
 // Initial setup
 attachTaskEvents();

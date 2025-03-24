@@ -63,6 +63,7 @@ export function letterFocus(){
         }
     });
     
+    console.log('lkjd')
     function elsFocus(e,letter) {
         if(letter == 'a'){
             if(!partsFocused){
@@ -104,6 +105,10 @@ export function letterFocus(){
         if(letter == 'd'){
             const darkmodeBtn = document.querySelector('#darkmodeBtn')
             darkmodeBtn.focus()
+        }
+        if (letter == 'b') {
+            const backlink = document.querySelector('#backlink')
+            backlink.focus()
         }
         if (letter == 'h') {
             const homelink = document.querySelector('#homelink')
