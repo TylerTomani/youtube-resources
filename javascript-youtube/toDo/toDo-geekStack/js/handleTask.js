@@ -41,15 +41,21 @@ function attachTaskEvents() {
     });
     const checkboxes = updateCheckboxes()
     checkboxes.forEach(checkbox => {
-        checkbox.removeEventListener("click", deleteTask);
-        checkbox.addEventListener("click", deleteTask);
+        // checkbox.removeEventListener("mousedown", toggleCheckbox(e));
+        checkbox.addEventListener("mousedown", e => {
+            // e.preventDefault()
+            toggleCheckboxClick(e)
+        });
     });
     checkboxes.forEach(checkbox => {
         checkbox.removeEventListener("keydown", deleteTaskKeydown);
         checkbox.addEventListener("keydown", e => {
             let letter = e.key.toLowerCase()
-            boxFocus(letter, e)
-            toggleCheckbox(e)
+            if(letter == 'enter'){   
+                e.preventDefault()
+                boxFocus(letter, e)
+                toggleCheckbox(e)
+            }
         });
     });
 }
@@ -148,10 +154,14 @@ function toggleCheckbox(e){
         const task = e.target.parentElement
         let letter = e.key.toLowerCase()
         if(letter == 'enter'){
-             
             task.classList.toggle('checked')
             
         }
+}
+function toggleCheckboxClick(e){
+    const task = e.target.parentElement
+    task.classList.toggle('checked')
+        
 }
 // Initial setup
 attachTaskEvents();
