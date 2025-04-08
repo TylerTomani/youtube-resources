@@ -12,7 +12,6 @@ export function updateCheckboxes() {
 export function updateXboxes() {
     return document.querySelectorAll(".task-container > li .xbox"); // Always get latest tasks
 }
-
 function attachTaskEvents() {
     tasks = Array.from(updateTasks()); // Refresh tasks list
     tasks.forEach(task => {
@@ -35,7 +34,6 @@ function attachTaskEvents() {
         xbox.removeEventListener("keydown", deleteTaskKeydown);
         xbox.addEventListener("keydown", e => {
             let letter = e.key.toLowerCase()
-            deleteTaskKeydown(e)
             boxFocus(letter, e)
         });
     });
@@ -46,8 +44,6 @@ function attachTaskEvents() {
             // e.preventDefault()
             toggleCheckboxClick(e)
         });
-    });
-    checkboxes.forEach(checkbox => {
         checkbox.removeEventListener("keydown", deleteTaskKeydown);
         checkbox.addEventListener("keydown", e => {
             let letter = e.key.toLowerCase()
@@ -58,6 +54,7 @@ function attachTaskEvents() {
             }
         });
     });
+    
 }
 
 // Ensure event listeners attach after new task is added
@@ -65,6 +62,9 @@ addBtn.addEventListener("click", () => {
     setTimeout(() => {
         attachTaskEvents();
         updateIdElsArr();
+        // updateTasks()
+        // updateXboxes()
+        // updateCheckboxes()
     }, 50); // Small delay to ensure DOM updates
 });
 
@@ -80,8 +80,7 @@ addBtn.addEventListener("keydown", e => {
 function handleKeyDown(e) {
     if (e.key.toLowerCase() === "enter") {
         e.preventDefault();
-        checkboxes = updateCheckboxes()
-        xboxes = updateXboxes()
+        attachTaskEvents()
         addTabindexBoxes(e.target);
     }
 }
