@@ -13,6 +13,7 @@
 body{
     margin-right:  5%;
     overflow-x: hidden;}
+
 main {
     display: flex;
     border: 19x solid red;
@@ -22,8 +23,9 @@ main {
 }
 
 main>aside {
-    position: relative;
+    position: sticky;
     /* z-index: 0; */
+    top:5%;
     flex-basis: 20%;
     border-right: 1px solid black;
     padding-top: 1%;
