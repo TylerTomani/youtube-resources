@@ -5,9 +5,6 @@
 body{
     overscroll-behavior-x: none;
 }
-body>nav.section-lesson-title{
-    box-shadow: 0 0 1px 1px white;
-}
 main {
     position: relative;
     height: 100vh;
@@ -17,10 +14,13 @@ main {
     overflow-y: scroll;
     scrollbar-width: none;
 }
+body>nav.section-lesson-title {
+    box-shadow: 0 0 1px 1px white;
+    background-color: var(--bg-primary);
+}
 body > nav.section-lesson-title{
     padding: 0;
     margin: 0;
-    /* background-color: var(--bg-primary); */
     border: 1px solid black;
 }
 body > nav.section-lesson-title > h1{
@@ -35,10 +35,13 @@ main > aside.side-bar{
     top: 0;
     /* flex-basis: 9%; */
     text-wrap: wrap;
-    width: fit-content;
+    /* width: fit-content; */
+    text-wrap: none;
+    white-space: none;
     /* width: max-content; */
     height: 100vh;
-    padding-left: 1%;
+    padding-left: .5%;
+    padding-right: 2;
     z-index: 10;
 }
 main > #mainTargetDiv{
@@ -48,7 +51,6 @@ main > #mainTargetDiv{
     flex-grow: 1;
 }
 main > .side-bar.deactive .parts {
-    flex-basis: 0;
     width: 0;
     opacity: 0;
     transition: all 250ms;
