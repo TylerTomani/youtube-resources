@@ -17,18 +17,17 @@ mainTargetDiv.addEventListener('keydown', e =>{
 })
 sidebarBtn.addEventListener('click', e =>{
     e.preventDefault()
-    e.target.classList.toggle('drop')
-    sideBar.classList.toggle('deactive')
+    console.log(e.target)
+    // toggleBar()
 })
 sidebarBtn.addEventListener('keydown', e =>{
     let letter = e.key.toLowerCase()
     if(letter == 'enter'){ 
-        sidebarBtn.classList.toggle('drop')
-        sideBar.classList.toggle('deactive')
+        toggleBar()
     }
     if(letter == 'a' && sideBar.classList.contains('deactive')){
-                    sideBar.classList.remove('deactive')
-                    console.log('yes')
+        sideBar.classList.remove('deactive')
+        
     }    
     if(letter == 'a' && lastClickedLink){
         lastClickedLink.focus()
@@ -43,7 +42,6 @@ navBar.addEventListener('keydown', e => {
     let letter = e.key.toLowerCase()
     if (letter == 'enter') {
         sideBar.classList.toggle('deactive')
-
     }
 })
 navBar.addEventListener('click', e => {
@@ -55,3 +53,7 @@ sideBar.addEventListener('click', e => {
     // e.preventDefault()
     sideBar.classList.toggle('deactive')
 })
+function toggleBar(){
+    sidebarBtn.classList.toggle('drop')
+    sideBar.classList.toggle('deactive')
+}

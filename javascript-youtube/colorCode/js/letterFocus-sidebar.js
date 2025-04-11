@@ -13,9 +13,7 @@ let enterConsole, endNxtLessonBtn
 export function letterFocus(){
     header.addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
-        
-        if (letter == 'a') {
-            
+        if (letter == 'a') {    
             if (!partsFocused) {
                 if (lastClickedLink) {
                     lastClickedLink.focus()
@@ -38,8 +36,6 @@ export function letterFocus(){
         }
     }
     extractElementEnterConsole()
-    
-    
     parts.forEach(el => {
         el.addEventListener('focus', e => {
             mainTargetDivFocused = false
@@ -63,7 +59,6 @@ export function letterFocus(){
         }
     });
     
-    console.log('lkjd')
     function elsFocus(e,letter) {
         if(letter == 'a'){
             if(!partsFocused){
