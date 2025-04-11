@@ -50,8 +50,14 @@ navBar.addEventListener('click', e => {
 })
 
 sideBar.addEventListener('click', e => {
-    // e.preventDefault()
-    sideBar.classList.toggle('deactive')
+    e.preventDefault()
+    console.log(e.target)
+    if (e.target.tagName == 'ASIDE'){
+
+        sideBar.classList.toggle('deactive')
+    } else {
+        console.log('yes')
+    }
 })
 function toggleBar(){
     sidebarBtn.classList.toggle('drop')
