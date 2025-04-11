@@ -131,7 +131,8 @@
 }
 .code-container>.copy-code {
     background-color:white;
-    box-shadow: 0 0 1px 1px black;
+    color: black;
+    /* box-shadow: 0 0 1px 1px black; */
 }
 @media screen and (max-width:721px) {
     
