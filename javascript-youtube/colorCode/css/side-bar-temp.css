@@ -47,6 +47,10 @@ main > .side-bar.deactive .parts {
     opacity: 0;
     transition: all 250ms;
 }
+main > .side-bar.deactive .drop {
+    position: fixed;
+    bottom: 0;
+}
 
 ul {
     display: flex;

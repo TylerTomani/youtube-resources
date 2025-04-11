@@ -64,8 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (anchor && anchor.href) {
                 e.preventDefault();
                 injectContent(anchor.href);
-                console.log(anchor)
-                console.log(lastClickedLink)
+                
                 if (anchor === lastFocusedLink) {
                     lastClickedLink = anchor;
                 }

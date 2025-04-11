@@ -15,11 +15,11 @@ mainTargetDiv.addEventListener('keydown', e =>{
     }
     
 })
-sidebarBtn.addEventListener('click', e =>{
-    e.preventDefault()
-    console.log(e.target)
+// sidebarBtn.addEventListener('click', e =>{
+    // e.preventDefault()
+    // console.log(e.target)
     // toggleBar()
-})
+// })
 sidebarBtn.addEventListener('keydown', e =>{
     let letter = e.key.toLowerCase()
     if(letter == 'enter'){ 
