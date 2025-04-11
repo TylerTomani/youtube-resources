@@ -30,7 +30,7 @@
 .step:active,.step:focus, 
 .step-float:active,.step-float:focus{
     font-style: bold;
-    color: white;
+    color: black;
     font-weight: 800;
 }
 .console {
@@ -128,6 +128,10 @@
 }
 .clear {
     clear: both;
+}
+.code-container>.copy-code {
+    background-color:white;
+    box-shadow: 0 0 1px 1px black;
 }
 @media screen and (max-width:721px) {
     

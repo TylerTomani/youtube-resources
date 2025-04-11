@@ -53,7 +53,6 @@ sideBar.addEventListener('click', e => {
     e.preventDefault()
     console.log(e.target)
     if (e.target.tagName == 'ASIDE'){
-
         sideBar.classList.toggle('deactive')
     } else {
         console.log('yes')

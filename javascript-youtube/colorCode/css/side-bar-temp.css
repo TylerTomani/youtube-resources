@@ -5,6 +5,9 @@
 body{
     overscroll-behavior-x: none;
 }
+body>nav.section-lesson-title{
+    box-shadow: 0 0 1px 1px white;
+}
 main {
     position: relative;
     height: 100vh;
@@ -17,19 +20,22 @@ main {
 body > nav.section-lesson-title{
     padding: 0;
     margin: 0;
-    background-color: var(--bg-primary);
+    /* background-color: var(--bg-primary); */
+    border: 1px solid black;
 }
 body > nav.section-lesson-title > h1{
     padding: 0;
     padding-bottom: 1.5%;
 }
 main > aside.side-bar{
+    /* background-color: var(--bg-primary); */
     position:sticky;
+    box-shadow: 0 0 1px 1px white;
+    /* background-color: white; */
     top: 0;
     /* flex-basis: 9%; */
     text-wrap: wrap;
     width: fit-content;
-    background-color: var(--bg-primary);
     /* width: max-content; */
     height: 100vh;
     padding-left: 1%;
