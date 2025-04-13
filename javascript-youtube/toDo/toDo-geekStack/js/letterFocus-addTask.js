@@ -43,6 +43,7 @@ document.addEventListener("keydown", (e) => {
                 focusToBoxes(letter, e.target)
             }
         } else {
+            
             return
         }
     } // No matching elements, exit
