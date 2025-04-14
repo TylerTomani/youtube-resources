@@ -5,7 +5,7 @@ export const navBar = document.querySelector('nav.section-lesson-title')
 const mainTargetDiv = document.querySelector('#mainTargetDiv')
 const header = document.querySelector('header')
 export const toggleSideBtmBtn = document.querySelector('#toggleSideBtmBtn')
-import { addCopyCodes } from "../copy-code-resources.js"
+import { addCopyCodes } from "./copy-code-resources.js"
 export const aside = document.querySelector('aside')
 const backlink = document.querySelector('#backlink')
 const homelink = document.querySelector('#homelink')

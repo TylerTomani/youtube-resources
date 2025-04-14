@@ -3,10 +3,14 @@
     border: 1px solid whitesmoke;
     box-shadow: 0 0 3px 2px blue;
     background-color: whitesmoke;
-    transform: scale(1f.5);
+    transform: scale(1.25);
     transition: all .15s;
+    position: relative;
+    /* /* z-index: 1; */
 }
 .decopied {
+    position: static;
+    z-index: inherit;
     border: 1px solid whitesmoke;
     box-shadow: none;
     /* background-color: black; */

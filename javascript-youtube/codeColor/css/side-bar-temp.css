@@ -1,0 +1,97 @@
+* {
+    margin:  0;
+    padding: 0;
+}
+body{
+    overscroll-behavior-x: none;
+}
+main {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    width: 100%;
+    overflow:hidden;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+body>nav.section-lesson-title {
+    box-shadow: 0 0 1px 1px white;
+    background-color: var(--bg-primary);
+}
+body > nav.section-lesson-title{
+    padding: 0;
+    margin: 0;
+    border: 1px solid black;
+}
+body > nav.section-lesson-title > h1{
+    padding: 0;
+    padding-bottom: 1.5%;
+}
+main > aside.side-bar{
+    /* background-color: var(--bg-primary); */
+    position:sticky;
+    box-shadow: 0 0 1px 1px white;
+    /* background-color: white; */
+    top: 0;
+    /* flex-basis: 9%; */
+    text-wrap: wrap;
+    /* width: fit-content; */
+    text-wrap: none;
+    white-space: none;
+    /* width: max-content; */
+    height: 100vh;
+    padding-left: .5%;
+    padding-right: 2;
+    z-index: 10;
+}
+main > #mainTargetDiv{
+    /* background-color: lime; */
+    width: 100%;
+    flex-basis: 90%;
+    flex-grow: 1;
+}
+main > .side-bar.deactive .parts {
+    width: 0;
+    opacity: 0;
+    transition: all 250ms;
+}
+main > .side-bar.deactive .drop {
+    position: fixed;
+    bottom: 0;
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+    text-wrap: wrap;
+    width: min-content;
+    margin-left: 1.5%;
+    list-style: none;
+}
+ul li a {
+    text-decoration: none;
+}
+.hide{
+    display: none;
+}
+@media screen and (min-width:960px){
+    main>.side-bar.deactive  {
+        flex-basis: 2.5%;
+        /* width: 2.5%; */
+        /* opacity: 0; */
+        transition: all 250ms;
+        /* background-color: blue !important; */
+    }
+}
+@media screen and (max-width:600px){
+    .parts{
+        margin-left: 1.5%;
+    }
+    .parts h2{
+        margin-left: 2.5%;
+    }
+    body>nav.section-lesson-title>h1 {
+    /* color: blue;s */
+        font-size: 45%;
+    }
+}

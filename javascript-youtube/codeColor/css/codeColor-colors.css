@@ -1,0 +1,28 @@
+:root {
+    --bg-primary: #233944;
+}
+.b {color: rgb(123, 123, 224);}
+.lb {color: lightblue;}
+.l {color: lime;}
+.m {color: magenta;}
+.o {color: orange;}
+.p {color: rgb(195, 103, 195);}
+.r {color: red;}
+.y {color: yellow;}
+
+
+.console {
+    border: 1px solid darkblue;
+    box-shadow: 0 0 1px 1px darkblue;
+    margin-top: .25%;
+    padding: 1%;
+    background-color: rgb(28, 26, 26);
+    color: white;
+}
+.code-container>.copy-code {
+    /* color: white; */
+}
+.step-txt p code,
+.code-container span{
+    font-weight: 999;
+}

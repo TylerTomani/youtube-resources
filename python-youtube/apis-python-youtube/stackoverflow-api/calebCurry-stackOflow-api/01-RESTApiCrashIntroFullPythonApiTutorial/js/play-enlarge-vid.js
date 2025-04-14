@@ -52,7 +52,7 @@ export function playEnlargeVideos(){
                 vid.play()
                 vid.style.border = "none"
             } else {
-                vid.style.border = "1px solid blue"
+                vid.style.border = "4px solid blue"
                 vid.pause()
             }
         }
@@ -110,6 +110,7 @@ export function playEnlargeVideos(){
         vid.addEventListener('focus', e =>{
             e.preventDefault()
             imgFocused = true
+            stopAllVids()
         })
         /** ************** 
          * STOPS VIDEOS  from opeing FULL screen on Mobile*/
