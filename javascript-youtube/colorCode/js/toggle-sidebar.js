@@ -22,6 +22,7 @@ sidebarBtn.addEventListener('click', e =>{
 sidebarBtn.addEventListener('keydown', e =>{
     let letter = e.key.toLowerCase()
     if(letter == 'enter'){ 
+        console.log(sideBarContainer.parentElement)
         toggleBar()
     }
     if(letter == 'a' && sideBar.classList.contains('deactive')){
@@ -50,11 +51,10 @@ navBar.addEventListener('click', e => {
 
 sideBar.addEventListener('click', e => {
     e.preventDefault()
-    console.log(e.target)
     if (e.target.tagName == 'ASIDE'){
         sideBar.classList.toggle('deactive')
     } else {
-        console.log('yes')
+        return
     }
 })
 function toggleBar(){

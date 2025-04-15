@@ -30,31 +30,33 @@ body > nav.section-lesson-title > h1{
     /* border: 2px solid blue; */
     /* padding-bottom: 1.5%; */
 }
-main > aside.side-bar{
-    /* background-color: var(--bg-primary); */
-    position:sticky;
-    box-shadow: 0 0 1px 1px white;
-    /* background-color: white; */
-    top: 0;
-    /* flex-basis: 9%; */
-    text-wrap: wrap;
-    /* width: fit-content; */
-    text-wrap: none;
-    white-space: none;
-    width: max-content;
-    height: 100vh;
-    padding-left: .5%;
-    padding-right: 2;
-    z-index: 10;
-}
-main > #mainTargetDiv{
-    /* background-color: lime; */
-    /* border: 2px solid orange; */
+main>#mainTargetDiv {
     margin-right: 20px;
     width: 100%;
     flex-basis: 90%;
     flex-grow: 1;
 }
+main > .side-bar{
+    background-color: var(--bg-primary);
+    position:sticky;
+    box-shadow: 0 0 1px 1px white;
+    /* background-color: white; */
+    top: 0;
+    flex-basis: 8%;
+    text-wrap: wrap;
+    /* width: fit-content; */
+    text-wrap: none;
+    white-space: none;
+    /* width: max-content; */
+    height: 100vh;
+    padding-left: .5%;
+    padding-right: 2;
+    z-index: 10;
+}
+main > .side-bar.deactive {
+    flex-basis: 3%;
+}
+
 main > .side-bar.deactive .parts {
     width: 0;
     opacity: 0;
@@ -80,17 +82,28 @@ ul li a {
     display: none;
 }
 @media screen and (min-width:960px){
-    main>.side-bar.deactive  {
-        /* flex-basis: 2.5%; */
+    
+    
+    main> .side-bar.deactive  {
+        /* flex-basis: .5%; */
         /* width: 2.5%; */
+        /* width: 0; */
         /* opacity: 0; */
         transition: all 250ms;
         /* background-color: blue !important; */
     }
+    .parts sup{
+        display: inline-block;
+        margin-left: -3px;
+        /* border: 2px solid orange; */
+        /* background-color: blue; */
+    }
 }
 @media screen and (max-width:600px){
+    
     .parts{
         margin-left: 1.5%;
+        font-size: 90%;
     }
     .parts h2{
         margin-left: 2.5%;
