@@ -122,6 +122,10 @@ export function stepTxtsFocus() {
     addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
         
+        if(e.metaKey && letter == 'c'){
+            e.preventDefault()
+            return
+        }
         if(letter == 'm'){
             if(!mainTargetDivFocused && lastStep){    
                 lastStep.focus()
@@ -132,18 +136,18 @@ export function stepTxtsFocus() {
         if(!mainTargetDivFocused){
         }
         if (!e.metaKey && (e.shiftKey && letter == 'c')) {
-            e.preventDefault()
-            const enterConsole = document.querySelector('#enterConsole')
-            if(enterConsole){
-                enterConsole.focus()
-            } else{
+            // e.preventDefault()
+            // const enterConsole = document.querySelector('#enterConsole')
+            // if(enterConsole){
+            //     enterConsole.focus()
+            // } else{
 
-                const chagGpt = document.querySelector('#chatGpt')
-                chagGpt.scrollIntoView({behavior: 'smooth', block: 'center'})
-            }
+            //     const chagGpt = document.querySelector('#chatGpt')
+            //     chagGpt.scrollIntoView({behavior: 'smooth', block: 'center'})
+            // }
         }
         // xyz
-        if (!isNaN(letter) && !enterConsoleFocus) {
+        if (!isNaN(letter) && !enterConsoleFocus && mainTargetDivFocused) {
             if(!partsFocused){
                 let intLet = parseInt(letter)
                 if (intLet <= steps.length) {

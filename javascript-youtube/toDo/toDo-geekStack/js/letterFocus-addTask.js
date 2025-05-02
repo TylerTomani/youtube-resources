@@ -13,19 +13,19 @@ let taskFocused = false
 const todoApp = document.querySelector('.todo-app');
 todoApp.addEventListener('focusin', () => { todoAppFocused = true; });
 todoApp.addEventListener('focusout', () => { todoAppFocused = false; });
+tasksArr.forEach(el => {
+    el.addEventListener('focus', e => {taskFocused = true})
+    el.addEventListener('focusout', e => {taskFocused = false})
+})
+
+// Track input focus
+inputBox.addEventListener("focus", () => (inputBoxFocused = true));
+inputBox.addEventListener("blur", () => (inputBoxFocused = false));
 // Function to update idElsArr dynamically
 export function updateIdElsArr() {
     idElsArr = Array.from(document.querySelectorAll('[id]')); // Refresh the array
 }
 updateIdElsArr();
-tasksArr.forEach(el => {
-    el.addEventListener('focus', e => {taskFocused = true})
-    el.addEventListener('focusout', e => {taskFocused = false})
-})
- 
-// Track input focus
-inputBox.addEventListener("focus", () => (inputBoxFocused = true));
-inputBox.addEventListener("blur", () => (inputBoxFocused = false));
 // Keydown event listener
 document.addEventListener("keydown", (e) => {
     if (inputBoxFocused) return; // Ignore if typing in input box

@@ -52,7 +52,6 @@ export function letterFocus(){
     document.addEventListener('keydown', e => {
         let letter = e.key.toLowerCase();
         if(enterConsoleFocus){
-
             return 
         } else {
             elsFocus(e,letter)
@@ -60,6 +59,10 @@ export function letterFocus(){
     });
     
     function elsFocus(e,letter) {
+        if(e.metaKey && letter == 'c'){
+            e.preventDefault()
+            return
+        }
         if(letter == 'a'){
             if(!partsFocused){
                 if(lastClickedLink){

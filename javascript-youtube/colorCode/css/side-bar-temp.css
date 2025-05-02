@@ -18,17 +18,14 @@ body>nav.section-lesson-title {
     box-shadow: 0 0 1px 1px white;
     background-color: var(--bg-primary);
     height: 5vh;
-}
-body > nav.section-lesson-title{
-    
     border: 1px solid black;
     display: flex;
     align-items: center;
 }
-body > nav.section-lesson-title > h1{
-    padding: 0;
-    /* border: 2px solid blue; */
-    /* padding-bottom: 1.5%; */
+body > nav.section-lesson-title > h1#title {
+    font-size: 100%;
+    margin-left: 1%;
+
 }
 main>#mainTargetDiv {
     margin-right: 20px;

@@ -10,11 +10,7 @@ body>header a:focus,
 body>header a:active {
     box-shadow: 0 0 10px 6px rgb(143, 194, 192);
 }
-h1#title {
-    font-size: 100%;
-    margin-left: 2%;
-    padding-top: 1.5%;
-}
+
 body>header>nav#mainLinksContainer {
     /* background-color: var(--bg-primary); */
     width: 100%;
