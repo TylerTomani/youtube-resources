@@ -215,9 +215,10 @@ export function stepTxtsFocus() {
             if( lastStep){    
                 lastStep.focus()
             }
+            if(e.target == lastStep){
+                mainTargetDiv.focus()
+            }
         }
-        
-        if(!mainTargetDivFocused){}
         if (!e.metaKey && (e.shiftKey && letter == 'c')) {
             // e.preventDefault()
             // const enterConsole = document.querySelector('#enterConsole')
@@ -231,6 +232,8 @@ export function stepTxtsFocus() {
         }
         if (sideBar.classList.contains('deactive')) {
             mainTargetDivFocused = true
+        } else {
+            mainTargetDivFocused = false
         }
         if (!isNaN(letter) && !enterConsoleFocus && mainTargetDivFocused) {
             if(mainTargetDivFocused){
