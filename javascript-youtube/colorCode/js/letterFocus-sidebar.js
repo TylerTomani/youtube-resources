@@ -39,6 +39,7 @@ export function letterFocus(){
     parts.forEach(el => {
         el.addEventListener('focus', e => {
             partsFocused = true
+            
         })
     })
     mainTargetDiv.addEventListener('focusin', e => {
@@ -46,14 +47,6 @@ export function letterFocus(){
     })
     mainTargetDiv.addEventListener('focusout', e => {
     })
-    document.addEventListener('keydown', e => {
-        let letter = e.key.toLowerCase();
-        if(enterConsoleFocus){
-            return 
-        } else {
-            elsFocus(e,letter)
-        }
-    });
     
     endNxtLessonBtn.addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
@@ -66,6 +59,14 @@ export function letterFocus(){
     endNxtLessonBtn.addEventListener('click', e => {
         lastClickedLink.focus()
     })
+    document.addEventListener('keydown', e => {
+        let letter = e.key.toLowerCase();
+        if (enterConsoleFocus) {
+            return
+        } else {
+            elsFocus(e, letter)
+        }
+    });
     function elsFocus(e,letter) {
         if(e.metaKey && letter == 'c'){
             e.preventDefault()
@@ -81,19 +82,11 @@ export function letterFocus(){
             }
         }
         if(letter == 'e'){
-            endNxtLessonBtn.focus()
+            if(endNxtLessonBtn){
+                endNxtLessonBtn.focus()
+            }
             
         }
-        
-        // if (letter == 'e') {
-        //     async function extractEndNxtLessonBtn() {
-        //         endNxtLessonBtn = await getEndNxtLessonBtn();
-        //         if (endNxtLessonBtn) {
-        //             endNxtLessonBtn.focus()
-        //         }
-        //     }
-        //     extractEndNxtLessonBtn()
-        // }
         if (letter == 'm' && lastStep) {
             lastStep.focus()
             
@@ -160,5 +153,6 @@ export function letterFocus(){
     //         resolve(document.querySelector('#endNxtLesson'))
     //     })
     // }
+    
 }
 

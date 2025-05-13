@@ -1,3 +1,4 @@
+import { togglePlayVidSize } from "./playPauseVideos-colorCode.js";
 // import { mainTargetDivFocused } from "./letterFocus-sidebar.js"
 import { mainTargetDiv } from "./letterFocus-sidebar.js";
 import { sideBar } from "./toggle-sidebar.js"
@@ -8,17 +9,17 @@ export let lastStep = null
 export let stepFocused
 export function stepTxtsFocus() {
     let mainTargetDivFocused = false
+    const allVideos = document.querySelectorAll('video')
     const steps = document.querySelectorAll('.steps-container > .step , .step-float , .step-col3')
     // const tabIndexElements = document.querySelectorAll('.copy-code, textarea')
     // Maybe just keep text area with focus
-    const tabIndexElements = document.querySelectorAll('.copy-code')
+    const copyCodes = document.querySelectorAll('.copy-code')
     const  imgVids = document.querySelectorAll('.step-img > img, .step-vid, video')
     const sectionLessonTitle = document.querySelector('nav.section-lesson-title > h1')
     const hiddenH3 = document.querySelector('.header-codeColor-lesson h3')
     const endNxtLesson = document.querySelector('#endNxtLesson')
     const sideBar = document.querySelector('main > .side-bar')
     let currentWidth
-    let currentVideo
     let partsFocused = false
     sectionLessonTitle.innerText = hiddenH3.innerText
     currentWidth = innerWidth
@@ -28,10 +29,16 @@ export function stepTxtsFocus() {
         if (letter == 'm' && lastStep) {
             lastStep.focus()
         }
+        mainTargetDivFocused = true
     })
+    mainTargetDiv.addEventListener('focus', e => {mainTargetDivFocused = true})
     mainTargetDiv.addEventListener('focusin', e => {
         partsFocused = false
         mainTargetDivFocused = true
+    })
+    mainTargetDiv.addEventListener('focusout', e => {
+        denlargeAllImages()
+        denlargeAllVideos()
     })
     endNxtLesson.addEventListener('keydown', e =>{
         let letter = e.key.toLowerCase()
@@ -45,6 +52,7 @@ export function stepTxtsFocus() {
     parts.forEach(el => {
         el.addEventListener('focus', e => {
             partsFocused = true
+            mainTargetDivFocused = false
         })
     })
     imgVids.forEach(imgVid =>{
@@ -53,7 +61,7 @@ export function stepTxtsFocus() {
             toggleImg(e)
         })
     })    
-    tabIndexElements.forEach(el => {
+    copyCodes.forEach(el => {
         el.addEventListener('keydown', e => {
             let letter = e.key.toLowerCase()
             if (letter == 'enter') {
@@ -62,13 +70,16 @@ export function stepTxtsFocus() {
             }
         })
         el.addEventListener('focus', e => {
-            deenlargeAllImgVid()
+            denlargeAllVideos()
+            denlargeAllImages()
         })
     })
     steps.forEach(el => {
         el.addEventListener('focus', e => {
+            pauseAllVideos()
+            denlargeAllVideos()
             removeAllTabIndexes()
-            deenlargeAllImgVid()
+            denlargeAllImages()
             lastStep = e.target
         })
         
@@ -82,13 +93,12 @@ export function stepTxtsFocus() {
             if(letter == 'enter'){   
                 toggleImg(e)
                 addTabIndexes(e)
-                
             }
-            togglePlayVidSize(e,letter)
+            togglePlayVidSize(e)
             
         })
     })
-    let playing = false
+    
     function toggleImg(e){
         const step = getStep(e.target)
         const img = step.querySelector('img')
@@ -111,81 +121,6 @@ export function stepTxtsFocus() {
         
 
     }
-    function togglePlayVidSize(e, letter) {
-        playPause(e)
-        const step = getStep(e.target)
-        const vid = step.querySelector('video')
-        if(letter == 'enter'){
-            if(vid){
-                vid.classList.toggle('enlarge-vid')
-                if(currentWidth < 721){
-                    toggleBar()
-                }
-            }
-        }
-        // const vid =  step.querySelector('video')
-    }
-    function playPause(e) {
-        let key = e.keyCode
-        const step = getStep(e.target)
-        const vid = step.querySelector('video')
-        playing = !playing
-        if(vid){
-            
-            switch (key) {
-                case 13:
-                    // vid.currentTime = 0
-                    // vid.play()
-                    playing = true
-                    break
-                case 32:
-                    e.preventDefault()
-                    playing = !playing
-                    if(playing == true){
-                        vid.style.border = '1px solid blue'
-                    }
-                    break;
-                // left arrow
-                case 37:
-                    e.preventDefault()
-                    if (vid.currentTime > 0) {
-                        vid.currentTime = vid.currentTime - 1
-                    }
-                    if (vid.currentTime < vid.duration) {
-                        vid.style.border = '2px solid blue'
-                    }
-                    break
-                // right arrow
-                case 39:
-                    vid.currentTime = vid.currentTime + 2
-                    if (vid.currentTime >= vid.duration) {
-                        vid.style.border = '14px solid red'
-                        vid.pause()
-                        vid.currentTime = vid.duration()
-                    }
-                    break
-
-            }    
-
-            if (playing) {                
-                vid.style.border = "4px solid blue"
-                if (vid.currentTime <= 0.1 || vid.currentTime >= vid.duration) { 
-                    vid.style.border = "4px solid red"
-                    playing = false
-                    vid.pause()
-                    
-    
-                } else {
-                    vid.play()
-                }
-            } else {
-                vid.style.border = "none"
-                vid.pause()    
-            }
-            
-            
-        }
-    }
     
     function addTabIndexes(e){
         const tabEls = e.target.querySelectorAll('.copy-code, textarea')
@@ -194,11 +129,11 @@ export function stepTxtsFocus() {
         })
     }
     function removeAllTabIndexes(){
-        tabIndexElements.forEach(el => {
+        copyCodes.forEach(el => {
             el.setAttribute('tabindex', '-1')
         })
     }
-    function deenlargeAllImgVid(){
+    function denlargeAllImages(){
         imgVids.forEach(el => {
             if(el.classList.contains('enlarge')){
                 el.classList.remove('enlarge')
@@ -217,6 +152,7 @@ export function stepTxtsFocus() {
             }
             if(e.target == lastStep){
                 mainTargetDiv.focus()
+                window.scrollTo(0,0)
             }
         }
         if (!e.metaKey && (e.shiftKey && letter == 'c')) {
@@ -232,8 +168,6 @@ export function stepTxtsFocus() {
         }
         if (sideBar.classList.contains('deactive')) {
             mainTargetDivFocused = true
-        } else {
-            mainTargetDivFocused = false
         }
         if (!isNaN(letter) && !enterConsoleFocus && mainTargetDivFocused) {
             if(mainTargetDivFocused){
@@ -247,10 +181,22 @@ export function stepTxtsFocus() {
             }
         }
     })
+    function pauseAllVideos(){
+        allVideos.forEach(el => {
+            el.pause()
+
+        })
+    }
+    function denlargeAllVideos(){
+        allVideos.forEach(el => {
+            el.style.border = 'none'
+            el.classList.remove('enlarge-vid')
+        })
+    }
     
 }
 
-function getStep(parent){
+export function getStep(parent){
     // if(parent.classList.contains('step')){
     if (parent.classList.contains('step') || parent.classList.contains('step-float')){
         return parent

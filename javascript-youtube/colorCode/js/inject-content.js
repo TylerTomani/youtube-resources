@@ -11,8 +11,8 @@ const sectionLessonTitle = document.querySelector('nav.section-lesson-title');
 let sidebarLinksFocused = false;
 let currentLinkIndex = 0;
 
+export let currentWidth = innerWidth;
 document.addEventListener('DOMContentLoaded', () => {
-    let currentWidth = innerWidth;
     let mainTargetDivFocused = false;
 
     addEventListener('resize', e => {
@@ -79,7 +79,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (letter === 'enter') {
                 e.preventDefault();
                 e.stopPropagation();
-
                 injectContent(el.href);
 
                 if (el === lastFocusedLink) {
