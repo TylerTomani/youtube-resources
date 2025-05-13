@@ -23,7 +23,6 @@ sidebarBtn.addEventListener('click', e =>{
 sidebarBtn.addEventListener('keydown', e =>{
     let letter = e.key.toLowerCase()
     if(letter == 'enter'){ 
-        console.log(sideBarContainer.parentElement)
         toggleBar()
     }
     if(letter == 'a' && sideBar.classList.contains('deactive')){
@@ -69,11 +68,7 @@ sideBar.addEventListener('click', e => {
 export function toggleBar(){
     sidebarBtn.classList.toggle('drop')
     sideBar.classList.toggle('deactive')
+    
 }
 
 
-function toCamelCase(str) {
-    return str
-        .toLowerCase()
-        .replace(/[^a-zA-Z0-9]+(.)/g, (match, chr) => chr.toUpperCase());
-}

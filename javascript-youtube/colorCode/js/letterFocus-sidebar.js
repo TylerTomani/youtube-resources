@@ -4,7 +4,6 @@ export const mainTargetDiv = document.querySelector('#mainTargetDiv')
 import { lastClickedLink } from "./inject-content.js";
 import { lastStep } from "./stepTxts-codeColor.js";
 export const navBar = document.querySelector('nav.section-lesson-title')
-export let mainTargetDivFocused = false
 let partsFocused = false
 export let enterConsoleFocus = false
 const header = document.querySelector('body > header')
@@ -39,16 +38,13 @@ export function letterFocus(){
     extractElementEnterConsole()
     parts.forEach(el => {
         el.addEventListener('focus', e => {
-            mainTargetDivFocused = false
             partsFocused = true
         })
     })
     mainTargetDiv.addEventListener('focusin', e => {
-        mainTargetDivFocused = true
         partsFocused = false
     })
     mainTargetDiv.addEventListener('focusout', e => {
-        mainTargetDivFocused = false
     })
     document.addEventListener('keydown', e => {
         let letter = e.key.toLowerCase();
@@ -99,7 +95,6 @@ export function letterFocus(){
         //     extractEndNxtLessonBtn()
         // }
         if (letter == 'm' && lastStep) {
-            mainTargetDivFocused = true
             lastStep.focus()
             
             if(e.target == lastStep && letter == 'm'){

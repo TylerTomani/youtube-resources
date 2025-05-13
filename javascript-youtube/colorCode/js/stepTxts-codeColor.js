@@ -1,4 +1,4 @@
-import { mainTargetDivFocused } from "./letterFocus-sidebar.js"
+// import { mainTargetDivFocused } from "./letterFocus-sidebar.js"
 import { mainTargetDiv } from "./letterFocus-sidebar.js";
 import { sideBar } from "./toggle-sidebar.js"
 import { parts } from "./letterFocus-sidebar.js"
@@ -7,6 +7,7 @@ import { toggleBar } from "./toggle-sidebar.js";
 export let lastStep = null
 export let stepFocused
 export function stepTxtsFocus() {
+    let mainTargetDivFocused = false
     const steps = document.querySelectorAll('.steps-container > .step , .step-float , .step-col3')
     // const tabIndexElements = document.querySelectorAll('.copy-code, textarea')
     // Maybe just keep text area with focus
@@ -15,6 +16,7 @@ export function stepTxtsFocus() {
     const sectionLessonTitle = document.querySelector('nav.section-lesson-title > h1')
     const hiddenH3 = document.querySelector('.header-codeColor-lesson h3')
     const endNxtLesson = document.querySelector('#endNxtLesson')
+    const sideBar = document.querySelector('main > .side-bar')
     let currentWidth
     let currentVideo
     let partsFocused = false
@@ -29,7 +31,7 @@ export function stepTxtsFocus() {
     })
     mainTargetDiv.addEventListener('focusin', e => {
         partsFocused = false
-        // mainTargetDivFocused = true
+        mainTargetDivFocused = true
     })
     endNxtLesson.addEventListener('keydown', e =>{
         let letter = e.key.toLowerCase()
@@ -114,30 +116,34 @@ export function stepTxtsFocus() {
         const step = getStep(e.target)
         const vid = step.querySelector('video')
         if(letter == 'enter'){
-            vid.classList.toggle('enlarge-vid')
-            if(currentWidth < 721){
-                toggleBar()
-                console.log(currentWidth)
+            if(vid){
+                vid.classList.toggle('enlarge-vid')
+                if(currentWidth < 721){
+                    toggleBar()
+                }
             }
         }
-        
         // const vid =  step.querySelector('video')
     }
     function playPause(e) {
-        let key = e.key
+        let key = e.keyCode
         const step = getStep(e.target)
         const vid = step.querySelector('video')
         playing = !playing
         if(vid){
+            
             switch (key) {
                 case 13:
-                    vid.currentTime = 0
-                    vid.play()
+                    // vid.currentTime = 0
+                    // vid.play()
+                    playing = true
                     break
                 case 32:
                     e.preventDefault()
-                    console.log('yes')
                     playing = !playing
+                    if(playing == true){
+                        vid.style.border = '1px solid blue'
+                    }
                     break;
                 // left arrow
                 case 37:
@@ -162,12 +168,21 @@ export function stepTxtsFocus() {
             }    
 
             if (playing) {                
-                vid.play()
                 vid.style.border = "4px solid blue"
+                if (vid.currentTime <= 0.1 || vid.currentTime >= vid.duration) { 
+                    vid.style.border = "4px solid red"
+                    playing = false
+                    vid.pause()
+                    
+    
+                } else {
+                    vid.play()
+                }
             } else {
                 vid.style.border = "none"
                 vid.pause()    
             }
+            
             
         }
     }
@@ -197,7 +212,7 @@ export function stepTxtsFocus() {
             return
         }
         if(letter == 'm'){
-            if(!mainTargetDivFocused && lastStep){    
+            if( lastStep){    
                 lastStep.focus()
             }
         }
@@ -214,9 +229,11 @@ export function stepTxtsFocus() {
             //     chagGpt.scrollIntoView({behavior: 'smooth', block: 'center'})
             // }
         }
-
+        if (sideBar.classList.contains('deactive')) {
+            mainTargetDivFocused = true
+        }
         if (!isNaN(letter) && !enterConsoleFocus && mainTargetDivFocused) {
-            if(!partsFocused){
+            if(mainTargetDivFocused){
                 let intLet = parseInt(letter)
                 if (intLet <= steps.length) {
                     steps[intLet - 1].focus()
