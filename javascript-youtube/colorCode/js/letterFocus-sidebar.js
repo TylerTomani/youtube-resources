@@ -9,8 +9,9 @@ let partsFocused = false
 export let enterConsoleFocus = false
 const header = document.querySelector('body > header')
 // async variables
-let enterConsole, endNxtLessonBtn
+let enterConsole
 export function letterFocus(){
+    const endNxtLessonBtn = document.querySelector('#endNxtLesson')
     header.addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
         if (letter == 'a') {    
@@ -58,6 +59,17 @@ export function letterFocus(){
         }
     });
     
+    endNxtLessonBtn.addEventListener('keydown', e => {
+        let letter = e.key.toLowerCase()
+        if(letter == 'enter'){
+            lastClickedLink.focus()
+            
+        }
+        
+    })
+    endNxtLessonBtn.addEventListener('click', e => {
+        lastClickedLink.focus()
+    })
     function elsFocus(e,letter) {
         if(e.metaKey && letter == 'c'){
             e.preventDefault()
@@ -72,15 +84,20 @@ export function letterFocus(){
                 }
             }
         }
-        if (letter == 'e') {
-            async function extractEndNxtLessonBtn() {
-                endNxtLessonBtn = await getEndNxtLessonBtn();
-                if (endNxtLessonBtn) {
-                    endNxtLessonBtn.focus()
-                }
-            }
-            extractEndNxtLessonBtn()
+        if(letter == 'e'){
+            endNxtLessonBtn.focus()
+            
         }
+        
+        // if (letter == 'e') {
+        //     async function extractEndNxtLessonBtn() {
+        //         endNxtLessonBtn = await getEndNxtLessonBtn();
+        //         if (endNxtLessonBtn) {
+        //             endNxtLessonBtn.focus()
+        //         }
+        //     }
+        //     extractEndNxtLessonBtn()
+        // }
         if (letter == 'm' && lastStep) {
             mainTargetDivFocused = true
             lastStep.focus()
@@ -93,7 +110,13 @@ export function letterFocus(){
          
         if (!e.shiftKey && letter == 'c') {
             const chatGpt = document.querySelector('#chatGpt')
-            chatGpt.focus()
+            const codeComandShortcuts = document.querySelector('#codeComandShortcuts')
+            
+            if(e.target == codeComandShortcuts){
+                chatGpt.focus()
+            } else {
+                codeComandShortcuts.focus()
+            }
         } 
         if (e.shiftKey && letter == 'c') {
             // const enterConsole = getEnterConsole()
@@ -137,10 +160,10 @@ export function letterFocus(){
             resolve(document.querySelector('#enterConsole'))
         })
     }
-    function getEndNxtLessonBtn(){
-        return new Promise(function(resolve,reject){
-            resolve(document.querySelector('#endNxtLesson'))
-        })
-    }
+    // function getEndNxtLessonBtn(){
+    //     return new Promise(function(resolve,reject){
+    //         resolve(document.querySelector('#endNxtLesson'))
+    //     })
+    // }
 }
 

@@ -1,5 +1,5 @@
 .main-container-codeColor {
-    background-color: ;
+    /* background-color: blue; */
     /* margin-right: 1%; */
 }
 .steps-container {
@@ -11,8 +11,6 @@
     border: 1px solid black;
     padding-bottom: 2%;
 }
-
-
 .step-float>.step-img,
 .step-float>.step-vid {
     float: right;
@@ -60,6 +58,18 @@
     padding-top: .75%;
     padding-left: 1%;
 }
+.step-float > .step > * {
+    display: flex;
+}
+.step-float > .step > .step-txt,
+.step-float > .step > .step-img,
+.step-float > .step > .step-vid{
+    width: 50%;
+}
+.step-float > .step > .step-img image,
+.step-float > .step > .step-vid video{
+    
+}
 .step {
     display: flex;
     justify-content: space-between;
@@ -104,20 +114,11 @@
     /* display: none; */
     max-width: 500px;
 }
-.enlarge{
-    position: relative;
-    transform: scale(1.5);
-    margin-right: 5%;
-    margin-top: 5%;
-    min-width: 500px;
-    z-index: 2
-}
+
 .code-container {
     background-color: white;
-    padding-right: 3.3%;
-    /* border-radius: 4px; */
+    /* padding-right: 3.3%; */
     width: fit-content;
-    border: 1px solid black;
     
 }
 .code-container>.copy-code {
@@ -125,17 +126,43 @@
     width: 100%;
     padding-top: 1.5%;
     padding-bottom: 2%;
-    margin-right: 5%;
+    /* margin-right: 5%; */
     padding-right: 5%;
     padding-left: 1.2%;
+    /* color: black; */
 }
 .clear {
     clear: both;
 }
-.code-container>.copy-code {
-    background-color:white;
-    color: black;
-    /* box-shadow: 0 0 1px 1px black; */
+
+@media screen and (min-width:1000px) {
+    .step-txt {
+        margin-left: 1%;
+    }
+    .step-float>.step-img,
+    .step-float>.step-vid {
+        margin-right: 20%;
+        margin-top: 2.5%;
+        /* width: 90%; */
+     }
+    .step-float .code-container {
+        /* margin-top: 6%; */
+        /* border: 1px solid magenta; */
+    }
+
+}
+@media screen and (max-width:959px) {
+    .step-txt {
+        margin-left: 1%;
+    }
+    .step-float>.step-img,
+    .step-float>.step-vid {
+        margin-right: 0%;
+        margin-top: 2.5%;
+    }
+    .step-float .code-container {
+    }
+
 }
 @media screen and (max-width:721px) {
     .step-float>.step-img,
@@ -183,4 +210,21 @@
         min-width: 300px;
         /* border: 2px solid magenta; */
     }
+}
+
+.enlarge {
+    position: relative;
+    transform: scale(1.5);
+    margin-right: 5%;
+    margin-top: 5%;
+    min-width: 500px;
+    z-index: 2
+}
+.enlarge-vid{
+    position: absolute;
+    transform: scale(1.5);
+    margin-right: 50%;
+    margin-top: 5%;
+    min-width: 500px;
+    z-index: 2
 }

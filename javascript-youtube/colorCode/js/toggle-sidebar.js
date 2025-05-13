@@ -1,3 +1,4 @@
+const header = document.querySelector('body > header')
 const sidebarBtn = document.querySelector('#sideBarBtn')
 const sideBarContainer = document.querySelector(".sideBarBtn-container")
 export const sideBar = document.querySelector('.side-bar')
@@ -37,7 +38,15 @@ sidebarBtn.addEventListener('keydown', e =>{
     }
     
 })
+header.addEventListener('keydown', e => {
 
+    if (letter == 'a' && lastClickedLink) {
+        lastClickedLink.focus()
+
+    } else if (letter == 'a' && !lastClickedLink) {
+        parts[0].focus()
+    }
+})
 navBar.addEventListener('keydown', e => {
     let letter = e.key.toLowerCase()
     if (letter == 'enter') {
@@ -57,7 +66,14 @@ sideBar.addEventListener('click', e => {
         return
     }
 })
-function toggleBar(){
+export function toggleBar(){
     sidebarBtn.classList.toggle('drop')
     sideBar.classList.toggle('deactive')
+}
+
+
+function toCamelCase(str) {
+    return str
+        .toLowerCase()
+        .replace(/[^a-zA-Z0-9]+(.)/g, (match, chr) => chr.toUpperCase());
 }
