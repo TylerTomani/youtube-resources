@@ -1,78 +1,87 @@
 import { getStep } from "./stepTxts-codeColor.js"
 import { currentWidth } from "./inject-content.js"
 import { toggleBar } from "./toggle-sidebar.js"
+import { sideBar } from "./toggle-sidebar.js"
 let playing = false
-const  allVids = document.querySelectorAll('video')
-allVids.forEach(vid => {
-    vid.addEventListener('click', e =>{
-        playing = !playing
+export function togglePlayVidSize(e,playing) {
+    const allVids = document.querySelectorAll('video')
+    allVids.forEach(vid => {
+        vid.addEventListener('click', e => {
+            playing = !playing
+        })
     })
-})
-export function togglePlayVidSize(e) {
     let letter = e.key.toLowerCase()
     const step = getStep(e.target)
     const vid = step.querySelector('video')
+    e.target.scrollIntoView({behavior: 'smooth',block: 'center'})
+    playPause(e)
+    if(letter == ' '){
+        e.preventDefault()
+        e.stopPropagation()
+    }
     if (letter == 'enter') {
         if (vid) {
             vid.classList.toggle('enlarge-vid')
             if (currentWidth < 721) {
                 toggleBar()
+            } else if
+             (currentWidth < 721 && playing) {
+                console.log('less')
+                return
             }
-            // vid.classList.toggle('enlarge')
         }
 
-    }
-    playPause(e)
-    // const vid =  step.querySelector('video')
+    }    
 }
+
 function playPause(e) {
-        let key = e.keyCode
-        const step = getStep(e.target)
-        const vid = step.querySelector('video')
-        if(vid){    
-            switch (key) {
-                case 13:
-                    playing = true
-                    break
-                case 32:
-                    // e.preventDefault()
-                    e.stopPropagation()
-                    playing = !playing
-                    break;
-                // left arrow
-                case 37:
-                    e.preventDefault()
-                    if (vid.currentTime > 0) {
-                        vid.currentTime = vid.currentTime - 1
-                    }
-                    console.log(vid.currentTime)
-                    if (vid.currentTime == 0) {
-                        console.log('yes')
-                        playing = false
-                        vid.style.border = '12px solid red'
-                    }
-                    break
-                // right arrow
-                case 39:
-                    vid.currentTime = vid.currentTime + 2
-                    // if (vid.currentTime >= vid.duration) {
-                    //     vid.style.border = '14px solid red'
-                    //     vid.pause()
-                    //     vid.currentTime = vid.duration()
-                    // }
-                    break
+    const step = getStep(e.target)
+    const vid = step.querySelector('video')
+    if (!vid) return
 
-            }    
-
-            if (playing) {                
-                vid.style.border = "1px solid blue"
-                vid.play()
-            } else {
-                vid.style.border = "none"
-                vid.pause()    
-            }
-            
-            
-            
-        }
+    if (e.keyCode === 13) { // Enter
+        playing = true
+        vid.currentTime = 0
     }
+
+    if (e.keyCode === 32) { // Spacebar
+        e.preventDefault()
+        e.stopPropagation()
+        playing = !playing
+    }
+
+    if (e.keyCode === 37) { // Left arrow
+        e.preventDefault()
+        if (vid.currentTime > 0){
+            vid.style.border = "2px solid blue"
+            vid.currentTime -= 1
+        }
+        
+            
+    }
+
+    if (e.keyCode === 39) { // Right arrow
+        vid.currentTime += 2
+    }
+
+    // 🔴 Red border if at the end
+    console.log(typeof(vid.currentTime))
+    if(vid.currentTime == 0){
+        vid.style.border = "none"
+        // vid.pause()
+    } 
+    if (vid.currentTime >= vid.duration) {
+        vid.style.border = "2px solid red"
+        vid.pause()
+        playing = false
+    } else if (playing) {
+        // 🔵 Blue border if playing
+        vid.style.border = "2px solid blue"
+        vid.play()
+    } else {
+        // 🟢 Lime green border if paused
+        vid.style.border = "2px solid lime"
+        vid.pause()
+    }
+}
+

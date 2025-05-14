@@ -8,6 +8,7 @@ import { toggleBar } from "./toggle-sidebar.js";
 export let lastStep = null
 export let stepFocused
 export function stepTxtsFocus() {
+    
     let mainTargetDivFocused = false
     const allVideos = document.querySelectorAll('video')
     const steps = document.querySelectorAll('.steps-container > .step , .step-float , .step-col3')

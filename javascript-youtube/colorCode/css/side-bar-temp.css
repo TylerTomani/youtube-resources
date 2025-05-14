@@ -62,6 +62,7 @@ main > .side-bar.deactive .parts {
 main > .side-bar.deactive .drop {
     position: fixed;
     transform: scale(1.5);
+    z-index: 1;
     bottom: 0;
 }
 
