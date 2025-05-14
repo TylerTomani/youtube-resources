@@ -107,6 +107,9 @@
     align-items: flex-start;
     justify-content: center;
 }
+.step-float > .step > .step-vid{
+    margin-top: 0%;
+}
 .step-img > img,
 .step-vid > video{
     width: 98%;
@@ -148,7 +151,7 @@
 }
 .step-float>.step-vid>video  {
     position: absolute;
-    z-index: 2;
+    z-index: 0;
 }
 .enlarge-vid {
     position: absolute;

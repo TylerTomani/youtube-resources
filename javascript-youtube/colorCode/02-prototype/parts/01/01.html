@@ -109,22 +109,20 @@ promise.then(function(data){
                         <div class="step-txt">
                             <div class="code-container">
                                 <pre class="copy-code">
-    function getWeather() {
-        return new Promise(function (resolve, reject) {
-            console.log('...waiting')
-            setTimeout(() => {
-                resolve('Cloudy')
-            }, 90)
-        })
+function getWeather() {
+ return new Promise(function (resolve, reject) {
+     console.log('...waiting')
+     setTimeout(() => {
+         resolve('Cloudy')
+     }, 90)
+ })
+}
+function <span class="y">weatherSymbols</span>(weather) {
+    if (weather == 'Cloudy') {
+        console.log('☁️')
     }
-    function <span class="y">weatherSymbols</span>(weather) {
-        if (weather == 'Cloudy') {
-            console.log('☁️')
-        }
-    }
-    getWeather().<span class="m">then</span>(<span class="y">checkWeather</span>)
-    
-                                </pre>
+}
+getWeather().<span class="m">then</span>(<span class="y">checkWeather</span>)</pre>
                             </div>
                         </div>
                         <div class="step-vid">

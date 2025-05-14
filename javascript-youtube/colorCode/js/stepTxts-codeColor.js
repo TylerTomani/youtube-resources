@@ -44,7 +44,6 @@ export function stepTxtsFocus() {
 
     let mainTargetDivFocused = false
     const steps = document.querySelectorAll('.steps-container > .step , .step-float , .step-col3')
-    // const tabIndexElements = document.querySelectorAll('.copy-code, textarea')
     // Maybe just keep text area with focus
     const copyCodes = document.querySelectorAll('.copy-code')
     const imgVids = document.querySelectorAll('.step-img > img, .step-vid, video')
@@ -99,6 +98,7 @@ export function stepTxtsFocus() {
             let letter = e.key.toLowerCase()
             if (letter == 'enter') {
                 e.stopPropagation()
+                console.log('kjdf')
                 toggleImg(e)
             }
         })
@@ -134,7 +134,7 @@ export function stepTxtsFocus() {
     
     function toggleImg(e){
         const step = getStep(e.target)
-        const img = step.querySelector('img')
+        const img = step.querySelector('img') ? step.querySelector('img') : step.querySelector('video')
         if(img){
             img.classList.toggle('enlarge')
             if(currentWidth <= 721 && currentWidth >= 601){
