@@ -2,6 +2,7 @@
 body>header {   
     /* color: black; */
     display: flex;
+    height: 10vh;
 }
 body>header a{
     /* color: black; */
