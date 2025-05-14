@@ -131,6 +131,10 @@
     padding-left: 1.2%;
     /* color: black; */
 }
+video {
+    position: relative;
+    z-index: 1;
+}
 .clear {
     clear: both;
 }

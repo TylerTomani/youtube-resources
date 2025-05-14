@@ -2,7 +2,12 @@ import { getStep } from "./stepTxts-codeColor.js"
 import { currentWidth } from "./inject-content.js"
 import { toggleBar } from "./toggle-sidebar.js"
 let playing = false
-
+const  allVids = document.querySelectorAll('video')
+allVids.forEach(vid => {
+    vid.addEventListener('click', e =>{
+        playing = !playing
+    })
+})
 export function togglePlayVidSize(e) {
     let letter = e.key.toLowerCase()
     const step = getStep(e.target)
