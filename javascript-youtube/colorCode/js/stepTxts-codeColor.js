@@ -12,10 +12,7 @@ export function stepTxtsFocus() {
     const allVideos = document.querySelectorAll('video')
     let currentVideo
     
-
-    let isPlaying = false
-
-    
+    let isPlaying = false    
     allVideos.forEach(vid => {
         vid.addEventListener('click', (e) => {
             if (e.target.tagName === 'VIDEO') {
@@ -24,24 +21,15 @@ export function stepTxtsFocus() {
                 if (video.paused) {
                     video.play();
                     video.style.border = "2px solid blue";
-                    vid.classList.add('enlarge-vid')
+                    // vid.classList.add('enlarge-vid')
                 } else {
                     video.pause();
                     vid.classList.remove('enlarge-vid')
-                    video.style.border = "2px solid lime";
+                    // video.style.border = "2px solid lime";
                 }
             }
         });
     });
-    // if (isPlaying) {
-    //     currentVideo.style.border = "1px solid blue"
-    //     currentVideo.play()
-    // } else {
-    //     currentVideo.style.border = "1px solid lime"
-    //     currentVideo.pause()
-    // }
-
-
     let mainTargetDivFocused = false
     const steps = document.querySelectorAll('.steps-container > .step , .step-float , .step-col3')
     // Maybe just keep text area with focus
@@ -98,19 +86,20 @@ export function stepTxtsFocus() {
             let letter = e.key.toLowerCase()
             if (letter == 'enter') {
                 e.stopPropagation()
-                console.log('kjdf')
+                
                 toggleImg(e)
             }
         })
         el.addEventListener('focus', e => {
-            denlargeAllVideos()
+            // denlargeAllVideos()
             denlargeAllImages()
+            
         })
     })
     steps.forEach(el => {
         el.addEventListener('focus', e => {
             pauseAllVideos()
-            denlargeAllVideos()
+            // denlargeAllVideos()
             removeAllTabIndexes()
             denlargeAllImages()
             lastStep = e.target
@@ -138,7 +127,7 @@ export function stepTxtsFocus() {
         if(img){
             img.classList.toggle('enlarge')
             if(currentWidth <= 721 && currentWidth >= 601){
-                if(img.classList.contains('enlarge')){
+                if (img.classList.contains('enlarge') || img.classList.contains('enlarge-vid')){
                     sideBar.classList.add('deactive')
                 } else {
                     sideBar.classList.remove('deactive')
@@ -146,8 +135,12 @@ export function stepTxtsFocus() {
                 }
             }
             if (currentWidth <= 600) {
-                if (img.classList.contains('enlarge')) {
+                if (img.classList.contains('enlarge') || img.classList.contains('enlarge-vid')) {
                     sideBar.classList.add('deactive')
+                }
+                else {
+                    sideBar.classList.remove('deactive')
+
                 }
             }
         }
@@ -170,6 +163,9 @@ export function stepTxtsFocus() {
         imgVids.forEach(el => {
             if(el.classList.contains('enlarge')){
                 el.classList.remove('enlarge')
+            }
+            if(el.classList.contains('enlarge-vid')){
+                el.classList.remove('enlarge-vid')
             }
         })
     }
