@@ -4,12 +4,7 @@ import { toggleBar } from "./toggle-sidebar.js"
 import { sideBar } from "./toggle-sidebar.js"
 let playing = false
 export function togglePlayVidSize(e,playing) {
-    const allVids = document.querySelectorAll('video')
-    allVids.forEach(vid => {
-        vid.addEventListener('click', e => {
-            playing = !playing
-        })
-    })
+    
     let letter = e.key.toLowerCase()
     const step = getStep(e.target)
     const vid = step.querySelector('video')

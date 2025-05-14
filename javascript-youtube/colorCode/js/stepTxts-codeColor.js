@@ -8,18 +8,50 @@ import { toggleBar } from "./toggle-sidebar.js";
 export let lastStep = null
 export let stepFocused
 export function stepTxtsFocus() {
-    
-    let mainTargetDivFocused = false
+    // const videos = document.querySelectorAll('video');
     const allVideos = document.querySelectorAll('video')
+    let currentVideo
+    
+
+    let isPlaying = false
+
+    
+    allVideos.forEach(vid => {
+        vid.addEventListener('click', (e) => {
+            if (e.target.tagName === 'VIDEO') {
+                const video = e.target;
+
+                if (video.paused) {
+                    video.play();
+                    video.style.border = "2px solid blue";
+                    vid.classList.add('enlarge-vid')
+                } else {
+                    video.pause();
+                    vid.classList.remove('enlarge-vid')
+                    video.style.border = "2px solid lime";
+                }
+            }
+        });
+    });
+    // if (isPlaying) {
+    //     currentVideo.style.border = "1px solid blue"
+    //     currentVideo.play()
+    // } else {
+    //     currentVideo.style.border = "1px solid lime"
+    //     currentVideo.pause()
+    // }
+
+
+    let mainTargetDivFocused = false
     const steps = document.querySelectorAll('.steps-container > .step , .step-float , .step-col3')
     // const tabIndexElements = document.querySelectorAll('.copy-code, textarea')
     // Maybe just keep text area with focus
     const copyCodes = document.querySelectorAll('.copy-code')
-    const  imgVids = document.querySelectorAll('.step-img > img, .step-vid, video')
+    const imgVids = document.querySelectorAll('.step-img > img, .step-vid, video')
     const sectionLessonTitle = document.querySelector('nav.section-lesson-title > h1')
     const hiddenH3 = document.querySelector('.header-codeColor-lesson h3')
     const endNxtLesson = document.querySelector('#endNxtLesson')
-    const sideBar = document.querySelector('main > .side-bar')
+    // const sideBar = document.querySelector('main > .side-bar')
     let currentWidth
     let partsFocused = false
     sectionLessonTitle.innerText = hiddenH3.innerText
