@@ -29,7 +29,7 @@ body > nav.section-lesson-title > h1#title {
 }
 main>#mainTargetDiv {
     margin-right: 20px;
-    width: 100%;
+    /* width: 100%; */
     flex-basis: 90%;
     flex-grow: 1;
 }

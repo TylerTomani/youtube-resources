@@ -1,5 +1,12 @@
 import { togglePlayVidSize } from "./playPauseVideos-colorCode.js";
-// import { mainTargetDivFocused } from "./letterFocus-sidebar.js"
+// ⚠️ NOTE: This behavior with sidebar hiding is not fully understood.
+// It works well with step and step-float, so we’re keeping it for now.
+// If bugs pop up later related to sidebar visibility, check here first. 
+/**  
+Search for togglePlayVidSize
+and comment out and see sidebar hidden difference
+*/
+
 import { mainTargetDiv } from "./letterFocus-sidebar.js";
 import { sideBar } from "./toggle-sidebar.js"
 import { parts } from "./letterFocus-sidebar.js"
@@ -31,7 +38,7 @@ export function stepTxtsFocus() {
         });
     });
     let mainTargetDivFocused = false
-    const steps = document.querySelectorAll('.steps-container > .step , .step-float , .step-col3')
+    const steps = document.querySelectorAll('.steps-container > .step ,.steps-container > .step-float , .step-col3')
     // Maybe just keep text area with focus
     const copyCodes = document.querySelectorAll('.copy-code')
     const imgVids = document.querySelectorAll('.step-img > img, .step-vid, video')
@@ -86,14 +93,12 @@ export function stepTxtsFocus() {
             let letter = e.key.toLowerCase()
             if (letter == 'enter') {
                 e.stopPropagation()
-                
                 toggleImg(e)
             }
         })
         el.addEventListener('focus', e => {
-            // denlargeAllVideos()
+            denlargeAllVideos()
             denlargeAllImages()
-            
         })
     })
     steps.forEach(el => {
@@ -116,7 +121,9 @@ export function stepTxtsFocus() {
                 toggleImg(e)
                 addTabIndexes(e)
             }
-            togglePlayVidSize(e)
+            console.log(e.target)
+            togglePlayVidSize(e) // <---- Here
+            // and comment out and see sidebar hidden difference
             
         })
     })
@@ -209,6 +216,9 @@ export function stepTxtsFocus() {
                 }
             }
         }
+        if(letter == 'enter'){
+            // console.log(e.target)   
+        }
     })
     function pauseAllVideos(){
         allVideos.forEach(el => {
@@ -222,9 +232,7 @@ export function stepTxtsFocus() {
             el.classList.remove('enlarge-vid')
         })
     }
-    
 }
-
 export function getStep(parent){
     // if(parent.classList.contains('step')){
     if (parent.classList.contains('step') || parent.classList.contains('step-float')){

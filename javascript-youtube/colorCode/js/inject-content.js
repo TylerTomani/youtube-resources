@@ -129,4 +129,4 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
-letterFocus()
+// letterFocus()
