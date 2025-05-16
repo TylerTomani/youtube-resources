@@ -18,7 +18,7 @@ main h2 {
     flex-direction: column;    
 }
 
-.resource-container > h3> .dropResource {
+.resource-container > h3> .drop-resource {
     text-decoration: none;
     box-shadow: 0 0 1px 1px black; 
     border-radius: 5px;
@@ -36,7 +36,7 @@ main h2 {
     padding-right: 5%;
     max-height: 50px;
 }
-.resource-container>.dropResource {
+.resource-container>.drop-resource {
     text-wrap: none;
 }
 .resource-container {
@@ -95,7 +95,7 @@ main h2 {
 a:focus,a:active{
     box-shadow: 1px 2px 5px 4px lightseagreen;
 }
-.dropResource:focus,.dropResource:active{
+.drop-resource:focus,.drop-resource:active{
     /* box-shadow: 1px 2px 25px 40px orange; */
     display: inline-block;
     background-color: rgb(64, 182, 176,.5);

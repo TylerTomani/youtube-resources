@@ -1,5 +1,5 @@
 const allEls = document.querySelectorAll('body *') 
-const dropResources = document.querySelectorAll('.dropResource')
+const dropResources = document.querySelectorAll('.drop-resource')
 const topics = document.querySelectorAll('.topic')
 const topicsContainers = document.querySelectorAll('.topics-container')
 let allIdEls = []
