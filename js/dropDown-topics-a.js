@@ -1,4 +1,4 @@
-const dropTopics = document.querySelectorAll('.dropTopic')
+const dropTopics = document.querySelectorAll('.drop-topic')
 const subResourcesContainers = document.querySelectorAll('.sub-resources-container')
 
 function hideSubResources(){
