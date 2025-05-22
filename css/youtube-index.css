@@ -4,6 +4,9 @@
     padding:0;
     box-sizing: border-box;
 }
+body {
+    padding-top: 10%;
+}
 header { display: flex;
          justify-content: space-between;}
 main {   
