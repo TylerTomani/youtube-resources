@@ -12,10 +12,7 @@
     justify-content: flex-end;
     height: 100vh;
     margin: 0 5%;
-}
-footer {
-    display: flex;
-    justify-content: space-between;
+    height: 90vh;
 }
 main {   
     display: flex;
@@ -95,33 +92,4 @@ a:focus,a:active{
     padding: 1% 2%;
 }
 
-@media screen and (max-width: 600px){
-    footer > .page-title{
-        flex-direction: column;
-        font-size: 50%;
-    }
-}
-@media screen and (max-width: 600px){
-    .page-wrapper {
-        margin: 0;
-    }
-    footer{
-        margin-bottom:5%;
-    }
-    .resources-container{
-        flex-direction: column;
-        flex-wrap: nowrap;
-        
-    }
-    .resources-container > .resource-container{
-        margin: 2% 0;
-    }
-    .resource-container > .topics-container {
-        padding-top: 2.5%;
-        gap: 5%;
-        
-    }
-    .topics-container > .topic {
-        margin: 2.5% 0;
-    }
-}
+
