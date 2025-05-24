@@ -104,6 +104,15 @@ a:focus,a:active{
     margin-top: 4%;
     padding: 1% 2%;
 }
+h1{
+    font-size: 80%;
+}
+@media screen and (max-width: 600px){
+    header > .page-title{
+        flex-direction: column;
+        font-size: 50%;
+    }
+}
 @media screen and (max-width: 600px){
     header{
         margin-bottom:5%;
