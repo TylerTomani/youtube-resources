@@ -3,6 +3,10 @@
     padding:0;
     box-sizing: border-box;
 }
+nav.styles-btns{
+    display: flex;
+    justify-content: flex-end;
+}
 
 header.site-header {    
     display: flex;
@@ -16,7 +20,8 @@ header.site-header {
     flex-direction: column;
     align-items: center;
     justify-self: flex-start;
-    border: 2px solid orange;
+    /* border: 2px solid orange; */
+    font-style: "ital   ";
     flex-basis: 50%;
 }
 .site-header > .page-title > h1 {
@@ -47,3 +52,5 @@ header.site-header {
     align-self: center;
     max-height: 100px;
 }
+
+.home-link
