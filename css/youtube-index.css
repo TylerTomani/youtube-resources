@@ -9,10 +9,10 @@
     /* border: 2px solid blue; */
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: space-between;
     height: 100vh;
     margin: 0 5%;
-    height: 90vh;
+    height: 100vh;
 }
 main {   
     display: flex;

@@ -7,10 +7,10 @@
     display: flex;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
-    align-items: center;
-    align-self: flex-end;
+    /* align-items: center; */
+    /* align-self: flex-end; */
     justify-self: flex-end;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     padding:  0 2.5%;
 }
 .main-links{
@@ -31,7 +31,7 @@
     height: 50%;
     width: 50%;
  }
-body > footer > .page-logo > img {
+.page-wrapper > footer > .page-logo > img {
     height: 50%;
     width: 60%;
     max-height: 100px;
