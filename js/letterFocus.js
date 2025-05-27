@@ -37,7 +37,7 @@
                 letterIds[iLetter].focus()
             }
         } 
-        console.log(iLetter, letterIds[iLetter])
+        
         letterIds[iLetter].focus()
         
         currentLetter = letter

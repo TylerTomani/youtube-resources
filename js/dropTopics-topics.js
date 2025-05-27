@@ -31,12 +31,17 @@
     })
     function toggleResources(e) {
         const topicContainer = getTopicContainer(e.target.parentElement)
-        const subResourcesContainer = topicContainer.querySelector('.sub-resources-container')
-        const resources = subResourcesContainer.querySelectorAll('.resource')
-
-        resources.forEach(el => {
-            el.classList.toggle('hide')
-        })
+        if(topicContainer){
+            const subResourcesContainer = topicContainer.querySelector('.sub-resources-container')
+            const resources = subResourcesContainer.querySelectorAll('.resource')
+            
+            if(resources){
+                
+                resources.forEach(el => {
+                    el.classList.toggle('hide')
+                })
+            }
+        }
     }
 
 

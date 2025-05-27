@@ -4,13 +4,14 @@
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 .page-wrapper main {
+    max-height: 80vh;
     margin: 0 2.5%;
     padding: 0 2.5%;
     padding-left: 0;
-    max-height: 80vh;
     border: 2px solid orange;
     /* background-color: blue; */
-    overflow: hidden;
+    /* overflow: hidden; */
+    border: none;
     overflow-x: scroll;
 }
 .topic-container {
@@ -121,4 +122,8 @@ a.resource:visited{
 }
 
 
-
+@media screen and (max-width: 683px) {
+    .page-wrapper main {
+            max-height: 75vh;
+    }
+}
