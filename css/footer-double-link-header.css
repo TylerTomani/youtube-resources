@@ -53,6 +53,11 @@
     max-height: 100px;
 }
 .page-logo img {max-width: 100px;}
+.main-links a:active,.main-links a:focus{
+    background: rgb(0,120,120,.7);
+    color: whitesmoke;
+    
+}
 @media screen and (max-width: 683px){
     footer > *{
         flex-basis: 30%;
