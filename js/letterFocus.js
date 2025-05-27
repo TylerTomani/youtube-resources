@@ -46,9 +46,3 @@
 
 
 }())
-// if (letter == 'b') {
-//     const backLink = document.querySelector('backlink')
-//     letterIds.push(backLink)
-//     letterIds.forEach(el => console.log(el))
-
-// }

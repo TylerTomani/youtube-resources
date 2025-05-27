@@ -90,7 +90,7 @@ a.resource{
     /* padding-left:  2%; */
 }
 a.resource:visited{
-    color: blue;
+    color: black;
 }
 .resource > img{
     width: 100%;
