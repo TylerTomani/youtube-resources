@@ -109,6 +109,13 @@ a.resource:visited{
     .resource>img {
         max-width: 50px;
     }
-    
+        .page-wrapper main {
+            /* background-color: lightslategray; */
+            margin: 0;
+            margin-left: 4%;
+            max-height: 75vh;
+            overflow-y: scroll;
+            padding-bottom: 5%;
+        }
 }
 

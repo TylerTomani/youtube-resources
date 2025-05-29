@@ -80,7 +80,7 @@ a:active {
 
 @media screen and (max-width: 683px) {
     .page-wrapper main {
-        background-color: lightslategray;
+        /* background-color: lightslategray; */
         margin: 0;
         margin-left: 4%;
         max-height: 75vh;

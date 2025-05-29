@@ -1,48 +1,10 @@
-(function(){
-    const allIdEls = document.querySelectorAll('[id]')
-    // iLetter is index to increment up thru letterIds
-    let iLetter = 0
-    let currentLetter
-    let currentEl
-    let currentResourceFocus = false
-    let letterIds = []
-    let lastIndex, nextIndex
-    addEventListener('DOMContentLoaded', e => {
-
+addEventListener('keydown', e => {
+    const allAs = document.querySelectorAll('a')
+    let letter = e.key.toLowerCase()
+    let letteredAs = [...allAs].filter( a => {
+        const rect = a.getBoundingClientRect()
+        console.log(a,rect.height)
+        return a.offsetParent != null &&  rect.width > 0 && rect.height >0
     })
-    addEventListener('keydown', e => {
-        let letter = e.key.toLowerCase()
-        letterIds = []
-        if(letter == 'h'){
-            scrollTo(0,0)
-        }
-        allIdEls.forEach(el => {
-            if (letter == el.id[0].toLowerCase() && !el.classList.contains('hide')) {
-                letterIds.push(el)
-            }
-        })
-    
-            
-        if(letterIds.length == 0 ){return}
 
-        if (letter != currentLetter ) {
-            iLetter = 0
-            letterIds[iLetter].focus()
-        } else {
-            if(!e.shiftKey){
-                iLetter = (iLetter + 1) % letterIds.length
-            } else {
-                iLetter = (iLetter - 1 + letterIds.length) % letterIds.length
-                
-                letterIds[iLetter].focus()
-            }
-        } 
-        
-        letterIds[iLetter].focus()
-        
-        currentLetter = letter
-        currentEl = e.target
-    });
-
-
-}())
+})

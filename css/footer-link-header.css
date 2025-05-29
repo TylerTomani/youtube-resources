@@ -12,6 +12,7 @@ header.site-header {
     display: flex;
     flex-direction: column;
     justify-self: flex-end;
+    
     /* align-self: center; */
 }
 .site-header > .page-title {
@@ -21,8 +22,8 @@ header.site-header {
     align-items: center;
     justify-self: flex-start;
     /* border: 2px solid orange; */
-    font-style: "ital   ";
-    flex-basis: 50%;
+    /* font-style: "italic"; */
+    /* flex-basis: 50%; */
 }
 .site-header > .page-title > h1 {
     font-style: "Trebuchet" !important;
@@ -53,4 +54,3 @@ header.site-header {
     max-height: 100px;
 }
 
-.home-link
