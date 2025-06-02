@@ -208,12 +208,13 @@ footer.footer-header {
 @media screen and (max-width:672px){
     .page-wrapper {
         justify-content: space-between;
-        max-height: 75vh;
+        max-height: 90vh;
     }
-    .resource>img {
+    /* .resource>img {
         max-width: 50px;
-    }
+        } */
     .page-wrapper main {
-    
+        /* max-height: ; */
+        padding-top: 20%;
     }
 }
