@@ -103,11 +103,11 @@ footer.footer-header {
 
 @media screen and (max-height: 700px) {
     body {
-        background: red !important;
+        /* background: red !important; */
     }
 
     .page-wrapper {
-        background: blue !important;
+        /* background: blue !important; */
     }
 }
 main {       
@@ -202,12 +202,18 @@ footer.footer-header {
 
 
 @media screen and (max-width: 700px) {
+    
+    
+}
+@media screen and (max-width:672px){
     .page-wrapper {
         justify-content: space-between;
+        max-height: 75vh;
     }
-    main{
-        /* border: 1px solid blue; */
-        justify-content: flex-end;
-        
+    .resource>img {
+        max-width: 50px;
+    }
+    .page-wrapper main {
+    
     }
 }
