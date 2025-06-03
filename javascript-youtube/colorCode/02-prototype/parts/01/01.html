@@ -51,16 +51,15 @@ console.log(promise)</pre>
                         </p>
                         <div class="code-container ">
                                 <pre class="copy-code">
-    function getWeather(){
-    return new Promise(function(<span class="o">resolve</span>,reject){
-        <span class="o">resolve</span>(<span class="l">'Sunny'</span>)
-    })
-
-    }
-    const promise = getWeather()
-    promise.<span class="m">then</span>(<span class="o">function</span>(<span class="l">data</span>){
-        console.log(data)
-    })
+function getWeather(){
+return new Promise(function(<span class="o">resolve</span>,reject){
+    <span class="o">resolve</span>(<span class="l">'Sunny'</span>)
+})
+}
+const promise = getWeather()
+promise.<span class="m">then</span>(<span class="o">function</span>(<span class="l">data</span>){
+    console.log(data)
+})
         <span class="p"></span>
                                 </pre>
                         </div>

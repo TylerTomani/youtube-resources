@@ -163,11 +163,10 @@ export function stepTxtsFocus() {
                 }
             }
         }
-        if(img.tagName == 'video'){
-            console.log(img)
-        }
-        
-
+        console.log(img)
+        // if(img.tagName == 'video'){
+        //     console.log(img)
+        // }
     }
     
     function addTabIndexes(e){

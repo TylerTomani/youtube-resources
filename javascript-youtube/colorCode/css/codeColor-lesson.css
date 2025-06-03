@@ -1,3 +1,4 @@
+img
 #targetDiv{
     position: relative;
     z-index: 0;
@@ -10,12 +11,11 @@
     padding-bottom: 2%;
     position: relative;
 }
-.step-float>.step-img,
-.step-float>.step-vid {
+.step-img,
+.step-vid {
     float: right;
     width: 45%;
     margin-top: 5%;
-    /* width: 90%; */
     /* Adjust as needed */
     margin-left: 10px;
     z-index: 0;
@@ -27,18 +27,14 @@
     width: 100%;
     height: 100%;
     z-index: 0;
-    /* min-height: 100px; */
 }
 .step-float>.step-img>img.enlarge,
-.step-float>.step-vid>video.enlarge {
-    
+.step-float>.step-vid>video.enlarge {   
     z-index: 10;
-    /* min-height: 100px; */
 }
 .step:active,.step:focus, 
 .step-float:active,.step-float:focus{
     font-style: bold;
-    font-weight: 600;
 }
 .console {
     float: right;
@@ -52,20 +48,6 @@
     padding: 10px;
     /* Optional: adds padding inside console */
 }
-.step-txt-float textarea{
-    /* --bg-primary in codeColor-colors.css */
-    /* background-color: var(--bg-primary); */
-    /* color: white; */
-
-    /* margin-left: 1%; */
-    /* min-width: 50%; */
-    /* min-height: 100px; */
-    /* overflow-y: scroll; */
-    /* field-sizing: content; */
-    /* max-height: 500px !important; */
-    /* padding-top: .75%; */
-    /* padding-left: 1%; */
-}
 .step-float > .step > * {display: flex;
 }
 .step-float > .step > .step-txt,
@@ -73,11 +55,9 @@
 .step-float > .step > .step-vid{
     width: 50%;
 }
-
 .step {
     display: flex;
     justify-content: space-between;
-    /* border: 2px solid magenta; */
 }
 .step > .step-txt{
     padding: 1%;
@@ -98,8 +78,6 @@
 .step>.step-vid{
     flex-basis: 50%;
     display: flex;
-    /* border: 2px solid blue; */
-    
     margin-top: 2.5%;
     align-items: flex-start;
     justify-content: center;
@@ -112,7 +90,7 @@
     /* display: none; */
     position: relative;
     z-index: 0;
-    transition: z-index 0.2s ease;
+    transition: all 0.025s ease;
 }
 .step-float>.code-container {
     border: 2px solid red;
@@ -121,13 +99,15 @@
 .code-container {
     background-color: white;
     /* padding-right: 3.3%; */
-    /* width: fit-content; */
-    width: 90%;
+    width: fit-content;
+    margin-top: 2.5%;
+    /* width: 90% */
     
 }
 .code-container>.copy-code {
     position: relative;
     /* ADD THIS */
+    border-radius: 8px;
     width: 100%;
     z-index: 5;
     background-color: var(--bg-primary);
@@ -138,15 +118,6 @@
 .clear {
     clear: both;
 }
-
-.enlarge {
-    position: relative;
-    transform: scale(1.5);
-    /* margin-right: 5%; */
-    /* margin-top: 5%; */
-    /* min-width: 500px; */
-    z-index: 1
-}
 .step-float>.step-vid  {
     /* position: relative; */
 }
@@ -156,3 +127,11 @@
     z-index: 0;
 }
 
+.enlarge {
+    position: relative;
+    transform: scale(1.5);
+    /* margin-right: 5%; */
+    /* margin-top: 5%; */
+    /* min-width: 500px; */
+    /* z-index: 10 */
+}
