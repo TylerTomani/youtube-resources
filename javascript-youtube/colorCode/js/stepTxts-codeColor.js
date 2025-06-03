@@ -6,7 +6,6 @@ import { togglePlayVidSize } from "./playPauseVideos-colorCode.js";
 Search for togglePlayVidSize
 and comment out and see sidebar hidden difference
 */
-
 import { mainTargetDiv } from "./letterFocus-sidebar.js";
 import { sideBar } from "./toggle-sidebar.js"
 import { parts } from "./letterFocus-sidebar.js"
@@ -17,8 +16,7 @@ export let stepFocused
 export function stepTxtsFocus() {
     // const videos = document.querySelectorAll('video');
     const allVideos = document.querySelectorAll('video')
-    let currentVideo
-    
+    let currentVideo  
     let isPlaying = false    
     allVideos.forEach(vid => {
         vid.addEventListener('click', (e) => {
@@ -39,9 +37,10 @@ export function stepTxtsFocus() {
     });
     let mainTargetDivFocused = false
     const steps = document.querySelectorAll('.steps-container > .step ,.steps-container > .step-float , .step-col3')
+
     // Maybe just keep text area with focus
     const copyCodes = document.querySelectorAll('.copy-code')
-    const imgVids = document.querySelectorAll('.step-img > img, .step-vid, video')
+    const imgVids = document.querySelectorAll('.step-img > img, .step-vid > video')
     const sectionLessonTitle = document.querySelector('nav.section-lesson-title > h1')
     const hiddenH3 = document.querySelector('.header-codeColor-lesson h3')
     const endNxtLesson = document.querySelector('#endNxtLesson')
@@ -95,16 +94,15 @@ export function stepTxtsFocus() {
                 e.stopPropagation()
                 const step = getStep(e.target.parentElement)
                 const vid = step.querySelector('video')
-                if(vid){
-
-                    if(!vid.classList.contains('enlarge-vid')){
-                        // console.log('no class')
-                        // vid.style.zIndex = '0'
-                        // e.target.style.zIndex = '100 !important'
-                        // console.log(e.target)
+                // if(vid){
+                //     if(!vid.classList.contains('enlarge-vid')){
+                //         // console.log('no class')
+                //         // vid.style.zIndex = '0'
+                //         // e.target.style.zIndex = '100 !important'
+                //         // console.log(e.target)
                         
-                    }
-                }
+                //     }
+                // }
                 toggleImg(e)
             }
         })
