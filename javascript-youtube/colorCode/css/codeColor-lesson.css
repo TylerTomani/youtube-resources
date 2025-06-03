@@ -1,30 +1,24 @@
-.main-container-codeColor {
-    /* background-color: blue; */
-    /* margin-right: 1%; */
-}
-.steps-container {
+#targetDiv{
     position: relative;
-    /* width: 50%; */
+    z-index: 0;
 }
-.step-float{
+/* position relative will be needed in targetDiv or steps-container ??? */
+.steps-container {
     /* position: relative; */
-    border: 1px solid black;
-    padding-bottom: 2%;
 }
+.step-float{padding-bottom: 2%;}
 .step-float>.step-img,
 .step-float>.step-vid {
     float: right;
-    /* This floats the img to the right */
-    /* width: 50%; */
-    /* Adjust as needed */
+    border: 2px solid blue;
     margin-left: 10px;
     /* Optional: adds space between console and text */
 }
-
 .step-float>.step-img>img,
 .step-float>.step-vid>video {
     width: 100%;
     height: 100%;
+    /* z-index: 0; */
     /* min-height: 100px; */
 }
 .step:active,.step:focus, 
@@ -48,7 +42,7 @@
 .step-txt-float textarea{
     /* --bg-primary in codeColor-colors.css */
     /* background-color: var(--bg-primary); */
-    /* color: white; */
+    color: white;
     margin-left: 1%;
     min-width: 50%;
     min-height: 100px;
@@ -64,7 +58,7 @@
 .step-float > .step > .step-txt,
 .step-float > .step > .step-img,
 .step-float > .step > .step-vid{
-    width: 50%;
+    /* width: 50%; */
 }
 .step-float > .step > .step-img image,
 .step-float > .step > .step-vid video{
@@ -111,9 +105,11 @@
 .step-vid > video{
     width: 98%;
     border: 1px solid white;
-    /* display: none; */
     max-width: 500px;
-    /* z-index: 0; */
+    /* display: none; */
+    position: relative;
+    z-index: 0;
+    transition: z-index 0.2s ease;
 }
 
 .code-container {
@@ -123,27 +119,21 @@
     
 }
 .code-container>.copy-code {
+    position: relative;
+    /* ADD THIS */
+    z-index: 20;
     background-color: var(--bg-primary);
+    color: white;
+    border: 1px solid black;
     width: 100%;
-    padding-top: 1.5%;
-    overflow-x: scroll;
-    padding-bottom: 2%;
-    /* margin-right: 5%; */
-    padding-right: 5%;
-    /* padding-left: 1.2%; */
-    /* color: black; */
+    padding: 1.5% 5% 2% 1.2%;
 }
+
 .clear {
     clear: both;
 }
-.enlarge {
-    /* position: relative; */
-    transform: scale(1.5);
-    margin-right: 5%;
-    margin-top: 5%;
-    min-width: 500px;
-    z-index: 2
-}
+
+
 
 .step-float>.step-vid  {
     /* position: relative; */
@@ -151,98 +141,6 @@
 .step-float>.step-vid>video  {
     /* position: absolute; */
     /* z-index: 2; */
-}
-.enlarge-vid {
-    /* position: absolute; */
-    transform: scale(1.5);
-    margin-right:150%;
-    /* margin-top: 5%; */
-    min-width: 500px;
-    z-index: 2
-}
-@media screen and (min-width:1000px) {
-    .step-txt {
-        margin-left: 1%;
-    }
-    .step-float>.step-img,
-    .step-float>.step-vid {
-        margin-right: 20%;
-        margin-top: 2.5%;
-        /* width: 90%; */
-     }
-    .step-float .code-container {
-        /* margin-top: 6%; */
-        /* border: 1px solid magenta; */
-    }
-
-}
-@media screen and (max-width:959px) {
-    .step-txt {
-        margin-left: 1%;
-    }
-    .step-float>.step-img,
-    .step-float>.step-vid {
-        margin-right: 0%;
-        margin-top: 2.5%;
-    }
-    .step-float .code-container {
-    }
-
-}
-@media screen and (max-width:721px) {
-    .step-float>.step-img,
-    .step-float>.step-vid {
-        /* This floats the img to the right */
-        width: 50%;
-        /* Adjust as needed */
-        margin-top: 4%;
-        margin-right: 10%;
-        /* Optional: adds space between console and text */
-    }
-    .step-img> img,
-    .step-vid> video {
-        margin-right: 10%;
-    }
-
-    .step-float .code-container{
-        margin-top: 10.5%;
-        /* border: 1px solid magenta; */
-    }
-    .enlarge-vid {
-        /* position: absolute; */
-        transform: scale(1.05);
-        margin-right: 50%;
-        margin-top: 5%;
-        min-width: 500px;
-        /* z-index: 2 */
-    }
-}
-@media screen and (max-width:651px) {
-    .step h4 {
-        margin: 0;
-    }
-    .step>.step-txt {
-        /* flex-basis: 20%; */
-        width: 50%;
-        /* border: 2px solid orange; */
-    }
-    .step-img,
-    .step-vid {
-        width: 50%;
-        margin-top: 2.5%;
-        margin-bottom: 2.5%;
-    }
-    .enlarge {
-        /* position: absolute; */
-        transform: scale(.87);
-        left: 2.15%;
-        border: 1px solid white;
-        margin-right: 0;
-        margin-top: 0;
-        width: 50%;
-        min-width: 300px;
-        /* border: 2px solid magenta; */
-    }
-    
+    z-index: 0;
 }
 

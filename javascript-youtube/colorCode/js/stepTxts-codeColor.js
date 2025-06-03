@@ -95,11 +95,15 @@ export function stepTxtsFocus() {
                 e.stopPropagation()
                 const step = getStep(e.target.parentElement)
                 const vid = step.querySelector('video')
-                if(!vid.classList.contains('enlarge-vid')){
-                    console.log('no class')
-                    vid.style.zIndex = '0'
-                    e.target.style.zIndex = '100'
+                if(vid){
 
+                    if(!vid.classList.contains('enlarge-vid')){
+                        // console.log('no class')
+                        // vid.style.zIndex = '0'
+                        // e.target.style.zIndex = '100 !important'
+                        // console.log(e.target)
+                        
+                    }
                 }
                 toggleImg(e)
             }
@@ -129,9 +133,9 @@ export function stepTxtsFocus() {
             if(letter == 'enter'){   
                 toggleImg(e)
                 addTabIndexes(e)
+                togglePlayVidSize(e) // <---- Here
+                // and comment out and see sidebar hidden difference            
             }
-            togglePlayVidSize(e) // <---- Here
-            // and comment out and see sidebar hidden difference            
         })
     })
     
@@ -143,6 +147,9 @@ export function stepTxtsFocus() {
             if(currentWidth <= 721 && currentWidth >= 601){
                 if (img.classList.contains('enlarge') || img.classList.contains('enlarge-vid')){
                     sideBar.classList.add('deactive')
+                    if(e.target.classList.contains('.copy-code')){
+                        img.style.zIndex = '100'
+                    }
                 } else {
                     sideBar.classList.remove('deactive')
                     
@@ -180,6 +187,7 @@ export function stepTxtsFocus() {
         imgVids.forEach(el => {
             if(el.classList.contains('enlarge')){
                 el.classList.remove('enlarge')
+
             }
             if(el.classList.contains('enlarge-vid')){
                 el.classList.remove('enlarge-vid')
