@@ -126,6 +126,7 @@
     background-color: var(--bg-primary);
     width: 100%;
     padding-top: 1.5%;
+    overflow-x: scroll;
     padding-bottom: 2%;
     /* margin-right: 5%; */
     padding-right: 5%;
