@@ -3,10 +3,28 @@ import { currentWidth } from "./inject-content.js"
 import { toggleBar } from "./toggle-sidebar.js"
 import { sideBar } from "./toggle-sidebar.js"
 let playing = false
+function updateCopyCodes(){
+    return document.querySelectorAll('.copy-code')
+}
 export function togglePlayVidSize(e,playing) {
     let letter = e.key.toLowerCase()
     let key = e.keyCode
     const step = getStep?.(e?.target);
+    const copyCodes = updateCopyCodes()
+    copyCodes.forEach(el => {
+        el.addEventListener('keydown', e =>{
+            let letter = e.key.toLowerCase()
+            if(letter == 'enter'){
+                const vid = step.querySelector('video')
+                console.log(vid)
+                if(!vid.classList.contains('enlarge')){
+                    vid.style.zIndex = "0 !important"
+                    e.target.style.zIndex = "20"
+                }
+            }
+            
+        })
+    })
     if (!step) return;
     
     const vid = step.querySelector('video')
@@ -25,7 +43,6 @@ export function togglePlayVidSize(e,playing) {
                 // toggleBar()
             } else if
              (currentWidth < 721 && playing) {
-                console.log('less')
                 return
             }
         }

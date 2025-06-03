@@ -113,7 +113,7 @@
     border: 1px solid white;
     /* display: none; */
     max-width: 500px;
-    z-index: 0;
+    /* z-index: 0; */
 }
 
 .code-container {
@@ -148,8 +148,8 @@
     position: relative;
 }
 .step-float>.step-vid>video  {
-    position: absolute;
-    z-index: 2;
+    /* position: absolute; */
+    /* z-index: 2; */
 }
 .enlarge-vid {
     position: absolute;
@@ -157,7 +157,7 @@
     margin-right: 50%;
     margin-top: 5%;
     min-width: 500px;
-    z-index: 2
+    /* z-index: 2 */
 }
 @media screen and (min-width:1000px) {
     .step-txt {
@@ -213,7 +213,7 @@
         margin-right: 50%;
         margin-top: 5%;
         min-width: 500px;
-        z-index: 2
+        /* z-index: 2 */
     }
 }
 @media screen and (max-width:651px) {

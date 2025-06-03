@@ -116,12 +116,12 @@ export function stepTxtsFocus() {
             if(key === 32){
                 e.preventDefault()
                 e.stopPropagation()
+                
             }
             if(letter == 'enter'){   
                 toggleImg(e)
                 addTabIndexes(e)
             }
-            console.log(e.target)
             togglePlayVidSize(e) // <---- Here
             // and comment out and see sidebar hidden difference
             
