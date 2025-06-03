@@ -1,7 +1,12 @@
 addEventListener('keydown', e => {
-    const letter = e.key.toLowerCase();
-    if (letter.length !== 1 || !/^[a-z0-9]$/.test(letter)) {
-        return;
+    // Normalize e.code to alphanumeric letter/number, ignoring Shift
+    let letter = '';
+    if (/^Key[A-Z]$/.test(e.code)) {
+        letter = e.code.replace('Key', '').toLowerCase();
+    } else if (/^Digit[0-9]$/.test(e.code)) {
+        letter = e.code.replace('Digit', '');
+    } else {
+        return; // Not a usable key (ignore punctuation, symbols, etc.)
     }
 
     const allAs = [...document.querySelectorAll('a, [id]')].filter(a => {
@@ -15,7 +20,6 @@ addEventListener('keydown', e => {
 
         return words.some(word => {
             const cleaned = word.replace(/^[^a-z0-9]+/i, ''); // Remove leading symbols
-
             if (!cleaned) return false;
 
             // If key is a number and cleaned starts with leading 0s like "02"
@@ -32,11 +36,13 @@ addEventListener('keydown', e => {
     if (letteredAs.length === 0) return;
 
     const activeEl = document.activeElement;
-    const iActiveEl = [...allAs].indexOf(activeEl);
+    const iActiveEl = allAs.indexOf(activeEl);
     const iLetteredA = letteredAs.indexOf(activeEl);
 
+    const keySignature = `${e.shiftKey ? 'shift+' : ''}${letter}`;
     let iLetter;
-    if (letter !== window.lastLetterPressed) {
+
+    if (keySignature !== window.lastKeySignature) {
         if (e.shiftKey) {
             const prev = [...letteredAs].reverse().find(a => allAs.indexOf(a) < iActiveEl);
             iLetter = letteredAs.indexOf(prev);
@@ -56,5 +62,5 @@ addEventListener('keydown', e => {
         letteredAs[iLetter]?.focus();
     }
 
-    window.lastLetterPressed = letter;
+    window.lastKeySignature = keySignature;
 });
