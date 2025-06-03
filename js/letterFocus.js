@@ -1,4 +1,4 @@
-// <!-- This script only works initially if inside DOMContentLoaded -->
+// 
 addEventListener('DOMContentLoaded', e => {
     addEventListener('keydown', e => {
         const letter = e.key.toLowerCase();
