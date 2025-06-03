@@ -93,6 +93,14 @@ export function stepTxtsFocus() {
             let letter = e.key.toLowerCase()
             if (letter == 'enter') {
                 e.stopPropagation()
+                const step = getStep(e.target.parentElement)
+                const vid = step.querySelector('video')
+                if(!vid.classList.contains('enlarge-vid')){
+                    console.log('no class')
+                    vid.style.zIndex = '0'
+                    e.target.style.zIndex = '100'
+
+                }
                 toggleImg(e)
             }
         })
@@ -123,8 +131,7 @@ export function stepTxtsFocus() {
                 addTabIndexes(e)
             }
             togglePlayVidSize(e) // <---- Here
-            // and comment out and see sidebar hidden difference
-            
+            // and comment out and see sidebar hidden difference            
         })
     })
     
@@ -150,6 +157,9 @@ export function stepTxtsFocus() {
 
                 }
             }
+        }
+        if(img.tagName == 'video'){
+            console.log(img)
         }
         
 
