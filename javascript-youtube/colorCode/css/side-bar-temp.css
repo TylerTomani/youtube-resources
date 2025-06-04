@@ -66,13 +66,14 @@ main > .side-bar.deactive .drop {
     bottom: 0;
 }
 
-ul {
+.side-bar > .parts ul {
     display: flex;
     flex-direction: column;
     text-wrap: wrap;
     width: min-content;
     margin-left: 1.5%;
     list-style: none;
+    
 }
 ul li a {
     text-decoration: none;
@@ -98,8 +99,18 @@ ul li a {
         /* background-color: blue; */
     }
 }
+@media screen and (max-width:721px){
+    .side-bar>.parts ul {
+            /* font-size: 70%; */
+    }
+}
 @media screen and (max-width:600px){
-    
+    .side-bar>.parts ul li{
+        line-height: 1.4;
+    }
+    .side-bar>.parts ul {
+        font-size: 75%;
+    }
     .parts{
         margin-left: 1.5%;
         font-size: 90%;
@@ -111,4 +122,5 @@ ul li a {
     /* color: blue;s */
         font-size: 45%;
     }
+    
 }
