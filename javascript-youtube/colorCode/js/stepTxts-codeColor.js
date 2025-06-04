@@ -138,32 +138,33 @@ export function stepTxtsFocus() {
     })
     
     function toggleImg(e){
+        console.log(e.target)
         const step = getStep(e.target)
         const img = step.querySelector('img') ? step.querySelector('img') : step.querySelector('video')
+        console.log(img)
         if(img){
             img.classList.toggle('enlarge')
-            if(currentWidth <= 721 && currentWidth >= 601){
-                if (img.classList.contains('enlarge') || img.classList.contains('enlarge-vid')){
-                    sideBar.classList.add('deactive')
-                    if(e.target.classList.contains('.copy-code')){
-                        img.style.zIndex = '100'
-                    }
-                } else {
-                    sideBar.classList.remove('deactive')
+            // if(currentWidth <= 721 && currentWidth >= 601){
+            //     if (img.classList.contains('enlarge') || img.classList.contains('enlarge-vid')){
+            //         sideBar.classList.add('deactive')
+            //         if(e.target.classList.contains('.copy-code')){
+            //             img.style.zIndex = '100'
+            //         }
+            //     } else {
+            //         sideBar.classList.remove('deactive')
                     
-                }
-            }
-            if (currentWidth <= 600) {
-                if (img.classList.contains('enlarge') || img.classList.contains('enlarge-vid')) {
-                    sideBar.classList.add('deactive')
-                }
-                else {
-                    sideBar.classList.remove('deactive')
+            //     }
+            // }
+            // if (currentWidth <= 600) {
+            //     if (img.classList.contains('enlarge') || img.classList.contains('enlarge-vid')) {
+            //         sideBar.classList.add('deactive')
+            //     }
+            //     else {
+            //         sideBar.classList.remove('deactive')
 
-                }
-            }
+            //     }
+            // }
         }
-        console.log(img)
         // if(img.tagName == 'video'){
         //     console.log(img)
         // }

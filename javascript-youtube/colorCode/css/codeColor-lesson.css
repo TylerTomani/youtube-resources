@@ -1,4 +1,4 @@
-img
+
 #targetDiv{
     position: relative;
     z-index: 0;
@@ -7,6 +7,7 @@ img
 /* .steps-container { */
     /* position: relative; */
 /* } */
+.step,
 .step-float{
     padding-bottom: 2%;
     position: relative;
@@ -18,18 +19,33 @@ img
     margin-top: 5%;
     /* Adjust as needed */
     margin-left: 10px;
-    z-index: 0;
+    /* z-index: 0; */
     /* Optional: adds space between console and text */
 }
+.step>.step-img,
+.step>.step-vid {
+    flex-basis: 50%;
+    display: flex;
+    margin-top: 2.5%;
+    align-items: flex-start;
+    justify-content: center;
+}
 
-.step-float>.step-img>img,
+.step-img>img,
+.step-vid>video {
+    width: 98%;
+    border: 1px solid white;
+    max-width: 500px;
+    position: relative;
+    z-index: 0;
+    transition: all 0.025s ease;
+}
 .step-float>.step-vid>video {
     width: 100%;
     height: 100%;
-    z-index: 0;
 }
-.step-float>.step-img>img.enlarge,
-.step-float>.step-vid>video.enlarge {   
+img.enlarge,
+video.enlarge {   
     z-index: 10;
 }
 .step:active,.step:focus, 
@@ -74,35 +90,15 @@ img
     margin-top: 2.5%;
     margin-left: 5%;
 }
-.step > .step-img,
-.step>.step-vid{
-    flex-basis: 50%;
-    display: flex;
-    margin-top: 2.5%;
-    align-items: flex-start;
-    justify-content: center;
-}
-.step-img > img,
-.step-vid > video{
-    width: 98%;
-    border: 1px solid white;
-    max-width: 500px;
-    /* display: none; */
-    position: relative;
-    z-index: 0;
-    transition: all 0.025s ease;
-}
+
 .step-float>.code-container {
     border: 2px solid red;
     margin-left: 2.5%;
 }
 .code-container {
     background-color: white;
-    /* padding-right: 3.3%; */
     width: fit-content;
     margin-top: 2.5%;
-    /* width: 90% */
-    
 }
 .code-container>.copy-code {
     position: relative;
@@ -114,24 +110,15 @@ img
     width: 100%;
     padding: 1.5% 5% 2% 1.2%;
 }
-
 .clear {
     clear: both;
 }
-.step-float>.step-vid  {
-    /* position: relative; */
-}
+
 .step-float>.step-vid>video  {
-    /* position: absolute; */
-    /* z-index: 2; */
     z-index: 0;
 }
 
 .enlarge {
     position: relative;
     transform: scale(1.5);
-    /* margin-right: 5%; */
-    /* margin-top: 5%; */
-    /* min-width: 500px; */
-    /* z-index: 10 */
 }
