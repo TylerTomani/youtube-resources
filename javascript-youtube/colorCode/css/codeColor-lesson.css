@@ -44,14 +44,12 @@
     width: 100%;
     height: 100%;
 }
+video{
+    min-width: 250px;
+}
 img.enlarge,
 video.enlarge {   
     z-index: 10;
-    min-height: 150px;
-    min-width: 250px;
-}
-.step img.enlarge,
-.step video.enlarge {   
     z-index: 10;
     min-height: 150px;
     min-width: 250px;
