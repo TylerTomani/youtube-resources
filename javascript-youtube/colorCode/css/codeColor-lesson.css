@@ -1,4 +1,4 @@
-
+.mdtxt {font-size: 80%;}
 #targetDiv{
     position: relative;
     z-index: 0;
@@ -24,11 +24,11 @@
 }
 .step>.step-img,
 .step>.step-vid {
-    flex-basis: 50%;
-    display: flex;
-    margin-top: 2.5%;
-    align-items: flex-start;
-    justify-content: center;
+    /* flex-basis: 50%; */
+    /* display: flex; */
+    /* margin-top: 2.5%; */
+    /* align-items: flex-start; */
+    /* justify-content: center; */
 }
 
 .step-img>img,
@@ -47,7 +47,17 @@
 img.enlarge,
 video.enlarge {   
     z-index: 10;
+    min-height: 150px;
+    min-width: 250px;
 }
+.step img.enlarge,
+.step video.enlarge {   
+    z-index: 10;
+    min-height: 150px;
+    min-width: 250px;
+    margin-right: 50%;
+}
+
 .step:active,.step:focus, 
 .step-float:active,.step-float:focus{
     font-style: bold;
@@ -63,13 +73,6 @@ video.enlarge {
     /* Optional: adds space between console and text */
     padding: 10px;
     /* Optional: adds padding inside console */
-}
-.step-float > .step > * {display: flex;
-}
-.step-float > .step > .step-txt,
-.step-float > .step > .step-img,
-.step-float > .step > .step-vid{
-    width: 50%;
 }
 .step {
     display: flex;
