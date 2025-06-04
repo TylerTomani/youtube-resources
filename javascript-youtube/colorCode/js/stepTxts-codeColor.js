@@ -138,10 +138,12 @@ export function stepTxtsFocus() {
     })
     
     function toggleImg(e){
-        console.log(e.target)
         const step = getStep(e.target)
-        const img = step.querySelector('img') ? step.querySelector('img') : step.querySelector('video')
-        console.log(img)
+        const img = step.querySelector('img') ? step.querySelector('img') : null
+        const vid = step.querySelector('video') ? step.querySelector('video') : null
+        
+        // console.log(e.target)
+        console.log(vid)
         if(img){
             img.classList.toggle('enlarge')
             // if(currentWidth <= 721 && currentWidth >= 601){
@@ -164,6 +166,11 @@ export function stepTxtsFocus() {
 
             //     }
             // }
+        }
+        if(vid){
+            console.log(vid)
+            vid.classList.toggle('enlarge-vid')
+            // vid.classList.toggle('enlarge-vid')
         }
         // if(img.tagName == 'video'){
         //     console.log(img)

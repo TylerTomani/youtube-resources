@@ -23,7 +23,7 @@ export function togglePlayVidSize(e) {
     }
     if (letter == 'enter') {
         if (vid) {
-            vid.classList.toggle('enlarge-vid')
+            // vid.classList.toggle('enlarge-vid')
             if (currentWidth < 721) {
                 // toggleBar()
             } else if
