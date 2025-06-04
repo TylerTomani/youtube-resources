@@ -115,5 +115,8 @@ video.enlarge-vid {
     .step-txt {
         font-size: 90%;
     }
-    
+    #targetDiv{
+        padding-bottom: 15%;
+        margin-bottom: 15%;
+    }   
 }
