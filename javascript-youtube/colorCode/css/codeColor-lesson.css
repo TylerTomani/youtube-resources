@@ -1,3 +1,4 @@
+/* overflow-x: scroll; */
 .step-container{
     position: relative;
     z-index: 0;
@@ -7,7 +8,7 @@
     display: flex;
     justify-content: space-between;
 }
-.step,
+/* .step, */
 .step-float{
     padding-bottom: 2%;
     position: relative;

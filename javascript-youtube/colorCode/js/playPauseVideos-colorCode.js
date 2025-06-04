@@ -59,15 +59,17 @@ function playPause(e) {
     }
 
     // 🔴 Red border if at the end
-    if(vid.currentTime == 0){vid.style.border = "none"
+    if(vid.currentTime <= 60){
+        vid.style.border = "none"
         // vid.pause()
     } 
     if (vid.currentTime >= vid.duration) {
+        console.log(vid.duration)
         vid.style.border = "2px solid red"
         vid.pause()
         playing = false
     }
-     if (playing) {// 🔵 Blue border if playing
+    else if (playing) {// 🔵 Blue border if playing
         vid.style.border = "2px solid blue"
         vid.play()
     } else {// 🟢 Lime green border if paused
