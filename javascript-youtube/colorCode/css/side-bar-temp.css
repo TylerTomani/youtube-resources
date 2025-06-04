@@ -23,6 +23,7 @@ body>nav.section-lesson-title {
     align-items: center;
 }
 body > nav.section-lesson-title > h1#title {
+    color: white;
     font-size: 100%;
     margin-left: 1%;
 
@@ -35,6 +36,7 @@ main>#mainTargetDiv {
 }
 main > .side-bar{
     background-color: var(--bg-primary);
+    color: white;
     position:sticky;
     box-shadow: 0 0 1px 1px white;
     /* background-color: white; */
@@ -77,6 +79,11 @@ main > .side-bar.deactive .drop {
 }
 ul li a {
     text-decoration: none;
+    color: white;
+}
+ul li a:visited {
+    text-decoration: none;
+    color: white;
 }
 .hide{
     display: none;

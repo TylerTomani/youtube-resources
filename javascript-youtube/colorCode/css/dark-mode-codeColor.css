@@ -11,7 +11,7 @@
     font-style: bold;
     /* background-color: blue; */
     font-weight: 800;
-    color: white;
+    /* color: white; */
 }
 .dark-mode #mainLinksContainer{
     color: var(--font-primary-db);

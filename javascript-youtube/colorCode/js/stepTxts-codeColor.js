@@ -236,6 +236,7 @@ export function stepTxtsFocus() {
                 } else {
                     
                     endNxtLesson.focus()
+                    scrollTo(0,0)
                 }
             }
         }

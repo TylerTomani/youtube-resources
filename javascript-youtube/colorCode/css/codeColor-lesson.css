@@ -49,7 +49,7 @@ video.enlarge-vid {
 
 .step:active,.step:focus, 
 .step-float:active,.step-float:focus{
-    font-style: bold;
+    /* font-style: bold; */
 }
 .console {
     float: right;
@@ -93,6 +93,7 @@ video.enlarge-vid {
     margin-top: 2.5%;
 }
 .code-container>.copy-code {
+    color: white;
     position: relative;
     /* ADD THIS */
     border-radius: 8px;
@@ -117,9 +118,9 @@ video.enlarge-vid {
 @media screen and (max-width: 721px) {
     video {min-width: 250px;}
     video.enlarge-vid {
-        right: 5%;
+        right: 3%;
         top: 0;
-        transform: scale(1.2);
+        transform: scale(1.02);
     }
         .mdtxt {
             font-size: 80%;
