@@ -11,6 +11,7 @@ import { sideBar } from "./toggle-sidebar.js"
 import { parts } from "./letterFocus-sidebar.js"
 import { enterConsoleFocus } from "./letterFocus-sidebar.js";
 import { toggleBar } from "./toggle-sidebar.js";
+import { lastClickedLink } from "./inject-content.js";
 export let lastStep = null
 export let stepFocused
 export function stepTxtsFocus() {
@@ -73,6 +74,16 @@ export function stepTxtsFocus() {
             scrollTo(0,0)
             
         }
+        if(letter == 'enter'){
+            scrollTo(0,0)
+            lastClickedLink.focus()
+            if(sideBar.classList.contains('deactive')){
+                sideBar.classList.remove('deactive')
+                sideBar.classList.add('active')
+            }
+            
+        }
+        
         
     })
     parts.forEach(el => {
@@ -143,20 +154,22 @@ export function stepTxtsFocus() {
         const vid = step.querySelector('video') ? step.querySelector('video') : null
         
         // console.log(e.target)
-        console.log(vid)
         if(img){
             img.classList.toggle('enlarge')
-            // if(currentWidth <= 721 && currentWidth >= 601){
-            //     if (img.classList.contains('enlarge') || img.classList.contains('enlarge-vid')){
-            //         sideBar.classList.add('deactive')
-            //         if(e.target.classList.contains('.copy-code')){
-            //             img.style.zIndex = '100'
-            //         }
-            //     } else {
-            //         sideBar.classList.remove('deactive')
+            
+            if(currentWidth <= 721 ){
+                if (img.classList.contains('enlarge')){
+                    sideBar.classList.add('deactive')
+                    console.log(sideBar)
+                    // if(e.target.classList.contains('.copy-code')){
+                    //     img.style.zIndex = '100'
+                    // }
+                } else {
+                    sideBar.classList.remove('deactive')
                     
-            //     }
-            // }
+                }
+            }
+            console.log(img)
             // if (currentWidth <= 600) {
             //     if (img.classList.contains('enlarge') || img.classList.contains('enlarge-vid')) {
             //         sideBar.classList.add('deactive')
@@ -170,7 +183,17 @@ export function stepTxtsFocus() {
         if(vid){
             console.log(vid)
             vid.classList.toggle('enlarge-vid')
-            // vid.classList.toggle('enlarge-vid')
+            if (currentWidth <= 721 && currentWidth >= 601) {
+                if (vid.classList.contains('enlarge-vid')) {
+                    sideBar.classList.add('deactive')
+                    if (e.target.classList.contains('.copy-code')) {
+                        // vid.style.zIndex = '100'
+                    }
+                } else {
+                    sideBar.classList.remove('deactive')
+
+                }
+            }
         }
         // if(img.tagName == 'video'){
         //     console.log(img)
