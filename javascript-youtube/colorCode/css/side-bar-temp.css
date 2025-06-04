@@ -3,7 +3,7 @@
     padding: 0;
 }
 body{
-    overscroll-behavior-x: none;
+    /* overscroll-behavior-x: none; */
 }
 main {
     position: relative;
