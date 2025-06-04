@@ -24,8 +24,8 @@ export function togglePlayVidSize(e) {
     if (letter == 'enter') {
         if (vid) {
             // vid.classList.toggle('enlarge-vid')
-            if (currentWidth < 721) {
-                // toggleBar()
+            if (currentWidth < 721 && vid.classList.contains('enlarge-vid')) {
+                toggleBar()
             } else if
              (currentWidth < 721 && playing) {
                 return
