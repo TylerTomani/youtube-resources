@@ -1,11 +1,12 @@
-#targetDiv{
+.step-container{
     position: relative;
     z-index: 0;
 }
-/* position relative will be needed in targetDiv or steps-container ??? */
-/* .steps-container { */
-    /* position: relative; */
-/* } */
+
+.step {
+    display: flex;
+    justify-content: space-between;
+}
 .step,
 .step-float{
     padding-bottom: 2%;
@@ -51,22 +52,8 @@ video.enlarge-vid {
 .step-float:active,.step-float:focus{
     font-style: bold;
 }
-.console {
-    float: right;
-    /* This floats the console to the right */
-    background-color: black;
-    height: 15vh;
-    width: 40%;
-    /* Adjust as needed */
-    margin-left: 10px;
-    /* Optional: adds space between console and text */
-    padding: 10px;
-    /* Optional: adds padding inside console */
-}
-.step {
-    display: flex;
-    justify-content: space-between;
-}
+
+
 .step > .step-txt{
     padding: 1%;
 }

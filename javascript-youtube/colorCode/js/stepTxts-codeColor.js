@@ -95,7 +95,7 @@ export function stepTxtsFocus() {
     imgVids.forEach(imgVid =>{
         imgVid.addEventListener('click', e =>{
             e.preventDefault()
-            toggleImg(e)
+            // It needs to be two clicks for mobile
         })
     })    
     copyCodes.forEach(el => {
@@ -134,17 +134,14 @@ export function stepTxtsFocus() {
         el.addEventListener('keydown', e => {
             let letter = e.key.toLowerCase()
             let key = e.keyCode
-            if(key === 32){
-                e.preventDefault()
-                e.stopPropagation()
-                
-            }
+            
             if(letter == 'enter'){   
                 toggleImg(e)
                 addTabIndexes(e)
-                togglePlayVidSize(e) // <---- Here
-                // and comment out and see sidebar hidden difference            
             }
+            togglePlayVidSize(e)
+            // togglePlayVidSize(e) // <---- Here
+            // and comment out and see sidebar hidden difference            
         })
     })
     
@@ -160,7 +157,7 @@ export function stepTxtsFocus() {
             if(currentWidth <= 721 ){
                 if (img.classList.contains('enlarge')){
                     sideBar.classList.add('deactive')
-                    console.log(sideBar)
+                    // console.log(sideBar)
                     // if(e.target.classList.contains('.copy-code')){
                     //     img.style.zIndex = '100'
                     // }
@@ -169,7 +166,7 @@ export function stepTxtsFocus() {
                     
                 }
             }
-            console.log(img)
+            // console.log(img)
             // if (currentWidth <= 600) {
             //     if (img.classList.contains('enlarge') || img.classList.contains('enlarge-vid')) {
             //         sideBar.classList.add('deactive')
@@ -181,7 +178,7 @@ export function stepTxtsFocus() {
             // }
         }
         if(vid){
-            console.log(vid)
+            // console.log(vid)
             vid.classList.toggle('enlarge-vid')
             if (currentWidth <= 721 && currentWidth >= 601) {
                 if (vid.classList.contains('enlarge-vid')) {

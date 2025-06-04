@@ -17,14 +17,12 @@ export function togglePlayVidSize(e) {
 
     e.target.scrollIntoView({behavior: 'smooth',block: 'center'})
     playPause(e)
-    if(key === 32){
-        e.preventDefault()
-        e.stopPropagation()
-    }
+    
     if (letter == 'enter') {
         if (vid) {
             // vid.classList.toggle('enlarge-vid')
             if (currentWidth < 721 && vid.classList.contains('enlarge-vid')) {
+                // This toggle bar gives the option to hide side bar with and without playing
                 toggleBar()
             } else if
              (currentWidth < 721 && playing) {
@@ -39,6 +37,7 @@ function playPause(e) {
     const step = getStep(e.target)
     const vid = step.querySelector('video')
     if (!vid) return
+    console.log(e.keyCode)
     if (e.keyCode === 13) { // Enter
         playing = true
         vid.currentTime = 0
