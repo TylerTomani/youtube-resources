@@ -67,7 +67,7 @@ function playPause(e) {
         vid.pause()
         playing = false
     }
-    else if (playing) {// 🔵 Blue border if playing
+     if (playing) {// 🔵 Blue border if playing
         vid.style.border = "2px solid blue"
         vid.play()
     } else {// 🟢 Lime green border if paused
