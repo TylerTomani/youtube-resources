@@ -39,7 +39,7 @@ main>#mainTargetDiv {
 }
 main > .side-bar{
     position: sticky;
-    height: 100vmax;
+    height: 100%;
     top: 0;
     background-color: var(--bg-primary);
     color: white;
@@ -75,6 +75,7 @@ main > .side-bar.deactive .drop {
     flex-direction: column;
     text-wrap: wrap;
     width: min-content;
+    margin-top: 50%;
     margin-left: 1.5%;
     list-style: none;
     

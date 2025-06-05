@@ -129,6 +129,6 @@ video.enlarge-vid {
         margin-right: 80%;
     }
     .overflowX-none{
-        overflow-x: hidden;
+        /* overflow-x: hidden; */
     }
 }
