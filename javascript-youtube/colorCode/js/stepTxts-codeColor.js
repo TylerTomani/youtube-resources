@@ -75,12 +75,16 @@ export function stepTxtsFocus() {
             
         }
         if(letter == 'enter'){
-            scrollTo(0,0)
             lastClickedLink.focus()
             if(sideBar.classList.contains('deactive')){
                 sideBar.classList.remove('deactive')
                 sideBar.classList.add('active')
             }
+            console.log([...parts].indexOf(lastClickedLink))
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth" // makes it animate on mobile too
+            });         
             
         }
         
@@ -256,10 +260,7 @@ export function stepTxtsFocus() {
                 } else {
                     
                     endNxtLesson.focus()
-                    window.scrollTo({
-                        top: 0,
-                        behavior: "smooth" // makes it animate on mobile too
-                    });                }
+                           }
             }
         }
         if(letter == 'enter'){
