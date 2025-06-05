@@ -3,6 +3,7 @@ export const parts = document.querySelectorAll('.parts ul > li > a')
 export const mainTargetDiv = document.querySelector('#mainTargetDiv')
 import { lastClickedLink } from "./inject-content.js";
 import { lastStep } from "./stepTxts-codeColor.js";
+import { sideBar } from "./toggle-sidebar.js";
 export const navBar = document.querySelector('nav.section-lesson-title')
 let partsFocused = false
 export let enterConsoleFocus = false
@@ -65,6 +66,9 @@ export function letterFocus(){
             return
         } else {
             elsFocus(e, letter)
+        }
+        if(sideBar){
+            console.log(sideBar)
         }
     });
     function elsFocus(e,letter) {

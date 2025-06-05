@@ -266,7 +266,9 @@ export function stepTxtsFocus() {
             }
         }
         if(letter == 'enter'){
-            // console.log(e.target)   
+            if(sideBar.classList.contains('deactive')){
+                mainTargetDiv.classList.add('overflowX-none')
+            }
         }
     })
     function pauseAllVideos(){

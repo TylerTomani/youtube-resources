@@ -128,4 +128,7 @@ video.enlarge-vid {
         min-width: 244px;
         margin-right: 80%;
     }
+    .overflowX-none{
+        overflow-x: hidden;
+    }
 }
