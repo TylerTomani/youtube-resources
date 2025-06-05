@@ -42,6 +42,7 @@ export function stepTxtsFocus() {
     // Maybe just keep text area with focus
     const copyCodes = document.querySelectorAll('.copy-code')
     const imgVids = document.querySelectorAll('.step-img > img, .step-vid > video')
+    const allImgs = document.querySelectorAll('.step-img > img')
     const sectionLessonTitle = document.querySelector('nav.section-lesson-title > h1')
     const hiddenH3 = document.querySelector('.header-codeColor-lesson h3')
     const endNxtLesson = document.querySelector('#endNxtLesson')
@@ -96,10 +97,11 @@ export function stepTxtsFocus() {
             mainTargetDivFocused = false
         })
     })
-    imgVids.forEach(imgVid =>{
-        imgVid.addEventListener('click', e =>{
+    allImgs.forEach(img =>{
+        img.addEventListener('click', e =>{
             e.preventDefault()
             // It needs to be two clicks for mobile
+            toggleImg(e)
         })
     })    
     copyCodes.forEach(el => {
