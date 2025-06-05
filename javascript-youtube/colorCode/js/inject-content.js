@@ -127,6 +127,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 scrollTo(0, 0);
             }
         }
+        if(sideBar.classList.contains('deactive')){
+            document.querySelector('body').style.overflowX = 'none'
+        }
     });
 });
 letterFocus()
