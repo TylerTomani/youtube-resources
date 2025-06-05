@@ -38,18 +38,18 @@ main>#mainTargetDiv {
     flex-grow: 1;
 }
 main > .side-bar{
+    position: sticky;
+    height: 100vmax;
+    top: 0;
     background-color: var(--bg-primary);
     color: white;
     box-shadow: 0 0 1px 1px white;
-    /* background-color: white; */
-    top: 20%;
     flex-basis: 8%;
     text-wrap: wrap;
     /* width: fit-content; */
     text-wrap: none;
     white-space: none;
     /* width: max-content; */
-    height: 100vh;
     padding-left: .5%;
     padding-right: 2;
     z-index: 10;

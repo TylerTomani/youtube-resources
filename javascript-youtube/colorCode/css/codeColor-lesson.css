@@ -120,4 +120,11 @@ video.enlarge-vid {
         padding-bottom: 15%;
         margin-bottom: 15%;
     }   
+    img.enlarge {
+        position: absolute;
+        z-index: 10;
+        min-height: 112px;
+        min-width: 244px;
+        margin-right: 80%;
+    }
 }

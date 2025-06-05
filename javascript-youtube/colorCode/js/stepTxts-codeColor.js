@@ -256,8 +256,10 @@ export function stepTxtsFocus() {
                 } else {
                     
                     endNxtLesson.focus()
-                    scrollTo(0,0)
-                }
+                    window.scrollTo({
+                        top: 0,
+                        behavior: "smooth" // makes it animate on mobile too
+                    });                }
             }
         }
         if(letter == 'enter'){
