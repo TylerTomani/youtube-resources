@@ -1,4 +1,7 @@
 /* overflow-x: scroll; */
+.header-codeColor-lesson {
+    padding-left: 2.5%;
+}
 .step-container{
     position: relative;
     z-index: 0;
