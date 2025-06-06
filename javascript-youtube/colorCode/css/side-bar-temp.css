@@ -20,7 +20,7 @@ body>nav.section-lesson-title {
     top: 0;
     box-shadow: 0 0 1px 1px white;
     background-color: var(--bg-primary);
-    height: 5vh;
+    height: 2.5vh;
     border: 1px solid black;
     display: flex;
     align-items: center;
