@@ -32,10 +32,10 @@ body > nav.section-lesson-title > h1#title {
 
 }
 main>#mainTargetDiv {
-    margin-right: 20px;
+    /* margin-right: 20px; */
     /* width: 100%; */
     overflow-x: hidden;
-    flex-basis: 90%;
+    flex-basis: 100%;
     flex-grow: 1;
 }
 main > .side-bar{
@@ -132,6 +132,24 @@ ul li a:visited {
     body>nav.section-lesson-title>h1 {
     /* color: blue;s */
         font-size: 45%;
+    }
+    /* Gets rid of scroll bar see Chatgpt css Get rid of scroll-bar overlfow question on site */
+    #mainTargetDiv {
+        overflow-y: scroll;
+        scrollbar-width: none;
+        /* Firefox */
+        -ms-overflow-style: none;
+        /* IE and Edge */
+    }
+
+    #mainTargetDiv::-webkit-scrollbar {
+        display: none;
+        /* Chrome, Safari, Opera */
+    }
+
+    #mainTargetDiv::-webkit-scrollbar {
+        display: none;
+        /* Chrome, Safari, Opera */
     }
     
 }

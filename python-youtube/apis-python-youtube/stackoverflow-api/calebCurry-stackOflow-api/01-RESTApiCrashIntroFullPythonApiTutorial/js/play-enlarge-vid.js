@@ -36,9 +36,8 @@ export function playEnlargeVideos(){
                 e.stopPropagation()
                 console.log('yes')
                 playing = !playing
-            }
-            
-            videoControls(e,vid,key)
+            }            
+            // videoControls(e,vid,key)
         })
         stepTxt.addEventListener('click', e => {
             e.preventDefault()
@@ -49,7 +48,7 @@ export function playEnlargeVideos(){
         })
     })
     function playPause(vid){
-                if(vid){
+        if(vid){
             if (playing) {
                 vid.play()
                 vid.style.border = "none"
@@ -74,6 +73,7 @@ export function playEnlargeVideos(){
             // left arrow
             case 37:
                 e.preventDefault()
+                console.log('left')
                 if (vid.currentTime > 0) {
                     vid.currentTime = vid.currentTime - 1
                 }
@@ -106,7 +106,7 @@ export function playEnlargeVideos(){
         vid.addEventListener('keydown', e =>{
             let step = getStepVidStep(e.target.parentElement)
             let vid = step.querySelector('.step-vid video')
-            console.log(e.target)
+            // console.log(e.target)
             // videoControls(e,vid)
             
         })
@@ -129,10 +129,6 @@ export function playEnlargeVideos(){
         } else {
             vid.style.zIndex = 1
             aside.classList.remove('hide')
-            // vid.pause()
-            // playing = !playing
-            // playPause(vid)
-            // console.log(vid.stop)
         }
         
     }

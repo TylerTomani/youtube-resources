@@ -149,7 +149,7 @@ export function stepTxtsFocus() {
                 addTabIndexes(e)
                 togglePlayVidSize(e)
             }
-            console.log(e.target)
+            // console.log(e.target)
             // togglePlayVidSize(e) // <---- Here
             // and comment out and see sidebar hidden difference            
         })
