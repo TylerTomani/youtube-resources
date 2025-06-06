@@ -31,10 +31,12 @@ export function playEnlargeVideos(){
                 playing = true
                 
             }
-            // if(key == 32){
-            //     playing = !playing
-                
-            // }
+            if(key == 32){
+                e.preventDefault()
+                e.stopPropagation()
+                console.log('yes')
+                playing = !playing
+            }
             
             videoControls(e,vid,key)
         })
@@ -66,6 +68,7 @@ export function playEnlargeVideos(){
                 break
             case 32:
                 e.preventDefault()
+                e.stopPropagation()
                 playing = !playing
                 break;
             // left arrow

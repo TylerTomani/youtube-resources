@@ -19,15 +19,16 @@ export function stepTxtsFocus() {
     const allVideos = document.querySelectorAll('video')
     let currentVideo  
     let isPlaying = false    
+    const stepStepVids = document.querySelectorAll('.step-vid')
+
     allVideos.forEach(vid => {
         vid.addEventListener('click', (e) => {
             if (e.target.tagName === 'VIDEO') {
                 const video = e.target;
-
                 if (video.paused) {
                     video.play();
                     video.style.border = "2px solid blue";
-                    // vid.classList.add('enlarge-vid')
+                    vid.classList.add('enlarge-vid')
                 } else {
                     video.pause();
                     vid.classList.remove('enlarge-vid')
@@ -76,12 +77,14 @@ export function stepTxtsFocus() {
             
         }
         if(letter == 'enter'){
-            lastClickedLink.focus()
             if(sideBar.classList.contains('deactive')){
                 sideBar.classList.remove('deactive')
                 sideBar.classList.add('active')
             }
-            console.log([...parts].indexOf(lastClickedLink))
+            let iParts = [...parts].indexOf(lastClickedLink)
+            iParts = (iParts + 1) % parts.length
+            
+            parts[iParts].focus()
             window.scrollTo({
                 top: 0,
                 behavior: "smooth" // makes it animate on mobile too
@@ -144,8 +147,9 @@ export function stepTxtsFocus() {
             if(letter == 'enter'){   
                 toggleImg(e)
                 addTabIndexes(e)
+                togglePlayVidSize(e)
             }
-            togglePlayVidSize(e)
+            console.log(e.target)
             // togglePlayVidSize(e) // <---- Here
             // and comment out and see sidebar hidden difference            
         })
@@ -163,7 +167,7 @@ export function stepTxtsFocus() {
             if(currentWidth <= 721 ){
                 if (img.classList.contains('enlarge')){
                     sideBar.classList.add('deactive')
-                    // console.log(sideBar)
+                    // 
                     // if(e.target.classList.contains('.copy-code')){
                     //     img.style.zIndex = '100'
                     // }
@@ -172,7 +176,7 @@ export function stepTxtsFocus() {
                     
                 }
             }
-            // console.log(img)
+            // 
             // if (currentWidth <= 600) {
             //     if (img.classList.contains('enlarge') || img.classList.contains('enlarge-vid')) {
             //         sideBar.classList.add('deactive')
@@ -184,7 +188,7 @@ export function stepTxtsFocus() {
             // }
         }
         if(vid){
-            // console.log(vid)
+            // 
             vid.classList.toggle('enlarge-vid')
             if (currentWidth <= 721 && currentWidth >= 601) {
                 if (vid.classList.contains('enlarge-vid')) {
@@ -199,7 +203,7 @@ export function stepTxtsFocus() {
             }
         }
         // if(img.tagName == 'video'){
-        //     console.log(img)
+        //     
         // }
     }
     
@@ -271,6 +275,7 @@ export function stepTxtsFocus() {
             }
         }
     })
+    
     function pauseAllVideos(){
         allVideos.forEach(el => {
             el.pause()
@@ -290,6 +295,16 @@ export function getStep(parent){
         return parent
     } else if (parent.parentElement){
         return getStep(parent.parentElement)
+    } else {
+        return null
+    }
+}
+
+function getStepStepVidParent(parent){
+    if (parent.classList.contains('step') || parent.classList.contains('step-float')) {
+        return parent
+    } else if (parent.parentElement){
+        return getStepStepVidParent(parent.parentElement)
     } else {
         return null
     }

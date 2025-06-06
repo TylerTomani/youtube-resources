@@ -68,7 +68,7 @@ export function letterFocus(){
             elsFocus(e, letter)
         }
         if(sideBar){
-            console.log(sideBar)
+            // console.log(sideBar)
         }
     });
     function elsFocus(e,letter) {
