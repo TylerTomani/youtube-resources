@@ -1,9 +1,19 @@
+.txt-80 {
+    font-size: 85%;
+}
+.txt-80{
+    font-size: 80%;
+}
+.smtxt{
+    font-size: 60%;
+}
 :root {
     --bg-primary: #233944;
 }
 .b {color: rgb(123, 123, 224);}
 .lb {color: lightblue;}
 .l {color: lime;}
+.lsg {color: lightseagreen;}
 .m {color: magenta;}
 .o {color: orange;}
 .p {color: rgb(195, 103, 195);}
@@ -25,4 +35,12 @@
 .step-txt p code,
 .code-container span{
     font-weight: 999;
+}
+@media screen and (max-width: 721px) {
+    .txt-85 {
+        font-size: 70%;
+    }
+    .txt-80 {
+        font-size: 70%;
+    }
 }
