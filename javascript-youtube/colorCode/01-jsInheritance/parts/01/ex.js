@@ -1,9 +1,10 @@
-class Person {
+class Person{
     talk(){
         return 'Talking'
     }
 }
 const me = new Person()
-const you = new Person()
-me.talk()
-you.talk()
+function newMethod(){
+    return 'new Method'
+}
+me.talk = newMethod()
