@@ -86,7 +86,7 @@ video.enlarge-vid {
     background-color: white;
     width: fit-content;
     margin-top: 2.5%;
-    min-width: 250px;
+    min-width: 400px;
 }
 .code-container>.copy-code {
     color: white;
@@ -112,7 +112,9 @@ video.enlarge-vid {
     transform: scale(1.5);
 }
 @media screen and (max-width: 721px) {
-    
+    .code-container{
+        min-width: 250px;
+    }   
     video {min-width: 250px;}
     video.enlarge-vid {
         right: 3%;

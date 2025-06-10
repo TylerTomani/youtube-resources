@@ -17,6 +17,16 @@
     color: var(--font-primary-db);
     background-color: var(--bg-primary);
 }
+.dark-mode >nav.section-lesson-title {
+    background-color: var(--bg-primary-db);
+}
+.dark-mode >nav.section-lesson-title>h1#title {
+    color: white;
+    
+}
+.dark-mode #partsTxt {
+    color: white;
+}
 .dark-mode main>aside.side-bar {
     border-right: 1px solid whitesmoke;
     background-color: var(--bg-primary);
