@@ -102,9 +102,13 @@ export function stepTxtsFocus() {
     })
     allImgs.forEach(img =>{
         img.addEventListener('click', e =>{
-            e.preventDefault()
             // It needs to be two clicks for mobile
-            toggleImg(e)
+            // console.log(e.target)
+            if(e.target.tagName == 'IMG'){
+                // console.log(e.target.tagName)
+                // e.preventDefault()
+                e.target.classList.toggle('enlarge')
+            }
         })
     })    
     copyCodes.forEach(el => {
@@ -134,36 +138,55 @@ export function stepTxtsFocus() {
     steps.forEach(el => {
         el.addEventListener('focus', e => {
             pauseAllVideos()
-            // denlargeAllVideos()
             removeAllTabIndexes()
             denlargeAllImages()
             lastStep = e.target
         })
-        
+        el.addEventListener('click', e => {
+            const step = getStep(e.target)
+            if(step){
+                if(e.target.tagName == 'IMG'){
+                    console.log(e.target)
+                    return 
+                } 
+                const images = document.querySelectorAll('img') ? document.querySelectorAll('img') : document.querySelectorAll('video')
+                images.forEach(el => {
+                    if(el.classList.contains('enlarge')){
+                        el.classList.remove('enlarge')
+                    }
+                })
+            }
+        })
+
         el.addEventListener('keydown', e => {
             let letter = e.key.toLowerCase()
             let key = e.keyCode
-            
             if(letter == 'enter'){   
                 toggleImg(e)
                 addTabIndexes(e)
                 togglePlayVidSize(e)
             }
-            // console.log(e.target)
-            // togglePlayVidSize(e) // <---- Here
-            // and comment out and see sidebar hidden difference            
+            
         })
     })
-    
+    let iImgsContainerImg = 0
     function toggleImg(e){
         const step = getStep(e.target)
-        const img = step.querySelector('img') ? step.querySelector('img') : null
-        const vid = step.querySelector('video') ? step.querySelector('video') : null
-        
-        // console.log(e.target)
+        const img = step.querySelector('.step-img > img') ? step.querySelector('.step-img > img') : null
+        const vid = step.querySelector('.step-vid > video') ? step.querySelector('.step-vid > video') : null
+        const images = step.querySelectorAll('img')
+        const imagesArr = [...images]
+        if(imagesArr){
+            // denlargeAllImages()
+            if (imagesArr[iImgsContainerImg]){
+
+                imagesArr[iImgsContainerImg].classList.toggle('enlarge')
+                imagesArr[iImgsContainerImg].focus()
+                iImgsContainerImg = (iImgsContainerImg + 1) % imagesArr.length
+            }
+        } else {
         if(img){
-            img.classList.toggle('enlarge')
-            
+            toggleImg(img)
             if(currentWidth <= 721 ){
                 if (img.classList.contains('enlarge')){
                     sideBar.classList.add('deactive')
@@ -176,17 +199,8 @@ export function stepTxtsFocus() {
                     
                 }
             }
-            // 
-            // if (currentWidth <= 600) {
-            //     if (img.classList.contains('enlarge') || img.classList.contains('enlarge-vid')) {
-            //         sideBar.classList.add('deactive')
-            //     }
-            //     else {
-            //         sideBar.classList.remove('deactive')
-
-            //     }
-            // }
         }
+
         if(vid){
             // 
             vid.classList.toggle('enlarge-vid')
@@ -202,11 +216,9 @@ export function stepTxtsFocus() {
                 }
             }
         }
-        // if(img.tagName == 'video'){
-        //     
-        // }
+        }
+
     }
-    
     function addTabIndexes(e){
         const tabEls = e.target.querySelectorAll('.copy-code, textarea')
         tabEls.forEach(el => {
@@ -222,7 +234,6 @@ export function stepTxtsFocus() {
         imgVids.forEach(el => {
             if(el.classList.contains('enlarge')){
                 el.classList.remove('enlarge')
-
             }
             if(el.classList.contains('enlarge-vid')){
                 el.classList.remove('enlarge-vid')
@@ -299,7 +310,6 @@ export function getStep(parent){
         return null
     }
 }
-
 function getStepStepVidParent(parent){
     if (parent.classList.contains('step') || parent.classList.contains('step-float')) {
         return parent
