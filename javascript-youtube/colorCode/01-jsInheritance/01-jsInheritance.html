@@ -62,14 +62,18 @@
                 <i id="sideBarBtn" tabindex="0" class="bx bx-menu"></i>
                 <!-- partsTxt is an awful name -->
             </div>
-            <div class="parts ">
+            <div class="parts">
                 <h2 tabindex="0" id="partsTxt">Parts</h2>
                 <ul class="txt90">
-                    <li><a autofocus class=""  tabindex="0" href="parts/01/01.html">1. Inheritance w/ <code class="b txt80">classes</code>
-                        <br>__proto__ depreciated
+                    <li><a class=""  tabindex="0" href="parts/01/01.html">1. Inheritance w/ <code class="b txt80">classes</code>
+                        <br><code>.<span class="r">__proto__</span></code> depreciated
                         </a>
                     </li>
-                    <li><a  tabindex="0" href="parts/02/02.html">2. <code>[[Prototype]]</code></a></li>
+                    <li><a  autofocus  tabindex="0" href="parts/02/02.html">2. <code>[[Prototype]]</code>
+                    <br><code>.<span class="m">prototype</span></code>
+                    <br>vs</a>
+                    <br><code>.<span class="r">__proto__</span></code>
+                    </li>
                     <li><a  tabindex="0" href="#">3. Tbd</a></li>
                 </ul>
             </div>
@@ -84,25 +88,43 @@
                     <div tabindex="0" class="step-float">
                         <div class="step-img">
                             <!-- <img src="images/01.png" alt=""> -->
-                            <img src="parts/01/images/01.png" alt="">
+                            <img src="images/01.png" alt="">
                         </div>
                         <div class="step-txt">
                             <h4>01</h4>
                             <p>
-                                Inheritance is used to reduce code duplication, it can be used with <code class="lsg">objects</code> and classes but
-                                is most associated with <code class="b">classes</code>, this tutorial describes the difference between
-                                <code>Prototype</code> and <code>[[Prototype]]</code>(new version of depreciated <code>__proto__</code> )
+                                ChatGpt explaination of basic <code class="m">[[Prototype]]</code>, used to be <code class="r">__proto__</code>
                             </p>
                             <div class="code-container txt85">
                                 <pre class="copy-code">
-function getWeather() {
-    return new <span class="b">Promise</span>(function(<span class="o">resolve</span>,<span
-        class="r">reject</span>){
-    })
+class Dog {
+    bark(){
+        return 'barking'
+    }
 }
-let promise = getWheather()
-console.log(promise)</pre>
+const fido = new Dog()
+fido</pre>
                             </div>
+                            <ul>
+                                <li>fido doesn't have a bark method directly on it.</li>
+                                <li>Instead, fido.__proto__ (or Object.getPrototypeOf(fido)) points to
+                                     Dog.prototype, where bark lives.</li>
+                                <li>So fido.bark() works because JavaScript looks up the prototype chain and finds it there.
+                                </li>
+                            </ul>
+                            <p>
+                                ⛓️ Think of It Like a Chain
+                                When you call a method on an object:
+                            </p>
+                            <ul>
+                                <li>JS looks on the object itself.</li>
+                                <li>If it doesn't find it, it goes to the object's prototype.</li>
+                                <li>If still not found, it keeps going up the chain until it hits null.</li>
+                            </ul>
+                            <p>
+                                So you're not seeing methods directly on instances because they're not there — they're on the prototype.
+
+                            </p>
                     
                         </div>
                         <p>

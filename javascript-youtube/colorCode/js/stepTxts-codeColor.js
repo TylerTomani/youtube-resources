@@ -6,6 +6,10 @@ import { togglePlayVidSize } from "./playPauseVideos-colorCode.js";
 Search for togglePlayVidSize
 and comment out and see sidebar hidden difference
 */
+
+/** Page is SO CLOSE, the problem now is imgs-container switching enlarge on side 
+ by side .img-container > .step-img > .img
+ */
 import { mainTargetDiv } from "./letterFocus-sidebar.js";
 import { sideBar } from "./toggle-sidebar.js"
 import { parts } from "./letterFocus-sidebar.js"
@@ -135,6 +139,7 @@ export function stepTxtsFocus() {
             let letter = e.key.toLowerCase()
             let key = e.keyCode
             if(letter == 'enter'){   
+                e.target.scrollIntoView({ behavior: 'smooth', block: 'center' })
                 // denlargeAllImages()
                 toggleImg(e)
                 addTabIndexes(e)
@@ -156,7 +161,6 @@ export function stepTxtsFocus() {
                 // denlargeAllImages()
                 imagesArr[iImgsContainerImg].scrollIntoView({behavior: 'smooth',block: 'center'})
                 imagesArr[iImgsContainerImg].classList.toggle('enlarge')
-                console.log(imagesArr[iImgsContainerImg])
                 iImgsContainerImg = (iImgsContainerImg + 1) % imagesArr.length 
             }
         } else {

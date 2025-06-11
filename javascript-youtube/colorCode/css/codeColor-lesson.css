@@ -6,6 +6,7 @@
     padding-left: 2.5%;
 }
 .step-container{
+    
     position: relative;
     z-index: 0;
 }
@@ -86,6 +87,12 @@ video.enlarge-vid {
 .step-float > .step-txt > p{
     padding: 0 2%;
     margin-top: 2%;
+}
+.step-txt ul {
+    margin-left: 3%;
+}
+.step-txt ul li{
+    line-height: 1.5;
 }
 .step-float > p {
     margin: 1% 2%;

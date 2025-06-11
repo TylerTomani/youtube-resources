@@ -1,7 +1,10 @@
-.txt90 {font-size: 90%;}
-.txt85 {font-size: 85%;}
-.txt80{font-size: 80%;}
-.txt60{font-size: 60%;}
+body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif !important;
+}
+.txt90 {font-size: 90% !important;}
+.txt85 {font-size: 85% !important;}
+.txt80 {font-size: 80% !important;}
+.txt60 {font-size: 60% !important;}
 :root {
     --bg-primary: #233944;
 }
@@ -15,6 +18,9 @@
 .r {color: red;}
 .y {color: yellow;}
 
+/* border colors */
+.br1{border: 1px solid red;}
+.br1:active,.br1:focus{box-shadow: 0 0 3px 4px red !important;}
 
 .console {
     border: 1px solid darkblue;
