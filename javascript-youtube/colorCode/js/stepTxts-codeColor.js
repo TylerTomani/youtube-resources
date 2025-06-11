@@ -179,10 +179,11 @@ export function stepTxtsFocus() {
         if(imagesArr){
             // denlargeAllImages()
             if (imagesArr[iImgsContainerImg]){
-
+                denlargeAllImages()
+                imagesArr[iImgsContainerImg].scrollIntoView({behavior: 'smooth',block: 'center'})
                 imagesArr[iImgsContainerImg].classList.toggle('enlarge')
-                imagesArr[iImgsContainerImg].focus()
-                iImgsContainerImg = (iImgsContainerImg + 1) % imagesArr.length
+                console.log(imagesArr[iImgsContainerImg])
+                iImgsContainerImg = (iImgsContainerImg + 1) % imagesArr.length 
             }
         } else {
         if(img){
