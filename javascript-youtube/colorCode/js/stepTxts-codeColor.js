@@ -69,31 +69,7 @@ export function stepTxtsFocus() {
         denlargeAllImages()
         denlargeAllVideos()
     })
-    endNxtLesson.addEventListener('keydown', e =>{
-        let letter = e.key.toLowerCase()
-        if(letter == 'm'){
-            mainTargetDiv.focus()
-            scrollTo(0,0)
-            
-        }
-        if(letter == 'enter'){
-            if(sideBar.classList.contains('deactive')){
-                sideBar.classList.remove('deactive')
-                sideBar.classList.add('active')
-            }
-            let iParts = [...parts].indexOf(lastClickedLink)
-            iParts = (iParts + 1) % parts.length
-            
-            parts[iParts].focus()
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth" // makes it animate on mobile too
-            });         
-            
-        }
-        
-        
-    })
+    
     parts.forEach(el => {
         el.addEventListener('focus', e => {
             partsFocused = true
@@ -102,11 +78,8 @@ export function stepTxtsFocus() {
     })
     allImgs.forEach(img =>{
         img.addEventListener('click', e =>{
-            // It needs to be two clicks for mobile
-            // console.log(e.target)
             if(e.target.tagName == 'IMG'){
-                // console.log(e.target.tagName)
-                // e.preventDefault()
+                denlargeAllImages()
                 e.target.classList.toggle('enlarge')
             }
         })
@@ -162,6 +135,7 @@ export function stepTxtsFocus() {
             let letter = e.key.toLowerCase()
             let key = e.keyCode
             if(letter == 'enter'){   
+                // denlargeAllImages()
                 toggleImg(e)
                 addTabIndexes(e)
                 togglePlayVidSize(e)
@@ -179,7 +153,7 @@ export function stepTxtsFocus() {
         if(imagesArr){
             // denlargeAllImages()
             if (imagesArr[iImgsContainerImg]){
-                denlargeAllImages()
+                // denlargeAllImages()
                 imagesArr[iImgsContainerImg].scrollIntoView({behavior: 'smooth',block: 'center'})
                 imagesArr[iImgsContainerImg].classList.toggle('enlarge')
                 console.log(imagesArr[iImgsContainerImg])
@@ -187,14 +161,11 @@ export function stepTxtsFocus() {
             }
         } else {
         if(img){
+            denlargeAllImages()
             toggleImg(img)
             if(currentWidth <= 721 ){
                 if (img.classList.contains('enlarge')){
                     sideBar.classList.add('deactive')
-                    // 
-                    // if(e.target.classList.contains('.copy-code')){
-                    //     img.style.zIndex = '100'
-                    // }
                 } else {
                     sideBar.classList.remove('deactive')
                     
@@ -300,6 +271,27 @@ export function stepTxtsFocus() {
             el.classList.remove('enlarge-vid')
         })
     }
+    endNxtLesson.addEventListener('keydown', e => {
+        let letter = e.key.toLowerCase()
+        if (letter == 'm') {
+            mainTargetDiv.focus()
+            scrollTo(0, 0)
+
+        }
+        if (letter == 'enter') {
+            if (sideBar.classList.contains('deactive')) {
+                sideBar.classList.remove('deactive')
+                sideBar.classList.add('active')
+            }
+            let iParts = [...parts].indexOf(lastClickedLink)
+            iParts = (iParts + 1) % parts.length
+            parts[iParts].focus()
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth" // makes it animate on mobile too
+            });
+        }
+    })
 }
 export function getStep(parent){
     // if(parent.classList.contains('step')){
@@ -311,14 +303,3 @@ export function getStep(parent){
         return null
     }
 }
-function getStepStepVidParent(parent){
-    if (parent.classList.contains('step') || parent.classList.contains('step-float')) {
-        return parent
-    } else if (parent.parentElement){
-        return getStepStepVidParent(parent.parentElement)
-    } else {
-        return null
-    }
-}
-// DELETE THIS when side bar works
-// stepTxtsFocus()
