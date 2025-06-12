@@ -52,7 +52,10 @@ export function letterFocus(){
     endNxtLessonBtn.addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
         if(letter == 'enter'){
-            lastClickedLink.focus()
+            if(lastClickedLink){
+
+                lastClickedLink.focus()
+            }
             
         }
         

@@ -6,7 +6,7 @@ import { mainTargetDiv } from "./letterFocus-sidebar.js";
 import { sideBar } from "./toggle-sidebar.js";
 
 
-import { loadTutorialCurrentTimee } from "./loadTutorialCurrentTime.js";
+import { loadTutorialCurrentTime } from "./loadTutorialCurrentTime.js";
 export let lastFocusedLink = null;
 export let lastClickedLink = null;
 const sectionLessonTitle = document.querySelector('nav.section-lesson-title');
