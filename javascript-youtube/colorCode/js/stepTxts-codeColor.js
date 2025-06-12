@@ -24,7 +24,21 @@ export function stepTxtsFocus() {
     let currentVideo  
     let isPlaying = false    
     const stepStepVids = document.querySelectorAll('.step-vid')
+    const steps = document.querySelectorAll('.steps-container > .step ,.steps-container > .step-float , .step-col3')
 
+    // Maybe just keep text area with focus
+    const copyCodes = document.querySelectorAll('.copy-code')
+    const imgVids = document.querySelectorAll('.step-img > img, .step-vid > video')
+    const allImgs = document.querySelectorAll('.step-img > img')
+    const sectionLessonTitle = document.querySelector('nav.section-lesson-title > h1')
+    const hiddenH3 = document.querySelector('.header-codeColor-lesson h3')
+    const endNxtLesson = document.querySelector('#endNxtLesson')
+    const sideBar = document.querySelector('main > .side-bar')
+    let currentWidth
+    let partsFocused = false
+    sectionLessonTitle.innerText = hiddenH3.innerText
+    currentWidth = innerWidth
+    let mainTargetDivFocused = false
     allVideos.forEach(vid => {
         vid.addEventListener('click', (e) => {
             if (e.target.tagName === 'VIDEO') {
@@ -41,21 +55,6 @@ export function stepTxtsFocus() {
             }
         });
     });
-    let mainTargetDivFocused = false
-    const steps = document.querySelectorAll('.steps-container > .step ,.steps-container > .step-float , .step-col3')
-
-    // Maybe just keep text area with focus
-    const copyCodes = document.querySelectorAll('.copy-code')
-    const imgVids = document.querySelectorAll('.step-img > img, .step-vid > video')
-    const allImgs = document.querySelectorAll('.step-img > img')
-    const sectionLessonTitle = document.querySelector('nav.section-lesson-title > h1')
-    const hiddenH3 = document.querySelector('.header-codeColor-lesson h3')
-    const endNxtLesson = document.querySelector('#endNxtLesson')
-    // const sideBar = document.querySelector('main > .side-bar')
-    let currentWidth
-    let partsFocused = false
-    sectionLessonTitle.innerText = hiddenH3.innerText
-    currentWidth = innerWidth
     addEventListener('resize', e => {currentWidth = innerWidth})
     mainTargetDiv.addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
@@ -83,7 +82,8 @@ export function stepTxtsFocus() {
     allImgs.forEach(img =>{
         img.addEventListener('click', e =>{
             if(e.target.tagName == 'IMG'){
-                denlargeAllImages()
+                // denlargeAllImages()
+                e.preventDefault()
                 e.target.classList.toggle('enlarge')
             }
         })
