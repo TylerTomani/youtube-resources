@@ -127,11 +127,7 @@ export function stepTxtsFocus() {
                     return
                 }
                 const images = document.querySelectorAll('img') ? document.querySelectorAll('img') : document.querySelectorAll('video')
-                images.forEach(el => {
-                    if (el.classList.contains('enlarge')) {
-                        el.classList.remove('enlarge')
-                    }
-                })
+                denlargeAllImages()
             }
         })
 
@@ -147,19 +143,34 @@ export function stepTxtsFocus() {
 
         })
     })
-    let iImages = 0
+    const stepImageIndexes = new WeakMap();
+
     function toggleImg(e) {
         const step = getStep(e.target);
+        if(!step) return;
         const img = step.querySelector('.step-img > img');
         const vid = step.querySelector('.step-vid > video');
         const images = Array.from(step.querySelectorAll('.imgs-container img'));
         
+
         if (images.length > 0) {
-            // Toggle only the clicked image
-            iImages = (iImages + 1) % images.length
-            images[iImages].classlist.toggle('enlarge');
-            images[iImages].scrollIntoView({ behavior: 'smooth', block: 'center' });
-        } 
+            let currentIndex = stepImageIndexes.get(step) || 0;
+
+            // Remove enlarge class from all imgs first
+            images.forEach(img => img.classList.remove('enlarge'));
+
+            // Add enlarge to the current one
+            const currentImg = images[currentIndex];
+            currentImg.classList.add('enlarge');
+
+            // Save next index for next time
+            currentIndex = (currentIndex + 1) % images.length;
+            stepImageIndexes.set(step, currentIndex);
+
+            // Optionally scroll into view
+            // currentImg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            return; // skip .step-img and video logic if imgs-container handled
+        }
         if (img) {
             console.log(img)
             img.classList.toggle('enlarge');
