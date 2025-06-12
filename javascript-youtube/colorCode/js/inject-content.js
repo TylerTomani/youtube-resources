@@ -5,6 +5,8 @@ import { parts } from "./letterFocus-sidebar.js";
 import { mainTargetDiv } from "./letterFocus-sidebar.js";
 import { sideBar } from "./toggle-sidebar.js";
 
+
+import { loadTutorialCurrentTimee } from "./loadTutorialCurrentTime.js";
 export let lastFocusedLink = null;
 export let lastClickedLink = null;
 const sectionLessonTitle = document.querySelector('nav.section-lesson-title');
@@ -34,6 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 addCopyCodes();
                 letterFocus();
                 stepTxtsFocus();
+                loadTutorialCurrentTime()
             })
             .catch(err => {
                 console.error('Failed to load content:', err);

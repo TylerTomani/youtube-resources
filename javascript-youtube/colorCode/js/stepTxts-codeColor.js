@@ -167,6 +167,7 @@ export function stepTxtsFocus() {
         if(img){
             denlargeAllImages()
             toggleImg(img)
+
             if(currentWidth <= 721 ){
                 if (img.classList.contains('enlarge')){
                     sideBar.classList.add('deactive')
@@ -295,6 +296,19 @@ export function stepTxtsFocus() {
                 behavior: "smooth" // makes it animate on mobile too
             });
         }
+    })
+    endNxtLesson.addEventListener('click', e => {
+        if (sideBar.classList.contains('deactive')) {
+            sideBar.classList.remove('deactive')
+            sideBar.classList.add('active')
+        }
+        let iParts = [...parts].indexOf(lastClickedLink)
+        iParts = (iParts + 1) % parts.length
+        parts[iParts].focus()
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth" // makes it animate on mobile too
+        });
     })
 }
 export function getStep(parent){
