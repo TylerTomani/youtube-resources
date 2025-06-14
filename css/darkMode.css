@@ -37,3 +37,6 @@ h4 .dark-mode p {
 .dar.topics-container>.topic {
     border: 1px solid white !important;
 }
+.dark-mode #homelink{
+    border: 1px solid whitesmoke;
+}
