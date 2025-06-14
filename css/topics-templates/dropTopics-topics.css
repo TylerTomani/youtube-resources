@@ -3,15 +3,7 @@
     padding:0;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
-.page-wrapper main {
-    max-height: 80vh;
-    margin: 0 2.5%;
-    padding: 0 2.5%;
-    padding-left: 0;
-    /* border: 2px solid orange; */
-    border: none;
-    overflow-x: scroll;
-}
+
 .topic-container {
     display: flex;
     flex-direction: column;
@@ -65,10 +57,10 @@ a.resource:visited{
 .resource:active,.resource:focus{
     /* box-shadow: 2px 2px 8px 6px lightseagreen; */
 }
-a:focus,
+/* a:focus,
 a:active {
     box-shadow: 1px 2px 5px 4px cyan;
-}
+} */
 
 .hide {
     display: none !important;
