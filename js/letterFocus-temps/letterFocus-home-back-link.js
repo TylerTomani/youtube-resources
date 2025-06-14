@@ -12,12 +12,27 @@ addEventListener('DOMContentLoaded', e => {
         });
 
         
-        const letteredAs = allAs.filter(a => {
-            const words = a.textContent.trim().toLowerCase().split(/\s+/);
-            return words.some(word => {
-                const cleaned = word.replace(/^[^a-z0-9]+/i, ''); // strip leading non-alphanumerics
-                return cleaned[0] === letter;
-            });
+        // const letteredAs = allAs.filter(a => {
+        //     const words = a.textContent.trim().toLowerCase().split(/\s+/);
+        //     return words.some(word => {
+        //         const cleaned = word.replace(/^[^a-z0-9]+/i, ''); // strip leading non-alphanumerics
+        //         return cleaned[0] === letter;
+        //     });
+        // });
+        const backlink = document.querySelector('.main-links > a#backlink');
+        const homelink = document.querySelector('#homelink');
+
+        let key = e.key
+        let letteredAs = allAs.filter(el => {
+            const idText = el.id.toLowerCase();
+            if (key === 'b') {
+                // If 'b' is pressed and there's NO backlink, include homelink in the list
+                if (!backlink && homelink && !idText.startsWith('b')) {
+                    // Temporarily treat homelink as if it starts with "b"
+                    return el === homelink || idText.startsWith('b');
+                }
+            }
+            return idText.startsWith(key);
         });
 
         if (letteredAs.length === 0) return;
