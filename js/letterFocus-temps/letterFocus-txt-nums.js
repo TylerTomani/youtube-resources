@@ -18,6 +18,29 @@ addEventListener('keydown', e => {
         scrollTo(0,0)
     }
     // ????????????????????????????????????????????????????????????????????
+    // Old version
+    // const text = el.textContent.trim().toLowerCase();
+    // const letteredEls = allEls.filter(el => {
+    //     // Special rule for #mainContainer
+    //     if (el.id === 'mainContainer') {
+    //         return letter === 'm';
+    //     }
+
+    //     const text = el.textContent.trim().toLowerCase();
+    //     console.log(text)
+    //     const words = text.split(/\s+/);
+
+    //     return words.some(word => {
+    //         const cleaned = word.replace(/^[^a-z0-9]+/i, '');
+    //         if (!cleaned) return false;
+
+    //         if (/^\d+$/.test(cleaned) && /^[0]+[1-9]/.test(cleaned)) {
+    //             return cleaned[0] === letter || cleaned.match(/[1-9]/)?.[0] === letter;
+    //         }
+
+    //         return cleaned[0] === letter;
+    //     });
+    // });
     // \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
     //  I have no idea how cloneNode is working but this did the job
     function getCleanText(el) {

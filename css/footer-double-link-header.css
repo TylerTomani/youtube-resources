@@ -3,7 +3,15 @@
     padding:0;
     box-sizing: border-box;
 }
-
+.page-wrapper main#mainContainer {
+    max-height: 75vh;
+    margin: 0 2.5%;
+    padding: 0 2.5%;
+    padding-left: 0;
+    scrollbar-width: none;
+    overflow: hidden;
+    overflow-y: scroll;
+}
 .page-wrapper > footer.footer-header {
     display: flex;
     border-top: 1px solid black;
@@ -57,16 +65,6 @@
     box-shadow: 0px 2px 3px 3px lightseagreen;
     color: black;
     
-}
-
-.page-wrapper main#mainContainer {
-    max-height: 75vh;
-    margin: 0 2.5%;
-    padding: 0 2.5%;
-    padding-left: 0;
-    scrollbar-width: none;
-    overflow: hidden;
-    overflow-y: scroll;
 }
 @media screen and (max-width: 683px){
     footer > *{
