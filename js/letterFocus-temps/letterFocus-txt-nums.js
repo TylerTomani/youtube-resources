@@ -17,14 +17,21 @@ addEventListener('keydown', e => {
     if(letter == 'm' || letter == 't'){
         scrollTo(0,0)
     }
-    
+    // ????????????????????????????????????????????????????????????????????
+    // \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+    //  I have no idea how cloneNode is working but this did the job
+    function getCleanText(el) {
+        // Clone the element without <sup> tags
+        const clone = el.cloneNode(true);
+        clone.querySelectorAll('sup').forEach(node => node.remove());
+        return clone.textContent.trim().toLowerCase();
+    }
+
     const letteredEls = allEls.filter(el => {
-        // Special rule for #mainContainer
         if (el.id === 'mainContainer') {
             return letter === 'm';
         }
-
-        const text = el.textContent.trim().toLowerCase();
+        const text = getCleanText(el);
         const words = text.split(/\s+/);
 
         return words.some(word => {
@@ -32,12 +39,14 @@ addEventListener('keydown', e => {
             if (!cleaned) return false;
 
             if (/^\d+$/.test(cleaned) && /^[0]+[1-9]/.test(cleaned)) {
-                return cleaned[0] === letter || cleaned.match(/[1-9]/)?.[0] === letter;
+                return cleaned[0] === letter
+                    || cleaned.match(/[1-9]/)?.[0] === letter;
             }
-
             return cleaned[0] === letter;
         });
     });
+    // ///////
+    // ????????????????????????????????????????????????????????????????????
 
     if (letteredEls.length === 0) return;
 
