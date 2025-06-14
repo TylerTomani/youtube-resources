@@ -1,15 +1,8 @@
 * {
     margin:0; 
     padding:0;
+    box-sizing: border-box;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
-.page-wrapper main {
-    max-height: 75vh;
-    margin: 0 2.5%;
-    padding: 0 2.5%;
-    padding-left: 0;
-    overflow: hidden;
-        overflow-y: scroll;
 }
 .topic-container {
     display: flex;
@@ -27,8 +20,6 @@
     max-height: 50px;
     margin-left: 2.5%;
 }
-
-
 .resource {
     border: 1px solid black;
 }
@@ -40,7 +31,6 @@
     margin-left: 1.26%;
     max-height: 50px;
 }
-
 ul.sub-resources-container {
     padding-bottom: 1%;
     display: flex;
@@ -100,17 +90,5 @@ a.resource:visited{
     .resource>img {
         max-width: 50px;
     }
-    .page-wrapper {
-        max-height: 75vh;
-    }
-    .page-wrapper main {
-        /* background-color: lightslategray; */
-        margin: 0;
-        margin-left: 4%;
-        
-        padding-bottom: 5%;
-    }
-}
-#javascriptYoutubePage {
-    border-top: 10px solid yellow;
+    
 }

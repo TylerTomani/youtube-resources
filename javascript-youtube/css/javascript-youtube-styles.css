@@ -3,3 +3,26 @@ body {
     border-top: 20px solid yellow;
 
 }
+.page-wrapper main#mainContainer {
+    max-height: 75vh;
+    margin: 0 2.5%;
+    padding: 0 2.5%;
+    padding-left: 0;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+#javascriptYoutubePage {
+    border-top: 10px solid yellow;
+}
+@media screen and (max-width:672px) {
+    
+    .page-wrapper {
+        max-height: 75vh;
+    }
+    .page-wrapper main#mainContainer {
+        background-color: lightslategray;
+        margin: 0;
+        margin-left: 4%;
+        padding-bottom: 5%;
+    }
+}
