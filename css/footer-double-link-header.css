@@ -66,6 +66,11 @@
     color: black;
     
 }
+.styles-btns {
+
+    justify-self: flex-end;
+    align-self: flex-end;
+}
 @media screen and (max-width: 683px){
     footer > *{
         flex-basis: 30%;
@@ -92,5 +97,4 @@
         margin-left: 4%;
         padding-bottom: 5%;
     }
-
 }

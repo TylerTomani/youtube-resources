@@ -4,7 +4,6 @@
     box-sizing: border-box;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
-
 .topic-container {
     display: flex;
     flex-direction: column;
@@ -17,14 +16,9 @@
     border: 1px solid black;
     display: flex;
 }
-
-
-
 .resource {
     border: 1px solid black;
 }
-
-
 ul.sub-resources-container {
     padding-bottom: 1%;
     display: flex;
@@ -52,7 +46,6 @@ a.resource{
 a.resource:visited{
     color: blue;
 }
-
 .drop-topic:active,.drop-topic:focus{
     box-shadow: 2px 0 4px 3px blue;
 }
