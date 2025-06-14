@@ -58,6 +58,16 @@
     color: black;
     
 }
+
+.page-wrapper main#mainContainer {
+    max-height: 75vh;
+    margin: 0 2.5%;
+    padding: 0 2.5%;
+    padding-left: 0;
+    scrollbar-width: none;
+    overflow: hidden;
+    overflow-y: scroll;
+}
 @media screen and (max-width: 683px){
     footer > *{
         flex-basis: 30%;
@@ -72,4 +82,17 @@
         display: flex;
     }
     
+}
+@media screen and (max-width:672px) {
+    
+    .page-wrapper {
+        max-height: 75vh;
+    }
+
+    .page-wrapper main#mainContainer {
+        margin: 0;
+        margin-left: 4%;
+        padding-bottom: 5%;
+    }
+
 }

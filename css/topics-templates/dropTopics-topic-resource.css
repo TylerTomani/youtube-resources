@@ -4,6 +4,7 @@
     box-sizing: border-box;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+
 .topic-container {
     display: flex;
     flex-direction: column;
@@ -20,6 +21,8 @@
     max-height: 50px;
     margin-left: 2.5%;
 }
+
+
 .resource {
     border: 1px solid black;
 }
@@ -31,6 +34,7 @@
     margin-left: 1.26%;
     max-height: 50px;
 }
+
 ul.sub-resources-container {
     padding-bottom: 1%;
     display: flex;
@@ -90,5 +94,4 @@ a.resource:visited{
     .resource>img {
         max-width: 50px;
     }
-    
 }
