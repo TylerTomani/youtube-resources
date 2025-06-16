@@ -21,7 +21,7 @@
 }
 .dark-mode .drop-topic {
     border: 1px solid whitesmoke;
-    border-bottom: none;
+    
 }
 
 .dark-mode,
@@ -40,6 +40,9 @@ h4 .dark-mode p {
 .dark-mode .resource,
 .dark-mode .main-links a{
     border: 1px solid whitesmoke;
+}
+.dark-mode .main-links a:active,.dark-mode .main-links a:focus{
+    color: whitesmoke;
 }
 .dark-mode .resource,
 .dark-mode .topic {
