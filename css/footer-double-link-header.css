@@ -64,21 +64,15 @@
 .main-links a:active,.main-links a:focus{
     box-shadow: 0px 2px 3px 3px lightseagreen;
     color: black;
-    
 }
 .styles-btns {
-
     justify-self: flex-end;
     align-self: flex-end;
 }
-
 @media screen and (max-width: 683px){
-
-
     .page-title {
         display: flex;
     }
-    
 }
 @media screen and (max-width:672px) {
     .page-wrapper {
@@ -88,9 +82,5 @@
         margin: 0;
         margin-left: 4%;
         padding-bottom: 5%;
-    }
-    .page-title>img {
-        border: 2px solid red;
-
     }
 }

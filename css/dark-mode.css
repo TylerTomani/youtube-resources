@@ -28,15 +28,19 @@ h4 .dark-mode p {
 .dark-mode #nav-section-lesson-titles {
     border-top: 1px solid whitesmoke;
     border-bottom: 1px solid whitesmoke;
-
 }
-
 .dark-mode main>aside {
     border-right: 1px solid whitesmoke;
 }
-.dar.topics-container>.topic {
-    border: 1px solid white !important;
-}
+
+.dark-mode .resource,
 .dark-mode .main-links a{
     border: 1px solid whitesmoke;
+}
+.dark-mode .resource,
+.dark-mode .topic {
+    color: whitesmoke;
+}
+.dark-mode .resource:visited{
+    color: whitesmoke;
 }
