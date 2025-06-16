@@ -19,6 +19,10 @@
 .dark-mode a {
     color: white;
 }
+.dark-mode .drop-topic {
+    border: 1px solid whitesmoke;
+    border-bottom: none;
+}
 
 .dark-mode,
 h4 .dark-mode p {

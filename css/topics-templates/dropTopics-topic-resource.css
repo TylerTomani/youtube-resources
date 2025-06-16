@@ -20,8 +20,6 @@
     border: 1px solid black;
 }
 ul.sub-resources-container {
-    padding-bottom: 1%;
-    display: flex;
     display: flex;
     flex-wrap: wrap;
     align-items: stretch;
@@ -29,11 +27,13 @@ ul.sub-resources-container {
     align-items: stretch;
     list-style: none;
     text-decoration: none;
+    /* padding-bottom: 1%; */
     gap: 1%;
 }
 ul.sub-resources-container > li{
+    margin-top: 1%;
+    display: inline;
     list-style: none;
-    display: flex;
     flex-direction: column;
 }
 a.resource{
@@ -48,13 +48,12 @@ a.resource:visited{
 }
 .drop-topic:active,.drop-topic:focus{
     box-shadow: 2px 0 4px 3px blue;
+
 }
 .resource:active,.resource:focus{
     box-shadow: 2px 2px 8px 6px lightseagreen;
 }
-.resource:active,
-.resource:focus{
-}
+
 .animate{
     position: relative;
     box-shadow: 0 0 3px 3px orange;

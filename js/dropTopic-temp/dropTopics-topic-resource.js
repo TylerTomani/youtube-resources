@@ -1,7 +1,6 @@
 (function(){
     const dropTopics = document.querySelectorAll('.drop-topic')
     const subResourcesContainers = document.querySelectorAll('.sub-resources-container')
-
     function hideSubResources() {
         subResourcesContainers.forEach(el => {
             if (!el.classList.contains('show')) {
