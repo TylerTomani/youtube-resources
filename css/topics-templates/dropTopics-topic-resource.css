@@ -4,7 +4,7 @@
     box-sizing: border-box;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
-.topic-container {
+/* /* .topic-container { */
     display: flex;
     flex-direction: column;
     margin-top: 1%
@@ -15,7 +15,7 @@
     padding-left: 2%;
     border: 1px solid black;
     display: flex;
-}
+} */
 .resource {
     border: 1px solid black;
 }
