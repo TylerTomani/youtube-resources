@@ -53,7 +53,6 @@ export function letterFocus(){
         let letter = e.key.toLowerCase()
         if(letter == 'enter'){
             if(lastClickedLink){
-
                 lastClickedLink.focus()
             }
             

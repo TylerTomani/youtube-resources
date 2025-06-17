@@ -62,6 +62,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // ✅ Updated CLICK HANDLER
+        el.addEventListener('focus', (e) => {
+            currentLinkIndex = [...parts].indexOf(el)
+        })
         el.addEventListener('click', (e) => {
             const anchor = getParts(e.target);
             if (anchor && anchor.href) {
