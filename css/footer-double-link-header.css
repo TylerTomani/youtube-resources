@@ -75,10 +75,8 @@
     }
 }
 @media screen and (max-width:672px) {
-    .page-wrapper {
-    }
     .page-wrapper main#mainContainer {
-        height: 75vh;
+        height: 70vh;
         margin: 0;
         margin-left: 4%;
         padding-bottom: 5%;
