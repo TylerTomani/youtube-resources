@@ -172,7 +172,6 @@ export function stepTxtsFocus() {
             return; // skip .step-img and video logic if imgs-container handled
         }
         if (img) {
-            console.log(img)
             img.classList.toggle('enlarge');
             if (currentWidth <= 721) {
                 sideBar.classList.toggle('deactive', img.classList.contains('enlarge'));

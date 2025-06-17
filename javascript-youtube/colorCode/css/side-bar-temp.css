@@ -95,6 +95,9 @@ main > .side-bar.deactive .drop {
     width: fit-content;
     margin-top: 20%;
 }
+.parts > ul li a code{
+    display: inline;
+}
 ul li a {
     text-decoration: none;
     color: black;
