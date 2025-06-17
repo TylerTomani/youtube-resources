@@ -9,7 +9,7 @@
 <body class="dark-mode">
     <div id="targetDiv">
         <header class="header-codeColor-lesson">
-            <h3>Inheritance</h3>
+            <h3><code>prototype</code></h3>
         </header>
         <div class="main-container-codeColor">
             <div class="steps-container">
@@ -19,32 +19,31 @@
                         <!-- <img src="images/01.png" alt=""> -->
                         <img src="parts/01/images/01.png" alt="">
                     </div>
-                    <h4>01</h4>
-                    <p>
-                       <strong>"Inheritance"</strong> can be used with <code class="lsg">Objecs</code> and <code class="b">classes</code>
-                    </p>
                     <div  class="step-txt">
+                        <h4>01</h4>
                         <p>
-                            This shows inefficent code creating duplicate code for each instance of each object created
+                            When you make an object in JS, it automatically inherits <code class="b">methods</code>
+                            in it's <code class="y">__proto__</code> from the parent <code><span class="lsg">Object</span>.<span class="y">prototype</span></code>.
                         </p>
-                        <div class="code-container ">
-                            <pre class="copy-code x">
-const <span class="lsg">me</span> = <span class="lsg">{</span>
-    talk(){
-        return 'Talking'
-    }
-<span class="lsg">}</span>
-const <span class="lsg">you</span> = <span class="lsg">{</span>
-    talk(){
-        return 'Talking'
-    }
-<span class="lsg">}</span></pre>
+                        <div class="code-container">
+                            <pre tabindex="0" class="copy-code">
+const dude = {}
+dude.name = 37
+<span class="lsg">dude</span>.<span class="y">__proto__</span>
+</pre>
                         </div>
-                        <div class="code-container ">
-                            <pre tabindex="0" class="copy-code ">
-<span class="lsg">me</span>.talk()
-<span class="lsg">you</span>.talk()</pre>
-                        </div>              
+                        <p>
+                            <span class="r">NOTE*** </span> __proto__ might be depreciated and can be seen as <code class="m">[[Prototype]]</code>,
+                            In <code>[[prototype]]</code> or <code>__proto__</code> you can find methods such as 
+                        </p>
+                        <ul>
+                            <li>toStirng()</li>
+                            <li>valueOf()</li>
+                            <li>... etc</li>
+                        </ul>
+                        
+                        
+                        
                     </div>
                 </div>
                 <!-- 02 -->
@@ -56,9 +55,14 @@ const <span class="lsg">you</span> = <span class="lsg">{</span>
                     <div class="step-txt">
                         <h4>02</h4>
                         <p>
-                            Instead of adding <code class="b">methods</code> to individual objects add the 
-                            <span class="b">method</span> to a class and create instances of that class.
+                            <code class="lsg">Object</code> is the parent of almost everything in js,
                         </p>
+                        <ul>
+                            <li><code>array[]</code></li>
+                            <li><code>'strings'</code></li>
+                            <li><code>'numbers'</code> int/floats</li>
+                            <li>... etc</li>
+                        </ul>
                         <div class="code-container ">
                                 <pre class="copy-code">
 class <span class="b">Person</span> {
