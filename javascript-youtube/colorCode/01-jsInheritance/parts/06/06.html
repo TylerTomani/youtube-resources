@@ -16,73 +16,49 @@
                 <!-- 01 -->
                 <div tabindex="0" class="step-float">
                     <div class="step-img ">
-                        <img src="parts/04/images/01.png" alt="">
+                        <img src="parts/06/images/01.png" alt="">
                     </div>
                     <div  class="step-txt txt70">
                         <h4>01</h4>
                         <p>
-                            Using the <code class="m">this</code> keyword in the <code>constructor</code> function or class, <code class="b">Person</code>,
-                            will allow us to add the method as a properties/attributes to the <strong class="lsg">'instance'</strong> of <code class="b">Person</code> <span class="lsg">me</span>
+                            Use <code class="r">extends</code> to create a new class with another classe's methods
 
                         </p>
                         <div class="code-container">
                             <pre tabindex="0" class="copy-code">
-function Person(){
-    <span class="m">this</span>.talk = function(){
+class Person {
+    talk() {
         return 'Talking'
     }
 }
-const <span class="lsg">me</span> = new Person()
-<span class="lsg">me</span></pre>
+class <span class="b">SuperHuman</span> <span class="r">extends</span> Person{
+    fly(){
+        return 'Flying'
+    }
+} 
+const you = new <code class="b">SuperHuman</code>()</pre>
+                        </div>
+                        <div class="code-container">
+                            <pre tabindex="0" class="copy-code">
+you.talk()</pre>
+                        </div>
+                        <div class="code-container">
+                            <pre tabindex="0" class="copy-code">
+you.fly()</pre>
+                        </div>
+                        <div class="code-container">
+                            <pre tabindex="0" class="copy-code ">
+const me = new Person()
+<span class="line-through">me.fly()</span></pre>
                         </div>
                         <p>
-                            The <span class="m">this</span> keeps the <code class="y">talk</code> method in the instance and 
-                            not in it's <code><span class="b">Person</span></code> prototype
+                            The instance <code class="lsg">you</code> of <code><span class="b">SuperHuman</span>.prototype</code> has 
+                            both <code class="b">talk</code> and <code class="b">fly</code>.
+                            But there is no <code><span class="lsg">me</span>.fly()</code>
                         </p>  
                     </div>
                 </div>
-                <!-- 02 -->
-                <div tabindex="0" class="step-float br1">
-                            <div class="step-txt">
-                                <h4>02</h4>
-                                <p>
-                                    The <code>talk()</code> method is now stored as an attribute to the instance <code class="lsg">me</code>
-                                    of parent class/funciton <code class="b">Person</code>.
-                                </p>
-                                <div class="code-container">
-                                    <pre tabindex="0" class="copy-code">
-me.<span class="y">__proto__</span></pre>
-                                </div>
-                                <div class="code-container">
-                                    <pre tabindex="0" class="copy-code">
-Person.<span class="y">prototype</span></pre>
-                                </div>
-                                <div class="code-container">
-                                    <pre tabindex="0" class="copy-code">
-<span class="b">Person</span></pre>
-                                </div>
-                                
-                                
-                                <p>
-                                    The method is not longer stored in <code class="y">prototype</code> or <code class="y">__proto</code>
-                                </p>
-                            </div>
-                            <div class="imgs-container">
-                                <div class="img-container">
-                                    <div class="step-img">
-                                        <img src="parts/04/images/02.png" alt="">
-                                    </div>
-                                </div>
-                                <div class="img-container">
-                                    <div class="step-img">
-                                        <img src="parts/04/images/02b.png" alt="">
-                                    </div>
-                                </div>
-        
-                            </div>
-                            
-                </div>
-                <!-- 03 -->
+                
                 
                 
                 

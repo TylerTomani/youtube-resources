@@ -77,12 +77,17 @@ main > .side-bar.deactive .drop {
 }
 
 
+.side-bar > .parts{
+}
 .side-bar > .parts ul {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* text-wrap: wrap; */
-    /* width: min-content; */
+    text-wrap: wrap;
+    
+    overflow-y: scroll;
+    scrollbar-width: none;
+    width: fit-content;
     margin-top: 25%;
     margin-right: 2%;
 
@@ -121,7 +126,7 @@ ul li a:visited {
 
 @media screen and (max-width:600px){
     .side-bar>.parts {
-        margin-left: 20%;
+        margin-left: 10%;
     }
     .side-bar>.parts ul li{
         line-height: 1.4;
