@@ -15,7 +15,7 @@
     function hdieSubTopicsContainers() {
         subTopicsContainers.forEach(el => {
             if (!el.classList.contains('show')) {
-                e.classList.add('hide')
+                el.classList.add('hide')
             }
         })
     }
