@@ -39,7 +39,7 @@
 
 .step-img>img,
 .step-vid>video {
-    /* position: relative; */
+    position: relative;
     width: 98%;
     border: 1px solid white;
     max-width: 500px;

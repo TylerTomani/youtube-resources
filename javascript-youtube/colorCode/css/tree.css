@@ -1,0 +1,96 @@
+   * {
+       box-sizing: border-box;
+   }
+
+   /* body {
+       font-family: Arial, sans-serif;
+       padding: 2rem;
+       background: #f5f5f5;
+   } */
+
+   .tree {
+    background-color: white;
+       display: flex;
+       justify-content: center;
+       align-items: flex-start;
+       flex-direction: column;
+       gap: 1rem;
+   }
+
+   .node {
+       position: relative;
+       padding: 0.5rem 1rem;
+       background: white;
+       border: 2px solid #555;
+       border-radius: 8px;
+       text-align: center;
+       width: max-content;
+       margin: auto;
+   }
+
+   .branch {
+       display: flex;
+       justify-content: center;
+       align-items: flex-start;
+       gap: 2rem;
+       position: relative;
+   }
+
+   .branch::before {
+       content: '';
+       position: absolute;
+       top: -1rem;
+       left: 50%;
+       width: 2px;
+       height: 1rem;
+       background: #555;
+       transform: translateX(-50%);
+   }
+
+   .connector {
+       position: absolute;
+       top: 0;
+       width: 2px;
+       height: 1rem;
+       background: #555;
+       left: 50%;
+       transform: translateX(-50%);
+   }
+
+   .connector-horizontal {
+       position: absolute;
+       top: 0;
+       height: 2px;
+       background: #555;
+       left: 0;
+   }
+
+   .parent-line {
+       height: 1rem;
+       width: 2px;
+       background: #555;
+       margin: 0 auto;
+   }
+
+   .child-line {
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       position: relative;
+   }
+
+   .child-line::before {
+       content: '';
+       position: absolute;
+       top: 0;
+       left: 0;
+       right: 0;
+       height: 2px;
+       background: #555;
+   }
+
+   .child-line>.connector {
+       background: #555;
+       width: 2px;
+       height: 1rem;
+   }

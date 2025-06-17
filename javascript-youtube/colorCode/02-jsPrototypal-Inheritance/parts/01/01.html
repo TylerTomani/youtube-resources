@@ -5,6 +5,7 @@
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>01-</title>
+    
 </head>
 <body class="dark-mode">
     <div id="targetDiv">
@@ -16,7 +17,7 @@
                 
                 
                 <!-- 01 imgs-container -->
-                <div tabindex="0" class="step-float br1">
+                <div tabindex="0" class="step-float ">
                     <div class="step-txt">
                         <h4>01</h4>
                         <p>
@@ -57,7 +58,7 @@ dude
                 <!-- 02 -->
                 <div tabindex="0" class="step-float ">
                     <div class="step-img">
-                        <img src="parts/01/images/06.png" alt="">
+                        <img src="parts/01/images/02.png" alt="">
                     </div>
                     
                     <div class="step-txt">
@@ -70,18 +71,27 @@ dude
                             <li><code>'string'</code></li>
                             <li><code>numbers</code> ints/floats</li>
                         </ul>
+                        <div class="code-container">
+                            <pre tabindex="0" class="copy-code">
+const myBrothers = ['Ben','Sam']
+myBrothers</pre>
+
+                        </div>
+                        
                         <p>
-                            Notice for array it's <code>__proto__</code> now <code class="r">[[Prototype]]</code>
-                            has Array, 
+                            Notice for the array inheriting <code>Array(0)</code> seen in  it's <code>__proto__</code>,
+                            now <code class="r">[[Prototype]]</code>,
                         </p>
-                        \
+                        <p>
+
+                        </p>
                     </div>
 
                 </div>
                 <!-- 03 -->
                 <div tabindex="0" class="step-float ">
-                    <div class="step-img">
-                        <img src="parts/01/images/07.png" alt="">
+                    <div class="step-vid">
+                        <video src="parts/01/images/03.mov"></video>
                     </div>
                     <div class="step-txt">
                         <h4>03</h4>
@@ -89,16 +99,29 @@ dude
                             inside of Array you will find <code class="lsg">Object</code> within
                             <code>Array(0)</code>'s <code>__proto__</code> or <sup><code class="r">[[Prototype]]</code></sup>
                         </p>
-                        <p>
-                            Insert tree diagram with Object's .prototype the main branch
-                        </p>
+                        <div class="tree">
+                            <div class="node">Object</div>
+                        
+                            <div class="child-line">
+                                <div class="connector" style="margin: 0 3rem;"></div>
+                                <div class="connector" style="margin: 0 3rem;"></div>
+                                <div class="connector" style="margin: 0 3rem;"></div>
+                                <div class="connector" style="margin: 0 3rem;"></div>
+                            </div>
+                        
+                            <div class="branch">
+                                <div class="node">Array</div>
+                                <div class="node">String</div>
+                                <div class="node">Number</div>
+                                <div class="node">Custom Object</div>
+                            </div>
+                        </div>
                         
                     </div>
                 </div>
-                <!-- 04 -->
                 <div tabindex="0" class="step-float ">
-                    <div class="step-img">
-                        <img src="parts/01/images/07.png" alt="">
+                    <div class="step-vid">
+                        <video src="parts/01/images/04.mov"></video>
                     </div>
                     <div class="step-txt">
                         <h4>04</h4>
@@ -107,10 +130,29 @@ dude
                             making <code class="lsg">Object</code> the true parent besides window in javascript
                             <br>(my interpertaion not sure if thats' correct - ask chatgpt this question)
                         </p>
+                        <p>
+                            This also the case for ALL variables
+                        </p>
+                        <pre>
+                        </pre>
+                        <div class="code-container">
+                            <pre class="copy-code">
+└── Object
+    ├── Array(0)
+    ├── String
+    └── Number
+                            </pre>
+                        </div>
                         
+                        <ul>
+                            <li><code>Array(0) []</code></li>
+                            <li><code>String</code></li>
+                            <li><code>Number</code> ints/floats</li>
+                        </ul>
                         
                     </div>
                 </div>
+                
             </div>
         </div>
         <button tabindex="0" id="endNxtLesson">next lesson</button>

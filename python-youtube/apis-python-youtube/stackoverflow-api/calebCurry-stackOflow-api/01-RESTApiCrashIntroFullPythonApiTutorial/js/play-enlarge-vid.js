@@ -51,6 +51,7 @@ export function playEnlargeVideos(){
         if(vid){
             if (playing) {
                 vid.play()
+                vid.scrollIntoView({behavior: 'smooth',block: 'start'})
                 vid.style.border = "none"
             } else {
                 vid.style.border = "4px solid blue"
@@ -124,6 +125,7 @@ export function playEnlargeVideos(){
     function toggleVidSize(vid){
         vid.classList.toggle('enlarge-vid')
         if(vid.classList.contains('enlarge-vid')){
+            
             aside.classList.add('hide')
             vid.style.zIndex = 5
         } else {
