@@ -1,5 +1,6 @@
 (function(){
     const dropTopics = document.querySelectorAll('.drop-topic')
+    const dropSubTopic = document.querySelectorAll('.drop-sub-topic')
     const subResourcesContainers = document.querySelectorAll('.sub-resources-container')
     const subTopicsContainers = document.querySelectorAll('.sub-topics-container')
     function hideSubResources() {
@@ -27,7 +28,6 @@
     dropTopics.forEach(el => {
         el.addEventListener('click', e => {
             e.preventDefault()
-            // subResourcesToggle(e)
             toggleResources(e)
         })
         el.addEventListener('keydown', e => {
@@ -36,6 +36,12 @@
                 e.preventDefault()
                 toggleResources(e)
             }
+        })
+    })
+    dropSubTopic.forEach(el => {
+        el.addEventListener('click', e => {
+            e.preventDefault()
+            toggleSubTopics(e)
         })
     })
     function toggleResources(e) {
@@ -57,6 +63,11 @@
             }
         }
     }
+    function toggleSubTopics(e){
+        const subTopic = getSubTopic(e.target)
+        const subTopicContainer = subTopic.querySelector('.sub-topic-container')
+        subTopicContainer.classList.toggle('hide')
+    }
 
 
     function getTopicContainer(parent) {
@@ -68,4 +79,14 @@
             return null
         }
     }
+    function getSubTopic(parent) {
+        if (parent.classList.contains('sub-topic')) {
+            return parent
+        } else if (parent.parentElement) {
+            return getSubTopic(parent.parentElement)
+        } else {
+            return null
+        }
+    }
+    
 }())
