@@ -5,6 +5,12 @@
 body{
     /* overscroll-behavior-x: none; */
 }
+.dark-mode #sideBarBtn{
+    color: white;
+}
+#sideBarBtn{
+    color: black;
+}
 main {
     position: relative;
     height: 100vh;
@@ -38,6 +44,8 @@ main>#mainTargetDiv {
     flex-grow: 1;
 }
 main > .side-bar{
+    display: flex;
+    flex-direction: column;
     position: sticky;
     height: 100%;
     top: 0;
@@ -78,7 +86,7 @@ main > .side-bar.deactive .drop {
     /* width: min-content; */
     margin-top: 25%;
     margin-right: 2%;
-    margin-left: 1.5%;
+    margin-left: .5%;
     list-style: none;
     /* border: 1px solid magenta; */
     
@@ -99,35 +107,23 @@ ul li a:visited {
 .hide{
     display: none;
 }
-@media screen and (min-width:960px){
-    
-    
+@media screen and (min-width:960px){    
     main> .side-bar.deactive  {
-        /* flex-basis: .5%; */
-        /* width: 2.5%; */
-        /* width: 0; */
-        /* opacity: 0; */
         transition: all 250ms;
-        /* background-color: blue !important; */
     }
     .parts sup{
         display: inline-block;
         margin-left: -3px;
-        /* border: 2px solid orange; */
-        /* background-color: blue; */
     }
 }
-@media screen and (max-width:721px){
-    .side-bar>.parts ul {
-            /* font-size: 70%; */
-    }
-}
+
 @media screen and (max-width:600px){
     .side-bar>.parts ul li{
         line-height: 1.4;
     }
     .side-bar>.parts ul {
         /* font-size: 75%; */
+        
     }
     .parts{
         margin-left: 1.5%;
