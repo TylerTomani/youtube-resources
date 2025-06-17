@@ -53,14 +53,7 @@
             const subTopicsContainer = topicContainer.querySelector('.sub-topics-container')
             if(subTopicsContainer){
                 subTopicsContainer.classList.toggle('hide')
-                console.log(subTopicsContainer)
                 const projects = subTopicsContainer.querySelectorAll('.project')
-                if(projects){
-                    projects.forEach(el =>{
-                        el.classList.toggle('hide')
-                    })
-
-                }
             }
         }
     }
