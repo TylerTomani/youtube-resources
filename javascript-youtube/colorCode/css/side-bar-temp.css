@@ -166,4 +166,7 @@ ul li a:visited {
         main>.side-bar.deactive {
             flex-basis: 5%;
         }
+                .parts>ul li {
+                    margin-left: 2%;
+                }
 }
