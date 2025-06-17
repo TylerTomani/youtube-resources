@@ -13,8 +13,7 @@ body{
     
 }
 .deactive #sideBarBtn{
-    transform: scale(2);
-    
+    transform: scale(2);    
 }
 main {
     position: relative;
@@ -69,7 +68,6 @@ main > .side-bar{
 main > .side-bar.deactive {
     flex-basis: 5%;
 }
-
 main > .side-bar.deactive .parts {
     width: 0;
     opacity: 0;
@@ -84,30 +82,29 @@ main > .side-bar.deactive .drop {
 .side-bar > .parts ul {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-wrap: wrap;
-    
+    align-items: flex-start;
+    text-wrap: wrap;   
     overflow-y: scroll;
     scrollbar-width: none;
     /* width: fit-content; */
-    margin-top: 25%;
+    /* margin-top: 25%; */
     margin-right: 2%;
-
     list-style: none;
     /* border: 1px solid magenta; */
-    
 }
 .parts > ul li {
     text-wrap: none;
     width: fit-content;
     margin-top: 20%;
-}
-.parts > ul li a code{
-    display: inline;
+    margin-left: 4%;
+
 }
 ul li a {
     text-decoration: none;
     color: black;
+}
+.parts > ul code{
+    display: inline;
 }
 ul li a:visited {
     text-decoration: none;
@@ -127,16 +124,16 @@ ul li a:visited {
 }
 
 @media screen and (max-width:600px){
+    .side-bar{
+        width: 20%;
+    }
     .side-bar>.parts {
         margin-left: 10%;
     }
     .side-bar>.parts ul li{
         line-height: 1.4;
     }
-    .side-bar>.parts ul {
-        /* font-size: 75%; */
-        
-    }
+    
     .parts{
         margin-left: 1.5%;
         font-size: 90%;
