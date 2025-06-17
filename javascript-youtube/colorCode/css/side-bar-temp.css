@@ -44,7 +44,6 @@ main>#mainTargetDiv {
     flex-grow: 1;
 }
 main > .side-bar{
-    display: flex;
     flex-direction: column;
     position: sticky;
     height: 100%;
@@ -54,10 +53,8 @@ main > .side-bar{
     box-shadow: 0 0 1px 1px white;
     flex-basis: 8%;
     text-wrap: wrap;
-    /* width: fit-content; */
     text-wrap: none;
     white-space: none;
-    /* width: max-content; */
     padding-left: .5%;
     border-right: 1px solid black;
     padding-right: 2;
@@ -79,14 +76,16 @@ main > .side-bar.deactive .drop {
     bottom: 0;
 }
 
+
 .side-bar > .parts ul {
-    /* display: flex; */
-    /* flex-direction: column; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     /* text-wrap: wrap; */
     /* width: min-content; */
     margin-top: 25%;
     margin-right: 2%;
-    margin-left: .5%;
+
     list-style: none;
     /* border: 1px solid magenta; */
     
@@ -118,6 +117,9 @@ ul li a:visited {
 }
 
 @media screen and (max-width:600px){
+    .side-bar>.parts {
+        margin-left: 20%;
+    }
     .side-bar>.parts ul li{
         line-height: 1.4;
     }
