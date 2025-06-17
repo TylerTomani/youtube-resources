@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 .page-wrapper main#mainContainer {
-    max-height: 75vh;
+    height: 75vh;
     margin: 0 2.5%;
     padding: 0 2.5%;
     padding-left: 0;
@@ -76,9 +76,9 @@
 }
 @media screen and (max-width:672px) {
     .page-wrapper {
-        max-height: 75vh;
     }
     .page-wrapper main#mainContainer {
+        height: 75vh;
         margin: 0;
         margin-left: 4%;
         padding-bottom: 5%;
