@@ -13,11 +13,13 @@
         })
     }
     function hdieSubTopicsContainers() {
-        subTopicsContainers.forEach(el => {
-            if (!el.classList.contains('show')) {
-                el.classList.add('hide')
-            }
-        })
+        if(subTopicsContainers){
+            subTopicsContainers.forEach(el => {
+                if (!el.classList.contains('show')) {
+                    el.classList.add('hide')
+                }
+            })
+        }
     }
     hideSubResources()
     hdieSubTopicsContainers()
@@ -51,6 +53,7 @@
             const subTopicsContainer = topicContainer.querySelector('.sub-topics-container')
             if(subTopicsContainer){
                 subTopicsContainer.classList.toggle('hide')
+                console.log(subTopicsContainer)
                 const projects = subTopicsContainer.querySelectorAll('.project')
                 if(projects){
                     projects.forEach(el =>{
