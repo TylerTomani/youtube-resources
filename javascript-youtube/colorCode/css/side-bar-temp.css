@@ -10,6 +10,11 @@ body{
 }
 #sideBarBtn{
     color: black;
+    
+}
+.deactive #sideBarBtn {
+    transform: scale(2);
+
 }
 main {
     position: relative;
@@ -44,6 +49,7 @@ main>#mainTargetDiv {
     flex-grow: 1;
 }
 main > .side-bar{
+    flex-basis: 3%;
     flex-direction: column;
     position: sticky;
     height: 100%;
@@ -51,9 +57,9 @@ main > .side-bar{
     background-color: var(--font-primary-db);
     color: black;
     box-shadow: 0 0 1px 1px white;
-    flex-basis: 8%;
-    text-wrap: wrap;
-    text-wrap: none;
+    /* text-wrap: wrap; */
+    background-color: blue ;
+    /* text-wrap: none; */
     white-space: none;
     padding-left: .5%;
     border-right: 1px solid black;
@@ -75,10 +81,6 @@ main > .side-bar.deactive .drop {
     z-index: 1;
     bottom: 0;
 }
-
-
-.side-bar > .parts{
-}
 .side-bar > .parts ul {
     display: flex;
     flex-direction: column;
@@ -87,7 +89,7 @@ main > .side-bar.deactive .drop {
     
     overflow-y: scroll;
     scrollbar-width: none;
-    width: fit-content;
+    /* width: fit-content; */
     margin-top: 25%;
     margin-right: 2%;
 
