@@ -7,10 +7,10 @@
 .topic-container {
     display: flex;
     flex-direction: column;
-    margin-top: 1%
+    margin-top: 1%;
+    margin-bottom: .5%;
 }
 .topic-container  > .drop-topic {
-    margin-top: 1%;
     padding: 1% 0 ;
     padding-left: 2%;
     border: 1px solid black;
@@ -23,7 +23,11 @@
     border: none;
     background-color: blue;
 }
-ul.sub-resources-container {
+.topic-container > .sub-topics-container,
+.topic-container ul.sub-resources-container
+ {
+    margin-top: 1.5%;
+    margin-left: 5%;
     display: flex;
     flex-wrap: wrap;
     align-items: stretch;
