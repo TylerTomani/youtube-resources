@@ -66,7 +66,7 @@ main > .side-bar{
     z-index: 10;
 }
 main > .side-bar.deactive {
-    flex-basis: 5%;
+    flex-basis: 2%;
 }
 main > .side-bar.deactive .parts {
     width: 0;
@@ -163,5 +163,7 @@ ul li a:visited {
         display: none;
         /* Chrome, Safari, Opera */
     }
-    
+        main>.side-bar.deactive {
+            flex-basis: 5%;
+        }
 }
