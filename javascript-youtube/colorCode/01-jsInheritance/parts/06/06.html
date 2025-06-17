@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>04-</title>
+    <title>06-</title>
 </head>
 <body class="dark-mode">
     <div id="targetDiv">
         <header class="header-codeColor-lesson">
-            <h3>4. <code class="m">this</code> in the class constructor function <code class="b">Person</code></h3>
+            <h3>6. <code class="r">extends</code> </h3>
         </header>
         <div class="main-container-codeColor">
             <div class="steps-container">
@@ -83,41 +83,7 @@ Person.<span class="y">prototype</span></pre>
                             
                 </div>
                 <!-- 03 -->
-                <div tabindex="0" class="step-float">
-                    <div class="step-img ">
-                        <!-- <img src="parts/04/images/03.png" alt=""> -->
-                        <img src="parts/04/images/03.png" alt="">
-                    </div>
-                    <div class="step-txt txt70">
-                        <h4>03</h4>
-                        <p>
-                            We don't use <code class="m">this</code> frequently b/c it
-                            will copy the function into each instance of the class, is not needed
-                        </p> 
-                        <p>
-                            Here, we see that when using <code class="m">this</code> in the 'Prototype' class <code class="b">Person</code>
-                            if will appear as undefined when logged, that is b/c as we have said this whole page...
-                        </p>
-                        <div class="code-container">
-                            <pre tabindex="0" class="copy-code">
-function <span class="b">Person</span>(){
-    <span class="m">this</span>.age = 12
-}
-const me = new Person()
-me.age</pre>
-                        </div>
-                        <div class="code-container">
-                            <pre tabindex="0" class="copy-code">
-Person.age</pre>
-                        </div>
-                        
-                        
-                        <p>
-                            The <code class="m">this</code> atrribute, <code class="y">age</code> and its value get applied to the <strong>'instance'</strong> of the class and not 
-                            to the class itself
-                        </p>
-                    </div>
-                </div>
+                
                 
                 
             </div>
