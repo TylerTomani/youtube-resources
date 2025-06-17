@@ -12,9 +12,9 @@ body{
     color: black;
     
 }
-.deactive #sideBarBtn {
+.deactive #sideBarBtn{
     transform: scale(2);
-
+    
 }
 main {
     position: relative;
@@ -45,11 +45,11 @@ main>#mainTargetDiv {
     /* margin-right: 20px; */
     /* width: 100%; */
     overflow-x: hidden;
-    flex-basis: 100%;
+    flex-basis: 50%;
     flex-grow: 1;
 }
 main > .side-bar{
-    flex-basis: 3%;
+    flex-basis: 10%;
     flex-direction: column;
     position: sticky;
     height: 100%;
@@ -67,7 +67,7 @@ main > .side-bar{
     z-index: 10;
 }
 main > .side-bar.deactive {
-    flex-basis: 3%;
+    flex-basis: 5%;
 }
 
 main > .side-bar.deactive .parts {
