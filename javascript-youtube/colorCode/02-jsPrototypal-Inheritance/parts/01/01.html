@@ -66,8 +66,15 @@ dude
                             This also the case for ALL variables
                         </p>
                         <ul>
-                            <li></li>
+                            <li><code>[]</code></li>
+                            <li><code>'string'</code></li>
+                            <li><code>numbers</code> ints/floats</li>
                         </ul>
+                        <p>
+                            Notice for array it's <code>__proto__</code> now <code class="r">[[Prototype]]</code>
+                            has Array, 
+                        </p>
+                        \
                     </div>
 
                 </div>
@@ -79,13 +86,28 @@ dude
                     <div class="step-txt">
                         <h4>03</h4>
                         <p>
-                            Each Variable type also inherits from the <code class="lsg">Object</code>,
-                            making <code class="lsg">Object</code> the true parent besides window in javascript
-                            <br>(my interpertaion not sure if thats' correct - ask chatgpt this question)
+                            inside of Array you will find <code class="lsg">Object</code> within
+                            <code>Array(0)</code>'s <code>__proto__</code> or <sup><code class="r">[[Prototype]]</code></sup>
                         </p>
                         <p>
                             Insert tree diagram with Object's .prototype the main branch
                         </p>
+                        
+                    </div>
+                </div>
+                <!-- 04 -->
+                <div tabindex="0" class="step-float ">
+                    <div class="step-img">
+                        <img src="parts/01/images/07.png" alt="">
+                    </div>
+                    <div class="step-txt">
+                        <h4>04</h4>
+                        <p>
+                            Each Variable type also inherits from the <code class="lsg">Object</code>,
+                            making <code class="lsg">Object</code> the true parent besides window in javascript
+                            <br>(my interpertaion not sure if thats' correct - ask chatgpt this question)
+                        </p>
+                        
                         
                     </div>
                 </div>
