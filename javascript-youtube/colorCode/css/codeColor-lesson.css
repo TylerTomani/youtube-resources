@@ -17,8 +17,11 @@
 }
 
 /* .step, */
+.step-float:focus,.step-float:focus{
+    background-color: var(--bg-primary-db);
+    z-index: 100;
+}
 .step-float{
-    padding-bottom: 2%;
     position: relative;
     padding-bottom: 5%;
 }
