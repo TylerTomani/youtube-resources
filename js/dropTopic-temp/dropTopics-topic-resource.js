@@ -1,6 +1,7 @@
 (function(){
     const dropTopics = document.querySelectorAll('.drop-topic')
     const subResourcesContainers = document.querySelectorAll('.sub-resources-container')
+    const subTopicsContainers = document.querySelectorAll('.sub-topics-container')
     function hideSubResources() {
         subResourcesContainers.forEach(el => {
             if (!el.classList.contains('show')) {
@@ -11,19 +12,26 @@
             }
         })
     }
+    function hdieSubTopicsContainers() {
+        subTopicsContainers.forEach(el => {
+            if (!el.classList.contains('show')) {
+                e.classList.add('hide')
+            }
+        })
+    }
     hideSubResources()
+    hdieSubTopicsContainers()
 
     dropTopics.forEach(el => {
         el.addEventListener('click', e => {
             e.preventDefault()
             // subResourcesToggle(e)
             toggleResources(e)
-            console.log(e.target)
         })
         el.addEventListener('keydown', e => {
             let letter = e.key.toLowerCase()
             if (letter == 'enter') {
-                // e.preventDefault()
+                e.preventDefault()
                 toggleResources(e)
             }
         })
@@ -32,13 +40,24 @@
         const topicContainer = getTopicContainer(e.target.parentElement)
         if(topicContainer){
             const subResourcesContainer = topicContainer.querySelector('.sub-resources-container')
-            const resources = subResourcesContainer.querySelectorAll('.resource')
-            
-            if(resources){
-                
-                resources.forEach(el => {
-                    el.classList.toggle('hide')
-                })
+            if(subResourcesContainer){
+                const resources = subResourcesContainer.querySelectorAll('.resource')
+                if(resources){    
+                    resources.forEach(el => {
+                        el.classList.toggle('hide')
+                    })
+                }
+            }
+            const subTopicsContainer = topicContainer.querySelector('.sub-topics-container')
+            if(subTopicsContainer){
+                subTopicsContainer.classList.toggle('hide')
+                const projects = subTopicsContainer.querySelectorAll('.project')
+                if(projects){
+                    projects.forEach(el =>{
+                        el.classList.toggle('hide')
+                    })
+
+                }
             }
         }
     }
