@@ -89,7 +89,7 @@ export function playEnlargeVideos(){
         if (vid) {
             if (playing) {
                 vid.play()
-                vid.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                vid.scrollIntoView({ behavior: 'smooth', block: 'center' })
                 vid.style.border = "2px solid blue"
                 // vid.style.border = "none"
             } else {
