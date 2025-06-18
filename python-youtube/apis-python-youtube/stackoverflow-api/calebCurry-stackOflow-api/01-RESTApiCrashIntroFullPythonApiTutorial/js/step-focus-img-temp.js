@@ -209,6 +209,7 @@ export function stepTxtListeners(){
                     img.style.zIndex = 50; // Highest z-index
                     nav.style.zIndex ="0"
                     aside.classList.add('hide')
+                    toggleSideBtmBtn.classList.add('active')
                 } else {
                     aside.classList.remove('hide')
                     nav.style.zIndex = "0"
