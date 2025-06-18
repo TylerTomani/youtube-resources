@@ -29,7 +29,8 @@ export function playEnlargeVideos(){
             const vid = step.querySelector('video')
             if(letter == 'enter'){
                 playing = true
-                
+                // denlar
+                toggleVidSize(vid)
             }
             if(key == 32){
                 e.preventDefault()
@@ -124,8 +125,8 @@ export function playEnlargeVideos(){
     })
     function toggleVidSize(vid){
         vid.classList.toggle('enlarge-vid')
+        console.log(vid)
         if(vid.classList.contains('enlarge-vid')){
-            
             aside.classList.add('hide')
             vid.style.zIndex = 5
         } else {

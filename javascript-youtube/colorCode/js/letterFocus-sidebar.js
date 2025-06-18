@@ -70,7 +70,7 @@ export function letterFocus(){
             elsFocus(e, letter)
         }
         if(sideBar){
-            // console.log(sideBar)
+            // 
         }
     });
     function elsFocus(e,letter) {
@@ -101,8 +101,8 @@ export function letterFocus(){
                 scrollTo(0, 0)
             }
         }
-         
-        if (!e.shiftKey && letter == 'c') {
+        //  This is very sloppy handling of letterFocus
+        if (letter == 'c') {
             const chatGpt = document.querySelector('#chatGpt')
             const codeComandShortcuts = document.querySelector('#codeComandShortcuts')
             
@@ -112,7 +112,7 @@ export function letterFocus(){
                 codeComandShortcuts.focus()
             }
         } 
-        if (e.shiftKey && letter == 'c') {
+        if (letter == 'c') {
             // const enterConsole = getEnterConsole()
             enterConsole.scrollIntoView({behavior: 'smooth', block:'center'})
             

@@ -36,6 +36,28 @@ addEventListener('DOMContentLoaded', e => {
         if(el.hasAttribute('autofocus')){
             autoFocused = true
         }
+        el.addEventListener('focus', e => {
+            iLesson = -1
+        })
+        el.addEventListener('keydown', e => {
+            let letter = e.key.toLowerCase()
+            if(letter == 'a'){
+                const sectionContainer = getSectionContainer(e.target.parentElement)
+                const lessons = sectionContainer.querySelectorAll('.sub-section li a')
+                
+                // This page has really good letter focus cycle
+                    if (e.shiftKey) {
+                        iLesson = (iLesson - 1 + lessons.length) % lessons.length
+                    } else {
+                        iLesson = (iLesson + 1) % lessons.length
+
+                    }
+                    lessons[iLesson].focus()
+                    console.log()
+            }
+            
+        })
+
     })
     if(!autoFocused){
 
@@ -188,7 +210,7 @@ sections.forEach(el => {
                     }
                 } 
             } else {
-                console.log('a')
+                
             }
             
         }
@@ -304,13 +326,13 @@ addEventListener('keydown', e => {
     let letter = e.key.toLowerCase()   
     const isMeta = e.metaKey
     let key = e.keyCode
-    console.log(isMeta)
+    
     if (!isMeta) {
-        console.log('yes')
+        
         elIdsFocus(e)
     }
     if ((letter == 's' )  && !asideFocused) {
-        console.log(lastClickedLesson)
+        
         if(lastClickedSection){
             lastClickedSection.focus()
         }
