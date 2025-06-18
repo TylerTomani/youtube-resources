@@ -139,6 +139,17 @@ function elIdsFocus(e) {
         if (letter === el.id[0] && !isShift){
             el.focus();
         }
+        if (letter == 'c') {
+            const chatGpt = document.querySelector('#chatGpt')
+            const codeComandShortcuts = document.querySelector('#codeComandShortcuts')
+
+            if (e.target == codeComandShortcuts) {
+                chatGpt.focus()
+            } else {
+                codeComandShortcuts.focus()
+            }
+        } 
+        
         if (letter === 'm') {
             scrollTo(0, 0);
         }
@@ -168,14 +179,18 @@ sections.forEach(el => {
         let letter = e.key.toLowerCase()
         let sectionContainer = getSectionContainer(e.target.parentElement)
         let lessons = sectionContainer.querySelectorAll('ul.sub-section  > li > a')
-        if(lessons[0]){
-            if(letter == 'a' && sectionsFocused){
-                lessons[0].focus()
+        if(letter == 'a' ){
+            if (!sectionsFocused){
                 if(!lastClickedLesson){
+                    if(lessons){
+
+                        lessons[0].focus()
+                    }
                 } 
-                // else 
-                // lastClickedLesson.focus()
+            } else {
+                console.log('a')
             }
+            
         }
         if (!isNaN(letter)) {
             let intLet = parseInt(letter)
