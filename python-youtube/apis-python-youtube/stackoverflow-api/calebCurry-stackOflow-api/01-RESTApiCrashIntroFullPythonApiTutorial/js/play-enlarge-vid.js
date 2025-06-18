@@ -1,7 +1,6 @@
 import { aside } from "./step-focus-img-temp.js"
 import { nav } from "./step-focus-img-temp.js"
 import { toggleSideBtn } from "./sections-stackoverflow.js"
-
 export function playEnlargeVideos(){
     let playing = false
     let imgFocused = false
@@ -11,8 +10,6 @@ export function playEnlargeVideos(){
     const vids = document.querySelectorAll('.step-vid > video')
     const images = document.querySelector('.step-img > img')
 
-    
-    
     function stopAllVids() {vids.forEach(el => {el.pause()})}
     function denlargeAllVids() {vids.forEach(el => {
         if(el.classList.contains('enlarge-vid')){
@@ -31,6 +28,12 @@ export function playEnlargeVideos(){
     stepTxts.forEach(el => {
         el.addEventListener('focus', () =>{
             stopAllVids()
+        })
+        el.addEventListener('keydown', (e) =>{
+            let key = e.keyCode
+            if(key === 13){
+                // denlargeAllVids()
+            }
         })
     })
     stepVidsSteps.forEach(el => {
@@ -63,6 +66,7 @@ export function playEnlargeVideos(){
                 stopAllVids()
                 toggleVidSize(vid)
                 playing = true
+                
                 break
             case 32:
                 e.preventDefault()
@@ -90,6 +94,12 @@ export function playEnlargeVideos(){
                     vid.currentTime = vid.duration()
                 }
                 break
+        }
+        if(key === 13){
+            if (!vid.classList.contains('enlarge-vid') && playing) {
+                console.log('yes')
+                vid.currentTime = 0
+            }
         }
         playPause(vid)
     }
@@ -121,14 +131,13 @@ export function playEnlargeVideos(){
             let vid = step.querySelector('.step-vid video')
             playPause(vid)
             toggleVidSize(vid)
-            
-            
         })
         vid.addEventListener('keydown', e =>{
             let step = getStepVidStep(e.target.parentElement)
             let vid = step.querySelector('.step-vid video')
-            // lesson
-            videoControls(e, vid)
+            
+            let key = e.keyCode
+            videoControls(e, vid, key)
             
         })
         vid.addEventListener('focus', e =>{
