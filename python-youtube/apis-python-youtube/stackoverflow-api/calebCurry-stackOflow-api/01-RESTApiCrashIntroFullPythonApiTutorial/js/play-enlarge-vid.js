@@ -1,10 +1,13 @@
 import { aside } from "./step-focus-img-temp.js"
 import { nav } from "./step-focus-img-temp.js"
 import { toggleSideBtn } from "./sections-stackoverflow.js"
+
 export function playEnlargeVideos(){
     let playing = false
     let imgFocused = false
     const stepVidsSteps = document.querySelectorAll('.step-vid')
+    // Terrible code i shouldn't repeat stepTxts here
+    const stepTxts = document.querySelectorAll('.step  .step-txt')
     const vids = document.querySelectorAll('.step-vid > video')
     const images = document.querySelector('.step-img > img')
 
@@ -25,18 +28,24 @@ export function playEnlargeVideos(){
         }
         
     })
+    stepTxts.forEach(el => {
+        el.addEventListener('focus', () =>{
+            stopAllVids()
+        })
+    })
     stepVidsSteps.forEach(el => {
         const step = getStepVidStep(el.parentElement)
         const stepTxt = step.querySelector('.step-txt')
         stepTxt.addEventListener('focus', e => {
-            
+
+            stopAllVids()
             denlargeAllVids()
         })
         stepTxt.addEventListener('keydown', e => {
             let letter = e.key.toLowerCase()
             let key = e.keyCode
             const vid = step.querySelector('video')
-                       
+            stopAllVids()                       
             videoControls(e,vid,key)
         })
         stepTxt.addEventListener('click', e => {
@@ -90,8 +99,8 @@ export function playEnlargeVideos(){
             if (playing) {
                 vid.play()
                 vid.style.border = "2px solid blue"
-                if([...vids].indexOf(vid) == 0){
-                    vid.style.marginTop = '10%'
+                if ([...vids].indexOf(vid) == 0) {
+                    vid.style.marginTop = '15%'
                 } else {
 
                     vid.scrollIntoView({ behavior: 'smooth', block: 'center' })
@@ -99,6 +108,7 @@ export function playEnlargeVideos(){
                 }
             } else {
                 vid.style.border = "2px solid green"
+                vid.style.marginTop = '10%'
                 vid.pause()
             }
         }
@@ -134,19 +144,19 @@ export function playEnlargeVideos(){
     })
     function toggleVidSize(vid){
         vid.classList.toggle('enlarge-vid')
-        console.log(toggleSideBtn)
+        // console.log(toggleSideBtn)
         if(vid.classList.contains('enlarge-vid')){
             aside.classList.add('hide')
-            vid.style.zIndex = 5
             if(toggleSideBtn.classList.contains('hide')){
                 toggleSideBtn.classList.remove('hide')
             }
+            if(!toggleSideBtn.classList.contains('active')){
+                toggleSideBtn.classList.add('active')
+            }
+            vid.style.zIndex = 5
         } else {
             vid.style.zIndex = 1
             aside.classList.remove('hide')
-            // if(!toggleSideBtn.classList.contains('active')){
-            //     toggleSideBtn.classList.add('active')
-            // }
         }
         
     }
