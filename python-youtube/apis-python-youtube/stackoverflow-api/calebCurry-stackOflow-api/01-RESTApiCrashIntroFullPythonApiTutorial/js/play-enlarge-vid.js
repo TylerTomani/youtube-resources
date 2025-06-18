@@ -10,7 +10,12 @@ export function playEnlargeVideos(){
 
     
     
-    function stopAllVids(){vids.forEach(el =>{el.pause()})}
+    function stopAllVids() {vids.forEach(el => {el.pause()})}
+    function denlargeAllVids() {vids.forEach(el => {
+        if(el.classList.contains('enlarge-vid')){
+            el.classList.remove('enlarge-vid')
+        }
+    })}
 
     nav.addEventListener('click', stopAllVids)
     nav.addEventListener('keydown', e => {
@@ -23,22 +28,16 @@ export function playEnlargeVideos(){
     stepVidsSteps.forEach(el => {
         const step = getStepVidStep(el.parentElement)
         const stepTxt = step.querySelector('.step-txt')
+        stepTxt.addEventListener('focus', e => {
+            stopAllVids()
+            denlargeAllVids()
+        })
         stepTxt.addEventListener('keydown', e => {
             let letter = e.key.toLowerCase()
             let key = e.keyCode
             const vid = step.querySelector('video')
-            if(letter == 'enter'){
-                playing = true
-                // denlar
-                toggleVidSize(vid)
-            }
-            if(key == 32){
-                e.preventDefault()
-                e.stopPropagation()
-                console.log('yes')
-                playing = !playing
-            }            
-            // videoControls(e,vid,key)
+                       
+            videoControls(e,vid,key)
         })
         stepTxt.addEventListener('click', e => {
             e.preventDefault()
@@ -48,22 +47,11 @@ export function playEnlargeVideos(){
             playPause(vid)            
         })
     })
-    function playPause(vid){
-        if(vid){
-            if (playing) {
-                vid.play()
-                vid.scrollIntoView({behavior: 'smooth',block: 'start'})
-                vid.style.border = "none"
-            } else {
-                vid.style.border = "4px solid blue"
-                vid.pause()
-            }
-        }
-    }
     function videoControls(e, vid, key){
-       
+        console.log(e,vid,key)
         switch (key) {
             case 13:
+                stopAllVids()
                 toggleVidSize(vid)
                 playing = true
                 break
@@ -75,19 +63,20 @@ export function playEnlargeVideos(){
             // left arrow
             case 37:
                 e.preventDefault()
-                console.log('left')
+                e.stopPropagation()
                 if (vid.currentTime > 0) {
                     vid.currentTime = vid.currentTime - 1
                 }
                 if (vid.currentTime < vid.duration) {
-                    vid.style.border = '2px solid blue'
                 }
                 break
             // right arrow
             case 39:
+                e.preventDefault()
+                e.stopPropagation()
                 vid.currentTime = vid.currentTime + 2
                 if (vid.currentTime >= vid.duration) {
-                    vid.style.border = '14px solid red'
+                    // vid.style.border = '14px solid red'
                     vid.pause()
                     vid.currentTime = vid.duration()
                 }
@@ -95,20 +84,34 @@ export function playEnlargeVideos(){
         }
         playPause(vid)
     }
+    function playPause(vid) {
+        
+        if (vid) {
+            if (playing) {
+                vid.play()
+                vid.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                vid.style.border = "2px solid blue"
+                // vid.style.border = "none"
+            } else {
+                vid.style.border = "2px solid green"
+                vid.pause()
+            }
+        }
+    }
     vids.forEach(vid => {
         vid.addEventListener('click', e =>{
-            // playing = !playing
+            playing = !playing
             e.preventDefault()
             let step = getStepVidStep(e.target.parentElement)
             let vid = step.querySelector('.step-vid video')
-            videoControls(e,vid)
+            playPause(vid)
             toggleVidSize(vid)
             
         })
         vid.addEventListener('keydown', e =>{
             let step = getStepVidStep(e.target.parentElement)
             let vid = step.querySelector('.step-vid video')
-            // console.log(e.target)
+            // lesson
             // videoControls(e,vid)
             
         })
@@ -125,7 +128,6 @@ export function playEnlargeVideos(){
     })
     function toggleVidSize(vid){
         vid.classList.toggle('enlarge-vid')
-        console.log(vid)
         if(vid.classList.contains('enlarge-vid')){
             aside.classList.add('hide')
             vid.style.zIndex = 5
@@ -135,14 +137,7 @@ export function playEnlargeVideos(){
         }
         
     }
-    addEventListener('click', e => {
-        let key = e.keyCode
-        vids.forEach(vid => {
-            if(vid.classList.contains('enlarge-vid')){
-                vid.play()
-            }
-        })
-    })
+   
 }
 function getStepVidStep(parent){
     if(parent.classList.contains('step')){

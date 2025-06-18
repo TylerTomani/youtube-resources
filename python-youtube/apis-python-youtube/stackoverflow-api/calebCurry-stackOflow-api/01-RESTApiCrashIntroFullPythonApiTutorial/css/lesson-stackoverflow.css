@@ -90,13 +90,13 @@
     width: 100%;
     height: 100%;
 }
-.step-col > .img-container>.step-vid > video {
+.step-vid  {
     
 }
 video {
     /* border: 1px solid blue !important; */
 }
-.dark-mode .enlarge {
+.dark-mode .step > .step-img > .enlarge {
     border: 1px solid white ;
 
 }
