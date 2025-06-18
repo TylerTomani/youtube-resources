@@ -89,9 +89,14 @@ export function playEnlargeVideos(){
         if (vid) {
             if (playing) {
                 vid.play()
-                vid.scrollIntoView({ behavior: 'smooth', block: 'center' })
                 vid.style.border = "2px solid blue"
-                // vid.style.border = "none"
+                if([...vids].indexOf(vid) == 0){
+                    vid.style.marginTop = '10%'
+                } else {
+
+                    vid.scrollIntoView({ behavior: 'smooth', block: 'center' })
+                    // vid.style.border = "none"
+                }
             } else {
                 vid.style.border = "2px solid green"
                 vid.pause()
