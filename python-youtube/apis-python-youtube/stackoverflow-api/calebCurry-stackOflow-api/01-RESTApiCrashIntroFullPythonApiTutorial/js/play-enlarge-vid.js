@@ -1,6 +1,6 @@
 import { aside } from "./step-focus-img-temp.js"
 import { nav } from "./step-focus-img-temp.js"
-
+import { toggleSideBtn } from "./sections-stackoverflow.js"
 export function playEnlargeVideos(){
     let playing = false
     let imgFocused = false
@@ -29,7 +29,7 @@ export function playEnlargeVideos(){
         const step = getStepVidStep(el.parentElement)
         const stepTxt = step.querySelector('.step-txt')
         stepTxt.addEventListener('focus', e => {
-            stopAllVids()
+            
             denlargeAllVids()
         })
         stepTxt.addEventListener('keydown', e => {
@@ -48,7 +48,7 @@ export function playEnlargeVideos(){
         })
     })
     function videoControls(e, vid, key){
-        console.log(e,vid,key)
+        
         switch (key) {
             case 13:
                 stopAllVids()
@@ -107,12 +107,13 @@ export function playEnlargeVideos(){
             playPause(vid)
             toggleVidSize(vid)
             
+            
         })
         vid.addEventListener('keydown', e =>{
             let step = getStepVidStep(e.target.parentElement)
             let vid = step.querySelector('.step-vid video')
             // lesson
-            // videoControls(e,vid)
+            videoControls(e, vid)
             
         })
         vid.addEventListener('focus', e =>{
@@ -128,12 +129,19 @@ export function playEnlargeVideos(){
     })
     function toggleVidSize(vid){
         vid.classList.toggle('enlarge-vid')
+        console.log(toggleSideBtn)
         if(vid.classList.contains('enlarge-vid')){
             aside.classList.add('hide')
             vid.style.zIndex = 5
+            if(toggleSideBtn.classList.contains('hide')){
+                toggleSideBtn.classList.remove('hide')
+            }
         } else {
             vid.style.zIndex = 1
             aside.classList.remove('hide')
+            // if(!toggleSideBtn.classList.contains('active')){
+            //     toggleSideBtn.classList.add('active')
+            // }
         }
         
     }
@@ -148,6 +156,6 @@ function getStepVidStep(parent){
         return null
     }
 }
-playEnlargeVideos()
+// playEnlargeVideos()
 
 

@@ -4,7 +4,7 @@ import { playEnlargeVideos } from "./play-enlarge-vid.js"
 export const navBar = document.querySelector('nav.section-lesson-title')
 const mainTargetDiv = document.querySelector('#mainTargetDiv')
 const header = document.querySelector('header')
-export const toggleSideBtmBtn = document.querySelector('#toggleSideBtmBtn')
+export const toggleSideBtn = document.querySelector('#toggleSideBtn')
 import { addCopyCodes } from "./copy-code-resources.js"
 export const aside = document.querySelector('aside')
 const backlink = document.querySelector('#backlink')
@@ -369,22 +369,22 @@ stepTxtListeners()
 
 function showToggleSidBarBtn(){
     if (aside.classList.contains('hide')) {
-        toggleSideBtmBtn.classList.add('active')
-        toggleSideBtmBtn.setAttribute('tabindex', 0)
+        toggleSideBtn.classList.add('active')
+        toggleSideBtn.setAttribute('tabindex', 0)
 
     } else{
-        toggleSideBtmBtn.removeAttribute('tabindex')
-        toggleSideBtmBtn.classList.remove('active')
+        toggleSideBtn.removeAttribute('tabindex')
+        // toggleSideBtn.classList.remove('active')
     }
 }
-toggleSideBtmBtn.addEventListener('click', e => {
+toggleSideBtn.addEventListener('click', e => {
     // e.preventDefault()
     if(aside.classList.contains('hide')){
         aside.classList.remove('hide')
     }
-    toggleSideBtmBtn.classList.add('hide')
+    toggleSideBtn.classList.add('hide')
 })
-toggleSideBtmBtn.addEventListener('keydown', e => {
+toggleSideBtn.addEventListener('keydown', e => {
     let letter = e.key.toLowerCase()
     if(letter == 'enter'){   
         aside.classList.toggle('hide')
@@ -392,7 +392,7 @@ toggleSideBtmBtn.addEventListener('keydown', e => {
 })
 addEventListener('click', e => {
     if (!aside.classList.contains('hide')) {
-        toggleSideBtmBtn.classList.add('hide')
-        toggleSideBtmBtn.classList.remove('active')
+        toggleSideBtn.classList.add('hide')
+        toggleSideBtn.classList.remove('active')
     }
 });

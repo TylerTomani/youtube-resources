@@ -9,7 +9,7 @@ import { lastClickedLesson }  from './sections-stackoverflow.js'
 import { lastClickedSection }  from './sections-stackoverflow.js'
 import { sections } from './sections-stackoverflow.js'
 import { lessons } from './sections-stackoverflow.js'
-import { toggleSideBtmBtn } from './sections-stackoverflow.js'
+import { toggleSideBtn } from './sections-stackoverflow.js'
 
 // import { playing } from './play-enlarge-vid.js'
 export function stepTxtListeners(){
@@ -209,7 +209,7 @@ export function stepTxtListeners(){
                     img.style.zIndex = 50; // Highest z-index
                     nav.style.zIndex ="0"
                     aside.classList.add('hide')
-                    toggleSideBtmBtn.classList.add('active')
+                    toggleSideBtn.classList.add('active')
                 } else {
                     aside.classList.remove('hide')
                     nav.style.zIndex = "0"
@@ -242,8 +242,8 @@ export function stepTxtListeners(){
         if (letter == 'm' && lastStep) {lastStep.focus()}       
         if(letter == 'e' && endNxtLesson){
             endNxtLesson.scrollIntoView({behavior:'instant',block:'center'})
-        } else if (letter == 'e' && !endNxtLesson && toggleSideBtmBtn){
-            toggleSideBtmBtn.focus()
+        } else if (letter == 'e' && !endNxtLesson && toggleSideBtn){
+            toggleSideBtn.focus()
         }
     });
     aside.addEventListener('focusin', denlargeAllImages)    
