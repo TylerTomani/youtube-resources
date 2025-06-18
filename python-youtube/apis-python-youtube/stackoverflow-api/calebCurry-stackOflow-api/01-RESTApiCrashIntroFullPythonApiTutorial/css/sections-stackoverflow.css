@@ -12,7 +12,10 @@
 }
 body{
     margin-right:  5%;
-    overflow-x: hidden;}
+    overflow: hidden;
+    /* overflow-x: ; */
+    
+}
 
 main {
     display: flex;

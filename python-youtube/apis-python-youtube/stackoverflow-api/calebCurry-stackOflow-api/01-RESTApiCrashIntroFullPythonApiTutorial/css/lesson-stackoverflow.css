@@ -6,6 +6,7 @@
 .section-page > .step {padding-top: 5%;}
 .steps-container {
     display: flex;
+    overflow-x: hidden;
     flex-direction: column;
     width: 100%;
 }
