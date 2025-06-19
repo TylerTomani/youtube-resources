@@ -13,7 +13,8 @@ import { toggleSideBtn } from './sections-stackoverflow.js'
 
 // import { playing } from './play-enlarge-vid.js'
 export function stepTxtListeners(){
-    const stepTxts = document.querySelectorAll('.step  .step-txt')
+    const aLinkStepTxts = document.querySelectorAll('.step-txt a')
+    const stepTxts = document.querySelectorAll('.step .step-txt')
     const allImages = document.querySelectorAll('.step-img > img') 
     const asStepTxt = document.querySelectorAll('.step-txt a')
     const allVideos = document.querySelectorAll(".step-vid > video")
@@ -25,7 +26,11 @@ export function stepTxtListeners(){
     let colCodesFocused = false
     let currentStepIndex = 0
     let imgIndex = 0
-    
+    aLinkStepTxts.forEach(el => {
+        el.addEventListener('click', e => {
+            window.open(e.target.href,'_blank')
+        })
+    })
 
     // sections.forEach(el => { el.addEventListener('focus', denlargeAllImages )
     pAs.forEach(el => {el.setAttribute('tabindex','-1')})
@@ -118,7 +123,7 @@ export function stepTxtListeners(){
         });
         el.addEventListener('keydown', e => {
             let letter = e.key.toLowerCase()
-            if (letter == 'enter') {
+            if (letter == 'enter' && e.target.tagName != "A") {
                 let step = getStep(e.target.parentElement)
                 let img = step.querySelector('.step-img  img')
                 handleImgSize(e,letter)
@@ -129,7 +134,7 @@ export function stepTxtListeners(){
             }
         })
         el.addEventListener('click', e => {
-
+            // console.log(e.target.tagName)
         })
     })
     // Below-  handling of img and video size enlarge and denlarge
@@ -256,7 +261,10 @@ export function stepTxtListeners(){
         if(letter == 'e' && endNxtLesson){
             endNxtLesson.scrollIntoView({behavior:'instant',block:'center'})
         } else if (letter == 'e' && !endNxtLesson && toggleSideBtn){
-            toggleSideBtn.focus()
+            if(endNxtLesson){
+
+                endNxtLesson.focus()
+            }
         }
     });
     aside.addEventListener('focusin', denlargeAllImages)    

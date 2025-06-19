@@ -45,12 +45,15 @@ export function playEnlargeVideos(){
             denlargeAllVids()
         })
         stepTxt.addEventListener('keydown', e => {
-            console.log(('click'))
+            
             let letter = e.key.toLowerCase()
             let key = e.keyCode
             const vid = step.querySelector('video')
             stopAllVids()                       
-            videoControls(e,vid,key)
+            if(e.target.tagName != 'A'){
+
+                videoControls(e,vid,key)
+            }
         })
         stepTxt.addEventListener('click', e => {
             e.preventDefault()
@@ -119,7 +122,8 @@ export function playEnlargeVideos(){
                 }
             } else {
                 vid.style.border = "2px solid green"
-                vid.style.marginTop = '10%'
+                vid.style.margin = '0'
+                vid.style.position = 'static'
                 vid.pause()
             }
         }
