@@ -4,7 +4,7 @@
     /* --tShadow: 0 0 1px 1px white; */
     --tShadow: '0 0 10px 10px black';
 }
-
+.txt90 {font-size: 90%;}
 .bl {color: black !important ;}
 .b {color: blue !important ;}
 .b-fix {
@@ -82,4 +82,10 @@
     color: goldenrod !important;
     font-size: var(--fsize);
     font-weight: 999;
+}
+@media screen and (max-width:672px) {
+    .txt90 {
+            font-size: 80%;
+        }
+    
 }
