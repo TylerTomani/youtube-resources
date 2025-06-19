@@ -6,7 +6,7 @@ export function playEnlargeVideos(){
     let imgFocused = false
     const stepVidsSteps = document.querySelectorAll('.step-vid')
     // Terrible code i shouldn't repeat stepTxts here
-    const stepTxts = document.querySelectorAll('.step  .step-txt')
+    const stepTxts = document.querySelectorAll('.step .step-txt, .step-float .step-txt')
     const vids = document.querySelectorAll('.step-vid > video')
     const images = document.querySelector('.step-img > img')
 
@@ -40,11 +40,12 @@ export function playEnlargeVideos(){
         const step = getStepVidStep(el.parentElement)
         const stepTxt = step.querySelector('.step-txt')
         stepTxt.addEventListener('focus', e => {
-
+            
             stopAllVids()
             denlargeAllVids()
         })
         stepTxt.addEventListener('keydown', e => {
+            console.log(('click'))
             let letter = e.key.toLowerCase()
             let key = e.keyCode
             const vid = step.querySelector('video')

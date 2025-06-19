@@ -210,8 +210,21 @@ export function stepTxtListeners(){
                     nav.style.zIndex ="0"
                     aside.classList.add('hide')
                     toggleSideBtn.classList.add('active')
+                    if([...allImages].indexOf(img) == 0){
+                        img.style.marginTop = "10%"
+                    } 
+                    if(img.classList.contains('mv-l')){
+                        console.log('yes')
+                        console.log(img)
+                        
+                        img.style.marginRight = "5%"
+                        img.style.position = "absolute"
+                    }
                 } else {
+                    img.style.zIndex = 0; // Highest z-index
+                    img.style.position = "static"
                     aside.classList.remove('hide')
+                    img.style.marginTop = "0"
                     nav.style.zIndex = "0"
                 }
             }
