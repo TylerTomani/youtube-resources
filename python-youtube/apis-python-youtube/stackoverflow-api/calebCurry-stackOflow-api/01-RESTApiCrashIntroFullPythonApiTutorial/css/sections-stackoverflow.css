@@ -11,7 +11,7 @@
     /* background-color: lawngreen; */
 }
 body{
-    margin-right:  5%;
+    /* margin-right:  5%; */
     overflow: hidden;
     overflow-y: scroll;
     
@@ -214,6 +214,13 @@ li > code {
     body {
         margin-right: 0%
     }
+    main>aside {
+        width: 25vw;
+        font-size: 80% !important;
+    }
+        #mainTargetDiv {
+            width: 100%;
+        }
 }
 @media screen and (max-width: 641px){
     .section-lesson-title {padding-left: 1%;}
@@ -231,4 +238,5 @@ li > code {
     main>aside.active { 
 
     }
+    
 }

@@ -43,8 +43,7 @@ addEventListener('DOMContentLoaded', e => {
             let letter = e.key.toLowerCase()
             if(letter == 'a'){
                 const sectionContainer = getSectionContainer(e.target.parentElement)
-                const lessons = sectionContainer.querySelectorAll('.sub-section li a')
-                
+                const lessons = sectionContainer.querySelectorAll('.sub-section li a')                
                 // This page has really good letter focus cycle
                     if (e.shiftKey) {
                         iLesson = (iLesson - 1 + lessons.length) % lessons.length
@@ -214,12 +213,12 @@ sections.forEach(el => {
             }
             
         }
-        if (!isNaN(letter)) {
-            let intLet = parseInt(letter)
-            if (sections[intLet - 1]) {
-                sections[intLet - 1].focus()
-            }
-        }
+        // if (!isNaN(letter)) {
+        //     let intLet = parseInt(letter)
+        //     if (sections[intLet - 1]) {
+        //         sections[intLet - 1].focus()
+        //     }
+        // }
         if(letter == 's' && sectionsFocused){
             let lesson = sectionContainer.querySelector('.section-container > ul > li > a')
             let isShiftPressed = e.shiftKey
@@ -245,6 +244,10 @@ function sectionsCycles(shiftKey = false) {
     }
     sections[iSection].focus()
 }
+mainTargetDiv.addEventListener('focusin', e => {
+    console.log(e.target)
+    sectionsFocused = false
+})
 lessons.forEach(el => {
     if(el.hasAttribute('autofocus')){
         lastClickedLesson = el
@@ -353,7 +356,14 @@ addEventListener('keydown', e => {
         }
     }
     
-    
+    if(sectionsFocused){
+        if (!isNaN(letter)) {
+            let intLet = parseInt(letter)
+            if (sections[intLet - 1]) {
+                sections[intLet - 1].focus()
+            }
+        }
+    }
     if (letter == 'r') { vsCodeShortRegex.focus() }
     if (letter == 'a' || letter == 's') {
         if (aside.classList.contains('hide')) {
