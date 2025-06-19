@@ -271,7 +271,10 @@ lessons.forEach(el => {
     el.addEventListener('click', e => {
         e.preventDefault()
         e.stopPropagation()
-        fetchLessonHref(e.target.href)
+        if(e.target.tagName == "A"){
+
+            fetchLessonHref(e.target.href)
+        }
         // if(e.target == lastClickedLesson){
         //     mainTargetDiv.scrollIntoView({behavior:'instant', block:'start'})
         // }
