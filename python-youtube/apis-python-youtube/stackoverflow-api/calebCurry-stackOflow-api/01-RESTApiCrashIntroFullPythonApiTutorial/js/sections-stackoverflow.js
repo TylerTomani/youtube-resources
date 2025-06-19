@@ -248,6 +248,16 @@ mainTargetDiv.addEventListener('focusin', e => {
     console.log(e.target)
     sectionsFocused = false
 })
+
+function getParentA(parent){
+    if(parent.tagName == 'A'){
+        return parent
+    } else if (parent.parentElement){
+        return getParentA(parent.parentElement)
+    } else {
+        return null
+    }
+}
 lessons.forEach(el => {
     if(el.hasAttribute('autofocus')){
         lastClickedLesson = el
@@ -271,14 +281,21 @@ lessons.forEach(el => {
     el.addEventListener('click', e => {
         e.preventDefault()
         e.stopPropagation()
-        if(e.target.tagName == "A"){
-
+        if(e.target.tagName != "A"){
+            // console.log(e.target.parentElement)
+            const a = getParentA(e.target.parentElement)
+            if(a){
+                fetchLessonHref(a.href)
+                
+            }
+        } else {
             fetchLessonHref(e.target.href)
+            lastClickedLesson = e.target
+            
         }
         // if(e.target == lastClickedLesson){
         //     mainTargetDiv.scrollIntoView({behavior:'instant', block:'start'})
         // }
-        lastClickedLesson = e.target
     })
     el.addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
