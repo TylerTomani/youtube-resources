@@ -124,6 +124,7 @@ video {
 
 .step-txt>.code-container {
     align-self: center;
+    border:  1px solid black;
     width: 90%
 }
 
