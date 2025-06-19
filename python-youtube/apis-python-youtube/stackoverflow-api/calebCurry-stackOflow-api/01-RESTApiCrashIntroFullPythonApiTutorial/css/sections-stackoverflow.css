@@ -71,12 +71,16 @@ header a:active {
     box-shadow: 0 0 10px 6px rgb(116, 183, 180, 1);
 }
 body>header>h1 {
-    font-size: 120%;
+    font-size: 90%;
 }
 body>header>.title-tutorialLink-container {
     display: flex;
     justify-content: space-between;
     border-top: 1px solid black;
+}
+nav.section-lesson-title h2{
+    font-size: 90%;
+    
 }
 nav.section-lesson-title {
     position: sticky;
