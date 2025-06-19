@@ -6,7 +6,6 @@
     padding-left: 2.5%;
 }
 .step-container{
-    
     position: relative;
     z-index: 0;
 }
@@ -161,7 +160,5 @@ video.enlarge-vid {
         max-width: 200px;
         margin-right: 80%;
     }
-    .overflowX-none{
-        /* overflow-x: hidden; */
-    }
+    
 }

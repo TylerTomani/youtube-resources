@@ -2,8 +2,7 @@
     --width-side-active: 150px;
     --width-side-bar: 60px;
 }
-main {
-    
+main {    
     display: flex
 }
 .side-bar{
@@ -16,10 +15,7 @@ main {
     width: calc(100% - var(--width-side-bar));
     margin: 0 auto;
 }
-.side-bar ~ .main-content{
-    /* width: calc(100% - var(--width-side-bar)); */
-    /* margin-right: 4%; */
-}
+
 .side-bar.active {
     width: var(--width-side-active);
     transition: all .2s ease;

@@ -5,23 +5,13 @@
 body{
     /* overscroll-behavior-x: none; */
 }
-.dark-mode #sideBarBtn{
-    color: white;
-}
-#sideBarBtn{
-    color: black;
-    
-}
-.deactive #sideBarBtn{
-    transform: scale(2);    
-}
 main {
     position: relative;
-    height: 100vh;
     display: flex;
+    height: 100vh;
     width: 100%;
-    overflow:scroll;
-    /* overflow-y: scroll; */
+    overflow:hidden;
+    overflow-y: scroll;
     scrollbar-width: none;
 }
 body>nav.section-lesson-title {
@@ -111,6 +101,18 @@ ul li a:visited {
 }
 .hide{
     display: none;
+}
+.dark-mode #sideBarBtn {
+    color: white;
+}
+
+#sideBarBtn {
+    color: black;
+
+}
+
+.deactive #sideBarBtn {
+    transform: scale(2);
 }
 @media screen and (min-width:960px){    
     main> .side-bar.deactive  {
