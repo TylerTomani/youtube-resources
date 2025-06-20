@@ -193,7 +193,8 @@ video {
 .step-float > .step-txt{
     /* border: 1px solid orange; */
     width: 100%;
-    display: block;
+    display: flex;
+
 }
 .step-float .step-img {
     /* border: 4px solid magenta; */

@@ -31,3 +31,7 @@
 .dark-mode .code-container > .copy-code{
     border: 1px solid white;
 }
+
+.dark-mode .enlarge{
+    border: 1px solid whitesmoke;
+}
