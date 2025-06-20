@@ -94,7 +94,9 @@ export function stepTxtListeners(){
         copyCodes.forEach(el => { el.setAttribute('tabindex','-1') })
         pAs.forEach(el => { el.setAttribute('tabindex','-1') })
     }
-    
+    mainTargetDiv.addEventListener('keydown', e => {
+        
+    })
     stepTxts.forEach(el => {
         el.addEventListener('focusout', e => {
             let step = getStep(e.target.parentElement);
@@ -130,7 +132,9 @@ export function stepTxtListeners(){
                 handleStepTabIndex(e)
                 addTabs(e.target)
             }
-            if (letter == 'tab') {
+            if (letter == 'm') {
+                console.log('m')
+                // mainTargetDiv.focus()
             }
         })
         el.addEventListener('click', e => {
@@ -219,8 +223,7 @@ export function stepTxtListeners(){
                         img.style.marginTop = "10%"
                     } 
                     if(img.classList.contains('mv-l')){
-                        console.log('yes')
-                        console.log(img)
+                        
                         
                         img.style.marginRight = "5%"
                         img.style.position = "absolute"
@@ -257,7 +260,7 @@ export function stepTxtListeners(){
                 })
             }
         }
-        if (letter == 'm' && lastStep) {lastStep.focus()}       
+        
         if(letter == 'e' && endNxtLesson){
             endNxtLesson.scrollIntoView({behavior:'instant',block:'center'})
         } else if (letter == 'e' && !endNxtLesson && toggleSideBtn){
@@ -266,10 +269,21 @@ export function stepTxtListeners(){
                 endNxtLesson.focus()
             }
         }
+        if (letter == 'm' ) {
+            if(!lastStep){
+                scrollTo(0,0)
+                mainTargetDiv.focus()
+            } else if(lastStep && e.target.id == 'mainTargetDiv'){
+                lastStep.focus()
+            } 
+            else if(e.target.classList.contains('step-txt')){
+                scrollTo(0, 0)
+                mainTargetDiv.focus()
+            }
+        }       
     });
     aside.addEventListener('focusin', denlargeAllImages)    
 }
-stepTxtListeners()
 function getStepContainer(parent) {
     if (parent.classList.contains('step')) {
         return parent

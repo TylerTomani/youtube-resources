@@ -9,8 +9,8 @@
     box-sizing: border-box;
 }
 body{
-    overflow: hidden;
-    overflow-y: scroll;    
+    /* overflow: hidden; */
+    /* overflow-y: scroll;     */
 }
 main {
     position: relative;
@@ -18,7 +18,8 @@ main {
     width: 100%;
     display: flex;
     border: 19x solid red;
-    overflow: hidden;
+    /* overflow: hidden; */
+    /* overflow-y: scroll; */
 }
 main>aside {
     position: sticky;

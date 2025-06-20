@@ -52,7 +52,6 @@ addEventListener('DOMContentLoaded', e => {
 
                     }
                     lessons[iLesson].focus()
-                    console.log()
             }
             
         })
@@ -172,7 +171,7 @@ function elIdsFocus(e) {
         } 
         
         if (letter === 'm') {
-            scrollTo(0, 0);
+            // scrollTo(0, 0);
         }
     });
 }
@@ -245,7 +244,6 @@ function sectionsCycles(shiftKey = false) {
     sections[iSection].focus()
 }
 mainTargetDiv.addEventListener('focusin', e => {
-    console.log(e.target)
     sectionsFocused = false
 })
 
@@ -282,7 +280,6 @@ lessons.forEach(el => {
         e.preventDefault()
         e.stopPropagation()
         if(e.target.tagName != "A"){
-            // console.log(e.target.parentElement)
             const a = getParentA(e.target.parentElement)
             if(a){
                 fetchLessonHref(a.href)
@@ -388,6 +385,7 @@ addEventListener('keydown', e => {
     if (letter == 'a' || letter == 's') {
         if (aside.classList.contains('hide')) {
             aside.classList.remove('hide')
+            scrollTo(0,0)
         } 
     }
     showToggleSidBarBtn()
@@ -395,8 +393,6 @@ addEventListener('keydown', e => {
 });
 
 /// I don't know if i need this here
-stepTxtListeners()
-
 function showToggleSidBarBtn(){
     if (aside.classList.contains('hide')) {
         toggleSideBtn.classList.add('active')
