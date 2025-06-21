@@ -17,6 +17,7 @@
 }
 .step > .step-txt,
 .step>.step-img,
+/* .step-float>.step-vid, */
 .step>.step-vid {
     border: 1px solid black;
     flex-basis: 50%;

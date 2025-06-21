@@ -273,15 +273,12 @@ export function stepTxtListeners(){
         }
         if (letter == 'm' ) {
             console.log(e.target)
-            if(!lastStep){
-                scrollTo(0,0)
-                mainTargetDiv.focus()
-            } else if(lastStep && e.target.id == 'mainTargetDiv'){
+            if(lastStep && e.target.id == 'mainTargetDiv'){
                 lastStep.focus()
             } 
             else if(e.target.classList.contains('step-txt')){
                 // scrollTo
-                mainTargetDiv.focus()
+                // mainTargetDiv.focus()
             }
         }       
     });

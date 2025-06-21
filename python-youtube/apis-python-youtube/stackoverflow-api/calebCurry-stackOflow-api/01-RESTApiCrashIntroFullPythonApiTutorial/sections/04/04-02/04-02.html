@@ -1,34 +1,48 @@
 <div class="steps-container">
     <h4>04-02 basic <code>flask</code> script</h4>
     <!-- 01-01 -->
-    <div class=" step-float">
+    <div class="step step-float">
+        <!-- <div class="step-vid">
+            <video src="sections/04/04-02/images/01.mov">
+        </div> -->
         <div class="step-img">
-            <img src="sections/04/04-01/images/01.png">
+            <img src="sections/04/04-02/images/02.png" alt="">
         </div>
         <div tabindex="0" class="step-txt ">
             <h4>01</h4>
             <p>
                Basic script
             </p>
-            <div class="code-container">
+            <div class="code-container txt90">
                 <pre tabindex="0" class="copy-code">
 from flask import Flask
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return 'Heyo'</pre>
+    return 'Hey'</pre>
             </div>
             <p>
                 Run following command to display on page/ run on server
             </p>
+            <div class="code-container clear">
+                <pre tabindex="0" class="copy-code">
+export FLASK_APP=application.py </pre>
+            </div>
             <div class="code-container">
                 <pre tabindex="0" class="copy-code">
-FLASK </pre>
+export FLASK_ENV=development</pre>
             </div>
+            <div class="code-container">
+                <pre tabindex="0" class="copy-code">
+flask run</pre>
+            </div>
+            
+            
             
         </div>
     </div>
+    
     <!-- 01-02 -->
     <div class="step">
         <div tabindex="0" class="step-txt">
