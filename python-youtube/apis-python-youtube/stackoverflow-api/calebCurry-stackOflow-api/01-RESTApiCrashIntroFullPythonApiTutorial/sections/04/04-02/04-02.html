@@ -1,0 +1,57 @@
+<div class="steps-container">
+    <h4>04-02 basic <code>flask</code> script</h4>
+    <!-- 01-01 -->
+    <div class="step step-float">
+        <div class="step-img">
+            <img src="sections/04/04-01/images/01.png">
+        </div>
+        <div tabindex="0" class="step-txt ">
+            <h4>01</h4>
+            <p>
+               Basic script
+            </p>
+            <div class="code-container">
+                <pre tabindex="0" class="copy-code">
+from flask import Flask
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return 'Heyo'</pre>
+            </div>
+            <p>
+                Run following command to display on page/ run on server
+            </p>
+            <div class="code-container">
+                <pre tabindex="0" class="copy-code">
+FLASK </pre>
+            </div>
+            
+        </div>
+    </div>
+    <!-- 01-02 -->
+    <div class="step">
+        <div tabindex="0" class="step-txt">
+            <h4>02</h4>
+            <p>
+                <code>freeze</code> will output all the dependences from <code>venv</code>
+                so other can download themselves with script
+            </p>
+            <div class="code-container">
+                <pre tabindex="0" class="copy-code">
+pip freeze > requirements.txt</pre>
+            </div>
+            <p>
+                requirements.txt is just a name chosen, can be anything
+            </p>
+            
+        </div>
+        <div class="step-img">
+            <img class="step-img" src="sections/04/04-01/images/02.png">
+        </div>
+    </div>
+    
+    
+    
+    <button tabindex="0" id="endNxtLesson">next lesson</button>
+</div>

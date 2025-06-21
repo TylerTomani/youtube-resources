@@ -133,7 +133,7 @@ export function stepTxtListeners(){
                 addTabs(e.target)
             }
             if (letter == 'm') {
-                console.log('m')
+                // console.log('m')
                 // mainTargetDiv.focus()
             }
         })
@@ -223,7 +223,8 @@ export function stepTxtListeners(){
                         img.style.marginTop = "10%"
                     } 
                     if(img.classList.contains('mv-l')){
-                        
+                        console.log('yes')
+                        console.log(img)
                         
                         img.style.marginRight = "5%"
                         img.style.position = "absolute"
@@ -270,6 +271,7 @@ export function stepTxtListeners(){
             }
         }
         if (letter == 'm' ) {
+            console.log(e.target)
             if(!lastStep){
                 scrollTo(0,0)
                 mainTargetDiv.focus()
@@ -277,7 +279,7 @@ export function stepTxtListeners(){
                 lastStep.focus()
             } 
             else if(e.target.classList.contains('step-txt')){
-                scrollTo(0, 0)
+                // scrollTo
                 mainTargetDiv.focus()
             }
         }       

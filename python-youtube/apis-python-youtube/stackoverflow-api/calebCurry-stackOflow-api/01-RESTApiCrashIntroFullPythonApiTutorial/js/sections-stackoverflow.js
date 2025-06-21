@@ -170,9 +170,7 @@ function elIdsFocus(e) {
             }
         } 
         
-        if (letter === 'm') {
-            // scrollTo(0, 0);
-        }
+        
     });
 }
 sections.forEach(el => {

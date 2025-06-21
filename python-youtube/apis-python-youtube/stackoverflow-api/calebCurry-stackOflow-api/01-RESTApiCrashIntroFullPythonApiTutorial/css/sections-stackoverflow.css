@@ -9,18 +9,18 @@
     box-sizing: border-box;
 }
 body{
-    /* overflow: hidden; */
-    /* overflow-y: scroll;     */
+    overflow: hidden;
+    overflow-y: scroll;    
 }
 main {
     position: relative;
-    height: 100vh;
-    width: 100%;
     display: flex;
     border: 19x solid red;
-    /* overflow: hidden; */
-    /* overflow-y: scroll; */
+    overflow: none;
+    margin: 0 .24%;
+    
 }
+
 main>aside {
     position: sticky;
     /* z-index: 0; */
@@ -37,7 +37,6 @@ aside ~ *{
     
 }
 #mainTargetDiv {
-    /* flex-grow: 1; */
     flex-basis: 100%;
 }
 body>header>nav#mainLinksContainer {
@@ -72,16 +71,12 @@ header a:active {
     box-shadow: 0 0 10px 6px rgb(116, 183, 180, 1);
 }
 body>header>h1 {
-    font-size: 90%;
+    font-size: 120%;
 }
 body>header>.title-tutorialLink-container {
     display: flex;
     justify-content: space-between;
     border-top: 1px solid black;
-}
-nav.section-lesson-title h2{
-    font-size: 90%;
-    
 }
 nav.section-lesson-title {
     position: sticky;
