@@ -14,7 +14,7 @@ import { toggleSideBtn } from './sections-stackoverflow.js'
 // import { playing } from './play-enlarge-vid.js'
 export function stepTxtListeners(){
     const aLinkStepTxts = document.querySelectorAll('.step-txt a')
-    const stepTxts = document.querySelectorAll('.step .step-txt')
+    const stepTxts = document.querySelectorAll('.step-txt')
     const allImages = document.querySelectorAll('.step-img > img') 
     const asStepTxt = document.querySelectorAll('.step-txt a')
     const allVideos = document.querySelectorAll(".step-vid > video")
@@ -128,6 +128,7 @@ export function stepTxtListeners(){
             if (letter == 'enter' && e.target.tagName != "A") {
                 let step = getStep(e.target.parentElement)
                 let img = step.querySelector('.step-img  img')
+                
                 handleImgSize(e,letter)
                 handleStepTabIndex(e)
                 addTabs(e.target)
@@ -197,7 +198,7 @@ export function stepTxtListeners(){
         })
     })    
     function handleImgSize(e,letter) {
-        const step = getStepContainer(e.target.parentElement)
+        const step = getStep(e.target.parentElement)
         if (step && isNaN(letter)) {
             toggleStepImgSize(step)
         }
@@ -247,7 +248,7 @@ export function stepTxtListeners(){
             let letter = e.key.toLowerCase()
             if(!isNaN(letter)) {stepFocus(letter)}
             if(stepTxts.length > 0){
-                stepTxts[currentStepIndex].scrollIntoView({block: 'center'})
+                // stepTxts[currentStepIndex].scrollIntoView({block: 'center'})
             }
             if(letter == 'n'){
                 nav.focus()
@@ -296,7 +297,7 @@ function getStepContainer(parent) {
     }
 }
 function getStep(parent) {
-    if (parent.classList.contains('step')) {
+    if (parent.classList.contains('step') || parent.classList.contains('step-float')) {
         return parent
     } else if (parent.parentElement) {
         return getStep(parent.parentElement)
