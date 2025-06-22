@@ -3,6 +3,10 @@
     /* color: white; */
     padding: 0;
 }
+.step-txt sub,
+.step-txt sup{
+    margin-left: 5%;
+}
 .section-page > .step {padding-top: 5%;}
 .steps-container {
     display: flex;

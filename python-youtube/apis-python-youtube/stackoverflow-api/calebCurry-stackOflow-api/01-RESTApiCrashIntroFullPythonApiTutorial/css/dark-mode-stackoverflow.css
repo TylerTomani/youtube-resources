@@ -28,7 +28,7 @@
 .dark-mode main > aside{
     border-right: 1px solid whitesmoke ; 
 }
-.dark-mode .code-container > .copy-code{
+.dark-mode .code-container {
     border: 1px solid white;
 }
 
