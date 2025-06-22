@@ -200,10 +200,10 @@ export function stepTxtListeners(){
     function handleImgSize(e,letter) {
         const step = getStep(e.target.parentElement)
         if (step && isNaN(letter)) {
-            toggleStepImgSize(step)
+            toggleStepImgSize(step,e)
         }
     }
-    function toggleStepImgSize(step) {
+    function toggleStepImgSize(step,e) {
         const stepImg = step.querySelector('.step-img')
         if(stepImg){
             const img = stepImg.querySelector('img') ? stepImg.querySelector('img') : stepImg.querySelector('video')
@@ -220,6 +220,8 @@ export function stepTxtListeners(){
                     nav.style.zIndex ="0"
                     aside.classList.add('hide')
                     toggleSideBtn.classList.add('active')
+                    console.log(e.target)
+                    // e.target.scrollIntoView({ behavior: 'smooth', block: 'center' })
                     if([...allImages].indexOf(img) == 0){
                         img.style.marginTop = "10%"
                     } 
@@ -254,13 +256,18 @@ export function stepTxtListeners(){
                 nav.focus()
                 scrollTo(0,0)   
             }     
-        } else {
-            // Figure out way to pause play videos when step txt isn't
             if(key === 32){
                 allVideos.forEach(vid => {
                     vid.pause()
                 })
+                if(aside.classList.contains('hide')){
+                    console.log(aside)
+                    console.log('yes')
+                    denlargeAllImages()
+                }
             }
+        } else {
+            // Figure out way to pause play videos when step txt isn't
         }
         
         if(letter == 'e' && endNxtLesson){
