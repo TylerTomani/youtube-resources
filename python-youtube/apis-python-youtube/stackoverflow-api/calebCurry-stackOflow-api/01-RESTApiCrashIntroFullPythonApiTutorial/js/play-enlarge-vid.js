@@ -100,6 +100,7 @@ export function playEnlargeVideos(){
         }
         if(key === 13){
             if (!vid.classList.contains('enlarge-vid') && playing) {
+                console.log('yes')
                 vid.currentTime = 0
             }
         }
@@ -118,13 +119,12 @@ export function playEnlargeVideos(){
                     // vid.style.border = "none"
                 }
                 e.target.scrollIntoView({ behavior: 'smooth', block: 'center' })
+
             } else {
-                vid.style.border = "none"
+                vid.style.border = "2px solid green"
                 vid.style.margin = '0'
                 vid.style.position = 'static'
-                vid.style.zIndex = 0
                 vid.pause()
-                console.log(vid)
             }
         }
     }
@@ -158,6 +158,7 @@ export function playEnlargeVideos(){
     })
     function toggleVidSize(vid){
         vid.classList.toggle('enlarge-vid')
+        // console.log(toggleSideBtn)
         if(vid.classList.contains('enlarge-vid')){
             aside.classList.add('hide')
             if(toggleSideBtn.classList.contains('hide')){
@@ -166,9 +167,9 @@ export function playEnlargeVideos(){
             if(!toggleSideBtn.classList.contains('active')){
                 toggleSideBtn.classList.add('active')
             }
-            // vid.style.zIndex = 5
+            vid.style.zIndex = 5
         } else {
-            // vid.style.zIndex = 1
+            vid.style.zIndex = 1
             aside.classList.remove('hide')
         }
         

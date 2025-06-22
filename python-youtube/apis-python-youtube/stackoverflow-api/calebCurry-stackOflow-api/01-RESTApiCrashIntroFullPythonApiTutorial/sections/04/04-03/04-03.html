@@ -1,5 +1,5 @@
 <div class="steps-container">
-    <h4>04-02 start <code>flask</code> script</h4>
+    <h4>04-03 start <code>flask</code> script</h4>
     <!-- 01-01 -->
     <div class="step-float">
         <div class="step-vid">
@@ -9,6 +9,14 @@
         
         <div tabindex="0" class="step-txt ">
             <h4>01</h4>
+            <p class="">
+                <span class="r">Fix 3 errors on the page</span>
+            </p>
+            <ol>
+                <li>video z-index wrong in step-float</li>
+                <li>step-float step-txt off on mobile</li>
+                <li>fix border in code-container and copy-code</li>
+            </ol>
             <p>
                Basic script
             </p>
@@ -19,23 +27,17 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return 'Hey'</pre>
+    return 'Hey'
+
+TBD i think its 
+@app.route('/drinks')
+def get_drinks():</pre>
             </div>
             <p>
-                Run following command to display on page/ run on server
+                TBD, continuing flask script, i think endpoints are the urls within 
+                <code>@app.route('/')</code>
             </p>
-            <div class="code-container clear">
-                <pre tabindex="0" class="copy-code txt90">
-export FLASK_APP=application.py</pre>
-            </div>
-            <div class="code-container">
-                <pre tabindex="0" class="copy-code txt90">
-export FLASK_ENV=development</pre>
-            </div>
-            <div class="code-container">
-                <pre tabindex="0" class="copy-code txt90">
-flask run</pre>
-            </div>
+            
             
         </div>
     </div>
@@ -45,15 +47,13 @@ flask run</pre>
         <div tabindex="0" class="step-txt">
             <h4>02</h4>
             <p>
-                <span class="r">Use</span>
+                TBD
             </p>
             <div class="code-container">
                 <pre tabindex="0" class="copy-code">
-flask --app your_app_name run --debug</pre>
+TBD</pre>
             </div>
-            <p>
-                To refresh page in browser and see changes in script
-            </p>
+            
 
             
         </div>
