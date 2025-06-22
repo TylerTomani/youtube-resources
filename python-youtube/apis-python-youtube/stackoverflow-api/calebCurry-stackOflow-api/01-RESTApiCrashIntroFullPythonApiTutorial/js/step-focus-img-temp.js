@@ -220,8 +220,8 @@ export function stepTxtListeners(){
                     nav.style.zIndex ="0"
                     aside.classList.add('hide')
                     toggleSideBtn.classList.add('active')
-                    console.log(e.target)
-                    e.target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                    // console.log(e.target)
+                    e.target.scrollIntoView({ behavior: 'smooth', block: 'center' })
                     if([...allImages].indexOf(img) == 0){
                         img.style.marginTop = "10%"
                     } 
