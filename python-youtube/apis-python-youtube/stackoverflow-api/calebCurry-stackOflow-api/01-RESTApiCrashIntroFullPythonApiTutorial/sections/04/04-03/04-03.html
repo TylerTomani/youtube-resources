@@ -1,0 +1,70 @@
+<div class="steps-container">
+    <h4>04-02 start <code>flask</code> script</h4>
+    <!-- 01-01 -->
+    <div class="step-float">
+        <div class="step-vid">
+            <video playsinline webkit-playsinline poster="sections/04/04-02/images/01.png" 
+            src="sections/04/04-02/images/01.mov">
+        </div>
+        
+        <div tabindex="0" class="step-txt ">
+            <h4>01</h4>
+            <p>
+               Basic script
+            </p>
+            <div class="code-container">
+                <pre tabindex="0" class="copy-code txt90">
+from flask import Flask
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return 'Hey'</pre>
+            </div>
+            <p>
+                Run following command to display on page/ run on server
+            </p>
+            <div class="code-container clear">
+                <pre tabindex="0" class="copy-code txt90">
+export FLASK_APP=application.py</pre>
+            </div>
+            <div class="code-container">
+                <pre tabindex="0" class="copy-code txt90">
+export FLASK_ENV=development</pre>
+            </div>
+            <div class="code-container">
+                <pre tabindex="0" class="copy-code txt90">
+flask run</pre>
+            </div>
+            
+        </div>
+    </div>
+    
+    <!-- 01-02 -->
+    <div class="step">
+        <div tabindex="0" class="step-txt">
+            <h4>02</h4>
+            <p>
+                <span class="r">Use</span>
+            </p>
+            <div class="code-container">
+                <pre tabindex="0" class="copy-code">
+flask --app your_app_name run --debug</pre>
+            </div>
+            <p>
+                To refresh page in browser and see changes in script
+            </p>
+
+            
+        </div>
+        <div class="step-vid">
+            <video playsinline webkit-playsinline
+            poster="sections/04/04-02/images/02.png"
+            src="sections/04/04-02/images/02.mov">
+        </div>
+    </div>
+    
+    
+    
+    <button tabindex="0" id="endNxtLesson">next lesson</button>
+</div>
