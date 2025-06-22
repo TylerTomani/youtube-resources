@@ -200,6 +200,7 @@ video {
     width: 100%;
     display: block;
 }
+.step-float .step-vid,
 .step-float .step-img {
     /* border: 4px solid magenta; */
     /* z-index: 1; */
