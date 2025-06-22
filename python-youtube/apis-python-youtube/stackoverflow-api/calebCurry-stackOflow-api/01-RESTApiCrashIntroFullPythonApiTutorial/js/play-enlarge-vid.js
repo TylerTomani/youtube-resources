@@ -41,7 +41,7 @@ export function playEnlargeVideos(){
         const stepTxt = step.querySelector('.step-txt')
         stepTxt.addEventListener('focus', e => {
             stopAllVids()
-            denlargeAllVids()
+            // denlargeAllVids()
         })
         stepTxt.addEventListener('keydown', e => {
             
@@ -119,7 +119,7 @@ export function playEnlargeVideos(){
                 }
                 e.target.scrollIntoView({ behavior: 'smooth', block: 'center' })
             } else {
-                vid.style.border = "2px solid green"
+                vid.style.border = "none"
                 vid.style.margin = '0'
                 vid.style.position = 'static'
                 vid.pause()
