@@ -221,7 +221,7 @@ export function stepTxtListeners(){
                     aside.classList.add('hide')
                     toggleSideBtn.classList.add('active')
                     console.log(e.target)
-                    // e.target.scrollIntoView({ behavior: 'smooth', block: 'center' })
+                    e.target.scrollIntoView({ behavior: 'smooth', block: 'start' })
                     if([...allImages].indexOf(img) == 0){
                         img.style.marginTop = "10%"
                     } 
