@@ -40,7 +40,6 @@ export function playEnlargeVideos(){
         const step = getStepVidStep(el.parentElement)
         const stepTxt = step.querySelector('.step-txt')
         stepTxt.addEventListener('focus', e => {
-            
             stopAllVids()
             denlargeAllVids()
         })
@@ -105,21 +104,22 @@ export function playEnlargeVideos(){
                 vid.currentTime = 0
             }
         }
-        playPause(vid)
+        playPause(vid,e)
     }
-    function playPause(vid) {
+    function playPause(vid,e) {
         
         if (vid) {
             if (playing) {
                 vid.play()
+                
                 vid.style.border = "2px solid blue"
                 if ([...vids].indexOf(vid) == 0) {
                     vid.style.marginTop = '15%'
                 } else {
-
-                    vid.scrollIntoView({ behavior: 'smooth', block: 'center' })
                     // vid.style.border = "none"
                 }
+                e.target.scrollIntoView({ behavior: 'smooth', block: 'center' })
+                // e.target.scrollIntoView({ behavior: 'smooth', block: 'start' })
             } else {
                 vid.style.border = "2px solid green"
                 vid.style.margin = '0'
@@ -177,7 +177,7 @@ export function playEnlargeVideos(){
    
 }
 function getStepVidStep(parent){
-    if(parent.classList.contains('step')){
+    if (parent.classList.contains('step') || parent.classList.contains('step-float')){
         return parent
     } else if (parent.parentElement){
         return getStepVidStep(parent.parentElement)

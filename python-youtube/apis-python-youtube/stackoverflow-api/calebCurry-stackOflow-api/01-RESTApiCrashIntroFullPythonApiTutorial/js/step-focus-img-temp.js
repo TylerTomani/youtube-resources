@@ -134,12 +134,12 @@ export function stepTxtListeners(){
                 addTabs(e.target)
             }
             if (letter == 'm') {
-                // console.log('m')
+                // 
                 // mainTargetDiv.focus()
             }
         })
         el.addEventListener('click', e => {
-            // console.log(e.target.tagName)
+            // 
         })
     })
     // Below-  handling of img and video size enlarge and denlarge
@@ -224,8 +224,8 @@ export function stepTxtListeners(){
                         img.style.marginTop = "10%"
                     } 
                     if(img.classList.contains('mv-l')){
-                        console.log('yes')
-                        console.log(img)
+                        // 
+                        // 
                         
                         img.style.marginRight = "5%"
                         img.style.position = "absolute"
@@ -272,7 +272,7 @@ export function stepTxtListeners(){
             }
         }
         if (letter == 'm' ) {
-            console.log(e.target)
+            // 
             if(lastStep && e.target.id == 'mainTargetDiv'){
                 lastStep.focus()
             } 
