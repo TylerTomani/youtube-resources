@@ -41,7 +41,6 @@ export function playEnlargeVideos(){
         const stepTxt = step.querySelector('.step-txt')
         stepTxt.addEventListener('focus', e => {
             stopAllVids()
-            // denlargeAllVids()
         })
         stepTxt.addEventListener('keydown', e => {
             
