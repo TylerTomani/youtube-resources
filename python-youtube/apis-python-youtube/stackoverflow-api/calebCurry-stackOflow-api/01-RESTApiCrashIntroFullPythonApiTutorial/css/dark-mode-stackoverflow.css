@@ -30,9 +30,9 @@
 }
 .dark-mode .code-container {
     border: none;
+    border: 1px solid white;
 }
 .dark-mode .code-container > .copy-code{
-    border: 1px solid white;
 }
 
 .dark-mode .enlarge{
