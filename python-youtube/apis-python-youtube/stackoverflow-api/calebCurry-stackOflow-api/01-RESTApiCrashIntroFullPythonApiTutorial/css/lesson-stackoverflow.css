@@ -108,13 +108,13 @@ video {
 
 }
 .enlarge {
-    /* z-index: 5; */
+    z-index: 5;
     margin-right: 50%;
     max-height: 30vh;
     transform: scale(2.5);
 }
 .enlarge-vid {
-    /* z-index: 2; */
+    z-index: 2;
     margin-right: 50%;
     max-height: 30vh;
     transform: scale(3.25);
@@ -203,7 +203,7 @@ video {
 .step-float .step-vid,
 .step-float .step-img {
     /* border: 4px solid magenta; */
-    /* z-index: 1; */
+    z-index: 1;
     width: 50%;
     float: right;   
 }

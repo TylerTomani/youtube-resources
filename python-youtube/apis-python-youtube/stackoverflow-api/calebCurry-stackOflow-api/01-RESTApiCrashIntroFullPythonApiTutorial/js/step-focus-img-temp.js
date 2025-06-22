@@ -290,8 +290,7 @@ export function stepTxtListeners(){
                 lastStep.focus()
             } 
             else if(e.target.classList.contains('step-txt')){
-                // scrollTo
-                // mainTargetDiv.focus()
+                scrollTo(0,0)
             }
         }       
     });

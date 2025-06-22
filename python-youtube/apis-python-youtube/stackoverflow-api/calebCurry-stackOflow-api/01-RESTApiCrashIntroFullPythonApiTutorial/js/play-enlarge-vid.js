@@ -111,15 +111,15 @@ export function playEnlargeVideos(){
         if (vid) {
             if (playing) {
                 vid.play()
-                
+                console.log(e.target)
                 vid.style.border = "2px solid blue"
                 if ([...vids].indexOf(vid) == 0) {
                     vid.style.marginTop = '15%'
+                    vid.scrollIntoView({ behavior: 'smooth', block: 'center' })
                 } else {
+                    vid.scrollIntoView({ behavior: 'smooth', block: 'start' })
                     // vid.style.border = "none"
                 }
-                e.target.scrollIntoView({ behavior: 'smooth', block: 'center' })
-
             } else {
                 vid.style.border = "2px solid green"
                 vid.style.margin = '0'
