@@ -242,7 +242,12 @@ export function stepTxtListeners(){
             }
         }
     }   
-    
+    function toggleImg(e){
+        const step = getStep(e.target)
+        const img = step.querySelector('.step-img img')
+        console.log(img)
+        img.classList.toggle('enlarge')
+    }
     addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
         let key = e.keyCode
@@ -261,9 +266,10 @@ export function stepTxtListeners(){
                     vid.pause()
                 })
                 if(aside.classList.contains('hide')){
-                    console.log(aside)
-                    console.log('yes')
-                    denlargeAllImages()
+                    e.preventDefault()
+                    // denlargeAllImages()
+                    toggleImg(e)
+                    
                 }
             }
         } else {

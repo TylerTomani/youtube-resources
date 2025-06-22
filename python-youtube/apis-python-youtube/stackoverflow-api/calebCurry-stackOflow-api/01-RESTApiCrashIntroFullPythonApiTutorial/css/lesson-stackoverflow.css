@@ -120,42 +120,27 @@ video {
     transform: scale(3.25);
 }
 
-
-.step-col>.step-txt>.code-container {
-    /* margin: 2%; */
-    /* padding: 1%; */
-    /* width: 85%; */
-}
-
 .step-txt>.code-container {
+    display: inline-block;
     align-self: center;
-    border:  1px solid black;
-    width: 90%
+    /* border:  1px solid black; */
+    width: 90%;
+    padding-right: 5%;
+    width: min-content;
+    height: 100%;
+    padding-right: 0;
+    margin-left: 2.5%;
 }
 
-.code-container>.copy-code::-webkit-scrollbar {
-    display: none;
-}
+.code-container>.copy-code::-webkit-scrollbar {display: none;}
 .step > .step-txt .code-container>.copy-code{
-    /* border: 1px solid black; */
     display: inline-block;
     font: 80%;
     width: 100%;
     padding: 1% 0 ;
-    padding-left: 1%;
+    /* padding-left: 1%; */
     overflow-x: scroll;
     overflow: scroll;
-}
-.step-float>.step-txt .code-container {
-    display: inline-block;
-    /* border: 1px solid white; */
-    /* width: 0; */
-    min-width: 45%;
-    width:min-content;
-    height: 100%;
-    padding-right: 0;
-    margin-left: 2.5%;
-    
 }
 #endNxtLesson{
     padding: 1.5% 0;
@@ -208,25 +193,11 @@ video {
     float: right;   
 }
 
-.step-float > .step-txt .code-container > .copy-code {
-    display: inline-block;
-    /* border: 2px solid orange; */
-    padding-right: 25%;
-    /* width: fit-content; */
-}
-.step-float > .step-txt .code-container:last-child {
-    margin-bottom:10%;
-}
+/* .step-float > .step-txt .code-container > .copy-code {display: inline-block;
+    
+} */
+.step-float > .step-txt .code-container:last-child {/* margin-bottom:10%; */}
 
-
-.step-float {
-    /* position: relative; */
-    /* z-index: 1; */
-}
-
-.step-float .step-txt:focus+.step-img img {
-    /* z-index: 4 !important; */
-}
 .clear {
     clear: both;
 }
