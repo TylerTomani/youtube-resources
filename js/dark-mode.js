@@ -4,7 +4,7 @@ addEventListener('keydown', e => {
     let letter = e.key.toLowerCase()
     let isShiftPressed = e.shiftKey
 
-    if (isShiftPressed && letter == 'd') {
+    if (isShiftPressed && letter == 'k') {
         body.classList.toggle('dark-mode')
     }
 })
