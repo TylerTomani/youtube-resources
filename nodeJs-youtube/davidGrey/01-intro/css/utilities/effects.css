@@ -8,9 +8,6 @@
     text-decoration: underline;
     text-underline-offset: 4px;
 }   
-.side-bar {
-    transition: width 0.3s ease;
-}
  /* Main content */
 .main-content-container {
   transition: width 0.1s ease;

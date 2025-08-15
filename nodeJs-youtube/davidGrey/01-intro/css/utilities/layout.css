@@ -1,6 +1,8 @@
 body{
-    overflow: hidden;
+    /* overflow: hidden; */
 }
+
+
 /* Lessons */
 .step {
     display: flex;

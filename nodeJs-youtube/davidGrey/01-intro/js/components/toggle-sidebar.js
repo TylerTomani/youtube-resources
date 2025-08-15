@@ -14,7 +14,7 @@ export function togggleSidebar() {
   sideBar.addEventListener('click', e => {
     const clickedLink = e.target.closest('.sidebar-links-ul li a');
     if (clickedLink) {
-      // Let links behave normally (injectContent will handle)
+      console.log(clickedLink)
       return;
     }
     toggleSideBar()

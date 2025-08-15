@@ -1,12 +1,8 @@
-
 #mainTargetDiv{
-    width: 100%;
-    /* justify-content: flex-start; */
+    /* width: 100%; */
+    /* overflow: hidden; */
+    /* overflow-y: scroll; */
     /* background-color: blue; */
     /* background-color: blue; */
     /* height: 100%; */
-}
-
-#targetDiv {
-    width: 100vmax;
 }

@@ -1,9 +1,6 @@
 #sideBarBtn {
     color: var(--text-color);
 }
-.side-bar {
-    border: 1px solid black;
-}
 /* Lessons */
 .code-container {
     background-color: white;
