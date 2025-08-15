@@ -1,3 +1,7 @@
+.side-bar {
+    z-index: 1000;
+}
+/* Lesson */
 .step-float:focus,.step-float:focus{
     z-index: 100;
 }

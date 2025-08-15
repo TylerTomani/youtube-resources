@@ -1,6 +1,12 @@
+
 #mainTargetDiv{
-    /* width: 100%; */
+    width: 100%;
+    /* justify-content: flex-start; */
     /* background-color: blue; */
     /* background-color: blue; */
     /* height: 100%; */
+}
+
+#targetDiv {
+    width: 100vmax;
 }
