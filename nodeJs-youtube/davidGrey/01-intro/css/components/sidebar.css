@@ -1,59 +1,63 @@
 :root {
   --sidebar-width: 120px;
-  /* narrower fixed width */
   --main-content-width: calc(100% - var(--sidebar-width));
   --sidebar-collapsed-width: 20px;
-  /* small but visible */
 }
+
 #mainTargetDiv {
-  height: 100vh;
+  height: 100%;
   overflow-y: auto;
+  /* scrollable content */
   position: relative;
 }
+
 main.main-container {
-  position: relative;
+  position: fixed;
+  /* fixed relative to viewport */
+  top: var(--header-height);
+  /* flush below header */
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* fill remaining space */
+  display: flex;
+}
 
-}
-.scroll-wrapper {
-  display: block;
-  min-height: 100%;
-  /* grow with content */
-}
-
-#sideBarBtn {
-  font-size: 1.5rem;
-}
 .side-bar {
   position: fixed;
-  width:20% ;
+  top: var(--header-height);
+  /* flush below header */
   left: 0;
-  height: 100vh;
+  width: var(--sidebar-width);
+  bottom: 0;
+  /* stretch to bottom of viewport */
   border: 1px solid black;
   overflow-x: hidden;
 }
-.side-bar,
-main.main-container .main-content-container{
-  top: var(--header-height);
-  /* border-top: 2px solid blue; */
-}
-main.main-container.collapsed .side-bar {
-  width: 5%;
-  /* overflow: visible; */
-  /* ensure contents like buttons still show */
+
+main.main-container .main-content-container {
+  position: relative;
+  /* relative inside main-container */
+  left: var(--sidebar-width);
+  right: 0;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  /* fill container */
+  overflow-y: auto;
+  /* scroll content */
 }
 
-main.main-container .main-content-container{
-  position: fixed;
-  left: 20%;
-}
-main.main-container.collapsed .main-content-container{
+main.main-container.collapsed .main-content-container {
   width: 100%;
-  left: 5%;
-  position: fixed;
+  left: var(--sidebar-collapsed-width);
+  position: relative;
   right: 0;
 }
 
-
+main.main-container.collapsed .side-bar {
+  width: var(--sidebar-collapsed-width);
+}
 
 main.main-container.collapsed .side-bar .side-bar-links-container {
   display: none;
@@ -66,9 +70,12 @@ main.main-container.collapsed .side-bar .side-bar-links-container {
   padding-bottom: 10%;
 }
 
-
+#sideBarBtn {
+  font-size: 1.5rem;
+}
 
 main.main-container.collapsed #sideBarBtn {
   position: absolute;
   bottom: 20%;
-  }
+  z-index: 10;
+}
