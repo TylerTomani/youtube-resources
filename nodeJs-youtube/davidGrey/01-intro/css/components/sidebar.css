@@ -13,13 +13,12 @@
 
 main.main-container {
   position: fixed;
-  /* fixed relative to viewport */
   top: var(--header-height);
   /* flush below header */
   left: 0;
   right: 0;
   bottom: 0;
-  /* fill remaining space */
+  /* fill remaining viewport */
   display: flex;
 }
 
@@ -72,10 +71,10 @@ main.main-container.collapsed .side-bar .side-bar-links-container {
 
 #sideBarBtn {
   font-size: 1.5rem;
+  
 }
 
 main.main-container.collapsed #sideBarBtn {
   position: absolute;
   bottom: 20%;
-  z-index: 10;
 }
