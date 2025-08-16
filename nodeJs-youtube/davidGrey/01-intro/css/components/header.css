@@ -1,4 +1,4 @@
-:root {
+:root{
   --header-height: 14vh;
   --links-offset: 4%;
 }
@@ -7,13 +7,14 @@
    Header Component
 ==================== */
 .page-header {
-  display: flex;
+  display: flex; 
   position: fixed;
   width: 100%;
   height: var(--header-height);
 }
 
 /* ... rest of your header.css unchanged ... */
+
 /* Keep header-nav and logo actions as before */
 .page-header .header-top-row {
   flex-basis: 90%;
