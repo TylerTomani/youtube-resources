@@ -4,8 +4,14 @@
         /* width: var(--sidebar-width); */
         /* overflow-x: scroll; */
     }   
-    .side-bar-links-ul {
-        font-size: 90%;
+    .side-bar-links-ul li a {
+        font-size: 8% !important;
+    }    
+}
+@media screen and (max-width:920px) {
+    .side-bar,
+    main.main-container .main-content-container {
+        top: 16vh !important;
+        /* border-top: 2px solid blue; */
     }
-    
 }

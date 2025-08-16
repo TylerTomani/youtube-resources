@@ -5,14 +5,24 @@
   --sidebar-collapsed-width: 20px;
   /* small but visible */
 }
-
-main.main-container {
-  /* display: flex;   */
+#mainTargetDiv {
+  height: 100vh;
+  overflow-y: auto;
   position: relative;
-  /* position: fixed; */
-  /* width: 90%; */
+}
+main.main-container {
+  position: relative;
+
+}
+.scroll-wrapper {
+  display: block;
+  min-height: 100%;
+  /* grow with content */
 }
 
+#sideBarBtn {
+  font-size: 1.5rem;
+}
 .side-bar {
   position: fixed;
   width:20% ;
@@ -21,9 +31,14 @@ main.main-container {
   border: 1px solid black;
   overflow-x: hidden;
 }
+.side-bar,
+main.main-container .main-content-container{
+  top: var(--header-height);
+  /* border-top: 2px solid blue; */
+}
 main.main-container.collapsed .side-bar {
   width: 5%;
-  overflow: visible;
+  /* overflow: visible; */
   /* ensure contents like buttons still show */
 }
 
@@ -36,13 +51,8 @@ main.main-container.collapsed .main-content-container{
   left: 5%;
   position: fixed;
   right: 0;
-  border: 2px solid blue;
-  background-color: yellow;
 }
-#mainTargetDiv {
-  display: flex;
-  width: 100%
-}
+
 
 
 main.main-container.collapsed .side-bar .side-bar-links-container {
@@ -56,9 +66,7 @@ main.main-container.collapsed .side-bar .side-bar-links-container {
   padding-bottom: 10%;
 }
 
-#sideBarBtn {
-  font-size: 1.5rem;
-}
+
 
 main.main-container.collapsed #sideBarBtn {
   position: absolute;

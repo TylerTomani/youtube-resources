@@ -1,15 +1,9 @@
-#mainTargetDiv{
-    /* width: 100%; */
-    /* background-color: blue; */
-}
-#targetDiv{
-    overflow-x: hidden;
-}
+
 .step-img,
 .step-vid {
     float: right;
     width: 45%;
-    margin-top: 5%;
+    /* margin-top: 5%; */
     /* Adjust as needed */
     margin-right: 5%;
     margin-left: 10px;
