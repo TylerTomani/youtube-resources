@@ -1,4 +1,5 @@
 // main-script.js
+import { initSidebarNavKeys } from './components/sidebarNavKeys.js';
 import { togggleSidebar, sideBarBtn } from './components/toggle-sidebar.js';
 import { dragHideSidebar } from './components/drag-hide-sidebar.js';
 import { letterNav } from './letterNav.js';
@@ -6,12 +7,12 @@ import { injectContent } from './inject-content.js';
 import { stepTxtsFocus } from './components/stepTxts.js';
 import { sideBarNav } from './components/sidebar-nav.js';
 import { numFocus } from './numFocus.js';
-
+    
+export const sideBar = document.querySelector('.side-bar');
+export const sideBarLinks = Array.from(document.querySelectorAll('.sidebar-links-ul li a'));
 export const mainTargetDiv = document.querySelector('#mainTargetDiv');
 export const mainContainer = document.querySelector('.main-container');
-export const sideBar = document.querySelector('.side-bar');
 export const navLessonTitle = document.querySelector('#navLessonTitle');
-export const sideBarLinks = Array.from(document.querySelectorAll('.sidebar-links-ul li a'));
 
 // Track last clicked/focused sidebar links
 export let lastClickedSideLink = null;
@@ -23,6 +24,7 @@ export let mainTargetDivFocused = false;
 mainTargetDiv.addEventListener('focusin', () => { mainTargetDivFocused = true; });
 mainTargetDiv.addEventListener('focusout', () => { mainTargetDivFocused = false; });
 
+initSidebarNavKeys(sideBar, sideBarLinks, sideBarBtn);
 // Initialize sidebar toggle / drag
 togggleSidebar();
 dragHideSidebar(mainContainer, sideBar);

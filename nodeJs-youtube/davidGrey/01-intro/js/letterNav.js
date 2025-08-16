@@ -33,10 +33,12 @@ export function letterNav({
     }
 
     function expandSidebarAndFocusBtn() {
-        if (mainContainer?.classList.contains("collapsed")) mainContainer.classList.remove("collapsed");
-        if (sideBar?.classList.contains("collapsed")) sideBar.classList.remove("collapsed");
+        if (mainContainer.classList.contains("collapsed")) mainContainer.classList.remove("collapsed");
+        if (sideBar.classList.contains("collapsed")) sideBar.classList.remove("collapsed");
         requestAnimationFrame(() => sideBarBtn?.focus());
     }
+
+    let lastSPingPong = null; // 'btn' or 'link'
 
     window.addEventListener("keydown", (e) => {
         const key = e.key.toLowerCase();
@@ -44,53 +46,63 @@ export function letterNav({
 
         if (e.metaKey || e.ctrlKey || e.altKey) return;
 
-        // ---------- Handle 'S' key ----------
-        if (key === 's') {
+        // --- Sidebar 'f'/'a' handled separately ---
+        if (sideBar.contains(active) && (key === 'f' || key === 'a')) return;
+
+        // --- 'S' key handling ---
+        if (key === "s") {
             e.preventDefault();
-            // If collapsed and focus outside sidebar, expand and focus button
+
+            // 0) If collapsed & focus is NOT inside sidebar → expand & focus button
             if (isCollapsed() && !sideBar.contains(active)) {
                 expandSidebarAndFocusBtn();
                 return;
             }
-            // Focus last clicked/focused sidebar link or button
-            if (lastClickedSideLink) { lastClickedSideLink.focus(); return; }
-            if (lastFocusedSideBarLink) { lastFocusedSideBarLink.focus(); return; }
-            sideBarBtn?.focus();
-            return;
-        }
 
-        // ---------- If mainTargetDiv is focused ----------
-        if (active === mainTargetDiv) {
-            // Only allow letters to match elements **excluding sidebar-links**
-            const headerEls = Array.from(document.querySelectorAll("header a, header button, header [tabindex='0']"));
-            const steps = Array.from(document.querySelectorAll(".step, .step-float"));
-            const focusableEls = [...headerEls, mainTargetDiv, ...steps].filter(Boolean);
-
-            if (/^[a-z]$/.test(key)) {
-                const matchingEls = focusableEls.filter(el => normalizeName(el).startsWith(key));
-                if (matchingEls.length) {
-                    let nextIndex = matchingEls.indexOf(active) + 1;
-                    if (nextIndex >= matchingEls.length) nextIndex = 0;
-                    matchingEls[nextIndex].focus();
-                }
+            // 1) If a sidebar link is focused → go to sidebar button
+            if (sideBarLinks.includes(active)) {
+                sideBarBtn?.focus();
+                return;
             }
 
-            // 'F' or 'B' or other keys can be added later here for step navigation
+            // 2) If sidebar button is focused → go to last clicked sidebar link
+            if (sideBarBtn === active) {
+                if (lastClickedSideLink) { lastClickedSideLink.focus(); return; }
+                if (lastFocusedSideBarLink) { lastFocusedSideBarLink.focus(); return; }
+                // Fallback to first sidebar link only if none exist
+                if (sideBarLinks.length) { sideBarLinks[0].focus(); return; }
+            }
+
+            // 3) If outside the sidebar → go to last clicked/focused sidebar link
+            if (!sideBar.contains(active)) {
+                if (lastClickedSideLink) { lastClickedSideLink.focus(); return; }
+                if (lastFocusedSideBarLink) { lastFocusedSideBarLink.focus(); return; }
+                if (sideBarLinks.length) { sideBarLinks[0].focus(); return; }
+            }
+
             return;
         }
 
-        // ---------- Normal letter navigation when outside mainTargetDiv ----------
+        // --- Skip normal navigation when mainTargetDiv is focused (except 's') ---
+        if (mainTargetDiv === active) return;
+
+        // ---------- Normal letter navigation ----------
         const headerEls = Array.from(document.querySelectorAll("header a, header button, header [tabindex='0']"));
-        const focusableEls = [...headerEls, sideBarBtn, ...sideBarLinks, mainTargetDiv].filter(Boolean);
+        const focusableEls = [
+            ...headerEls,
+            sideBarBtn,
+            ...sideBarLinks,
+            mainTargetDiv
+        ].filter(Boolean);
 
-        if (/^[a-z]$/.test(key)) {
-            const matchingEls = focusableEls.filter(el => normalizeName(el).startsWith(key));
-            if (matchingEls.length) {
-                let nextIndex = matchingEls.indexOf(active) + 1;
-                if (nextIndex >= matchingEls.length) nextIndex = 0;
-                matchingEls[nextIndex].focus();
-            }
-        }
+        const matchingEls = focusableEls.filter(el => normalizeName(el).startsWith(key));
+        if (!matchingEls.length) return;
 
-    }, true); // capture phase
+        let nextIndex = matchingEls.indexOf(active) + 1;
+        if (nextIndex >= matchingEls.length) nextIndex = 0;
+        matchingEls[nextIndex].focus();
+    }, true);
+
+
+
 }
