@@ -70,8 +70,8 @@ main.main-container.collapsed .side-bar .side-bar-links-container {
 }
 
 #sideBarBtn {
-  font-size: 1.5rem;
-  
+  font-size:1.45rem;
+  margin-top: 2%;
 }
 
 main.main-container.collapsed #sideBarBtn {
