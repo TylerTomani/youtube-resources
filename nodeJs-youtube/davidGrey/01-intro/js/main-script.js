@@ -1,10 +1,11 @@
-import { sideBarNav } from './components/sidebar-nav.js';
-import { numFocus } from './numFocus.js';
-import { letterNav } from './letterNav.js';
-import { injectContent } from './inject-content.js';
+// main-script.js
 import { togggleSidebar, sideBarBtn } from './components/toggle-sidebar.js';
 import { dragHideSidebar } from './components/drag-hide-sidebar.js';
+import { letterNav } from './letterNav.js';
+import { injectContent } from './inject-content.js';
 import { stepTxtsFocus } from './components/stepTxts.js';
+import { sideBarNav } from './components/sidebar-nav.js';
+import { numFocus } from './numFocus.js';
 
 export const mainTargetDiv = document.querySelector('#mainTargetDiv');
 export const mainContainer = document.querySelector('.main-container');
@@ -12,39 +13,28 @@ export const sideBar = document.querySelector('.side-bar');
 export const navLessonTitle = document.querySelector('#navLessonTitle');
 export const sideBarLinks = Array.from(document.querySelectorAll('.sidebar-links-ul li a'));
 
+// Track last clicked/focused sidebar links
 export let lastClickedSideLink = null;
 export let lastFocusedSideBarLink = null;
 
-// Focus tracking
-let mainTargetDivFocused = false;
-let sideBarFocused = false;
+// Track focus state
+export let mainTargetDivFocused = false;
 
-mainTargetDiv.addEventListener('focus', () => mainTargetDivFocused = true);
-mainTargetDiv.addEventListener('blur', () => mainTargetDivFocused = false);
-sideBar.addEventListener('focusin', () => sideBarFocused = true);
-sideBar.addEventListener('focusout', (e) => {
-    if (!sideBar.contains(e.relatedTarget)) sideBarFocused = false;
-});
+mainTargetDiv.addEventListener('focusin', () => { mainTargetDivFocused = true; });
+mainTargetDiv.addEventListener('focusout', () => { mainTargetDivFocused = false; });
 
 // Initialize sidebar toggle / drag
 togggleSidebar();
 dragHideSidebar(mainContainer, sideBar);
 
-// Track sidebar focus & clicks
+// Track sidebar clicks & focus
 sideBarLinks.forEach(link => {
-    // Focus updates lastFocusedSideBarLink
-    link.addEventListener('focus', () => {
-        lastFocusedSideBarLink = link;
-    });
-
-    // Click updates lastClickedSideBarLink
+    link.addEventListener('focus', () => { lastFocusedSideBarLink = link; });
     link.addEventListener('click', (e) => {
         e.preventDefault();
         injectContent(link.href);
         lastClickedSideLink = link;
     });
-
-    // Enter key also counts as "click"
     link.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') {
             e.preventDefault();
@@ -52,39 +42,37 @@ sideBarLinks.forEach(link => {
             lastClickedSideLink = link;
         }
     });
-
-    // Optional: autofocus first link
-    if (link.hasAttribute('autofocus')) {
-        injectContent(link.href);
-        lastFocusedSideBarLink = link;
-    }
 });
 
-// Initialize letter navigation (a–z)
-letterNav();
+// Initialize letter navigation
+letterNav({
+    mainTargetDiv,
+    sideBarBtn,
+    sideBarLinks,
+    lastClickedSideLink,
+    lastFocusedSideBarLink,
+    sideBar,
+    mainContainer
+});
 
-// ----- Global keydown for numbers + sideBarNav -----
+// Global keydown handler
 document.addEventListener('keydown', (e) => {
     const key = e.key.toLowerCase();
-    const active = document.activeElement;
-
     if (e.metaKey || e.ctrlKey || e.altKey) return;
 
-    // Number keys
     if (/^[0-9]$/.test(key)) {
         e.preventDefault();
-        const num = parseInt(key, 10);
-
-        if (!mainTargetDivFocused) {
+        if (mainTargetDivFocused) {
+            stepTxtsFocus(key);
+        } else {
+            const num = parseInt(key, 10);
             if (num >= 1 && num <= sideBarLinks.length) {
                 sideBarLinks[num - 1].focus();
             }
-        } else {
-            stepTxtsFocus(num);
         }
         return;
     }
 
-    // Other letters handled by letterNav
+    // Other letter navigation handled in letterNav
     sideBarNav(key, e, sideBarLinks, lastFocusedSideBarLink);
 });

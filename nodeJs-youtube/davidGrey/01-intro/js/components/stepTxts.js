@@ -20,7 +20,6 @@ import { mainTargetDiv,sideBar,sideBarLinks,lastFocusedSideBarLink } from "../ma
 export let lastStep = null
 export let stepFocused
 export function stepTxtsFocus(e) {
-    console.log(e)
     // const videos = document.querySelectorAll('video');
     // const allVideos = document.querySelectorAll('video')
     let currentVideo
