@@ -69,7 +69,6 @@ export function letterNav({
             if (sideBarBtn === active) {
                 if (lastClickedSideLink) { lastClickedSideLink.focus(); return; }
                 if (lastFocusedSideBarLink) { lastFocusedSideBarLink.focus(); return; }
-                // Fallback to first sidebar link only if none exist
                 if (sideBarLinks.length) { sideBarLinks[0].focus(); return; }
             }
 
@@ -83,17 +82,21 @@ export function letterNav({
             return;
         }
 
-        // --- Skip normal navigation when mainTargetDiv is focused (except 's') ---
-        if (mainTargetDiv === active) return;
-
         // ---------- Normal letter navigation ----------
+        // Exclude sidebar links unless sidebar is focused or expanded
         const headerEls = Array.from(document.querySelectorAll("header a, header button, header [tabindex='0']"));
-        const focusableEls = [
+        let focusableEls = [
             ...headerEls,
             sideBarBtn,
-            ...sideBarLinks,
             mainTargetDiv
-        ].filter(Boolean);
+        ];
+
+        // Include sidebar links only if sidebar is expanded
+        if (!sideBar.classList.contains('collapsed')) {
+            focusableEls.push(...sideBarLinks);
+        }
+
+        focusableEls = focusableEls.filter(Boolean);
 
         const matchingEls = focusableEls.filter(el => normalizeName(el).startsWith(key));
         if (!matchingEls.length) return;
@@ -102,6 +105,7 @@ export function letterNav({
         if (nextIndex >= matchingEls.length) nextIndex = 0;
         matchingEls[nextIndex].focus();
     }, true);
+
 
 
 
