@@ -1,0 +1,62 @@
+:root {
+    --bg-primary-db: #201d1d;
+    --font-primary-db: whitesmoke;
+}
+.dark-mode .page-header .header-nav{
+    border: 1px solid whitesmoke;
+}
+.dark-mode {
+    background-color: var(--bg-primary-db);
+    color: var(--font-primary-db)
+}
+
+
+.dark-mode #mainLinksContainer{
+    color: var(--font-primary-db);
+    background-color: var(--bg-primary);
+}
+.dark-mode >nav.section-lesson-title {
+    background-color: var(--bg-primary-db);
+}
+.dark-mode >nav.section-lesson-title>h1#title {
+    color: white;
+    
+}
+.dark-mode #partsTxt {
+    color: white;
+}
+.dark-mode main>aside.side-bar {
+    border-right: 1px solid whitesmoke;
+    background-color: var(--bg-primary);
+}
+.dark-mode .section-container>.section {
+    color: var(--font-primary-db);
+}
+.dark-mode,
+h4 .dark-mode p {
+    color: whitesmoke;
+}
+.dark-mode .code-container{
+    border: 1px solid white;
+}
+.dark-mode .sidebar-links-ul li a {
+    color: white !important;
+}
+.dark-mode .code-container,
+.dark-mode .code-container>.copy-code {
+    background-color: var(--bg-primary);
+    color: white;
+}
+.dark-mode #navLessonTitle {
+    border: 0;
+    border-bottom: 1px solid white;
+}
+.dark-mode .page-header .header-top-row .header-nav a,
+.dark-mode .page-header .header-top-row .header-nav a {
+    color: whitesmoke 
+} 
+.dark-mode .page-header .header-top-row .header-nav a:focus,
+.dark-mode .page-header .header-top-row .header-nav a:active{
+    color: black !important;
+
+}

@@ -1,0 +1,10 @@
+body{
+    /* overflow: hidden; */
+}
+
+
+/* Lessons */
+.step {
+    display: flex;
+    justify-content: space-between;
+}

@@ -10,5 +10,5 @@ import { FocusManager } from './components/focusManager.js';
 export function numFocus(key) {
     const num = parseInt(key, 10);
     if (isNaN(num)) return;
-    FocusManager.focusNumber(num);
+    // FocusManager.focusNumber(num);
 }

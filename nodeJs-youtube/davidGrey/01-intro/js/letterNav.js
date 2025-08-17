@@ -6,7 +6,8 @@ export function letterNav({
     lastClickedSideLink,
     lastFocusedSideBarLink,
     sideBar,
-    mainContainer
+    mainContainer,
+    tutorialLink
 }) {
 
     function normalizeName(el) {

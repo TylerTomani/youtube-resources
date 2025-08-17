@@ -1,4 +1,3 @@
-// dark-mode.js
 const darkmodeBtn = document.getElementById('darkmodeBtn')
 const body = document.querySelector('body')
 addEventListener('keydown', e => {
