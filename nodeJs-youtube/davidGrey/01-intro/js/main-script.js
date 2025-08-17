@@ -31,6 +31,9 @@ dragHideSidebar(mainContainer, sideBar);
 
 // Track sidebar clicks & focus
 sideBarLinks.forEach(link => {
+    if(link.hasAttribute('autofocus')){
+        injectContent(link.href);
+    }
     link.addEventListener('focus', () => { lastFocusedSideBarLink = link; });
     link.addEventListener('click', (e) => {
         e.preventDefault();
