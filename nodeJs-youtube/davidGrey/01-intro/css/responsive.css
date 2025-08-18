@@ -1,10 +1,10 @@
-
+/* 
 @media screen and (max-width:599px) {
     .side-bar{
         top: 16vh !important;
     }
     main.main-container .main-content-container {
-        /* border-top: 2px solid blue; */
+        border-top: 2px solid blue;
         top: 2vh !important;
     }
-}
+} */

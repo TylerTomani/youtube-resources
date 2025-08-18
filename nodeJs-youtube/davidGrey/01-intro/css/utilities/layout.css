@@ -1,8 +1,67 @@
+img{
+    max-height: 100px;
+    max-width: 100px;
+}
 body{
     /* overflow: hidden; */
 }
-
-
+.page-wrapper{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    /* fill viewport */
+}
+.page-header{
+    display: flex;
+    /* flex-shrink: 0; */
+    /* prevent shrinking */
+    /* height: var(--header-height); */
+    /* fixed height */
+    /* z-index: 1000; */
+    /* above other content */
+}
+.page-header .header-col-left{
+    display: flex;
+    /* background-color: blue; */
+    /* flex-basis: 90%; */
+    flex-direction: column;
+    /* height: 100%; */
+    /* flex-grow: 1; */
+}
+.page-header .header-col-left > .header-nav{
+    display: flex;
+    background-color: orange;
+}
+.page-header .header-col-left > .header-nav a{
+    display: inline-flex;
+    flex-basis: 50%;
+    /* flex-grow: 1; */
+    align-items: center;
+    border: 5px solid red;
+    width: fit-content;
+    /* background-color: yellow; */
+}
+.page-header .header-top-row,
+.page-header .header-logo-actions {
+    display: flex;
+    align-items: center;
+    /* height: 100%; */
+    border: 1px solid black;
+    /* fill header height */
+    
+}
+.page-header .header-top-row > a{
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: center; */
+    /* height: 100%; */
+    background-color: blue;
+    /* fill header height */
+}
+.page-header .header-logo-actions
+.main-container{
+    display: flex;
+}
 /* Lessons */
 .step {
     display: flex;
