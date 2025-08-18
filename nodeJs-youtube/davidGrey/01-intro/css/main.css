@@ -1,6 +1,6 @@
 /* main.css */
 @import url('home-page.css');
-@import url('dark-mode.css');
+/* @import url('dark-mode.css'); */
 @import url('responsive.css');
 /* Components */
 /* @import url('components/header.css'); */
@@ -8,15 +8,17 @@
 @import url('components/lesson.css');
 /* Utilities */
 @import url('utilities/borders.css');
-@import url('utilities/colors.css');
-@import url('utilities/effects.css');
+/* @import url('utilities/colors.css'); */
+/* @import url('utilities/effects.css'); */
 @import url('utilities/layout.css');
 @import url('utilities/position.css');
 @import url('utilities/sizing.css');
 @import url('utilities/spacing.css');
 @import url('utilities/text.css');
 @import url('utilities/zindex.css');
-
+:root {
+    --header-height: 11vh; /* Adjust as needed */
+}
 *{
     margin: 0;
     padding: 0;

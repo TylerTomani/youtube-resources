@@ -1,7 +1,8 @@
-#sideBarBtn {
-    padding: 1%;
+.page-header .header-col-left>.header-nav a {
+  text-decoration: none;
+}
+.sidebar-links-ul li a{
+  text-decoration: none;
 }
 
-.code-container {
-  margin-top: 2.5%;
-}
+

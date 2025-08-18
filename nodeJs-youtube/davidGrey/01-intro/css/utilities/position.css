@@ -1,3 +1,23 @@
+.page-wrapper{
+    position: relative;
+}
+.page-header {
+    position: fixed;
+    top: 0
+}
+.main-container {
+    top: var(--header-height);
+    position:fixed;
+}
+.header-logo-actions-right{
+    /* position: relative; */
+}
+#darkModeBtn {
+    position: absolute;
+    color: blue;
+    border: 20px solid green;
+
+}
 .step-float{
     position: relative;
 }

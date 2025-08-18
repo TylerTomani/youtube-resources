@@ -1,10 +1,12 @@
-/* 
-@media screen and (max-width:599px) {
-    .side-bar{
-        top: 16vh !important;
+
+@media screen and (max-width: 600px) {
+    .main-container {
+            top: 25vh !important;
     }
-    main.main-container .main-content-container {
-        border-top: 2px solid blue;
-        top: 2vh !important;
+    h1,h2,h3,h4{
+        font-size: 80%;
     }
-} */
+    .step p , .step-float p {
+        font-size: 80%;
+    }
+}
