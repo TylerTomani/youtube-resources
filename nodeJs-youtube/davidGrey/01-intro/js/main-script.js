@@ -79,5 +79,5 @@ document.addEventListener('keydown', (e) => {
     }
 
     // Other letter navigation handled in letterNav
-    sideBarNav(key, e, sideBarLinks, lastFocusedSideBarLink);
+    sideBarNav(key, e, sideBarLinks, lastFocusedSideBarLink,sideBarBtn);
 });

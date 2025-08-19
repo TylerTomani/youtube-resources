@@ -8,8 +8,9 @@ export function stepTxtsFocus() {
     if (listenersInitialized) return; // prevent duplicates
     listenersInitialized = true;
     const steps = document.querySelectorAll('.steps-container > .step, .steps-container > .step-float, .step-col3');
-    const imgVids = document.querySelectorAll('.step-img > img, .step-vid > video');
+    const allImages = document.querySelectorAll('.step-img > img')
     const allVideos = document.querySelectorAll('video');
+    const imgVids = document.querySelectorAll('.step-img > img, .step-vid > video');
     const endNxtLesson = document.querySelector('#endNxtLesson');
     const stepImageIndexes = new WeakMap();
 
@@ -81,8 +82,11 @@ export function stepTxtsFocus() {
         denlargeAllImages();
         denlargeAllVideos();
     });
-    imgVids.forEach(el => {
-
+    allImages.forEach(img => {
+        img.addEventListener('click', e => {
+            console.log('clicked image');
+            e.target.classList.toggle('enlarge');
+        });
     })
     // -------------------- Step Focus Handlers --------------------
     steps.forEach(step => {

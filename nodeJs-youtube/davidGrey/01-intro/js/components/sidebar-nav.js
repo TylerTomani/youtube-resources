@@ -2,8 +2,11 @@
 import { sideBarLinks } from "../main-script.js";
 
 
-export function sideBarNav(key,e,iSideBarLinks, lastFocusedSideBarLink){
+export function sideBarNav(key,e,iSideBarLinks, lastFocusedSideBarLink,sideBarBtn){
     
+    if (e.shiftKey && key === 's') {
+
+    }
     if (key === 'f') {
         e.preventDefault();
         if (e.shiftKey) {

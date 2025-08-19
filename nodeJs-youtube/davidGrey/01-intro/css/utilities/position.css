@@ -2,12 +2,13 @@
     position: relative;
 }
 .page-header {
-    position: fixed;
+    /* position: fixed; */
     top: 0
 }
 .main-container {
     /* top: var(--header-height); */
     position:fixed;
+    top: 80px;
 }
 .header-logo-actions-right{
     /* position: relative; */

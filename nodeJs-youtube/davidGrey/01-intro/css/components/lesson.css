@@ -1,15 +1,13 @@
 .step,.step-float{
     position: relative;
 }
-
-
 .step-img img.enlarge{
     position: absolute;
     z-index: 100;
     min-height: 150px;
     min-width: 200px;
     margin-right: 50%;
-    border: 1px solid red;;
+    /* border: 1px solid red;; */
 }
 video.enlarge-vid {
     position: absolute;
@@ -25,16 +23,21 @@ video.enlarge-vid {
     width: 45%;
     margin-right: 5%;
     margin-left: 10px;
+    position: relative
 }
 
 .step-img>img,
 .step-vid>video {
-    position: relative;
+    position: absolute;
     width: 98%;
     border: 1px solid white;
     max-width: 500px;
-    z-index: 0;
+    z-index: 5;
     transition: all 0.025s ease;
+}
+.step-float:first-child .step-img img.enlarge{
+    margin-top: 5% !important;
+    z-index: 100
 }
 .imgs-container .img-container:nth-child(odd) img.enlarge{
     z-index: 10;
@@ -50,7 +53,6 @@ video.enlarge-vid {
 .imgs-container>* {
     flex-basis: 50%;
 }
-
 .imgs-container>.code-container textarea {
     height: 100%;
     width: 100%;
@@ -58,9 +60,6 @@ video.enlarge-vid {
 .imgs-container .img-container .step-img {
     width: 90%;
 }
-
-
-
 .step-float > .step-txt{
     padding: 0 2%;
 }
