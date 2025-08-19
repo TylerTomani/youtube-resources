@@ -52,6 +52,9 @@
     flex-shrink: 0;
     overflow-y: auto;
 }
+.sidebar-links-ul{
+    overflow-x: hidden;
+}
 /* Main content scrollable */
 .main-content-container {
     flex: 1 1 auto;
@@ -64,5 +67,5 @@
     bottom: 0;
 }
 .lesson-btns-container{
-    
+
 }
