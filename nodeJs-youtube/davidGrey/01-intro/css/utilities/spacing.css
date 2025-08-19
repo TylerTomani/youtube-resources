@@ -13,15 +13,17 @@
 .code-container>.copy-code {
   padding: 1%
 }
-/* Lessons */
-.main-container.collapsed .steps-container{
-  /* margin: 0 1%; */
+.page-header .header-col-left>.header-nav .home-links,
+.page-header .header-col-left>.header-nav .web-links {
+  flex-basis: 50%;
+  align-items: center;
+  justify-content: center;
 }
-.steps-container{
-  /* margin-left: 5%; */
+.page-header .header-col-left>.header-nav a {
+  display: inline-flex;
+  padding: 1% 2%;
+}
 
+#sideBarBtn {
+  margin-top: 2%;
 }
-.step-float{
-    /* padding-bottom: 5%; */
-}
-

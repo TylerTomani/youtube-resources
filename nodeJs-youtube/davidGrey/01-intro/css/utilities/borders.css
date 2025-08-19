@@ -1,16 +1,17 @@
-.page-header {
-    /* border-bottom: 1px solid black; */
-}
+
 .page-header .header-col-left>.header-nav a {
-    border: 1px solid black;
-    border-top:none;
+    border-top:1px solid black;
+    border-right:1px solid black;
 }
+
 #navLessonTitle {
-    /* border-top: 1px solid black; */
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+.side-bar{
     border-right: 1px solid black;
 }
 #sideBarBtn {
-    border: 1px solid black;
 }
 /* Lessons */
 .code-container{
@@ -18,7 +19,4 @@
 }
 .code-container>.copy-code {
     border: 1px solid black;
-}
-.main-container{
-    border: 1px solid blue;
 }

@@ -2,10 +2,13 @@
     height: 100vh;
 }
 .page-wrapper .page-header {
-    height: var(--header-height);
+    /* height: var(--header-height); */
     width: 100%;
     
 }
 .page-wrapper .page-header .header-col-left>.header-nav a {
     width: 100%;
+}
+.main-container {
+    height: 100%;
 }

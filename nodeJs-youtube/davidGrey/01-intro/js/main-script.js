@@ -23,7 +23,6 @@ export let mainTargetDivFocused = false;
 
 mainTargetDiv.addEventListener('focusin', () => { mainTargetDivFocused = true; });
 mainTargetDiv.addEventListener('focusout', () => { mainTargetDivFocused = false; });
-
 initSidebarNavKeys(sideBar, sideBarLinks, sideBarBtn);
 // Initialize sidebar toggle / drag
 togggleSidebar();
@@ -64,7 +63,8 @@ letterNav({
 document.addEventListener('keydown', (e) => {
     const key = e.key.toLowerCase();
     if (e.metaKey || e.ctrlKey || e.altKey) return;
-
+    
+    
     if (/^[0-9]$/.test(key)) {
         e.preventDefault();
         if (mainTargetDivFocused) {

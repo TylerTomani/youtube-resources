@@ -3,7 +3,7 @@ import { sideBarLinks } from "../main-script.js";
 
 
 export function sideBarNav(key,e,iSideBarLinks, lastFocusedSideBarLink){
-    console.log(lastFocusedSideBarLink)
+    
     if (key === 'f') {
         e.preventDefault();
         if (e.shiftKey) {

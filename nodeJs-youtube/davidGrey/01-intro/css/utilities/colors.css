@@ -1,4 +1,3 @@
-
 .sidebar-links-ul li a,:visited,
 .page-header .header-col-left>.header-nav a:visited {
     color: black;
@@ -9,17 +8,9 @@
     color: black;
 }
 
-#sideBarBtn {
-    color: var(--text-color);
-}
 
 /* Lessons */
-
 .code-container {
-    background-color: white;
-}
-.step .code-container .copy-code{
-    background-color: lightgreen;
-    border: 1px solid blue;
+    /* background-color: white; */
 }
 

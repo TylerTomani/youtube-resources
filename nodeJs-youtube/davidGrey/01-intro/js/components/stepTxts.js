@@ -2,8 +2,11 @@
 import { mainTargetDiv, sideBar, sideBarLinks, lastFocusedSideBarLink, lastClickedSideLink } from "../main-script.js";
 import { sideBarBtn } from "./toggle-sidebar.js";
 export let lastStep = null;
+let listenersInitialized = false;
 
 export function stepTxtsFocus() {
+    if (listenersInitialized) return; // prevent duplicates
+    listenersInitialized = true;
     const steps = document.querySelectorAll('.steps-container > .step, .steps-container > .step-float, .step-col3');
     const imgVids = document.querySelectorAll('.step-img > img, .step-vid > video');
     const allVideos = document.querySelectorAll('video');
@@ -67,7 +70,16 @@ export function stepTxtsFocus() {
     function isMainTargetFocused() {
         return mainTargetDiv.contains(document.activeElement);
     }
+    function scrollStepIntoCenter(step) {
+        const container = mainTargetDiv; // or the actual scrollable container
+        const stepRect = step.getBoundingClientRect();
+        const containerRect = container.getBoundingClientRect();
 
+        const offset = stepRect.top - containerRect.top;
+        const scrollY = container.scrollTop + offset - (container.clientHeight / 2) + (step.clientHeight / 2);
+
+        container.scrollTo({ top: scrollY, behavior: 'smooth' });
+    }
     mainTargetDiv.addEventListener('focusout', () => {
         denlargeAllImages();
         denlargeAllVideos();
@@ -79,10 +91,13 @@ export function stepTxtsFocus() {
             lastStep = e.target;
             pauseAllVideos();
             denlargeAllImages();
+            console.log(e.target)            
+            scrollStepIntoCenter(e.target)
         });
 
         step.addEventListener('keydown', e => {
             if (!isMainTargetFocused()) return;
+            
             if (e.key.toLowerCase() === 'enter') {
                 e.target.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 toggleImg(e);

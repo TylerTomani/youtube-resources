@@ -8,9 +8,9 @@
 ==================== */
 .page-header {
   display: flex; 
-  position: fixed;
+  /* position: fixed; */
   width: 100%;
-  height: var(--header-height);
+
 }
 
 /* ... rest of your header.css unchanged ... */

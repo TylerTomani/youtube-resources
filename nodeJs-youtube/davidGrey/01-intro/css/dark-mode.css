@@ -1,16 +1,17 @@
-.dark-mode .sidebar-links-ul li a,:visited,
-.dark-mode .page-header .header-col-left>.header-nav a:visited {
-    color: whitesmoke;
-}
-
-.dark-mode .sidebar-links-ul li a,
-.dark-mode .page-header .header-col-left>.header-nav a {
-    color: whitesmoke;
-}
 :root {
     --bg-primary-db: #201d1d;
     --font-primary-db: whitesmoke;
 }
+.dark-mode .sidebar-links-ul li a,:visited,
+.dark-mode .page-header .header-col-left>.header-nav a:visited {
+    /* color: whitesmoke; */
+}
+
+.dark-mode .sidebar-links-ul li a,
+.dark-mode .page-header .header-nav a {
+    color: whitesmoke;
+}
+
 .dark-mode .page-header .header-nav{
     border: 1px solid whitesmoke;
 }
@@ -53,7 +54,6 @@ h4 .dark-mode p {
 }
 .dark-mode .code-container,
 .dark-mode .code-container>.copy-code {
-    background-color: var(--bg-primary);
     color: white;
 }
 .dark-mode #navLessonTitle {
