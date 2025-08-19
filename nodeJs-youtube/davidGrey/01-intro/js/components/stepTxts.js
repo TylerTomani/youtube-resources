@@ -84,6 +84,8 @@ export function stepTxtsFocus() {
     });
     allImages.forEach(img => {
         img.addEventListener('click', e => {
+            e.preventDefault()
+            e.stopPropagation()
             console.log('clicked image');
             e.target.classList.toggle('enlarge');
         });
