@@ -40,7 +40,7 @@ export function stepTxtsFocus() {
         allVideos.forEach(v => v.pause());
     }
 
-    function toggleImg(e) {
+    function handleImgSize(e){
         const step = getStep(e.target);
         if (!step) return;
 
@@ -56,15 +56,12 @@ export function stepTxtsFocus() {
 
         const img = step.querySelector('.step-img > img');
         const vid = step.querySelector('.step-vid > video');
-
-        if (img) {
-            img.classList.toggle('enlarge');
-            if (currentWidth <= 721) sideBar.classList.toggle('deactive', img.classList.contains('enlarge'));
+        if(img){
+            toggleImg(img)
         }
-        if (vid) {
-            vid.classList.toggle('enlarge-vid');
-            if (currentWidth <= 721 && currentWidth >= 601) sideBar.classList.toggle('deactive', vid.classList.contains('enlarge-vid'));
-        }
+    }
+    function toggleImg(img) {
+        img.classList.toggle('enlarge');
     }
 
     function isMainTargetFocused() {
@@ -84,14 +81,15 @@ export function stepTxtsFocus() {
         denlargeAllImages();
         denlargeAllVideos();
     });
+    imgVids.forEach(el => {
 
+    })
     // -------------------- Step Focus Handlers --------------------
     steps.forEach(step => {
         step.addEventListener('focus', e => {
             lastStep = e.target;
             pauseAllVideos();
             denlargeAllImages();
-            console.log(e.target)            
             scrollStepIntoCenter(e.target)
         });
 
@@ -100,7 +98,7 @@ export function stepTxtsFocus() {
             
             if (e.key.toLowerCase() === 'enter') {
                 e.target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                toggleImg(e);
+                handleImgSize(e);
             }
         });
     });
@@ -138,7 +136,13 @@ export function stepTxtsFocus() {
             else endNxtLesson?.focus();
         }
 
-        if (key === 'm' && lastStep) lastStep.focus();
+        if (key === 'm' && lastStep){
+            if(e.target.id === 'mainTargetDiv'){
+                lastStep.focus();
+            } else {
+                mainTargetDiv.focus()
+            }
+        } 
     });
 
 }

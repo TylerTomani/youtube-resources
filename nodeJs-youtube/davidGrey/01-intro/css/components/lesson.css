@@ -1,14 +1,30 @@
+.step,.step-float{
+    position: relative;
+}
 
+
+.step-img img.enlarge{
+    position: absolute;
+    z-index: 100;
+    min-height: 150px;
+    min-width: 200px;
+    margin-right: 50%;
+    border: 1px solid red;;
+}
+video.enlarge-vid {
+    position: absolute;
+    z-index: 10;
+    min-height: 150px;
+    transform: scale(1.5);
+    min-width: 250px;
+    right: 20%;
+}
 .step-img,
 .step-vid {
     float: right;
     width: 45%;
-    /* margin-top: 5%; */
-    /* Adjust as needed */
     margin-right: 5%;
     margin-left: 10px;
-    /* z-index: 0; */
-    /* Optional: adds space between console and text */
 }
 
 .step-img>img,
@@ -19,21 +35,6 @@
     max-width: 500px;
     z-index: 0;
     transition: all 0.025s ease;
-}
-
-.step-img img.enlarge{
-    z-index: 10;
-    min-height: 150px;
-    min-width: 200px;
-    margin-right: 50%;
-}
-video.enlarge-vid {
-    position: absolute;
-    z-index: 10;
-    min-height: 150px;
-    transform: scale(1.5);
-    min-width: 250px;
-    right: 20%;
 }
 .imgs-container .img-container:nth-child(odd) img.enlarge{
     z-index: 10;
