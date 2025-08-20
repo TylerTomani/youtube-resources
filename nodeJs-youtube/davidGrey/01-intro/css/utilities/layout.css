@@ -6,10 +6,10 @@
     /* z-index: 5; */
     /* position: fixed; */
     display: flex;
-    width: 100%;
 }
 #navLessonTitle{
     display: flex;
+    /* flex-grow: 1; */
     align-content: center;
 }
 .page-header .header-col-left{
@@ -29,7 +29,7 @@
 .page-header .header-logo-actions-right a img{
     width: 100%;
     max-width: 200px;
-    max-height: 80px;
+    /* max-height: 80px; */
     height: 100%;
 
 }
@@ -43,6 +43,11 @@
     justify-content: center;
     flex-basis: 50%;
     align-items: center;
+}
+.page-header .header-col-left>.header-nav a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 .main-container {
     display: flex;

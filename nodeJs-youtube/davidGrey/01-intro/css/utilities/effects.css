@@ -1,5 +1,5 @@
 :root {
-    /* --highlight-color: rgb(0, 139, 79); */
+    --highlight-color: rgb(0, 139, 79);
 }
 
 a:focus,
@@ -12,7 +12,12 @@ a:focus,
     /* text-underline-offset: 4px; */
 }
 
-/* Main content */
+#mainTargetDiv:active,#mainTargetDiv:focus{
+    box-shadow: 0 0 4px 4px var(--highlight-color);    
+}
+/* Main content  maybe instead of mainTargetDive??*/
+.main-content-container:active,.main-content-container:focus{
+}
 .main-content-container {
     transition: width 0.1s ease;
 }

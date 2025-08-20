@@ -42,21 +42,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.error('Failed to load content:', err);
             });
     }
-
     function getParts(el) {
         while (el && el.tagName !== 'A') {
             el = el.parentElement;
         }
         return el;
     }
-
     parts.forEach((el, index) => {
         if (el.hasAttribute('autofocus')) {
             injectContent(el.href);
             lastFocusedLink = el;
             lastClickedLink = el;
         }
-
         el.addEventListener('focus', (e) => {
             mainTargetDivFocused = false;
         });
