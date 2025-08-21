@@ -12,6 +12,7 @@
 #targetDiv {
     height: 100%;
     /* or 100vh if you want full viewport */
+    overflow-x: hidden;
     overflow-y: auto;
     scroll-behavior: smooth;
     /* optional for smooth scrolling */

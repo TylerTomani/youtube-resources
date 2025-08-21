@@ -18,6 +18,8 @@ export function initStepNavigation(mainTargetDiv) {
         })
     })
     steps.forEach((step, index) => {
+        const clearEnlarge = () => denlargeAllImages();
+
         if (!step.hasAttribute('tabindex')) step.setAttribute('tabindex', '0');
 
         if (!step.dataset.listenerAdded) {
@@ -35,9 +37,11 @@ export function initStepNavigation(mainTargetDiv) {
                 e.preventDefault()
                 const step = getStep(e.target)
                 if(step && e.target.tagName != 'IMG' ){
+                    console.log('eys')
                     denlargeAllImages()
                 }
             });
+            step.addEventListener('touchstart', clearEnlarge, { passive: true });
 
             // step.dataset.listenerAdded = 'true';
         }
