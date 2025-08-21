@@ -1,7 +1,8 @@
 /* lesson.css */
 .main-content-container {
     flex: 1 1 auto;
-    /* overflow-y: auto; */
+    /* overflow: hidden; */
+    overflow-x: hidden;
     /* scrolls independently */
     box-sizing: border-box;
     height: calc(100vh - var(--header-height, 80px));
@@ -32,6 +33,10 @@
 /* The actual image inside the step-img */
 .step-img>img {
     position: relative;
+    z-index: 2 !important;
+    touch-action: manipulation;
+
+    position: relative;
     /* relative keeps it clickable in the flow */
     z-index: 5;
     /* above parent, below enlarged */
@@ -41,7 +46,7 @@
 
 /* Enlarged images */
 img.enlarge {
-    position: relative;
+    /* position: relative; */
     /* relative works with float layout */
     z-index: 100 !important;
     /* top of everything */

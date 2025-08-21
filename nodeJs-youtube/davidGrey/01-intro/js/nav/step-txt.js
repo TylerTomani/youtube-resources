@@ -9,12 +9,16 @@ export function initStepNavigation(mainTargetDiv) {
     allImgs = Array.from(mainTargetDiv.querySelectorAll('.step-img > img'));
 
     if (!steps.length) return;
-    allImgs.forEach(el => {
-        el.addEventListener('click', e => {
+    allImgs.forEach(img => {
+        img.addEventListener('click', e => {
             e.preventDefault()
-            e.stopPropagation()
+            // e.stopPropagation()
             denlargeAllImages(allImgs)
-            e.target.classList.toggle('enlarge')
+            if(!img.classList.contains("enlarge")){
+                img.classList.add('enlarge')
+            } else {
+                img.classList.remove('enlarge')
+            }
         })
     })
     steps.forEach((step, index) => {
