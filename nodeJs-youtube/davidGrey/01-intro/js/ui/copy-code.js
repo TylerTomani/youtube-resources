@@ -17,6 +17,7 @@ export function addCopyCode(){
                 }
                 // copyTextToClipboard(e.target.innerText)
                 animate(el)
+                el
             }
         })
     })

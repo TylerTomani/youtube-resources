@@ -4,7 +4,7 @@
     overflow-x: hidden;
     box-sizing: border-box;
     height: calc(100vh - var(--header-height, 80px));
-    padding-bottom: 50%;
+    /* padding-bottom: 50%; */
 }
 
 #targetDiv {
@@ -12,11 +12,10 @@
     overflow-x: hidden;
     overflow-y: auto;
     scroll-behavior: smooth;
-    padding-bottom: 50%;
+    padding-bottom: 25%;
 }
 
 .steps-container {
-    padding-bottom: 50%;
 }
 
 /* Step image container */
@@ -97,7 +96,7 @@ video.enlarge-vid {
 /* Images container layout */
 .imgs-container {
     display: flex;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     width: 100%;
     position: static;
     /* remove relative/absolute if you don’t need it */
@@ -162,7 +161,6 @@ video.enlarge-vid {
     .code-container {
         min-width: 250px;
     }
-
     video {
         min-width: 250px;
     }
