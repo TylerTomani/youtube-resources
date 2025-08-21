@@ -44,14 +44,20 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle , 
         el.addEventListener("click", e => {
             e.preventDefault();
             e.stopPropagation()
-            injectContent(e.target.href, mainTargetDiv);
+            if(e.target.closest('a')){
+                console.log(e.target.closest('a'))
+                injectContent(e.target.closest('a').href, mainTargetDiv);
+            }
             // initialize step navigation once
 
             lastClickedLink = e.target;
         });
         el.addEventListener("keydown", e => {
             if (e.key.toLowerCase() === "enter") {
-                injectContent(e.target.href);
+                if (e.target.closest('a')) {
+                    console.log(e.target.closest('a'))
+                    injectContent(e.target.closest('a').href, mainTargetDiv);
+                }
                 if (e.target == lastClickedLink) {
                     mainTargetDiv.focus()
                 }
