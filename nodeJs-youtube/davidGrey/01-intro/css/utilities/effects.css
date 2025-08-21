@@ -30,11 +30,11 @@ a:focus,
 
 
 /* Lessons */
-.step:active,
+/* .step:active,
 .step:focus,
-.step-float:active,
+.step-float:active, */
 .step-float:focus {
-    font-style: bold;
+    /* font-style: bold; */
 }
 .step-float:focus,.step-float:active {
     border: 3px solid var(--highlight-color);
