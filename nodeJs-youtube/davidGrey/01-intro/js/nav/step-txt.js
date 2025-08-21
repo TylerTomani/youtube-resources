@@ -37,6 +37,40 @@ export function initStepNavigation(mainTargetDiv,sidebarLinks,iSideBarLinks) {
 
         }
     })
+    endNxtLessonBtn.addEventListener('click', e => {
+        console.log('click')
+        e.preventDefault()
+        if(iSideBarLinks >= sidebarLinks.length){
+            iSideBarLinks = 0
+        } else {
+            iSideBarLinks += 1
+        }
+        sidebarLinks[iSideBarLinks].click()
+        console.log()
+        steps[0].focus()
+        endNxtLessonBtn.focus()
+        scrollToTop()
+
+
+        
+    })
+    prevLessonBtn.addEventListener('click', e => {
+        console.log('click')
+        e.preventDefault()
+        if(iSideBarLinks >= sidebarLinks.length){
+            iSideBarLinks = 0
+        } else {
+            iSideBarLinks += 1
+        }
+        sidebarLinks[iSideBarLinks].click()
+        console.log()
+        steps[0].focus()
+        prevLessonBtn.focus()
+        scrollToTop()
+
+
+        
+    })
     prevLessonBtn.addEventListener('keydown', e => {
         let key = e.key.toLowerCase();
         if (key === 'enter') {
@@ -52,6 +86,9 @@ export function initStepNavigation(mainTargetDiv,sidebarLinks,iSideBarLinks) {
             steps[0].focus()
             prevLessonBtn.focus()
             scrollToTop()
+        }
+        if(key === 'p'){
+            endNxtLessonBtn.focus()
         }
     });
     
