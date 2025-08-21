@@ -10,22 +10,6 @@ export function initStepNavigation(mainTargetDiv,sidebarLinks,iSideBarLinks) {
     const endNxtLessonBtn = document.querySelector('#endNxtLessonBtn')
     const prevLessonBtn = document.querySelector('#prevLessonBtn')
     
-    // handle focus of copy-code to bring on top
-    copyCodes.forEach(el => {
-        el.addEventListener('focus', () => {
-            const step = getStep(el);
-            const img = step.querySelector('.step-img > img');
-            denlargeAllImages()
-            // el.style.zIndex = 1000;      // code on top
-            el.style.zIndex = 100;
-            img.style.zIndex = 1
-            console.log(el)
-            console.log(img)
-        });
-        el.addEventListener('blur', () => {
-            // el.style.zIndex = 10;
-        });
-    });
     mainTargetDiv.addEventListener('keydown',e =>{
         let key = e.key.toLowerCase()
         if(key == 'enter'){
@@ -75,7 +59,11 @@ export function initStepNavigation(mainTargetDiv,sidebarLinks,iSideBarLinks) {
         })
     })
     copyCodes.forEach(el => {
-        el.addEventListener('focus', denlargeAllImages)
+        el.addEventListener('focus', e => {
+            denlargeAllImages()
+            el.style.zIndex = 100
+
+        })
     })
     steps.forEach((step, index) => {
         const clearEnlarge = () => denlargeAllImages();
@@ -215,10 +203,10 @@ function denlargeAllImages() {
     allImgs.forEach(img => {
         img.classList.remove('enlarge');
         // optionally remove enlarge-vid if you have videos
-        if (img.classList.contains('enlarge-vid')){
-            img.classList.remove('enlarge-vid');
-            // img.style.zIndex = 0
-        } 
+        if (img.classList.contains('enlarge-vid')) {
+            img.classList.remove('enlarge-vid')
+            img.style.zIndex = 0
+        };
 
     });
 }
@@ -229,30 +217,31 @@ function toggleImg(e) {
     const step = getStep(e.target);
     if (!step) return;
 
-    const img = step.querySelector('.step-img > img');
-    const stepCopyCode = step.querySelectorAll('.copy-code');
+    const stepCopyCodes = step.querySelectorAll('.copy-code');
+    const images = Array.from(step.querySelectorAll('.step-img > img'));
 
-    // toggle enlarge
-    const isEnlarged = img.classList.toggle('enlarge');
+    if (!images.length) return;
 
-    if (isEnlarged) {
-        // img on top
-        img.style.zIndex = 1000;
-        stepCopyCode.forEach(el => el.style.zIndex = 10);
-    } else {
-        // copy-code on top if focused
-        stepCopyCode.forEach(el => {
-            if (document.activeElement === el) {
-                el.style.zIndex = 1000;
-            } else {
-                el.style.zIndex = 10;
-            }
-        });
-        img.style.zIndex = 10;
-    }
+    // Remove enlarge from all images in this step
+    images.forEach(img => {
+        img.classList.remove('enlarge');
+        img.style.zIndex = 1; // default behind copy-code
+    });
+
+    // Determine which image to enlarge
+    let currentIndex = stepImageIndexes.get(step) || 0;
+    images[currentIndex].classList.add('enlarge');
+    images[currentIndex].style.zIndex = 100; // always on top
+
+    // Increment index for next time
+    currentIndex = (currentIndex + 1) % images.length;
+    stepImageIndexes.set(step, currentIndex);
+
+    // Adjust copy-code z-index: behind enlarged image, else on top
+    stepCopyCodes.forEach(code => {
+        code.style.zIndex = 1; // always behind enlarged image
+    });
 }
-
-
 
 function removeAllTabIndexes(copyCodes) {
     copyCodes.forEach(el => {

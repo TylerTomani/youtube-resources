@@ -157,7 +157,7 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle , 
         }
     }
     function sKeyFocusOrder(){
-        
+        console.log('yes')
         if (lastClickedLink) {
             lastClickedLink.focus();
         } else if (lastFocusedLink) {
