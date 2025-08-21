@@ -3,8 +3,12 @@ export function getPageHeader() {
     return document.querySelector("header.page-header");
 }
 export function getPageHeaderLinks() {
-    return document.querySelector("header.page-header a");
+    return document.querySelectorAll("header.page-header a");
 }
+export function getDarkModeBtn() {
+    return document.querySelector("#darkModeBtn");
+}
+
 export function getNavLessonTitle() {
     return document.querySelector("#navLessonTitle");
 }

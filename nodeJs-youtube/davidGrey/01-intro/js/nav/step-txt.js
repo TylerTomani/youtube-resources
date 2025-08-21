@@ -1,7 +1,7 @@
 // // stepTxtFocus.js
 
 // import { navLessonTitle } from "../core/inject-content.js";
-// import { mainTargetDiv, mainContainer } from "../core/main-script.js";
+// import { mainTargetDiv } from "../core/index.js";
 // import { sideBarLinks } from "../core/inject-content.js";
 // import { togggleSidebar } from "../ui/toggle-sidebar.js";
 // import { lastClickedLink } from "./keyboard-nav.js";
@@ -9,6 +9,7 @@
 // export let stepFocused
 
 // export function stepTxtsFocus() {
+//     const mainContainer = document.querySelector('.main-container')
 //     // const videos = document.querySelectorAll('video');
 //     const allVideos = document.querySelectorAll('video')
 //     let currentVideo
