@@ -5,8 +5,8 @@
 // const sideBar = getSideBar()
 // const navLessonTitle = getNavLessonTitle()
 // const mainContainer = getMainContainer()
-export function togggleSidebar(mainContainer,sidebar) {
-console.log(mainContainer)
-  console.log(sidebar)
-  mainContainer?.classList.toggle('collapsed');
+export function togggleSidebar({mainContainer,sidebar}) {
+  console.log(mainContainer)
+  // console.log(sidebar)
+  // mainContainer?.classList.toggle('collapsed');
 }

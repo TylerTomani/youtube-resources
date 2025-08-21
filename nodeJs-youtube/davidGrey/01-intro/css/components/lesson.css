@@ -1,8 +1,46 @@
 #targetDiv {
-    /* overflow: auto;
-    height: 100vh; */
-    padding-bottom: 50%;
+    height: 100%;
+    /* or 100vh if you want full viewport */
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    /* optional for smooth scrolling */
 }
+/* Step image container - keep float as is */
+.step-img {
+    position: relative;
+    /* needed for absolute child positioning */
+    z-index: 1;
+    /* base z-index */
+    pointer-events: auto;
+    /* ensure clicks reach children */
+}
+
+/* The actual image inside the step-img */
+.step-img>img {
+    position: relative;
+    /* relative keeps it clickable in the flow */
+    z-index: 5;
+    /* above parent, below enlarged */
+    pointer-events: auto;
+    /* clickable */
+}
+
+/* Enlarged images */
+img.enlarge {
+    position: relative;
+    /* relative works with float layout */
+    z-index: 100 !important;
+    /* top of everything */
+    pointer-events: auto;
+    /* always clickable */
+}
+.imgs-container .img-container:nth-child(odd) img.enlarge {
+    z-index: 10;
+    /* min-height: 150px;
+    min-width: 200px;*/
+    margin-left: 20%;
+}
+
 
 .step,.step-float{
     /* position: relative; */
@@ -16,14 +54,7 @@
     flex-grow: 1;
     /* contains floated/absolute children */
 }
-.step-img img.enlarge{
-    position: absolute;
-    z-index: 100;
-    min-height: 150px;
-    min-width: 200px;
-    margin-right: 50%;
-    /* border: 1px solid red;; */
-}
+
 video.enlarge-vid {
     position: absolute;
     z-index: 10;

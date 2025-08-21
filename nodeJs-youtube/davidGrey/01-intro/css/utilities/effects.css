@@ -15,7 +15,11 @@ a:focus,
 #mainTargetDiv:active,#mainTargetDiv:focus{
     /* box-shadow: 0 0 4px 4px var(--highlight-color);     */
     border: 1px solid var(--highlight-color);    
+    /* overflow: auto; */
+}
+#targetDiv{
     overflow: auto;
+
 }
 /* Main content  maybe instead of mainTargetDive??*/
 .main-content-container:active,.main-content-container:focus{

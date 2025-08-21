@@ -63,8 +63,8 @@
 /* Main content scrollable */
 .main-content-container {
     flex: 1 1 auto;
-    overflow-y: auto;
-    overflow-x: hidden;
+    /* overflow-y: auto; */
+    /* overflow-x: hidden; */
     box-sizing: border-box;
 }
 .lesson-btns-container{

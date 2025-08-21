@@ -1,40 +1,25 @@
 
 // keyboard-nav.js
 import { injectContent } from "../core/inject-content.js";
-import { stepTxtsFocus } from "./step-txt.js";
+import { initStepNavigation, handleStepKeys } from "./step-txt.js";
 import { getDarkModeBtn } from "../utils/dom-utils.js";
-import { togggleSidebar } from "../ui/toggle-sidebar.js";
 export let lastFocusedLink = null;
 export let lastClickedLink = null;
 export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle , darkModeBtn, 
     sidebar, sidebarBtn, sidebarLinks, mainTargetDiv,mainContainer }) {
     let focusZone = "header"; // "header" | "sidebar" | "main"
     let iSideBarLinks = -1;
-        
+
     // --- Focusin listeners update the current zone ---
     pageHeader.addEventListener("focusin", () => { focusZone = "header"; });
     sidebar.addEventListener("focusin", () => { focusZone = "sidebar"; });
     sidebarBtn.addEventListener("focusin", () => { focusZone = "sidebar"; });
     mainTargetDiv.addEventListener("focusin", () => { focusZone = "main"; });
     
-    sidebarBtn.addEventListener("click", (e) => { 
-        e.preventDefault()
-        togggleSidebar(mainContainer,sidebar)
-    })
-    navLessonTitle.addEventListener("keydown", (e) => {
-        let key = e.key.toLowerCase()
-        if(key === 'enter'){
-            togggleSidebar(mainContainer, sidebar)
-        }
-        
-     })
     sidebarBtn.addEventListener("keydown", (e) => { 
         let key = e.key.toLowerCase()    
         iSideBarLinks = -1
-        if(key === 'enter'){
-            togggleSidebar(mainContainer,sidebar)
-        }
-
+        
         if(key == 's'){
             if(lastClickedLink){
                 lastClickedLink.focus()
@@ -49,7 +34,7 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle , 
     });
     sidebarLinks.forEach(el => {
         if (el.hasAttribute("autofocus")) {
-            injectContent(el.href);
+            injectContent(el.href, mainTargetDiv);
             iSideBarLinks = [...sidebarLinks].indexOf(el);
         }
         el.addEventListener("focus", () => {
@@ -59,7 +44,9 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle , 
         el.addEventListener("click", e => {
             e.preventDefault();
             e.stopPropagation()
-            injectContent(e.target.href);
+            injectContent(e.target.href, mainTargetDiv);
+            // initialize step navigation once
+
             lastClickedLink = e.target;
         });
         el.addEventListener("keydown", e => {
@@ -117,53 +104,15 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle , 
         }
 
         // ----- MAIN -----
-        if (focusZone === "main") {
-            headerElementsFocus(key, e)
-            stepTxtsFocus(key,e,sidebarLinks,mainContainer,mainTargetDiv)
-            if (key === "s") {
-                sKeyFocusOrder()
-            }
+        if (focusZone === 'main') {
+            headerElementsFocus(key, e);
+            handleStepKeys(key, e, mainTargetDiv);
+            if (key === 's') sKeyFocusOrder();
         }
 
-        
-        //     if (e.shiftKey || e.metaKey) return
-        //     if (key == 'f') {
-        //         iSideBarLinks = (iSideBarLinks + 1) % sidebarLinks.length;
-        //         sidebarLinks[iSideBarLinks].focus();
-        //     } else if (key == 'a') {
-        //         iSideBarLinks = (iSideBarLinks - 1 + sidebarLinks.length) % sidebarLinks.length;
-        //         sidebarLinks[iSideBarLinks].focus();
-        //     }
-        //     if(key === 'm'){
-        //         if(mainTargetDiv){
-        //             console.log('m in !mainTargetDiv')
-        //         }
 
-        //     }
-        //     if (!isNaN(key)) {
-        //         const index = parseInt(key) - 1;
-        //         if (index < 0) return;
-        //         if (index < sidebarLinks.length) {
-        //             sidebarLinks[index].focus();
-                
-        //         } else {
-        //         const steps = mainTargetDiv.querySelectorAll(".step-float, .step");
-        //         if (index < steps.length) {
-        //             steps[index].focus();
-        //         }
-        //     }
-
-                
-        //     }                    
-        // } else 
-        // if(sideBarLinksFocused || pageHeaderFocused){
-        //     console.log('yes')
-        //     if (key === 'm') {
-        //         console.log(mainTargetDiv)
-        //         mainTargetDiv.focus()
-        //     }
-        // } 
         
+
     });
     function initElementFocus(key,e){
         if (key === 'n') {
