@@ -35,7 +35,7 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle , 
     sidebarLinks.forEach(el => {
         if (el.hasAttribute("autofocus")) {
             iSideBarLinks = [...sidebarLinks].indexOf(el);
-            injectContent(el.href, mainTargetDiv,sidebarLinks,iSideBarLinks);
+            injectContent(el.href, mainTargetDiv,sidebarLinks,iSideBarLinks,navLessonTitle);
         }
         el.addEventListener("focus", () => {
             lastFocusedLink = el;
@@ -45,9 +45,8 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle , 
             e.preventDefault();
             e.stopPropagation()
             if(e.target.closest('a')){
-                console.log(e.target.closest('a'))
                 iSideBarLinks = [...sidebarLinks].indexOf(el)
-                injectContent(e.target.closest('a').href, mainTargetDiv, sidebarLinks,iSideBarLinks);
+                injectContent(e.target.closest('a').href, mainTargetDiv, sidebarLinks,iSideBarLinks,navLessonTitle);
             }
             // initialize step navigation once
 
@@ -56,7 +55,6 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle , 
         el.addEventListener("keydown", e => {
             if (e.key.toLowerCase() === "enter") {
                 if (e.target.closest('a')) {
-                    console.log(e.target.closest('a'))
                     injectContent(e.target.closest('a').href, mainTargetDiv);
                 }
                 if (e.target == lastClickedLink) {
@@ -72,11 +70,16 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle , 
     addEventListener("keydown", e => {
         const key = e.key.toLowerCase();
         if (e.shiftKey || e.metaKey) return;
-        // HEADER
+        
+        // ----- HEADER -----
         if (focusZone === "header") {
             headerElementsFocus(key,e)
             if(key == 's'){
-                sKeyFocusOrder()
+                // sKeyFocusOrder()
+                // Can't get this to go to last clicked 
+                if(lastClickedLink){
+                    lastClickedLink.focus()
+                }
             }
         }
         // ----- SIDEBAR -----
@@ -147,6 +150,7 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle , 
         }
     }
     function sKeyFocusOrder(){
+        
         if (lastClickedLink) {
             lastClickedLink.focus();
         } else if (lastFocusedLink) {

@@ -18,6 +18,7 @@ export function stepTxtsFocus(key,sidebarLinks,mainContainer,mainTargetDiv) {
     const steps = document.querySelectorAll('.steps-container > .step ,.steps-container > .step-float , .step-col3')
     // Maybe just keep text area with focus
     const copyCodes = document.querySelectorAll('.copy-code')
+    
     const imgVids = document.querySelectorAll('.step-img > img, .step-vid > video')
     const allImgs = document.querySelectorAll('.step-img > img')
     // const navLessonTitleH1 = navLessonTitle.querySelector('h1')

@@ -1,0 +1,6 @@
+.step-float:focus,.step-float:focus{
+    z-index: 5;
+}
+.step-float:focus img,.step-float:active img{
+    z-index: 6;
+}

@@ -5,13 +5,21 @@ let allImgs = [];
 let lastStepPage = false
 // --- Initialize steps and images once ---
 export function initStepNavigation(mainTargetDiv,sidebarLinks,iSideBarLinks) {
+    const copyCodes = document.querySelectorAll('.copy-code')    
     const endNxtLessonBtn = document.querySelector('#endNxtLessonBtn')
     const prevLessonBtn = document.querySelector('#prevLessonBtn')
+    
     mainTargetDiv.addEventListener('keydown',e =>{
-        if(e.target == mainTargetDiv){
-            steps[0].focus()
+        let key = e.key.toLowerCase()
+        if(key == 'enter'){
+                steps[0].focus()
         }
+        
+        // if(e.target == mainTargetDiv){
+        // }
     })
+    steps = Array.from(mainTargetDiv.querySelectorAll('.steps-container > .step-float'));
+    allImgs = Array.from(mainTargetDiv.querySelectorAll('.step-img > img'));
     endNxtLessonBtn.addEventListener('keydown', e => {
         let key = e.key.toLowerCase()
         if(key === 'enter'){
@@ -21,6 +29,9 @@ export function initStepNavigation(mainTargetDiv,sidebarLinks,iSideBarLinks) {
                 iSideBarLinks += 1
             }
             sidebarLinks[iSideBarLinks].click()
+            console.log()
+            steps[0].focus()
+            endNxtLessonBtn.focus()
             scrollToTop()
 
 
@@ -38,20 +49,24 @@ export function initStepNavigation(mainTargetDiv,sidebarLinks,iSideBarLinks) {
             sidebarLinks[iSideBarLinks].click();
 
             // Scroll to top of page
+            steps[0].focus()
+            prevLessonBtn.focus()
             scrollToTop()
         }
     });
-    steps = Array.from(mainTargetDiv.querySelectorAll('.steps-container > .step-float'));
-    allImgs = Array.from(mainTargetDiv.querySelectorAll('.step-img > img'));
+    
     
     if (!steps.length) return;
     allImgs.forEach(img => {
         img.addEventListener('click', e => {
             e.preventDefault()
             // e.stopPropagation()
-            // denlargeAllImages(allImgs)
+            denlargeAllImages(allImgs)
             img.classList.toggle('enlarge')
         })
+    })
+    copyCodes.forEach(el => {
+        el.addEventListener('focus', denlargeAllImages)
     })
     steps.forEach((step, index) => {
         const clearEnlarge = () => denlargeAllImages();
@@ -59,6 +74,9 @@ export function initStepNavigation(mainTargetDiv,sidebarLinks,iSideBarLinks) {
         if (!step.hasAttribute('tabindex')) step.setAttribute('tabindex', '0');
 
         if (!step.dataset.listenerAdded) {
+            step.addEventListener('focus', () => {
+                removeAllTabIndexes(copyCodes)
+            })
             // Update lastStep and iStep on focus
             step.addEventListener('focusin', () => {
                 lastStep = step;
@@ -68,11 +86,15 @@ export function initStepNavigation(mainTargetDiv,sidebarLinks,iSideBarLinks) {
                 } else {
                     lastStepPage = false
                 }
+                
             });
 
             // Handle enter key to toggle images
-            step.addEventListener('keydown', ev => {
-                if (ev.key.toLowerCase() === 'enter') toggleImg(ev);
+            step.addEventListener('keydown', e => {
+                if (e.key.toLowerCase() === 'enter') {
+                    addTabIndexes(e)
+                    toggleImg(e)
+                }
             });
             step.addEventListener('click', e => {
                 e.preventDefault()
@@ -128,12 +150,13 @@ export function handleStepKeys(key, e, mainTargetDiv) {
         case 'm':
             if (e.target === mainTargetDiv) {
                 // jump into steps
-                const target = lastStep || steps[0];
+                // const target = lastStep || steps[0];
+                const target = lastStep ;
                 target.focus();
                 target.scrollIntoView({ behavior: 'instant', block: 'start' });
             } else if (lastStep && steps.includes(e.target)) {
                 mainTargetDiv.focus();
-                window.scrollTo({ top: mainTargetDiv.offsetTop, behavior: 'instant' });
+                window.scrollTo({ top: mainTargetDiv.offsetTop, behavior: 'instant',block:'start' });
                 
             }
             break;
@@ -157,6 +180,7 @@ function denlargeAllImages() {
         img.classList.remove('enlarge');
         // optionally remove enlarge-vid if you have videos
         if (img.classList.contains('enlarge-vid')) img.classList.remove('enlarge-vid');
+
     });
 }
 
@@ -179,6 +203,18 @@ function toggleImg(e) {
         currentIndex = (currentIndex + 1) % images.length;
         stepImageIndexes.set(step, currentIndex);
     }
+    
+}
+function removeAllTabIndexes(copyCodes) {
+    copyCodes.forEach(el => {
+        el.setAttribute('tabindex','-1')
+    })
+}
+function addTabIndexes(e) {
+    const tabEls = e.target.querySelectorAll('.copy-code, textarea')
+    tabEls.forEach(el => {
+        el.setAttribute('tabindex', '0')
+    })
 }
 
 export function getStep(parent) {
