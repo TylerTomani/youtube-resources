@@ -219,29 +219,37 @@ function toggleImg(e) {
 
     const stepCopyCodes = step.querySelectorAll('.copy-code');
     const images = Array.from(step.querySelectorAll('.step-img > img'));
-
     if (!images.length) return;
 
-    // Remove enlarge from all images in this step
-    images.forEach(img => {
-        img.classList.remove('enlarge');
-        img.style.zIndex = 1; // default behind copy-code
-    });
+    // Single-image step
+    if (images.length === 1) {
+        const img = images[0];
+        const isEnlarged = img.classList.contains('enlarge');
+        img.classList.toggle('enlarge', !isEnlarged);
+        img.style.zIndex = !isEnlarged ? 100 : 1;
+    } else {
+        // Multiple images: cycle through
+        let currentIndex = stepImageIndexes.get(step) || 0;
 
-    // Determine which image to enlarge
-    let currentIndex = stepImageIndexes.get(step) || 0;
-    images[currentIndex].classList.add('enlarge');
-    images[currentIndex].style.zIndex = 100; // always on top
+        images.forEach((img, i) => {
+            img.classList.remove('enlarge');
+            img.style.zIndex = 1; // default behind
+        });
 
-    // Increment index for next time
-    currentIndex = (currentIndex + 1) % images.length;
-    stepImageIndexes.set(step, currentIndex);
+        images[currentIndex].classList.add('enlarge');
+        images[currentIndex].style.zIndex = 100;
 
-    // Adjust copy-code z-index: behind enlarged image, else on top
+        currentIndex = (currentIndex + 1) % images.length;
+        stepImageIndexes.set(step, currentIndex);
+    }
+
+    // Ensure copy-code is always behind enlarged image
     stepCopyCodes.forEach(code => {
-        code.style.zIndex = 1; // always behind enlarged image
+        code.style.zIndex = 0; // below images
     });
 }
+
+
 
 function removeAllTabIndexes(copyCodes) {
     copyCodes.forEach(el => {
