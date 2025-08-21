@@ -1,13 +1,12 @@
-/** I'm thinking make an initial universal letter focus or dumb down letter focus 
-for initial variables, home-links and weblinks > a , plus #tutorialLink and darkModeBtn
-call it something like... initFocused or headerFocused, */
+
 // keyboard-nav.js
 import { injectContent } from "../core/inject-content.js";
-// import { stepTxtsFocus } from "./step-txt.js";
+import { stepTxtsFocus } from "./step-txt.js";
 import { getDarkModeBtn } from "../utils/dom-utils.js";
 export let lastFocusedLink = null;
 export let lastClickedLink = null;
-export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle , darkModeBtn, sidebar, sidebarBtn, sidebarLinks, mainTargetDiv }) {
+export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle , darkModeBtn, 
+    sidebar, sidebarBtn, sidebarLinks, mainTargetDiv,mainContainer }) {
     let focusZone = "header"; // "header" | "sidebar" | "main"
     let iSideBarLinks = -1;
 
@@ -19,6 +18,7 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle , 
     
     sidebarBtn.addEventListener("keydown", (e) => { 
         let key = e.key.toLowerCase()    
+        iSideBarLinks = -1
         if(key == 's'){
             if(lastClickedLink){
                 lastClickedLink.focus()
@@ -34,6 +34,7 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle , 
     sidebarLinks.forEach(el => {
         if (el.hasAttribute("autofocus")) {
             injectContent(el.href);
+            iSideBarLinks = [...sidebarLinks].indexOf(el);
         }
         el.addEventListener("focus", () => {
             lastFocusedLink = el;
@@ -41,12 +42,16 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle , 
         });
         el.addEventListener("click", e => {
             e.preventDefault();
+            e.stopPropagation()
             injectContent(e.target.href);
             lastClickedLink = e.target;
         });
         el.addEventListener("keydown", e => {
             if (e.key.toLowerCase() === "enter") {
                 injectContent(e.target.href);
+                if (e.target == lastClickedLink) {
+                    mainTargetDiv.focus()
+                }
                 lastClickedLink = e.target;
             } else if (e.key.toLowerCase() === "s") {
                 sidebarBtn.focus();
@@ -57,13 +62,16 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle , 
     addEventListener("keydown", e => {
         const key = e.key.toLowerCase();
         if (e.shiftKey || e.metaKey) return;
-        headerElementsFocus(key,e)
         // HEADER
         if (focusZone === "header") {
-            // headerElementsFocus(key,e)
+            headerElementsFocus(key,e)
+            if(key == 's'){
+                sKeyFocusOrder()
+            }
         }
         // ----- SIDEBAR -----
         if (focusZone === "sidebar") {
+            headerElementsFocus(key, e)
             if (key === "f") { // forward cycle
                 iSideBarLinks = (iSideBarLinks + 1) % sidebarLinks.length;
                 sidebarLinks[iSideBarLinks].focus();
@@ -94,7 +102,8 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle , 
 
         // ----- MAIN -----
         if (focusZone === "main") {
-
+            headerElementsFocus(key, e)
+            stepTxtsFocus(key,e,sidebarLinks,mainContainer,mainTargetDiv)
             if (key === "m") {
                 scrollTo(0, 0);
                 mainTargetDiv.focus(); // keep main active

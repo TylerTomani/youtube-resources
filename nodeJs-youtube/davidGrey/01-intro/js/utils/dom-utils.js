@@ -12,9 +12,6 @@ export function getDarkModeBtn() {
 export function getNavLessonTitle() {
     return document.querySelector("#navLessonTitle");
 }
-export function getMainTargetDiv() {
-    return document.querySelector("#mainTargetDiv");
-}
 export function getSideBar() {
     return document.querySelector(".side-bar");
 }
@@ -23,4 +20,10 @@ export function getSideBarBtn() {
 }
 export function initSideBarLinks() {
     return document.querySelectorAll("ul.sidebar-links-ul li a");
+}
+export function getMainTargetDiv() {
+    return document.querySelector("#mainTargetDiv");
+}
+export function getMainContainer() {
+    return document.querySelector(".main-container");
 }
