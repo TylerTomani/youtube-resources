@@ -21,73 +21,28 @@ export function initStepNavigation(mainTargetDiv,sidebarLinks,iSideBarLinks) {
     })
     steps = Array.from(mainTargetDiv.querySelectorAll('.steps-container > .step-float'));
     allImgs = Array.from(mainTargetDiv.querySelectorAll('.step-img > img'));
-    endNxtLessonBtn.addEventListener('keydown', e => {
-        let key = e.key.toLowerCase()
-        if(key === 'enter'){
-            if(iSideBarLinks >= sidebarLinks.length){
-                iSideBarLinks = 0
-            } else {
-                iSideBarLinks += 1
-            }
-            sidebarLinks[iSideBarLinks].click()
-            console.log()
-            steps[0].focus()
-            endNxtLessonBtn.focus()
-            scrollToTop()
-
-
-        }
-    })
+   
     endNxtLessonBtn.addEventListener('click', e => {
         console.log('click')
         e.preventDefault()
-        if(iSideBarLinks >= sidebarLinks.length){
-            iSideBarLinks = 0
-        } else {
-            iSideBarLinks += 1
-        }
-        sidebarLinks[iSideBarLinks].click()
-        console.log()
-        steps[0].focus()
-        endNxtLessonBtn.focus()
-        scrollToTop()
-
-
+        nxtLesson()
+        
+        
         
     })
+    endNxtLessonBtn.addEventListener('touchstart', e => {
+        e.preventDefault(); // optional, only if needed
+        nxtLesson()
+    });
     prevLessonBtn.addEventListener('click', e => {
-        console.log('click')
-        e.preventDefault()
-        if(iSideBarLinks >= sidebarLinks.length){
-            iSideBarLinks = 0
-        } else {
-            iSideBarLinks += 1
-        }
-        sidebarLinks[iSideBarLinks].click()
-        console.log()
-        steps[0].focus()
-        prevLessonBtn.focus()
-        scrollToTop()
+        prevLesson()
 
 
         
     })
     prevLessonBtn.addEventListener('keydown', e => {
         let key = e.key.toLowerCase();
-        if (key === 'enter') {
-            if(iSideBarLinks == 0){
-                iSideBarLinks = sidebarLinks.length 
-                iSideBarLinks -= 1;
-            } else {
-                iSideBarLinks -= 1;
-            }
-            sidebarLinks[iSideBarLinks].click();
-
-            // Scroll to top of page
-            steps[0].focus()
-            prevLessonBtn.focus()
-            scrollToTop()
-        }
+    
         if(key === 'p'){
             endNxtLessonBtn.focus()
         }
@@ -148,6 +103,33 @@ export function initStepNavigation(mainTargetDiv,sidebarLinks,iSideBarLinks) {
         }
     });
     
+    function nxtLesson() {
+        if (iSideBarLinks >= sidebarLinks.length) {
+            iSideBarLinks = 0
+        } else {
+            iSideBarLinks += 1
+        }
+        sidebarLinks[iSideBarLinks].click()
+        console.log()
+        steps[0].focus()
+        endNxtLessonBtn.focus()
+        scrollToTop()
+    }
+    function prevLesson() {
+        if (iSideBarLinks == 0) {
+            iSideBarLinks = sidebarLinks.length
+            iSideBarLinks -= 1;
+        } else {
+            iSideBarLinks -= 1;
+        }
+        sidebarLinks[iSideBarLinks].click();
+
+        // Scroll to top of page
+        steps[0].focus()
+        prevLessonBtn.focus()
+        scrollToTop()
+        
+    }
 }
 
 // --- Handle keypresses for step navigation ---
