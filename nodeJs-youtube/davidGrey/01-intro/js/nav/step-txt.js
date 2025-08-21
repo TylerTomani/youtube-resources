@@ -13,12 +13,8 @@ export function initStepNavigation(mainTargetDiv) {
         img.addEventListener('click', e => {
             e.preventDefault()
             // e.stopPropagation()
-            denlargeAllImages(allImgs)
-            if(!img.classList.contains("enlarge")){
-                img.classList.add('enlarge')
-            } else {
-                img.classList.remove('enlarge')
-            }
+            // denlargeAllImages(allImgs)
+            img.classList.toggle('enlarge')
         })
     })
     steps.forEach((step, index) => {
@@ -34,6 +30,13 @@ export function initStepNavigation(mainTargetDiv) {
             // Handle enter key to toggle images
             step.addEventListener('keydown', ev => {
                 if (ev.key.toLowerCase() === 'enter') toggleImg(ev);
+            });
+            step.addEventListener('click', e => {
+                e.preventDefault()
+                const step = getStep(e.target)
+                if(step && e.target.tagName != 'IMG' ){
+                    denlargeAllImages()
+                }
             });
 
             // step.dataset.listenerAdded = 'true';
