@@ -118,7 +118,13 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle , 
         if (focusZone === 'main') {
             headerElementsFocus(key, e);
             handleStepKeys(key, e, mainTargetDiv);
-            if (key === 's') sKeyFocusOrder();
+            if (key === 's'){
+                sKeyFocusOrder();
+                if(mainContainer.classList.contains('collapsed')){
+                    mainContainer.classList.remove('collapsed')
+                }
+            } 
+                
         }
 
 

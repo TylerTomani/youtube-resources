@@ -4,7 +4,7 @@ export function dragHideSidebar(mainContainer, sideBar) {
     
     sideBar.addEventListener('touchstart', (e) => {
         startX = e.changedTouches[0].clientX;
-    });
+    },{passive:true});
 
     sideBar.addEventListener('touchend', (e) => {
         endX = e.changedTouches[0].clientX;
@@ -14,5 +14,5 @@ export function dragHideSidebar(mainContainer, sideBar) {
             mainContainer.classList.toggle('collapsed');
         }
         
-    });
+    },{passive:true});
 }

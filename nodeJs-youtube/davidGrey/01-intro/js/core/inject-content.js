@@ -10,7 +10,7 @@ export function injectContent(href,mainTargetDiv,sidebarLinks,iSideBarLinks,navL
             mainTargetDiv.innerHTML = html;
             const doc = parser.parseFromString(html,'text/html')
             const changedNavLessonTitleH1 = doc.querySelector('#targetHeaderh3')
-            console.log(changedNavLessonTitleH1)
+
             // changedNavLessonTitleH1.classList.add('hidden')
             navLessonTitle.innerHTML = changedNavLessonTitleH1.innerHTML
             initStepNavigation(mainTargetDiv,sidebarLinks,iSideBarLinks);

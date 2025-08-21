@@ -1,4 +1,11 @@
 /* lesson.css (cleaned & fixed) */
+.copy-code{
+    position: relative;
+    
+}
+.copy-code:active{
+    background: 201d1d;
+}
 .main-content-container {
     flex: 1 1 auto;
     overflow-x: hidden;
@@ -21,7 +28,6 @@
 /* Step image container */
 .step-img {
     position: relative;
-    z-index: 1;
     pointer-events: auto;
 }
 
@@ -31,7 +37,6 @@
     width: 98%;
     max-width: 500px;
     border: 1px solid white;
-    z-index: 1;
     pointer-events: auto;
     transition: all 0.025s ease;
     touch-action: manipulation;
@@ -39,8 +44,8 @@
 
 /* Enlarged images always on top */
 .step-img>img.enlarge {
+
     position: relative;
-    z-index: 100 !important;
     transform: scale(1.5);
     pointer-events: auto;
 }
@@ -71,7 +76,7 @@
     margin-right: 5%;
     margin-left: 10px;
     position: relative;
-    z-index: 11;
+    /* z-index: 11; */
 }
 
 .step-vid>video {
@@ -79,14 +84,14 @@
     width: 98%;
     border: 1px solid white;
     max-width: 500px;
-    z-index: 5;
+    /* z-index: 5; */
     transition: all 0.025s ease;
 }
 
 /* Enlarged video */
 video.enlarge-vid {
     position: absolute;
-    z-index: 100;
+    /* z-index: 100; */
     min-height: 150px;
     min-width: 250px;
     right: 20%;
@@ -121,7 +126,8 @@ video.enlarge-vid {
 /* Step text */
 .step-float>.step-txt {
     padding: 0 2%;
-    width: 50%;
+    /* position: relative; */
+    /* width: 50%; */
 }
 
 .step-float>.step-txt>p {
@@ -153,7 +159,7 @@ video.enlarge-vid {
 }
 
 .step-float>.step-vid>video {
-    z-index: 0;
+    /* z-index: 0; */
 }
 
 /* Responsive */
@@ -174,10 +180,10 @@ video.enlarge-vid {
     .step-txt {
         font-size: 90%;
     }
-
+    
     img.enlarge {
         position: absolute;
-        z-index: 100;
+        /* z-index: 100; */
         min-height: 112px;
         min-width: 244px;
         max-width: 200px;

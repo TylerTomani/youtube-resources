@@ -19,4 +19,7 @@
     .step p , .step-float p {
         font-size: 80%;
     }
+        .side-bar {
+            width: 20% !important;
+        }
 }
