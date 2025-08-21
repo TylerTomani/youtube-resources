@@ -1,0 +1,42 @@
+:root {
+    --highlight-color: rgb(0, 139, 137);
+}
+
+a:focus,
+.page-header a:active {
+    /* color: var(--highlight-color) !important; */
+    bottom: 20px solid blue;
+    /* box-shadow: 0 0 4px 4px var(--highlight-color); */
+    /* background-color: lightcyan; */
+    text-decoration: underline;
+    /* text-underline-offset: 4px; */
+}
+
+#mainTargetDiv:active,#mainTargetDiv:focus{
+    /* box-shadow: 0 0 4px 4px var(--highlight-color);     */
+    border: 1px solid var(--highlight-color);    
+    /* overflow: auto; */
+}
+#targetDiv{
+    overflow: auto;
+
+}
+/* Main content  maybe instead of mainTargetDive??*/
+.main-content-container:active,.main-content-container:focus{
+}
+.main-content-container {
+    transition: width 0.1s ease;
+}
+
+
+/* Lessons */
+.step:active,
+.step:focus,
+.step-float:active,
+.step-float:focus {
+    font-style: bold;
+}
+.step-float:focus,.step-float:active {
+    border: 3px solid var(--highlight-color);
+    outline-offset: 2px;
+}

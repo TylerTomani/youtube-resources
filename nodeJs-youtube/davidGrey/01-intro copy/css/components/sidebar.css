@@ -1,0 +1,33 @@
+:root {
+  --sidebar-width: 120px;
+  --main-content-width: calc(100% - var(--sidebar-width));
+  --sidebar-collapsed-width: 20px;
+}
+
+
+
+
+main.main-container.collapsed .main-content-container {
+  /* width: 100%;
+  left: var(--sidebar-collapsed-width); */
+  /* position: relative; */
+  /* right: 0; */
+  margin-top: 5%;
+  flex-basis: 95%;
+}
+
+main.main-container.collapsed .side-bar {
+  flex-basis: 5%;
+}
+
+main.main-container.collapsed .side-bar .sidebar-links-ul {
+  display: none;
+}
+
+main.main-container.collapsed #sideBarBtn {
+  position: absolute;
+  bottom: 20%;
+}
+main.main-container.collapsed .header-codeColor-lesson h3 {
+  margin-left: 10%;
+} 
