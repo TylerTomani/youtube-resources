@@ -3,22 +3,38 @@
 import { injectContent } from "../core/inject-content.js";
 import { stepTxtsFocus } from "./step-txt.js";
 import { getDarkModeBtn } from "../utils/dom-utils.js";
+import { togggleSidebar } from "../ui/toggle-sidebar.js";
 export let lastFocusedLink = null;
 export let lastClickedLink = null;
 export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle , darkModeBtn, 
     sidebar, sidebarBtn, sidebarLinks, mainTargetDiv,mainContainer }) {
     let focusZone = "header"; // "header" | "sidebar" | "main"
     let iSideBarLinks = -1;
-
+        
     // --- Focusin listeners update the current zone ---
     pageHeader.addEventListener("focusin", () => { focusZone = "header"; });
     sidebar.addEventListener("focusin", () => { focusZone = "sidebar"; });
     sidebarBtn.addEventListener("focusin", () => { focusZone = "sidebar"; });
     mainTargetDiv.addEventListener("focusin", () => { focusZone = "main"; });
     
+    sidebarBtn.addEventListener("click", (e) => { 
+        e.preventDefault()
+        togggleSidebar(mainContainer,sidebar)
+    })
+    navLessonTitle.addEventListener("keydown", (e) => {
+        let key = e.key.toLowerCase()
+        if(key === 'enter'){
+            togggleSidebar(mainContainer, sidebar)
+        }
+        
+     })
     sidebarBtn.addEventListener("keydown", (e) => { 
         let key = e.key.toLowerCase()    
         iSideBarLinks = -1
+        if(key === 'enter'){
+            togggleSidebar(mainContainer,sidebar)
+        }
+
         if(key == 's'){
             if(lastClickedLink){
                 lastClickedLink.focus()
@@ -104,11 +120,7 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle , 
         if (focusZone === "main") {
             headerElementsFocus(key, e)
             stepTxtsFocus(key,e,sidebarLinks,mainContainer,mainTargetDiv)
-            if (key === "m") {
-                scrollTo(0, 0);
-                mainTargetDiv.focus(); // keep main active
-                // Add lastStep here
-            } else if (key === "s") {
+            if (key === "s") {
                 sKeyFocusOrder()
             }
         }

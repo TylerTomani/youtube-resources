@@ -28,6 +28,7 @@ export function stepTxtsFocus(key,sidebarLinks,mainContainer,mainTargetDiv) {
     let sideBarLinksFocused = false
     // navLessonTitle.innerText = hiddenH3.innerText
     currentWidth = innerWidth
+    addEventListener('resize', e => { currentWidth = innerWidth })
     let mainTargetDivFocused = false
     allVideos.forEach(vid => {
         vid.addEventListener('click', (e) => {
@@ -45,7 +46,7 @@ export function stepTxtsFocus(key,sidebarLinks,mainContainer,mainTargetDiv) {
             }
         });
     });
-    addEventListener('resize', e => { currentWidth = innerWidth })
+    
     // mainTargetDiv.addEventListener('keydown', e => {
     //     let letter = e.key.toLowerCase()
     //     if (letter == 'm' && lastStep) {
@@ -135,46 +136,7 @@ export function stepTxtsFocus(key,sidebarLinks,mainContainer,mainTargetDiv) {
     })
     const stepImageIndexes = new WeakMap();
 
-    function toggleImg(e) {
-        const step = getStep(e.target);
-        if (!step) return;
-        const img = step.querySelector('.step-img > img');
-        const vid = step.querySelector('.step-vid > video');
-        const images = Array.from(step.querySelectorAll('.imgs-container img'));
-
-
-        if (images.length > 0) {
-            let currentIndex = stepImageIndexes.get(step) || 0;
-
-            // Remove enlarge class from all imgs first
-            images.forEach(img => img.classList.remove('enlarge'));
-
-            // Add enlarge to the current one
-            const currentImg = images[currentIndex];
-            currentImg.classList.add('enlarge');
-
-            // Save next index for next time
-            currentIndex = (currentIndex + 1) % images.length;
-            stepImageIndexes.set(step, currentIndex);
-
-            // Optionally scroll into view
-            // currentImg.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            return; // skip .step-img and video logic if imgs-container handled
-        }
-        if (img) {
-            img.classList.toggle('enlarge');
-            if (currentWidth <= 721) {
-                sideBar.classList.toggle('deactive', img.classList.contains('enlarge'));
-            }
-        }
-
-        if (vid) {
-            vid.classList.toggle('enlarge-vid');
-            if (currentWidth <= 721 && currentWidth >= 601) {
-                sideBar.classList.toggle('deactive', vid.classList.contains('enlarge-vid'));
-            }
-        }
-    }
+    
 
     function addTabIndexes(e) {
         const tabEls = e.target.querySelectorAll('.copy-code, textarea')
@@ -187,16 +149,7 @@ export function stepTxtsFocus(key,sidebarLinks,mainContainer,mainTargetDiv) {
             el.setAttribute('tabindex', '-1')
         })
     }
-    function denlargeAllImages() {
-        imgVids.forEach(el => {
-            if (el.classList.contains('enlarge')) {
-                el.classList.remove('enlarge')
-            }
-            if (el.classList.contains('enlarge-vid')) {
-                el.classList.remove('enlarge-vid')
-            }
-        })
-    }
+    
     addEventListener('keydown', e => {
         let letter = e.key.toLowerCase()
         if (e.metaKey && letter == 'c') {
@@ -231,7 +184,7 @@ export function stepTxtsFocus(key,sidebarLinks,mainContainer,mainTargetDiv) {
             if (mainTargetDivFocused) {
                 let intLet = parseInt(letter)
                 if (intLet <= steps.length) {
-                    steps[intLet - 1].focus()
+                    steps[intLet - 1].scrollIntoView({behavior: 'instant', block: 'bottom'})
                 } else {
                     nxtLessonBtn.focus()
                 }

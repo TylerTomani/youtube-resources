@@ -1,10 +1,20 @@
-#targetDivWrapper {
-    margin-bottom: 25%;
+#targetDiv {
+    /* overflow: auto;
+    height: 100vh; */
+    padding-bottom: 50%;
 }
 
 .step,.step-float{
+    /* position: relative; */
+    /* padding: 5%; */
+    /* height: fit-content; */
+    /* display: flex; */
     position: relative;
     padding: 5%;
+    min-height: 40vh;
+    /* ensures it can grow */
+    flex-grow: 1;
+    /* contains floated/absolute children */
 }
 .step-img img.enlarge{
     position: absolute;
@@ -24,6 +34,7 @@ video.enlarge-vid {
 }
 .step-img,
 .step-vid {
+    z-index: 11;
     float: right;
     width: 45%;
     margin-right: 5%;

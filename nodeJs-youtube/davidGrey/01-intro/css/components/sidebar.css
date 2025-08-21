@@ -12,7 +12,7 @@ main.main-container.collapsed .main-content-container {
   left: var(--sidebar-collapsed-width); */
   /* position: relative; */
   /* right: 0; */
-  ;
+  margin-top: 5%;
   flex-basis: 95%;
 }
 

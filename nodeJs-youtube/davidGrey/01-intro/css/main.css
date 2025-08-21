@@ -3,6 +3,7 @@
 @import url('dark-mode.css');
 @import url('responsive.css');
 /* Components */
+@import url('./dark-mode.css');
 @import url('components/sidebar.css');
 @import url('components/lesson.css');
 /* Utilities */

@@ -2,6 +2,9 @@
     --bg-primary-db: #201d1d;
     --font-primary-db: whitesmoke;
 }
+#darkModeBtn {
+    
+}
 .dark-mode {
     background-color: var(--bg-primary-db);
     /* color: var(--font-primary-db) */
