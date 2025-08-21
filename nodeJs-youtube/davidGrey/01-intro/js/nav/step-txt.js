@@ -12,6 +12,7 @@ export function initStepNavigation(mainTargetDiv) {
     allImgs.forEach(el => {
         el.addEventListener('click', e => {
             e.preventDefault()
+            e.stopPropagation()
             e.target.classList.toggle('enlarge')
         })
     })
@@ -30,7 +31,7 @@ export function initStepNavigation(mainTargetDiv) {
                 if (ev.key.toLowerCase() === 'enter') toggleImg(ev);
             });
 
-            step.dataset.listenerAdded = 'true';
+            // step.dataset.listenerAdded = 'true';
         }
     });
 }

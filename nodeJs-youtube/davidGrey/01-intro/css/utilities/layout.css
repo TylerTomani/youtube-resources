@@ -52,21 +52,14 @@
 .main-container {
     display: flex;
 }
-/* Sidebar on left, sticky */
-.side-bar {
-    position: sticky;
-    top: 0;
-    flex-shrink: 0;
-    overflow: hidden;
-    height: 100vh;
-}
+
 .sidebar-links-ul{
     overflow-x: hidden;
 }
 /* Main content scrollable */
 .main-content-container {
     flex: 1 1 auto;
-    overflow-y: auto;
+    /* overflow-y: auto; */
     /* overflow-x: hidden; */
     box-sizing: border-box;
 }
