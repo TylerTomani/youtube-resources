@@ -1,3 +1,13 @@
+/* lesson.css */
+.main-content-container {
+    flex: 1 1 auto;
+    /* overflow-y: auto; */
+    /* scrolls independently */
+    box-sizing: border-box;
+    height: calc(100vh - var(--header-height, 80px));
+    /* same as sidebar */
+    padding-bottom: 50%;
+}
 #targetDiv {
     height: 100%;
     /* or 100vh if you want full viewport */

@@ -13,6 +13,7 @@ export function initStepNavigation(mainTargetDiv) {
         el.addEventListener('click', e => {
             e.preventDefault()
             e.stopPropagation()
+            denlargeAllImages(allImgs)
             e.target.classList.toggle('enlarge')
         })
     })
