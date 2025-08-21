@@ -20,8 +20,8 @@ export function stepTxtsFocus(key, e, sidebar, mainContainer, mainTargetDiv) {
     // Toggle 'm' between mainTargetDiv and lastStep
     if (key === 'm') {
     if (!isMainActive) {
-        mainTargetDiv.focus()
         window.scrollTo(0, 0)
+        mainTargetDiv.focus()
         isMainActive = true
     } else {
         if (lastStep) {

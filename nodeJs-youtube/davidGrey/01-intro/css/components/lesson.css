@@ -1,6 +1,9 @@
+#targetDivWrapper {
+    margin-bottom: 25%;
+}
+
 .step,.step-float{
     position: relative;
-    margin: 5% 0;
     padding: 5%;
 }
 .step-img img.enlarge{
