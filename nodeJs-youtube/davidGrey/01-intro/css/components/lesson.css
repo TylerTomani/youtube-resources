@@ -4,6 +4,10 @@
     overflow-y: auto;
     scroll-behavior: smooth;
     /* optional for smooth scrolling */
+    padding-bottom: 50%;
+}
+.steps-container{
+    padding-bottom: 50%;
 }
 /* Step image container - keep float as is */
 .step-img {
