@@ -30,3 +30,7 @@ a:focus,
 .step-float:focus {
     font-style: bold;
 }
+.step-float:focus,.step-float:active {
+    outline: 3px solid var(--highlight-color);
+    outline-offset: 2px;
+}

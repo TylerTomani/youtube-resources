@@ -104,10 +104,10 @@ export function stepTxtsFocus(key,sidebarLinks,mainContainer,mainTargetDiv) {
     })
     steps.forEach(el => {
         el.addEventListener('focus', e => {
+            lastStep = e.target
             pauseAllVideos()
             removeAllTabIndexes()
             denlargeAllImages()
-            lastStep = e.target
         })
         el.addEventListener('click', e => {
             const step = getStep(e.target)
