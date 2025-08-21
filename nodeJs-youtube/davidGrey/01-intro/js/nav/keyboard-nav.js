@@ -1,7 +1,7 @@
 
 // keyboard-nav.js
 import { injectContent } from "../core/inject-content.js";
-import { initStepNavigation, handleStepKeys } from "./step-txt.js";
+import {  handleStepKeys } from "./step-txt.js";
 import { getDarkModeBtn } from "../utils/dom-utils.js";
 export let lastFocusedLink = null;
 export let lastClickedLink = null;
@@ -34,8 +34,8 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle , 
     });
     sidebarLinks.forEach(el => {
         if (el.hasAttribute("autofocus")) {
-            injectContent(el.href, mainTargetDiv);
             iSideBarLinks = [...sidebarLinks].indexOf(el);
+            injectContent(el.href, mainTargetDiv,sidebarLinks,iSideBarLinks);
         }
         el.addEventListener("focus", () => {
             lastFocusedLink = el;
@@ -46,7 +46,8 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle , 
             e.stopPropagation()
             if(e.target.closest('a')){
                 console.log(e.target.closest('a'))
-                injectContent(e.target.closest('a').href, mainTargetDiv);
+                iSideBarLinks = [...sidebarLinks].indexOf(el)
+                injectContent(e.target.closest('a').href, mainTargetDiv, sidebarLinks,iSideBarLinks);
             }
             // initialize step navigation once
 
@@ -121,6 +122,7 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle , 
 
     });
     function initElementFocus(key,e){
+                
         if (key === 'n') {
             navLessonTitle.focus()
         } else

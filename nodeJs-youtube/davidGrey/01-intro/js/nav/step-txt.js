@@ -2,12 +2,48 @@ export let lastStep = null;
 let iStep = -1;
 let steps = [];
 let allImgs = [];
-
+let lastStepPage = false
 // --- Initialize steps and images once ---
-export function initStepNavigation(mainTargetDiv) {
+export function initStepNavigation(mainTargetDiv,sidebarLinks,iSideBarLinks) {
+    const endNxtLessonBtn = document.querySelector('#endNxtLessonBtn')
+    const prevLessonBtn = document.querySelector('#prevLessonBtn')
+    mainTargetDiv.addEventListener('keydown',e =>{
+        if(e.target == mainTargetDiv){
+            steps[0].focus()
+        }
+    })
+    endNxtLessonBtn.addEventListener('keydown', e => {
+        let key = e.key.toLowerCase()
+        if(key === 'enter'){
+            if(iSideBarLinks >= sidebarLinks.length){
+                iSideBarLinks = 0
+            } else {
+                iSideBarLinks += 1
+            }
+            sidebarLinks[iSideBarLinks].click()
+            scrollToTop()
+
+
+        }
+    })
+    prevLessonBtn.addEventListener('keydown', e => {
+        let key = e.key.toLowerCase();
+        if (key === 'enter') {
+            if(iSideBarLinks == 0){
+                iSideBarLinks = sidebarLinks.length 
+                iSideBarLinks -= 1;
+            } else {
+                iSideBarLinks -= 1;
+            }
+            sidebarLinks[iSideBarLinks].click();
+
+            // Scroll to top of page
+            scrollToTop()
+        }
+    });
     steps = Array.from(mainTargetDiv.querySelectorAll('.steps-container > .step-float'));
     allImgs = Array.from(mainTargetDiv.querySelectorAll('.step-img > img'));
-
+    
     if (!steps.length) return;
     allImgs.forEach(img => {
         img.addEventListener('click', e => {
@@ -27,6 +63,11 @@ export function initStepNavigation(mainTargetDiv) {
             step.addEventListener('focusin', () => {
                 lastStep = step;
                 iStep = index;
+                if(iStep == (steps.length - 1)){
+                    lastStepPage = true
+                } else {
+                    lastStepPage = false
+                }
             });
 
             // Handle enter key to toggle images
@@ -46,6 +87,7 @@ export function initStepNavigation(mainTargetDiv) {
             // step.dataset.listenerAdded = 'true';
         }
     });
+    
 }
 
 // --- Handle keypresses for step navigation ---
@@ -55,13 +97,17 @@ export function handleStepKeys(key, e, mainTargetDiv) {
     // initialize iStep if not set
     if (iStep === -1) iStep = lastStep ? steps.indexOf(lastStep) : 0;
 
+    
     switch (key) {
+        case 'p':
+            prevLessonBtn.focus();
+            break;
         case 'f':
             denlargeAllImages();
             iStep = (iStep + 1) % steps.length;
             steps[iStep].focus();
             break;
-
+        
         case 'a':
             denlargeAllImages();
             iStep = (iStep - 1 + steps.length) % steps.length;
@@ -69,9 +115,14 @@ export function handleStepKeys(key, e, mainTargetDiv) {
             break;
 
         case 'e':
-            steps[steps.length - 1].focus();
-            iStep = steps.length - 1;
-            lastStep = steps[iStep];
+            if(lastStepPage){
+                endNxtLessonBtn.focus()
+            } else{
+
+                steps[steps.length - 1].focus();
+                iStep = steps.length - 1;
+                lastStep = steps[iStep];
+            }
             break;
 
         case 'm':
@@ -138,3 +189,11 @@ export function getStep(parent) {
 
 // map to track image index per step
 const stepImageIndexes = new WeakMap();
+function scrollToTop() {
+    const mainTargetDiv = document.querySelector('#targetDiv');
+    if (mainTargetDiv) {
+        mainTargetDiv.scrollTo({ top: 0, behavior: 'instant' });
+    }
+    // fallback in case something is outside mainTargetDiv
+    window.scrollTo({ top: 0, behavior: 'instant' });
+}
