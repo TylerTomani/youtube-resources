@@ -1,9 +1,12 @@
 // index.js
 import { initKeyboardNav } from "../nav/keyboard-nav.js";
-import { getSideBar, getSideBarBtn, getMainTargetDiv, initSideBarLinks } from "../utils/dom-utils.js";
+import { getPageHeader, getPageHeaderLinks, getNavLessonTitle ,getSideBar, getSideBarBtn, initSideBarLinks, getMainTargetDiv } from "../utils/dom-utils.js";
 
 document.addEventListener("DOMContentLoaded", () => {
     initKeyboardNav({
+        pageHeader: getPageHeader(),
+        pageHeaderLinks: getPageHeaderLinks(),
+        navLessonTitle: getNavLessonTitle(),
         sidebar: getSideBar(),
         sidebarBtn: getSideBarBtn(),
         sidebarLinks: initSideBarLinks(),

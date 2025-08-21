@@ -1,4 +1,13 @@
 // dom-utils.js
+export function getPageHeader() {
+    return document.querySelector("header.page-header");
+}
+export function getPageHeaderLinks() {
+    return document.querySelector("header.page-header a");
+}
+export function getNavLessonTitle() {
+    return document.querySelector("#navLessonTitle");
+}
 export function getMainTargetDiv() {
     return document.querySelector("#mainTargetDiv");
 }
