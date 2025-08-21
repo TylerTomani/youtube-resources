@@ -29,3 +29,9 @@
     height: 100%;
     width: 100%;
 }
+.lesson-btns-container{
+    width: 50%;
+}
+.lesson-btns-container>button{
+    width: 100%;
+}

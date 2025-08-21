@@ -67,5 +67,6 @@
     bottom: 0;
 }
 .lesson-btns-container{
-
+    
+    display: flex;
 }

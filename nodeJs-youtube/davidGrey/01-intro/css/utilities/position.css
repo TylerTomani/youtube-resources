@@ -27,3 +27,7 @@
 .step-float {
     position: relative;
 }
+.lesson-btns-container {
+    position: fixed;
+    bottom: 5vh;
+}

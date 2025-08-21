@@ -10,3 +10,6 @@
 #sideBarBtn {
   margin-top: 2%;
 }
+.lesson-btns-container>button{
+  padding: 1% 3%
+}
