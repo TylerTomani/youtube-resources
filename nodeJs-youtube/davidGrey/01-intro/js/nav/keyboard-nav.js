@@ -5,6 +5,7 @@ import {  handleStepKeys } from "./step-txt.js";
 import { getDarkModeBtn } from "../utils/dom-utils.js";
 export let lastFocusedLink = null;
 export let lastClickedLink = null;
+import { lastStep } from "./step-txt.js";
 export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle , darkModeBtn, 
     sidebar, sidebarBtn, sidebarLinks, mainTargetDiv,mainContainer }) {
     let focusZone = "header"; // "header" | "sidebar" | "main"
@@ -19,7 +20,9 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle , 
     sidebarBtn.addEventListener("keydown", (e) => { 
         let key = e.key.toLowerCase()    
         iSideBarLinks = -1
-        
+        if(lastStep){
+            console.log(lastStep)
+        }
         if(key == 's'){
             if(lastClickedLink){
                 lastClickedLink.focus()
@@ -88,6 +91,9 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle , 
                     lastClickedLink.focus()
                 }
             }
+            if (key === "m") {
+                mainTargetDiv.focus();
+            } 
             if (!isNaN(key)) { // number shortcuts
                 const index = parseInt(key) - 1;
                 if (index >= 0 && index < sidebarLinks.length) {
@@ -122,7 +128,13 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle , 
                     }
                 }
             } else if (key === "m") {
-                mainTargetDiv.focus();
+                console.log('here')
+                if(lastStep){
+                     console.log(lastStep)
+                     lastStep.focus()
+                } else {
+                    mainTargetDiv.focus();
+                }
             } else if (key === "s") {
                 if(e.target != sidebarBtn){
                     sidebarBtn.focus()
@@ -144,41 +156,8 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle , 
             } 
                 
         }
-
-
-        
-
     });
-    function initElementFocus(key,e){
-                
-        if (key === 'n') {
-            if(e.target == navLessonTitle){
-                const endNxtLessonBtn = document.querySelector('#endNxtLessonBtn')
-                endNxtLessonBtn.focus()
-            } else {
-                navLessonTitle.focus()
-            }
-        } else
-        if (key === 'n') {
-            navLessonTitle.focus()
-        } else
-        if (key === "m") {
-            if (mainTargetDiv) {
-                mainTargetDiv.focus()
-                scrollTo(0, 0);
-            }
-            // if (e.target.id === "mainTargetDiv") {
-            //     // lastStep.focus(); // <- you’ll add this later
-            // } else {
-            //     // mainTargetDiv.focus();
-            //     console.log(mainTargetDiv)
-            // }
-        } else
-        if (key === 's') {
-            iSideBarLinks -= 1
-            sKeyFocusOrder(e)   
-        }
-    }
+    
     function sKeyFocusOrder(){
         console.log('yes')
         if (lastClickedLink) {
@@ -207,9 +186,6 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle , 
             
         } else if(key === 'd'){
             darkModeBtn.focus()
-        }
-        else if (key === "m") {
-            mainTargetDiv.focus();
         } else if (key === "n") {
             navLessonTitle.focus();
         } else if (key === "s") {

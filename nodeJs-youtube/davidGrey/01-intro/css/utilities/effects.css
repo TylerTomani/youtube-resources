@@ -20,16 +20,7 @@ a:focus,
 }
 #targetDiv{
     overflow: auto;
-
 }
-/* Main content  maybe instead of mainTargetDive??*/
-.main-content-container:active,.main-content-container:focus{
-}
-.main-content-container {
-    /* transition: width 0.1s ease; */
-}
-
-
 /* Lessons */
 .step-float {
     -webkit-tap-highlight-color: transparent;

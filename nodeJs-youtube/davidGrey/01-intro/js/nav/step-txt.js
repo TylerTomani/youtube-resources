@@ -15,7 +15,6 @@ export function initStepNavigation(mainTargetDiv,sidebarLinks,iSideBarLinks) {
         if(key == 'enter'){
                 steps[0].focus()
         }
-        
         // if(e.target == mainTargetDiv){
         // }
     })
@@ -41,15 +40,13 @@ export function initStepNavigation(mainTargetDiv,sidebarLinks,iSideBarLinks) {
     prevLessonBtn.addEventListener('click', e => {
         removeSidebarLinksBackground()
         prevLesson()
+        prevLessonBtn.addEventListener('keydown', e => {
+            let key = e.key.toLowerCase();    
+            if(key === 'p'){endNxtLessonBtn.focus()}
+        });
     },{passive:true})
-    prevLessonBtn.addEventListener('keydown', e => {
-        let key = e.key.toLowerCase();    
-        if(key === 'p'){endNxtLessonBtn.focus()}
-    });
     function nxtLesson() {
         iSideBarLinks = (iSideBarLinks + 1) % sidebarLinks.length
-        
-        
         sidebarLinks[iSideBarLinks].style.background = 'darkgrey'
         sidebarLinks[iSideBarLinks].click()
         console.log()
@@ -95,8 +92,9 @@ export function initStepNavigation(mainTargetDiv,sidebarLinks,iSideBarLinks) {
     copyCodes.forEach(el => {
         el.addEventListener('focus', e => {
             denlargeAllImages()
-            el.style.zIndex = 100
-
+            el.style.zIndex = '100'
+            el.style.background = 'white'
+            el.style.color  = 'black'
         })
     })
     steps.forEach((step, index) => {
@@ -104,10 +102,11 @@ export function initStepNavigation(mainTargetDiv,sidebarLinks,iSideBarLinks) {
 
         if (!step.hasAttribute('tabindex')) step.setAttribute('tabindex', '0');
 
+        step.addEventListener('focus', () => {
+            removeAllTabIndexes(copyCodes)
+            removeCodeBackground(copyCodes)
+        })
         if (!step.dataset.listenerAdded) {
-            step.addEventListener('focus', () => {
-                removeAllTabIndexes(copyCodes)
-            })
             // Update lastStep and iStep on focus
             step.addEventListener('focusin', () => {
                 lastStep = step;
@@ -241,7 +240,7 @@ function toggleImg(e) {
 
         images.forEach((img, i) => {
             img.classList.remove('enlarge');
-            img.style.zIndex = 1; // default behind
+            img.style.zIndex = 0; // default behind
         });
 
         images[currentIndex].classList.add('enlarge');
@@ -259,6 +258,11 @@ function toggleImg(e) {
 
 
 
+function removeCodeBackground(copyCodes) {
+    copyCodes.forEach(el => {
+        el.background = 'transparent'
+    })
+}
 function removeAllTabIndexes(copyCodes) {
     copyCodes.forEach(el => {
         el.setAttribute('tabindex','-1')

@@ -130,7 +130,7 @@ video.enlarge-vid {
 .step-float>.step-txt {
     padding: 0 2%;
     /* position: relative; */
-    /* width: 50%; */
+    width: 50%;
 }
 
 .step-float>.step-txt>p {
