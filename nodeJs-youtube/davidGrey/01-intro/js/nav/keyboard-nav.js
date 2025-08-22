@@ -35,6 +35,7 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle , 
     sidebarLinks.forEach(el => {
         if (el.hasAttribute("autofocus")) {
             iSideBarLinks = [...sidebarLinks].indexOf(el);
+            
             focusZone = 'sidebar'
             injectContent(el.href, mainTargetDiv,sidebarLinks,iSideBarLinks,navLessonTitle);
         } else {

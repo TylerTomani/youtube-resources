@@ -64,18 +64,14 @@ body{
     overflow-x: hidden;
 }
 /* Main content scrollable */
-
-
-.lesson-btns-container{
-    position: fixed;
-    bottom: 0;
-    z-index: 10
-}
-.lesson-btns-container{    
-    display: flex;
-    
-}
 .home-page .imgs-container .img-container {
     flex-basis: 50%;
     /* background-color: blue; */
 }
+.lesson-btns-container {
+    position: fixed;
+    display: flex;
+    bottom: 0;
+    z-index: 10
+}
+.lesson-btns-container > 

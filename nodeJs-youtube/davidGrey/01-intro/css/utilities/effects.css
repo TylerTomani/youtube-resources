@@ -1,6 +1,4 @@
-.step-float {
-    -webkit-tap-highlight-color: transparent;
-}
+
 :root {
     --highlight-color: rgb(0, 139, 137);
 }
@@ -28,18 +26,27 @@ a:focus,
 .main-content-container:active,.main-content-container:focus{
 }
 .main-content-container {
-    transition: width 0.1s ease;
+    /* transition: width 0.1s ease; */
 }
 
 
 /* Lessons */
-/* .step:active,
-.step:focus,
-.step-float:active, */
-.step-float:focus {
-    /* font-style: bold; */
+.step-float {
+    -webkit-tap-highlight-color: transparent;
+    /* transition: border 0.15s ease, box-shadow 0.15s ease; */
 }
-.step-float:focus,.step-float:active {
-    border: 3px solid var(--highlight-color);
-    outline-offset: 2px;
+
+/* Focus (keyboard navigation only, not tap) */
+.step-float:focus {
+    /* outline: none; */
+    /* border: 3px solid var(--highlight-color); */
+    /* box-shadow: 0 0 6px rgba(0, 139, 137, 0.5); */
+}
+
+/* Active (tap / mouse click press) */
+.step-float:active {
+    border: 2px solid var(--highlight-color);
+    box-shadow: 0 0 3px rgba(0, 139, 137, 0.4);
+    transform: scale(0.98);
+    /* subtle pressed effect */
 }

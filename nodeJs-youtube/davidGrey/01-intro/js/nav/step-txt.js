@@ -47,15 +47,9 @@ export function initStepNavigation(mainTargetDiv,sidebarLinks,iSideBarLinks) {
         if(key === 'p'){endNxtLessonBtn.focus()}
     });
     function nxtLesson() {
+        iSideBarLinks = (iSideBarLinks + 1) % sidebarLinks.length
         
-        if (iSideBarLinks >= sidebarLinks.length) {
-            iSideBarLinks = 0
-        } else {
-            iSideBarLinks += 1
-        }
-        sidebarLinks.forEach(el => {
-            el.style.background = 'none'
-        })
+        
         sidebarLinks[iSideBarLinks].style.background = 'darkgrey'
         sidebarLinks[iSideBarLinks].click()
         console.log()
@@ -64,12 +58,7 @@ export function initStepNavigation(mainTargetDiv,sidebarLinks,iSideBarLinks) {
         scrollToTop()
     }
     function prevLesson() {
-        if (iSideBarLinks == 0) {
-            iSideBarLinks = sidebarLinks.length
-            iSideBarLinks -= 1;
-        } else {
-            iSideBarLinks -= 1;
-        }
+        iSideBarLinks = (iSideBarLinks - 1 + sidebarLinks.length) % sidebarLinks.length
         sidebarLinks[iSideBarLinks].style.background = '#585151'
         sidebarLinks[iSideBarLinks].click();
         // Scroll to top of page
