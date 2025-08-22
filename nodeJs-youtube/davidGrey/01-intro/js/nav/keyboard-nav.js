@@ -8,7 +8,7 @@ export let lastClickedLink = null;
 export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle , darkModeBtn, 
     sidebar, sidebarBtn, sidebarLinks, mainTargetDiv,mainContainer }) {
     let focusZone = "header"; // "header" | "sidebar" | "main"
-    let iSideBarLinks = -1;
+    let iSideBarLinks = 0;
 
     // --- Focusin listeners update the current zone ---
     pageHeader.addEventListener("focusin", () => { focusZone = "header"; });
@@ -38,6 +38,7 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle , 
             focusZone = 'sidebar'
             injectContent(el.href, mainTargetDiv,sidebarLinks,iSideBarLinks,navLessonTitle);
         } else {
+            iSideBarLinks = -1
             injectContent('home-page.html', mainTargetDiv, sidebarLinks, iSideBarLinks, navLessonTitle);
 
         }

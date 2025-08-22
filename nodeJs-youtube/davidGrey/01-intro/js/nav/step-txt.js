@@ -52,11 +52,7 @@ export function initStepNavigation(mainTargetDiv,sidebarLinks,iSideBarLinks) {
         if(key === 'p'){endNxtLessonBtn.focus()}
     });
     function nxtLesson() {
-        console.log((iSideBarLinks))
-        if(iSideBarLinks === -1){
-            iSideBarLinks = 0
-            return
-        }
+        
         if (iSideBarLinks >= sidebarLinks.length) {
             iSideBarLinks = 0
         } else {
@@ -95,12 +91,22 @@ export function initStepNavigation(mainTargetDiv,sidebarLinks,iSideBarLinks) {
     
     if (!steps.length) return;
     allImgs.forEach(img => {
-        img.addEventListener('click', e => {
-            e.preventDefault()
-            // e.stopPropagation()
-            denlargeAllImages(allImgs)
-            img.classList.toggle('enlarge')
-        })
+        if(!img.dataset.listenerAdded){
+
+            img.addEventListener('click', e => {
+                e.preventDefault()
+                // e.stopPropagation()
+                denlargeAllImages(allImgs)
+                img.classList.toggle('enlarge')
+            })
+            img.addEventListener('touchstart', e => {
+                e.preventDefault()
+                // e.stopPropagation()
+                denlargeAllImages(allImgs)
+                img.classList.toggle('enlarge')
+            },{passive:true})
+            img.dataset.listenerAdded = 'true'
+        }
     })
     copyCodes.forEach(el => {
         el.addEventListener('focus', e => {
