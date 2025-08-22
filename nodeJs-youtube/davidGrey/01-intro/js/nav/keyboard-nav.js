@@ -19,7 +19,7 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle , 
     
     sidebarBtn.addEventListener("keydown", (e) => { 
         let key = e.key.toLowerCase()    
-        iSideBarLinks = -1
+        // iSideBarLinks = -1
         if(lastStep){
             console.log(lastStep)
         }
@@ -80,15 +80,26 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle , 
     addEventListener("keydown", e => {
         const key = e.key.toLowerCase();
         if (e.shiftKey || e.metaKey) return;
-        
+        console.log(focusZone)
         // ----- HEADER -----
         if (focusZone === "header") {
             headerElementsFocus(key,e)
+            if(key === 'f'){
+                focusZone = 'sidebar' // probably make sidebarlinkNav to put here in 
+                // focuszone === header and focuszone = sidebar ??
+            }
             if(key == 's'){
+                // console.log('here')
                 // sKeyFocusOrder()
                 // Can't get this to go to last clicked 
+                // if(lastClickedLink){
+                //     lastClickedLink.focus()
+                // }
+                console.log(lastClickedLink)
                 if(lastClickedLink){
                     lastClickedLink.focus()
+                } else {
+                    sidebarBtn.focus()
                 }
             }
             if (key === "m") {
@@ -111,8 +122,15 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle , 
         if (focusZone === "sidebar") {
             headerElementsFocus(key, e)
             if (key === "f") { // forward cycle
+                console.log(iSideBarLinks)
+                if (iSideBarLinks === -1) {
+                    iSideBarLinks = 0
+                    console.log(sidebarLinks[0])
+                    sidebarLinks[iSideBarLinks].focus()
+                }
+                sidebarLinks[iSideBarLinks].focus()
                 iSideBarLinks = (iSideBarLinks + 1) % sidebarLinks.length;
-                sidebarLinks[iSideBarLinks].focus();
+                // sidebarLinks[iSideBarLinks].focus();
             } else if (key === "a") { // backward cycle
                 iSideBarLinks = (iSideBarLinks - 1 + sidebarLinks.length) % sidebarLinks.length;
                 sidebarLinks[iSideBarLinks].focus();
@@ -189,7 +207,7 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle , 
         } else if (key === "n") {
             navLessonTitle.focus();
         } else if (key === "s") {
-            sidebarBtn.focus();
+            // sidebarBtn.focus();
         } else if (key === "t") {
             const tutorialLink = document.querySelector('#tutorialLink')
             tutorialLink.focus()
