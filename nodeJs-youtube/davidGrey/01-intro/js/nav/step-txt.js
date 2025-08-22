@@ -24,14 +24,12 @@ export function initStepNavigation(mainTargetDiv,sidebarLinks,iSideBarLinks) {
    
     endNxtLessonBtn.addEventListener('focus', denlargeAllImages)
     if(!endNxtLessonBtn.dataset.listenerAdded){
-
         endNxtLessonBtn.addEventListener('click', e => {
             e.preventDefault()
             denlargeAllImages()
             removeSidebarLinksBackground()
             nxtLesson()
         })
-        endNxtLessonBtn.dataset.listenerAdded = 'true'
         endNxtLessonBtn.addEventListener('touchstart', e => {
             e.preventDefault(); // optional, only if needed
             denlargeAllImages()
@@ -43,10 +41,7 @@ export function initStepNavigation(mainTargetDiv,sidebarLinks,iSideBarLinks) {
     prevLessonBtn.addEventListener('click', e => {
         removeSidebarLinksBackground()
         prevLesson()
-
-
-        
-    })
+    },{passive:true})
     prevLessonBtn.addEventListener('keydown', e => {
         let key = e.key.toLowerCase();    
         if(key === 'p'){endNxtLessonBtn.focus()}
