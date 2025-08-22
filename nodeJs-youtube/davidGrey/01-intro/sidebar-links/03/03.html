@@ -4,64 +4,112 @@
     <meta charset="UTF-8">
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>03-</title>
+    <title>TBD-</title>
 </head>
 <body class="dark-mode">
     <div id="targetDiv">
-        <header class="header-codeColor-lesson">
-            <h3>3. Prototypal Inheritance <sup>creating class <code>function()</code></sup></h3>
+        <header>
+            <h3 id="targetHeaderh3">03. TBD</h3>
         </header>
-        <div class="main-container-codeColor">
+        <div class="main-container">
             <div class="steps-container">
                 <!-- 01 -->
                 <div tabindex="0" class="step-float">
-                    <div class="step-img">
-                        <img src="parts/03/images/01.png" alt="">
+                    <div class="step-img xs">
+                        <!-- <img src="images/01.png" alt=""> -->
+                        <img src="sidebar-links/01/images/01.png" alt="">
                     </div>
-                    <div class="step-txt">
+                    <div  class="step-txt">
                         <h4>01</h4>
                         <p>
-                            Behind the scenes when creating a <code class="b">class</code>, javascript 
-                            creates an empty function?? We can add <code class="b">methods</code> to this empty 
-                            function with <code>.<span class="y">prototype</span></code>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, soluta! Explicabo in
+                            dolores laboriosam beatae assumenda voluptate veniam, voluptas deleniti delectus quos corporis
+                            porro modi, quisquam id. Qui, possimus optio.
                         </p>
                         <div class="code-container ">
-                            <pre class="copy-code">
-function <span class="b">Person</span>() {}
-<span class="b">Person</span>.<span class="y">prototype</span>.<span class="b">talk</span> = () => {
-    return 'Talking'
-}
-const me  = new Person()
-me.talk()</pre>
-                        </div>                
+                            <pre class="copy-code x">
+const <span class="lsg">me</span> = <span class="lsg">{</span>
+    talk(){
+        return 'Talking'
+    }
+<span class="lsg">}</span>
+const <span class="lsg">you</span> = <span class="lsg">{</span>
+    talk(){
+        return 'Talking'
+    }
+<span class="lsg">}</span></pre>
+                        </div>
+                        <div class="code-container ">
+                            <pre class="copy-code ">
+<span class="lsg">me</span>.talk()
+<span class="lsg">you</span>.talk()</pre>
+                        </div>              
                     </div>
                 </div>
                 <!-- 02 -->
                 <div tabindex="0" class="step-float">
                     <div class="step-img">
-                        <img src="parts/03/images/02.png" alt="">
+                        <!-- <img src="images/02.png" alt=""> -->
+                        <img src="sidebar-links/01/images/02.png" alt="">
                     </div>
                     <div class="step-txt">
-                        <h4>01</h4>
+                        <h4>02</h4>
                         <p>
-                            console <code class="b">me</code> and see that the <code class="b">talk()</code> method is 
-                            within its <code>.<span class="y">__proto__</span></code> which contains the methods of it's parent 
-                            class/function <code class="b">Person</code>.
+                            &lt; step-float 
+                            &emsp;&lt; step-txt
+                            &emsp;&lt; step-txt
                         </p>
                         <div class="code-container ">
-                            <pre class="copy-code">
-me.<span class="y">__proto__</span></pre>
+                                <pre class="copy-code">
+class <span class="b">Person</span> {
+    <span class="b">talk()</span>{
+        return 'talking'
+    }
+}
+const me = new Person()
+const you = new Person()</pre>
                         </div>
                         <div class="code-container">
-                            <pre tabindex="0" class="copy-code">
-Person.<span class="y">prototype</span></pre>
+                            <pre class="copy-code">
+me.<span class="b">talk()</span>
+you.<span class="b">talk()</span></pre>
                         </div>
+                        
                     </div>
+                    <div class="step-txt">
+                        <p>
+                            Now the method <strong>"inherits"</strong> from the <code class="b">talk()</code>
+                            method from the  <code class="b">Person</code>
+                            class
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 03 imgs-container -->
+                <div tabindex="0" class="step-float ">
+                    <div class="step-txt">
+                        <h4>03</h4>
+                        <p>
+                        Imgs Container      
+                        </p>
+                    </div>
+                    <div class="imgs-container">
+                        <div class="img-container">
+                            <div class="step-img">
+                                <img src="sidebar-links/01/images/05.png" alt="">
+                            </div>
+                        </div>
+                        <div class="img-container">
+                            <div class="step-img">
+                                <img src="sidebar-links/01/images/05b.png" alt="">
+                            </div>
+                        </div>
+
+                    </div>
+                    
                 </div>
             </div>
         </div>
-        <button tabindex="0" id="endNxtLesson">next lesson</button>
     </div>
-    <script src="ex.js"></script>
 </body>
 </html>

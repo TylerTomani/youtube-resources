@@ -150,7 +150,12 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle , 
     function initElementFocus(key,e){
                 
         if (key === 'n') {
-            navLessonTitle.focus()
+            if(e.target == navLessonTitle){
+                const endNxtLessonBtn = document.querySelector('#endNxtLessonBtn')
+                endNxtLessonBtn.focus()
+            } else {
+                navLessonTitle.focus()
+            }
         } else
         if (key === 'n') {
             navLessonTitle.focus()

@@ -23,18 +23,22 @@ export function initStepNavigation(mainTargetDiv,sidebarLinks,iSideBarLinks) {
     allImgs = Array.from(mainTargetDiv.querySelectorAll('.step-img > img'));
    
     endNxtLessonBtn.addEventListener('focus', denlargeAllImages)
-    endNxtLessonBtn.addEventListener('click', e => {
-        e.preventDefault()
-        denlargeAllImages()
-        removeSidebarLinksBackground()
-        nxtLesson()
-    })
-    endNxtLessonBtn.addEventListener('touchstart', e => {
-        e.preventDefault(); // optional, only if needed
-        denlargeAllImages()
-        removeSidebarLinksBackground()
-        nxtLesson()
-    });
+    if(!endNxtLessonBtn.dataset.listenerAdded){
+
+        endNxtLessonBtn.addEventListener('click', e => {
+            e.preventDefault()
+            denlargeAllImages()
+            removeSidebarLinksBackground()
+            nxtLesson()
+        })
+        endNxtLessonBtn.dataset.listenerAdded = 'true'
+        endNxtLessonBtn.addEventListener('touchstart', e => {
+            e.preventDefault(); // optional, only if needed
+            denlargeAllImages()
+            removeSidebarLinksBackground()
+            nxtLesson()
+        },{passive:true});
+    }
     prevLessonBtn.addEventListener('focus', denlargeAllImages)
     prevLessonBtn.addEventListener('click', e => {
         removeSidebarLinksBackground()
