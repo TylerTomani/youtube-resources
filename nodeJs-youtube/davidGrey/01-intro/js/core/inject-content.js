@@ -12,7 +12,7 @@ export function injectContent(href,mainTargetDiv,sidebarLinks,iSideBarLinks,navL
             const changedNavLessonTitleH1 = doc.querySelector('#targetHeaderh3')
 
             // changedNavLessonTitleH1.classList.add('hidden')
-            navLessonTitle.innerHTML = changedNavLessonTitleH1.innerHTML
+            // navLessonTitle.innerHTML = changedNavLessonTitleH1.innerHTML
             initStepNavigation(mainTargetDiv,sidebarLinks,iSideBarLinks);
             addCopyCode()
         })

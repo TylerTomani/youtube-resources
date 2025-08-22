@@ -37,9 +37,13 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle , 
             iSideBarLinks = [...sidebarLinks].indexOf(el);
             focusZone = 'sidebar'
             injectContent(el.href, mainTargetDiv,sidebarLinks,iSideBarLinks,navLessonTitle);
+        } else {
+            injectContent('home-page.html', mainTargetDiv, sidebarLinks, iSideBarLinks, navLessonTitle);
+
         }
         el.addEventListener("focus", () => {
             lastFocusedLink = el;
+            el.style.background = 'none'
             iSideBarLinks = [...sidebarLinks].indexOf(el);
         });
         el.addEventListener("click", e => {
@@ -80,6 +84,18 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle , 
                 // Can't get this to go to last clicked 
                 if(lastClickedLink){
                     lastClickedLink.focus()
+                }
+            }
+            if (!isNaN(key)) { // number shortcuts
+                const index = parseInt(key) - 1;
+                if (index >= 0 && index < sidebarLinks.length) {
+                    iSideBarLinks = index;
+                    sidebarLinks[iSideBarLinks].focus();
+                } else {
+                    const steps = mainTargetDiv.querySelectorAll(".step-float, .step");
+                    if (index >= 0 && index < steps.length) {
+                        steps[index].focus();
+                    }
                 }
             }
         }
