@@ -1,3 +1,6 @@
+.step-float {
+    -webkit-tap-highlight-color: transparent;
+}
 :root {
     --highlight-color: rgb(0, 139, 137);
 }

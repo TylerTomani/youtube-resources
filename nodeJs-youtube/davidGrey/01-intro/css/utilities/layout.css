@@ -75,3 +75,7 @@ body{
     display: flex;
     
 }
+.home-page .imgs-container .img-container {
+    flex-basis: 50%;
+    /* background-color: blue; */
+}

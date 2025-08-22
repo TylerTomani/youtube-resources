@@ -17,58 +17,52 @@
                 <div tabindex="0" class="step-float ">
                     <div class="step-txt">
                         <h4>05</h4>
-                        <p>
-                            This page's logic
-                            is NOT this one to the right 
-                            <br>(make one for this page)
-                        </p>
                     </div>
                     <div class="imgs-container">
-                        <div class="code-container">
-                            <textarea readonly tabindex="0" class="copy-code">
-[Keyboard] --> [Letter/Number Key Press] --> [Focus Logic]
-
-Letters:
-   ┌────────────┐
-   │ Press key  │
-   └─────┬──────┘
-         ▼
- ┌───────────────────────────────┐
- │ Filter all visible elements   │
- │ by first letter (normalize)  │
- └────────────┬──────────────────┘
-              ▼
- ┌───────────────────────────────┐
- │ Cycle through matches        │
- │ (forward/backward with Shift)│
- └────────────┬──────────────────┘
-              ▼
- ┌───────────────┐
- │ Focus target  │
- └───────────────┘
-
-Numbers:
-   ┌────────────┐
-   │ Press 0-9  │
-   └─────┬──────┘
-         ▼
- ┌───────────────────────────────┐
- │ Only sidebar links are matched│
- │ (when mainTargetDiv NOT focused) │
- └────────────┬──────────────────┘
-              ▼
- ┌───────────────┐
- │ Focus target  │
- └───────────────┘
-
-                            </textarea>
-                        </div>
                         <div class="img-container">
                             <div class="step-img">
                                 <img src="images/sidebar-nav-diagram.png" alt="">
                             </div>
                         </div>
-
+                    </div>
+                    <div class="code-container">
+                        <textarea readonly tabindex="0" class="copy-code">
+                    [Keyboard] --> [Letter/Number Key Press] --> [Focus Logic]
+                    
+                    Letters:
+                       ┌────────────┐
+                       │ Press key  │
+                       └─────┬──────┘
+                             ▼
+                     ┌───────────────────────────────┐
+                     │ Filter all visible elements   │
+                     │ by first letter (normalize)  │
+                     └────────────┬──────────────────┘
+                                  ▼
+                     ┌───────────────────────────────┐
+                     │ Cycle through matches        │
+                     │ (forward/backward with Shift)│
+                     └────────────┬──────────────────┘
+                                  ▼
+                     ┌───────────────┐
+                     │ Focus target  │
+                     └───────────────┘
+                    
+                    Numbers:
+                       ┌────────────┐
+                       │ Press 0-9  │
+                       └─────┬──────┘
+                             ▼
+                     ┌───────────────────────────────┐
+                     │ Only sidebar links are matched│
+                     │ (when mainTargetDiv NOT focused) │
+                     └────────────┬──────────────────┘
+                                  ▼
+                     ┌───────────────┐
+                     │ Focus target  │
+                     └───────────────┘
+                    
+                                                </textarea>
                     </div>
                     
                 </div>
