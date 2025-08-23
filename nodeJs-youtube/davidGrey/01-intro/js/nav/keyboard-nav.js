@@ -107,8 +107,8 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle , 
                 //     lastClickedLink.focus()
                 // }
                 if (lastClickedLink) {
-                    // lastClickedLink.focus()
-                } else {
+                    lastClickedLink.focus()
+                } else if (e.target){
                     sidebarBtn.focus()
                 }
                 if(mainContainer.classList.contains('collapsed')){
