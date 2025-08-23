@@ -166,9 +166,11 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle , 
                 }
             } 
             else if (key === "m") {
+
                 if(lastStep){
                      lastStep.focus()
                 } else {
+                    console.log('here m')
                     mainTargetDiv.focus();
                 }
             } else if (key === "s") {
@@ -186,6 +188,7 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle , 
         if (focusZone === 'main') {
             headerElementsFocus(key, e);
             handleStepKeys(key, e, mainTargetDiv);
+            
             if (key === 's'){
                 sKeyFocusOrder();
                 if(mainContainer.classList.contains('collapsed')){
