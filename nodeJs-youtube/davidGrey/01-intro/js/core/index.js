@@ -1,26 +1,44 @@
 // index.js
 import { initKeyboardNav } from "../nav/keyboard-nav.js";
-import { getPageHeader, getPageHeaderLinks, getNavLessonTitle, getDarkModeBtn ,getSideBar, getSideBarBtn, initSideBarLinks, getMainTargetDiv,getMainContainer } from "../utils/dom-utils.js";
-import {toggleSidebar} from "../ui/toggle-sidebar.js"
+import { getPageHeader, getPageHeaderLinks, getNavLessonTitle, getDarkModeBtn, getSideBar, getSideBarBtn, initSideBarLinks, getMainTargetDiv, getMainContainer } from "../utils/dom-utils.js";
+import { toggleSidebar } from "../ui/toggle-sidebar.js";
 import { dragHideSidebar } from "../ui/drag-hide-sidebar.js";
-const mainDiv = getMainTargetDiv();
-const mainContainer = getMainContainer()
-const navLessonTitle = getNavLessonTitle()
-const sideBarBtn = getSideBarBtn()
-const sideBar = getSideBar()
+
 document.addEventListener("DOMContentLoaded", () => {
-    toggleSidebar(navLessonTitle,sideBar,sideBarBtn,mainContainer)
-    dragHideSidebar(mainContainer,sideBar)
+    const pageHeader = getPageHeader();
+    const pageHeaderLinks = getPageHeaderLinks();
+    const navLessonTitle = getNavLessonTitle();
+    const darkModeBtn = getDarkModeBtn();
+    const sidebar = getSideBar();
+    const sidebarBtn = getSideBarBtn();
+    const sidebarLinks = initSideBarLinks();
+    const mainTargetDiv = getMainTargetDiv();
+    const mainContainer = getMainContainer();
+
+    // Initialize sidebar toggle and drag
+    toggleSidebar(navLessonTitle, sidebar, sidebarBtn, mainContainer);
+    dragHideSidebar(mainContainer, sidebar);
+
+    // Initialize keyboard navigation
     initKeyboardNav({
         pageHeader: getPageHeader(),
         pageHeaderLinks: getPageHeaderLinks(),
         darkModeBtn: getDarkModeBtn(),
         navLessonTitle: navLessonTitle,
-        sidebar: sideBar,
+        sidebar: getSideBar(),
         sidebarBtn: sideBarBtn,
-        sidebarLinks: initSideBarLinks(),
-        mainTargetDiv: mainDiv,
-        mainContainer : mainContainer
+        sidebarLinks: Array.from(initSideBarLinks()), // <-- convert NodeList to array
+        mainTargetDiv: getMainTargetDiv(),
+        mainContainer: mainContainer
     });
-    
+
+    // Initial content load
+    const initialLink = sidebarLinks.find(el => el.hasAttribute("autofocus")) || sidebarLinks[0];
+    if (initialLink) {
+        initialLink.focus();
+        // Load initial content into mainTargetDiv
+        import("../core/inject-content.js").then(module => {
+            module.injectContent(initialLink.href, mainTargetDiv, sidebarLinks, sidebarLinks.indexOf(initialLink), navLessonTitle);
+        });
+    }
 });
