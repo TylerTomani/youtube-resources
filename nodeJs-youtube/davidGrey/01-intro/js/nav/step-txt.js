@@ -59,13 +59,18 @@ export function initStepNavigation(mainTargetDiv,sidebarLinks,iSideBarLinks) {
         if(key === 'p'){endNxtLessonBtn.focus()}
     });
     function nxtLesson() {
+        // Update sidebar index
         iSideBarLinks = (iSideBarLinks + 1) % sidebarLinks.length;
+
+        // Clear previous backgrounds
         removeSidebarLinksBackground();
+
+        // Highlight current sidebar link
         const link = sidebarLinks[iSideBarLinks];
         link.style.background = 'darkgrey';
 
+        // Inject new content, then focus first step
         injectContent(link.href, mainTargetDiv, sidebarLinks, iSideBarLinks, navLessonTitle, () => {
-            // Refresh references after inject
             const newSteps = Array.from(mainTargetDiv.querySelectorAll('.steps-container > .step-float'));
             const newEndBtn = document.querySelector('#endNxtLessonBtn');
 
@@ -75,17 +80,25 @@ export function initStepNavigation(mainTargetDiv,sidebarLinks,iSideBarLinks) {
                 iStep = 0;
             }
 
+            // Focus the end button only if you want
             if (newEndBtn) newEndBtn.focus();
+
             scrollToTop();
         });
     }
 
     function prevLesson() {
+        // Update sidebar index
         iSideBarLinks = (iSideBarLinks - 1 + sidebarLinks.length) % sidebarLinks.length;
+
+        // Clear previous backgrounds
         removeSidebarLinksBackground();
+
+        // Highlight current sidebar link
         const link = sidebarLinks[iSideBarLinks];
         link.style.background = 'darkgrey';
 
+        // Inject new content, then focus first step
         injectContent(link.href, mainTargetDiv, sidebarLinks, iSideBarLinks, navLessonTitle, () => {
             const newSteps = Array.from(mainTargetDiv.querySelectorAll('.steps-container > .step-float'));
             const newPrevBtn = document.querySelector('#prevLessonBtn');
@@ -96,11 +109,12 @@ export function initStepNavigation(mainTargetDiv,sidebarLinks,iSideBarLinks) {
                 iStep = 0;
             }
 
+            // Focus the previous button if desired
             if (newPrevBtn) newPrevBtn.focus();
+
             scrollToTop();
         });
     }
-
 
     // Utility to clear all sidebar backgrounds
     function removeSidebarLinksBackground() {

@@ -10,7 +10,7 @@ a:focus,
 }
 
 #mainTargetDiv:active,#mainTargetDiv:focus{
-    border: 1px solid var(--highlight-color);    
+    /* border: 1px solid var(--highlight-color);     */
 }
 #targetDiv{
     overflow: auto;
