@@ -166,12 +166,11 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle , 
                 }
             } 
             else if (key === "m") {
-
+                mainTargetDiv.focus();
                 if(lastStep){
                      lastStep.focus()
                 } else {
                     console.log('here m')
-                    mainTargetDiv.focus();
                 }
             } else if (key === "s") {
                 // console.log('yes')

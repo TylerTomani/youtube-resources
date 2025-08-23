@@ -1,10 +1,19 @@
 /* lesson.css (cleaned & fixed) */
+
+.copy-code{
+    position: relative;
+    
+}
+.copy-code:active{
+    background: #201d1d;
+    background:white
+}
 .main-content-container {
     flex: 1 1 auto;
     overflow-x: hidden;
     box-sizing: border-box;
     height: calc(100vh - var(--header-height, 80px));
-    padding-bottom: 50%;
+    /* padding-bottom: 50%; */
 }
 
 #targetDiv {
@@ -12,17 +21,15 @@
     overflow-x: hidden;
     overflow-y: auto;
     scroll-behavior: smooth;
-    padding-bottom: 50%;
+    padding-bottom: 25%;
 }
 
 .steps-container {
-    padding-bottom: 50%;
 }
 
 /* Step image container */
 .step-img {
     position: relative;
-    z-index: 1;
     pointer-events: auto;
 }
 
@@ -32,7 +39,6 @@
     width: 98%;
     max-width: 500px;
     border: 1px solid white;
-    z-index: 1;
     pointer-events: auto;
     transition: all 0.025s ease;
     touch-action: manipulation;
@@ -40,10 +46,11 @@
 
 /* Enlarged images always on top */
 .step-img>img.enlarge {
+
     position: relative;
-    z-index: 100 !important;
     transform: scale(1.5);
     pointer-events: auto;
+    
 }
 
 /* Special tweak for first child enlarged */
@@ -60,7 +67,7 @@
 .step,
 .step-float {
     position: relative;
-    padding: 5%;
+    padding-top: 2.5%;
     min-height: 40vh;
     flex-grow: 1;
 }
@@ -72,7 +79,7 @@
     margin-right: 5%;
     margin-left: 10px;
     position: relative;
-    z-index: 11;
+    /* z-index: 11; */
 }
 
 .step-vid>video {
@@ -80,14 +87,14 @@
     width: 98%;
     border: 1px solid white;
     max-width: 500px;
-    z-index: 5;
+    /* z-index: 5; */
     transition: all 0.025s ease;
 }
 
 /* Enlarged video */
 video.enlarge-vid {
     position: absolute;
-    z-index: 100;
+    /* z-index: 100; */
     min-height: 150px;
     min-width: 250px;
     right: 20%;
@@ -97,7 +104,7 @@ video.enlarge-vid {
 /* Images container layout */
 .imgs-container {
     display: flex;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     width: 100%;
     position: static;
     /* remove relative/absolute if you don’t need it */
@@ -115,13 +122,14 @@ video.enlarge-vid {
 
 .imgs-container .img-container .step-img {
     width: 90%;
-    z-index: auto;
+    /* z-index: auto; */
     
 }
 
 /* Step text */
 .step-float>.step-txt {
     padding: 0 2%;
+    /* position: relative; */
     width: 50%;
 }
 
@@ -145,7 +153,6 @@ video.enlarge-vid {
 
 /* Code container */
 .step-float>.code-container {
-    border: 2px solid red;
     margin-left: 2.5%;
 }
 
@@ -154,7 +161,7 @@ video.enlarge-vid {
 }
 
 .step-float>.step-vid>video {
-    z-index: 0;
+    /* z-index: 0; */
 }
 
 /* Responsive */
@@ -162,7 +169,6 @@ video.enlarge-vid {
     .code-container {
         min-width: 250px;
     }
-
     video {
         min-width: 250px;
     }
@@ -176,10 +182,10 @@ video.enlarge-vid {
     .step-txt {
         font-size: 90%;
     }
-
+    
     img.enlarge {
         position: absolute;
-        z-index: 100;
+        /* z-index: 100; */
         min-height: 112px;
         min-width: 244px;
         max-width: 200px;

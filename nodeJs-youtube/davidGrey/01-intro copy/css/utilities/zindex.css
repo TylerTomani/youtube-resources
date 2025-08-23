@@ -1,6 +1,13 @@
-/* .step-float:focus,.step-float:focus{
-    z-index: 5;
+.lesson-btns-container {
+    z-index: 10
 }
-.step-float:focus img,.step-float:active img{
-    z-index: 6;
+/* z-ndex.css
+.step-img {
+    z-index: 0;
+}
+.step-img>img {
+    z-index: 0;
+}
+ .step-img>img.enlarge {
+    z-index: 100 !important;
 } */

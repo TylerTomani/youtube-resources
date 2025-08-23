@@ -1,4 +1,4 @@
-
+// step-txt.js
 export let lastStep = null;
 let iStep = -1;
 let steps = [];
@@ -21,90 +21,88 @@ export function initStepNavigation(mainTargetDiv,sidebarLinks,iSideBarLinks) {
     })
     steps = Array.from(mainTargetDiv.querySelectorAll('.steps-container > .step-float'));
     allImgs = Array.from(mainTargetDiv.querySelectorAll('.step-img > img'));
-    endNxtLessonBtn.addEventListener('keydown', e => {
-        let key = e.key.toLowerCase()
-        if(key === 'enter'){
-            if(iSideBarLinks >= sidebarLinks.length){
-                iSideBarLinks = 0
-            } else {
-                iSideBarLinks += 1
-            }
-            sidebarLinks[iSideBarLinks].click()
-            console.log()
-            steps[0].focus()
-            endNxtLessonBtn.focus()
-            scrollToTop()
-
-
-        }
-    })
-    endNxtLessonBtn.addEventListener('click', e => {
-        console.log('click')
-        e.preventDefault()
-        if(iSideBarLinks >= sidebarLinks.length){
-            iSideBarLinks = 0
-        } else {
-            iSideBarLinks += 1
-        }
+   
+    endNxtLessonBtn.addEventListener('focus', denlargeAllImages)
+    if(!endNxtLessonBtn.dataset.listenerAdded){
+        endNxtLessonBtn.addEventListener('click', e => {
+            e.preventDefault()
+            denlargeAllImages()
+            removeSidebarLinksBackground()
+            nxtLesson()
+        })
+        endNxtLessonBtn.addEventListener('touchstart', e => {
+            e.preventDefault(); // optional, only if needed
+            denlargeAllImages()
+            removeSidebarLinksBackground()
+            nxtLesson()
+        },{passive:true});
+    }
+    prevLessonBtn.addEventListener('focus', denlargeAllImages)
+    prevLessonBtn.addEventListener('click', e => {
+        removeSidebarLinksBackground()
+        prevLesson()
+    },{passive:true})
+    prevLessonBtn.addEventListener('keydown', e => {
+        let key = e.key.toLowerCase();    
+        if(key === 'p'){endNxtLessonBtn.focus()}
+    });
+    function nxtLesson() {
+        iSideBarLinks = (iSideBarLinks + 1) % sidebarLinks.length
+        
+        
+        sidebarLinks[iSideBarLinks].style.background = 'darkgrey'
         sidebarLinks[iSideBarLinks].click()
-        console.log()
         steps[0].focus()
         endNxtLessonBtn.focus()
         scrollToTop()
-
-
-        
-    })
-    prevLessonBtn.addEventListener('click', e => {
-        console.log('click')
-        e.preventDefault()
-        if(iSideBarLinks >= sidebarLinks.length){
-            iSideBarLinks = 0
-        } else {
-            iSideBarLinks += 1
-        }
-        sidebarLinks[iSideBarLinks].click()
-        console.log()
+    }
+    function prevLesson() {
+        iSideBarLinks = (iSideBarLinks - 1 + sidebarLinks.length) % sidebarLinks.length
+        sidebarLinks[iSideBarLinks].style.background = '#585151'
+        sidebarLinks[iSideBarLinks].click();
+        // Scroll to top of page
         steps[0].focus()
         prevLessonBtn.focus()
         scrollToTop()
-
-
-        
-    })
-    prevLessonBtn.addEventListener('keydown', e => {
-        let key = e.key.toLowerCase();
-        if (key === 'enter') {
-            if(iSideBarLinks == 0){
-                iSideBarLinks = sidebarLinks.length 
-                iSideBarLinks -= 1;
-            } else {
-                iSideBarLinks -= 1;
-            }
-            sidebarLinks[iSideBarLinks].click();
-
-            // Scroll to top of page
-            steps[0].focus()
-            prevLessonBtn.focus()
-            scrollToTop()
-        }
-        if(key === 'p'){
-            endNxtLessonBtn.focus()
-        }
-    });
-    
+    }
+    function removeSidebarLinksBackground() {
+        sidebarLinks.forEach(el => {
+            
+            el.style.background = 'none'
+            // el.style.color = 'black'
+        })
+    }
     
     if (!steps.length) return;
     allImgs.forEach(img => {
-        img.addEventListener('click', e => {
-            e.preventDefault()
-            // e.stopPropagation()
-            denlargeAllImages(allImgs)
-            img.classList.toggle('enlarge')
-        })
+        if(!img.dataset.listenerAdded){
+
+            img.addEventListener('click', e => {
+                e.preventDefault()
+                // e.stopPropagation()
+                denlargeAllImages(allImgs)
+                img.classList.toggle('enlarge')
+            })
+            img.addEventListener('touchstart', e => {
+                e.preventDefault()
+                // e.stopPropagation()
+                denlargeAllImages(allImgs)
+                img.classList.toggle('enlarge')
+            },{passive:true})
+            img.dataset.listenerAdded = 'true'
+        }
     })
     copyCodes.forEach(el => {
-        el.addEventListener('focus', denlargeAllImages)
+        el.addEventListener('focus', e => {
+            denlargeAllImages()
+            el.style.zIndex = '100'
+            el.style.background = 'white'
+        })
+        el.addEventListener('out', e => {
+            denlargeAllImages()
+            el.style.zIndex = '100'
+            el.style.background = 'transparent'
+        })
     })
     steps.forEach((step, index) => {
         const clearEnlarge = () => denlargeAllImages();
@@ -138,7 +136,6 @@ export function initStepNavigation(mainTargetDiv,sidebarLinks,iSideBarLinks) {
                 e.preventDefault()
                 const step = getStep(e.target)
                 if(step && e.target.tagName != 'IMG' ){
-                    console.log('eys')
                     denlargeAllImages()
                 }
             });
@@ -147,6 +144,7 @@ export function initStepNavigation(mainTargetDiv,sidebarLinks,iSideBarLinks) {
             // step.dataset.listenerAdded = 'true';
         }
     });
+    
     
 }
 
@@ -194,7 +192,7 @@ export function handleStepKeys(key, e, mainTargetDiv) {
                 target.scrollIntoView({ behavior: 'instant', block: 'start' });
             } else if (lastStep && steps.includes(e.target)) {
                 mainTargetDiv.focus();
-                window.scrollTo({ top: mainTargetDiv.offsetTop, behavior: 'instant',block:'start' });
+                mainTargetDiv.scrollTo({ top: mainTargetDiv.offsetBottom, behavior: 'instant',block:'start' });
                 
             }
             break;
@@ -217,7 +215,10 @@ function denlargeAllImages() {
     allImgs.forEach(img => {
         img.classList.remove('enlarge');
         // optionally remove enlarge-vid if you have videos
-        if (img.classList.contains('enlarge-vid')) img.classList.remove('enlarge-vid');
+        if (img.classList.contains('enlarge-vid')) {
+            img.classList.remove('enlarge-vid')
+            img.style.zIndex = 0
+        };
 
     });
 }
@@ -228,21 +229,40 @@ function toggleImg(e) {
     const step = getStep(e.target);
     if (!step) return;
 
-    const img = step.querySelector('.step-img > img');
-    if (img) img.classList.toggle('enlarge');
+    const stepCopyCodes = step.querySelectorAll('.copy-code');
+    const images = Array.from(step.querySelectorAll('.step-img > img'));
+    if (!images.length) return;
 
-    const images = Array.from(step.querySelectorAll('.imgs-container img'));
-    if (images.length > 0) {
+    // Single-image step
+    if (images.length === 1) {
+        const img = images[0];
+        const isEnlarged = img.classList.contains('enlarge');
+        img.classList.toggle('enlarge', !isEnlarged);
+        img.style.zIndex = !isEnlarged ? 100 : 0;
+    } else {
+        // Multiple images: cycle through
         let currentIndex = stepImageIndexes.get(step) || 0;
 
-        images.forEach(img => img.classList.remove('enlarge'));
+        images.forEach((img, i) => {
+            img.classList.remove('enlarge');
+            img.style.zIndex = 1; // default behind
+        });
+
         images[currentIndex].classList.add('enlarge');
+        images[currentIndex].style.zIndex = 100;
 
         currentIndex = (currentIndex + 1) % images.length;
         stepImageIndexes.set(step, currentIndex);
     }
-    
+
+    // Ensure copy-code is always behind enlarged image
+    stepCopyCodes.forEach(code => {
+        code.style.zIndex = 0; // below images
+    });
 }
+
+
+
 function removeAllTabIndexes(copyCodes) {
     copyCodes.forEach(el => {
         el.setAttribute('tabindex','-1')
