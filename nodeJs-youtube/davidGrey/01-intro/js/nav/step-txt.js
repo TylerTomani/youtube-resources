@@ -1,4 +1,4 @@
-
+// step-txt.js
 export let lastStep = null;
 let iStep = -1;
 let steps = [];
@@ -15,6 +15,7 @@ export function initStepNavigation(mainTargetDiv,sidebarLinks,iSideBarLinks) {
         if(key == 'enter'){
                 steps[0].focus()
         }
+        
         // if(e.target == mainTargetDiv){
         // }
     })
@@ -40,16 +41,17 @@ export function initStepNavigation(mainTargetDiv,sidebarLinks,iSideBarLinks) {
     prevLessonBtn.addEventListener('click', e => {
         removeSidebarLinksBackground()
         prevLesson()
-        prevLessonBtn.addEventListener('keydown', e => {
-            let key = e.key.toLowerCase();    
-            if(key === 'p'){endNxtLessonBtn.focus()}
-        });
     },{passive:true})
+    prevLessonBtn.addEventListener('keydown', e => {
+        let key = e.key.toLowerCase();    
+        if(key === 'p'){endNxtLessonBtn.focus()}
+    });
     function nxtLesson() {
         iSideBarLinks = (iSideBarLinks + 1) % sidebarLinks.length
+        
+        
         sidebarLinks[iSideBarLinks].style.background = 'darkgrey'
         sidebarLinks[iSideBarLinks].click()
-        console.log()
         steps[0].focus()
         endNxtLessonBtn.focus()
         scrollToTop()
@@ -65,6 +67,7 @@ export function initStepNavigation(mainTargetDiv,sidebarLinks,iSideBarLinks) {
     }
     function removeSidebarLinksBackground() {
         sidebarLinks.forEach(el => {
+            
             el.style.background = 'none'
             // el.style.color = 'black'
         })
@@ -94,7 +97,11 @@ export function initStepNavigation(mainTargetDiv,sidebarLinks,iSideBarLinks) {
             denlargeAllImages()
             el.style.zIndex = '100'
             el.style.background = 'white'
-            el.style.color  = 'black'
+        })
+        el.addEventListener('out', e => {
+            denlargeAllImages()
+            el.style.zIndex = '100'
+            el.style.background = 'transparent'
         })
     })
     steps.forEach((step, index) => {
@@ -102,11 +109,10 @@ export function initStepNavigation(mainTargetDiv,sidebarLinks,iSideBarLinks) {
 
         if (!step.hasAttribute('tabindex')) step.setAttribute('tabindex', '0');
 
-        step.addEventListener('focus', () => {
-            removeAllTabIndexes(copyCodes)
-            removeCodeBackground(copyCodes)
-        })
         if (!step.dataset.listenerAdded) {
+            step.addEventListener('focus', () => {
+                removeAllTabIndexes(copyCodes)
+            })
             // Update lastStep and iStep on focus
             step.addEventListener('focusin', () => {
                 lastStep = step;
@@ -130,7 +136,6 @@ export function initStepNavigation(mainTargetDiv,sidebarLinks,iSideBarLinks) {
                 e.preventDefault()
                 const step = getStep(e.target)
                 if(step && e.target.tagName != 'IMG' ){
-                    console.log('eys')
                     denlargeAllImages()
                 }
             });
@@ -187,7 +192,7 @@ export function handleStepKeys(key, e, mainTargetDiv) {
                 target.scrollIntoView({ behavior: 'instant', block: 'start' });
             } else if (lastStep && steps.includes(e.target)) {
                 mainTargetDiv.focus();
-                window.scrollTo({ top: mainTargetDiv.offsetTop, behavior: 'instant',block:'start' });
+                mainTargetDiv.scrollTo({ top: mainTargetDiv.offsetBottom, behavior: 'instant',block:'start' });
                 
             }
             break;
@@ -240,7 +245,7 @@ function toggleImg(e) {
 
         images.forEach((img, i) => {
             img.classList.remove('enlarge');
-            img.style.zIndex = 0; // default behind
+            img.style.zIndex = 1; // default behind
         });
 
         images[currentIndex].classList.add('enlarge');
@@ -258,11 +263,6 @@ function toggleImg(e) {
 
 
 
-function removeCodeBackground(copyCodes) {
-    copyCodes.forEach(el => {
-        el.background = 'transparent'
-    })
-}
 function removeAllTabIndexes(copyCodes) {
     copyCodes.forEach(el => {
         el.setAttribute('tabindex','-1')

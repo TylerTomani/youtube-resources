@@ -1,0 +1,77 @@
+/* layout.css */
+body{
+    overflow-x: hidden;
+}
+
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+.page-header {
+    /* z-index: 5; */
+    /* position: fixed; */
+    display: flex;
+}
+#navLessonTitle{
+    display: flex;
+    /* flex-grow: 1; */
+    align-content: center;
+}
+.page-header .header-col-left{
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 80vw;
+}
+.page-header .header-logo-actions-right{
+    display: flex;
+    flex-direction: column;
+    flex: 0 1 20vw;
+}
+.page-header .header-logo-actions-right a {
+    display: inline-flex;
+    justify-content: flex-end;
+}
+.page-header .header-logo-actions-right a img{
+    width: 100%;
+    max-width: 200px;
+    /* max-height: 80px; */
+    height: 100%;
+
+}
+
+.page-header .header-col-left>.header-nav {
+    display: flex;
+    flex-direction: column;
+}
+.page-header .header-col-left>.header-nav > * {
+    display: flex;
+    justify-content: center;
+    flex-basis: 50%;
+    align-items: center;
+}
+.page-header .header-col-left>.header-nav a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.main-container {
+    display: flex;
+    
+}
+
+.sidebar-links-ul{
+    overflow-x: hidden;
+}
+/* Main content scrollable */
+.home-page .imgs-container .img-container {
+    flex-basis: 50%;
+    /* background-color: blue; */
+}
+.lesson-btns-container {
+    position: fixed;
+    display: flex;
+    bottom: 0;
+    z-index: 10
+}
+.lesson-btns-container > 

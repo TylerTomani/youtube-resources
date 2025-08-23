@@ -1,0 +1,292 @@
+// step-txt.js
+export let lastStep = null;
+let iStep = -1;
+let steps = [];
+let allImgs = [];
+let lastStepPage = false
+// --- Initialize steps and images once ---
+export function initStepNavigation(mainTargetDiv,sidebarLinks,iSideBarLinks) {
+    const copyCodes = document.querySelectorAll('.copy-code')    
+    const endNxtLessonBtn = document.querySelector('#endNxtLessonBtn')
+    const prevLessonBtn = document.querySelector('#prevLessonBtn')
+    
+    mainTargetDiv.addEventListener('keydown',e =>{
+        let key = e.key.toLowerCase()
+        if(key == 'enter'){
+                steps[0].focus()
+        }
+        // if(e.target == mainTargetDiv){
+        // }
+    })
+    steps = Array.from(mainTargetDiv.querySelectorAll('.steps-container > .step-float'));
+    allImgs = Array.from(mainTargetDiv.querySelectorAll('.step-img > img'));
+   
+    endNxtLessonBtn.addEventListener('focus', denlargeAllImages)
+    if(!endNxtLessonBtn.dataset.listenerAdded){
+        endNxtLessonBtn.addEventListener('click', e => {
+            e.preventDefault()
+            denlargeAllImages()
+            removeSidebarLinksBackground()
+            nxtLesson()
+        })
+        endNxtLessonBtn.addEventListener('touchstart', e => {
+            e.preventDefault(); // optional, only if needed
+            denlargeAllImages()
+            removeSidebarLinksBackground()
+            nxtLesson()
+        },{passive:true});
+    }
+    prevLessonBtn.addEventListener('focus', denlargeAllImages)
+    prevLessonBtn.addEventListener('click', e => {
+        removeSidebarLinksBackground()
+        prevLesson()
+        prevLessonBtn.addEventListener('keydown', e => {
+            let key = e.key.toLowerCase();    
+            if(key === 'p'){endNxtLessonBtn.focus()}
+        });
+    },{passive:true})
+    function nxtLesson() {
+        iSideBarLinks = (iSideBarLinks + 1) % sidebarLinks.length
+        sidebarLinks[iSideBarLinks].style.background = 'darkgrey'
+        sidebarLinks[iSideBarLinks].click()
+        console.log()
+        steps[0].focus()
+        endNxtLessonBtn.focus()
+        scrollToTop()
+    }
+    function prevLesson() {
+        iSideBarLinks = (iSideBarLinks - 1 + sidebarLinks.length) % sidebarLinks.length
+        sidebarLinks[iSideBarLinks].style.background = '#585151'
+        sidebarLinks[iSideBarLinks].click();
+        // Scroll to top of page
+        steps[0].focus()
+        prevLessonBtn.focus()
+        scrollToTop()
+    }
+    function removeSidebarLinksBackground() {
+        sidebarLinks.forEach(el => {
+            el.style.background = 'none'
+            // el.style.color = 'black'
+        })
+    }
+    
+    if (!steps.length) return;
+    allImgs.forEach(img => {
+        if(!img.dataset.listenerAdded){
+
+            img.addEventListener('click', e => {
+                e.preventDefault()
+                // e.stopPropagation()
+                denlargeAllImages(allImgs)
+                img.classList.toggle('enlarge')
+            })
+            img.addEventListener('touchstart', e => {
+                e.preventDefault()
+                // e.stopPropagation()
+                denlargeAllImages(allImgs)
+                img.classList.toggle('enlarge')
+            },{passive:true})
+            img.dataset.listenerAdded = 'true'
+        }
+    })
+    copyCodes.forEach(el => {
+        el.addEventListener('focus', e => {
+            denlargeAllImages()
+            el.style.zIndex = '100'
+            el.style.background = 'white'
+            el.style.color  = 'black'
+        })
+    })
+    steps.forEach((step, index) => {
+        const clearEnlarge = () => denlargeAllImages();
+
+        if (!step.hasAttribute('tabindex')) step.setAttribute('tabindex', '0');
+
+        step.addEventListener('focus', () => {
+            removeAllTabIndexes(copyCodes)
+            removeCodeBackground(copyCodes)
+        })
+        if (!step.dataset.listenerAdded) {
+            // Update lastStep and iStep on focus
+            step.addEventListener('focusin', () => {
+                lastStep = step;
+                iStep = index;
+                if(iStep == (steps.length - 1)){
+                    lastStepPage = true
+                } else {
+                    lastStepPage = false
+                }
+                
+            });
+
+            // Handle enter key to toggle images
+            step.addEventListener('keydown', e => {
+                if (e.key.toLowerCase() === 'enter') {
+                    addTabIndexes(e)
+                    toggleImg(e)
+                }
+            });
+            step.addEventListener('click', e => {
+                e.preventDefault()
+                const step = getStep(e.target)
+                if(step && e.target.tagName != 'IMG' ){
+                    console.log('eys')
+                    denlargeAllImages()
+                }
+            });
+            step.addEventListener('touchstart', clearEnlarge, { passive: true });
+
+            // step.dataset.listenerAdded = 'true';
+        }
+    });
+    
+    
+}
+
+// --- Handle keypresses for step navigation ---
+export function handleStepKeys(key, e, mainTargetDiv) {
+    if (!steps.length) return;
+    // initialize iStep if not set
+    if (iStep === -1) iStep = lastStep ? steps.indexOf(lastStep) : 0;
+    switch (key) {
+        case 'p':
+            prevLessonBtn.focus();
+            break;
+        case 'f':
+            denlargeAllImages();
+            steps[iStep].focus();
+            break;
+        
+        case 'a':
+            denlargeAllImages();
+            iStep = (iStep - 1 + steps.length) % steps.length;
+            steps[iStep].focus();
+            break;
+
+        case 'e':
+            if(lastStepPage){
+                endNxtLessonBtn.focus()
+            } else{
+
+                steps[steps.length - 1].focus();
+                iStep = steps.length - 1;
+                lastStep = steps[iStep];
+            }
+            break;
+
+        case 'm':
+            if (e.target === mainTargetDiv) {
+                // jump into steps
+                // const target = lastStep || steps[0];
+                const target = lastStep ;
+                target.focus();
+                target.scrollIntoView({ behavior: 'instant', block: 'start' });
+            } else if (lastStep && steps.includes(e.target)) {
+                window.scrollTo({ top: mainTargetDiv.offsetTop, behavior: 'instant',block:'start' });
+                iSideBarLinks = -1
+                mainTargetDiv.focus();
+                iSideBarLinks = -1
+
+                
+            }
+            break;
+
+
+        default:
+            if (!isNaN(key)) {
+                const index = parseInt(key, 10) - 1;
+                if (index >= 0 && index < steps.length) {
+                    steps[index].focus();
+                    iStep = index;
+                    lastStep = steps[iStep];
+                }
+            }
+            break;
+    }
+}
+
+function denlargeAllImages() {
+    allImgs.forEach(img => {
+        img.classList.remove('enlarge');
+        // optionally remove enlarge-vid if you have videos
+        if (img.classList.contains('enlarge-vid')) {
+            img.classList.remove('enlarge-vid')
+            img.style.zIndex = 0
+        };
+
+    });
+}
+
+function toggleImg(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    const step = getStep(e.target);
+    if (!step) return;
+
+    const stepCopyCodes = step.querySelectorAll('.copy-code');
+    const images = Array.from(step.querySelectorAll('.step-img > img'));
+    if (!images.length) return;
+
+    // Single-image step
+    if (images.length === 1) {
+        const img = images[0];
+        const isEnlarged = img.classList.contains('enlarge');
+        img.classList.toggle('enlarge', !isEnlarged);
+        img.style.zIndex = !isEnlarged ? 100 : 0;
+    } else {
+        // Multiple images: cycle through
+        let currentIndex = stepImageIndexes.get(step) || 0;
+
+        images.forEach((img, i) => {
+            img.classList.remove('enlarge');
+            img.style.zIndex = 0; // default behind
+        });
+
+        images[currentIndex].classList.add('enlarge');
+        images[currentIndex].style.zIndex = 100;
+
+        currentIndex = (currentIndex + 1) % images.length;
+        stepImageIndexes.set(step, currentIndex);
+    }
+
+    // Ensure copy-code is always behind enlarged image
+    stepCopyCodes.forEach(code => {
+        code.style.zIndex = 0; // below images
+    });
+}
+
+
+
+function removeCodeBackground(copyCodes) {
+    copyCodes.forEach(el => {
+        el.background = 'transparent'
+    })
+}
+function removeAllTabIndexes(copyCodes) {
+    copyCodes.forEach(el => {
+        el.setAttribute('tabindex','-1')
+    })
+}
+function addTabIndexes(e) {
+    const tabEls = e.target.querySelectorAll('.copy-code, textarea')
+    tabEls.forEach(el => {
+        el.setAttribute('tabindex', '0')
+    })
+}
+
+export function getStep(parent) {
+    if (!parent) return null;
+    if (parent.classList.contains('step') || parent.classList.contains('step-float')) return parent;
+    return getStep(parent.parentElement);
+}
+
+// map to track image index per step
+const stepImageIndexes = new WeakMap();
+function scrollToTop() {
+    const mainTargetDiv = document.querySelector('#targetDiv');
+    if (mainTargetDiv) {
+        mainTargetDiv.scrollTo({ top: 0, behavior: 'instant' });
+    }
+    // fallback in case something is outside mainTargetDiv
+    window.scrollTo({ top: 0, behavior: 'instant' });
+}

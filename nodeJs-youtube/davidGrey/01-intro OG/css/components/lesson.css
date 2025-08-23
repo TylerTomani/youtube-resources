@@ -1,0 +1,195 @@
+/* lesson.css (cleaned & fixed) */
+
+.copy-code{
+    position: relative;
+    
+}
+.copy-code:active{
+    background: #201d1d;
+    background:white
+}
+.main-content-container {
+    flex: 1 1 auto;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    height: calc(100vh - var(--header-height, 80px));
+    /* padding-bottom: 50%; */
+}
+
+#targetDiv {
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    padding-bottom: 25%;
+}
+
+.steps-container {
+}
+
+/* Step image container */
+.step-img {
+    position: relative;
+    pointer-events: auto;
+}
+
+/* Default step images */
+.step-img>img {
+    position: absolute;
+    width: 98%;
+    max-width: 500px;
+    border: 1px solid white;
+    pointer-events: auto;
+    transition: all 0.025s ease;
+    touch-action: manipulation;
+}
+
+/* Enlarged images always on top */
+.step-img>img.enlarge {
+
+    position: relative;
+    transform: scale(1.5);
+    pointer-events: auto;
+    
+}
+
+/* Special tweak for first child enlarged */
+.step-float:first-child .step-img img.enlarge {
+    margin-top: 5% !important;
+}
+
+/* Odd column enlarged tweak */
+.imgs-container .img-container:nth-child(odd) img.enlarge {
+    margin-left: 20%;
+}
+
+/* Layout for steps */
+.step,
+.step-float {
+    position: relative;
+    padding-top: 2.5%;
+    min-height: 40vh;
+    flex-grow: 1;
+}
+
+.step-img,
+.step-vid {
+    float: right;
+    width: 45%;
+    margin-right: 5%;
+    margin-left: 10px;
+    position: relative;
+    /* z-index: 11; */
+}
+
+.step-vid>video {
+    position: absolute;
+    width: 98%;
+    border: 1px solid white;
+    max-width: 500px;
+    /* z-index: 5; */
+    transition: all 0.025s ease;
+}
+
+/* Enlarged video */
+video.enlarge-vid {
+    position: absolute;
+    /* z-index: 100; */
+    min-height: 150px;
+    min-width: 250px;
+    right: 20%;
+    transform: scale(1.5);
+}
+
+/* Images container layout */
+.imgs-container {
+    display: flex;
+    /* flex-wrap: wrap; */
+    width: 100%;
+    position: static;
+    /* remove relative/absolute if you don’t need it */
+    z-index: auto;
+}
+
+.imgs-container>* {
+    flex-basis: 50%;
+}
+
+.imgs-container>.code-container textarea {
+    height: 100%;
+    width: 100%;
+}
+
+.imgs-container .img-container .step-img {
+    width: 90%;
+    /* z-index: auto; */
+    
+}
+
+/* Step text */
+.step-float>.step-txt {
+    padding: 0 2%;
+    /* position: relative; */
+    width: 50%;
+}
+
+.step-float>.step-txt>p {
+    padding: 0 2%;
+    margin-top: 2%;
+}
+
+.step-txt ul {
+    margin-left: 3%;
+}
+
+.step-txt ul li {
+    line-height: 1.5;
+}
+
+.step-float>p {
+    margin: 1% 2% 0 5%;
+    margin-top: 2.5%;
+}
+
+/* Code container */
+.step-float>.code-container {
+    border: 2px solid red;
+    margin-left: 2.5%;
+}
+
+.clear {
+    clear: both;
+}
+
+.step-float>.step-vid>video {
+    /* z-index: 0; */
+}
+
+/* Responsive */
+@media screen and (max-width: 721px) {
+    .code-container {
+        min-width: 250px;
+    }
+    video {
+        min-width: 250px;
+    }
+
+    video.enlarge-vid {
+        right: 3%;
+        top: 0;
+        transform: scale(1.02);
+    }
+
+    .step-txt {
+        font-size: 90%;
+    }
+    
+    img.enlarge {
+        position: absolute;
+        /* z-index: 100; */
+        min-height: 112px;
+        min-width: 244px;
+        max-width: 200px;
+        margin-right: 80%;
+    }
+}

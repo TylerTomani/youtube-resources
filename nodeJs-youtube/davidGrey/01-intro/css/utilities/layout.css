@@ -71,7 +71,4 @@ body{
 .lesson-btns-container {
     position: fixed;
     display: flex;
-    bottom: 0;
-    z-index: 10
 }
-.lesson-btns-container > 
