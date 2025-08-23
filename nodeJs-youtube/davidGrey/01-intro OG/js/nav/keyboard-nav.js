@@ -23,7 +23,6 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle , 
         let key = e.key.toLowerCase()    
         // iSideBarLinks = -1
         if(lastStep){
-            console.log(lastStep)
         }
         if(key == 's'){
             if(lastClickedLink){
@@ -34,6 +33,13 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle , 
                 sidebarLinks[0].focus()
             }
             
+        }
+        if(key === 'f'){
+            iSideBarLinks -= 1
+            if(iSideBarLinks < 0){
+                iSideBarLinks = -1
+            }
+            // console.log(iSideBarLinks)
         }
         
     });
@@ -82,26 +88,34 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle , 
     addEventListener("keydown", e => {
         const key = e.key.toLowerCase();
         if (e.shiftKey || e.metaKey) return;
-        console.log(focusZone)
         // ----- HEADER -----
         if (focusZone === "header") {
             headerElementsFocus(key,e)
             if(key === 'f'){
                 focusZone = 'sidebar' // probably make sidebarlinkNav to put here in 
                 // focuszone === header and focuszone = sidebar ??
+                if(sidebarLinks[iSideBarLinks]){
+                    iSideBarLinks -=1
+
+                }
             }
             if(key == 's'){
-                // console.log('here')
+                console.log('here')
                 // sKeyFocusOrder()
                 // Can't get this to go to last clicked 
                 // if(lastClickedLink){
                 //     lastClickedLink.focus()
                 // }
-                console.log(lastClickedLink)
-                if(lastClickedLink){
+                if (lastClickedLink) {
                     lastClickedLink.focus()
-                } else {
+                } else if (e.target){
                     sidebarBtn.focus()
+                }
+                if(mainContainer.classList.contains('collapsed')){
+                    console.log()
+                    console.log(mainContainer)
+                    mainContainer.classList.remove('collapsed')
+
                 }
             }
             if (key === "m") {
@@ -124,19 +138,22 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle , 
         if (focusZone === "sidebar") {
             headerElementsFocus(key, e)
             if (key === "f") { // forward cycle
-                console.log(iSideBarLinks)
                 if (iSideBarLinks === -1) {
-                    iSideBarLinks = 0
-                    console.log(sidebarLinks[0])
-                    sidebarLinks[iSideBarLinks].focus()
+                    iSideBarLinks = 0;
+                } else {
+
+                    iSideBarLinks = (iSideBarLinks + 1) % sidebarLinks.length;
                 }
-                sidebarLinks[iSideBarLinks].focus()
-                iSideBarLinks = (iSideBarLinks + 1) % sidebarLinks.length;
-                // sidebarLinks[iSideBarLinks].focus();
-            } else if (key === "a") { // backward cycle
-                iSideBarLinks = (iSideBarLinks - 1 + sidebarLinks.length) % sidebarLinks.length;
                 sidebarLinks[iSideBarLinks].focus();
-            } else if (!isNaN(key)) { // number shortcuts
+            } else if (key === "a") { // backward cycle
+                if (iSideBarLinks === -1) {
+                    iSideBarLinks = sidebarLinks.length - 1;
+                } else {
+                    iSideBarLinks = (iSideBarLinks - 1 + sidebarLinks.length) % sidebarLinks.length;
+                }
+                sidebarLinks[iSideBarLinks].focus();
+            }
+            else if (!isNaN(key)) { // number shortcuts
                 const index = parseInt(key) - 1;
                 if (index >= 0 && index < sidebarLinks.length) {
                     iSideBarLinks = index;
@@ -147,39 +164,64 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle , 
                         steps[index].focus();
                     }
                 }
-            } else if (key === "m") {
-                console.log('here')
-                if(lastStep){
-                     console.log(lastStep)
-                     lastStep.focus()
+            } 
+            else if (key === "m") {
+                if (lastStep) {
+                    // Jump into main and land on the last step
+                    lastStep.focus();
                 } else {
+                    // Fallback: focus the container
+                    if (!mainTargetDiv.hasAttribute("tabindex")) {
+                        mainTargetDiv.setAttribute("tabindex", "0");
+                    }
                     mainTargetDiv.focus();
+                    mainTargetDiv.scrollTo({ top: 0, behavior: "smooth" });
                 }
             } else if (key === "s") {
-                if(e.target != sidebarBtn){
+                // console.log('yes')
+                if(e.target == lastClickedLink){
                     sidebarBtn.focus()
-                } else {
-                    sKeyFocusOrder()
+                } else{
+                    if(lastClickedLink){
+                        lastClickedLink.focus()
+                    }
                 }
             }
         }
-
         // ----- MAIN -----
         if (focusZone === 'main') {
             headerElementsFocus(key, e);
             handleStepKeys(key, e, mainTargetDiv);
+            
             if (key === 's'){
                 sKeyFocusOrder();
                 if(mainContainer.classList.contains('collapsed')){
                     mainContainer.classList.remove('collapsed')
                 }
             }             
-            
+            if(key === 'm'){
+                if(e.target.classList.contains('.step-float')){
+
+                    mainTargetDiv.focus()
+                    mainTargetDiv.scrollTo({
+                        top: 0,
+                        behavior: "smooth"
+                    });
+                }
+                // else {
+                // if(lastStep){
+                //     lastStep.focus()
+                // }
+                // }
+                
+            }
+            if(key === 'f'){
+
+            }
         }
     });
     
     function sKeyFocusOrder(){
-        console.log('yes')
         if (lastClickedLink) {
             lastClickedLink.focus();
         } else if (lastFocusedLink) {

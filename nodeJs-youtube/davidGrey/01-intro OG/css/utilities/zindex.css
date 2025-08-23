@@ -1,3 +1,6 @@
+.lesson-btns-container {
+    z-index: 10
+}
 /* z-ndex.css
 .step-img {
     z-index: 0;

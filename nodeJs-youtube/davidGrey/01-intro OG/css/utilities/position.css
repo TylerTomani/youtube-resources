@@ -2,18 +2,15 @@
 .page-wrapper {
     position: relative;
 }
-
 .page-header {
     /* header stays in normal flow */
     /* top: 0; */
 }
-
 .main-container {
     display: flex;
     flex-direction: row;
     /* the main container itself scrolls */
 }
-
 /* Sidebar sticky */
 .side-bar {
     position: sticky;
@@ -31,7 +28,9 @@
     position: fixed;
     bottom: 5vh;
 }
-
 .step-img>img {
     position: relative;
+}
+.lesson-btns-container {
+    bottom: 0;
 }

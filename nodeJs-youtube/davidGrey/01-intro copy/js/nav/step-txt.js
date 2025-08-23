@@ -1,4 +1,5 @@
 // step-txt.js
+import { injectContent } from "../core/inject-content.js";
 export let lastStep = null;
 let iStep = -1;
 let steps = [];
@@ -10,19 +11,29 @@ export function initStepNavigation(mainTargetDiv,sidebarLinks,iSideBarLinks) {
     const endNxtLessonBtn = document.querySelector('#endNxtLessonBtn')
     const prevLessonBtn = document.querySelector('#prevLessonBtn')
     
-    mainTargetDiv.addEventListener('keydown',e =>{
-        let key = e.key.toLowerCase()
-        if(key == 'enter'){
-                steps[0].focus()
-        }
-        
-        // if(e.target == mainTargetDiv){
-        // }
-    })
+    if(!mainTargetDiv.dataset.listenerAdded){
+        mainTargetDiv.addEventListener('keydown',e =>{
+            let key = e.key.toLowerCase()
+            if(key == 'enter'){
+                    steps[0].focus()
+            }
+            if(key === 'f'){
+                iSideBarLinks = 0
+                console.log('f step-txt' )
+            }
+            // if(e.target == mainTargetDiv){
+            // }
+        })
+        mainTargetDiv.dataset.listenerAdded = 'true'
+    }
     steps = Array.from(mainTargetDiv.querySelectorAll('.steps-container > .step-float'));
     allImgs = Array.from(mainTargetDiv.querySelectorAll('.step-img > img'));
-   
-    endNxtLessonBtn.addEventListener('focus', denlargeAllImages)
+
+    // SET FIRST STEP AS lastStep WHEN MAIN DIV GETS FOCUS
+    if (steps.length && !lastStep) {
+        lastStep = steps[0];
+        iStep = 0;
+    }
     if(!endNxtLessonBtn.dataset.listenerAdded){
         endNxtLessonBtn.addEventListener('click', e => {
             e.preventDefault()
@@ -37,6 +48,7 @@ export function initStepNavigation(mainTargetDiv,sidebarLinks,iSideBarLinks) {
             nxtLesson()
         },{passive:true});
     }
+    endNxtLessonBtn.addEventListener('focus', denlargeAllImages)
     prevLessonBtn.addEventListener('focus', denlargeAllImages)
     prevLessonBtn.addEventListener('click', e => {
         removeSidebarLinksBackground()
@@ -47,31 +59,71 @@ export function initStepNavigation(mainTargetDiv,sidebarLinks,iSideBarLinks) {
         if(key === 'p'){endNxtLessonBtn.focus()}
     });
     function nxtLesson() {
-        iSideBarLinks = (iSideBarLinks + 1) % sidebarLinks.length
-        
-        
-        sidebarLinks[iSideBarLinks].style.background = 'darkgrey'
-        sidebarLinks[iSideBarLinks].click()
-        steps[0].focus()
-        endNxtLessonBtn.focus()
-        scrollToTop()
+        // Update sidebar index
+        iSideBarLinks = (iSideBarLinks + 1) % sidebarLinks.length;
+
+        // Clear previous backgrounds
+        removeSidebarLinksBackground();
+
+        // Highlight current sidebar link
+        const link = sidebarLinks[iSideBarLinks];
+        link.style.background = 'darkgrey';
+
+        // Inject new content, then focus first step
+        injectContent(link.href, mainTargetDiv, sidebarLinks, iSideBarLinks, navLessonTitle, () => {
+            const newSteps = Array.from(mainTargetDiv.querySelectorAll('.steps-container > .step-float'));
+            const newEndBtn = document.querySelector('#endNxtLessonBtn');
+
+            if (newSteps.length) {
+                newSteps[0].focus();
+                lastStep = newSteps[0];
+                iStep = 0;
+            }
+
+            // Focus the end button only if you want
+            if (newEndBtn) newEndBtn.focus();
+
+            scrollToTop();
+        });
     }
+
     function prevLesson() {
-        iSideBarLinks = (iSideBarLinks - 1 + sidebarLinks.length) % sidebarLinks.length
-        sidebarLinks[iSideBarLinks].style.background = '#585151'
-        sidebarLinks[iSideBarLinks].click();
-        // Scroll to top of page
-        steps[0].focus()
-        prevLessonBtn.focus()
-        scrollToTop()
+        // Update sidebar index
+        iSideBarLinks = (iSideBarLinks - 1 + sidebarLinks.length) % sidebarLinks.length;
+
+        // Clear previous backgrounds
+        removeSidebarLinksBackground();
+
+        // Highlight current sidebar link
+        const link = sidebarLinks[iSideBarLinks];
+        link.style.background = 'darkgrey';
+
+        // Inject new content, then focus first step
+        injectContent(link.href, mainTargetDiv, sidebarLinks, iSideBarLinks, navLessonTitle, () => {
+            const newSteps = Array.from(mainTargetDiv.querySelectorAll('.steps-container > .step-float'));
+            const newPrevBtn = document.querySelector('#prevLessonBtn');
+
+            if (newSteps.length) {
+                newSteps[0].focus();
+                lastStep = newSteps[0];
+                iStep = 0;
+            }
+
+            // Focus the previous button if desired
+            if (newPrevBtn) newPrevBtn.focus();
+
+            scrollToTop();
+        });
     }
+
+    // Utility to clear all sidebar backgrounds
     function removeSidebarLinksBackground() {
-        sidebarLinks.forEach(el => {
-            
-            el.style.background = 'none'
-            // el.style.color = 'black'
-        })
+        if(sidebarLinks){
+
+            sidebarLinks.forEach(el => el.style.background = 'none');
+        }
     }
+
     
     if (!steps.length) return;
     allImgs.forEach(img => {
@@ -184,18 +236,18 @@ export function handleStepKeys(key, e, mainTargetDiv) {
             break;
 
         case 'm':
-            if (e.target === mainTargetDiv) {
-                // jump into steps
-                // const target = lastStep || steps[0];
-                const target = lastStep ;
-                target.focus();
-                target.scrollIntoView({ behavior: 'instant', block: 'start' });
-            } else if (lastStep && steps.includes(e.target)) {
+            if (lastStep && steps.includes(lastStep)) {
+                // Jump into main and land on the last step
+                lastStep.focus();
+                lastStep.scrollIntoView({ behavior: 'instant', block: 'start' });
+            } else {
+                // Fallback: focus the container if no steps
+                // if (!mainTargetDiv.hasAttribute("tabindex")) mainTargetDiv.setAttribute("tabindex", "0");
                 mainTargetDiv.focus();
-                mainTargetDiv.scrollTo({ top: mainTargetDiv.offsetBottom, behavior: 'instant',block:'start' });
-                
+                mainTargetDiv.scrollTo({ top: 0, behavior: 'instant' });
             }
             break;
+
 
 
         default:
@@ -260,8 +312,6 @@ function toggleImg(e) {
         code.style.zIndex = 0; // below images
     });
 }
-
-
 
 function removeAllTabIndexes(copyCodes) {
     copyCodes.forEach(el => {

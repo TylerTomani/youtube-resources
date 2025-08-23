@@ -17,6 +17,7 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle , 
     sidebarBtn.addEventListener("focusin", () => { focusZone = "sidebar"; });
     mainTargetDiv.addEventListener("focusin", () => { 
         focusZone = "main";
+        iSideBarLinks = -1
     });
     
     sidebarBtn.addEventListener("keydown", (e) => { 
@@ -39,6 +40,9 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle , 
             if(iSideBarLinks < 0){
                 iSideBarLinks = -1
             }
+            if(lastClickedLink){
+                lastClickedLink.focus()
+            }
             // console.log(iSideBarLinks)
         }
         
@@ -51,7 +55,7 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle , 
             injectContent(el.href, mainTargetDiv,sidebarLinks,iSideBarLinks,navLessonTitle);
         } else {
             iSideBarLinks = -1
-            injectContent('home-page.html', mainTargetDiv, sidebarLinks, iSideBarLinks, navLessonTitle);
+            // injectContent('home-page.html', mainTargetDiv, sidebarLinks, iSideBarLinks, navLessonTitle);
 
         }
         el.addEventListener("focus", () => {
@@ -166,12 +170,19 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle , 
                 }
             } 
             else if (key === "m") {
-
-                if(lastStep){
-                     lastStep.focus()
+                if (lastStep) {
+                    // Jump to the last step if it exists
+                    lastStep.focus();
+                    focusZone = "main"; // 🔹 update focusZone immediately
+                    lastStep.scrollIntoView({ behavior: 'instant', block: 'start' });
                 } else {
-                    console.log('here m')
+                    // Fallback: focus the main container if no steps
+                    if (!mainTargetDiv.hasAttribute("tabindex")) {
+                        mainTargetDiv.setAttribute("tabindex", "0");
+                    }
                     mainTargetDiv.focus();
+                    focusZone = "main"; // 🔹 update focusZone immediately
+                    mainTargetDiv.scrollTo({ top: 0, behavior: "smooth" });
                 }
             } else if (key === "s") {
                 // console.log('yes')
@@ -196,7 +207,7 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle , 
                 }
             }             
             if(key === 'm'){
-                if(e.target.classList.contains('.step-float')){
+                if(e.target.classList.contains('step-float')){
 
                     mainTargetDiv.focus()
                     mainTargetDiv.scrollTo({
