@@ -12,7 +12,6 @@
 .dark-mode .page-header .header-col-left>.header-nav a:visited {border: 1px solid whitesmoke;}
 .dark-mode main>aside.side-bar {
     border-right: 1px solid whitesmoke;
-    background-color: var(--bg-primary);
 }
 .dark-mode .section-container>.section {color: var(--font-primary-db);}
 .dark-mode,

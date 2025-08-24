@@ -27,3 +27,7 @@ a:focus,
 .copy-code:active {
     background: white
 }
+.sidebar-links-ul li a.hlight{
+    background-color: darkgrey;
+    text-shadow: 30 black;
+}

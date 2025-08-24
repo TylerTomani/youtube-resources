@@ -4,11 +4,12 @@ import { handleStepKeys, lastStep } from "./step-txt.js";
 
 export let lastFocusedLink = null;
 export let lastClickedLink = null;
+const endNxtLessonBtn = document.querySelector('#endNxtLessonBtn')   
+const prevLessonBtn = document.querySelector('#prevLessonBtn')   
 export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, darkModeBtn,
     sidebar, sidebarBtn, sidebarLinks, mainTargetDiv, mainContainer }) {
     let focusZone = "header"; // "header" | "sidebar" | "main"
     let iSideBarLinks = 0;
-        
     // --- Focus zone tracking ---
     pageHeader.addEventListener("focusin", () => { focusZone = "header"; });
     sidebar.addEventListener("focusin", () => { focusZone = "sidebar"; });
@@ -76,7 +77,6 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
     addEventListener("keydown", e => {
         const key = e.key.toLowerCase();
         if (e.shiftKey || e.metaKey) return;
-
         switch (focusZone) {
             case "header":
                 headerElementsFocus(key, e);
@@ -99,8 +99,7 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
             case "sidebar":
                 headerElementsFocus(key, e);
                 if (key === "f") {
-                    console.log(e.target)
-                    if(e.target == sidebar){
+                    if(e.target == sidebarBtn){
                         iSideBarLinks = 0 
                         sidebarLinks[0].focus()
                         console.log('yes')
@@ -117,6 +116,12 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
                     if (lastStep) lastStep.focus();
                 } else if (key === "s") {
                     // Toggle between sidebarBtn and last clicked link
+                    if(e.target == sidebarBtn){
+                        console.log(sidebar)
+                        if (lastClickedLink){
+                            lastClickedLink.focus()
+                        }
+                    }
                     if (e.target === lastClickedLink) sidebarBtn.focus();
                     else if (lastClickedLink) lastClickedLink.focus();
                 }
@@ -133,9 +138,47 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
                     if (mainContainer.classList.contains("collapsed")) 
                         mainContainer.classList.remove("collapsed");
                 }
+                // lesson-btns-container 
+                if(key === 'e' || key === 'p'){
+                    const steps = mainTargetDiv.querySelectorAll(".step-float, .step");
+                    if(key === 'e'){
+                        if(e.target === steps[steps.length -1]){
+                            endNxtLessonBtn.focus()
+                        } else if(e.target === prevLessonBtn){
+                            endNxtLessonBtn.focus()
+                        } else steps[steps.length - 1].focus()
+                    }
+                    if(key === 'p'){
+                        prevLessonBtn.focus()
+                    }
+                }
                 break;
         }
     });
+    endNxtLessonBtn.addEventListener('click', e => {
+        console.log(iSideBarLinks)
+        deHighlightSideBarLink()
+        iSideBarLinks = (iSideBarLinks + 1) % sidebarLinks.length
+        sidebarLinks[iSideBarLinks].click()
+        sidebarLinks[iSideBarLinks].classList.add('hlight')
+
+    })
+    prevLessonBtn.addEventListener('click', e => {
+        iSideBarLinks = (iSideBarLinks - 1 + sidebarLinks.length) % sidebarLinks.length
+        console.log(iSideBarLinks)
+        deHighlightSideBarLink()
+        sidebarLinks[iSideBarLinks].click()
+        sidebarLinks[iSideBarLinks].classList.add('hlight')
+    
+    })
+    function deHighlightSideBarLink(){
+        sidebarLinks.forEach(el => {
+            if(el.classList.contains('hlight')){
+                el.classList.remove('hlight')
+            }
+        })
+
+    }
     // --- Helper functions ---
     function sKeyFocusOrder() {
         if (lastClickedLink) lastClickedLink.focus();
@@ -173,4 +216,5 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
             if (index >= 0 && index < steps.length) steps[index].focus();
         }
     }
+    
 }

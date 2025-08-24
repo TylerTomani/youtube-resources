@@ -4,7 +4,9 @@ let steps = [];
 let allImgs = [];
 let stepImageIndexes = new WeakMap();
 let iStep = 0;
-
+let iCopyCodes = 0;
+let currentIndex = 0 // bad namae, index for imgs-container imgs
+let copyCodesStepFocused = false
 /**
  * Initialize step navigation and image/code behavior
  * @param {HTMLElement} mainTargetDiv
@@ -26,14 +28,21 @@ export function initStepNavigation(mainTargetDiv) {
         if (!step.dataset.listenerAdded) {
             step.setAttribute("tabindex", "0");
 
+            step.addEventListener("focus", () => {
+                copyCodesStepFocused = false
+                denlargeAllImages()
+                iStep = index
+                currentIndex = 0
+            })
             step.addEventListener("focusin", () => {
-                
                 iStep = index;
             });
 
             step.addEventListener("keydown", e => {
                 if (e.key.toLowerCase() === "enter"){
+                    console.log('enter')
                     toggleStepImages(step);
+                    step.scrollIntoView({behavior: 'instant', block: 'start'})
                 } 
             });
 
@@ -41,7 +50,6 @@ export function initStepNavigation(mainTargetDiv) {
                 if (e.target.tagName !== "IMG") {
                     denlargeAllImages();
                     lastStep = step;
-
                 }
             });
 
@@ -60,9 +68,13 @@ export function initStepNavigation(mainTargetDiv) {
 
     // Initialize copy-code focus behavior
     const copyCodes = mainTargetDiv.querySelectorAll(".copy-code");
+    
     copyCodes.forEach(code => {
         if (!code.dataset.listenerAdded) {
-            code.addEventListener("focus", () => denlargeAllImages());
+            code.addEventListener("focus", () => {
+                denlargeAllImages()
+                copyCodesStepFocused = true
+            });
             code.dataset.listenerAdded = "true";
         }
     });
@@ -70,11 +82,14 @@ export function initStepNavigation(mainTargetDiv) {
 
 // --- Handle step navigation keys ---
 export function handleStepKeys(key, e, mainTargetDiv) {
+    // console.log(e.target)
     if (!steps.length) return;
 
     switch (key) {
         case "enter":
-            
+            console.log(e.target)
+
+            e.target.scrollIntoView({behavior: 'instant',block: 'start'})
             break
         case "f": // next step
             if(e.target == mainTargetDiv){
@@ -108,29 +123,40 @@ export function handleStepKeys(key, e, mainTargetDiv) {
             }
             if (e.target == mainTargetDiv && !lastStep) {
                 sidebarLinks[0].focus()
-                console.log('here')
             }
-            console.log('here')
             break;
         default:
             if (!isNaN(key)) {
                 const index = parseInt(key, 10) - 1;
-                if (index >= 0 && index < steps.length) {
-                    iStep = index;
-                    steps[iStep].focus();
-                    lastStep = steps[iStep];
+                if(!copyCodesStepFocused){
+                    if (index >= 0 && index < steps.length) {
+                        iStep = index;
+                        steps[iStep].focus();
+                        lastStep = steps[iStep];
+                    } else {
+                    }
+                } else {
+                    const step = getStepFloat(e.target)
+                    const stepCopyCodes = step.querySelectorAll('.copy-code')
+                    console.log(iCopyCodes)
+                    if(iCopyCodes <= stepCopyCodes.length){
+                        steps[key - 1].focus()
+                    } else{
+                        stepCopyCodes[iCopyCodes].scrollIntoView({behavior:'instant',inline:'start',block:'end'})
+
+                    } 
                 }
             }
             break;
     }
 }
-
 // --- Image handling ---
 function toggleSingleImage(img) {
     denlargeAllImages();
     img.classList.toggle("enlarge");
     img.style.zIndex = img.classList.contains("enlarge") ? 100 : 0;
 }
+
 
 function toggleStepImages(step) {
     const images = Array.from(step.querySelectorAll(".step-img > img"));
@@ -140,15 +166,23 @@ function toggleStepImages(step) {
         toggleSingleImage(images[0]);
     } else {
         // Multi-image cycling
-        let currentIndex = stepImageIndexes.get(step) || 0;
-        images.forEach(img => {
-            img.classList.remove("enlarge");
-            img.style.zIndex = 1;
-        });
-        images[currentIndex].classList.add("enlarge");
-        images[currentIndex].style.zIndex = 100;
-        currentIndex = (currentIndex + 1) % images.length;
-        stepImageIndexes.set(step, currentIndex);
+        if(currentIndex ==2){
+            step.focus()
+            denlargeAllImages()
+            
+            currentIndex = 0
+        }else {
+            denlargeAllImages()
+            if(images[currentIndex]){
+                images[currentIndex].classList.add("enlarge");
+                images[currentIndex].style.zIndex = 100;
+                // currentIndex = (currentIndex + 1) % images.length;
+                currentIndex += 1
+            }
+            
+        }
+        
+        
     }
 }
 
@@ -158,4 +192,17 @@ export function denlargeAllImages() {
         img.classList.remove("enlarge");
         img.style.zIndex = 0;
     });
+}
+// function scrollIntoViewEl(el){
+//     el.scrollIntoView({behavior: 'instant', block: 'center'})
+// }
+
+function getStepFloat(target){
+    if(target.classList.contains('step-float')){
+        return target
+    } else if (target.parentElement){
+        return getStepFloat(target.parentElement)
+    } else {
+        return null
+    }
 }

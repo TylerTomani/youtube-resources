@@ -2,16 +2,22 @@
 body{
     overflow-x: hidden;
 }
-
 .page-wrapper {
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
 }
 .page-header {
-    /* z-index: 5; */
+    z-index: 0;
     /* position: fixed; */
     display: flex;
+}
+#targetDiv {
+    height: 100%;
+    overflow-x: hidden;
+    /* overflow-y: auto; */
+    /* scroll-behavior: smooth; */
+    padding-bottom: 25%;
 }
 #navLessonTitle{
     display: flex;

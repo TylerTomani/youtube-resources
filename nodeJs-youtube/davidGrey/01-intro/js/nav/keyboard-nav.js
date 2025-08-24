@@ -1,7 +1,7 @@
 // keyboard-nav.js
 import { injectContent } from "../core/inject-content.js";
 import { handleStepKeys, lastStep } from "./step-txt.js";
-
+import { denlargeAllImages } from "./step-txt.js";
 export let lastFocusedLink = null;
 export let lastClickedLink = null;
 const endNxtLessonBtn = document.querySelector('#endNxtLessonBtn')   
@@ -99,10 +99,9 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
             case "sidebar":
                 headerElementsFocus(key, e);
                 if (key === "f") {
-                    if(e.target == sidebar){
+                    if(e.target == sidebarBtn){
                         iSideBarLinks = 0 
                         sidebarLinks[0].focus()
-                        console.log('yes')
                     } else {
                         iSideBarLinks = (iSideBarLinks === -1) ? 0 : (iSideBarLinks + 1) % sidebarLinks.length;
                         sidebarLinks[iSideBarLinks].focus();
@@ -112,15 +111,32 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
                     sidebarLinks[iSideBarLinks].focus();
                 }
                 else if (key === "m") {
-                    mainTargetDiv.focus();
-                    if (lastStep) lastStep.focus();
+                    focusZone = 'main'
+                    const steps = document.querySelectorAll('.step-float')
+                    if(e.target.classList.contains('step-float')){
+                        mainTargetDiv.focus()
+                    }
+                    if (lastStep){
+                        steps[0].focus()
+                    } else {
+                        // mainTargetDiv.focus()
+                        // lastStep.focus();
+                    }
                 } else if (key === "s") {
                     // Toggle between sidebarBtn and last clicked link
+                    denlargeAllImages()
+                    if(e.target == sidebarBtn){
+
+                        if (lastClickedLink){
+                            lastClickedLink.focus()
+                        }
+                    }
                     if (e.target === lastClickedLink) sidebarBtn.focus();
                     else if (lastClickedLink) lastClickedLink.focus();
                 }
                 else if (!isNaN(key)) numberShortcut(key);
                 
+
                 break;
 
             case "main":
@@ -128,6 +144,7 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
                 headerElementsFocus(key, e);
                 handleStepKeys(key, e, mainTargetDiv);
                 if (key === "s") {
+                    denlargeAllImages()
                     sidebarBtn.focus()
                     if (mainContainer.classList.contains("collapsed")) 
                         mainContainer.classList.remove("collapsed");
@@ -146,20 +163,34 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
                         prevLessonBtn.focus()
                     }
                 }
+                if(e.target !== mainTargetDiv){
+                    mainTargetDiv.scrollIntoView({behavior: 'instant', block: 'start'})
+                }
                 break;
         }
     });
     endNxtLessonBtn.addEventListener('click', e => {
-        console.log(iSideBarLinks)
+        deHighlightSideBarLink()
         iSideBarLinks = (iSideBarLinks + 1) % sidebarLinks.length
-        console.log(sidebarLinks[iSideBarLinks].click())
+        sidebarLinks[iSideBarLinks].click()
+        sidebarLinks[iSideBarLinks].classList.add('hlight')
+
     })
     prevLessonBtn.addEventListener('click', e => {
-        console.log(iSideBarLinks)
         iSideBarLinks = (iSideBarLinks - 1 + sidebarLinks.length) % sidebarLinks.length
+        deHighlightSideBarLink()
         sidebarLinks[iSideBarLinks].click()
+        sidebarLinks[iSideBarLinks].classList.add('hlight')
     
     })
+    function deHighlightSideBarLink(){
+        sidebarLinks.forEach(el => {
+            if(el.classList.contains('hlight')){
+                el.classList.remove('hlight')
+            }
+        })
+
+    }
     // --- Helper functions ---
     function sKeyFocusOrder() {
         if (lastClickedLink) lastClickedLink.focus();
