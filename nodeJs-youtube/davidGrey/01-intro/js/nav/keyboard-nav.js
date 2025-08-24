@@ -4,11 +4,12 @@ import { handleStepKeys, lastStep } from "./step-txt.js";
 
 export let lastFocusedLink = null;
 export let lastClickedLink = null;
+const endNxtLessonBtn = document.querySelector('#endNxtLessonBtn')   
+const prevLessonBtn = document.querySelector('#prevLessonBtn')   
 export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, darkModeBtn,
     sidebar, sidebarBtn, sidebarLinks, mainTargetDiv, mainContainer }) {
     let focusZone = "header"; // "header" | "sidebar" | "main"
     let iSideBarLinks = 0;
-        
     // --- Focus zone tracking ---
     pageHeader.addEventListener("focusin", () => { focusZone = "header"; });
     sidebar.addEventListener("focusin", () => { focusZone = "sidebar"; });
@@ -76,7 +77,6 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
     addEventListener("keydown", e => {
         const key = e.key.toLowerCase();
         if (e.shiftKey || e.metaKey) return;
-
         switch (focusZone) {
             case "header":
                 headerElementsFocus(key, e);
@@ -99,7 +99,6 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
             case "sidebar":
                 headerElementsFocus(key, e);
                 if (key === "f") {
-                    console.log(e.target)
                     if(e.target == sidebar){
                         iSideBarLinks = 0 
                         sidebarLinks[0].focus()
@@ -133,9 +132,34 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
                     if (mainContainer.classList.contains("collapsed")) 
                         mainContainer.classList.remove("collapsed");
                 }
+                // lesson-btns-container 
+                if(key === 'e' || key === 'p'){
+                    const steps = mainTargetDiv.querySelectorAll(".step-float, .step");
+                    if(key === 'e'){
+                        if(e.target === steps[steps.length -1]){
+                            endNxtLessonBtn.focus()
+                        } else if(e.target === prevLessonBtn){
+                            endNxtLessonBtn.focus()
+                        } else steps[steps.length - 1].focus()
+                    }
+                    if(key === 'p'){
+                        prevLessonBtn.focus()
+                    }
+                }
                 break;
         }
     });
+    endNxtLessonBtn.addEventListener('click', e => {
+        console.log(iSideBarLinks)
+        iSideBarLinks = (iSideBarLinks + 1) % sidebarLinks.length
+        console.log(sidebarLinks[iSideBarLinks].click())
+    })
+    prevLessonBtn.addEventListener('click', e => {
+        console.log(iSideBarLinks)
+        iSideBarLinks = (iSideBarLinks - 1 + sidebarLinks.length) % sidebarLinks.length
+        sidebarLinks[iSideBarLinks].click()
+    
+    })
     // --- Helper functions ---
     function sKeyFocusOrder() {
         if (lastClickedLink) lastClickedLink.focus();
@@ -173,4 +197,5 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
             if (index >= 0 && index < steps.length) steps[index].focus();
         }
     }
+    
 }

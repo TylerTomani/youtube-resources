@@ -92,9 +92,9 @@ export function handleStepKeys(key, e, mainTargetDiv) {
             lastStep = steps[iStep];
             break;
         case "e": // go to last step
-            iStep = steps.length - 1;
-            steps[iStep].focus();
-            lastStep = steps[iStep];
+            // iStep = steps.length - 1;
+            // steps[iStep].focus();
+            // lastStep = steps[iStep];
             break;
         case "m": // focus last step or container
             if (lastStep) {
@@ -111,7 +111,6 @@ export function handleStepKeys(key, e, mainTargetDiv) {
                 console.log('here')
             }
             console.log('here')
-            // mainTargetDiv.scrollTo({ top: 0, behavior: "smooth" });
             break;
         default:
             if (!isNaN(key)) {

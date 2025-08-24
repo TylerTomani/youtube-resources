@@ -27,7 +27,6 @@
     /* STEP TXT */
 .step-float>.step-txt {
     padding: 0 2%;
-    /* flex-basis: 50%; */
     flex-grow: 1;
 }
 .step-float> .step-txt > p {
