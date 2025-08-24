@@ -69,7 +69,12 @@ export function handleStepKeys(key, e, mainTargetDiv) {
 
     switch (key) {
         case "f": // next step
-            iStep = (iStep + 1) % steps.length;
+            if(e.target == mainTargetDiv){
+                iStep = 0
+            } else {
+
+                iStep = (iStep + 1) % steps.length;
+            }
             steps[iStep].focus();
             lastStep = steps[iStep];
             break;
@@ -84,8 +89,21 @@ export function handleStepKeys(key, e, mainTargetDiv) {
             lastStep = steps[iStep];
             break;
         case "m": // focus last step or container
-            // if (lastStep) lastStep.focus();
-            // else mainTargetDiv.focus();
+            if (lastStep) {
+                if (e.target == lastStep) {
+                    mainTargetDiv.focus()
+                } else {
+                    lastStep.focus()
+                }
+            } else {
+                mainTargetDiv.focus();
+            }
+            if (e.target == mainTargetDiv && !lastStep) {
+                sidebarLinks[0].focus()
+                console.log('here')
+            }
+            console.log('here')
+            // mainTargetDiv.scrollTo({ top: 0, behavior: "smooth" });
             break;
         default:
             if (!isNaN(key)) {

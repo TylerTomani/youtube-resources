@@ -118,23 +118,28 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
                     sKeyFocusOrder();
                     if (mainContainer.classList.contains("collapsed")) mainContainer.classList.remove("collapsed");
                 }
-                if (key === "m") {
-                    if(lastStep){
-                        if(e.target == lastStep){
-                            mainTargetDiv.focus()
-                        }else {
-                            lastStep.focus()
-                        }
-                    } else {
-
-                        mainTargetDiv.focus();
-                    }
-                    // mainTargetDiv.scrollTo({ top: 0, behavior: "smooth" });
-                }
-                if (key === "enter" || key === "f") {
-                    // const firstStep = mainTargetDiv.querySelector(".step-float, .step");
-                    // if (firstStep) firstStep.focus();
-                }
+                // if (key === "m") {
+                //     if(lastStep){
+                //         if(e.target == lastStep){
+                //             mainTargetDiv.focus()
+                //         }else {
+                //             lastStep.focus()
+                //         }
+                //     } else {
+                //         mainTargetDiv.focus();
+                //     }
+                //     if (e.target == mainTargetDiv && !lastStep){
+                //         sidebarLinks[0].focus()
+                //         console.log('here')
+                //     }
+                //     console.log('here')
+                //     // mainTargetDiv.scrollTo({ top: 0, behavior: "smooth" });
+                // }
+                // if (key === "enter" || key === "f" && !lastClickedLink) {
+                //     const firstStep = mainTargetDiv.querySelector(".step-float, .step");
+                //     if (firstStep) firstStep.scrollIntoView({behavior: 'instant', block: 'start'});
+                    
+                // }
                 break;
 
         }

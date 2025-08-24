@@ -45,7 +45,7 @@
     position: absolute;
     width: 98%;
     max-width: 500px;
-    border: 1px solid white;
+    /* border: 1px solid white; */
     pointer-events: auto;
     transition: all 0.025s ease;
     touch-action: manipulation;
