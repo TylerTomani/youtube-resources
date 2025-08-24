@@ -8,7 +8,7 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
     sidebar, sidebarBtn, sidebarLinks, mainTargetDiv, mainContainer }) {
     let focusZone = "header"; // "header" | "sidebar" | "main"
     let iSideBarLinks = 0;
-
+        
     // --- Focus zone tracking ---
     pageHeader.addEventListener("focusin", () => { focusZone = "header"; });
     sidebar.addEventListener("focusin", () => { focusZone = "sidebar"; });
@@ -80,12 +80,12 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
                 headerElementsFocus(key, e);
                 if (key === "f") {
                     focusZone = "sidebar";
-                    if (sidebarLinks[iSideBarLinks]) iSideBarLinks -= 1;
+                    iSideBarLinks = 0
+                    sidebarLinks[iSideBarLinks].focus()
+                    break;
                 }
                 if (key === "s") {
-                    if (lastClickedLink) lastClickedLink.focus();
-                    else sidebarBtn.focus();
-                    if (mainContainer.classList.contains("collapsed")) mainContainer.classList.remove("collapsed");
+                    sKeyFocusOrder()
                 }
                 if (key === "m") mainTargetDiv.focus();
                 if (!isNaN(key)) numberShortcut(key);
@@ -94,7 +94,12 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
             case "sidebar":
                 headerElementsFocus(key, e);
                 if (key === "f") {
-                    iSideBarLinks = (iSideBarLinks === -1) ? 0 : (iSideBarLinks + 1) % sidebarLinks.length;
+                    if(e.target == sidebar){
+                        iSideBarLinks = 0 
+                    } else {
+                        iSideBarLinks = (iSideBarLinks === -1) ? 0 : (iSideBarLinks + 1) % sidebarLinks.length;
+                    }
+                    console.log(iSideBarLinks)
                     sidebarLinks[iSideBarLinks].focus();
                 } else if (key === "a") {
                     iSideBarLinks = (iSideBarLinks === -1) ? sidebarLinks.length - 1 : (iSideBarLinks - 1 + sidebarLinks.length) % sidebarLinks.length;
@@ -108,43 +113,21 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
                     if (e.target === lastClickedLink) sidebarBtn.focus();
                     else if (lastClickedLink) lastClickedLink.focus();
                 }
+                console.log(key)
                 break;
 
             case "main":
+                
                 headerElementsFocus(key, e);
                 handleStepKeys(key, e, mainTargetDiv);
-
                 if (key === "s") {
-                    sKeyFocusOrder();
-                    if (mainContainer.classList.contains("collapsed")) mainContainer.classList.remove("collapsed");
+                    sidebarBtn.focus()
+                    if (mainContainer.classList.contains("collapsed")) 
+                        mainContainer.classList.remove("collapsed");
                 }
-                // if (key === "m") {
-                //     if(lastStep){
-                //         if(e.target == lastStep){
-                //             mainTargetDiv.focus()
-                //         }else {
-                //             lastStep.focus()
-                //         }
-                //     } else {
-                //         mainTargetDiv.focus();
-                //     }
-                //     if (e.target == mainTargetDiv && !lastStep){
-                //         sidebarLinks[0].focus()
-                //         console.log('here')
-                //     }
-                //     console.log('here')
-                //     // mainTargetDiv.scrollTo({ top: 0, behavior: "smooth" });
-                // }
-                // if (key === "enter" || key === "f" && !lastClickedLink) {
-                //     const firstStep = mainTargetDiv.querySelector(".step-float, .step");
-                //     if (firstStep) firstStep.scrollIntoView({behavior: 'instant', block: 'start'});
-                    
-                // }
                 break;
-
         }
     });
-
     // --- Helper functions ---
     function sKeyFocusOrder() {
         if (lastClickedLink) lastClickedLink.focus();

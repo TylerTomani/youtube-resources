@@ -27,12 +27,11 @@
     /* STEP TXT */
 .step-float>.step-txt {
     padding: 0 2%;
-    flex-basis: 50%;
+    /* flex-basis: 50%; */
     flex-grow: 1;
 }
-.step-float>.step-txt>p {
-    margin: 1% 2% 0 5%;
-    padding: 0 2%;
+.step-float> .step-txt > p {
+    
 }
 .step-txt ul {margin-left: 3%;}
 .step-txt ul li {line-height: 1.5;}

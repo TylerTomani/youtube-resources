@@ -3,6 +3,7 @@ import { initKeyboardNav } from "../nav/keyboard-nav.js";
 import { getPageHeader, getPageHeaderLinks, getNavLessonTitle, getDarkModeBtn, getSideBar, getSideBarBtn, initSideBarLinks, getMainTargetDiv, getMainContainer } from "../utils/dom-utils.js";
 import { toggleSidebar } from "../ui/toggle-sidebar.js";
 import { dragHideSidebar } from "../ui/drag-hide-sidebar.js";
+import { injectContent } from "../core/inject-content.js";
 
 document.addEventListener("DOMContentLoaded", () => {
     const pageHeader = getPageHeader();
@@ -33,12 +34,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Initial content load
-    const initialLink = sidebarLinks.find(el => el.hasAttribute("autofocus")) || sidebarLinks[0];
+    const initialLink = sidebarLinks.find(el => el.hasAttribute("autofocus")) ;
     if (initialLink) {
         initialLink.focus();
         // Load initial content into mainTargetDiv
-        import("../core/inject-content.js").then(module => {
-            module.injectContent(initialLink.href, mainTargetDiv, sidebarLinks, sidebarLinks.indexOf(initialLink), navLessonTitle);
-        });
+        // import("../core/inject-content.js").then(module => {
+        //     module.injectContent(initialLink.href, mainTargetDiv, sidebarLinks, sidebarLinks.indexOf(initialLink), navLessonTitle);
+        // });
+        injectContent(initialLink.href, mainTargetDiv, sidebarLinks, sidebarLinks.indexOf(initialLink), navLessonTitle);
+    }
+
+    else {
+        injectContent('home-page.html', mainTargetDiv, sidebarLinks, sidebarLinks.indexOf(initialLink), navLessonTitle);
+        console.log('lksjdf')
     }
 });
