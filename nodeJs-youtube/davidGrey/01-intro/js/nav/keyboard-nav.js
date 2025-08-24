@@ -4,10 +4,8 @@ import { handleStepKeys, lastStep } from "./step-txt.js";
 
 export let lastFocusedLink = null;
 export let lastClickedLink = null;
-
 export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, darkModeBtn,
     sidebar, sidebarBtn, sidebarLinks, mainTargetDiv, mainContainer }) {
-
     let focusZone = "header"; // "header" | "sidebar" | "main"
     let iSideBarLinks = 0;
 
@@ -113,7 +111,7 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
                 break;
 
             case "main":
-                headerElementsFocus(key, e);
+                // headerElementsFocus(key, e);
                 handleStepKeys(key, e, mainTargetDiv);
 
                 if (key === "s") {
@@ -121,12 +119,12 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
                     if (mainContainer.classList.contains("collapsed")) mainContainer.classList.remove("collapsed");
                 }
                 if (key === "m") {
-                    mainTargetDiv.focus();
-                    mainTargetDiv.scrollTo({ top: 0, behavior: "smooth" });
+                    // mainTargetDiv.focus();
+                    // mainTargetDiv.scrollTo({ top: 0, behavior: "smooth" });
                 }
                 if (key === "enter" || key === "f") {
-                    const firstStep = mainTargetDiv.querySelector(".step-float, .step");
-                    if (firstStep) firstStep.focus();
+                    // const firstStep = mainTargetDiv.querySelector(".step-float, .step");
+                    // if (firstStep) firstStep.focus();
                 }
                 break;
 

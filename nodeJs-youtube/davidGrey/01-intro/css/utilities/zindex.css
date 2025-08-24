@@ -11,3 +11,8 @@
  .step-img>img.enlarge {
     z-index: 100 !important;
 } */
+
+/* lessons injectContent() */
+.imgs-container {
+    z-index: auto;
+}

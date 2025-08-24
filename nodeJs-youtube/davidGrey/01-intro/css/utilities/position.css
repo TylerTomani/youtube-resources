@@ -20,17 +20,24 @@
     /* overflow: hidden; */
     height: calc(100vh - var(--header-height, 80px));
 }
-
-.step-float {
-    position: relative;
-}
 .lesson-btns-container {
     position: fixed;
     bottom: 5vh;
 }
-.step-img>img {
-    position: relative;
-}
+
 .lesson-btns-container {
     bottom: 0;
 }
+
+/* Lessons stepTxt injectContent() */
+
+.step,
+.step-float {
+    /* position: relative; */
+}
+.imgs-container {
+    position: static;
+}
+/* .copy-code {position: relative;} */
+.step-float {position: relative;}
+.step-img>img {position: relative;}

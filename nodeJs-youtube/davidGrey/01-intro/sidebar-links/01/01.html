@@ -13,14 +13,77 @@
         </header>
         <div class="main-container">
             <div class="steps-container">
-                <!-- 01 -->
+                <!-- 01 - new -->
+                <div tabindex="0" class="step-float ">
+                    <div class="step-txt">
+                        <h4>01 - new</h4>
+                        <p>
+                            Go to
+                            <br>fix - link tabindex in step-txt
+                            <br>
+                            <!-- <a target="_blank" href="https://nodejs.org/en/download">nodejs.org/en/download</a> -->
+                            follow commands
+                        </p>
+                        <div class="code-container">
+                            <textarea readonly tabindex="0" class="copy-code ta-90">
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash</textarea>
+                        </div>
+                        <div class="code-container">
+                            <h5># in lieu of restarting the shell</h5>
+                            <textarea readonly tabindex="0" class="copy-code">
+\. "$HOME/.nvm/nvm.sh"
+                            </textarea>
+                        </div>
+                        <div class="code-container">
+                            <h5># Download and install Node.js:</h5>
+                            <textarea readonly tabindex="0" class="copy-code">
+nvm install 22
+                            </textarea>
+                        </div>
+                        <div class="code-container">
+                            <h5># Verify the Node.js version:</h5>
+                            <h6># Should .print "v22.18.0"</h6>
+                            <textarea readonly tabindex="0" class="copy-code">
+node -v 
+                            </textarea>
+                        </div>
+                        <div class="code-container">
+                            <textarea readonly tabindex="0" class="copy-code">
+nvm current # Should print "v22.18.0".
+
+                            </textarea>
+                        </div>
+                        <div class="code-container">
+                            <h5># Verify npm version:</h5>
+                            <h6># Should print "10.9.3".</h6>
+                            <textarea readonly tabindex="0" class="copy-code">
+npm -v
+                            </textarea>
+                        </div>
+                    </div>
+                    <div class="imgs-container">
+                        <div class="img-container">
+                            <div class="step-img">
+                                <img src="sidebar-links/01/images/01.png" alt="">
+                            </div>
+                        </div>
+                        <div class="img-container">
+                            <div class="step-img">
+                                <img src="sidebar-links/01/images/01-b.png" alt="">
+                            </div>
+                        </div>
+                
+                    </div>
+                
+                </div>
+                <!-- 01 old -->
                 <div tabindex="0" class="step-float">
                     <div class="step-img xs">
                         <!-- <img src="images/01.png" alt=""> -->
                         <img src="sidebar-links/01/images/01.png" alt="">
                     </div>
                     <div  class="step-txt">
-                        <h4>01</h4>
+                        <h4>01 - old</h4>
                         <p>
                            Go to 
                            <br>fix - link tabindex in step-txt
@@ -114,7 +177,6 @@ you.<span class="b">talk()</span></pre>
                         </p>
                     </div>
                 </div>
-                
                 <!-- 04 imgs-container -->
                 <div tabindex="0" class="step-float ">
                     <div class="step-txt">
@@ -144,56 +206,6 @@ you.<span class="b">talk()</span></pre>
                     </div>
                     
                 </div>
-                <!-- 06 -->
-                <!-- <div tabindex="0" class="step-float ">
-                    <div class="step-img">
-                        <img src="sidebar-links/01/images/06.png" alt="">
-                    </div>
-                    
-                    <div class="step-txt">
-                        <h4>06</h4>
-                        <p>
-                            Notice, Methods are not in the instance itself, they are in
-                            the <code class="m">[[Protoype]]</code> of it's parent class <code class="b">Person</code>.
-                        </p>
-                        <div class="code-container ">
-                            <pre class="copy-code ">
-class Person{
-<span class="b">talk()</span>{
-    return 'Talking'
-}
-}
-const me = new Person()
-me
-                            </pre>
-                        </div>
-                    </div>
-
-                </div> -->
-                <!-- 07 -->
-                <!-- <div tabindex="0" class="step-float ">
-                    <div class="step-img">
-                        <img src="sidebar-links/01/images/07.png" alt="">
-                    </div>
-                    <div class="step-txt">
-                        <h4>07</h4>
-                        <p>
-                            But we can add attributes to the instance itself
-                        </p>
-                        <div class="code-container ">
-                            <pre class="copy-code ">
-class Person{
-talk(){
-    return 'Talking'
-}
-}
-const me = new Person()
-me.<span class="o">age</span> = 30
-me
-                            </pre>
-                        </div>
-                    </div>
-                </div> -->
             </div>
         </div>
     </div>

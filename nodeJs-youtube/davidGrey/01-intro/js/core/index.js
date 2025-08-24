@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const darkModeBtn = getDarkModeBtn();
     const sidebar = getSideBar();
     const sidebarBtn = getSideBarBtn();
-    const sidebarLinks = initSideBarLinks();
+    const sidebarLinks = Array.from(initSideBarLinks());
     const mainTargetDiv = getMainTargetDiv();
     const mainContainer = getMainContainer();
 
