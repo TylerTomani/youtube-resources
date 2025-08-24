@@ -72,3 +72,11 @@ body{
     position: fixed;
     display: flex;
 }
+
+/* lessons injectContent() */
+.imgs-container {
+    display: flex;
+}
+.imgs-container>* {
+    flex-basis: 50%;
+}

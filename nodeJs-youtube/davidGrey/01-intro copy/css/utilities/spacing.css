@@ -1,15 +1,21 @@
 #darkmodeBtn{
     padding: 0 2%;
 }
-
-.page-header .header-col-left>.header-nav a {
-  
+.page-header .header-col-left>.header-nav a { 
   padding: 1.5% 2%;
 }
-
 #sideBarBtn {
   margin-top: 2%;
 }
 .lesson-btns-container>button{
   padding: 1% 3%
+}
+
+/* lessons injectContent() */
+.imgs-container .img-container:nth-child(odd) img.enlarge {
+  margin-left: 20%;
+}
+.dark-mode .code-container textarea{
+  padding-top: 1%;
+  padding-left: 1%;
 }

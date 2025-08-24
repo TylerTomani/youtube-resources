@@ -4,24 +4,26 @@ import { addCopyCode } from "../ui/copy-code.js";
 
 export function injectContent(href, mainTargetDiv, sidebarLinks, iSideBarLinks, navLessonTitle, callback) {
     fetch(href)
-        .then(response => response.text())
+        .then(response => {
+            if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+            return response.text();
+        })
         .then(html => {
-            const parser = new DOMParser();
+            // Insert HTML into the main container
             mainTargetDiv.innerHTML = html;
+
+            // Update nav lesson title if available
+            const parser = new DOMParser();
             const doc = parser.parseFromString(html, 'text/html');
+            const headerH3 = doc.querySelector('#targetHeaderh3');
+            if (headerH3 && navLessonTitle) navLessonTitle.textContent = headerH3.textContent;
 
-            const changedNavLessonTitleH1 = doc.querySelector('#targetHeaderh3');
-            // You can update navLessonTitle if needed
-            // navLessonTitle.innerHTML = changedNavLessonTitleH1?.innerHTML || '';
-
-            // Initialize steps and copy-code
+            // Initialize step navigation & copy-code buttons
             initStepNavigation(mainTargetDiv, sidebarLinks, iSideBarLinks);
             addCopyCode();
 
-            // 🔹 Call the callback after content is fully loaded
-            if (typeof callback === 'function') {
-                callback();
-            }
+            // Optional callback after injection
+            if (typeof callback === "function") callback();
         })
         .catch(err => {
             console.error('Failed to load content:', err);
