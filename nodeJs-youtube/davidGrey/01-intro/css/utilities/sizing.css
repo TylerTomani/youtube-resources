@@ -52,7 +52,7 @@
 .code-container textarea.ta-90{
     width: 80vw;
     text-wrap: nowrap;
-    overflow-x: scroll;
+    /* overflow-x: scroll; */
 }
 .code-container textarea {
     width: fit-content ;

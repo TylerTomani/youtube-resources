@@ -84,8 +84,8 @@ export function handleStepKeys(key, e, mainTargetDiv) {
             lastStep = steps[iStep];
             break;
         case "m": // focus last step or container
-            if (lastStep) lastStep.focus();
-            else mainTargetDiv.focus();
+            // if (lastStep) lastStep.focus();
+            // else mainTargetDiv.focus();
             break;
         default:
             if (!isNaN(key)) {

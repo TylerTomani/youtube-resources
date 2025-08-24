@@ -24,9 +24,14 @@ main.main-container.collapsed .side-bar .sidebar-links-ul {
   display: none;
 }
 
+main.main-container.collapsed #sideBarBtn:focus{
+  /* border: 1px solid black !important; */
+}
 main.main-container.collapsed #sideBarBtn {
   position: absolute;
-  bottom: 20%;
+  bottom: 12%;
+  left:20%;
+  font-size: 2rem;
 }
 main.main-container.collapsed .header-codeColor-lesson h3 {
   margin-left: 10%;

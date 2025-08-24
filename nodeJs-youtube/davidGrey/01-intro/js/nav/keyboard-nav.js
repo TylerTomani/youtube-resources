@@ -111,7 +111,7 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
                 break;
 
             case "main":
-                // headerElementsFocus(key, e);
+                headerElementsFocus(key, e);
                 handleStepKeys(key, e, mainTargetDiv);
 
                 if (key === "s") {
@@ -119,7 +119,16 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
                     if (mainContainer.classList.contains("collapsed")) mainContainer.classList.remove("collapsed");
                 }
                 if (key === "m") {
-                    // mainTargetDiv.focus();
+                    if(lastStep){
+                        if(e.target == lastStep){
+                            mainTargetDiv.focus()
+                        }else {
+                            lastStep.focus()
+                        }
+                    } else {
+
+                        mainTargetDiv.focus();
+                    }
                     // mainTargetDiv.scrollTo({ top: 0, behavior: "smooth" });
                 }
                 if (key === "enter" || key === "f") {
