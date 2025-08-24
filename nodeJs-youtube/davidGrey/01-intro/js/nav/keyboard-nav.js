@@ -29,7 +29,9 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
             }
         }
         if (key === "f") {
+            // I don't get how this line works??
             iSideBarLinks = Math.max(iSideBarLinks - 1, -1);
+            
         }
     });
 
@@ -85,6 +87,9 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
                     break;
                 }
                 if (key === "s") {
+                    if(mainContainer.classList.contains('collapsed')){
+                        mainContainer.classList.remove('collapsed')
+                    }
                     sKeyFocusOrder()
                 }
                 if (key === "m") mainTargetDiv.focus();
@@ -94,17 +99,19 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
             case "sidebar":
                 headerElementsFocus(key, e);
                 if (key === "f") {
+                    console.log(e.target)
                     if(e.target == sidebar){
                         iSideBarLinks = 0 
+                        sidebarLinks[0].focus()
+                        console.log('yes')
                     } else {
                         iSideBarLinks = (iSideBarLinks === -1) ? 0 : (iSideBarLinks + 1) % sidebarLinks.length;
+                        sidebarLinks[iSideBarLinks].focus();
                     }
-                    console.log(iSideBarLinks)
-                    sidebarLinks[iSideBarLinks].focus();
                 } else if (key === "a") {
                     iSideBarLinks = (iSideBarLinks === -1) ? sidebarLinks.length - 1 : (iSideBarLinks - 1 + sidebarLinks.length) % sidebarLinks.length;
                     sidebarLinks[iSideBarLinks].focus();
-                } else if (!isNaN(key)) numberShortcut(key);
+                }
                 else if (key === "m") {
                     mainTargetDiv.focus();
                     if (lastStep) lastStep.focus();
@@ -113,7 +120,8 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
                     if (e.target === lastClickedLink) sidebarBtn.focus();
                     else if (lastClickedLink) lastClickedLink.focus();
                 }
-                console.log(key)
+                else if (!isNaN(key)) numberShortcut(key);
+                
                 break;
 
             case "main":
@@ -137,7 +145,6 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
 
     function headerElementsFocus(key, e) {
         pageHeaderLinks.forEach(el => { if (key === el.id[0]) el.focus(); });
-
         switch (key) {
             case "c":
                 const codeComShortcutsLink = document.querySelector("#codeComShortcutsLink");
@@ -156,7 +163,6 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
                 break;
         }
     }
-
     function numberShortcut(key) {
         const index = parseInt(key) - 1;
         if (index >= 0 && index < sidebarLinks.length) {

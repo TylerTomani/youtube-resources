@@ -1,6 +1,5 @@
 // step-txt.js
 export let lastStep = null;
-
 let steps = [];
 let allImgs = [];
 let stepImageIndexes = new WeakMap();
@@ -28,16 +27,22 @@ export function initStepNavigation(mainTargetDiv) {
             step.setAttribute("tabindex", "0");
 
             step.addEventListener("focusin", () => {
-                lastStep = step;
+                
                 iStep = index;
             });
 
             step.addEventListener("keydown", e => {
-                if (e.key.toLowerCase() === "enter") toggleStepImages(step);
+                if (e.key.toLowerCase() === "enter"){
+                    toggleStepImages(step);
+                } 
             });
 
             step.addEventListener("click", e => {
-                if (e.target.tagName !== "IMG") denlargeAllImages();
+                if (e.target.tagName !== "IMG") {
+                    denlargeAllImages();
+                    lastStep = step;
+
+                }
             });
 
             step.dataset.listenerAdded = "true";
@@ -68,6 +73,9 @@ export function handleStepKeys(key, e, mainTargetDiv) {
     if (!steps.length) return;
 
     switch (key) {
+        case "enter":
+            
+            break
         case "f": // next step
             if(e.target == mainTargetDiv){
                 iStep = 0
