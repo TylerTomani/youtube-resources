@@ -10,3 +10,7 @@
 #sideBarBtn {
   font-size: 1.45rem;
 }
+
+.step-txt ul li {
+  line-height: 1.5;
+}
