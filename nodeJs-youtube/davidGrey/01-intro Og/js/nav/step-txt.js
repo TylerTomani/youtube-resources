@@ -61,7 +61,7 @@ export function initStepNavigation(mainTargetDiv) {
                 } else {
                     toggleStepImages(step)
                 }
-                // console.log(e.target)
+                console.log(e.target)
             });
 
             step.dataset.listenerAdded = "true";
@@ -71,7 +71,7 @@ export function initStepNavigation(mainTargetDiv) {
     // Add image click/touch listeners
     allImgs.forEach(img => {
         if (!img.dataset.listenerAdded) {
-            img.addEventListener("click", e => toggleSingleImage(img),{passive:true});
+            // img.addEventListener("click", e => toggleSingleImage(img));
             img.addEventListener("touchstart", e => toggleSingleImage(img), { passive: true });
             img.dataset.listenerAdded = "true";
         }
@@ -86,13 +86,6 @@ export function initStepNavigation(mainTargetDiv) {
             });
             code.dataset.listenerAdded = "true";
         }
-        code.addEventListener('click',e => {
-            e.preventDefault()
-            e.stopPropagation()
-            if (e.target === code){
-                console.log('yes')
-            }
-        })
     });
 }
 

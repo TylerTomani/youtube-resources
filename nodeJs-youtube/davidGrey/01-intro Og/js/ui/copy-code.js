@@ -17,19 +17,15 @@ export function addCopyCode(){
                 }
                 // copyTextToClipboard(e.target.innerText)
                 animate(el)
+                el
             }
         })
-        el.addEventListener('click', e => {
-            e.preventDefault()
-            e.stopPropagation()
-            handleCopy(e)
-            animate(el)
-        })
     })
-    function handleCopy(e) {
+    function handleCopy(el) {
         // Always copy the text from mainScript regardless of source
-        const textToCopy = e.target.innerText
         copyTextToClipboard(textToCopy);
+        console.log(animateCode)
+
     }
 
     function setupCopyShortcut(element) {
@@ -53,7 +49,7 @@ export function addCopyCode(){
     // Setup for mainScript and both buttons
 
 }
- function copyTextToClipboard(text) {
+function copyTextToClipboard(text) {
     return navigator.clipboard.writeText(text).catch(err => {
         console.error("Unable to copy text to clipboard:", err);
     });

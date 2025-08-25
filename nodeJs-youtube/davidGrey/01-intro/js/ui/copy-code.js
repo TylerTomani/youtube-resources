@@ -17,7 +17,6 @@ export function addCopyCode(){
                 }
                 // copyTextToClipboard(e.target.innerText)
                 animate(el)
-                el
             }
         })
         el.addEventListener('click', e => {
@@ -30,9 +29,7 @@ export function addCopyCode(){
     function handleCopy(e) {
         // Always copy the text from mainScript regardless of source
         const textToCopy = e.target.innerText
-        console.log(textToCopy)
         copyTextToClipboard(textToCopy);
-
     }
 
     function setupCopyShortcut(element) {

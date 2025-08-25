@@ -1,0 +1,43 @@
+/* position.css */
+.page-wrapper {
+    position: relative;
+}
+.page-header {
+    /* header stays in normal flow */
+    /* top: 0; */
+}
+.main-container {
+    display: flex;
+    flex-direction: row;
+    /* the main container itself scrolls */
+}
+/* Sidebar sticky */
+.side-bar {
+    position: sticky;
+    top: 0;
+    /* sticks below header if header has height */
+    flex-shrink: 0;
+    /* overflow: hidden; */
+    height: calc(100vh - var(--header-height, 80px));
+}
+.lesson-btns-container {
+    position: fixed;
+    bottom: 5vh;
+}
+
+.lesson-btns-container {
+    bottom: 0;
+}
+
+/* Lessons stepTxt injectContent() */
+
+.step,
+.step-float {
+    /* position: relative; */
+}
+.imgs-container {
+    position: static;
+}
+/* .copy-code {position: relative;} */
+.step-float {position: relative;}
+.step-img>img {position: relative;}
