@@ -30,10 +30,10 @@ a:focus,
 
  .lesson-btns-container>button:focus,
  .lesson-btns-container>button:active{
-    box-shadow: 2px 0px 2px 2px white;
+    box-shadow: 2px 1px 2px 2px white;
     outline:  black;
-    text-shadow:  0px -1px black;
+    /* text-shadow:  0px -1px black; */
     font-size: bold;
-    color: #e7e3e3;
+    /* color: #e7e3e3; */
     font-weight: 999;
  }

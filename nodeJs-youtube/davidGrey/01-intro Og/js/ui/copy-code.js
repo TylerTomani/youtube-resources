@@ -20,11 +20,19 @@ export function addCopyCode(){
                 el
             }
         })
+        el.addEventListener('click', e => {
+            e.preventDefault()
+            e.stopPropagation()
+            handleCopy(e)
+            animate(el)
+        })
     })
-    function handleCopy(el) {
+    function handleCopy(e) {
         // Always copy the text from mainScript regardless of source
+        const textToCopy = e.target.innerText
+        console.log(textToCopy)
         copyTextToClipboard(textToCopy);
-        console.log(animateCode)
+        // console.log(animateCode)
 
     }
 
@@ -49,7 +57,7 @@ export function addCopyCode(){
     // Setup for mainScript and both buttons
 
 }
-function copyTextToClipboard(text) {
+ function copyTextToClipboard(text) {
     return navigator.clipboard.writeText(text).catch(err => {
         console.error("Unable to copy text to clipboard:", err);
     });

@@ -8,6 +8,7 @@ let iStep = 0;
 let iCopyCodes = 0;
 let currentIndex = 0; // bad namae, index for imgs-container imgs
 let copyCodesStepFocused = false;
+let currentStepFocusedIN = false
 
 /**
  * Initialize step navigation and image/code behavior
@@ -30,28 +31,32 @@ export function initStepNavigation(mainTargetDiv) {
             step.setAttribute("tabindex", "0");
 
             step.addEventListener("focus", () => {
-                copyCodesStepFocused = false;
+                console.log('focus')
                 denlargeAllImages();
                 iStep = index;
                 currentIndex = 0;
             });
 
+            step.addEventListener("focusin", () => { 
+                currentStepFocusedIN = true
+            })
+            step.addEventListener("focusout", () => { 
+                denlargeAllImages()
+            })
             step.addEventListener("focusin", () => {
                 iStep = index;
             });
-
             step.addEventListener("keydown", e => {
                 let key = e.key.toLowerCase();
+                console.log(currentStepFocusedIN)
                 if (key === "enter") {
                     toggleStepImages(step);
                     step.scrollIntoView({ behavior: 'instant', block: 'start' });
-                    copyCodesStepFocused = true;
                 }
                 if (key === 'm') {
                     // mainTargetDiv.focus()
                 }
             });
-
             // --- unified pointerdown for click/tap ---
             step.addEventListener("pointerdown", e => {
                 e.preventDefault();
@@ -82,7 +87,6 @@ export function initStepNavigation(mainTargetDiv) {
         if (!code.dataset.listenerAdded) {
             code.addEventListener("focus", () => {
                 denlargeAllImages();
-                copyCodesStepFocused = true;
             });
             code.dataset.listenerAdded = "true";
         }
@@ -92,11 +96,10 @@ export function initStepNavigation(mainTargetDiv) {
 // --- Handle step navigation keys ---
 export function handleStepKeys(key, e, mainTargetDiv) {
     if (!steps.length) return;
-
     switch (key) {
         case "enter":
             if (e.target == mainTargetDiv) {
-                // steps[0].focus()
+                steps[0].focus()
             }
             break;
         case "f" || ';': // next step

@@ -93,7 +93,9 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
                     }
                     sKeyFocusOrder()
                 }
-                if (key === 'm') mainTargetDiv.focus();
+                if (key === 'm') {
+                    mKeyFocusOrder(e)
+                };
                 if (!isNaN(key)) numberShortcut(key);
                 break;
 
@@ -113,17 +115,7 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
                     sidebarLinks[iSideBarLinks].focus();
                 }
                 else if (key === 'm') {
-                    focusZone = 'main'
-                    const steps = document.querySelectorAll('.step-float')
-                    if(e.target.classList.contains('step-float')){
-                        mainTargetDiv.focus()
-                    }
-                    if (lastStep){
-                        steps[0].focus()
-                    } else {
-                        // mainTargetDiv.focus()
-                        // lastStep.focus();
-                    }
+                    mKeyFocusOrder(e)
                 } else if (key === 's') {
                     // Toggle between sidebarBtn and last clicked link
                     denlargeAllImages()
@@ -202,6 +194,19 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
         if (lastClickedLink) lastClickedLink.focus();
         else if (lastFocusedLink) lastFocusedLink.focus();
         else sidebarLinks[0].focus();
+    }
+    function mKeyFocusOrder(e) {
+        focusZone = 'main'
+        const steps = document.querySelectorAll('.step-float')
+        if (e.target.classList.contains('step-float')) {
+            mainTargetDiv.focus()
+        }
+        if (lastStep) {
+            steps[0].focus()
+        } else {
+            // mainTargetDiv.focus()
+            // lastStep.focus();
+        }
     }
 
     function headerElementsFocus(key, e) {
