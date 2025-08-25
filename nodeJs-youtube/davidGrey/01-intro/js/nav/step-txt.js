@@ -49,6 +49,7 @@ export function initStepNavigation(mainTargetDiv) {
                     toggleStepImages(step);
                     step.scrollIntoView({ behavior: 'instant', block: 'start' });
                     lastStep = step
+                    // copyCodesStepFocused = true
                 }
                 if (key === 'm') {
                     if(!copyCodesStepFocused){
@@ -63,12 +64,9 @@ export function initStepNavigation(mainTargetDiv) {
             step.addEventListener("pointerdown", e => {
                 e.preventDefault();
                 e.stopPropagation();
-
                 if (e.target.tagName !== "IMG") {
                     denlargeAllImages();
                     lastStep = step;
-                } else {
-                    // toggleStepImages(step);
                 }
             });
 
@@ -84,6 +82,7 @@ export function initStepNavigation(mainTargetDiv) {
             })
             img.dataset.listenerAdded = "true";
         }
+        
     });
 
     // Initialize copy-code focus behavior
@@ -138,6 +137,8 @@ export function handleStepKeys(key, e, mainTargetDiv) {
                 steps[iStep].focus();
                 goToStep(steps[iStep]);
                 lastStep = steps[iStep];
+            } else {
+
             }
             break;
         case "a": // previous step
@@ -148,8 +149,8 @@ export function handleStepKeys(key, e, mainTargetDiv) {
         case "e": // go to last step
             break;
         case "m": // focus last step or container
-        if(copyCodesStepFocused){
-                console.log('here')
+            if(copyCodesStepFocused){
+                copyCodesStepFocused = false
             }
             // if (e.target == lastStep) {
             //     mainTargetDiv.focus();
@@ -175,6 +176,7 @@ function toggleSingleImage(img) {
 
 function toggleStepImages(step) {
     const images = Array.from(step.querySelectorAll(".step-img > img"));
+    
     if (!images.length) return;
     if (images.length === 1) {
         toggleSingleImage(images[0]);
