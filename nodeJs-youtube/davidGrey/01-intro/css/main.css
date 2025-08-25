@@ -3,7 +3,7 @@
 /* main.css */
 @import url('home-page.css');
 @import url('darkMode.css');
-@import url('responsive.css');
+/* @import url('responsive.css'); */
 /* Components */
 @import url('./copyCode.css');
 @import url('components/sidebar.css');

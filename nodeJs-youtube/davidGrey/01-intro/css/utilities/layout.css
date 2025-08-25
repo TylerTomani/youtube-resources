@@ -91,7 +91,8 @@ body{
 .step-float>.step-txt {
     flex-grow: 1;
 }
-.code-container textarea,
-.code-container>pre {
-    /* overflow: scroll; */
+.code-container > textarea.copy-code,
+.code-container> pre.copy-code {
+    overflow: scroll;
+    /* background-color: blue; */
 }

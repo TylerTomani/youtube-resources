@@ -38,7 +38,11 @@
     min-height: 40vh;
 }
 .step-float>.step-txt>.code-container {
-    max-width: 80%;
+    /* max-width: 80%; */
+}
+.code-container textarea, .code-container > text.copy-code {
+    width: fit-content;
+    background-color: blue;
 }
 .code-container textarea, .code-container > pre {
     /* width: fit-content; */
