@@ -14,9 +14,3 @@
 #sideBarBtn {
 }
 /* Lessons */
-.code-container{
-    border-radius: 2px;
-}
-.code-container>.copy-code {
-    border: 1px solid black;
-}

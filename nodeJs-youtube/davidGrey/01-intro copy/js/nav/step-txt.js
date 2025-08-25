@@ -7,9 +7,8 @@ let stepImageIndexes = new WeakMap();
 let iStep = 0;
 let iCopyCodes = 0;
 let currentIndex = 0; // bad namae, index for imgs-container imgs
-let copyCodesStepFocused = false;
-let currentStepFocusedIN = false
-let stepClicked = false
+export let copyCodesStepFocused = false;
+
 
 /**
  * Initialize step navigation and image/code behavior
@@ -32,26 +31,20 @@ export function initStepNavigation(mainTargetDiv) {
             step.setAttribute("tabindex", "0");
 
             step.addEventListener("focus", () => {
-                stepClicked = false
-                console.log(stepClicked)
                 denlargeAllImages();
+                copyCodesStepFocused = false
                 iStep = index;
                 currentIndex = 0;
             });
 
             step.addEventListener("focusin", () => { 
-                currentStepFocusedIN = true
-                stepClicked = true
-            })
-            step.addEventListener("focusout", () => { 
-                denlargeAllImages()
-            })
-            step.addEventListener("focusin", () => {
+                
                 iStep = index;
-            });
+            })
+            step.addEventListener("focusout", () => { denlargeAllImages()})
+            
             step.addEventListener("keydown", e => {
                 let key = e.key.toLowerCase();
-                console.log(stepClicked)
                 if (key === "enter") {
                     toggleStepImages(step);
                     step.scrollIntoView({ behavior: 'instant', block: 'start' });
@@ -90,6 +83,7 @@ export function initStepNavigation(mainTargetDiv) {
         if (!code.dataset.listenerAdded) {
             code.addEventListener("focus", () => {
                 denlargeAllImages();
+                copyCodesStepFocused =true 
             });
             code.dataset.listenerAdded = "true";
         }
@@ -99,6 +93,25 @@ export function initStepNavigation(mainTargetDiv) {
 // --- Handle step navigation keys ---
 export function handleStepKeys(key, e, mainTargetDiv) {
     if (!steps.length) return;
+
+    if (!isNaN(key)) {
+        if (!copyCodesStepFocused){
+
+            const index = parseInt(key, 10) - 1;
+            if (index >= 0 && index < steps.length) {
+                iStep = index;
+                steps[iStep].focus();
+                lastStep = steps[iStep];
+            } else {
+                endNxtLessonBtn.focus();
+            }
+        } else {
+            const stepFloat = getStepFloat(e.target)
+            const copyCodes = stepFloat.querySelectorAll('.copy-code')
+            let intKey = parseInt(key)
+            copyCodes[intKey - 1].focus()
+        }
+    }
     switch (key) {
         case "enter":
             if (e.target == mainTargetDiv) {
@@ -106,7 +119,7 @@ export function handleStepKeys(key, e, mainTargetDiv) {
             }
             break;
         case "f" || ';': // next step
-            if (copyCodesStepFocused) return;
+            // if (copyCodesStepFocused) return;
             if (e.target == mainTargetDiv) {
                 iStep = 0;
                 goToStep(steps[iStep]);
@@ -135,16 +148,8 @@ export function handleStepKeys(key, e, mainTargetDiv) {
             }
             break;
         default:
-            if (!isNaN(key)) {
-                const index = parseInt(key, 10) - 1;
-                if (index >= 0 && index < steps.length) {
-                    iStep = index;
-                    steps[iStep].focus();
-                    lastStep = steps[iStep];
-                } else {
-                    endNxtLessonBtn.focus();
-                }
-            }
+            // console.log('def')
+            
             break;
     }
 }
@@ -158,7 +163,6 @@ function toggleSingleImage(img) {
 function toggleStepImages(step) {
     const images = Array.from(step.querySelectorAll(".step-img > img"));
     if (!images.length) return;
-
     if (images.length === 1) {
         toggleSingleImage(images[0]);
     } else {
@@ -176,6 +180,7 @@ function toggleStepImages(step) {
             }
         }
     }
+    
 }
 
 // --- Utility ---
@@ -195,7 +200,6 @@ function getStepFloat(target) {
         return null;
     }
 }
-
 function goToStep(step) {
     step.scrollIntoView({ behavior: 'instant', inline: 'start', block: 'start' });
 }

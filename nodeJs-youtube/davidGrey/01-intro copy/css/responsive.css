@@ -1,23 +1,19 @@
 /* Responsive */
 @media screen and (max-width: 721px) {
     .code-container {
-        min-width: 250px;
+        /* min-width: 250px; */
     }
-
     video {
         min-width: 250px;
     }
-
     video.enlarge-vid {
         right: 3%;
         top: 0;
         transform: scale(1.02);
     }
-
     .step-txt {
         font-size: 90%;
     }
-
     img.enlarge {
         position: absolute;
         /* z-index: 100; */

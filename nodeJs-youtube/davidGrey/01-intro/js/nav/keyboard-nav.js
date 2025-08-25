@@ -107,13 +107,13 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
         focusZone = 'main'
         const steps = document.querySelectorAll('.step-float')
         if (e.target.classList.contains('step-float')) {
-            mainTargetDiv.focus()
+            
         }
         if (lastStep) {
-            steps[0].focus()
+            lastStep.focus()
         } else {
-            // mainTargetDiv.focus()
-            // lastStep.focus();
+            mainTargetDiv.focus()
+            steps[0].focus()
         }
     }
 
@@ -148,11 +148,6 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
         }
     }
     
-    function goToNxtLessonBtn(e){
-        if (e.target === steps[steps.length - 1]) {
-            endNxtLessonBtn.focus()
-        } 
-    }
     // --- Global key handling ---
     addEventListener("keydown", e => {
         const key = e.key.toLowerCase();
@@ -195,7 +190,7 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
                     sidebarLinks[iSideBarLinks].focus();
                 }
                 else if (key === 'm') {
-
+                    console.log('side')
 
                     mKeyFocusOrder(e)
                 } else if (key === 's') {
@@ -244,9 +239,10 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
                 }
                 if (key === 'm' && e.target !== mainTargetDiv) {
                     mainTargetDiv.scrollIntoView({ behavior: 'instant', block: 'start' })
+                    mainTargetDiv.focus()
                 }
                 break;
         }
-        console.log(copyCodesStepFocused)
+        console.log(lastStep)
     });
 }

@@ -21,8 +21,8 @@ export function initStepNavigation(mainTargetDiv) {
 
     // Initialize first step
     if (steps.length && !lastStep) {
-        lastStep = steps[0];
-        iStep = 0;
+        // lastStep = steps[0];
+        // iStep = 0;
     }
 
     // Add step event listeners
@@ -48,9 +48,10 @@ export function initStepNavigation(mainTargetDiv) {
                 if (key === "enter") {
                     toggleStepImages(step);
                     step.scrollIntoView({ behavior: 'instant', block: 'start' });
+                    lastStep = step
                 }
                 if (key === 'm') {
-                    // mainTargetDiv.focus()
+                    mainTargetDiv.focus()
                 }
             });
             // --- unified pointerdown for click/tap ---
@@ -138,14 +139,14 @@ export function handleStepKeys(key, e, mainTargetDiv) {
         case "e": // go to last step
             break;
         case "m": // focus last step or container
-            if (e.target == lastStep) {
-                mainTargetDiv.focus();
-            } else {
-                lastStep.focus();
-            }
-            if (e.target == mainTargetDiv && !lastStep) {
-                steps[0].focus();
-            }
+            // if (e.target == lastStep) {
+            //     mainTargetDiv.focus();
+            // } else {
+            //     lastStep.focus();
+            // }
+            // if (e.target == mainTargetDiv && !lastStep) {
+            //     steps[0].focus();
+            // }
             break;
         default:
             // console.log('def')
