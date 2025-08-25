@@ -61,7 +61,7 @@ export function initStepNavigation(mainTargetDiv) {
                 } else {
                     toggleStepImages(step)
                 }
-                console.log(e.target)
+                // console.log(e.target)
             });
 
             step.dataset.listenerAdded = "true";
@@ -86,6 +86,13 @@ export function initStepNavigation(mainTargetDiv) {
             });
             code.dataset.listenerAdded = "true";
         }
+        code.addEventListener('click',e => {
+            e.preventDefault()
+            e.stopPropagation()
+            if (e.target === code){
+                console.log('yes')
+            }
+        })
     });
 }
 
