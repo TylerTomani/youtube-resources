@@ -26,8 +26,8 @@
     touch-action: manipulation;
 }
 
-.step-float > .step-img,
-.step-float >.step-vid {
+.step-img,
+.step-vid {
     float: right;
     width: 45%;
     margin-right: 5%;
@@ -42,6 +42,7 @@
     /* z-index: 5; */
     transition: all 0.025s ease;
 }
+
 /* Enlarged video */
 video.enlarge-vid {
     position: absolute;
@@ -54,19 +55,31 @@ video.enlarge-vid {
 
 /* Odd column enlarged tweak */
 /* Enlarged images always on top */
+.step-img>img{z-index: 0}
 .step-img>img.enlarge {
     position: fixed;
     transform: scale(2.5);
     pointer-events: auto;
 
 }
-.imgs-container .step-img>img.enlarge {
+.step-img>img.enlarge {
     position: fixed !important;
     /* not absolute, escape parent */
     top: 50%;
     left: 50%;
     /* center + enlarge */
     transform: translate(-50%, -90%) scale(1.1);
+    z-index: 9999 !important;
+
+}
+
+.imgs-container .step-img>img.enlarge {
+    position: fixed !important;
+    /* not absolute, escape parent */
+    top: 50%;
+    left: 50%;
+    /* center + enlarge */
+    transform: translate(-50%, -90%) scale(1.2);
     z-index: 9999 !important;
 
 }
