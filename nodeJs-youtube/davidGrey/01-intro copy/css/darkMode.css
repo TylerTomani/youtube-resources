@@ -32,7 +32,7 @@
 .dark-mode .code-container {
 }
 .dark-mode .code-container textarea,
-.dark-mode .code-container,
+/* .dark-mode .code-container, */
 .dark-mode .code-container>.copy-code {
     border: 1px solid white;
     background-color: var(--bg-primary-db);

@@ -1,9 +1,5 @@
 export function addCopyCode(){
     const copyCodes = document.querySelectorAll('.copy-code')
-    
-
-    
-
     copyCodes.forEach(el => {
         el.addEventListener('keydown', e => {
             if (e.key == 'c' && e.metaKey) {
@@ -30,7 +26,6 @@ export function addCopyCode(){
     function handleCopy(e) {
         // Always copy the text from mainScript regardless of source
         const textToCopy = e.target.innerText
-        console.log(textToCopy)
         copyTextToClipboard(textToCopy);
         // console.log(animateCode)
 

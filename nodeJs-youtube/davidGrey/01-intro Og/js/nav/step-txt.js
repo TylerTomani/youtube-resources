@@ -8,6 +8,7 @@ let iStep = 0;
 let iCopyCodes = 0;
 let currentIndex = 0; // bad namae, index for imgs-container imgs
 let copyCodesStepFocused = false;
+let currentStepFocusedIN = false
 
 /**
  * Initialize step navigation and image/code behavior
@@ -30,7 +31,7 @@ export function initStepNavigation(mainTargetDiv) {
             step.setAttribute("tabindex", "0");
 
             step.addEventListener("focus", () => {
-                copyCodesStepFocused = false;
+                copyCodesStepFocused  = false;
                 denlargeAllImages();
                 iStep = index;
                 currentIndex = 0;
@@ -44,6 +45,7 @@ export function initStepNavigation(mainTargetDiv) {
             });
             step.addEventListener("keydown", e => {
                 let key = e.key.toLowerCase();
+                console.log(currentStepFocusedIN)
                 if (key === "enter") {
                     toggleStepImages(step);
                     step.scrollIntoView({ behavior: 'instant', block: 'start' });

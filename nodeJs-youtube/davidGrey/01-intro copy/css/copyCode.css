@@ -15,8 +15,3 @@
     transition: all .15s;
 }
 
-.code-container pre, 
-.code-container textarea {
-    background-color: white;
-
-}

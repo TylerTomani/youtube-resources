@@ -7,11 +7,11 @@
 
 
 /* Lessons injectContent()*/
-.code-container {
-
-}
-
-
 body{
     background-color: rgb(187, 199, 190);
+}
+
+.code-container pre,
+.code-container textarea {
+    background-color: white;
 }

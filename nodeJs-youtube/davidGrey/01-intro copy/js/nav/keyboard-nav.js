@@ -115,6 +115,8 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
                     sidebarLinks[iSideBarLinks].focus();
                 }
                 else if (key === 'm') {
+                    
+                    
                     mKeyFocusOrder(e)
                 } else if (key === 's') {
                     // Toggle between sidebarBtn and last clicked link
