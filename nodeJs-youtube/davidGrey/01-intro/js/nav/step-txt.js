@@ -158,7 +158,7 @@ export function handleStepKeys(key, e, mainTargetDiv) {
 // --- Image handling ---
 function toggleSingleImage(img) {
     img.classList.toggle("enlarge");
-    img.style.zIndex = img.classList.contains("enlarge") ? 100 : 0;
+    // img.style.zIndex = img.classList.contains("enlarge") ? 100 : 0;
 }
 
 function toggleStepImages(step) {
@@ -176,7 +176,7 @@ function toggleStepImages(step) {
             denlargeAllImages();
             if (images[currentIndex]) {
                 images[currentIndex].classList.add("enlarge");
-                images[currentIndex].style.zIndex = 100;
+                // images[currentIndex].style.zIndex = 100;
                 currentIndex += 1;
             }
         }
@@ -188,7 +188,7 @@ function toggleStepImages(step) {
 export function denlargeAllImages() {
     allImgs.forEach(img => {
         img.classList.remove("enlarge");
-        img.style.zIndex = 0;
+        // img.style.zIndex = 0;
     });
 }
 

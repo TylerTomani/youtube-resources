@@ -5,3 +5,9 @@
 .imgs-container {
     z-index: auto;
 }
+.step-img>img {
+    z-index: 0
+}
+img.enlarge {
+    z-index: 100;
+}

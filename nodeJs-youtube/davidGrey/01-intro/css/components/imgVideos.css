@@ -64,10 +64,10 @@ video.enlarge-vid {
 
 /* Odd column enlarged tweak */
 /* Enlarged images always on top */
+.step-img>img{z-index: 0}
 .step-img>img.enlarge {
     position: absolute;
     transform: scale(2.5);
-    z-index: 100;
     pointer-events: auto;
 
 }
