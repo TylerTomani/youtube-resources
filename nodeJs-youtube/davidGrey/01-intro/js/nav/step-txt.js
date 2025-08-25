@@ -91,7 +91,8 @@ export function handleStepKeys(key, e, mainTargetDiv) {
 
             e.target.scrollIntoView({behavior: 'instant',block: 'start'})
             break
-        case "f": // next step
+        case "f" || ';': // next step
+        console.log(key)
             if(e.target == mainTargetDiv){
                 iStep = 0
             } else {
@@ -204,5 +205,10 @@ function getStepFloat(target){
         return getStepFloat(target.parentElement)
     } else {
         return null
+    }
+}
+function goToNxtLessonBtn(e) {
+    if (e.target === steps[steps.length - 1]) {
+        endNxtLessonBtn.focus()
     }
 }

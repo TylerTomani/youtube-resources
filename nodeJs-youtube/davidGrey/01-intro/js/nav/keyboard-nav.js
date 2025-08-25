@@ -19,7 +19,7 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
     // --- Sidebar button behavior ---
     sidebarBtn.addEventListener("keydown", e => {
         const key = e.key.toLowerCase();
-        if (key === "s") {
+        if (key === 's') {
             // Toggle focus to last clicked link, or first sidebar link
             if (lastClickedLink) {
                 lastClickedLink.focus();
@@ -29,7 +29,7 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
                 sidebarLinks[0].focus();
             }
         }
-        if (key === "f") {
+        if (key === 'f' || key === ';') {
             // I don't get how this line works??
             iSideBarLinks = Math.max(iSideBarLinks - 1, -1);
             
@@ -62,12 +62,12 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
 
         el.addEventListener("keydown", e => {
             const key = e.key.toLowerCase();
-            if (key === "enter") {
+            if (key === 'enter') {
                 const targetLink = e.target.closest("a");
                 if (targetLink) injectContent(targetLink.href, mainTargetDiv);
                 if (e.target === lastClickedLink) mainTargetDiv.focus();
                 lastClickedLink = e.target;
-            } else if (key === "s") {
+            } else if (key === 's') {
                 sidebarBtn.focus(); // toggle back to sidebar button
             }
         });
@@ -77,40 +77,43 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
     addEventListener("keydown", e => {
         const key = e.key.toLowerCase();
         if (e.shiftKey || e.metaKey) return;
+        console.log(key)
         switch (focusZone) {
             case "header":
                 headerElementsFocus(key, e);
-                if (key === "f") {
+                if (key === 'f') {
                     focusZone = "sidebar";
                     iSideBarLinks = 0
                     sidebarLinks[iSideBarLinks].focus()
+                    
                     break;
                 }
-                if (key === "s") {
+                if (key === 's') {
                     if(mainContainer.classList.contains('collapsed')){
                         mainContainer.classList.remove('collapsed')
                     }
                     sKeyFocusOrder()
                 }
-                if (key === "m") mainTargetDiv.focus();
+                if (key === 'm') mainTargetDiv.focus();
                 if (!isNaN(key)) numberShortcut(key);
                 break;
 
             case "sidebar":
                 headerElementsFocus(key, e);
-                if (key === "f") {
+                if (key === 'f') {
                     if(e.target == sidebarBtn){
                         iSideBarLinks = 0 
                         sidebarLinks[0].focus()
                     } else {
                         iSideBarLinks = (iSideBarLinks === -1) ? 0 : (iSideBarLinks + 1) % sidebarLinks.length;
                         sidebarLinks[iSideBarLinks].focus();
+                        
                     }
-                } else if (key === "a") {
+                } else if (key === 'a') {
                     iSideBarLinks = (iSideBarLinks === -1) ? sidebarLinks.length - 1 : (iSideBarLinks - 1 + sidebarLinks.length) % sidebarLinks.length;
                     sidebarLinks[iSideBarLinks].focus();
                 }
-                else if (key === "m") {
+                else if (key === 'm') {
                     focusZone = 'main'
                     const steps = document.querySelectorAll('.step-float')
                     if(e.target.classList.contains('step-float')){
@@ -122,7 +125,7 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
                         // mainTargetDiv.focus()
                         // lastStep.focus();
                     }
-                } else if (key === "s") {
+                } else if (key === 's') {
                     // Toggle between sidebarBtn and last clicked link
                     denlargeAllImages()
                     if(e.target == sidebarBtn){
@@ -140,14 +143,17 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
                 break;
 
             case "main":
-                
                 headerElementsFocus(key, e);
                 handleStepKeys(key, e, mainTargetDiv);
-                if (key === "s") {
+
+                if (key === 's') {
                     denlargeAllImages()
-                    sidebarBtn.focus()
-                    if (mainContainer.classList.contains("collapsed")) 
+                    // sidebarBtn.focus()
+                    if (mainContainer.classList.contains("collapsed")) {
                         mainContainer.classList.remove("collapsed");
+                    }
+                    focusZone === 'sidebar'
+                    sKeyFocusOrder()
                 }
                 // lesson-btns-container 
                 if(key === 'e' || key === 'p'){
@@ -170,17 +176,18 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
         }
     });
     endNxtLessonBtn.addEventListener('click', e => {
-        deHighlightSideBarLink()
+        
         iSideBarLinks = (iSideBarLinks + 1) % sidebarLinks.length
+        sidebarLinks[iSideBarLinks].focus()
+        
         sidebarLinks[iSideBarLinks].click()
-        sidebarLinks[iSideBarLinks].classList.add('hlight')
+        
 
     })
     prevLessonBtn.addEventListener('click', e => {
         iSideBarLinks = (iSideBarLinks - 1 + sidebarLinks.length) % sidebarLinks.length
         deHighlightSideBarLink()
         sidebarLinks[iSideBarLinks].click()
-        sidebarLinks[iSideBarLinks].classList.add('hlight')
     
     })
     function deHighlightSideBarLink(){
@@ -229,4 +236,9 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
         }
     }
     
+    function goToNxtLessonBtn(e){
+        if (e.target === steps[steps.length - 1]) {
+            endNxtLessonBtn.focus()
+        } 
+    }
 }
