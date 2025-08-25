@@ -80,6 +80,10 @@ body{
 }
 
 /* lessons injectContent() */
+#targetDiv > .main-container{
+    display: flex;
+    flex-direction: column;
+}
 .step,
 .step-float {
     flex-grow: 1;
