@@ -4,6 +4,7 @@
     top: 0;
     flex: 1 1 auto;
     overflow-x: hidden;
+    overflow-y: hidden;
     box-sizing: border-box;
 }
 .clear {

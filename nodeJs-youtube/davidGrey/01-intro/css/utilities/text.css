@@ -1,16 +1,4 @@
-.page-header .header-col-left>.header-nav a {
-  text-decoration: none;
-}
-
-.sidebar-links-ul li a{
-  text-decoration: none;
-}
-
-
-#sideBarBtn {
-  font-size: 1.45rem;
-}
-
-.step-txt ul li {
-  line-height: 1.5;
-}
+.page-header .header-col-left>.header-nav a {text-decoration: none;}
+.sidebar-links-ul li a{text-decoration: none;}
+#sideBarBtn {font-size: 1.45rem;}
+.step-txt ul li {line-height: 1.5;}

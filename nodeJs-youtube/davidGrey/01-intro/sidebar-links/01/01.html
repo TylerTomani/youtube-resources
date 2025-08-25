@@ -37,8 +37,8 @@
                             follow commands
                         </p>
                         <div class="code-container">
-                            <textarea readonly tabindex="0" class="copy-code ">
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash</textarea>
+                            <pre readonly tabindex="0" class="copy-code ">
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash</pre>
                         </div>
                         <div class="code-container">
                             <h5># in lieu of restarting the shell</h5>
@@ -53,13 +53,12 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash<
                             <textarea readonly tabindex="0" class="copy-code">
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # Loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # Loads nvm bash_completion
-</textarea>
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # Loads nvm bash_completion</textarea>
                         </div>
                         <div class="code-container">
-                            <textarea readonly tabindex="0" class="copy-code">
+                            <pre readonly tabindex="0" class="copy-code">
                                 source ~./.zshrc
-                            </textarea>
+                            </pre>
                             <p>
                                 or restart shell
                             </p>
@@ -77,32 +76,31 @@ export NVM_DIR="$HOME/.nvm"
                         <p>
                            
                         </p>
-<div class="code-container">
-    <h5># Download and install Node.js:</h5>
-    <p>
-        After restarting shell run this command and it will work
-    </p>
-    <pre readonly tabindex="0" class="copy-code">
+                        <div class="code-container">
+                            <h5># Download and install Node.js:</h5>
+                            <p>
+                                After restarting shell run this command and it will work
+                            </p>
+                            <pre readonly tabindex="0" class="copy-code">
 nvm install 22</pre>
-</div>
-<div class="code-container">
-    <h5># Verify the Node.js version:</h5>
-    <h6># Should .print "v22.18.0"</h6>
-    <pre readonly tabindex="0" class="copy-code">
+                        </div>
+                        <div class="code-container">
+                            <h5># Verify the Node.js version:</h5>
+                            <h6># Should .print "v22.18.0"</h6>
+                            <pre readonly tabindex="0" class="copy-code">
 node -v </pre>
-</div>
-<div class="code-container">
-    <h5># Should print "v22.18.0".</h5>
-    <textarea readonly tabindex="0" class="copy-code">
-nvm current</textarea>
-</div>
-<div class="code-container">
-    <h5># Verify npm version:</h5>
-    <h6># Should print "10.9.3".</h6>
-    <textarea readonly tabindex="0" class="copy-code">
-npm -v
-                            </textarea>
-</div>
+                        </div>
+                        <div class="code-container">
+                            <h5># Should print "v22.18.0".</h5>
+                            <pre readonly tabindex="0" class="copy-code">
+nvm current</pre>
+                        </div>
+                        <div class="code-container">
+                            <h5># Verify npm version:</h5>
+                            <h6># Should print "10.9.3".</h6>
+                            <pre readonly tabindex="0" class="copy-code">
+npm -v</pre>
+                        </div>
                     </div>
                 </div>
             </div>

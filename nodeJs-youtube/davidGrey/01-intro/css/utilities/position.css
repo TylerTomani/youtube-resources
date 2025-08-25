@@ -1,7 +1,7 @@
 
 /* position.css */
 .page-header {
-    position: sticky;
+    /* position: sticky; */
 }
 .page-wrapper {
     position: relative;
@@ -29,14 +29,6 @@
 }
 
 /* Lessons stepTxt injectContent() */
-
-.step,
-.step-float {
-    /* position: relative; */
-}
-.imgs-container {
-    position: static;
-}
-/* .copy-code {position: relative;} */
+.imgs-container {position: static;}
 .step-float {position: relative;}
 .step-img>img {position: relative;}

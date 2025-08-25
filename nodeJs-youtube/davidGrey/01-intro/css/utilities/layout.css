@@ -15,7 +15,7 @@ body{
 #targetDiv {
     height: 100%;
     overflow-x: hidden;
-    /* overflow-y: auto; */
+    overflow-y: hidden;
     /* scroll-behavior: smooth; */
     padding-bottom: 25%;
 }
@@ -91,4 +91,7 @@ body{
 .step-float>.step-txt {
     flex-grow: 1;
 }
-
+.code-container textarea,
+.code-container>pre {
+    /* overflow: scroll; */
+}

@@ -1,17 +1,6 @@
 .lesson-btns-container {
     z-index: 10
 }
-/* z-ndex.css
-.step-img {
-    z-index: 0;
-}
-.step-img>img {
-    z-index: 0;
-}
- .step-img>img.enlarge {
-    z-index: 100 !important;
-} */
-
 /* lessons injectContent() */
 .imgs-container {
     z-index: auto;
