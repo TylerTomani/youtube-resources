@@ -1,17 +1,21 @@
 // step-txt.js
+import { endNxtLessonBtn } from "./keyboard-nav.js";
 export let lastStep = null;
 let steps = [];
 let allImgs = [];
 let stepImageIndexes = new WeakMap();
 let iStep = 0;
-
+let iCopyCodes = 0;
+let currentIndex = 0 // bad namae, index for imgs-container imgs
+let copyCodesStepFocused = false
 /**
+ * 
  * Initialize step navigation and image/code behavior
  * @param {HTMLElement} mainTargetDiv
  */
+// Maybe change name to initNavListeners()
 export function initStepNavigation(mainTargetDiv) {
     if (!mainTargetDiv) return;
-
     steps = Array.from(mainTargetDiv.querySelectorAll(".steps-container > .step-float"));
     allImgs = Array.from(mainTargetDiv.querySelectorAll(".step-img > img"));
 
@@ -26,14 +30,23 @@ export function initStepNavigation(mainTargetDiv) {
         if (!step.dataset.listenerAdded) {
             step.setAttribute("tabindex", "0");
 
+            step.addEventListener("focus", () => {
+                // copyCodesStepFocused = false
+                copyCodesStepFocused = false
+                denlargeAllImages()
+                iStep = index
+                currentIndex = 0
+            })
             step.addEventListener("focusin", () => {
-                
                 iStep = index;
             });
 
             step.addEventListener("keydown", e => {
                 if (e.key.toLowerCase() === "enter"){
+                    console.log('enter')
                     toggleStepImages(step);
+                    step.scrollIntoView({behavior: 'instant', block: 'start'})
+                    copyCodesStepFocused = true
                 } 
             });
 
@@ -41,7 +54,6 @@ export function initStepNavigation(mainTargetDiv) {
                 if (e.target.tagName !== "IMG") {
                     denlargeAllImages();
                     lastStep = step;
-
                 }
             });
 
@@ -60,9 +72,13 @@ export function initStepNavigation(mainTargetDiv) {
 
     // Initialize copy-code focus behavior
     const copyCodes = mainTargetDiv.querySelectorAll(".copy-code");
+    
     copyCodes.forEach(code => {
         if (!code.dataset.listenerAdded) {
-            code.addEventListener("focus", () => denlargeAllImages());
+            code.addEventListener("focus", () => {
+                denlargeAllImages()
+                copyCodesStepFocused = true
+            });
             code.dataset.listenerAdded = "true";
         }
     });
@@ -70,13 +86,17 @@ export function initStepNavigation(mainTargetDiv) {
 
 // --- Handle step navigation keys ---
 export function handleStepKeys(key, e, mainTargetDiv) {
+    // console.log(e.target)
     if (!steps.length) return;
 
     switch (key) {
         case "enter":
-            
+            console.log(e.target)
+
+            e.target.scrollIntoView({behavior: 'instant',block: 'start'})
             break
-        case "f": // next step
+        case "f" || ';': // next step
+            if(copyCodesStepFocused) return
             if(e.target == mainTargetDiv){
                 iStep = 0
             } else {
@@ -84,6 +104,8 @@ export function handleStepKeys(key, e, mainTargetDiv) {
                 iStep = (iStep + 1) % steps.length;
             }
             steps[iStep].focus();
+            //change to this, create function
+            goToStep(steps[iStep])
             lastStep = steps[iStep];
             break;
         case "a": // previous step
@@ -108,9 +130,7 @@ export function handleStepKeys(key, e, mainTargetDiv) {
             }
             if (e.target == mainTargetDiv && !lastStep) {
                 sidebarLinks[0].focus()
-                console.log('here')
             }
-            console.log('here')
             break;
         default:
             if (!isNaN(key)) {
@@ -119,18 +139,21 @@ export function handleStepKeys(key, e, mainTargetDiv) {
                     iStep = index;
                     steps[iStep].focus();
                     lastStep = steps[iStep];
+                } else {
+                    endNxtLessonBtn.focus()
                 }
+                
             }
             break;
     }
 }
-
 // --- Image handling ---
 function toggleSingleImage(img) {
     denlargeAllImages();
     img.classList.toggle("enlarge");
     img.style.zIndex = img.classList.contains("enlarge") ? 100 : 0;
 }
+
 
 function toggleStepImages(step) {
     const images = Array.from(step.querySelectorAll(".step-img > img"));
@@ -140,16 +163,23 @@ function toggleStepImages(step) {
         toggleSingleImage(images[0]);
     } else {
         // Multi-image cycling
-        let currentIndex = stepImageIndexes.get(step) || 0;
-        console.log(currentIndex)
-        images.forEach(img => {
-            img.classList.remove("enlarge");
-            img.style.zIndex = 1;
-        });
-        images[currentIndex].classList.add("enlarge");
-        images[currentIndex].style.zIndex = 100;
-        currentIndex = (currentIndex + 1) % images.length;
-        stepImageIndexes.set(step, currentIndex);
+        if(currentIndex ==2){
+            step.focus()
+            denlargeAllImages()
+            
+            currentIndex = 0
+        }else {
+            denlargeAllImages()
+            if(images[currentIndex]){
+                images[currentIndex].classList.add("enlarge");
+                images[currentIndex].style.zIndex = 100;
+                // currentIndex = (currentIndex + 1) % images.length;
+                currentIndex += 1
+            }
+            
+        }
+        
+        
     }
 }
 
@@ -159,4 +189,20 @@ export function denlargeAllImages() {
         img.classList.remove("enlarge");
         img.style.zIndex = 0;
     });
+}
+// function scrollIntoViewEl(el){
+//     el.scrollIntoView({behavior: 'instant', block: 'center'})
+// }
+
+function getStepFloat(target){
+    if(target.classList.contains('step-float')){
+        return target
+    } else if (target.parentElement){
+        return getStepFloat(target.parentElement)
+    } else {
+        return null
+    }
+}
+function goToStep(step){
+    step.scrollIntoView({behavior: 'instant',inline:'start', block: 'start'})
 }

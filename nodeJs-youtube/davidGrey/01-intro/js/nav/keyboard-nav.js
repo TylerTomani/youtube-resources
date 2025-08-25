@@ -168,7 +168,7 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
                         prevLessonBtn.focus()
                     }
                 }
-                if(e.target !== mainTargetDiv){
+                if( key === 'm' && e.target !== mainTargetDiv){
                     mainTargetDiv.scrollIntoView({behavior: 'instant', block: 'start'})
                 }
                 break;
