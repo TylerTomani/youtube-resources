@@ -51,7 +51,10 @@ export function initStepNavigation(mainTargetDiv) {
                     lastStep = step
                 }
                 if (key === 'm') {
-                    mainTargetDiv.focus()
+                    if(copyCodesStepFocused){
+
+                        mainTargetDiv.focus()
+                    }
                 }
             });
             // --- unified pointerdown for click/tap ---

@@ -25,13 +25,12 @@
 .code-container textarea,
 .code-container pre{
   padding-left:  2%;
-  padding-top:  1%;
-  margin-bottom: 2%;
+  padding-bottom: 1%;
   
 }
-
-.code-container textarea {
-  padding-bottom: 3%2;
+.code-container pre{
+  padding-top: 1%;
+  padding-right: 1%;
 }
 
 .step-float>.step-txt {

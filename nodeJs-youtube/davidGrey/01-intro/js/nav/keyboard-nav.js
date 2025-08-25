@@ -238,8 +238,11 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
                     }
                 }
                 if (key === 'm' && e.target !== mainTargetDiv) {
-                    mainTargetDiv.scrollIntoView({ behavior: 'instant', block: 'start' })
-                    mainTargetDiv.focus()
+                    if(!copyCodesStepFocused){
+
+                        mainTargetDiv.scrollIntoView({ behavior: 'instant', block: 'start' })
+                        mainTargetDiv.focus()
+                    }
                 }
                 break;
         }
