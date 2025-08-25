@@ -58,8 +58,9 @@ export function initStepNavigation(mainTargetDiv) {
                     }
                 }
                 if(key === ';' || key === 'l'){
+                    const stepFloat = getStepFloat(e.target.parentElement)
+                    const copycodes = stepFloat.querySelectorAll('.copy-code')
                     if(key === ';'){
-                        const copycodes = step.querySelectorAll('.copy-code')
                         // Maybe add this
                         
                     }

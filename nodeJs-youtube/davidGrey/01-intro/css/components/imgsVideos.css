@@ -10,22 +10,11 @@
 }
 .imgs-container {
     display: flex;
+    position: static;
 }
-
 .imgs-container>* {
     flex-basis: 50%;
 }
-.imgs-container .img-container:first-child img.enlarge {
-    margin-left: 50%;
-    top: 100%;
-    position: absolute;
-}
-.imgs-container .img-container:nth-child(even) img.enlarge {
-    margin-right: 50%;
-
-}
-
-
 /* Default step images */
 .step-img>img {
     position: absolute;
@@ -37,13 +26,12 @@
     touch-action: manipulation;
 }
 
-.step-img,
-.step-vid {
+.step-float > .step-img,
+.step-float >.step-vid {
     float: right;
     width: 45%;
     margin-right: 5%;
     margin-left: 10px;
-    position: relative;
 }
 
 .step-vid>video {
@@ -54,7 +42,6 @@
     /* z-index: 5; */
     transition: all 0.025s ease;
 }
-
 /* Enlarged video */
 video.enlarge-vid {
     position: absolute;
@@ -67,10 +54,19 @@ video.enlarge-vid {
 
 /* Odd column enlarged tweak */
 /* Enlarged images always on top */
-.step-img>img{z-index: 0}
 .step-img>img.enlarge {
-    position: absolute;
+    position: fixed;
     transform: scale(2.5);
     pointer-events: auto;
+
+}
+.imgs-container .step-img>img.enlarge {
+    position: fixed !important;
+    /* not absolute, escape parent */
+    top: 50%;
+    left: 50%;
+    /* center + enlarge */
+    transform: translate(-50%, -90%) scale(1.1);
+    z-index: 9999 !important;
 
 }
