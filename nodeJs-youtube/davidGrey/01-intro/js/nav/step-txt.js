@@ -71,7 +71,7 @@ export function initStepNavigation(mainTargetDiv) {
     // Add image click/touch listeners
     allImgs.forEach(img => {
         if (!img.dataset.listenerAdded) {
-            // img.addEventListener("click", e => toggleSingleImage(img));
+            img.addEventListener("click", e => toggleSingleImage(img),{passive:true});
             img.addEventListener("touchstart", e => toggleSingleImage(img), { passive: true });
             img.dataset.listenerAdded = "true";
         }
