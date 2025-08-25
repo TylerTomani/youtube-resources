@@ -40,10 +40,14 @@
 .step-float>.step-txt>.code-container {
     /* max-width: 80%; */
 }
-.code-container textarea, .code-container > text.copy-code {
-    width: fit-content;
-    background-color: blue;
+
+.code-container textarea.copy-code{
+    min-width: 80vw;
 }
-.code-container textarea, .code-container > pre {
+.code-container > pre.copy-code {
+    width: fit-content;
+}
+.code-container pre {
     /* width: fit-content; */
+    min-width: 30vw;
 }

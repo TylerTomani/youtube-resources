@@ -1,4 +1,8 @@
-
+main.main-container.collapsed #sideBarBtn {
+    position: absolute;
+    bottom: 12%;
+    left: 20%;
+}
 /* position.css */
 .page-header {
     /* position: sticky; */
@@ -17,7 +21,7 @@
     /* sticks below header if header has height */
     flex-shrink: 0;
     /* overflow: hidden; */
-    height: calc(100vh - var(--header-height, 80px));
+    /* height: calc(100vh - var(--header-height, 80px)); */
 }
 .lesson-btns-container {
     position: fixed;

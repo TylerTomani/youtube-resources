@@ -17,6 +17,10 @@
 .imgs-container .img-container:nth-child(odd) img.enlarge {
     margin-left: 20%;
 }
+.imgs-container .img-container:nth-child(even) img.enlarge {
+    margin-right: 50%;
+
+}
 
 
 /* Default step images */
@@ -61,8 +65,9 @@ video.enlarge-vid {
 /* Odd column enlarged tweak */
 /* Enlarged images always on top */
 .step-img>img.enlarge {
-    position: relative;
-    transform: scale(1.5);
+    position: absolute;
+    transform: scale(2.5);
+    z-index: 100;
     pointer-events: auto;
 
 }
