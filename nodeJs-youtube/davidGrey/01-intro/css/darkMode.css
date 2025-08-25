@@ -13,6 +13,9 @@
     border: 1px solid whitesmoke !important;
 }
 .dark-mode .page-header .header-col-left>.header-nav a:visited {border: 1px solid whitesmoke;}
+.dark-mode a:visited {
+    color: whitesmoke;
+}
 .dark-mode main>aside.side-bar {
     border-right: 1px solid whitesmoke;
 }
