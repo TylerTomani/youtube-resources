@@ -72,7 +72,7 @@ export function initStepNavigation(mainTargetDiv) {
     allImgs.forEach(img => {
         if (!img.dataset.listenerAdded) {
             // img.addEventListener("click", e => toggleSingleImage(img));
-            img.addEventListener("touchstart", e => toggleSingleImage(img), { passive: true });
+            // img.addEventListener("touchstart", e => toggleSingleImage(img), { passive: true });
             img.dataset.listenerAdded = "true";
         }
     });
