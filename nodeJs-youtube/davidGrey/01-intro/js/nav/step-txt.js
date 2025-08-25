@@ -1,4 +1,5 @@
 // step-txt.js
+import { endNxtLessonBtn } from "./keyboard-nav.js";
 export let lastStep = null;
 let steps = [];
 let allImgs = [];
@@ -8,12 +9,13 @@ let iCopyCodes = 0;
 let currentIndex = 0 // bad namae, index for imgs-container imgs
 let copyCodesStepFocused = false
 /**
+ * 
  * Initialize step navigation and image/code behavior
  * @param {HTMLElement} mainTargetDiv
  */
+// Maybe change name to initNavListeners()
 export function initStepNavigation(mainTargetDiv) {
     if (!mainTargetDiv) return;
-
     steps = Array.from(mainTargetDiv.querySelectorAll(".steps-container > .step-float"));
     allImgs = Array.from(mainTargetDiv.querySelectorAll(".step-img > img"));
 
@@ -29,6 +31,7 @@ export function initStepNavigation(mainTargetDiv) {
             step.setAttribute("tabindex", "0");
 
             step.addEventListener("focus", () => {
+                // copyCodesStepFocused = false
                 copyCodesStepFocused = false
                 denlargeAllImages()
                 iStep = index
@@ -43,6 +46,7 @@ export function initStepNavigation(mainTargetDiv) {
                     console.log('enter')
                     toggleStepImages(step);
                     step.scrollIntoView({behavior: 'instant', block: 'start'})
+                    copyCodesStepFocused = true
                 } 
             });
 
@@ -92,7 +96,7 @@ export function handleStepKeys(key, e, mainTargetDiv) {
             e.target.scrollIntoView({behavior: 'instant',block: 'start'})
             break
         case "f" || ';': // next step
-        console.log(key)
+            if(copyCodesStepFocused) return
             if(e.target == mainTargetDiv){
                 iStep = 0
             } else {
@@ -100,6 +104,8 @@ export function handleStepKeys(key, e, mainTargetDiv) {
                 iStep = (iStep + 1) % steps.length;
             }
             steps[iStep].focus();
+            //change to this, create function
+            goToStep(steps[iStep])
             lastStep = steps[iStep];
             break;
         case "a": // previous step
@@ -129,24 +135,14 @@ export function handleStepKeys(key, e, mainTargetDiv) {
         default:
             if (!isNaN(key)) {
                 const index = parseInt(key, 10) - 1;
-                if(!copyCodesStepFocused){
-                    if (index >= 0 && index < steps.length) {
-                        iStep = index;
-                        steps[iStep].focus();
-                        lastStep = steps[iStep];
-                    } else {
-                    }
+                if (index >= 0 && index < steps.length) {
+                    iStep = index;
+                    steps[iStep].focus();
+                    lastStep = steps[iStep];
                 } else {
-                    const step = getStepFloat(e.target)
-                    const stepCopyCodes = step.querySelectorAll('.copy-code')
-                    console.log(iCopyCodes)
-                    if(iCopyCodes <= stepCopyCodes.length){
-                        steps[key - 1].focus()
-                    } else{
-                        stepCopyCodes[iCopyCodes].scrollIntoView({behavior:'instant',inline:'start',block:'end'})
-
-                    } 
+                    endNxtLessonBtn.focus()
                 }
+                
             }
             break;
     }
@@ -207,8 +203,6 @@ function getStepFloat(target){
         return null
     }
 }
-function goToNxtLessonBtn(e) {
-    if (e.target === steps[steps.length - 1]) {
-        endNxtLessonBtn.focus()
-    }
+function goToStep(step){
+    step.scrollIntoView({behavior: 'instant',inline:'start', block: 'start'})
 }

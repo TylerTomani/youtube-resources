@@ -4,7 +4,7 @@ import { handleStepKeys, lastStep } from "./step-txt.js";
 import { denlargeAllImages } from "./step-txt.js";
 export let lastFocusedLink = null;
 export let lastClickedLink = null;
-const endNxtLessonBtn = document.querySelector('#endNxtLessonBtn')   
+export const endNxtLessonBtn = document.querySelector('#endNxtLessonBtn')   
 const prevLessonBtn = document.querySelector('#prevLessonBtn')   
 export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, darkModeBtn,
     sidebar, sidebarBtn, sidebarLinks, mainTargetDiv, mainContainer }) {
@@ -77,7 +77,6 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
     addEventListener("keydown", e => {
         const key = e.key.toLowerCase();
         if (e.shiftKey || e.metaKey) return;
-        console.log(key)
         switch (focusZone) {
             case "header":
                 headerElementsFocus(key, e);
