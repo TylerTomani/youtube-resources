@@ -57,14 +57,7 @@ export function initStepNavigation(mainTargetDiv) {
                         step.focus()
                     }
                 }
-                if(key === ';' || key === 'l'){
-                    const stepFloat = getStepFloat(e.target.parentElement)
-                    const copycodes = stepFloat.querySelectorAll('.copy-code')
-                    if(key === ';'){
-                        // Maybe add this
-                        
-                    }
-                }
+              
             });
             // --- unified pointerdown for click/tap ---
             step.addEventListener("pointerdown", e => {
@@ -75,7 +68,7 @@ export function initStepNavigation(mainTargetDiv) {
                     denlargeAllImages();
                     lastStep = step;
                 } else {
-                    toggleStepImages(step);
+                    // toggleStepImages(step);
                 }
             });
 
@@ -86,6 +79,9 @@ export function initStepNavigation(mainTargetDiv) {
     // Add image click/touch listeners (now redundant, so left empty)
     allImgs.forEach(img => {
         if (!img.dataset.listenerAdded) {
+            img.addEventListener('click', e => {
+                toggleSingleImage(img)
+            })
             img.dataset.listenerAdded = "true";
         }
     });
@@ -131,17 +127,18 @@ export function handleStepKeys(key, e, mainTargetDiv) {
                 steps[0].focus()
             }
             break;
-        case "f" || ';': // next step
-            // if (copyCodesStepFocused) return;
-            if (e.target == mainTargetDiv) {
-                iStep = 0;
+        case "f" : // next step
+            if (!copyCodesStepFocused) {
+                if (e.target == mainTargetDiv) {
+                    iStep = 0;
+                    goToStep(steps[iStep]);
+                } else {
+                    iStep = (iStep + 1) % steps.length;
+                }
+                steps[iStep].focus();
                 goToStep(steps[iStep]);
-            } else {
-                iStep = (iStep + 1) % steps.length;
+                lastStep = steps[iStep];
             }
-            steps[iStep].focus();
-            goToStep(steps[iStep]);
-            lastStep = steps[iStep];
             break;
         case "a": // previous step
             iStep = (iStep - 1 + steps.length) % steps.length;

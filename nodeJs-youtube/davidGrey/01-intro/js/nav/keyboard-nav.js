@@ -239,6 +239,6 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
 
                 break;
         }
-        // console.log(lastStep)
+        console.log(copyCodesStepFocused)
     });
 }
