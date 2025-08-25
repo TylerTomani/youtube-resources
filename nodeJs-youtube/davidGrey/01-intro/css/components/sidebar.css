@@ -1,19 +1,18 @@
 :root {
   --sidebar-width: 120px;
   --main-content-width: calc(100% - var(--sidebar-width));
-  --sidebar-collapsed-width: 10px;
+  --sidebar-collapsed-width: 20px;
 }
 main.main-container.collapsed .main-content-container {
   flex-basis: 95%;
 }
 main.main-container.collapsed .side-bar {
-  flex-basis: 1%;
+  width: var(--sidebar-collapsed-width);
 }
+main.main-container.collapsed .side-bar h2,
 main.main-container.collapsed .side-bar .sidebar-links-ul {
   display: none;
 }
-
-
 main.main-container.collapsed .header-codeColor-lesson h3 {
   margin-left: 10%;
 } 

@@ -15,7 +15,7 @@
     flex-basis: 50%;
 }
 .imgs-container .img-container:nth-child(odd) img.enlarge {
-    margin-left: 20%;
+    margin-left: 50%;
 }
 .imgs-container .img-container:nth-child(even) img.enlarge {
     margin-right: 50%;
