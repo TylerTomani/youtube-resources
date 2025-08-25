@@ -27,7 +27,13 @@ a:focus,
 .copy-code:active {
     background: white
 }
-.sidebar-links-ul li a.hlight{
-    background-color: darkgrey;
-    text-shadow: 30 black;
-}
+
+ .lesson-btns-container>button:focus,
+ .lesson-btns-container>button:active{
+    box-shadow: 2px 0px 2px 2px white;
+    outline:  black;
+    text-shadow:  0px -1px black;
+    font-size: bold;
+    color: #e7e3e3;
+    font-weight: 999;
+ }

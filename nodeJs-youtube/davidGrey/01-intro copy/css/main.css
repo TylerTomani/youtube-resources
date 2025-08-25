@@ -6,7 +6,8 @@
 /* Components */
 @import url('./copy-code.css');
 @import url('components/sidebar.css');
-@import url('components/lesson.css');
+@import url('components/stepTxt.css');
+@import url('components/imgVideos.css');
 /* Utilities */
 @import url('utilities/borders.css');
 @import url('utilities/colors.css');

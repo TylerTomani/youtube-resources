@@ -13,7 +13,6 @@ let copyCodesStepFocused = false
  * Initialize step navigation and image/code behavior
  * @param {HTMLElement} mainTargetDiv
  */
-// Maybe change name to initNavListeners()
 export function initStepNavigation(mainTargetDiv) {
     if (!mainTargetDiv) return;
     steps = Array.from(mainTargetDiv.querySelectorAll(".steps-container > .step-float"));
@@ -42,19 +41,27 @@ export function initStepNavigation(mainTargetDiv) {
             });
 
             step.addEventListener("keydown", e => {
-                if (e.key.toLowerCase() === "enter"){
-                    console.log('enter')
+                let key = e.key.toLowerCase()
+                if (key === "enter"){
                     toggleStepImages(step);
                     step.scrollIntoView({behavior: 'instant', block: 'start'})
                     copyCodesStepFocused = true
                 } 
+                if(key === 'm' ){
+                    // mainTargetDiv.focus()
+                }
             });
 
             step.addEventListener("click", e => {
+                e.preventDefault()
+                e.stopPropagation()
                 if (e.target.tagName !== "IMG") {
                     denlargeAllImages();
                     lastStep = step;
+                } else {
+                    toggleStepImages(step)
                 }
+                console.log(e.target)
             });
 
             step.dataset.listenerAdded = "true";
@@ -64,15 +71,13 @@ export function initStepNavigation(mainTargetDiv) {
     // Add image click/touch listeners
     allImgs.forEach(img => {
         if (!img.dataset.listenerAdded) {
-            img.addEventListener("click", e => toggleSingleImage(img));
+            // img.addEventListener("click", e => toggleSingleImage(img));
             img.addEventListener("touchstart", e => toggleSingleImage(img), { passive: true });
             img.dataset.listenerAdded = "true";
         }
     });
-
     // Initialize copy-code focus behavior
-    const copyCodes = mainTargetDiv.querySelectorAll(".copy-code");
-    
+    const copyCodes = mainTargetDiv.querySelectorAll(".copy-code");    
     copyCodes.forEach(code => {
         if (!code.dataset.listenerAdded) {
             code.addEventListener("focus", () => {
@@ -86,19 +91,20 @@ export function initStepNavigation(mainTargetDiv) {
 
 // --- Handle step navigation keys ---
 export function handleStepKeys(key, e, mainTargetDiv) {
-    // console.log(e.target)
     if (!steps.length) return;
 
     switch (key) {
         case "enter":
-            console.log(e.target)
-
-            e.target.scrollIntoView({behavior: 'instant',block: 'start'})
+            if(e.target == mainTargetDiv){
+                // steps[0].focus()
+            }
             break
         case "f" || ';': // next step
             if(copyCodesStepFocused) return
             if(e.target == mainTargetDiv){
                 iStep = 0
+                goToStep(steps[iStep])
+                
             } else {
 
                 iStep = (iStep + 1) % steps.length;
@@ -119,17 +125,17 @@ export function handleStepKeys(key, e, mainTargetDiv) {
             // lastStep = steps[iStep];
             break;
         case "m": // focus last step or container
-            if (lastStep) {
-                if (e.target == lastStep) {
-                    mainTargetDiv.focus()
-                } else {
-                    lastStep.focus()
-                }
+            if (e.target == lastStep) {
+                mainTargetDiv.focus()
             } else {
-                mainTargetDiv.focus();
+                lastStep.focus()
             }
+            // if (lastStep) {
+            // } else {
+            //     mainTargetDiv.focus();
+            // }
             if (e.target == mainTargetDiv && !lastStep) {
-                sidebarLinks[0].focus()
+                steps[0].focus()
             }
             break;
         default:
@@ -149,7 +155,7 @@ export function handleStepKeys(key, e, mainTargetDiv) {
 }
 // --- Image handling ---
 function toggleSingleImage(img) {
-    denlargeAllImages();
+    // denlargeAllImages();
     img.classList.toggle("enlarge");
     img.style.zIndex = img.classList.contains("enlarge") ? 100 : 0;
 }

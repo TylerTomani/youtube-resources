@@ -80,9 +80,11 @@ body{
 }
 
 /* lessons injectContent() */
-.imgs-container {
-    display: flex;
+.step,
+.step-float {
+    flex-grow: 1;
 }
-.imgs-container>* {
-    flex-basis: 50%;
+.step-float>.step-txt {
+    flex-grow: 1;
 }
+
