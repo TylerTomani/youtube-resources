@@ -41,3 +41,8 @@
 .dark-mode .lesson-btns-container>button {
     background: rgb(148, 164, 134) ;
 }
+.dark-mode img.enlarge {
+    border-top: 1px solid whitesmoke    !important;
+    border-bottom: 1px solid whitesmoke !important;
+
+}
