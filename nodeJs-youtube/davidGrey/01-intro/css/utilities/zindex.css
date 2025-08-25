@@ -1,3 +1,4 @@
+/* z-index.css */
 .lesson-btns-container {
     z-index: 10
 }
@@ -9,5 +10,5 @@
     z-index: 0
 }
 img.enlarge {
-    z-index: 100;
+    z-index: 99;
 }

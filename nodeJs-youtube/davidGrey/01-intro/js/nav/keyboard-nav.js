@@ -190,7 +190,6 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
                     sidebarLinks[iSideBarLinks].focus();
                 }
                 else if (key === 'm') {
-                    console.log('side')
 
                     mKeyFocusOrder(e)
                 } else if (key === 's') {
@@ -237,15 +236,9 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
                         prevLessonBtn.focus()
                     }
                 }
-                if (key === 'm' && e.target !== mainTargetDiv) {
-                    if(!copyCodesStepFocused){
 
-                        mainTargetDiv.scrollIntoView({ behavior: 'instant', block: 'start' })
-                        mainTargetDiv.focus()
-                    }
-                }
                 break;
         }
-        console.log(lastStep)
+        // console.log(lastStep)
     });
 }

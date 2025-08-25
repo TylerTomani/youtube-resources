@@ -51,9 +51,17 @@ export function initStepNavigation(mainTargetDiv) {
                     lastStep = step
                 }
                 if (key === 'm') {
-                    if(copyCodesStepFocused){
-
+                    if(!copyCodesStepFocused){
                         mainTargetDiv.focus()
+                    } else {
+                        step.focus()
+                    }
+                }
+                if(key === ';' || key === 'l'){
+                    if(key === ';'){
+                        const copycodes = step.querySelectorAll('.copy-code')
+                        // Maybe add this
+                        
                     }
                 }
             });
@@ -142,6 +150,9 @@ export function handleStepKeys(key, e, mainTargetDiv) {
         case "e": // go to last step
             break;
         case "m": // focus last step or container
+        if(copyCodesStepFocused){
+                console.log('here')
+            }
             // if (e.target == lastStep) {
             //     mainTargetDiv.focus();
             // } else {
