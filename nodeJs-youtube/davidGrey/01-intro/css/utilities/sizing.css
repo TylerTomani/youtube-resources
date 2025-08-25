@@ -1,3 +1,7 @@
+/* sizing.css */
+.page-header {
+    width: 100%;
+}
 .page-wrapper {height: 100vh;
 }
 .page-wrapper .page-header {width: 100%;    }
@@ -16,7 +20,7 @@
 .side-bar {
   width: 15%;
 }
-.main-container {
+#mainTargetDiv .main-container {
     height: 100%;
     width: 100%;
 }
