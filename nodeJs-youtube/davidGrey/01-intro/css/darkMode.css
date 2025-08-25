@@ -4,6 +4,9 @@
     --font-primary-db: whitesmoke;
 }
 #darkModeBtn {}
+.lesson-btns-container>button {
+    background: rgb(148, 164, 134);
+}
 .dark-mode {background-color: var(--bg-primary-db);}
 .dark-mode .page-header .header-col-left>.header-nav a {    
     color:  whitesmoke !important;
@@ -34,4 +37,7 @@
     border: 1px solid white;
     background-color: var(--bg-primary-db);
     color: white;
+}
+.dark-mode .lesson-btns-container>button {
+    background: rgb(148, 164, 134) ;
 }

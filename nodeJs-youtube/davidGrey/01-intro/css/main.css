@@ -1,6 +1,8 @@
+/* Great Background color
+/* background:rgb(0, 133, 153);  */
 /* main.css */
 @import url('home-page.css');
-@import url('dark-mode.css');
+@import url('darkMode.css');
 @import url('responsive.css');
 @import url('./dark-mode.css');
 /* Components */

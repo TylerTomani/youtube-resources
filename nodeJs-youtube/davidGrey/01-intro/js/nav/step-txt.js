@@ -6,10 +6,10 @@ let allImgs = [];
 let stepImageIndexes = new WeakMap();
 let iStep = 0;
 let iCopyCodes = 0;
-let currentIndex = 0 // bad namae, index for imgs-container imgs
-let copyCodesStepFocused = false
+let currentIndex = 0; // bad namae, index for imgs-container imgs
+let copyCodesStepFocused = false;
+
 /**
- * 
  * Initialize step navigation and image/code behavior
  * @param {HTMLElement} mainTargetDiv
  */
@@ -30,59 +30,59 @@ export function initStepNavigation(mainTargetDiv) {
             step.setAttribute("tabindex", "0");
 
             step.addEventListener("focus", () => {
-                // copyCodesStepFocused = false
-                copyCodesStepFocused = false
-                denlargeAllImages()
-                iStep = index
-                currentIndex = 0
-            })
+                copyCodesStepFocused = false;
+                denlargeAllImages();
+                iStep = index;
+                currentIndex = 0;
+            });
+
             step.addEventListener("focusin", () => {
                 iStep = index;
             });
 
             step.addEventListener("keydown", e => {
-                let key = e.key.toLowerCase()
-                if (key === "enter"){
+                let key = e.key.toLowerCase();
+                if (key === "enter") {
                     toggleStepImages(step);
-                    step.scrollIntoView({behavior: 'instant', block: 'start'})
-                    copyCodesStepFocused = true
-                } 
-                if(key === 'm' ){
+                    step.scrollIntoView({ behavior: 'instant', block: 'start' });
+                    copyCodesStepFocused = true;
+                }
+                if (key === 'm') {
                     // mainTargetDiv.focus()
                 }
             });
 
-            step.addEventListener("click", e => {
-                e.preventDefault()
-                e.stopPropagation()
+            // --- unified pointerdown for click/tap ---
+            step.addEventListener("pointerdown", e => {
+                e.preventDefault();
+                e.stopPropagation();
+
                 if (e.target.tagName !== "IMG") {
                     denlargeAllImages();
                     lastStep = step;
                 } else {
-                    toggleStepImages(step)
+                    toggleStepImages(step);
                 }
-                console.log(e.target)
             });
 
             step.dataset.listenerAdded = "true";
         }
     });
 
-    // Add image click/touch listeners
+    // Add image click/touch listeners (now redundant, so left empty)
     allImgs.forEach(img => {
         if (!img.dataset.listenerAdded) {
-            // img.addEventListener("click", e => toggleSingleImage(img));
-            // img.addEventListener("touchstart", e => toggleSingleImage(img), { passive: true });
             img.dataset.listenerAdded = "true";
         }
     });
+
     // Initialize copy-code focus behavior
-    const copyCodes = mainTargetDiv.querySelectorAll(".copy-code");    
+    const copyCodes = mainTargetDiv.querySelectorAll(".copy-code");
     copyCodes.forEach(code => {
         if (!code.dataset.listenerAdded) {
             code.addEventListener("focus", () => {
-                denlargeAllImages()
-                copyCodesStepFocused = true
+                denlargeAllImages();
+                copyCodesStepFocused = true;
             });
             code.dataset.listenerAdded = "true";
         }
@@ -95,23 +95,20 @@ export function handleStepKeys(key, e, mainTargetDiv) {
 
     switch (key) {
         case "enter":
-            if(e.target == mainTargetDiv){
+            if (e.target == mainTargetDiv) {
                 // steps[0].focus()
             }
-            break
+            break;
         case "f" || ';': // next step
-            if(copyCodesStepFocused) return
-            if(e.target == mainTargetDiv){
-                iStep = 0
-                goToStep(steps[iStep])
-                
+            if (copyCodesStepFocused) return;
+            if (e.target == mainTargetDiv) {
+                iStep = 0;
+                goToStep(steps[iStep]);
             } else {
-
                 iStep = (iStep + 1) % steps.length;
             }
             steps[iStep].focus();
-            //change to this, create function
-            goToStep(steps[iStep])
+            goToStep(steps[iStep]);
             lastStep = steps[iStep];
             break;
         case "a": // previous step
@@ -120,22 +117,15 @@ export function handleStepKeys(key, e, mainTargetDiv) {
             lastStep = steps[iStep];
             break;
         case "e": // go to last step
-            // iStep = steps.length - 1;
-            // steps[iStep].focus();
-            // lastStep = steps[iStep];
             break;
         case "m": // focus last step or container
             if (e.target == lastStep) {
-                mainTargetDiv.focus()
+                mainTargetDiv.focus();
             } else {
-                lastStep.focus()
+                lastStep.focus();
             }
-            // if (lastStep) {
-            // } else {
-            //     mainTargetDiv.focus();
-            // }
             if (e.target == mainTargetDiv && !lastStep) {
-                steps[0].focus()
+                steps[0].focus();
             }
             break;
         default:
@@ -146,20 +136,18 @@ export function handleStepKeys(key, e, mainTargetDiv) {
                     steps[iStep].focus();
                     lastStep = steps[iStep];
                 } else {
-                    endNxtLessonBtn.focus()
+                    endNxtLessonBtn.focus();
                 }
-                
             }
             break;
     }
 }
+
 // --- Image handling ---
 function toggleSingleImage(img) {
-    // denlargeAllImages();
     img.classList.toggle("enlarge");
     img.style.zIndex = img.classList.contains("enlarge") ? 100 : 0;
 }
-
 
 function toggleStepImages(step) {
     const images = Array.from(step.querySelectorAll(".step-img > img"));
@@ -169,23 +157,18 @@ function toggleStepImages(step) {
         toggleSingleImage(images[0]);
     } else {
         // Multi-image cycling
-        if(currentIndex ==2){
-            step.focus()
-            denlargeAllImages()
-            
-            currentIndex = 0
-        }else {
-            denlargeAllImages()
-            if(images[currentIndex]){
+        if (currentIndex == 2) {
+            step.focus();
+            denlargeAllImages();
+            currentIndex = 0;
+        } else {
+            denlargeAllImages();
+            if (images[currentIndex]) {
                 images[currentIndex].classList.add("enlarge");
                 images[currentIndex].style.zIndex = 100;
-                // currentIndex = (currentIndex + 1) % images.length;
-                currentIndex += 1
+                currentIndex += 1;
             }
-            
         }
-        
-        
     }
 }
 
@@ -196,19 +179,17 @@ export function denlargeAllImages() {
         img.style.zIndex = 0;
     });
 }
-// function scrollIntoViewEl(el){
-//     el.scrollIntoView({behavior: 'instant', block: 'center'})
-// }
 
-function getStepFloat(target){
-    if(target.classList.contains('step-float')){
-        return target
-    } else if (target.parentElement){
-        return getStepFloat(target.parentElement)
+function getStepFloat(target) {
+    if (target.classList.contains('step-float')) {
+        return target;
+    } else if (target.parentElement) {
+        return getStepFloat(target.parentElement);
     } else {
-        return null
+        return null;
     }
 }
-function goToStep(step){
-    step.scrollIntoView({behavior: 'instant',inline:'start', block: 'start'})
+
+function goToStep(step) {
+    step.scrollIntoView({ behavior: 'instant', inline: 'start', block: 'start' });
 }
