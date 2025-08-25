@@ -4,7 +4,7 @@
 @import url('responsive.css');
 @import url('./dark-mode.css');
 /* Components */
-@import url('./copy-code.css');
+@import url('./copyCode.css');
 @import url('components/sidebar.css');
 @import url('components/stepTxt.css');
 @import url('components/imgVideos.css');
