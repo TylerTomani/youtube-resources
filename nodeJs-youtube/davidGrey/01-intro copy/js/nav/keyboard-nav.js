@@ -45,6 +45,7 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
         }
 
         el.addEventListener("focus", () => {
+            focusZone = 'sidebar'
             lastFocusedLink = el;
             iSideBarLinks = [...sidebarLinks].indexOf(el);
         });
@@ -63,6 +64,7 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
         el.addEventListener("keydown", e => {
             const key = e.key.toLowerCase();
             if (key === 'enter') {
+                focusZone = 'sidebar'
                 const targetLink = e.target.closest("a");
                 if (targetLink) injectContent(targetLink.href, mainTargetDiv);
                 if (e.target === lastClickedLink) mainTargetDiv.focus();
@@ -219,7 +221,7 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
                     if (mainContainer.classList.contains("collapsed")) {
                         mainContainer.classList.remove("collapsed");
                     }
-                    focusZone === 'sidebar'
+                    
                     sKeyFocusOrder()
                 }
                 // lesson-btns-container 
@@ -239,6 +241,6 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
 
                 break;
         }
-        // console.log(lastStep)
+        console.log(copyCodesStepFocused)
     });
 }

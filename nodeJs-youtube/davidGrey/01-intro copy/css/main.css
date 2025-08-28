@@ -3,12 +3,12 @@
 /* main.css */
 @import url('home-page.css');
 @import url('darkMode.css');
-/* @import url('responsive.css'); */
+@import url('responsive.css');
 /* Components */
 @import url('./copyCode.css');
 @import url('components/sidebar.css');
 @import url('components/stepTxt.css');
-@import url('components/imgVideos.css');
+@import url('components/imgsVideos.css');
 /* Utilities */
 @import url('utilities/borders.css');
 @import url('utilities/colors.css');

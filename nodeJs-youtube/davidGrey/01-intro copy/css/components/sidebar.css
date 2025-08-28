@@ -1,13 +1,13 @@
 :root {
   --sidebar-width: 120px;
   --main-content-width: calc(100% - var(--sidebar-width));
-  --sidebar-collapsed-width: 40px;
+  --sidebar-collapsed-width: 5%;
 }
 main.main-container.collapsed .main-content-container {
-  flex-basis: 95%;
+flex-basis: 95%;
 }
 main.main-container.collapsed .side-bar {
-  width: var(--sidebar-collapsed-width);
+  flex-basis: var(--sidebar-collapsed-width)
 }
 main.main-container.collapsed .side-bar h2,
 main.main-container.collapsed .side-bar .sidebar-links-ul {

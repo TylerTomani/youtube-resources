@@ -2,6 +2,9 @@
 :root {
     --highlight-color: rgb(0, 139, 137);
 }
+a:visited{
+    color: black;
+}
 a:focus,
 .page-header a:active {
     bottom: 20px solid blue;
