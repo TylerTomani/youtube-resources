@@ -1,5 +1,5 @@
 // step-txt.js
-import { endNxtLessonBtn } from "./keyboard-nav.js";
+import { endNxtLessonBtn,tutorialLink } from "./keyboard-nav.js";
 export let lastStep = null;
 let steps = [];
 let allImgs = [];
@@ -116,14 +116,35 @@ export function handleStepKeys(key, e, mainTargetDiv) {
         } else {
             const stepFloat = getStepFloat(e.target)
             const copyCodes = stepFloat.querySelectorAll('.copy-code')
-            let intKey = parseInt(key)
-            copyCodes[intKey - 1].focus()
+            if(copyCodes.length > 1){
+                let intKey = parseInt(key)
+                copyCodes[intKey - 1].focus()
+            } else {
+                const index = parseInt(key, 10) - 1;
+                if (index >= 0 && index < steps.length) {
+                    iStep = index;
+                    steps[iStep].focus();
+                    lastStep = steps[iStep];
+                } 
+            }
         }
     }
     switch (key) {
         case "enter":
             if (e.target == mainTargetDiv) {
                 steps[0].focus()
+            }
+            else {
+
+                const vidBase = e.target.getAttribute("data-video");
+                const ts = e.target.getAttribute("data-timestamp");
+
+                let vidHref = vidBase;
+                if (ts) {
+                    vidHref += (vidBase.includes("?") ? "&" : "?") + `t=${ts}s`;
+                    tutorialLink.href = vidHref;
+                    console.log('tutorialLink', tutorialLink)
+                }
             }
             break;
         case "f" : // next step

@@ -25,6 +25,7 @@
     }
     .step-float .step-img>img.enlarge {
         /* not absolute, escape parent */
+        max-height: 45vh;
         top: 50%;
         left: 50%;
         transform: translate(-10%, -50%) scale(1.9) !important;

@@ -147,8 +147,6 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
     }
     // This function is imncomplete
     function mKeyFocusOrder(e) {
-        
-        // focusZone = 'main'
         const steps = document.querySelectorAll('.step-float')
         if (lastStep) {
             lastStep.focus()
