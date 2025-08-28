@@ -9,3 +9,8 @@ main.main-container.collapsed #sideBarBtn {
 }
 
 .step-txt ul li {line-height: 1.5;}
+
+
+.copy-code{
+    font-family: monospace;
+}

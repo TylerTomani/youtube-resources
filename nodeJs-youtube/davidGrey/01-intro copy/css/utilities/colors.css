@@ -1,6 +1,6 @@
 .r{color: red;}
 .tom{color: tomato;}
-.gr{color: goldenrod;}
+.step-txt p .gr{color: goldenrod;}
 
 .sidebar-links-ul li a,:visited,
 .page-header .header-col-left>.header-nav a:visited {color: black;}
