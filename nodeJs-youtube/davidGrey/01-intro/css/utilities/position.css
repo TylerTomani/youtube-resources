@@ -15,15 +15,7 @@ main.main-container.collapsed #sideBarBtn {
     display: flex;
     flex-direction: row;
 }
-/* Sidebar sticky */
-.side-bar {
-    position: sticky;
-    top: 0;
-    /* sticks below header if header has height */
-    flex-shrink: 0;
-    /* overflow: hidden; */
-    /* height: calc(100vh - var(--header-height, 80px)); */
-}
+
 .lesson-btns-container {
     position: fixed;
     bottom: 5vh;
