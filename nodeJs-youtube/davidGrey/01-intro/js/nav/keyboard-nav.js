@@ -6,6 +6,8 @@ export let lastFocusedLink = null;
 export let lastClickedLink = null;
 export const endNxtLessonBtn = document.querySelector('#endNxtLessonBtn')   
 const prevLessonBtn = document.querySelector('#prevLessonBtn')   
+const tutorialLink = document.querySelector('#tutorialLink')
+
 export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, darkModeBtn,
     sidebar, sidebarBtn, sidebarLinks, mainTargetDiv, mainContainer }) {
     let focusZone = "header"; // "header" | "sidebar" | "main"
@@ -53,11 +55,21 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
         el.addEventListener("click", e => {
             e.preventDefault();
             e.stopPropagation();
+            let videoBase = e.target.getAttribute('data-video')
             const targetLink = e.target.closest("a");
+            let vidHref = videoBase
+            let ts = e.target.getAttribute('data-timestamp')
+            if(ts){
+                vidHref += (videoBase.include("?") ? "&" : "?") + `t=${ts}s`
+                tutorialLink.href = vidHref
+                console.log(vidHref)
+            }
             if (targetLink) {
                 iSideBarLinks = [...sidebarLinks].indexOf(el);
                 injectContent(targetLink.href, mainTargetDiv, sidebarLinks, iSideBarLinks, navLessonTitle);
             }
+            console.log(tutorialLink)
+            tutorialLink.href = e.target.getAttribute
             lastClickedLink = e.target;
         });
 
@@ -79,8 +91,9 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
     endNxtLessonBtn.addEventListener('click', e => {
         
         iSideBarLinks = (iSideBarLinks + 1) % sidebarLinks.length
-        sidebarLinks[iSideBarLinks].focus()
-        
+        // sidebarLinks[iSideBarLinks].focus()
+        mainTargetDiv.scrollIntoView({behavior: 'instant', block: 'start'})
+    scrollTo
         sidebarLinks[iSideBarLinks].click()
         
 
@@ -105,6 +118,7 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
         else if (lastFocusedLink) lastFocusedLink.focus();
         else sidebarLinks[0].focus();
     }
+    // This function is imncomplete
     function mKeyFocusOrder(e) {
         focusZone = 'main'
         const steps = document.querySelectorAll('.step-float')
