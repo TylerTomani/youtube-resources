@@ -122,6 +122,7 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
     function mKeyFocusOrder(e) {
         focusZone = 'main'
         const steps = document.querySelectorAll('.step-float')
+        console.log(mainTargetDiv)
         if (e.target.classList.contains('step-float')) {
             
         }
@@ -206,7 +207,7 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
                     sidebarLinks[iSideBarLinks].focus();
                 }
                 else if (key === 'm') {
-
+                    
                     mKeyFocusOrder(e)
                 } else if (key === 's') {
                     // Toggle between sidebarBtn and last clicked link
