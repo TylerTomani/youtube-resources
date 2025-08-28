@@ -6,7 +6,7 @@ export let lastFocusedLink = null;
 export let lastClickedLink = null;
 export const endNxtLessonBtn = document.querySelector('#endNxtLessonBtn')   
 const prevLessonBtn = document.querySelector('#prevLessonBtn')   
-const tutorialLink = document.querySelector('#tutorialLink')
+export const tutorialLink = document.querySelector('#tutorialLink')
 
 export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, darkModeBtn,
     sidebar, sidebarBtn, sidebarLinks, mainTargetDiv, mainContainer }) {
@@ -70,9 +70,6 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
                     tutorialLink.href = vidHref;
                 }
 
-                // update external tutorial link
-                console.log("Updated tutorialLink:", tutorialLink.href);
-
                 injectContent(targetLink.href, mainTargetDiv, sidebarLinks, iSideBarLinks, navLessonTitle);
             }
 
@@ -85,22 +82,44 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
                 focusZone = 'sidebar'
                 const targetLink = e.target.closest("a");
                 if (targetLink) injectContent(targetLink.href, mainTargetDiv);
-                if (e.target === lastClickedLink) mainTargetDiv.focus();
+                if (e.target === lastClickedLink){
+                    // mainTargetDiv.focus();
+                    const stepFloats = mainTargetDiv.querySelectorAll('.step-float')
+                    stepFloats[0].focus()
+                }
                 lastClickedLink = e.target;
             } else if (key === 's') {
                 sidebarBtn.focus(); // toggle back to sidebar button
+            }
+            if(key === 'm'){
+                // mainTargetDiv.focus()
+                mKeyFocusOrder(e)
             }
         });
     });
 
     
     endNxtLessonBtn.addEventListener('click', e => {
-        
+        e.preventDefault()
         iSideBarLinks = (iSideBarLinks + 1) % sidebarLinks.length
         // sidebarLinks[iSideBarLinks].focus()
         mainTargetDiv.scrollIntoView({behavior: 'instant', block: 'start'})
-    scrollTo
         sidebarLinks[iSideBarLinks].click()
+        
+
+    })
+    endNxtLessonBtn.addEventListener('keydown', e => {
+        let key = e.key.toLowerCase() 
+        if(key === 'm'){
+            mainTargetDiv.scrollIntoView({ behavior: 'instant', block: 'start' })
+
+        }
+        if(key === 'enter'){
+            iSideBarLinks = (iSideBarLinks + 1) % sidebarLinks.length
+            // sidebarLinks[iSideBarLinks].focus()
+            mainTargetDiv.scrollIntoView({ behavior: 'instant', block: 'start' })
+            sidebarLinks[iSideBarLinks].click()
+        }
         
 
     })
@@ -126,15 +145,14 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
     }
     // This function is imncomplete
     function mKeyFocusOrder(e) {
+        
         focusZone = 'main'
         const steps = document.querySelectorAll('.step-float')
-        if (e.target.classList.contains('step-float')) {
-            
-        }
+        console.log(steps[0])
         if (lastStep) {
             lastStep.focus()
         } else {
-            mainTargetDiv.focus()
+            // mainTargetDiv.focus()
             steps[0].focus()
         }
     }
@@ -191,6 +209,7 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
                     sKeyFocusOrder()
                 }
                 if (key === 'm') {
+                    focusZone = 'main'
                     mKeyFocusOrder(e)
                 };
                 if (!isNaN(key)) numberShortcut(key);

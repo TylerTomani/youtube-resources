@@ -11,7 +11,9 @@ a:focus,
     text-decoration: underline;
 }
 #mainTargetDiv:active,#mainTargetDiv:focus{
-    /* border: 1px solid var(--highlight-color);     */
+    box-shadow: none;
+    border: 4px solid green !important;
+    /* background-color: blue !important; */
 }
 #targetDiv{
     overflow: auto;

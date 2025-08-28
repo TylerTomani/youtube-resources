@@ -49,6 +49,7 @@ export function initStepNavigation(mainTargetDiv) {
                     toggleStepImages(step);
                     step.scrollIntoView({ behavior: 'instant', block: 'start' });
                     lastStep = step
+                    // copyCodesStepFocused = true
                 }
                 if (key === 'm') {
                     if(!copyCodesStepFocused){
@@ -57,25 +58,15 @@ export function initStepNavigation(mainTargetDiv) {
                         step.focus()
                     }
                 }
-                if(key === ';' || key === 'l'){
-                    const stepFloat = getStepFloat(e.target.parentElement)
-                    const copycodes = stepFloat.querySelectorAll('.copy-code')
-                    if(key === ';'){
-                        // Maybe add this
-                        
-                    }
-                }
+              
             });
             // --- unified pointerdown for click/tap ---
             step.addEventListener("pointerdown", e => {
                 e.preventDefault();
                 e.stopPropagation();
-
                 if (e.target.tagName !== "IMG") {
                     denlargeAllImages();
                     lastStep = step;
-                } else {
-                    toggleStepImages(step);
                 }
             });
 
@@ -86,8 +77,12 @@ export function initStepNavigation(mainTargetDiv) {
     // Add image click/touch listeners (now redundant, so left empty)
     allImgs.forEach(img => {
         if (!img.dataset.listenerAdded) {
+            img.addEventListener('click', e => {
+                toggleSingleImage(img)
+            })
             img.dataset.listenerAdded = "true";
         }
+        
     });
 
     // Initialize copy-code focus behavior
@@ -131,28 +126,31 @@ export function handleStepKeys(key, e, mainTargetDiv) {
                 steps[0].focus()
             }
             break;
-        case "f" || ';': // next step
-            // if (copyCodesStepFocused) return;
-            if (e.target == mainTargetDiv) {
-                iStep = 0;
+        case "f" : // next step
+            if (!copyCodesStepFocused) {
+                if (e.target == mainTargetDiv) {
+                    iStep = 0;
+                    goToStep(steps[iStep]);
+                } else {
+                    iStep = (iStep + 1) % steps.length;
+                }
+                steps[iStep].focus();
                 goToStep(steps[iStep]);
+                lastStep = steps[iStep];
             } else {
-                iStep = (iStep + 1) % steps.length;
+
             }
-            steps[iStep].focus();
-            goToStep(steps[iStep]);
-            lastStep = steps[iStep];
             break;
         case "a": // previous step
             iStep = (iStep - 1 + steps.length) % steps.length;
             steps[iStep].focus();
             lastStep = steps[iStep];
             break;
-        case "e": // go to last step
+        case "e": // go to last stepm
             break;
         case "m": // focus last step or container
-        if(copyCodesStepFocused){
-                console.log('here')
+            if(copyCodesStepFocused){
+                copyCodesStepFocused = false
             }
             // if (e.target == lastStep) {
             //     mainTargetDiv.focus();
@@ -178,6 +176,7 @@ function toggleSingleImage(img) {
 
 function toggleStepImages(step) {
     const images = Array.from(step.querySelectorAll(".step-img > img"));
+    
     if (!images.length) return;
     if (images.length === 1) {
         toggleSingleImage(images[0]);

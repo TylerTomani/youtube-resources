@@ -146,7 +146,7 @@ export function handleStepKeys(key, e, mainTargetDiv) {
             steps[iStep].focus();
             lastStep = steps[iStep];
             break;
-        case "e": // go to last step
+        case "e": // go to last stepm
             break;
         case "m": // focus last step or container
             if(copyCodesStepFocused){

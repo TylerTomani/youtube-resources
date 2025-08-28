@@ -21,7 +21,7 @@ export function injectContent(href, mainTargetDiv, sidebarLinks, iSideBarLinks, 
             // Initialize step navigation & copy-code buttons
             initStepNavigation(mainTargetDiv, sidebarLinks, iSideBarLinks);
             addCopyCode();
-
+            
             // Optional callback after injection
             if (typeof callback === "function") callback();
         })

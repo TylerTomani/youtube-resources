@@ -15,7 +15,10 @@ main.main-container.collapsed #sideBarBtn {
     display: flex;
     flex-direction: row;
 }
-
+#navLessonTitle {
+    /* position: sticky;
+    top: 0; */
+}
 .lesson-btns-container {
     position: fixed;
     bottom: 5vh;
@@ -35,3 +38,28 @@ main.main-container.collapsed #sideBarBtn {
 }
 
 .step-float {position: relative;}
+#targetDiv{
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+}
+#targetDiv > .main-container {
+    /* position: relative; */
+}
+#targetDiv > .main-container > header{
+    z-index: 9;
+   /* position: sticky; */
+   top: 0;
+   /* margin-bottom: 5%; */
+
+   /* display: none; */
+}
+
+#targetHeaderh3{
+    /* position: sticky; */
+    /* top: 0; */
+    /* background-color: white; */
+    /* top: var(--header-height); */
+    /* background-color: black; */
+    /* color: white;; */
+}

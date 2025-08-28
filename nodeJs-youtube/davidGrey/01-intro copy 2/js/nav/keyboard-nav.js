@@ -6,6 +6,8 @@ export let lastFocusedLink = null;
 export let lastClickedLink = null;
 export const endNxtLessonBtn = document.querySelector('#endNxtLessonBtn')   
 const prevLessonBtn = document.querySelector('#prevLessonBtn')   
+const tutorialLink = document.querySelector('#tutorialLink')
+
 export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, darkModeBtn,
     sidebar, sidebarBtn, sidebarLinks, mainTargetDiv, mainContainer }) {
     let focusZone = "header"; // "header" | "sidebar" | "main"
@@ -45,6 +47,7 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
         }
 
         el.addEventListener("focus", () => {
+            focusZone = 'sidebar'
             lastFocusedLink = el;
             iSideBarLinks = [...sidebarLinks].indexOf(el);
         });
@@ -52,17 +55,34 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
         el.addEventListener("click", e => {
             e.preventDefault();
             e.stopPropagation();
+
             const targetLink = e.target.closest("a");
             if (targetLink) {
                 iSideBarLinks = [...sidebarLinks].indexOf(el);
+
+                // get data attrs
+                const vidBase = targetLink.getAttribute("data-video");
+                const ts = targetLink.getAttribute("data-timestamp");
+
+                let vidHref = vidBase;
+                if (ts) {
+                    vidHref += (vidBase.includes("?") ? "&" : "?") + `t=${ts}s`;
+                    tutorialLink.href = vidHref;
+                }
+
+                // update external tutorial link
+                console.log("Updated tutorialLink:", tutorialLink.href);
+
                 injectContent(targetLink.href, mainTargetDiv, sidebarLinks, iSideBarLinks, navLessonTitle);
             }
+
             lastClickedLink = e.target;
         });
 
         el.addEventListener("keydown", e => {
             const key = e.key.toLowerCase();
             if (key === 'enter') {
+                focusZone = 'sidebar'
                 const targetLink = e.target.closest("a");
                 if (targetLink) injectContent(targetLink.href, mainTargetDiv);
                 if (e.target === lastClickedLink) mainTargetDiv.focus();
@@ -77,8 +97,9 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
     endNxtLessonBtn.addEventListener('click', e => {
         
         iSideBarLinks = (iSideBarLinks + 1) % sidebarLinks.length
-        sidebarLinks[iSideBarLinks].focus()
-        
+        // sidebarLinks[iSideBarLinks].focus()
+        mainTargetDiv.scrollIntoView({behavior: 'instant', block: 'start'})
+    scrollTo
         sidebarLinks[iSideBarLinks].click()
         
 
@@ -103,6 +124,7 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
         else if (lastFocusedLink) lastFocusedLink.focus();
         else sidebarLinks[0].focus();
     }
+    // This function is imncomplete
     function mKeyFocusOrder(e) {
         focusZone = 'main'
         const steps = document.querySelectorAll('.step-float')
@@ -190,7 +212,7 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
                     sidebarLinks[iSideBarLinks].focus();
                 }
                 else if (key === 'm') {
-
+                    
                     mKeyFocusOrder(e)
                 } else if (key === 's') {
                     // Toggle between sidebarBtn and last clicked link
@@ -219,7 +241,7 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
                     if (mainContainer.classList.contains("collapsed")) {
                         mainContainer.classList.remove("collapsed");
                     }
-                    focusZone === 'sidebar'
+                    
                     sKeyFocusOrder()
                 }
                 // lesson-btns-container 
@@ -239,6 +261,5 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
 
                 break;
         }
-        // console.log(lastStep)
     });
 }
