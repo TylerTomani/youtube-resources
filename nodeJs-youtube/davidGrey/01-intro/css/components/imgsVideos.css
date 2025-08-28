@@ -60,6 +60,7 @@ video.enlarge-vid {
     position: fixed;
     transform: scale(2.5);
     pointer-events: auto;
+    
 
 }
 .step-float .step-img>img.enlarge {

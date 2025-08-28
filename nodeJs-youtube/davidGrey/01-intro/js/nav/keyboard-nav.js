@@ -69,7 +69,7 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
                     vidHref += (vidBase.includes("?") ? "&" : "?") + `t=${ts}s`;
                     tutorialLink.href = vidHref;
                 }
-
+                console.log(tutorialLink.href)
                 injectContent(targetLink.href, mainTargetDiv, sidebarLinks, iSideBarLinks, navLessonTitle);
             }
 
@@ -86,6 +86,7 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
                     mainTargetDiv.focus();
                     const stepFloats = mainTargetDiv.querySelectorAll('.step-float')
                     // stepFloats[0].focus()
+
                 }
                 lastClickedLink = e.target;
             } else if (key === 's') {
@@ -93,6 +94,7 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
             }
             if(key === 'm'){
                 // mainTargetDiv.focus()
+                console.log(e.target)
                 mKeyFocusOrder(e)
             }
         });
@@ -146,15 +148,17 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
     // This function is imncomplete
     function mKeyFocusOrder(e) {
         
-        focusZone = 'main'
+        // focusZone = 'main'
         const steps = document.querySelectorAll('.step-float')
-        console.log(steps[0])
         if (lastStep) {
             lastStep.focus()
-        } else {
-            // mainTargetDiv.focus()
+        } else if(steps[0]){
             steps[0].focus()
+        } else {
+
+            mainTargetDiv.focus()
         }
+        console.log('here')
     }
 
     function headerElementsFocus(key, e) {

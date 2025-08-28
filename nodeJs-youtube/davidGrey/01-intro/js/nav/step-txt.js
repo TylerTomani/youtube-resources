@@ -143,7 +143,7 @@ export function handleStepKeys(key, e, mainTargetDiv) {
                 if (ts) {
                     vidHref += (vidBase.includes("?") ? "&" : "?") + `t=${ts}s`;
                     tutorialLink.href = vidHref;
-                    console.log(tutorialLink)
+                    console.log('tutorialLink', tutorialLink)
                 }
             }
             break;

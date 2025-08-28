@@ -27,37 +27,17 @@
         /* not absolute, escape parent */
         top: 50%;
         left: 50%;
-        /* center + enlarge */
         transform: translate(-10%, -50%) scale(1.9) !important;
         z-index: 9999 !important;
-
     }
-    .imgs-container .step-img>img.enlarge {
-            /* transform: scale(2.5) !important; */
-            /* not absolute, escape parent */
-            top: 0%;
-            left: 0%;
-            /* center + enlarge */
-            transform: translate(-20%, -80%) scale(1.8) !important;
-            z-index: 9999 !important;
-    
-        }
+    .imgs-container .step-img>img.enlarge {    
+        top: 0%;
+        left: 0%;
+        transform: translate(-20%, -80%) scale(1.8) !important;
+        z-index: 9999 !important;
+    }
 }
 @media screen and (max-width: 600px) {
-
-    /* .page-header .header-col-left>.header-nav a {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 1% 2%;
-        font-size: 80%;
-    }
-    #navLessonTitle {
-        padding: 2%;
-    }
-    h1,h2,h3,h4{
-        font-size: 80%;
-    } */
     .step-float p {
     } 
     .side-bar {
