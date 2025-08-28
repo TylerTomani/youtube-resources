@@ -21,14 +21,16 @@
     }
 } */
 @media screen and (min-width: 601px) {
-    .enlarge{
+    .step-float .step-txt p {
+        margin: 2.5% 0 ;
+        line-height: 1.6;
     }
     .step-float .step-img>img.enlarge {
         /* not absolute, escape parent */
-        max-height: 45vh;
+        max-height: 40vh;
         top: 50%;
         left: 50%;
-        transform: translate(-10%, -50%) scale(1.9) !important;
+        transform: translate(-10%, -65%) scale(1.8) !important;
         z-index: 9999 !important;
     }
     .imgs-container .step-img>img.enlarge {    

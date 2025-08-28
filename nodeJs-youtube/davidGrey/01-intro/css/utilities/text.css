@@ -14,3 +14,8 @@ main.main-container.collapsed #sideBarBtn {
 .copy-code{
     font-family: monospace;
 }
+
+p>code {
+    font-family: bold;
+    font-weight: 888;
+}
