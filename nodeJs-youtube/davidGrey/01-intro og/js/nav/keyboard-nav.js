@@ -117,10 +117,10 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
 
         }
         if(key === 'enter'){
-            iSideBarLinks = (iSideBarLinks + 1) % sidebarLinks.length
+            // iSideBarLinks = (iSideBarLinks + 1) % sidebarLinks.length
             // sidebarLinks[iSideBarLinks].focus()
-            mainTargetDiv.scrollIntoView({ behavior: 'instant', block: 'start' })
-            sidebarLinks[iSideBarLinks].click()
+            // mainTargetDiv.scrollIntoView({ behavior: 'instant', block: 'start' })
+            // sidebarLinks[iSideBarLinks].click()
         }
         
 
@@ -233,8 +233,8 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
                     sidebarLinks[iSideBarLinks].focus();
                 }
                 else if (key === 'm') {
-                    
-                    mKeyFocusOrder(e)
+                    mainTargetDiv.focus()
+                    // mKeyFocusOrder(e)
                 } else if (key === 's') {
                     // Toggle between sidebarBtn and last clicked link
                     denlargeAllImages()
