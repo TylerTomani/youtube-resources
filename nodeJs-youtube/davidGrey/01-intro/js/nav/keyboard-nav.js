@@ -55,21 +55,27 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
         el.addEventListener("click", e => {
             e.preventDefault();
             e.stopPropagation();
-            let videoBase = e.target.getAttribute('data-video')
+
             const targetLink = e.target.closest("a");
-            let vidHref = videoBase
-            let ts = e.target.getAttribute('data-timestamp')
-            if(ts){
-                vidHref += (videoBase.include("?") ? "&" : "?") + `t=${ts}s`
-                tutorialLink.href = vidHref
-                console.log(vidHref)
-            }
             if (targetLink) {
                 iSideBarLinks = [...sidebarLinks].indexOf(el);
+
+                // get data attrs
+                const vidBase = targetLink.getAttribute("data-video");
+                const ts = targetLink.getAttribute("data-timestamp");
+
+                let vidHref = vidBase;
+                if (ts) {
+                    vidHref += (vidBase.includes("?") ? "&" : "?") + `t=${ts}s`;
+                    tutorialLink.href = vidHref;
+                }
+
+                // update external tutorial link
+                console.log("Updated tutorialLink:", tutorialLink.href);
+
                 injectContent(targetLink.href, mainTargetDiv, sidebarLinks, iSideBarLinks, navLessonTitle);
             }
-            console.log(tutorialLink)
-            tutorialLink.href = e.target.getAttribute
+
             lastClickedLink = e.target;
         });
 
@@ -122,7 +128,6 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
     function mKeyFocusOrder(e) {
         focusZone = 'main'
         const steps = document.querySelectorAll('.step-float')
-        console.log(mainTargetDiv)
         if (e.target.classList.contains('step-float')) {
             
         }
@@ -256,6 +261,5 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
 
                 break;
         }
-        console.log(copyCodesStepFocused)
     });
 }
