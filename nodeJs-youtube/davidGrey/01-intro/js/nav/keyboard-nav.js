@@ -83,9 +83,9 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
                 const targetLink = e.target.closest("a");
                 if (targetLink) injectContent(targetLink.href, mainTargetDiv);
                 if (e.target === lastClickedLink){
-                    // mainTargetDiv.focus();
+                    mainTargetDiv.focus();
                     const stepFloats = mainTargetDiv.querySelectorAll('.step-float')
-                    stepFloats[0].focus()
+                    // stepFloats[0].focus()
                 }
                 lastClickedLink = e.target;
             } else if (key === 's') {
