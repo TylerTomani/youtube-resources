@@ -113,9 +113,11 @@ export function handleStepKeys(key, e, mainTargetDiv) {
                 iStep = index;
                 steps[iStep].focus();
                 lastStep = steps[iStep];
-            } else {
-                endNxtLessonBtn.focus();
+                
+            } else if(index > steps.length){
+                endNxtLessonBtn.focus()
             }
+
         } else {
             const stepFloat = getStepFloat(e.target)
             const copyCodes = stepFloat.querySelectorAll('.copy-code')
@@ -170,7 +172,6 @@ export function handleStepKeys(key, e, mainTargetDiv) {
                 iCopyCodes = (iCopyCodes + 1) % copyCodes.length
                 copyCodes[iCopyCodes].focus()
 
-                console.log(stepFloat)
             }
             break;
         case "a": // previous step
@@ -186,7 +187,6 @@ export function handleStepKeys(key, e, mainTargetDiv) {
                 iCopyCodes = (iCopyCodes - 1 + copyCodes.length) % copyCodes.length
                 copyCodes[iCopyCodes].focus()
 
-                console.log(stepFloat)
             }
             break;
         case "e": // go to last stepm
@@ -205,7 +205,6 @@ export function handleStepKeys(key, e, mainTargetDiv) {
             // }
             break;
         default:
-            // console.log('def')
             
             break;
     }

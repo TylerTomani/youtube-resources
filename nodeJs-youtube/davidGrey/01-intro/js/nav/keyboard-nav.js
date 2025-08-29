@@ -87,7 +87,6 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
             }
             if(key === 'm'){
                 // mainTargetDiv.focus()
-                // console.log(e.target)
                 mKeyFocusOrder(e)
             }
         });
@@ -275,14 +274,13 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
 }
 export function changeTutorialLink(targetLink){
     // get data attrs
-    console.log(targetLink)
+    
     const vidBase = targetLink.getAttribute("data-video");
     const ts = targetLink.getAttribute("data-timestamp");
-
+    console.log(targetLink)
     let vidHref = vidBase;
     if (ts) {
         vidHref += (vidBase.includes("?") ? "&" : "?") + `t=${ts}s`;
         tutorialLink.href = vidHref;
     }
-    // console.log(tutorialLink.href)
 }
