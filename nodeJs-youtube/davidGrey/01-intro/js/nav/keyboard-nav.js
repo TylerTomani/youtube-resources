@@ -282,6 +282,7 @@ export function changeTutorialLink(targetLink){
     const vidBase = targetLink.getAttribute("data-video");
     const ts = targetLink.getAttribute("data-timestamp");
     console.log(targetLink)
+    console.log(ts)
     let vidHref = vidBase;
     if (ts) {
         vidHref += (vidBase.includes("?") ? "&" : "?") + `t=${ts}s`;

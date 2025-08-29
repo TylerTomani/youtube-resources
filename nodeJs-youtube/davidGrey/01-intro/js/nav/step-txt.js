@@ -51,18 +51,8 @@ export function initStepNavigation(mainTargetDiv) {
                     step.scrollIntoView({ behavior: 'instant', block: 'start' });
                     lastStep = step
                     // copyCodesStepFocused = true
-                    console.log('here enter')
-                    const vidBase = e.target.getAttribute("data-video");
-                    const ts = e.target.getAttribute("data-timestamp");
-
-                    let vidHref = vidBase;
-                    if (ts) {
-                        vidHref += (vidBase.includes("?") ? "&" : "?") + `t=${ts}s`;
-                        tutorialLink.href = vidHref;
-
-                    }
-                    console.log('here enter step ')
-                    console.log(vidHref)
+                    
+                    changeTutorialLink(e.target)
                 }
                 if (key === 'm') {
                     if(!copyCodesStepFocused){
