@@ -41,6 +41,8 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
     // --- Sidebar links ---
     sidebarLinks.forEach(el => {
         if (el.hasAttribute("autofocus")) {
+            lastClickedLink = el
+
             iSideBarLinks = [...sidebarLinks].indexOf(el);
             focusZone = "sidebar";
             injectContent(el.href, mainTargetDiv, sidebarLinks, iSideBarLinks, navLessonTitle);
@@ -60,16 +62,7 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
             if (targetLink) {
                 iSideBarLinks = [...sidebarLinks].indexOf(el);
 
-                // get data attrs
-                const vidBase = targetLink.getAttribute("data-video");
-                const ts = targetLink.getAttribute("data-timestamp");
-
-                let vidHref = vidBase;
-                if (ts) {
-                    vidHref += (vidBase.includes("?") ? "&" : "?") + `t=${ts}s`;
-                    tutorialLink.href = vidHref;
-                }
-                console.log(tutorialLink.href)
+                changeTutorialLink(targetLink)
                 injectContent(targetLink.href, mainTargetDiv, sidebarLinks, iSideBarLinks, navLessonTitle);
             }
 
@@ -114,14 +107,11 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
         let key = e.key.toLowerCase() 
         if(key === 'm'){
             mainTargetDiv.scrollIntoView({ behavior: 'instant', block: 'start' })
+            // mainTargetDiv.focus()
+            mKeyFocusOrder()
 
         }
-        if(key === 'enter'){
-            // iSideBarLinks = (iSideBarLinks + 1) % sidebarLinks.length
-            // sidebarLinks[iSideBarLinks].focus()
-            // mainTargetDiv.scrollIntoView({ behavior: 'instant', block: 'start' })
-            // sidebarLinks[iSideBarLinks].click()
-        }
+        
         
 
     })
@@ -283,4 +273,16 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
                 break;
         }
     });
+}
+function changeTutorialLink(targetLink){
+    // get data attrs
+    const vidBase = targetLink.getAttribute("data-video");
+    const ts = targetLink.getAttribute("data-timestamp");
+
+    let vidHref = vidBase;
+    if (ts) {
+        vidHref += (vidBase.includes("?") ? "&" : "?") + `t=${ts}s`;
+        tutorialLink.href = vidHref;
+    }
+    console.log(tutorialLink.href)
 }

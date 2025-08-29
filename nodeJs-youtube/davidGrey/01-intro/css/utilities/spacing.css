@@ -1,3 +1,4 @@
+/* spacing.css */
 #darkmodeBtn{
     padding: 0 2%;
 }
@@ -6,6 +7,12 @@
 }
 #sideBarBtn {
   margin-top: 2%;
+}
+#targetDiv{
+  padding-bottom: 25%;
+}
+#targetDiv>.main-container>header {
+  margin-bottom: 1rem;
 }
 .lesson-btns-container>button{
   padding: 1% 3%

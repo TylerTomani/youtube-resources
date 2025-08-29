@@ -100,7 +100,7 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
         // sidebarLinks[iSideBarLinks].focus()
         mainTargetDiv.scrollIntoView({behavior: 'instant', block: 'start'})
         sidebarLinks[iSideBarLinks].click()
-        
+        lastClickedLink = sidebarLinks[iSideBarLinks]
 
     })
     endNxtLessonBtn.addEventListener('keydown', e => {
