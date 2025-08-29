@@ -105,14 +105,18 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
     endNxtLessonBtn.addEventListener('keydown', e => {
         let key = e.key.toLowerCase() 
         if(key === 'm'){
-            mainTargetDiv.scrollIntoView({ behavior: 'instant', block: 'start' })
+            // mainTargetDiv.scrollIntoView({ behavior: 'instant', block: 'start' })
             // mainTargetDiv.focus()
-            mKeyFocusOrder()
+            // This is overkill redundancy but i'm sick of it not working 
+            const steps = document.querySelectorAll('.step-float')
+            if(!steps){
+                mainTargetDiv.focus()
+                return
+            } else{
 
+                mKeyFocusOrder()
+            }
         }
-        
-        
-
     })
     prevLessonBtn.addEventListener('click', e => {
         iSideBarLinks = (iSideBarLinks - 1 + sidebarLinks.length) % sidebarLinks.length

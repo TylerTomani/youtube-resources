@@ -195,14 +195,17 @@ export function handleStepKeys(key, e, mainTargetDiv) {
             if(copyCodesStepFocused){
                 copyCodesStepFocused = false
             }
-            // if (e.target == lastStep) {
-            //     mainTargetDiv.focus();
-            // } else {
-            //     lastStep.focus();
-            // }
-            // if (e.target == mainTargetDiv && !lastStep) {
-            //     steps[0].focus();
-            // }
+            if (e.target == lastStep) {
+                mainTargetDiv.focus();
+            } else {
+                if(lastStep){
+
+                    lastStep.focus();
+                }
+            }
+            if (e.target == mainTargetDiv && !lastStep) {
+                steps[0].focus();
+            }
             break;
         default:
             
