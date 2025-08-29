@@ -65,7 +65,6 @@ body{
 #targetDiv>.main-container {
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
     
 }
 

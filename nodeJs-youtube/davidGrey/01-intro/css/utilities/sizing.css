@@ -23,6 +23,7 @@
 }
 #mainTargetDiv .main-container {
     width: 100%;
+    overflow-x: hidden;
 }
 .lesson-btns-container {width: 50%;}
 .lesson-btns-container>button {
