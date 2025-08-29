@@ -19,7 +19,9 @@
 .step-img>img {
     position: absolute;
     width: 98%;
-    max-width: 500px;
+    max-width: 410px;
+    border-radius: 4px;
+    box-shadow: 0 0 1px 1px lightcyan;
     /* border: 1px solid white; */
     pointer-events: auto;
     transition: all 0.025s ease;

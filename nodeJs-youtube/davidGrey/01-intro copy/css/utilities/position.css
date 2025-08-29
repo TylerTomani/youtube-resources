@@ -4,16 +4,22 @@ main.main-container.collapsed #sideBarBtn {
     bottom: 12%;
     left: 20%;
 }
-/* position.css */
-.page-header {
-    /* position: sticky; */
-}
 .page-wrapper {
     position: relative;
 }
+/* Main content scrollable */
+#targetDiv{
+    position: relative;
+}
+
 .main-container {
     display: flex;
     flex-direction: row;
+    position: relative;
+}
+#targetDiv>.main-container>header {
+    position: sticky;
+    top: 0;
 }
 #navLessonTitle {
     /* position: sticky;
@@ -21,15 +27,9 @@ main.main-container.collapsed #sideBarBtn {
 }
 .lesson-btns-container {
     position: fixed;
-    bottom: 5vh;
-}
-
-.lesson-btns-container {
     bottom: 0;
 }
-
 /* Lessons stepTxt injectContent() */
-
 .step-img>img {
     position: relative;
 }
@@ -38,22 +38,7 @@ main.main-container.collapsed #sideBarBtn {
 }
 
 .step-float {position: relative;}
-#targetDiv{
-    /* position: absolute; */
-    /* height: 100vh; */
-    /* width: 100%; */
-}
-#targetDiv > .main-container {
-    /* position: relative; */
-}
-#targetDiv > .main-container > header{
-    z-index: 9;
-   /* position: sticky; */
-   top: 0;
-   /* margin-bottom: 5%; */
 
-   /* display: none; */
-}
 
 #targetHeaderh3{
     /* position: sticky; */

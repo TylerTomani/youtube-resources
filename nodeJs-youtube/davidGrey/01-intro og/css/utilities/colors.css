@@ -1,7 +1,23 @@
 .r{color: red;}
 .tom{color: tomato;}
 .step-txt p .gr{color: goldenrod;}
+p>code.m,
+p>span.m {
+    color: magenta !important
+}
+p>code.y,
+p>span.y {
+    color: rgb(172, 172, 53) !important
+}
 
+p>code.o,
+p>span.o {
+    color: orange !important
+}
+p>code.mb,
+p>span.mb {
+    color: rgb(110, 136, 214) !important;
+}
 .sidebar-links-ul li a,:visited,
 .page-header .header-col-left>.header-nav a:visited {color: black;}
 .sidebar-links-ul li a,
@@ -12,5 +28,11 @@
 
 .code-container> textarea,
 .code-container>pre.copy-code {
-    background-color: white;
+    background-color: whitesmoke;
+}
+
+
+#targetDiv>.main-container>header {
+    
+    
 }

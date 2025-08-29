@@ -17,8 +17,11 @@
     max-height: 150px;
     
 }
+/* Main content scrollable */
+#targetDiv {
+    height: 100vh;
+}
 #mainTargetDiv .main-container {
-    height: 100%;
     width: 100%;
 }
 .lesson-btns-container {width: 50%;}

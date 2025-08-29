@@ -163,9 +163,11 @@ export function handleStepKeys(key, e, mainTargetDiv) {
             }
             break;
         case "a": // previous step
-            iStep = (iStep - 1 + steps.length) % steps.length;
-            steps[iStep].focus();
-            lastStep = steps[iStep];
+            if (!copyCodesStepFocused) {
+                iStep = (iStep - 1 + steps.length) % steps.length;
+                steps[iStep].focus();
+                lastStep = steps[iStep];
+            }
             break;
         case "e": // go to last stepm
             break;

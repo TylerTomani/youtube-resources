@@ -1,3 +1,4 @@
+/* spacing.css */
 #darkmodeBtn{
     padding: 0 2%;
 }
@@ -6,6 +7,13 @@
 }
 #sideBarBtn {
   margin-top: 2%;
+}
+#targetDiv{
+  padding-bottom: 25%;
+}
+#targetDiv>.main-container>header {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 .lesson-btns-container>button{
   padding: 1% 3%
@@ -23,9 +31,6 @@
 .step-float:first-child .step-img img.enlarge {
   margin-top: 5% !important;
 }
-
-
-
 .code-container textarea,
 .code-container pre{
   padding-left:  2%;

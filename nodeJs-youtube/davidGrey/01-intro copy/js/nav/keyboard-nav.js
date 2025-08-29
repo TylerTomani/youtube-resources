@@ -87,7 +87,7 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
             }
             if(key === 'm'){
                 // mainTargetDiv.focus()
-                console.log(e.target)
+                // console.log(e.target)
                 mKeyFocusOrder(e)
             }
         });
@@ -100,7 +100,7 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
         // sidebarLinks[iSideBarLinks].focus()
         mainTargetDiv.scrollIntoView({behavior: 'instant', block: 'start'})
         sidebarLinks[iSideBarLinks].click()
-        
+        lastClickedLink = sidebarLinks[iSideBarLinks]
 
     })
     endNxtLessonBtn.addEventListener('keydown', e => {
@@ -146,7 +146,6 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
 
             mainTargetDiv.focus()
         }
-        console.log('here')
     }
 
     function headerElementsFocus(key, e) {

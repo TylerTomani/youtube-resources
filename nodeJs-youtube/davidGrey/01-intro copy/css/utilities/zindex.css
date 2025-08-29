@@ -1,4 +1,13 @@
 /* z-index.css */
+.page-header {
+    z-index: 0
+}
+.page-header {
+    z-index: 0;
+}
+#targetDiv>.main-container>header {
+    z-index: 10;
+}
 .lesson-btns-container {
     z-index: 10
 }

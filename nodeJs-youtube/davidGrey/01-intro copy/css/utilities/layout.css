@@ -8,16 +8,7 @@ body{
     overflow-x: hidden;
 }
 .page-header {
-    z-index: 0;
-    /* position: fixed; */
     display: flex;
-}
-#targetDiv {
-    height: 100%;
-    overflow-x: hidden;
-    overflow-y: hidden;
-    /* scroll-behavior: smooth; */
-    padding-bottom: 25%;
 }
 #navLessonTitle{
     display: flex;
@@ -61,15 +52,28 @@ body{
     align-items: center;
     justify-content: center;
 }
-.main-container {
+/* Main content scrollable */
+#targetDiv {
+    height: 100vh;
+    /* full viewport height */
+    overflow-y: scroll;
+    /* allow scrolling */
+    overflow-x: hidden;
+
+}
+
+#targetDiv>.main-container {
     display: flex;
+    flex-direction: column;
+    flex-grow: 1;
     
 }
+
+#targetDiv>.main-container>header {}
 
 .sidebar-links-ul{
     overflow-x: hidden;
 }
-/* Main content scrollable */
 .home-page .imgs-container .img-container {
     flex-basis: 50%;
     /* background-color: blue; */
@@ -78,12 +82,7 @@ body{
     position: fixed;
     display: flex;
 }
-
 /* lessons injectContent() */
-#targetDiv > .main-container{
-    display: flex;
-    flex-direction: column;
-}
 .step,
 .step-float {
     flex-grow: 1;

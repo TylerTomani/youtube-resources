@@ -12,6 +12,7 @@
   padding-bottom: 25%;
 }
 #targetDiv>.main-container>header {
+  margin-top: 1rem;
   margin-bottom: 1rem;
 }
 .lesson-btns-container>button{
