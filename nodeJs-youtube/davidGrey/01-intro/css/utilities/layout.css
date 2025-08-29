@@ -52,6 +52,9 @@ body{
     align-items: center;
     justify-content: center;
 }
+#mainTargetDiv>.main-container {
+    overflow-x: hidden;
+}
 /* Main content scrollable */
 #targetDiv {
     height: 100vh;

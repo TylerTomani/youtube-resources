@@ -12,7 +12,7 @@ main.main-container.collapsed #sideBarBtn {
     position: relative;
 }
 
-.main-container {
+main.main-container {
     display: flex;
     flex-direction: row;
     position: relative;
@@ -40,11 +40,3 @@ main.main-container.collapsed #sideBarBtn {
 .step-float {position: relative;}
 
 
-#targetHeaderh3{
-    /* position: sticky; */
-    /* top: 0; */
-    /* background-color: white; */
-    /* top: var(--header-height); */
-    /* background-color: black; */
-    /* color: white;; */
-}

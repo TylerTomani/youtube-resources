@@ -43,7 +43,7 @@
     position: fixed;
     transform: scale(2.5);
     pointer-events: auto;
-    max-width: 100% !important;
+    max-width: 480px !important;
 
 }
 .step-float .step-img>img.enlarge {
