@@ -10,30 +10,27 @@
     <div id="targetDiv">
         <div class="main-container">
             <header>
-                <h3 id="targetHeaderh3">8. importing / create module</h3>
+                <h3 id="targetHeaderh3">9. Destructure <code class="y">{}</code> from module <code>require('')</code></h3>
             </header>
             <div class="steps-container">
                 <!-- 01 -->
                 <div tabindex="0" data-video="https://www.youtube.com/watch?v=JZXQ455OT3A" 
-                data-timestamp="776" class="step-float">
+                data-timestamp="840" class="step-float">
                     <div class="step-img">
-                        <img src="sidebar-links/08/images/01.png" alt="">
+                        <img src="sidebar-links/09/images/01.png" alt="">
                     </div>
                     <div class="step-txt ">
                         <h4>01</h4>
                         <p class="">
-                            Create a new file in the same directory, with function to export as an object with 
-                            <code><span class="dc">module</span>.<span class="dc">exports</span></code>
-                            this example contains math functions in <code>math.js</code>
+                            Use <code class="m">{}</code> to destructe individual variables fron module
                         </p>
                         <div class="code-container">
                             <pre tabindex="0" class="copy-code">
-const add = (a,b) => a + b
-const subtract = (a,b) =>  a - b
-const multiply = (a,b) =>  a * b
-const divide = (a,b) => a / b
-<span class="dc">module</span>.<span class="dc">exports</span> = {add,substact,multiply,divide}</pre>
-                        </div>
+                                
+                                
+const <span class="m">{ </span>subtract, divide <span class="m">}</span> = require('./math')
+console.log(subtract(10,5))
+console.log(divide(87,10))</div>
                     </div>
                 
                 </div>
@@ -46,7 +43,7 @@ const divide = (a,b) => a / b
                     <div class="step-txt ">
                         <h4>02</h4>
                         <p class="">
-                            Import them into the server with <code>require('<span class="tom txt125 ls1px">./</span>')</code>
+                            In modules like <code>math.js</code>,You can  use <code><span class="dc">exports</span>.</code> in modules instead of module.exports
                         </p>
                         <p>
                             you must use specific path when not using <b>Common Core Modules</b>. <span class="r"></span>
@@ -54,9 +51,11 @@ const divide = (a,b) => a / b
                         </p>
                         <div class="code-container">
                             <pre tabindex="0" class="copy-code">
-const math = require('./math')
-console.log(math.add(4,7))
-console.log(math.multiply(3,5))</pre>
+<span class="dc">exports</span>.const add = (a,b) => a + b
+<span class="dc">exports</span>.const subtract = (a,b) => a - b
+<span class="dc">exports</span>.const multiply = (a,b) => a * b
+<span class="dc">exports</span>.const divide = (a,b) => a / b</pre>
+
                         </div>
                     </div>
                 

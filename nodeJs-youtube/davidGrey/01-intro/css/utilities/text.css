@@ -19,3 +19,9 @@ p>code {
     font-family: bold;
     font-weight: 888;
 }
+.txt125 {
+    font-size: 150%;
+}
+.ls1px{letter-spacing: 1px;}
+.ls2px{letter-spacing: 5px;}
+.ls5px{letter-spacing: 5px;}

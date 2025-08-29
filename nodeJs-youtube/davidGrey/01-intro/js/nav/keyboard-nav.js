@@ -114,8 +114,8 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
                 return
             } else{
 
-                mKeyFocusOrder()
             }
+            mKeyFocusOrder()
         }
     })
     prevLessonBtn.addEventListener('click', e => {
@@ -146,7 +146,6 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
         } else if(steps[0]){
             steps[0].focus()
         } else {
-
             mainTargetDiv.focus()
         }
     }
@@ -154,6 +153,9 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
     function headerElementsFocus(key, e) {
         pageHeaderLinks.forEach(el => { if (key === el.id[0]) el.focus(); });
         switch (key) {
+            case  "a":
+                sKeyFocusOrder()
+                break
             case "c":
                 const codeComShortcutsLink = document.querySelector("#codeComShortcutsLink");
                 const chatGptProjLink = document.querySelector("#chatGptProjLink");
@@ -225,8 +227,8 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
                     sidebarLinks[iSideBarLinks].focus();
                 }
                 else if (key === 'm') {
-                    mainTargetDiv.focus()
-                    // mKeyFocusOrder(e)
+                    // mainTargetDiv.focus()
+                    mKeyFocusOrder(e)
                 } else if (key === 's') {
                     // Toggle between sidebarBtn and last clicked link
                     denlargeAllImages()
