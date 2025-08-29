@@ -4,8 +4,8 @@ import { handleStepKeys, lastStep, copyCodesStepFocused } from "./step-txt.js";
 import { denlargeAllImages } from "./step-txt.js";
 export let lastFocusedLink = null;
 export let lastClickedLink = null;
-export const endNxtLessonBtn = document.querySelector('#endNxtLessonBtn')   
-const prevLessonBtn = document.querySelector('#prevLessonBtn')   
+export const endNxtLessonBtn = document.querySelector('#endNxtLessonBtn')
+const prevLessonBtn = document.querySelector('#prevLessonBtn')
 export const tutorialLink = document.querySelector('#tutorialLink')
 
 export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, darkModeBtn,
@@ -34,7 +34,7 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
         if (key === 'f' || key === ';') {
             // I don't get how this line works??
             iSideBarLinks = Math.max(iSideBarLinks - 1, -1);
-            
+
         }
     });
 
@@ -75,7 +75,7 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
                 focusZone = 'sidebar'
                 const targetLink = e.target.closest("a");
                 if (targetLink) injectContent(targetLink.href, mainTargetDiv);
-                if (e.target === lastClickedLink){
+                if (e.target === lastClickedLink) {
                     mainTargetDiv.focus();
                     const stepFloats = mainTargetDiv.querySelectorAll('.step-float')
                     // stepFloats[0].focus()
@@ -85,14 +85,14 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
             } else if (key === 's') {
                 sidebarBtn.focus(); // toggle back to sidebar button
             }
-            if(key === 'm'){
+            if (key === 'm') {
                 // mainTargetDiv.focus()
                 mKeyFocusOrder(e)
             }
         });
     });
 
-    
+
     endNxtLessonBtn.addEventListener('click', e => {
         e.preventDefault()
         iSideBarLinks = (iSideBarLinks + 1) % sidebarLinks.length
@@ -103,16 +103,16 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
 
     })
     endNxtLessonBtn.addEventListener('keydown', e => {
-        let key = e.key.toLowerCase() 
-        if(key === 'm'){
+        let key = e.key.toLowerCase()
+        if (key === 'm') {
             // mainTargetDiv.scrollIntoView({ behavior: 'instant', block: 'start' })
             // mainTargetDiv.focus()
             // This is overkill redundancy but i'm sick of it not working sometimes
             const steps = document.querySelectorAll('.step-float')
-            if(!steps){
+            if (!steps) {
                 mainTargetDiv.focus()
                 return
-            } else{
+            } else {
 
             }
             mKeyFocusOrder()
@@ -122,11 +122,11 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
         iSideBarLinks = (iSideBarLinks - 1 + sidebarLinks.length) % sidebarLinks.length
         deHighlightSideBarLink()
         sidebarLinks[iSideBarLinks].click()
-    
+
     })
-    function deHighlightSideBarLink(){
+    function deHighlightSideBarLink() {
         sidebarLinks.forEach(el => {
-            if(el.classList.contains('hlight')){
+            if (el.classList.contains('hlight')) {
                 el.classList.remove('hlight')
             }
         })
@@ -143,7 +143,7 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
         const steps = document.querySelectorAll('.step-float')
         if (lastStep) {
             lastStep.focus()
-        } else if(steps[0]){
+        } else if (steps[0]) {
             steps[0].focus()
         } else {
             mainTargetDiv.focus()
@@ -153,7 +153,7 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
     function headerElementsFocus(key, e) {
         pageHeaderLinks.forEach(el => { if (key === el.id[0]) el.focus(); });
         switch (key) {
-            case  "a":
+            case "a":
                 sKeyFocusOrder()
                 break
             case "c":
@@ -183,7 +183,7 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
             if (index >= 0 && index < steps.length) steps[index].focus();
         }
     }
-    
+
     // --- Global key handling ---
     addEventListener("keydown", e => {
         const key = e.key.toLowerCase();
@@ -256,7 +256,7 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
                     if (mainContainer.classList.contains("collapsed")) {
                         mainContainer.classList.remove("collapsed");
                     }
-                    
+
                     sKeyFocusOrder()
                 }
                 // lesson-btns-container 
@@ -278,9 +278,9 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
         }
     });
 }
-export function changeTutorialLink(targetLink){
+export function changeTutorialLink(targetLink) {
     // get data attrs
-    
+
     const vidBase = targetLink.getAttribute("data-video");
     const ts = targetLink.getAttribute("data-timestamp");
     console.log(targetLink)

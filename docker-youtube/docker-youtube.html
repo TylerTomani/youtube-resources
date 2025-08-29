@@ -1,54 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>docker-youtube</title>
-    <link rel="stylesheet" href="../css/footer-double-link-header.css">
-    <link rel="stylesheet" href="../css/topics-templates/drop-topic-sub-resources.css">
-    <link rel="stylesheet" href="../css/topics-templates/sub-drop-topics-container.css">
-    <link rel="stylesheet" href="css/main-docker-yt.css">
+    <link rel="stylesheet" href="../css/css-index/page-header.css">
+    <link rel="stylesheet" href="../css/css-index/footer-double-link-header.css">
+    <link rel="stylesheet" href="../css/css-index/drop-topic-sub-resources.css">
+    <link rel="stylesheet" href="../css/css-index/sub-drop-topics-container.css">
+    <link rel="stylesheet" href="../css/css-index/dark-mode-index.css">
 
-    <link rel="stylesheet" href="../css/dark-mode.css">
-    <script src="../js/dark-mode.js" defer></script>
-
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <script src="../js/dropTopic-temp/dropTopics-topic-resource.js" defer></script>
-    <script src="../js/letterFocus-temps/letterFocus-txt-nums.js" defer></script>
+    <script src="../js/js-index/dropTopics-topic-resource.js" defer></script>
+    <script src="../js/js-index/letterFocus-txt-nums.js" defer></script>
+    <script src="../js/js-index/dark-mode-index.js" defer></script>
+    <!-- <script type="module" src="js/"></script> -->
+    <!--  -->
 </head>
+
 <body class="dark-mode">
-<!-- This script only works initially if inside DOMContentLoaded -->
+    <!-- This script only works initially if inside DOMContentLoaded -->
     <div class="page-wrapper">
         <header class="page-header">
-            <div class="page-title">
+            <div class="page-title-logo">
                 <h1>Documentation - docker-youtube resources</h1>
-                
-                    <!-- <img
-                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png"> -->
+                <!-- <img src="https://yt3.googleusercontent.com/IuUVliKgcHvOuXvv_bjUT6cO75mK7TmKWLnoWqlB5fMCSPyVDXlkZD99Jm4fdZETF73vF5DZXW0=w1707-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj"
+                    alt=""> -->
             </div>
+            <!-- <img src="data:image/png;base64,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"
+                alt=""> -->
+            <img src="https://www.gstatic.com/youtube/img/promos/growth/c81b5546515db139dd72ba0e35474c4b9381a82c4f36701326e9beffe097b6f2_244x112.webp"
+                alt="">
         </header>
-        <main tabindex="0" id="mainContainer">
-            <h2 tabindex="0" id="topics" >Topics</h2>
+        <main>
             <div class="topics-container">
-                <!-- Animaions & Games -->
+                <h2 tabindex="0" id="topics">Topics</h2>
+                <!-- basics -->
                 <div class="topic-container ">
-                    <header  tabindex="0" id="introInstall" class="drop-topic">
-                        <h3>Intro / Install</h3>
+                    <header tabindex="0" id="basics" class="drop-topic">
+                        <h3>basics</h3>
                     </header>
                     <ul class="sub-resources-container show">
                         <li>
-                            <!-- <a tabindex="0" id="chrisCourses" class="resource" href="chrisCoursesOg/chrisCourses.html">
-                            Chris Courses
-                            <img src="https://i.ytimg.com/vi/3RXlQPkJzCM/maxresdefault.jpg" alt="">
-                            </a> -->
-                            <a tabindex="0" id="mCodingDocker" class="resource" href="mCoding/01-mCoding-docker/01-mCoding-docker.html">
-                            mCoding-docker
-                            <img src="https://i.ytimg.com/vi/b0HMimUb4f0/maxresdefault.jpg">
+                            <a tabindex="0" id="mCodingDocker" class="resource "
+                                href="mCoding/01-mCoding-docker/01-mCoding-docker.html">01
+                                mCoding-Docker
+                                <img
+                                    src="https://i.ytimg.com/vi/b0HMimUb4f0/maxresdefault.jpg">
                             </a>
                         </li>
+                        
+
                     </ul>
                 </div>
-                
             </div>
         </main>
         <nav class="styles-btns">
@@ -59,8 +63,10 @@
         </nav>
         <footer class="footer-header">
             <div class="main-links">
-                <a tabindex="0" id="homelink" href="https://tylertomani.github.io/homepage-2025/">Home (homepage)</a>
-                <a tabindex="0" id="backlink" href="../index.html">&larr;back (youtube- resources)</a>
+                <a tabindex="0" id="backlink"
+                    href="../index.html">&larr;back (youtube-resource)
+                    (youtube- resources)</a>
+                <a tabindex="0" id="homelink" href="https://tylertomani.github.io/homepage-2025/">Home (homepage-2025)</a>
             </div>
             <div class="main-links">
                 <a tabindex="0" id="codeComandShortcuts" target="_blank" href="https://tylertomani.github.io/myWebSite/webPages/codeComShortcuts/codeComShortcuts.html
@@ -69,12 +75,8 @@
                                                         ">chatGpt
                     Questions</a>
             </div>
-            
-            <!-- <div class="page-logo">
-                <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png">
-            </div> -->
         </footer>
     </div>
 </body>
+
 </html>
