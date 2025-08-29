@@ -97,7 +97,7 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
         e.preventDefault()
         iSideBarLinks = (iSideBarLinks + 1) % sidebarLinks.length
         // sidebarLinks[iSideBarLinks].focus()
-        mainTargetDiv.scrollIntoView({behavior: 'instant', block: 'start'})
+        window.scrollTo({ top: 0, behavior: 'instant' });
         sidebarLinks[iSideBarLinks].click()
         lastClickedLink = sidebarLinks[iSideBarLinks]
 

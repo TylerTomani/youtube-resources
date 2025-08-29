@@ -44,6 +44,8 @@
 
 .code-container textarea.copy-code{
     min-width: 80vw;
+    /* min-height: 20vh; */
+    min-height: fit-content;
 }
 .code-container > pre.copy-code {
     width: fit-content;

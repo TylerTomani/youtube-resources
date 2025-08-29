@@ -51,10 +51,13 @@ export function initStepNavigation(mainTargetDiv) {
                     step.scrollIntoView({ behavior: 'instant', block: 'start' });
                     lastStep = step
                     // copyCodesStepFocused = true
+                    
+                    changeTutorialLink(e.target)
                 }
                 if (key === 'm') {
                     if(!copyCodesStepFocused){
                         mainTargetDiv.focus()
+                        body.scrollIntoView({ behavior: 'instant', block: 'start'})
                     } else {
                         step.focus()
                     }
@@ -69,7 +72,6 @@ export function initStepNavigation(mainTargetDiv) {
                     denlargeAllImages();
                     lastStep = step;
                     changeTutorialLink(e.target)
-                    console.log(e.target.href)
                 }
             });
 
@@ -141,15 +143,16 @@ export function handleStepKeys(key, e, mainTargetDiv) {
             }
             else {
 //  I need to put this in a function 
-                const vidBase = e.target.getAttribute("data-video");
-                const ts = e.target.getAttribute("data-timestamp");
+                // console.log('here enter')
+                // const vidBase = e.target.getAttribute("data-video");
+                // const ts = e.target.getAttribute("data-timestamp");
 
-                let vidHref = vidBase;
-                if (ts) {
-                    vidHref += (vidBase.includes("?") ? "&" : "?") + `t=${ts}s`;
-                    tutorialLink.href = vidHref;
+                // let vidHref = vidBase;
+                // if (ts) {
+                //     vidHref += (vidBase.includes("?") ? "&" : "?") + `t=${ts}s`;
+                //     tutorialLink.href = vidHref;
                 
-                }
+                // }
             }
             break;
         case "f" : // next step
@@ -197,11 +200,8 @@ export function handleStepKeys(key, e, mainTargetDiv) {
             }
             if (e.target == lastStep) {
                 mainTargetDiv.focus();
-            } else {
-                if(lastStep){
-
-                    lastStep.focus();
-                }
+            } else if(lastStep){
+                lastStep.focus();
             }
             if (e.target == mainTargetDiv && !lastStep) {
                 steps[0].focus();

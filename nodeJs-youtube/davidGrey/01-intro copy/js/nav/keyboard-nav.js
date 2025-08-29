@@ -97,7 +97,7 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
         e.preventDefault()
         iSideBarLinks = (iSideBarLinks + 1) % sidebarLinks.length
         // sidebarLinks[iSideBarLinks].focus()
-        mainTargetDiv.scrollIntoView({behavior: 'instant', block: 'start'})
+        window.scrollTo({ top: 0, behavior: 'instant' });
         sidebarLinks[iSideBarLinks].click()
         lastClickedLink = sidebarLinks[iSideBarLinks]
 
@@ -107,7 +107,7 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
         if(key === 'm'){
             // mainTargetDiv.scrollIntoView({ behavior: 'instant', block: 'start' })
             // mainTargetDiv.focus()
-            // This is overkill redundancy but i'm sick of it not working 
+            // This is overkill redundancy but i'm sick of it not working sometimes
             const steps = document.querySelectorAll('.step-float')
             if(!steps){
                 mainTargetDiv.focus()
@@ -282,6 +282,7 @@ export function changeTutorialLink(targetLink){
     const vidBase = targetLink.getAttribute("data-video");
     const ts = targetLink.getAttribute("data-timestamp");
     console.log(targetLink)
+    console.log(ts)
     let vidHref = vidBase;
     if (ts) {
         vidHref += (vidBase.includes("?") ? "&" : "?") + `t=${ts}s`;
