@@ -273,8 +273,9 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
         }
     });
 }
-function changeTutorialLink(targetLink){
+export function changeTutorialLink(targetLink){
     // get data attrs
+    console.log(targetLink)
     const vidBase = targetLink.getAttribute("data-video");
     const ts = targetLink.getAttribute("data-timestamp");
 
@@ -283,5 +284,5 @@ function changeTutorialLink(targetLink){
         vidHref += (vidBase.includes("?") ? "&" : "?") + `t=${ts}s`;
         tutorialLink.href = vidHref;
     }
-    console.log(tutorialLink.href)
+    // console.log(tutorialLink.href)
 }

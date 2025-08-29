@@ -1,5 +1,5 @@
 // step-txt.js
-import { endNxtLessonBtn,tutorialLink } from "./keyboard-nav.js";
+import { changeTutorialLink, tutorialLink, endNxtLessonBtn } from "./keyboard-nav.js";
 export let lastStep = null;
 let steps = [];
 let allImgs = [];
@@ -67,6 +67,8 @@ export function initStepNavigation(mainTargetDiv) {
                 if (e.target.tagName !== "IMG") {
                     denlargeAllImages();
                     lastStep = step;
+                    changeTutorialLink(e.target)
+                    console.log(e.target.href)
                 }
             });
 
@@ -135,7 +137,7 @@ export function handleStepKeys(key, e, mainTargetDiv) {
                 steps[0].focus()
             }
             else {
-
+//  I need to put this in a function 
                 const vidBase = e.target.getAttribute("data-video");
                 const ts = e.target.getAttribute("data-timestamp");
 
@@ -143,7 +145,7 @@ export function handleStepKeys(key, e, mainTargetDiv) {
                 if (ts) {
                     vidHref += (vidBase.includes("?") ? "&" : "?") + `t=${ts}s`;
                     tutorialLink.href = vidHref;
-                    console.log('tutorialLink', tutorialLink)
+                
                 }
             }
             break;

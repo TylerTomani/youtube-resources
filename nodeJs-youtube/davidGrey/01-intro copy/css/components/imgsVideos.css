@@ -36,33 +36,14 @@
     margin-left: 10px;
 }
 
-.step-vid>video {
-    position: absolute;
-    width: 98%;
-    border: 1px solid white;
-    max-width: 500px;
-    /* z-index: 5; */
-    transition: all 0.025s ease;
-}
 
-/* Enlarged video */
-video.enlarge-vid {
-    position: absolute;
-    /* z-index: 100; */
-    min-height: 150px;
-    min-width: 250px;
-    right: 20%;
-    transform: scale(1.5);
-}
-
-/* Odd column enlarged tweak */
 /* Enlarged images always on top */
 .step-img>img{z-index: 0}
 .step-img>img.enlarge {
     position: fixed;
     transform: scale(2.5);
     pointer-events: auto;
-    
+    max-width: 480px !important;
 
 }
 .step-float .step-img>img.enlarge {

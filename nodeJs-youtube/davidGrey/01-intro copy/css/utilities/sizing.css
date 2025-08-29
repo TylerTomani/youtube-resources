@@ -21,8 +21,9 @@
 #targetDiv {
     height: 100vh;
 }
-#mainTargetDiv .main-container {
+#mainTargetDiv > .main-container {
     width: 100%;
+    
 }
 .lesson-btns-container {width: 50%;}
 .lesson-btns-container>button {

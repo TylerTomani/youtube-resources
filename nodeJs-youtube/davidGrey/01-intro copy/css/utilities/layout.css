@@ -52,6 +52,9 @@ body{
     align-items: center;
     justify-content: center;
 }
+#mainTargetDiv>.main-container {
+    overflow-x: hidden;
+}
 /* Main content scrollable */
 #targetDiv {
     height: 100vh;
@@ -65,7 +68,6 @@ body{
 #targetDiv>.main-container {
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
     
 }
 
