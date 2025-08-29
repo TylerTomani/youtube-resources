@@ -35,6 +35,7 @@ export function initStepNavigation(mainTargetDiv) {
                 copyCodesStepFocused = false
                 iStep = index;
                 currentIndex = 0;
+                iCopyCodes = 0
             });
 
             step.addEventListener("focusin", () => { 
@@ -112,9 +113,11 @@ export function handleStepKeys(key, e, mainTargetDiv) {
                 iStep = index;
                 steps[iStep].focus();
                 lastStep = steps[iStep];
-            } else {
-                endNxtLessonBtn.focus();
+                
+            } else if(index > steps.length){
+                endNxtLessonBtn.focus()
             }
+
         } else {
             const stepFloat = getStepFloat(e.target)
             const copyCodes = stepFloat.querySelectorAll('.copy-code')
@@ -150,6 +153,7 @@ export function handleStepKeys(key, e, mainTargetDiv) {
             }
             break;
         case "f" : // next step
+
             if (!copyCodesStepFocused) {
                 if (e.target == mainTargetDiv) {
                     iStep = 0;
@@ -161,6 +165,12 @@ export function handleStepKeys(key, e, mainTargetDiv) {
                 goToStep(steps[iStep]);
                 lastStep = steps[iStep];
             } else {
+                const stepFloat = getStepFloat(e.target)
+                const imgs = stepFloat.querySelectorAll('img')
+                imgs.forEach(el => el.classList.contains('enlarge'))
+                const copyCodes = stepFloat.querySelectorAll('.copy-code')
+                iCopyCodes = (iCopyCodes + 1) % copyCodes.length
+                copyCodes[iCopyCodes].focus()
 
             }
             break;
@@ -169,6 +179,14 @@ export function handleStepKeys(key, e, mainTargetDiv) {
                 iStep = (iStep - 1 + steps.length) % steps.length;
                 steps[iStep].focus();
                 lastStep = steps[iStep];
+            } else {
+                const stepFloat = getStepFloat(e.target)
+                const imgs = stepFloat.querySelectorAll('img')
+                imgs.forEach(el => el.classList.contains('enlarge'))
+                const copyCodes = stepFloat.querySelectorAll('.copy-code')
+                iCopyCodes = (iCopyCodes - 1 + copyCodes.length) % copyCodes.length
+                copyCodes[iCopyCodes].focus()
+
             }
             break;
         case "e": // go to last stepm
@@ -187,7 +205,6 @@ export function handleStepKeys(key, e, mainTargetDiv) {
             // }
             break;
         default:
-            // console.log('def')
             
             break;
     }

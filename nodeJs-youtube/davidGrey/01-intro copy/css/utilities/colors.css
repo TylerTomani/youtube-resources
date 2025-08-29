@@ -1,6 +1,10 @@
 .r{color: red;}
 .tom{color: tomato;}
 .step-txt p .gr{color: goldenrod;}
+p>code.lb,
+p>span.lb {
+    color: rgb(47, 173, 201);
+}
 p>code.m,
 p>span.m {
     color: magenta !important
