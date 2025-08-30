@@ -57,7 +57,7 @@ export function initStepNavigation(mainTargetDiv) {
                 if (key === 'm') {
                     if(!copyCodesStepFocused){
                         mainTargetDiv.focus()
-                        body.scrollIntoView({ behavior: 'instant', block: 'start'})
+                        // body.scrollIntoView({ behavior: 'instant', block: 'start'})
                     } else {
                         step.focus()
                     }

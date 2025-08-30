@@ -85,8 +85,11 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
             } else if (key === 's') {
                 sidebarBtn.focus(); // toggle back to sidebar button
             }
-            if(key === 'm'){
-                // mainTargetDiv.focus()
+            if (key === 'm') {
+                mainTargetDiv.focus()
+                focusZone = 'main'
+                console.log(mainTargetDiv)
+                console.log('this is glitchy code line 92 keyboard-nav')
                 mKeyFocusOrder(e)
             }
         });
