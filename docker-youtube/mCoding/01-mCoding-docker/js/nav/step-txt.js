@@ -49,6 +49,9 @@ export function initStepNavigation(mainTargetDiv) {
                 if (key === "enter") {
                     toggleStepImages(step);
                     step.scrollIntoView({ behavior: 'instant', block: 'start' });
+                    const firstCopyCode = e.target.querySelector('.copy-code')
+                    copyCodesStepFocused = true
+                    firstCopyCode.focus()
                     lastStep = step
                     // copyCodesStepFocused = true
                     
