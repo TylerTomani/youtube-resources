@@ -1,8 +1,10 @@
 // step-txt.js
 import { changeTutorialLink, tutorialLink, endNxtLessonBtn } from "./keyboard-nav.js";
+import { handleVideo } from "./playStepVid.js";
 export let lastStep = null;
 let steps = [];
 let allImgs = [];
+let allVids = [];
 let stepImageIndexes = new WeakMap();
 let iStep = 0;
 let iCopyCodes = 0;
@@ -18,7 +20,7 @@ export function initStepNavigation(mainTargetDiv) {
     if (!mainTargetDiv) return;
     steps = Array.from(mainTargetDiv.querySelectorAll(".steps-container > .step-float"));
     allImgs = Array.from(mainTargetDiv.querySelectorAll(".step-img > img"));
-
+    allVids = Array.from(mainTargetDiv.querySelectorAll('video'))
     // Initialize first step
     if (steps.length && !lastStep) {
         // lastStep = steps[0];
@@ -36,6 +38,7 @@ export function initStepNavigation(mainTargetDiv) {
                 iStep = index;
                 currentIndex = 0;
                 iCopyCodes = 0
+                pauseEnlargeAllVids()
             });
 
             step.addEventListener("focusin", () => { 
@@ -46,8 +49,14 @@ export function initStepNavigation(mainTargetDiv) {
             
             step.addEventListener("keydown", e => {
                 let key = e.key.toLowerCase();
+                const hasVideo = step.querySelector('video') ? true : false
+                if(hasVideo){
+                    const video = step.querySelector('video')
+                    handleVideo(video, e)
+                    return
+                }
                 if (key === "enter") {
-                    toggleStepImages(step);
+                    toggleStepImages(step,e);
                     step.scrollIntoView({ behavior: 'instant', block: 'start' });
                     const firstCopyCode = e.target.querySelector('.copy-code')
                     copyCodesStepFocused = true
@@ -224,9 +233,9 @@ function toggleSingleImage(img) {
     // img.style.zIndex = img.classList.contains("enlarge") ? 100 : 0;
 }
 
-function toggleStepImages(step) {
-    const images = Array.from(step.querySelectorAll(".step-img > img"));
+function toggleStepImages(step,e) {
     
+    const images = Array.from(step.querySelectorAll(".step-img > img"));
     if (!images.length) return;
     if (images.length === 1) {
         toggleSingleImage(images[0]);
@@ -254,6 +263,19 @@ export function denlargeAllImages() {
         img.classList.remove("enlarge");
         // img.style.zIndex = 0;
     });
+}
+export function pauseEnlargeAllVids() {
+    allVids.forEach(vid => {
+        console.log(vid)
+        if (vid.classList.contains('enlarge')) {
+            console.log(vid)
+            vid.classList.remove('enlarge')
+        }
+        console.log(vid.playing)
+        if(vid.playing){
+            vid.pause()
+        }
+    })
 }
 
 function getStepFloat(target) {

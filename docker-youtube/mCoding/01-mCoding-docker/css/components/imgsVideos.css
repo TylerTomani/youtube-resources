@@ -28,15 +28,6 @@
     touch-action: manipulation;
 }
 
-.step-img,
-.step-vid {
-    float: right;
-    width: 45%;
-    margin-right: 5%;
-    margin-left: 10px;
-}
-
-
 /* Enlarged images always on top */
 .step-img>img{z-index: 0}
 .step-img>img.enlarge {
@@ -46,6 +37,7 @@
     max-width: 480px !important;
 
 }
+
 .step-float .step-img>img.enlarge {
     /* not absolute, escape parent */
     top: 50%;
@@ -65,4 +57,24 @@
     transform: translate(-50%, -90%) scale(1.2);
     z-index: 9999 !important;
 
+}
+.step-img,
+.step-vid {
+    float: right;
+    width: 45%;
+    margin-right: 5%;
+    margin-left: 10px;
+}
+.step-vid> video{
+    height: 100%;
+    width: 100%;
+}
+
+.step-float .step-vid>video.enlarge{
+    /* not absolute, escape parent */
+    top: 50%;
+    left: 50%;
+    /* center + enlarge */
+    transform: translate(-50%, -50%) scale(1.5);
+    z-index: 9999 !important;
 }
