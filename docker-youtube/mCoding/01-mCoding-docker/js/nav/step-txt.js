@@ -53,6 +53,7 @@ export function initStepNavigation(mainTargetDiv) {
                 if(hasVideo){
                     const video = step.querySelector('video')
                     handleVideo(video, e)
+                    changeTutorialLink(e.target)
                     return
                 }
                 if (key === "enter") {
@@ -63,13 +64,12 @@ export function initStepNavigation(mainTargetDiv) {
                     firstCopyCode?.focus()
                     lastStep = step
                     // copyCodesStepFocused = true
-                    
                     changeTutorialLink(e.target)
                 }
                 if (key === 'm') {
                     if(!copyCodesStepFocused){
                         mainTargetDiv.focus()
-                        console.log('line 60 step-txt.js breaking code');
+                        // console.log('line 60 step-txt.js breaking code');
                         // This was breaking code
                         // body.scrollIntoView({ behavior: 'instant', block: 'start'})
                     } else {
@@ -157,7 +157,6 @@ export function handleStepKeys(key, e, mainTargetDiv) {
             }
             else {
 //  I need to put this in a function 
-                // console.log('here enter')
                 // const vidBase = e.target.getAttribute("data-video");
                 // const ts = e.target.getAttribute("data-timestamp");
 
@@ -266,9 +265,7 @@ export function denlargeAllImages() {
 }
 export function pauseEnlargeAllVids() {
     allVids.forEach(vid => {
-        console.log(vid)
         if (vid.classList.contains('enlarge')) {
-            console.log(vid)
             vid.classList.remove('enlarge')
         }
         // console.log(vid.playing)
