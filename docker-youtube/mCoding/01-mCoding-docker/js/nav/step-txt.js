@@ -52,7 +52,6 @@ export function initStepNavigation(mainTargetDiv) {
             });
 
             step.addEventListener("focusin", () => { 
-                
                 iStep = index;
             })
             step.addEventListener("focusout", () => { denlargeAllImages()})
@@ -66,7 +65,9 @@ export function initStepNavigation(mainTargetDiv) {
                     handleVideo({vid, e,steps,allVids})
                     changeTutorialLink(e.target)
                     // const copyCodes = document.querySelectorAll('.copy-code, a')
-                    copyCodesStepFocused = true
+                    if(key === 'enter'){
+                        copyCodesStepFocused = true
+                    }
                     
                     return
                 }
