@@ -128,6 +128,10 @@ export function initStepNavigation(mainTargetDiv) {
                 // toggleSingleImage(vid)
                 handleClickVideo({vid,e,steps,allVids})
             })
+            vid.addEventListener('keydown', e => {
+                // toggleSingleImage(vid)
+                handleVideo({vid,e,steps,allVids})
+            })
             vid.dataset.listenerAdded = "true";
         }
     });
