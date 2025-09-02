@@ -271,10 +271,10 @@ export function pauseEnlargeAllVids() {
             console.log(vid)
             vid.classList.remove('enlarge')
         }
-        console.log(vid.playing)
-        if(vid.playing){
-            vid.pause()
-        }
+        // console.log(vid.playing)
+        // if(vid.playing){
+        //     vid.pause()
+        // }
     })
 }
 

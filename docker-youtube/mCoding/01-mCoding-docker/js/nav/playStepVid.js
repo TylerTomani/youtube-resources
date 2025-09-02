@@ -1,8 +1,9 @@
+// playStepVid.js
 let playing = false
 export function handleVideo(vid,e){
     toggleVideoSize(vid,e)
     videoControls(vid,e)
-    console.log(e.key)
+    // console.log(e.key)
 }
 function toggleVideoSize(vid,e){
     let key = e.key.toLowerCase()
@@ -20,14 +21,18 @@ function videoControls(vid,e){
                 vid.style.border = 'none'
                 vid.currentTime = 0
                 playing = true
-            } else playing = true
+            } else {
+                playing = true
+            }
             break 
         case 32:
             e.preventDefault()
+            console.log('here')
             if (vid.currentTime === vid.duration) {
                 vid.style.border = 'none'
                 vid.currentTime = 0
-                playing = true
+                // playing = true
+                playing = !playing
             } else playing = !playing
             break 
         case 37:
@@ -45,16 +50,19 @@ function videoControls(vid,e){
         vid.style.border = '4px solid red'
         playing = false
     }
-    if(playing){
-        vid.play()
-        vid.playing = true
-        vid.style.border = 'none'
+    if (playing) {
+        vid.play().catch(err => {
+            if (err.name !== "AbortError") {
+                console.error("Video play failed:", err);
+            }
+        });
+        vid.playing = true;
+        vid.style.border = 'none';
     } else {
-        vid.pause()
-        vid.playing = false
-        if(vid.currentTime !== vid.duration){
-
-            vid.style.border = '3px solid blue'
+        vid.pause();
+        vid.playing = false;
+        if (vid.currentTime !== vid.duration) {
+            vid.style.border = '3px solid blue';
         }
     }
 

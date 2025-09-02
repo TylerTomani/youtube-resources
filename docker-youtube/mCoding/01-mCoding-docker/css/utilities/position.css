@@ -37,6 +37,8 @@ main.main-container {
     /* position: fixed; */
 }
 
-.step-float {position: relative;}
+.step-float {
+    position: relative;
+}
 
 

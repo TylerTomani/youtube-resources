@@ -53,6 +53,7 @@ body{
     justify-content: center;
 }
 #mainTargetDiv>.main-container {
+    flex: 1 1 auto;
     overflow-x: hidden;
 }
 /* Main content scrollable */
