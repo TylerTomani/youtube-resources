@@ -7,9 +7,9 @@
     <title>docker-youtube</title>
     <link rel="stylesheet" href="../css/css-index/page-header.css">
     <link rel="stylesheet" href="../css/css-index/footer-double-link-header.css">
-    <link rel="stylesheet" href="../css/css-index/drop-topic-sub-resources.css">
-    <link rel="stylesheet" href="../css/css-index/sub-drop-topics-container.css">
-    <link rel="stylesheet" href="../css/css-index/dark-mode-index.css">
+    <link rel="stylesheet" href="css/main-docker.css">
+    <!-- <link rel="stylesheet" href="../css/css-index/sub-drop-topics-container.css"> -->
+    <!-- <link rel="stylesheet" href="../css/css-index/dark-mode-index.css"> -->
     <link rel="stylesheet" href="../css/copy-code-fcc.css">
 
     <script src="../js/js-index/dropTopics-topic-resource.js" defer></script>
@@ -20,7 +20,8 @@
     <!--  -->
 </head>
 
-<body class="dark-mode">
+<!-- <body class="dark-mode"> -->
+<body class="">
     <!-- This script only works initially if inside DOMContentLoaded -->
     <div class="page-wrapper">
         <header class="page-header">
@@ -56,8 +57,25 @@
                     </ul>
                 </div>
             </div>
-            <div class="code-container">
-                <textarea readonly tabindex="0" class="copy-code">
+            <div id="mainPageContentContainer" class="main-page-content-container"> 
+                <h2>1. Uninstall Docker Desktop (GUI app)</h2>
+                <div class="txt-container">
+                    <p>
+                        If you downloaded Docker Desktop from docker.com:
+                    </p>
+                    <h2>Quit Docker Desktop:</h2>
+                    <p>Click the Docker whale icon in the menu bar → Quit Docker Desktop.
+                        Move the app to Trash:</p>
+                    <p>
+                        Go to Applications → drag Docker.app to the Trash.
+                    </p>
+
+                    <p>Remove support files:
+                       <br><strong> Open Terminal and run:</strong>
+                    </p>
+                </div>
+                <div class="code-container">
+                    <pre readonly tabindex="0" class="copy-code">
 rm -rf ~/Library/Containers/com.docker.docker
 rm -rf ~/Library/Containers/com.docker.helper
 rm -rf ~/.docker
@@ -65,24 +83,27 @@ rm -rf ~/Library/Group\ Containers/group.com.docker
 rm -rf ~/Library/Preferences/com.docker.docker.plist
 rm -rf ~/Library/Logs/Docker*
 rm -rf ~/Library/Caches/com.docker.docker
-                </textarea>
-            </div>
-            <div class="code-container">
-                <textarea readonly tabindex="0" class="copy-code">
+                                </pre>
+                </div>
+                <div class="code-container">
+                    <pre readonly tabindex="0" class="copy-code">
 rm -rf ~/Library/Containers/com.docker.vmnetd
 rm -rf /private/var/tmp/com.docker.vmnetd.socket
-                </textarea>
-            </div>
-            <h3>2. Uninstall Docker installed via Homebrew</h3>
-            <p>
-                If you used Homebrew (brew install --cask docker):
-            </p>
-            <div class="code-container">
-                <pre readonly tabindex="0" class="copy-code">
+                                </pre>
+                </div>
+                <h3>2. Uninstall Docker installed via Homebrew</h3>
+                <div class="txt-container">
+                    <p>
+                        If you used Homebrew (brew install --cask docker):
+                    </p>
+                </div>
+                <div class="code-container">
+                    <pre readonly tabindex="0" class="copy-code">
 brew uninstall --cask docker
-                </pre>
+                                </pre>
+                </div>
             </div>
-            
+
             
         </main>
         <nav class="styles-btns">
@@ -105,7 +126,8 @@ brew uninstall --cask docker
                                                         ">chatGpt
                     Questions</a>
             </div>
-       <y789 class="vc">\</y789> </footer>
+            <!-- <y789 class="vc">\</y789>  -->
+        </footer>
     </div>
 </body>
 
