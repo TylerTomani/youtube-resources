@@ -1,6 +1,6 @@
 // step-txt.js
 import { changeTutorialLink, tutorialLink, endNxtLessonBtn } from "./keyboard-nav.js";
-import { handleVideo,toggleVideoSize } from "./playStepVid.js";
+import { handleVideo,handleClickVideo,toggleVideoSize } from "./playStepVid.js";
 export let lastStep = null;
 let steps = [];
 let allImgs = [];
@@ -9,6 +9,7 @@ let stepImageIndexes = new WeakMap();
 let iStep = 0;
 let iCopyCodes = 0;
 let currentIndex = 0; // bad namae, index for imgs-container imgs
+let stepClicked = false
 export let copyCodesStepFocused = false;
 
 
@@ -19,6 +20,8 @@ export let copyCodesStepFocused = false;
 export function initStepNavigation(mainTargetDiv) {
     if (!mainTargetDiv) return;
     steps = Array.from(mainTargetDiv.querySelectorAll(".steps-container > .step-float"));
+    const copyCodes = mainTargetDiv.querySelectorAll(".copy-code");
+    const stepTxtPAs = document.querySelectorAll('.step-txt p a')
     allImgs = Array.from(mainTargetDiv.querySelectorAll(".step-img > img"));
     allVids = Array.from(mainTargetDiv.querySelectorAll('video'))
     // Initialize first step
@@ -26,7 +29,12 @@ export function initStepNavigation(mainTargetDiv) {
         // lastStep = steps[0];
         // iStep = 0;
     }
+    stepTxtPAs.forEach(el => {
+        el.addEventListener('focus',e => {
+            copyCodesStepFocused = true
 
+        })
+    })
     // Add step event listeners
     steps.forEach((step, index) => {
         if (!step.dataset.listenerAdded) {
@@ -38,7 +46,8 @@ export function initStepNavigation(mainTargetDiv) {
                 currentIndex = 0;
                 iCopyCodes = 0
                 // denlargeAllImages();
-                // pauseEnlargeAllVids(allVids)
+                pauseEnlargeAllVids(allVids)
+                stepClicked = false
                 
             });
 
@@ -52,22 +61,29 @@ export function initStepNavigation(mainTargetDiv) {
                 let key = e.key.toLowerCase();
                 const hasVideo = step.querySelector('video') ? true : false
                 if(hasVideo){
-                    const video = step.querySelector('video')
-                    
-                    handleVideo(video, e,steps)
-                    // toggleVideoSize(video,e,steps)
+                    const vid = step.querySelector('video')
+                    // console.log(vid.currentTime)
+                    handleVideo({vid, e,steps,allVids})
                     changeTutorialLink(e.target)
+                    // const copyCodes = document.querySelectorAll('.copy-code, a')
+                    copyCodesStepFocused = true
+                    
                     return
                 }
+                
                 if (key === "enter") {
-                    // toggleStepImages(step,e);
-                    // step.scrollIntoView({ behavior: 'instant', block: 'start' });
-                    // const firstCopyCode = e.target.querySelector('.copy-code')
+                    toggleStepImages(step,e);
+                    step.scrollIntoView({ behavior: 'instant', block: 'start' });
+                    const firstCopyCode = e.target.querySelector('.copy-code')
+                    console.log('here')
                     // copyCodesStepFocused = true
-                    // firstCopyCode?.focus()
-                    lastStep = step
-                    // copyCodesStepFocused = true
+                    if(step == lastStep && stepClicked){
+                        copyCodesStepFocused = true
+                        firstCopyCode?.focus()
+                    }
                     changeTutorialLink(e.target)
+                    lastStep = step
+                    stepClicked = true
                 }
                 if (key === 'm') {
                     if(!copyCodesStepFocused){
@@ -104,17 +120,29 @@ export function initStepNavigation(mainTargetDiv) {
             })
             img.dataset.listenerAdded = "true";
         }
-        
+    });
+    allVids.forEach(vid => {
+        if (!vid.dataset.listenerAdded) {
+            vid.addEventListener('click', e => {
+                // toggleSingleImage(vid)
+                handleClickVideo({vid,e,steps,allVids})
+            })
+            vid.dataset.listenerAdded = "true";
+        }
     });
 
     // Initialize copy-code focus behavior
-    const copyCodes = mainTargetDiv.querySelectorAll(".copy-code");
+    
     copyCodes.forEach(code => {
         if (!code.dataset.listenerAdded) {
             code.addEventListener("focus", () => {
                 denlargeAllImages();
+                pauseEnlargeAllVids(allVids)
                 copyCodesStepFocused =true 
             });
+            code.addEventListener('keydown', e => {
+                console.log('add video toggle enlarge here one copy-codes')
+            })
             code.dataset.listenerAdded = "true";
         }
     });
@@ -160,15 +188,15 @@ export function handleStepKeys(key, e, mainTargetDiv) {
             }
             else {
 //  I need to put this in a function 
-                // const vidBase = e.target.getAttribute("data-video");
-                // const ts = e.target.getAttribute("data-timestamp");
+                const vidBase = e.target.getAttribute("data-video");
+                const ts = e.target.getAttribute("data-timestamp");
 
-                // let vidHref = vidBase;
-                // if (ts) {
-                //     vidHref += (vidBase.includes("?") ? "&" : "?") + `t=${ts}s`;
-                //     tutorialLink.href = vidHref;
+                let vidHref = vidBase;
+                if (ts) {
+                    vidHref += (vidBase.includes("?") ? "&" : "?") + `t=${ts}s`;
+                    tutorialLink.href = vidHref;
                 
-                // }
+                }
             }
             break;
         case "f" : // next step
@@ -263,9 +291,12 @@ function toggleStepImages(step,e) {
 export function denlargeAllImages() {
     allImgs.forEach(img => {
         if(img.classList.contains('enlarge'))img.classList.remove("enlarge");
-        if (img.classList.contains('first-vid-enlarge')) img.classList.remove("first-vid-enlarge");
         // img.style.zIndex = 0;
     });
+    allVids.forEach(vid => {
+        if (vid.classList.contains('first-vid-enlarge')) vid.classList.remove("first-vid-enlarge");
+
+    })
 }
 export function pauseEnlargeAllVids() {
     allVids.forEach(vid => {

@@ -1,16 +1,10 @@
-
-
 .step-img,
 .step-vid {
     position: relative;
-    /* contain absolutely positioned img */
-    flex: 0 0 auto;
-    /* don’t shrink */
+    /* flex: 0 0 auto; */
 }
-
-
 .step-vid>video {
-    position: relative;
+    /* position: relative; */
 }
 .step-img img {
     position: relative;

@@ -1,5 +1,6 @@
 // playStepVid.js
-let playing = false
+let playing = false;
+
 function firstVidToggleSize(vid) {
     if (!vid.classList.contains('first-vid-enlarge')) {
         vid.classList.add('first-vid-enlarge');
@@ -8,55 +9,21 @@ function firstVidToggleSize(vid) {
     }
 }
 
-export function handleVideo(vid,e,steps){
-    if(e.target == steps[0]){
-        // firstVidToggleSize(vid)
-    } else {
-        // toggleVideoSize(vid,e)
-    }
-    videoControls(vid,e)
-}
-function videoControls(vid, e) {
-    let key = e.keyCode
-    console.log(key)
-    switch (key) {
-        case 13:
-            // if (vid.currentTime === vid.duration) {
-            //     vid.style.border = 'none'
-            //     vid.currentTime = 0
-            //     playing = true
-            // } else {
-            //     playing = true
-            // }
-            console.log('enter')
-
-            break
-        case 32:
-            e.preventDefault()
-            if (vid.currentTime === vid.duration) {
-                vid.style.border = 'none'
-                vid.currentTime = 0
-                // playing = true
-                playing = false
-            } else {
-                playing = !playing
-            }
-            break
-        case 37:
-
-            vid.currentTime -= .5
-            playing = true
-            break
-        case 39:
-            vid.currentTime += .5
-            playing = true
-            break
-
-    }
+function playPauseVideo({ vid, e }) {
     if (vid.currentTime === vid.duration) {
-        vid.style.border = '4px solid red'
-        playing = false
+        vid.style.border = '4px solid red';
+        if (e?.keyCode !== 13) {
+            playing = false;
+        } else {
+            vid.currentTime = 0;
+            playing = true;
+        }
     }
+
+    if (vid.currentTime === 0) {
+        playing = true;
+    }
+
     if (playing) {
         vid.play().catch(err => {
             if (err.name !== "AbortError") {
@@ -69,31 +36,106 @@ function videoControls(vid, e) {
         vid.pause();
         vid.playing = false;
         if (vid.currentTime !== vid.duration) {
-            vid.style.border = '3px solid blue';
+            vid.style.border = '1px solid blue';
+        }
+    }
+}
+
+export function handleClickVideo({ vid }) {
+    playing = !playing;
+    playPauseVideo({ vid });
+}
+
+export function handleVideo({ vid, e, steps, allVids }) {
+    
+    videoControls({ vid, e, steps, allVids });
+}
+
+function videoControls({ vid, e, steps, allVids }) {
+    let key = e.keyCode;
+    
+    if ((e.shiftKey && key === 39) && vid.currentTime < vid.duration) {
+        // console.log('skip +5');
+        vid.currentTime += 5;
+        return;
+    }
+    if ((e.shiftKey && key === 37) && vid.currentTime < vid.duration) {
+        // console.log('rewind -5');
+        vid.currentTime -= 5;
+        return;
+    }
+
+    switch (key) {
+        case 13: // Enter
+            if (!vid.classList.contains('enlarge') || vid.classList.contains('first-vid-enlarge')) {
+                playing = true;
+            }
+            toggleVideoSize({ vid, e, steps });
+            break;
+
+        case 32: // Space
+            e.preventDefault();
+            if (vid.currentTime === vid.duration) {
+                vid.style.border = 'none';
+                vid.currentTime = 0;
+                playing = false;
+            } else {
+                playing = !playing;
+            }
+            break;
+
+        case 9: // Tab
+            denlargeAllVideos({ allVids });
+            break;
+
+        case 37: // Left
+            vid.currentTime -= 0.5;
+            playing = true;
+            break;
+
+        case 39: // Right
+            vid.currentTime += 0.5;
+            playing = true;
+            break;
+    }
+
+    playPauseVideo({ vid, e });
+}
+
+export function toggleVideoSize({ vid, e, steps }) {
+    let key = e.key.toLowerCase();
+
+    if (key === 'enter') {
+        if (e.target === steps[0]) {
+            vid.classList.toggle('first-vid-enlarge');
+        } else {
+            vid.classList.toggle('enlarge');
         }
     }
 
-}
-export function toggleVideoSize(vid,e,steps){
-    let key = e.key.toLowerCase()
-    console.log(e.target)
-    if(key === 'enter'){
-        vid.classList.toggle('enlarge')
-        vid.scrollIntoView({behavior: 'instant', block: 'center'})
-    }
-    // console.log(key)
-    if(key === ' '){
-        playing = !playing
+    if (key === ' ') {
+        playing = !playing;
     }
 }
-export function pauseDenlargeAllVideos(allVids){
+
+function denlargeAllVideos({ allVids }) {
     allVids.forEach(vid => {
-        if(vid.classList.contains('enlarge')){
-            vid.classList.remove('enlarge')
-        } 
-        if(playing){
-            playing = false
+        if (vid.classList.contains('enlarge')) {
+            vid.classList.remove('enlarge');
         }
-    })
-    
+        if (vid.classList.contains('first-vid-enlarge')) {
+            vid.classList.remove('first-vid-enlarge');
+        }
+    });
+}
+
+export function pauseDenlargeAllVideos({ allVids }) {
+    allVids.forEach(vid => {
+        if (vid.classList.contains('enlarge')) {
+            vid.classList.remove('enlarge');
+        }
+        if (playing) {
+            playing = false;
+        }
+    });
 }
