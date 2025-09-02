@@ -5,9 +5,9 @@
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 .main-page-content-container{
-    border: 1px solid red;
     overflow-y: scroll;
-    margin: 0 5%;
+    margin: 0 2.5%;
+    padding: 0 2.5%;
     height: 50vh;
 }
 .topic-container {
@@ -107,3 +107,5 @@ a.resource:visited{
         max-width: 50px;
     }
 }
+.r {color: red;}
+.tom {color: tomato;}
