@@ -10,10 +10,12 @@
     <link rel="stylesheet" href="../css/css-index/drop-topic-sub-resources.css">
     <link rel="stylesheet" href="../css/css-index/sub-drop-topics-container.css">
     <link rel="stylesheet" href="../css/css-index/dark-mode-index.css">
+    <link rel="stylesheet" href="../css/copy-code-fcc.css">
 
     <script src="../js/js-index/dropTopics-topic-resource.js" defer></script>
     <script src="../js/js-index/letterFocus-txt-nums.js" defer></script>
     <script src="../js/js-index/dark-mode-index.js" defer></script>
+    <script src="../js/copy-code.js" defer></script>
     <!-- <script type="module" src="js/"></script> -->
     <!--  -->
 </head>
@@ -54,6 +56,34 @@
                     </ul>
                 </div>
             </div>
+            <div class="code-container">
+                <textarea readonly tabindex="0" class="copy-code">
+rm -rf ~/Library/Containers/com.docker.docker
+rm -rf ~/Library/Containers/com.docker.helper
+rm -rf ~/.docker
+rm -rf ~/Library/Group\ Containers/group.com.docker
+rm -rf ~/Library/Preferences/com.docker.docker.plist
+rm -rf ~/Library/Logs/Docker*
+rm -rf ~/Library/Caches/com.docker.docker
+                </textarea>
+            </div>
+            <div class="code-container">
+                <textarea readonly tabindex="0" class="copy-code">
+rm -rf ~/Library/Containers/com.docker.vmnetd
+rm -rf /private/var/tmp/com.docker.vmnetd.socket
+                </textarea>
+            </div>
+            <h3>2. Uninstall Docker installed via Homebrew</h3>
+            <p>
+                If you used Homebrew (brew install --cask docker):
+            </p>
+            <div class="code-container">
+                <pre readonly tabindex="0" class="copy-code">
+brew uninstall --cask docker
+                </pre>
+            </div>
+            
+            
         </main>
         <nav class="styles-btns">
             <div class="btn-container">

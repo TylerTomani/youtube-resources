@@ -269,7 +269,6 @@ export function pauseEnlargeAllVids() {
         if (vid.classList.contains('enlarge')) {
             vid.classList.remove('enlarge')
         }
-        console.log(vid.playing)
         if(vid.playing){
             vid.pause()
         }

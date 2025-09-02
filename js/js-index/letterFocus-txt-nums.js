@@ -1,5 +1,6 @@
 addEventListener('keydown', e => {
     // Normalize key
+    if (e.metaKey) return
     let letter = '';
     if (/^Key[A-Z]$/.test(e.code)) {
         letter = e.code.replace('Key', '').toLowerCase();

@@ -1,10 +1,12 @@
-export function addCopyCodes(){
+ function addCopyCodes(){
     
     const codeCopy = document.querySelectorAll('.copy-code')
 
     let cmdCarray = []
     codeCopy.forEach(copycode => {
         copycode.addEventListener('keydown' , e => {        
+            // if(e.metaKey) return
+            console.log(';skljdf')
             cmdCarray.unshift(e.keyCode)
             if(cmdCarray.length > 3){
                 cmdCarray.pop()
