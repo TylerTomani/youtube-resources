@@ -106,11 +106,13 @@ export function toggleVideoSize({ vid, e, steps }) {
     let key = e.key.toLowerCase();
 
     if (key === 'enter') {
+        
         if (e.target === steps[0]) {
             vid.classList.toggle('first-vid-enlarge');
         } else {
             vid.classList.toggle('enlarge');
         }
+        vid.scrollIntoView({ behavior: 'instant', block: 'start' });
     }
 
     if (key === ' ') {
