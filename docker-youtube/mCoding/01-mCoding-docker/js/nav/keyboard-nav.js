@@ -88,7 +88,6 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
             if (key === 'm') {
                 mainTargetDiv.focus()
                 focusZone = 'main'
-                console.log(mainTargetDiv)
                 console.log('this is glitchy code line 92 keyboard-nav')
                 mKeyFocusOrder(e)
             }

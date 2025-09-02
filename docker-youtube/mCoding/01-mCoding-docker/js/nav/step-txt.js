@@ -1,6 +1,6 @@
 // step-txt.js
 import { changeTutorialLink, tutorialLink, endNxtLessonBtn } from "./keyboard-nav.js";
-import { handleVideo } from "./playStepVid.js";
+import { handleVideo,pauseDenlargeAllVideos } from "./playStepVid.js";
 export let lastStep = null;
 let steps = [];
 let allImgs = [];
@@ -38,7 +38,8 @@ export function initStepNavigation(mainTargetDiv) {
                 iStep = index;
                 currentIndex = 0;
                 iCopyCodes = 0
-                pauseEnlargeAllVids()
+                pauseEnlargeAllVids(allVids)
+                console.log(allVids[0])
             });
 
             step.addEventListener("focusin", () => { 
@@ -268,10 +269,10 @@ export function pauseEnlargeAllVids() {
         if (vid.classList.contains('enlarge')) {
             vid.classList.remove('enlarge')
         }
-        // console.log(vid.playing)
-        // if(vid.playing){
-        //     vid.pause()
-        // }
+        console.log(vid.playing)
+        if(vid.playing){
+            vid.pause()
+        }
     })
 }
 
