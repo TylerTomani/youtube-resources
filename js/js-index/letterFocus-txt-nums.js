@@ -10,7 +10,7 @@ addEventListener('keydown', e => {
         return;
     }
 
-    const allEls = [...document.querySelectorAll('a, [id],')].filter(el => {
+    const allEls = [...document.querySelectorAll('a, [id]')].filter(el => {
         const rect = el.getBoundingClientRect();
         return el.offsetParent != null && rect.width > 0 && rect.height > 0;
     });

@@ -45,7 +45,7 @@ export function initStepNavigation(mainTargetDiv) {
                 iStep = index;
                 currentIndex = 0;
                 iCopyCodes = 0
-                // denlargeAllImages();
+                denlargeAllImages();
                 pauseEnlargeAllVids(allVids)
                 stepClicked = false
                 
