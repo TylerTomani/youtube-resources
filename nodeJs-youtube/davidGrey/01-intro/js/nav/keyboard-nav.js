@@ -88,7 +88,6 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
             if (key === 'm') {
                 mainTargetDiv.focus()
                 focusZone = 'main'
-                console.log(mainTargetDiv)
                 console.log('this is glitchy code line 92 keyboard-nav')
                 mKeyFocusOrder(e)
             }
@@ -286,8 +285,6 @@ export function changeTutorialLink(targetLink){
     
     const vidBase = targetLink.getAttribute("data-video");
     const ts = targetLink.getAttribute("data-timestamp");
-    console.log(targetLink)
-    console.log(ts)
     let vidHref = vidBase;
     if (ts) {
         vidHref += (vidBase.includes("?") ? "&" : "?") + `t=${ts}s`;

@@ -15,6 +15,9 @@
 .imgs-container {
     z-index: auto;
 }
+.step-float  {
+    z-index: 0
+}
 .step-img>img {
     z-index: 0
 }

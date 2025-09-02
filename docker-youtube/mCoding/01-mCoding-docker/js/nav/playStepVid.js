@@ -1,7 +1,16 @@
 // playStepVid.js
 let playing = false
-export function handleVideo(vid,e){
-    toggleVideoSize(vid,e)
+function firstVidToggleSize(vid){
+    console.log(vid)
+    vid.classList.toggle('first-vid-enlarge')
+}
+export function handleVideo(vid,e,steps){
+    if(e.target == steps[0]){
+        firstVidToggleSize(vid)
+        return
+    } else {
+        toggleVideoSize(vid,e)
+    }
     videoControls(vid,e)
     // console.log(e.key)
 }
@@ -27,7 +36,6 @@ function videoControls(vid,e){
             break 
         case 32:
             e.preventDefault()
-            console.log('here')
             if (vid.currentTime === vid.duration) {
                 vid.style.border = 'none'
                 vid.currentTime = 0
@@ -75,6 +83,6 @@ export function pauseDenlargeAllVideos(allVids){
         if(playing){
             playing = false
         }
-        console.log(vid)
     })
+    
 }

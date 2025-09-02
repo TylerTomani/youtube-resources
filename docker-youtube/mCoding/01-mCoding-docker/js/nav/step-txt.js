@@ -34,12 +34,13 @@ export function initStepNavigation(mainTargetDiv) {
 
             step.addEventListener("focus", () => {
                 denlargeAllImages();
+                
                 copyCodesStepFocused = false
                 iStep = index;
                 currentIndex = 0;
                 iCopyCodes = 0
                 pauseEnlargeAllVids(allVids)
-                console.log(allVids[0])
+                
             });
 
             step.addEventListener("focusin", () => { 
@@ -53,7 +54,8 @@ export function initStepNavigation(mainTargetDiv) {
                 const hasVideo = step.querySelector('video') ? true : false
                 if(hasVideo){
                     const video = step.querySelector('video')
-                    handleVideo(video, e)
+                    
+                    handleVideo(video, e,steps)
                     changeTutorialLink(e.target)
                     return
                 }
@@ -269,9 +271,10 @@ export function pauseEnlargeAllVids() {
         if (vid.classList.contains('enlarge')) {
             vid.classList.remove('enlarge')
         }
-        if(vid.playing){
-            vid.pause()
-        }
+        // console.log(vid.playing)
+        // if(vid.playing){
+        //     vid.pause()
+        // }
     })
 }
 
