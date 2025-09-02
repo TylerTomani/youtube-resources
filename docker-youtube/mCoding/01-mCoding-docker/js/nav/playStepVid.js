@@ -41,9 +41,10 @@ function playPauseVideo({ vid, e }) {
     }
 }
 
-export function handleClickVideo({ vid }) {
+export function handleClickVideo({ vid, e, steps, allVids }) {
     playing = !playing;
-    playPauseVideo({ vid });
+    toggleVideoSizeClick({ vid, e, steps })
+    // playPauseVideo({ vid });
 }
 
 export function handleVideo({ vid, e, steps, allVids }) {
@@ -102,6 +103,15 @@ function videoControls({ vid, e, steps, allVids }) {
     playPauseVideo({ vid, e });
 }
 
+export function toggleVideoSizeClick({ vid, e, steps }) {
+    e.preventDefault()
+    if (e.target === steps[0]) {
+        vid.classList.toggle('first-vid-enlarge');
+    } else {
+        vid.classList.toggle('enlarge');
+    }
+    vid.scrollIntoView({ behavior: 'instant', block: 'start' });
+}
 export function toggleVideoSize({ vid, e, steps }) {
     let key = e.key.toLowerCase();
 

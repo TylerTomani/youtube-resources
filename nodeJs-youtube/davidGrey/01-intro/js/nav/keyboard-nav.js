@@ -278,6 +278,12 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
 
                 break;
         }
+        if(e.target.tagName == 'VIDEO'){
+            if(e.keyCod == 32){
+                e.preventDefault()
+                console.log(e.target)
+            }
+        }
     });
 }
 export function changeTutorialLink(targetLink){
