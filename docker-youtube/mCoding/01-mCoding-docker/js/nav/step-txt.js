@@ -1,6 +1,6 @@
 // step-txt.js
 import { changeTutorialLink, tutorialLink, endNxtLessonBtn } from "./keyboard-nav.js";
-import { handleVideo,pauseDenlargeAllVideos } from "./playStepVid.js";
+import { handleVideo,toggleVideoSize } from "./playStepVid.js";
 export let lastStep = null;
 let steps = [];
 let allImgs = [];
@@ -33,13 +33,12 @@ export function initStepNavigation(mainTargetDiv) {
             step.setAttribute("tabindex", "0");
 
             step.addEventListener("focus", () => {
-                denlargeAllImages();
-                
                 copyCodesStepFocused = false
                 iStep = index;
                 currentIndex = 0;
                 iCopyCodes = 0
-                pauseEnlargeAllVids(allVids)
+                // denlargeAllImages();
+                // pauseEnlargeAllVids(allVids)
                 
             });
 
@@ -56,15 +55,16 @@ export function initStepNavigation(mainTargetDiv) {
                     const video = step.querySelector('video')
                     
                     handleVideo(video, e,steps)
+                    // toggleVideoSize(video,e,steps)
                     changeTutorialLink(e.target)
                     return
                 }
                 if (key === "enter") {
-                    toggleStepImages(step,e);
-                    step.scrollIntoView({ behavior: 'instant', block: 'start' });
-                    const firstCopyCode = e.target.querySelector('.copy-code')
-                    copyCodesStepFocused = true
-                    firstCopyCode?.focus()
+                    // toggleStepImages(step,e);
+                    // step.scrollIntoView({ behavior: 'instant', block: 'start' });
+                    // const firstCopyCode = e.target.querySelector('.copy-code')
+                    // copyCodesStepFocused = true
+                    // firstCopyCode?.focus()
                     lastStep = step
                     // copyCodesStepFocused = true
                     changeTutorialLink(e.target)
@@ -262,7 +262,8 @@ function toggleStepImages(step,e) {
 // --- Utility ---
 export function denlargeAllImages() {
     allImgs.forEach(img => {
-        img.classList.remove("enlarge");
+        if(img.classList.contains('enlarge'))img.classList.remove("enlarge");
+        if (img.classList.contains('first-vid-enlarge')) img.classList.remove("first-vid-enlarge");
         // img.style.zIndex = 0;
     });
 }
@@ -271,10 +272,13 @@ export function pauseEnlargeAllVids() {
         if (vid.classList.contains('enlarge')) {
             vid.classList.remove('enlarge')
         }
+        if (vid.classList.contains('first-vid-enlarge')) {
+            vid.classList.remove('.first-vid-enlarge')
+        }
         // console.log(vid.playing)
-        // if(vid.playing){
-        //     vid.pause()
-        // }
+        if(vid.playing){
+            vid.pause()
+        }
     })
 }
 

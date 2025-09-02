@@ -2,9 +2,7 @@
 .page-header {
     z-index: 0
 }
-.page-header {
-    z-index: 0;
-}
+
 #targetDiv>.main-container>header {
     z-index: 10;
 }
@@ -14,9 +12,6 @@
 /* lessons injectContent() */
 .imgs-container {
     z-index: auto;
-}
-.step-float  {
-    z-index: 0
 }
 .step-img>img {
     z-index: 0

@@ -1,50 +1,68 @@
-/* Base styles for step images */
-.step-img>img {
+/* imgVideos.css */
+.imgs-container {
+    width: 100%;
+}
+.imgs-container .img-container .step-img {
+    width: 90%;
     position: relative;
+    pointer-events: auto;
+    height: fit-content;
+}
+.imgs-container {
+    display: flex;
+    position: static;
+}
+.imgs-container>* {
+    flex-basis: 50%;
+}
+/* Default step images */
+.step-img>img {
+    position: absolute;
     width: 98%;
     max-width: 410px;
     border-radius: 4px;
     box-shadow: 0 0 1px 1px lightcyan;
+    /* border: 1px solid white; */
     pointer-events: auto;
-    transition: transform 0.3s ease, top 0.3s ease, left 0.3s ease;
-    cursor: pointer;
-    z-index: 0;
+    transition: all 0.025s ease;
+    touch-action: manipulation;
 }
 
-/* Base styles for step videos */
-.step-vid>video {
-    position: relative;
-    width: 100%;
-    max-width: 100%;
-    cursor: pointer;
-    transition: transform 0.3s ease, top 0.3s ease, left 0.3s ease;
-    z-index: 0;
+.step-img,
+.step-vid {
+    float: right;
+    width: 45%;
+    margin-right: 5%;
+    margin-left: 10px;
 }
 
-/* Enlarged images and videos */
-img.enlarge,
-video.enlarge {
+
+/* Enlarged images always on top */
+.step-img>img{z-index: 0}
+.step-img>img.enlarge {
+    position: fixed;
+    transform: scale(2.5);
+    pointer-events: auto;
+    max-width: 480px !important;
+
+}
+.step-float .step-img>img.enlarge {
+    /* not absolute, escape parent */
+    top: 50%;
+    left: 50%;
+    /* center + enlarge */
+    transform: translate(-50%, -50%) scale(1.1);
+    z-index: 9999 !important;
+
+}
+
+.imgs-container .step-img>img.enlarge {
     position: fixed !important;
-    top: 50% !important;
-    left: 50% !important;
-    transform: translate(-50%, -50%) scale(1.5) !important;
-    max-width: 90vw !important;
-    max-height: 90vh !important;
-    z-index: 100000 !important;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    border: 10px solid magenta;
-}
+    /* not absolute, escape parent */
+    top: 50%;
+    left: 50%;
+    /* center + enlarge */
+    transform: translate(-50%, -90%) scale(1.2);
+    z-index: 9999 !important;
 
-/* First step video gets bigger and above all */
-.first-vid-enlarge  {
-    position: fixed !important;
-    transform: translate(-50%, -50%) scale(1.8) !important;
-    border: 20px solid magenta;
-    z-index: 100001 !important;
-}
-
-/* Optional smooth transition */
-img,
-video {
-    transition: transform 0.3s ease, top 0.3s ease, left 0.3s ease;
 }

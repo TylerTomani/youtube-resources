@@ -1,60 +1,59 @@
 // playStepVid.js
 let playing = false
-function firstVidToggleSize(vid){
-    console.log(vid)
-    vid.classList.toggle('first-vid-enlarge')
-}
-export function handleVideo(vid,e,steps){
-    if(e.target == steps[0]){
-        firstVidToggleSize(vid)
-        return
+function firstVidToggleSize(vid) {
+    if (!vid.classList.contains('first-vid-enlarge')) {
+        vid.classList.add('first-vid-enlarge');
     } else {
-        toggleVideoSize(vid,e)
-    }
-    videoControls(vid,e)
-    // console.log(e.key)
-}
-function toggleVideoSize(vid,e){
-    let key = e.key.toLowerCase()
-    if(key === 'enter'){
-        vid.classList.toggle('enlarge')
-        vid.scrollIntoView({behavior: 'instant', block: 'center'})
+        vid.classList.remove('first-vid-enlarge');
     }
 }
 
-function videoControls(vid,e){
+export function handleVideo(vid,e,steps){
+    if(e.target == steps[0]){
+        // firstVidToggleSize(vid)
+    } else {
+        // toggleVideoSize(vid,e)
+    }
+    videoControls(vid,e)
+}
+function videoControls(vid, e) {
     let key = e.keyCode
-    switch (key){
+    console.log(key)
+    switch (key) {
         case 13:
-            if (vid.currentTime === vid.duration) {
-                vid.style.border = 'none'
-                vid.currentTime = 0
-                playing = true
-            } else {
-                playing = true
-            }
-            break 
+            // if (vid.currentTime === vid.duration) {
+            //     vid.style.border = 'none'
+            //     vid.currentTime = 0
+            //     playing = true
+            // } else {
+            //     playing = true
+            // }
+            console.log('enter')
+
+            break
         case 32:
             e.preventDefault()
             if (vid.currentTime === vid.duration) {
                 vid.style.border = 'none'
                 vid.currentTime = 0
                 // playing = true
+                playing = false
+            } else {
                 playing = !playing
-            } else playing = !playing
-            break 
+            }
+            break
         case 37:
-            
+
             vid.currentTime -= .5
             playing = true
-            break 
+            break
         case 39:
             vid.currentTime += .5
             playing = true
-            break 
-        
+            break
+
     }
-    if(vid.currentTime === vid.duration){
+    if (vid.currentTime === vid.duration) {
         vid.style.border = '4px solid red'
         playing = false
     }
@@ -74,6 +73,18 @@ function videoControls(vid,e){
         }
     }
 
+}
+export function toggleVideoSize(vid,e,steps){
+    let key = e.key.toLowerCase()
+    console.log(e.target)
+    if(key === 'enter'){
+        vid.classList.toggle('enlarge')
+        vid.scrollIntoView({behavior: 'instant', block: 'center'})
+    }
+    // console.log(key)
+    if(key === ' '){
+        playing = !playing
+    }
 }
 export function pauseDenlargeAllVideos(allVids){
     allVids.forEach(vid => {

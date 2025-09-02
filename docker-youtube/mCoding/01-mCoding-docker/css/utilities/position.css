@@ -8,13 +8,12 @@ main.main-container.collapsed #sideBarBtn {
     position: relative;
 }
 /* Main content scrollable */
-#targetDiv{
-    position: relative;
-}
-
 main.main-container {
     display: flex;
     flex-direction: row;
+    position: relative;
+}
+#targetDiv{
     position: relative;
 }
 #targetDiv>.main-container>header {
@@ -30,13 +29,4 @@ main.main-container {
     bottom: 0;
 }
 /* Lessons stepTxt injectContent() */
-.step-img>img {
-    position: relative;
-}
-.step-img>img.enlarge {
-    /* position: fixed; */
-}
-
-.step-float {position: relative;}
-
 

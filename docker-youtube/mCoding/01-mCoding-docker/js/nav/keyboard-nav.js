@@ -88,7 +88,7 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
             if (key === 'm') {
                 mainTargetDiv.focus()
                 focusZone = 'main'
-                console.log('this is glitchy code line 92 keyboard-nav')
+                // console.log('this is glitchy code line 92 keyboard-nav')
                 mKeyFocusOrder(e)
             }
         });
@@ -290,5 +290,5 @@ export function changeTutorialLink(targetLink) {
         vidHref += (vidBase.includes("?") ? "&" : "?") + `t=${ts}s`;
         tutorialLink.href = vidHref;
     }
-    console.log(ts)
+    // console.log(ts)
 }
