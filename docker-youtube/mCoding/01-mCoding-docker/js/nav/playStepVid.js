@@ -112,6 +112,10 @@ export function toggleVideoSizeClick({ vid, e, steps }) {
     }
     if(vid.classList.contains('enlarge')){
         vid.play()
+        vid.controls = true
+    } else {
+        vid.controls = false
+        vid.pause()
     }
     vid.scrollIntoView({ behavior: 'instant', block: 'center' });
 }

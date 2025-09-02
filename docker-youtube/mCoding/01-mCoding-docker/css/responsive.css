@@ -1,25 +1,4 @@
-/* Responsive */
-/* @media screen and (max-width: 721px) {
-
-    video {
-        min-width: 250px;
-    }
-    video.enlarge-vid {
-        right: 3%;
-        top: 0;
-        transform: scale(1.02);
-    }
-    .step-txt {
-        font-size: 90%;
-    }
-    img.enlarge {
-        position: absolute;
-        min-height: 112px;
-        min-width: 244px;
-        max-width: 200px;
-        margin-right: 80%;
-    }
-} */
+/* responsive.css */
 @media screen and (min-width: 601px) {
     .step-float .step-txt p {
         margin: 2.5% 0 ;
