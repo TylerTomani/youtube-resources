@@ -1,7 +1,23 @@
 /* imgVideos.css */
-
+.imgs-container {
+    width: 100%;
+}
+/* .imgs-container .img-container .step-vid, { */
+.imgs-container .img-container .step-img {
+    width: 90%;
+    position: relative;
+    pointer-events: auto;
+    height: fit-content;
+}
+.imgs-container {
+    display: flex;
+    position: static;
+}
+.imgs-container>* {
+    flex-basis: 50%;
+}
 /* Default step images */
-.step-float > .step-img>img {
+.step-img>img {
     position: absolute;
     width: 98%;
     max-width: 410px;
@@ -13,8 +29,8 @@
     touch-action: manipulation;
 }
 
-.step-float > .step-img,
-.step-float > .step-vid {
+.step-img,
+.step-vid {
     float: right;
     width: 45%;
     margin-right: 5%;
@@ -31,7 +47,7 @@
     max-width: 480px !important;
 
 }
-.step-float > .step-img>img.enlarge {
+.step-float .step-img>img.enlarge {
     /* not absolute, escape parent */
     top: 50%;
     left: 50%;
@@ -41,7 +57,7 @@
 
 }
 
-.imgs-container > .img-container > .step-img>img.enlarge {
+.imgs-container .step-img>img.enlarge {
     position: fixed !important;
     /* not absolute, escape parent */
     top: 50%;
@@ -50,27 +66,4 @@
     transform: translate(-50%, -90%) scale(1.2);
     z-index: 9999 !important;
 
-}
-.step-float >
-.imgs-container {
-    width: 100%;
-    background-color: blue;
-    /* border: 2px solid red !important; */
-}
-
-/* .imgs-container .img-container .step-vid, { */
-.imgs-container .img-container .step-img {
-    width: 90%;
-    position: relative;
-    pointer-events: auto;
-    height: fit-content;
-}
-
-.imgs-container {
-    display: flex;
-    position: static;
-}
-
-.imgs-container>* {
-    /* flex-basis: 50%; */
 }
