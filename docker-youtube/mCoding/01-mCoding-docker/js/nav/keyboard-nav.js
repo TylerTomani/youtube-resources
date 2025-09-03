@@ -46,17 +46,16 @@ export function initKeyboardNav({
             injectContent(el.href, mainTargetDiv, sidebarLinks, iSideBarLinks, navLessonTitle);
         }
 
-        el.addEventListener("focus", () => {
-            focusZone = 'sidebar';
-            lastFocusedLink = el;
-            if (!suppressIndexUpdate) {
-                iSideBarLinks = [...sidebarLinks].indexOf(el);
-            }
-        });
+        // Inside sidebarLinks.forEach(el => { ... })
 
         el.addEventListener("click", e => {
             e.preventDefault();
             e.stopPropagation();
+
+            // NEW: reset main content view when clicking sidebar
+            denlargeAllImages();
+            pauseEnlargeAllVids();
+
             const targetLink = e.target.closest("a");
             if (targetLink) {
                 iSideBarLinks = [...sidebarLinks].indexOf(el);
@@ -65,6 +64,20 @@ export function initKeyboardNav({
             }
             lastClickedLink = e.target;
         });
+
+        el.addEventListener("focus", () => {
+            focusZone = 'sidebar';
+            lastFocusedLink = el;
+
+            // NEW: also reset when focusing sidebar by tab/keyboard
+            denlargeAllImages();
+            pauseEnlargeAllVids();
+
+            if (!suppressIndexUpdate) {
+                iSideBarLinks = [...sidebarLinks].indexOf(el);
+            }
+        });
+
 
         el.addEventListener("keydown", e => {
             const key = e.key.toLowerCase();
