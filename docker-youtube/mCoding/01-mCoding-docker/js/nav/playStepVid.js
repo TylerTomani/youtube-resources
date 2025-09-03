@@ -42,9 +42,10 @@ function playPauseVideo({ vid, e }) {
 }
 
 export function handleClickVideo({ vid, e, steps, allVids,stepFloat }) {
+    console.log('kjsdf')
     playing = !playing;
     toggleVideoSizeClick({ vid, e, steps,stepFloat })
-    // playPauseVideo({ vid });
+    playPauseVideo({ vid });
 }
 
 export function handleVideo({ vid, e, steps, allVids }) {
@@ -107,18 +108,19 @@ export function toggleVideoSizeClick({ vid, e, steps,stepFloat }) {
     e.preventDefault()
     if (e.target === steps[0] || stepFloat == steps[0]) {
         vid.classList.toggle('first-vid-enlarge');
-        console.log('is')
-        // return
+        
+        
     }else {
         vid.classList.toggle('enlarge');
     }
     
     if(vid.classList.contains('enlarge') || vid.classList.contains('first-vid-enlarge')){
-        vid.play()
-        vid.controls = true
+        // vid.play()
+        playing = true
+        // vid.controls = true
     } else {
         vid.controls = false
-        vid.pause()
+        // vid.pause()
     }
     vid.scrollIntoView({ behavior: 'instant', block: 'center' });
 }

@@ -180,7 +180,8 @@ export function handleStepKeys(key, e, mainTargetDiv) {
             const copyCodes = stepFloat.querySelectorAll('.copy-code')
             if(copyCodes.length > 1){
                 let intKey = parseInt(key)
-                copyCodes[intKey - 1].focus()
+                // if(copyCodes[intKey-1])
+                    copyCodes[intKey - 1]?.focus()
             } else {
                 const index = parseInt(key, 10) - 1;
                 if (index >= 0 && index < steps.length) {
