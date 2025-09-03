@@ -1,5 +1,5 @@
-.r{color: red;}
-.tom{color: tomato;}
+p > .r{color: red !important;}
+p > .tom{color: tomato !important;}
 .step-txt p .gr{color: goldenrod;}
 p>code.lb,
 p>span.lb {color: rgb(47, 173, 201);}

@@ -1,9 +1,5 @@
 /* position.css */
-main.main-container.collapsed #sideBarBtn {
-    position: absolute;
-    bottom: 12%;
-    left: 20%;
-}
+
 .page-wrapper {
     position: relative;
 }

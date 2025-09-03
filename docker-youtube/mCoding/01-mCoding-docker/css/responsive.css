@@ -26,5 +26,10 @@
         font-size: 80%;
         width: 20% !important;
     }
-    
+main.main-container.collapsed #sideBarBtn {
+    position: absolute;
+    bottom: 12%;
+    left: 50%;
+    z-index: 9999 !important;
+}
 }

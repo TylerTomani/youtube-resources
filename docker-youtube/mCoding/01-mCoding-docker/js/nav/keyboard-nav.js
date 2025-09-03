@@ -226,7 +226,7 @@ export function initKeyboardNav({
             case "main":
                 // IMPORTANT: no headerElementsFocus here either
                 handleStepKeys(key, e, mainTargetDiv);
-
+                headerElementsFocus(key,e)
                 if (key === 's') {
                     denlargeAllImages();
                     if (mainContainer.classList.contains("collapsed")) {
