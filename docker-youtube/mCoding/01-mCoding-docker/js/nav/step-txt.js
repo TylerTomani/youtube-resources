@@ -144,16 +144,17 @@ export function initStepNavigation(mainTargetDiv) {
             code.addEventListener("focus", () => {
                 denlargeAllImages();
                 pauseEnlargeAllVids(allVids)
-                copyCodesStepFocused =true 
+                copyCodesStepFocused = true 
             });
+            code.addEventListener('keydown', e => {
+                // console.log('add video toggle enlarge here one copy-codes')
+                const stepFloat = getStepFloat(e.target.parentElement)
+                const vid = stepFloat.querySelector('video')
+                toggleVideoSize({ vid, e, steps, stepFloat })
+                handleVideo({vid,e,steps,allVids})
+            })
             code.dataset.listenerAdded = "true";
         }
-        code.addEventListener('keydown', e => {
-            // console.log('add video toggle enlarge here one copy-codes')
-            const stepFloat = getStepFloat(e.target.parentElement)
-            const vid = stepFloat.querySelector('video')
-            toggleVideoSize({ vid, e, steps, stepFloat })
-        })
     });
 }
 
