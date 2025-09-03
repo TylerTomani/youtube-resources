@@ -14,7 +14,7 @@
             <div class="steps-container">
                 <!-- 01 -->
                 <div tabindex="0" class="step-float" data-video="https://www.youtube.com/watch?v=b0HMimUb4f0" 
-                data-timestamp="364">
+                data-timestamp="384">
                     <div class="step-vid">
                         <!-- <video tabindex="-1" controls  -->
                         <video playsinline webkit-playsinline poster="sidebar-links/02/images/01.png"
@@ -28,7 +28,7 @@
                             choose run dockers on open in settings
                         </p>
                         <p>
-                            Then to run/ download images using,
+                            run the command 
                         </p>
                         <div class="code-container">
                             <pre readonly tabindex="0" class="copy-code">
@@ -38,30 +38,55 @@ docker run hello-world</pre>
                         <p>
                             maybe here 
                             <a tabindex="0" target="_blank" href="https://docs.docker.com/get-started/docker-concepts/building-images/">docs.docker/get-started/doc ....</a>
+                            but it notice is now running on Docker Desktop Gui in Containers
+                        </p>
+                        <p>
+                            This pulls the latest <strong>image</strong> of hello-world,
                         </p>
                     </div>
                 </div>
                 <!-- 02 -->
-                <div data-video="https://www.youtube.com/watch?v=JZXQ455OT3A" 
-                            data-timestamp="250" tabindex="0" class="step-float">
-                    <div class="step-img ">
-                        <img src="sidebar-links/02/images/02.png" alt="">
+                <div data-video="https://www.youtube.com/watch?v=b0HMimUb4f0" 
+                            data-timestamp="390" tabindex="0" class="step-float">
+                    <div class="step-vid">
+                        <!-- <video tabindex="-1" controls  -->
+                        <video playsinline webkit-playsinline poster="sidebar-links/02/images/03.png"
+                            src="sidebar-links/02/images/03.mov"></video>
                     </div>
-                    <div  class="step-txt txt70">
+                    <div  class="step-txt ">
                         <h4>02</h4>
                     <p>
-                        Run the server file with <code>node &lt;filename></code>
-                        <span class="r">Remember</span> you do <strong>NOT</strong>
-                        need <code>.js</code>
+                        if we run 
                     </p>
                     <div class="code-container">
                         <pre tabindex="0" class="copy-code">
-node server</pre>
+docker run hello-world</pre>
                     </div>
+
                         <p>
-                            Instead of running js in browswer you are nonw running it in your local terminal
+                            again, it will show again on the desktop
                         </p>  
-                        <p>Press cntrl  + c twice to quit</p>
+                    </div>
+                </div>  
+                <!-- 03 -->
+                <div data-video="https://www.youtube.com/watch?v=b0HMimUb4f0" 
+                            data-timestamp="400" tabindex="0" class="step-float">
+                    <div class="step-vid">
+                        <!-- <video tabindex="-1" controls  -->
+                        <video playsinline webkit-playsinline poster="sidebar-links/02/images/03.png"
+                            src="sidebar-links/02/images/03.mov"></video>
+                    </div>
+                    <div  class="step-txt ">
+                        <h4>03</h4>
+                        <p>
+                            To download one and not run use <code>pull</code>
+                        </p>
+                        <div class="code-container">
+                            <pre tabindex="0" class="copy-code">
+docker pull hello-world</pre>
+                        </div>
+                        <span>**docker pull won't work again for same image</span>    
+                        <span>**I deleted everything after that, delete containers first</span>    
                     </div>
                 </div>  
             </div>
