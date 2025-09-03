@@ -1,5 +1,6 @@
 // keyboard-nav.js
 import { injectContent } from "../core/inject-content.js";
+
 import { handleStepKeys, lastStep } from "./step-txt.js";
 import { denlargeAllImages } from "./step-txt.js";
 
@@ -54,7 +55,7 @@ export function initKeyboardNav({
 
             // NEW: reset main content view when clicking sidebar
             denlargeAllImages();
-            pauseEnlargeAllVids();
+            // pauseEnlargeAllVids();
 
             const targetLink = e.target.closest("a");
             if (targetLink) {
@@ -71,7 +72,7 @@ export function initKeyboardNav({
 
             // NEW: also reset when focusing sidebar by tab/keyboard
             denlargeAllImages();
-            pauseEnlargeAllVids();
+            // pauseEnlargeAllVids();
 
             if (!suppressIndexUpdate) {
                 iSideBarLinks = [...sidebarLinks].indexOf(el);
@@ -178,9 +179,11 @@ export function initKeyboardNav({
         }
     }
 
+    
     // --- Global key handling ---
     addEventListener("keydown", e => {
         const key = e.key.toLowerCase();
+        
         if (e.shiftKey || e.metaKey) return;
 
         switch (focusZone) {

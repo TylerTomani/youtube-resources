@@ -1,5 +1,6 @@
 // step-txt.js
 import { changeTutorialLink, tutorialLink, endNxtLessonBtn } from "./keyboard-nav.js";
+import { pauseDenlargeAllVideos } from "./playStepVid.js";
 import { handleVideo,handleClickVideo,toggleVideoSize } from "./playStepVid.js";
 export let lastStep = null;
 let steps = [];
@@ -24,6 +25,13 @@ export function initStepNavigation(mainTargetDiv) {
     const stepTxtPAs = document.querySelectorAll('.step-txt p a')
     allImgs = Array.from(mainTargetDiv.querySelectorAll(".step-img > img"));
     allVids = Array.from(mainTargetDiv.querySelectorAll('video'))
+    addEventListener("click", e => {
+        if (e.target.tagName != "VIDEO") {
+            console.log('yes')
+            pauseDenlargeAllVideos({allVids})
+        }
+    })
+    
     // Initialize first step
     if (steps.length && !lastStep) {
         // lastStep = steps[0];
