@@ -76,7 +76,6 @@ export function initStepNavigation(mainTargetDiv) {
                     toggleStepImages(step,e);
                     step.scrollIntoView({ behavior: 'instant', block: 'center' });
                     const firstCopyCode = e.target.querySelector('.copy-code')
-                    console.log('here')
                     // copyCodesStepFocused = true
                     if(step == lastStep && stepClicked){
                         copyCodesStepFocused = true
@@ -126,7 +125,9 @@ export function initStepNavigation(mainTargetDiv) {
         if (!vid.dataset.listenerAdded) {
             vid.addEventListener('click', e => {
                 // toggleSingleImage(vid)
-                handleClickVideo({vid,e,steps,allVids})
+                const stepFloat = getStepFloat(e.target.parentElement)
+                // console.log(stepFloat)
+                handleClickVideo({vid,e,steps,allVids,stepFloat})
             })
             vid.addEventListener('keydown', e => {
                 // toggleSingleImage(vid)

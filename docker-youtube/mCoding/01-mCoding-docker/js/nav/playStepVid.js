@@ -41,9 +41,9 @@ function playPauseVideo({ vid, e }) {
     }
 }
 
-export function handleClickVideo({ vid, e, steps, allVids }) {
+export function handleClickVideo({ vid, e, steps, allVids,stepFloat }) {
     playing = !playing;
-    toggleVideoSizeClick({ vid, e, steps })
+    toggleVideoSizeClick({ vid, e, steps,stepFloat })
     // playPauseVideo({ vid });
 }
 
@@ -103,14 +103,17 @@ function videoControls({ vid, e, steps, allVids }) {
     playPauseVideo({ vid, e });
 }
 
-export function toggleVideoSizeClick({ vid, e, steps }) {
+export function toggleVideoSizeClick({ vid, e, steps,stepFloat }) {
     e.preventDefault()
-    if (e.target === steps[0]) {
+    if (e.target === steps[0] || stepFloat == steps[0]) {
         vid.classList.toggle('first-vid-enlarge');
-    } else {
+        console.log('is')
+        // return
+    }else {
         vid.classList.toggle('enlarge');
     }
-    if(vid.classList.contains('enlarge')){
+    
+    if(vid.classList.contains('enlarge') || vid.classList.contains('first-vid-enlarge')){
         vid.play()
         vid.controls = true
     } else {
@@ -121,7 +124,7 @@ export function toggleVideoSizeClick({ vid, e, steps }) {
 }
 export function toggleVideoSize({ vid, e, steps,stepFloat }) {
     let key = e.key.toLowerCase();
-    console.log()
+    
     if (key === 'enter') {
         
         if (stepFloat === steps[0]) {

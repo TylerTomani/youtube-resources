@@ -101,5 +101,7 @@
     max-width: 50vw;
     max-height: 50vh;
     z-index: 100000 !important;
-    border: 20px solid green;
+    /* border: 20px solid green; */
+    /* DUDE This fixed it somehow,the double tap */
+    pointer-events: none;
 }
