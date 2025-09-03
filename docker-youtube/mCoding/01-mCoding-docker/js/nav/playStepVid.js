@@ -119,14 +119,18 @@ export function toggleVideoSizeClick({ vid, e, steps }) {
     }
     vid.scrollIntoView({ behavior: 'instant', block: 'center' });
 }
-export function toggleVideoSize({ vid, e, steps }) {
+export function toggleVideoSize({ vid, e, steps,stepFloat }) {
     let key = e.key.toLowerCase();
-
+    console.log()
     if (key === 'enter') {
         
-        if (e.target === steps[0]) {
+        if (stepFloat === steps[0]) {
             vid.classList.toggle('first-vid-enlarge');
-        } else {
+        } else if(e.target === steps[0]){
+            vid.classList.toggle('first-vid-enlarge');
+
+        }
+        else {
             vid.classList.toggle('enlarge');
         }
         vid.scrollIntoView({ behavior: 'instant', block: 'center' });
