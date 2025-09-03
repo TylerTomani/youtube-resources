@@ -20,45 +20,45 @@
                     </div>
                     <div  class="step-txt ">
                         <h4>01</h4>
-                        <p class="">
-                            We can access operating system (OS) modules with a <code class="gr">require</code>
-                            on the <code>global</code> object,
-                        </p>
+                        <code>NGINX</code> is publically available on docker hub, i found docs here 
+                        <a href="https://docs.docker.com/get-started/docker-concepts/running-containers/publishing-ports/#:~:text=publishing%20comes%20in.-,Publishing%20ports,-Publishing%20a%20port">
+                            docs.docker/get-started/docker-concepts/running-containers/publishing-ports/
+                        </a>
                         <div class="code-container">
-                            <pre tabindex="0" class="copy-code">
-<span class="db">const</span> <span class="mb">os</span> = <span class="y">require</span>(<span class="o">'os'</span>)</pre>
-console.log(<span class="mb">os</span>)
+                            <pre readonly tabindex="0" class="copy-code">
+docker run -d -p 8080:80 nginx</pre>
                         </div>
-                        <p>
-                            and then access methods from the <code>os</code> variable, including
-                        </p>  
                     </div>
-                    
                 </div>
                 <div tabindex="0" data-video="https://www.youtube.com/watch?v=JZXQ455OT3A" data-timestamp="400" class="step-float">
-                    <div class="step-img">
-                        <img src="sidebar-links/04/images/01-b.png" alt="">
+                    <div class="step-vid">
+                        <!-- <video tabindex="-1" controls  -->
+                        <video playsinline webkit-playsinline poster="sidebar-links/04/images/02.png"
+                            src="sidebar-links/04/images/02.mov"></video>
                     </div>
                     <div  class="step-txt ">
                         <h4>02</h4>
-                        
-                        <div class="code-container">
-                            <pre readonly tabindex="0" class="copy-code">
-console.log(<span class="mb">os</span>.<span class="y">type</span><span class="m">()</span>)</pre>
-                        </div>
-                        <div class="code-container">
-                            <pre readonly tabindex="0" class="copy-code">
-console.log(<span class="mb">os</span>.<span class="y">version</span><span class="m">()</span>)</pre>
-                        </div>
                         <p>
-                            here you can access your home directory
+                            after
                         </p>
                         <div class="code-container">
                             <pre readonly tabindex="0" class="copy-code">
-console.log(<span class="mb">os</span>.<span class="y">homedir</span><span class="m">()</span>)</pre>
+docker run -d -p 8080:80 nginx
+                            </pre>
                         </div>
+                        <p>
+                            open
+                        </p>
+                        <div class="code-container">
+                            <pre readonly tabindex="0" class="copy-code">
+http://localhost:8080
+                            </pre>
+                        </div>
+                        
                     </div>
                 </div>
+
+                
             </div>
         </div>
     </div>
