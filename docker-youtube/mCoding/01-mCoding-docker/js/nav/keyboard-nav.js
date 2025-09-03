@@ -31,11 +31,19 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
                 sidebarLinks[0].focus();
             }
         }
-        if (key === 'f' || key === ';') {
-            // I don't get how this line works??
-            iSideBarLinks = Math.max(iSideBarLinks - 1, -1);
+        // if (key === 'f' || key === ';') {
+        //     // I don't get how this line works??
+        //     iSideBarLinks = Math.max(iSideBarLinks - 1, -1);
 
-        }
+        // }
+        // if(key === 'a'){
+        //     e.preventDefault();
+        //     e.stopPropagation(); // prevent bubbling conflicts
+        //     iSideBarLinks = (iSideBarLinks === -1)
+        //         ? sidebarLinks.length - 1
+        //         : (iSideBarLinks - 1 + sidebarLinks.length) % sidebarLinks.length;
+        //     sidebarLinks[iSideBarLinks].focus();
+        // }
     });
 
     // --- Sidebar links ---
@@ -225,7 +233,11 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
 
                     }
                 } else if (key === 'a') {
-                    iSideBarLinks = (iSideBarLinks === -1) ? sidebarLinks.length - 1 : (iSideBarLinks - 1 + sidebarLinks.length) % sidebarLinks.length;
+                    e.preventDefault();
+                    e.stopPropagation();
+                    iSideBarLinks = (iSideBarLinks === -1)
+                        ? sidebarLinks.length - 1
+                        : (iSideBarLinks - 1 + sidebarLinks.length) % sidebarLinks.length;
                     sidebarLinks[iSideBarLinks].focus();
                 }
                 else if (key === 'm') {

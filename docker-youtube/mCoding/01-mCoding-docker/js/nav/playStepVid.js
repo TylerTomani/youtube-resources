@@ -117,7 +117,7 @@ export function toggleVideoSizeClick({ vid, e, steps,stepFloat }) {
     if(vid.classList.contains('enlarge') || vid.classList.contains('first-vid-enlarge')){
         // vid.play()
         playing = true
-        // vid.controls = true
+        vid.controls = true
     } else {
         vid.controls = false
         // vid.pause()
