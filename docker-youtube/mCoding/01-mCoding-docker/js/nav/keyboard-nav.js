@@ -94,6 +94,10 @@ export function initKeyboardNav({
         window.scrollTo({ top: 0, behavior: 'instant' });
         sidebarLinks[iSideBarLinks].click();
         lastClickedLink = sidebarLinks[iSideBarLinks];
+        console.log(mainContainer)
+        if(mainContainer.classList.contains('collapsed')){
+            mainContainer.classList.remove('collapsed')
+        }
     });
 
     endNxtLessonBtn.addEventListener('keydown', e => {
@@ -196,6 +200,7 @@ export function initKeyboardNav({
 
             case "sidebar":
                 // IMPORTANT: no headerElementsFocus here (prevents 'a' from being hijacked)
+                headerElementsFocus(key,e)
                 if (key === 'f') {
                     suppressIndexUpdate = true;
                     if (e.target == sidebarBtn) {
