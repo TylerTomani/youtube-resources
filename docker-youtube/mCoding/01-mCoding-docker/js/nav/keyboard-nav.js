@@ -31,6 +31,10 @@ export function initKeyboardNav({
             else if (lastFocusedLink) lastFocusedLink.focus();
             else sidebarLinks[0].focus();
         }
+        if (key === 'm') {
+            focusZone = 'main'
+            mainTargetDiv.focus()
+        }
     });
 
     // --- Sidebar links ---
