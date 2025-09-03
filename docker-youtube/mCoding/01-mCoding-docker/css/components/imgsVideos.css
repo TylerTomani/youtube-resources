@@ -90,6 +90,7 @@
     left: 50%;
     /* center + enlarge */
     transform: translate(-50%, -50%) scale(1.7);
+    border: 12px solid black;
     z-index: 9999 !important;
 }
 .first-vid-enlarge {
@@ -100,7 +101,7 @@
     transform: translate(-20%, -70%) scale(1.5);
     max-width: 50vw;
     max-height: 50vh;
-    z-index: 100000 !important;
+    z-index: 9999 !important;
     /* border: 20px solid green; */
     /* DUDE This fixed it somehow,the double tap */
     pointer-events: none;

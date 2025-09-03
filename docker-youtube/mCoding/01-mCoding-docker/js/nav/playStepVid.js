@@ -11,7 +11,7 @@ function firstVidToggleSize(vid) {
 
 function playPauseVideo({ vid, e }) {
     if (vid.currentTime === vid.duration) {
-        vid.style.border = '4px solid red';
+        vid.style.border = '2px solid red';
         if (e?.keyCode !== 13) {
             playing = false;
         } else {
@@ -159,7 +159,7 @@ function denlargeAllVideos({ allVids }) {
         }
     });
 }
-
+    
 export function pauseDenlargeAllVideos({ allVids }) {
     if(!allVids) {
         // allVids = document.querySelectorAll('video')
@@ -168,6 +168,7 @@ export function pauseDenlargeAllVideos({ allVids }) {
         if (vid.classList.contains('enlarge')) {
             vid.classList.remove('enlarge');
         }
+        vid.style.border = 'none'
         if (playing) {
             playing = false;
             vid.pause()

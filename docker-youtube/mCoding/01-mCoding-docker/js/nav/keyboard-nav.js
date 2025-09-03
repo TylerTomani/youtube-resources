@@ -1,6 +1,5 @@
 // keyboard-nav.js
 import { injectContent } from "../core/inject-content.js";
-
 import { handleStepKeys, lastStep } from "./step-txt.js";
 import { denlargeAllImages } from "./step-txt.js";
 
@@ -47,16 +46,17 @@ export function initKeyboardNav({
             injectContent(el.href, mainTargetDiv, sidebarLinks, iSideBarLinks, navLessonTitle);
         }
 
-        // Inside sidebarLinks.forEach(el => { ... })
+        el.addEventListener("focus", () => {
+            focusZone = 'sidebar';
+            lastFocusedLink = el;
+            if (!suppressIndexUpdate) {
+                iSideBarLinks = [...sidebarLinks].indexOf(el);
+            }
+        });
 
         el.addEventListener("click", e => {
             e.preventDefault();
             e.stopPropagation();
-
-            // NEW: reset main content view when clicking sidebar
-            denlargeAllImages();
-            // pauseEnlargeAllVids();
-
             const targetLink = e.target.closest("a");
             if (targetLink) {
                 iSideBarLinks = [...sidebarLinks].indexOf(el);
@@ -65,20 +65,6 @@ export function initKeyboardNav({
             }
             lastClickedLink = e.target;
         });
-
-        el.addEventListener("focus", () => {
-            focusZone = 'sidebar';
-            lastFocusedLink = el;
-
-            // NEW: also reset when focusing sidebar by tab/keyboard
-            denlargeAllImages();
-            // pauseEnlargeAllVids();
-
-            if (!suppressIndexUpdate) {
-                iSideBarLinks = [...sidebarLinks].indexOf(el);
-            }
-        });
-
 
         el.addEventListener("keydown", e => {
             const key = e.key.toLowerCase();
@@ -154,7 +140,7 @@ export function initKeyboardNav({
         // Only active while focusZone === "header"
         pageHeaderLinks.forEach(el => { if (key === el.id[0]) el.focus(); });
         switch (key) {
-            case "a": sKeyFocusOrder(); break;
+            case "s": sKeyFocusOrder(); break;
             case "c": {
                 const codeComShortcutsLink = document.querySelector("#codeComShortcutsLink");
                 const chatGptProjLink = document.querySelector("#chatGptProjLink");
@@ -179,11 +165,9 @@ export function initKeyboardNav({
         }
     }
 
-    
     // --- Global key handling ---
     addEventListener("keydown", e => {
         const key = e.key.toLowerCase();
-        
         if (e.shiftKey || e.metaKey) return;
 
         switch (focusZone) {
@@ -254,7 +238,7 @@ export function initKeyboardNav({
                     }
                     sKeyFocusOrder();
                 }
-
+                
                 if (key === 'e' || key === 'p') {
                     const steps = mainTargetDiv.querySelectorAll(".step-float, .step");
                     if (key === 'e') {

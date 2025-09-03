@@ -31,6 +31,8 @@ export function initStepNavigation(mainTargetDiv) {
             pauseDenlargeAllVideos({allVids})
         }
     })
+
+    
     
     // Initialize first step
     if (steps.length && !lastStep) {
@@ -219,7 +221,6 @@ export function handleStepKeys(key, e, mainTargetDiv) {
             }
             break;
         case "f" : // next step
-
             if (!copyCodesStepFocused) {
                 if (e.target == mainTargetDiv) {
                     iStep = 0;
@@ -244,6 +245,7 @@ export function handleStepKeys(key, e, mainTargetDiv) {
             if (!copyCodesStepFocused) {
                 iStep = (iStep - 1 + steps.length) % steps.length;
                 steps[iStep].focus();
+                goToStep(steps[iStep]);
                 lastStep = steps[iStep];
             } else {
                 const stepFloat = getStepFloat(e.target)
