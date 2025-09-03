@@ -42,7 +42,6 @@ function playPauseVideo({ vid, e }) {
 }
 
 export function handleClickVideo({ vid, e, steps, allVids,stepFloat }) {
-    console.log('kjsdf')
     playing = !playing;
     toggleVideoSizeClick({ vid, e, steps,stepFloat })
     playPauseVideo({ vid });
@@ -117,7 +116,11 @@ export function toggleVideoSizeClick({ vid, e, steps,stepFloat }) {
     if(vid.classList.contains('enlarge') || vid.classList.contains('first-vid-enlarge')){
         // vid.play()
         playing = true
-        vid.controls = true
+        if (innerWidth < 499){
+            console.log(innerWidth)
+            console.log('yes')
+            vid.controls = true
+        }
     } else {
         // vid.controls = false
         // vid.pause()
@@ -161,7 +164,6 @@ export function pauseDenlargeAllVideos({ allVids }) {
     if(!allVids) {
         // allVids = document.querySelectorAll('video')
     }
-    console.log(allVids[0])
     allVids.forEach(vid => {
         if (vid.classList.contains('enlarge')) {
             vid.classList.remove('enlarge');
