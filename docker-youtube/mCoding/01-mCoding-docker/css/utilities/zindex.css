@@ -37,7 +37,7 @@ img.enlarge {
     transform: translate(-20%, -80%) scale(1.8) !important;
 }
 .step-vid video.enlarge{
-    transform: translate(-20%, -10%) scale(1.25) !important;
+    transform: translate(-50%, -10%) scale(2) !important;
     border: 20px solid black;
 }
 .step-vid video.first-vid-enlarge {

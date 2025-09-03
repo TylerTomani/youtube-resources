@@ -107,8 +107,6 @@ export function toggleVideoSizeClick({ vid, e, steps,stepFloat }) {
     e.preventDefault()
     if (e.target === steps[0] || stepFloat == steps[0]) {
         vid.classList.add('first-vid-enlarge');
-        
-        
     }else {
         vid.classList.add('enlarge');
     }
@@ -159,7 +157,7 @@ function denlargeAllVideos({ allVids }) {
         }
     });
 }
-    
+
 export function pauseDenlargeAllVideos({ allVids }) {
     if(!allVids) {
         // allVids = document.querySelectorAll('video')

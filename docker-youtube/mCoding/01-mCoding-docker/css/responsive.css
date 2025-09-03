@@ -16,17 +16,24 @@
         transform: translate(-20%, -80%) scale(1.8) !important;
     }
 }
-@media screen and (max-width: 600px) {
-    .step-float p {
+.step-float p {
     } 
-    .side-bar {
-        font-size: 80%;
-        width: 20% !important;
-    }
     main.main-container.collapsed #sideBarBtn {
         position: absolute;
         bottom: 12%;
         left: 50%;
         z-index: 9999 !important;
+        }
+        } */
+        
+@media screen and (max-width: 600px) {
+    .side-bar {
+        font-size: 80%;
+        width: 20% !important;
     }
-} */
+}
+@media screen and (max-width: 499px) {
+    .step-vid video.enlarge {
+            transform: translate(-50%, -10%) scale(2.5) !important;
+    }
+}
