@@ -78,7 +78,7 @@ export function initKeyboardNav({
                 lastClickedLink = e.target;
             } else if (key === 's') {
                 sidebarBtn.focus();
-            }
+            } else
             if (key === 'm') {
                 mainTargetDiv.focus();
                 focusZone = 'main';

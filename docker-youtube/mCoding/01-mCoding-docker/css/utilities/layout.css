@@ -92,11 +92,12 @@ body{
 }
 .step-float>.step-txt {
     /* flex-shrink: 1; */
-    max-width: 50%;
-    /* flex-basis: 50%; */
+    flex-grow: 1;
+    /* max-width: 50%; */
+    flex-basis: 50%;
 }
 .code-container > textarea.copy-code,
 .code-container> pre.copy-code {
-    overflow: scroll;
+    overflow-x: scroll !important;
     /* background-color: blue; */
 }

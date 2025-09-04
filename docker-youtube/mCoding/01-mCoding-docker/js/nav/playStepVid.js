@@ -44,7 +44,7 @@ function playPauseVideo({ vid, e }) {
 export function handleClickVideo({ vid, e, steps, allVids,stepFloat }) {
     playing = !playing;
     toggleVideoSizeClick({ vid, e, steps,stepFloat })
-    playPauseVideo({ vid });
+    playPauseVideo({ vid,e });
 }
 
 export function handleVideo({ vid, e, steps, allVids }) {

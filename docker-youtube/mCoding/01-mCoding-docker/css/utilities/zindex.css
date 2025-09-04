@@ -29,20 +29,6 @@ img.enlarge {
 }
 
 /* Enlarged media always above everything */
-.step-img img.enlarge {
-    position: fixed !important;
-    z-index: 9999 !important;
-    top: 0%;
-    left: 0%;
-    transform: translate(-20%, -80%) scale(1.8) !important;
-}
-.step-vid video.enlarge{
-    transform: translate(-50%, -10%) scale(2) !important;
-    border: 20px solid black;
-}
-.step-vid video.first-vid-enlarge {
-    transform: translate(-50%, -50%) scale(2) !important;
-}
 
 /* Copy-code blocks baseline */
 .copy-code {

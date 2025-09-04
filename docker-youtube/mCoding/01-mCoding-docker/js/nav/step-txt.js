@@ -1,6 +1,5 @@
 // step-txt.js
 import { changeTutorialLink, tutorialLink, endNxtLessonBtn } from "./keyboard-nav.js";
-import { pauseDenlargeAllVideos } from "./playStepVid.js";
 import { handleVideo,handleClickVideo,toggleVideoSize } from "./playStepVid.js";
 export let lastStep = null;
 let steps = [];
@@ -25,15 +24,6 @@ export function initStepNavigation(mainTargetDiv) {
     const stepTxtPAs = document.querySelectorAll('.step-txt p a')
     allImgs = Array.from(mainTargetDiv.querySelectorAll(".step-img > img"));
     allVids = Array.from(mainTargetDiv.querySelectorAll('video'))
-    addEventListener("click", e => {
-        if (e.target.tagName != "VIDEO") {
-            console.log('yes')
-            pauseDenlargeAllVideos({allVids})
-        }
-    })
-
-    
-    
     // Initialize first step
     if (steps.length && !lastStep) {
         // lastStep = steps[0];
@@ -58,6 +48,7 @@ export function initStepNavigation(mainTargetDiv) {
                 denlargeAllImages();
                 pauseEnlargeAllVids(allVids)
                 stepClicked = false
+                step.scrollIntoView({behavior: 'instant' , inline: 'start'})
                 
             });
 
@@ -76,7 +67,7 @@ export function initStepNavigation(mainTargetDiv) {
                     changeTutorialLink(e.target)
                     // const copyCodes = document.querySelectorAll('.copy-code, a')
                     if(key === 'enter'){
-                        copyCodesStepFocused = true
+                        // copyCodesStepFocused = true
                     }
                     
                     return
@@ -161,7 +152,7 @@ export function initStepNavigation(mainTargetDiv) {
                 const stepFloat = getStepFloat(e.target.parentElement)
                 const vid = stepFloat.querySelector('video')
                 toggleVideoSize({ vid, e, steps, stepFloat })
-                handleVideo({vid,e,steps,allVids})
+                handleVideo({vid})
             })
             code.dataset.listenerAdded = "true";
         }
@@ -190,8 +181,7 @@ export function handleStepKeys(key, e, mainTargetDiv) {
             const copyCodes = stepFloat.querySelectorAll('.copy-code')
             if(copyCodes.length > 1){
                 let intKey = parseInt(key)
-                // if(copyCodes[intKey-1])
-                    copyCodes[intKey - 1]?.focus()
+                copyCodes[intKey - 1].focus()
             } else {
                 const index = parseInt(key, 10) - 1;
                 if (index >= 0 && index < steps.length) {
@@ -221,6 +211,7 @@ export function handleStepKeys(key, e, mainTargetDiv) {
             }
             break;
         case "f" : // next step
+
             if (!copyCodesStepFocused) {
                 if (e.target == mainTargetDiv) {
                     iStep = 0;
@@ -245,7 +236,6 @@ export function handleStepKeys(key, e, mainTargetDiv) {
             if (!copyCodesStepFocused) {
                 iStep = (iStep - 1 + steps.length) % steps.length;
                 steps[iStep].focus();
-                goToStep(steps[iStep]);
                 lastStep = steps[iStep];
             } else {
                 const stepFloat = getStepFloat(e.target)
