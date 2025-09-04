@@ -43,27 +43,8 @@
 .step-img>img{z-index: 0}
 
 
-.step-float .step-img>img.enlarge {
-    position: fixed;
-    pointer-events: auto;
-    /* not absolute, escape parent */
-    top: 50%;
-    left: 50%;
-    /* center + enlarge */
-    transform: translate(-50%, -50%) scale(1.8);
-    z-index: 9999 !important;
 
-}
-.imgs-container .step-img>img.enlarge {
-    position: fixed !important;
-    /* not absolute, escape parent */
-    top: 50%;
-    left: 50%;
-    /* center + enlarge */
-    transform: translate(-50%, -90%) scale(1.2);
-    z-index: 9999 !important;
 
-}
 .step-img,
 .step-vid {
     float: right;
@@ -75,17 +56,39 @@
     height: 100%;
     width: 100%;
 }
+.imgs-container .step-img>img.enlarge {
+    position: fixed !important;
+    /* not absolute, escape parent */
+    top: 50%;
+    left: 50%;
+    /* center + enlarge */
+    transform: translate(-50%, -90%) scale(1.2);
+    z-index: 9999 !important;
 
-.step-float .step-vid>video.enlarge{
+}
+
+.step-float .step-img>img.enlarge {
+    position: fixed;
+    pointer-events: auto;
     /* not absolute, escape parent */
     top: 50%;
     left: 50%;
     /* center + enlarge */
     transform: translate(-50%, -50%) scale(1.8);
-    border: 12px solid black;
     z-index: 9999 !important;
+
 }
-.first-vid-enlarge {
+.step-float .step-vid>video.enlarge{
+    /* not absolute, escape parent */
+    /* center + enlarge */
+    /* top: 50%; */
+    /* left: 50%; */
+    /* transform: translate(-50%, -50%) scale(1.8); */
+    /* border: 12px solid black; */
+    /* z-index: 9999 !important; */
+}
+/* video.first-vid-enlarge { */
+video.enlarge {
     position: fixed !important;
     /* escape scrollable parent */
     top: 50% !important;
@@ -97,4 +100,7 @@
     /* border: 20px solid green; */
     /* DUDE This fixed it somehow,the double tap */
     pointer-events: none;
+}
+@media screen and (max-width: 600px) {
+    
 }
