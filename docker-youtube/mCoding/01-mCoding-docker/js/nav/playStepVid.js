@@ -106,10 +106,10 @@ function videoControls({ vid, e, steps, allVids }) {
 export function toggleVideoSizeClick({ vid, e, steps,stepFloat }) {
     e.preventDefault()
     if (e.target === steps[0] || stepFloat == steps[0]) {
-        vid.classList.toggle('first-vid-enlarge');
+        vid.classList.add('first-vid-enlarge');
     }else {
+        vid.classList.add('enlarge');
     }
-    vid.classList.toggle('enlarge');
     
     if(vid.classList.contains('enlarge') || vid.classList.contains('first-vid-enlarge')){
         // vid.play()

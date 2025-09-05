@@ -88,7 +88,7 @@ body{
 /* lessons injectContent() */
 .step,
 .step-float {
-    flex-grow: 1;
+    /* flex-grow: 1; */
 }
 .step-float>.step-txt {
     /* flex-shrink: 1; */
