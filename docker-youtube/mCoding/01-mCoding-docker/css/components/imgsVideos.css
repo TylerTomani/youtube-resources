@@ -80,6 +80,7 @@
 }
 .step-float .step-vid>video.enlarge{
     /* not absolute, escape parent */
+    position: fixed;
     top: 50%;
     left: 50%;
     /* center + enlarge */
@@ -89,14 +90,12 @@
 }
 video.first-vid-enlarge {
     position: fixed !important;
-    /* escape scrollable parent */
     top: 50% !important;
     left: 50% !important;
-    transform: translate(-50%, -50%) scale(1.8);
+    transform: translate(-50%, -90%) scale(1.8);
     max-width: 50vw;
     max-height: 50vh;
     z-index: 9999 !important;
-    /* border: 20px solid green; */
     /* DUDE This fixed it somehow,the double tap */
     pointer-events: none;
 }

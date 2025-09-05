@@ -106,10 +106,10 @@ function videoControls({ vid, e, steps, allVids }) {
 export function toggleVideoSizeClick({ vid, e, steps,stepFloat }) {
     e.preventDefault()
     if (e.target === steps[0] || stepFloat == steps[0]) {
-        vid.classList.add('first-vid-enlarge');
+        vid.classList.toggle('first-vid-enlarge');
     }else {
-        vid.classList.add('enlarge');
     }
+    vid.classList.toggle('enlarge');
     
     if(vid.classList.contains('enlarge') || vid.classList.contains('first-vid-enlarge')){
         // vid.play()
@@ -123,7 +123,7 @@ export function toggleVideoSizeClick({ vid, e, steps,stepFloat }) {
         // vid.controls = false
         // vid.pause()
     }
-    vid.scrollIntoView({ behavior: 'instant', block: 'center' });
+    // vid.scrollIntoView({ behavior: 'instant', block: 'center' });
 }
 export function toggleVideoSize({ vid, e, steps,stepFloat }) {
     let key = e.key.toLowerCase();
