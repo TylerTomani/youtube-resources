@@ -80,15 +80,14 @@
 }
 .step-float .step-vid>video.enlarge{
     /* not absolute, escape parent */
+    top: 50%;
+    left: 50%;
     /* center + enlarge */
-    /* top: 50%; */
-    /* left: 50%; */
-    /* transform: translate(-50%, -50%) scale(1.8); */
-    /* border: 12px solid black; */
-    /* z-index: 9999 !important; */
+    transform: translate(-50%, -50%) scale(1.8);
+    border: 12px solid black;
+    z-index: 9999 !important;
 }
-/* video.first-vid-enlarge { */
-video.enlarge {
+video.first-vid-enlarge {
     position: fixed !important;
     /* escape scrollable parent */
     top: 50% !important;

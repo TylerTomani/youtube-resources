@@ -95,6 +95,7 @@ export function initKeyboardNav({
         sidebarLinks[iSideBarLinks].click();
         lastClickedLink = sidebarLinks[iSideBarLinks];
         console.log(mainContainer)
+        console.log('click')
         if(mainContainer.classList.contains('collapsed')){
             mainContainer.classList.remove('collapsed')
         }
@@ -102,6 +103,10 @@ export function initKeyboardNav({
 
     endNxtLessonBtn.addEventListener('keydown', e => {
         let key = e.key.toLowerCase();
+        if(key === 'enter'){
+            
+            sidebar.scrollIntoView({inline: 'start'})
+        }
         if (key === 'm') {
             const steps = document.querySelectorAll('.step-float');
             if (!steps) {
@@ -124,6 +129,9 @@ export function initKeyboardNav({
 
     // --- Helper functions ---
     function sKeyFocusOrder() {
+        if (sidebar.classList.contains('expand')){
+            sidebar.classList.remove('expand')
+        }
         if (lastClickedLink) lastClickedLink.focus();
         else if (lastFocusedLink) lastFocusedLink.focus();
         else sidebarLinks[0].focus();
@@ -173,7 +181,7 @@ export function initKeyboardNav({
     addEventListener("keydown", e => {
         const key = e.key.toLowerCase();
         if (e.shiftKey || e.metaKey) return;
-
+        console.log(mainContainer)
         switch (focusZone) {
             case "header":
                 headerElementsFocus(key, e);

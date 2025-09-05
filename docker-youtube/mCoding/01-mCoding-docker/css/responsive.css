@@ -26,11 +26,16 @@
         }
         } */
         
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 650px) {
     .side-bar {
+        position: fixed;
         font-size: 80%;
         width: 20% !important;
     }
+    #sideBarBtn{
+        /* left: 120%; */
+    }
+    
 }
 @media screen and (max-width: 499px) {
     .step-vid video.enlarge {

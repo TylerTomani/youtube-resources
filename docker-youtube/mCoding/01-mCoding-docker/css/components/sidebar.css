@@ -3,8 +3,7 @@
   --main-content-width: calc(100% - var(--sidebar-width));
   --sidebar-collapsed-width: 5%;
 }
-.side-bar {
-}
+
 .side-bar {
   width: 15%;
   position: sticky;
@@ -29,8 +28,24 @@ main.main-container.collapsed .header-codeColor-lesson h3 {
   margin-left: 10%;
 } 
 
+#sideBarBtn {
+  position: relative;
+  /* top: 90px; */
+  /* always stays above bottom edge */
+  left: 5px;
+  /* always at left edge */
+  z-index: 1000;
+  /* make sure it's above other stuff */
+}
+
+/* When main-container is collapsed, adjust its left position */
 main.main-container.collapsed #sideBarBtn {
-  position: absolute;
-  bottom: 12%;
-  left: 20%;
+  max-height: fit-content;
+  position: fixed;
+  top: auto;
+    /* reset top */
+    bottom: 50px;
+    /* now bottom works */
+    left: 30px;
+  /* keep it bottom-left of screen */
 }
