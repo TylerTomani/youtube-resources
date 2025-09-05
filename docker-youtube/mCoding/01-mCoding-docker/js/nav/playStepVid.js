@@ -104,24 +104,27 @@ export function toggleVideoSizeClick({ vid, e, steps,stepFloat }) {
         vid.classList.add('enlarge');
     }
     
+    if(innerWidth < 800){
+        vid.setAttribute('controls','')
+    }
     
-    
-    // vid.scrollIntoView({ behavior: 'instant', block: 'center' });
+    videoControls({vid,e})
+    e.target.scrollIntoView({ behavior: 'instant', block: 'center' });
 }
 export function toggleVideoSize({ vid, e, steps,stepFloat }) {
     let key = e.key.toLowerCase();
     
     if (key === 'enter') {
         
-        if (stepFloat === steps[0]) {
-            vid.classList.toggle('first-vid-enlarge');
-        } else if(e.target === steps[0]){
-            vid.classList.toggle('first-vid-enlarge');
+        // if (stepFloat === steps[0]) {
+        //     vid.classList.toggle('first-vid-enlarge');
+        // } else if(e.target === steps[0]){
+        //     vid.classList.toggle('first-vid-enlarge');
 
-        }
-        else {
-            vid.classList.toggle('enlarge');
-        }
+        // }
+        // else {
+        // }
+        vid.classList.toggle('enlarge');
         vid.scrollIntoView({ behavior: 'instant', block: 'center' });
     }
 
@@ -139,6 +142,7 @@ export function denlargeAllVideos({ allVids }) {
             vid.classList.remove('first-vid-enlarge');
         }
     });
+    playing = !playing
 }
 
 export function pauseDenlargeAllVideos({ allVids }) {

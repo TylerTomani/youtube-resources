@@ -272,12 +272,15 @@ export function initKeyboardNav({
     });
     document.addEventListener("click", e => {
         const isVideo = e.target.tagName === "VIDEO";
+        const isImg = e.target.tagName === "IMG";
         const isEnlarged = e.target.closest("#targetDiv");
-        if (!isVideo && isEnlarged ) {
+        if ((!isVideo || !isImg) && isEnlarged ) {
             console.log(e.target)
             const allVids = document.querySelectorAll("video");
+            const allImgs = document.querySelectorAll("img");
             console.log(allVids)
             denlargeAllVideos({ allVids });
+            // denlargeAllImages({ allImgs });
         }
     }, true); // use capture so it fires before bubbling stops
 
