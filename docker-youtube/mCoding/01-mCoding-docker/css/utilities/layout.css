@@ -98,6 +98,19 @@ body{
 }
 .code-container > textarea.copy-code,
 .code-container> pre.copy-code {
-    overflow-x: scroll !important;
+    /* overflow-x: scroll !important; */
     /* background-color: blue; */
+}
+
+.code-container>textarea.copy-code,
+.code-container>pre.copy-code {
+    overflow: auto;
+    /* allow both directions */
+    max-width: 100%;
+    /* prevent overflow outside container */
+    max-height: 300px;
+    /* or any height you like */
+    white-space: pre;
+    /* keep formatting but allow scroll */
+    display: block;
 }
