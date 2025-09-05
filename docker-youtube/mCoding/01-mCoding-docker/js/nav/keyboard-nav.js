@@ -2,6 +2,7 @@
 import { injectContent } from "../core/inject-content.js";
 import { handleStepKeys, lastStep } from "./step-txt.js";
 import { denlargeAllImages } from "./step-txt.js";
+import { denlargeAllVideos, pauseDenlargeAllVideos } from "./playStepVid.js";
 
 export let lastFocusedLink = null;
 export let lastClickedLink = null;
@@ -94,8 +95,6 @@ export function initKeyboardNav({
         window.scrollTo({ top: 0, behavior: 'instant' });
         sidebarLinks[iSideBarLinks].click();
         lastClickedLink = sidebarLinks[iSideBarLinks];
-        console.log(mainContainer)
-        console.log('click')
         if(mainContainer.classList.contains('collapsed')){
             mainContainer.classList.remove('collapsed')
         }
@@ -184,7 +183,6 @@ export function initKeyboardNav({
     addEventListener("keydown", e => {
         const key = e.key.toLowerCase();
         if (e.shiftKey || e.metaKey) return;
-        console.log(mainContainer)
         switch (focusZone) {
             case "header":
                 headerElementsFocus(key, e);
@@ -270,7 +268,19 @@ export function initKeyboardNav({
                 }
                 break;
         }
+        
     });
+    document.addEventListener("click", e => {
+        const isVideo = e.target.tagName === "VIDEO";
+        const isEnlarged = e.target.closest("#targetDiv");
+        if (!isVideo && isEnlarged ) {
+            console.log(e.target)
+            const allVids = document.querySelectorAll("video");
+            console.log(allVids)
+            denlargeAllVideos({ allVids });
+        }
+    }, true); // use capture so it fires before bubbling stops
+
 }
 
 export function changeTutorialLink(targetLink) {

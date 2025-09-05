@@ -1,13 +1,7 @@
 // playStepVid.js
 let playing = false;
 
-function firstVidToggleSize(vid) {
-    if (!vid.classList.contains('first-vid-enlarge')) {
-        vid.classList.add('first-vid-enlarge');
-    } else {
-        vid.classList.remove('first-vid-enlarge');
-    }
-}
+// 
 
 function playPauseVideo({ vid, e }) {
     if (vid.currentTime === vid.duration) {
@@ -47,8 +41,7 @@ export function handleClickVideo({ vid, e, steps, allVids,stepFloat }) {
     playPauseVideo({ vid,e });
 }
 
-export function handleVideo({ vid, e, steps, allVids }) {
-    
+export function handleVideo({ vid, e, steps, allVids }) {    
     videoControls({ vid, e, steps, allVids });
 }
 
@@ -111,18 +104,8 @@ export function toggleVideoSizeClick({ vid, e, steps,stepFloat }) {
         vid.classList.add('enlarge');
     }
     
-    if(vid.classList.contains('enlarge') || vid.classList.contains('first-vid-enlarge')){
-        // vid.play()
-        playing = true
-        if (innerWidth < 499){
-            console.log(innerWidth)
-            console.log('yes')
-            vid.controls = true
-        }
-    } else {
-        // vid.controls = false
-        // vid.pause()
-    }
+    
+    
     // vid.scrollIntoView({ behavior: 'instant', block: 'center' });
 }
 export function toggleVideoSize({ vid, e, steps,stepFloat }) {
@@ -147,7 +130,7 @@ export function toggleVideoSize({ vid, e, steps,stepFloat }) {
     }
 }
 
-function denlargeAllVideos({ allVids }) {
+export function denlargeAllVideos({ allVids }) {
     allVids.forEach(vid => {
         if (vid.classList.contains('enlarge')) {
             vid.classList.remove('enlarge');
@@ -161,15 +144,15 @@ function denlargeAllVideos({ allVids }) {
 export function pauseDenlargeAllVideos({ allVids }) {
     if(!allVids) {
         // allVids = document.querySelectorAll('video')
+        vid.classList.remove("enlarge");
+        vid.classList.remove("first-vid-enlarge");
     }
     allVids.forEach(vid => {
-        if (vid.classList.contains('enlarge')) {
-            vid.classList.remove('enlarge');
-        }
-        vid.style.border = 'none'
-        if (playing) {
-            playing = false;
-            vid.pause()
+        vid.classList.remove("enlarge");
+        vid.classList.remove("first-vid-enlarge");
+        vid.style.border = "none";
+        if (!vid.paused) {
+            vid.pause();
         }
     });
 }

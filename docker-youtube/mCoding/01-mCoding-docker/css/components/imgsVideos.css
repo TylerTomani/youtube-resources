@@ -78,21 +78,31 @@
     z-index: 9999 !important;
 
 }
-.step-float .step-vid>video.enlarge{
-    /* not absolute, escape parent */
+video.enlarge::before{
+     content: "";
+  position: fixed;
+  inset: 0;              /* covers entire screen */
+  background: rgba(0,0,0,0.6); /* darken if you like */
+  z-index: -1;    
+}
+/* .step-float .step-vid>video.enlarge{
     position: fixed;
     top: 50%;
     left: 50%;
-    /* center + enlarge */
+    max-width:  70vw;
+    max-height: 70vh;
     transform: translate(-50%, -50%) scale(1.8);
     border: 12px solid black;
-    z-index: 9999 !important;
-}
+    z-index: 9999 ;
+} */
+/* video.first-vid-enlarge { */
+
+video.enlarge,
 video.first-vid-enlarge {
     position: fixed !important;
     top: 50% !important;
     left: 50% !important;
-    transform: translate(-50%, -90%) scale(1.8);
+    transform: translate(-50%, -90%) scale(2);
     max-width: 50vw;
     max-height: 50vh;
     z-index: 9999 !important;

@@ -26,7 +26,7 @@ a:focus,
 .step-float:focus {
     /* border: 2px solid var(--highlight-color); */
     border: none;
-    box-shadow: 0 0 3px rgba(0, 139, 137, 0.4);
+    box-shadow: 0 0 23px 4px rgba(0, 139, 137, 0.4);
     /* transform: scale(0.98); */
     /* subtle pressed effect */
 }

@@ -1,6 +1,6 @@
 // step-txt.js
 import { changeTutorialLink, tutorialLink, endNxtLessonBtn } from "./keyboard-nav.js";
-import { handleVideo,handleClickVideo,toggleVideoSize } from "./playStepVid.js";
+import { handleVideo,handleClickVideo,toggleVideoSize} from "./playStepVid.js";
 export let lastStep = null;
 let steps = [];
 let allImgs = [];
@@ -48,7 +48,7 @@ export function initStepNavigation(mainTargetDiv) {
                 denlargeAllImages();
                 pauseEnlargeAllVids(allVids)
                 stepClicked = false
-                step.scrollIntoView({behavior: 'instant' , inline: 'start'})
+                step.scrollIntoView({behavior: 'instant' , inline: 'center'})
                 
             });
 
