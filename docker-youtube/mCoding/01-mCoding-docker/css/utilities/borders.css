@@ -16,3 +16,6 @@
 .code-container>pre.copy-code {
     border: 1px solid black;
 }
+.step-float {
+    border: 1px solid black !important;
+}

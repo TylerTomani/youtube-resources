@@ -1,6 +1,7 @@
 
 :root {
-    --highlight-color: rgb(0, 139, 137);
+    /* --highlight-color: rgb(0, 139, 137); */
+    --highlight-color: rgb(0, 139, 51);
 }
 a:visited{
     color: black;
@@ -24,9 +25,10 @@ a:focus,
 }
 /* Active (tap / mouse click press) */
 .step-float:focus {
-    /* border: 2px solid var(--highlight-color); */
+    /* border: 2px solid var(--highlight-color) !important; */
+    border: 2px solid orange !important;
     border: none;
-    box-shadow: 0 0 3px rgba(0, 139, 137, 0.4);
+    box-shadow: 0 0 3px 3px orange;
     /* transform: scale(0.98); */
     /* subtle pressed effect */
 }

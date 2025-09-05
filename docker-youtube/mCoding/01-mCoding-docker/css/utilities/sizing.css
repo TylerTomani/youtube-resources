@@ -36,7 +36,7 @@
 
 .step,
 .step-float {
-    min-height: 40vh;
+    /* min-height: 40vh; */
 }
 .step-float>.step-txt>.code-container {
     /* max-width: 80%; */
