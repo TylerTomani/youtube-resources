@@ -104,7 +104,7 @@ export function toggleVideoSizeClick({ vid, e, steps,stepFloat }) {
         vid.classList.add('enlarge');
     }
     
-    if(innerWidth < 800){
+    if(innerWidth < 500){
         vid.setAttribute('controls','')
     }
     

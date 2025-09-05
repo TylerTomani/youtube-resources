@@ -34,6 +34,7 @@ export function initStepNavigation(mainTargetDiv) {
             copyCodesStepFocused = true
 
         })
+        
     })
     // Add step event listeners
     steps.forEach((step, index) => {

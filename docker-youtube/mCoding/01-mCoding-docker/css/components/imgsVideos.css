@@ -109,6 +109,17 @@ video.first-vid-enlarge {
     /* DUDE This fixed it somehow,the double tap */
     pointer-events: none;
 }
-@media screen and (max-width: 600px) {
-    
+@media screen and (min-width: 700px) {
+video.enlarge,
+    video.first-vid-enlarge {
+        position: fixed !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) scale(2);
+        max-width: 50vw;
+        max-height: 50vh;
+        z-index: 9999 !important;
+        /* DUDE This fixed it somehow,the double tap */
+        pointer-events: none;
+    }
 }
