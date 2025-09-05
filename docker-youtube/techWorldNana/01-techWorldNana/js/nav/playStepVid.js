@@ -105,7 +105,7 @@ export function toggleVideoSizeClick({ vid, e, steps,stepFloat }) {
     }
     
     if(innerWidth < 500){
-        vid.setAttribute('controls','')
+        // vid.setAttribute('controls','')
     }
     
     videoControls({vid,e})
