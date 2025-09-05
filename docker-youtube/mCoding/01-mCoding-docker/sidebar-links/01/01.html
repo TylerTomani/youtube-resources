@@ -39,13 +39,23 @@ brew update</pre>
                             <pre readonly tabindex="0" class="copy-code">
 sudo apt update</pre>
                         </div>
-                        <p>
+                        <p class="clear">
                             if you don't have homebrew
                         </p>
                         <div class="code-container">
                             <pre readonly tabindex="0" class="copy-code">
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
                         </pre>
+                        </div>
+                        <p>
+                            <span class="tom">The sudo command didn'T work for me</span>
+                        </p>
+                        <div class="code-container">
+                            <textarea readonly tabindex="0" class="copy-code">
+sudo hdiutil attach Docker.dmg
+sudo /Volumes/Docker/Docker.app/Contents/MacOS/install
+sudo hdiutil detach /Volumes/Docker
+                            </textarea>
                         </div>
                     </div>
                 </div>
