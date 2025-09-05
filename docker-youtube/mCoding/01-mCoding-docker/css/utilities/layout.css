@@ -82,7 +82,7 @@ body{
     /* background-color: blue; */
 }
 .lesson-btns-container {
-    position: fixed;
+    /* position: fixed; */
     display: flex;
 }
 /* lessons injectContent() */

@@ -104,7 +104,10 @@ export function initKeyboardNav({
     endNxtLessonBtn.addEventListener('keydown', e => {
         let key = e.key.toLowerCase();
         if(key === 'enter'){
-            
+            if (mainContainer.classList.contains('collapsed')){
+
+                mainContainer.classList.remove('collapsed')
+            }
             sidebar.scrollIntoView({inline: 'start'})
         }
         if (key === 'm') {
