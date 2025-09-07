@@ -135,10 +135,12 @@ export function initStepNavigation(mainTargetDiv) {
     
     copyCodes.forEach(code => {
         if (!code.dataset.listenerAdded) {
-            code.addEventListener("focus", () => {
+            code.addEventListener("focus", (e) => {
                 denlargeAllImages();
                 pauseEnlargeAllVids(allVids)
                 copyCodesStepFocused = true 
+
+
             });
             code.addEventListener('keydown', e => {
                 // console.log('add video toggle enlarge here one copy-codes')
