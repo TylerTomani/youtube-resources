@@ -141,12 +141,14 @@ export function initKeyboardNav({
 
     function mKeyFocusOrder(e) {
         const steps = document.querySelectorAll('.step-float');
+        // This block below isn't really working, logic is in step-txt??
         if (lastStep) {
-            lastStep.focus();
+            lastStep.focus()
         } else if (steps[0]) {
             steps[0].focus();
         } else {
-            mainTargetDiv.focus();
+            
+            mainTargetDiv.scrollIntoView({ block: 'start',inline: 'start' })
         }
     }
 

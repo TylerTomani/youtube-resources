@@ -2,6 +2,7 @@
 import { changeTutorialLink, tutorialLink, endNxtLessonBtn } from "./keyboard-nav.js";
 import { handleVideo,handleClickVideo,toggleVideoSize} from "./playStepVid.js";
 export let lastStep = null;
+const pageWrapper = document.querySelector('.page-wrapper')
 let steps = [];
 let allImgs = [];
 let allVids = [];
@@ -87,16 +88,7 @@ export function initStepNavigation(mainTargetDiv) {
                     lastStep = step
                     stepClicked = true
                 }
-                if (key === 'm') {
-                    if(!copyCodesStepFocused){
-                        mainTargetDiv.focus()
-                        // console.log('line 60 step-txt.js breaking code');
-                        // This was breaking code
-                        // body.scrollIntoView({ behavior: 'instant', block: 'start'})
-                    } else {
-                        step.focus()
-                    }
-                }
+                
               
             });
             // --- unified pointerdown for click/tap ---
@@ -251,15 +243,17 @@ export function handleStepKeys(key, e, mainTargetDiv) {
         case "e": // go to last stepm
             break;
         case "m": // focus last step or container
-            if(copyCodesStepFocused){
-                copyCodesStepFocused = false
-            }
-            if (e.target == lastStep) {
+            if (e.target === mainTargetDiv) {
+                // scroll page to top if container itself has focus
+                window.scrollTo({ top: 0, behavior: "instant" });
+            } else if (e.target === lastStep) {
+                // go back to container
                 mainTargetDiv.focus();
-            } else if(lastStep){
+            } else if (lastStep) {
+                // otherwise focus the last step we tracked
                 lastStep.focus();
             }
-            if (e.target == mainTargetDiv && !lastStep) {
+            if (e.target === mainTargetDiv && !lastStep) {
                 steps[0].focus();
             }
             break;
