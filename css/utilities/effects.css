@@ -1,17 +1,32 @@
+:root {
+    --xB: 8px;
+    --yB: 3px;
+}
 #javascriptYoutube:focus,
 #javascriptYoutube:active {
-    box-shadow: 0 0 20px 2px yellow !important;
+    box-shadow: 0 0 var(--xB) var(--yB) yellow !important;
     border: 2px solid yellow !important;
 }
 
 #nodeJsYoutube:focus,
 #nodeJsYoutube:active {
-    box-shadow: 0 0 20px 2px royalblue !important;
+    box-shadow: 0 0 var(--xB) var(--yB) royalblue !important;
     border: 2px solid royalblue !important;
 }
 
 #pythonYoutube:focus,
 #pythonYoutube:active {
-    box-shadow: 0 0 15px 2px mediumpurple !important;
+    box-shadow: 0 0 var(--xB) var(--yB) mediumpurple !important;
     border: 2px solid mediumpurple !important;
+}
+#dockerYoutube:focus,
+#dockerYoutube:active {
+    box-shadow: 0 0 var(--xB) var(--yB) darkslateblue !important;
+    border: 2px solid darkslateblue !important;
+}
+.topics-container>.topic:focus,
+.topics-container>.topic:active {
+    margin-top:  2px;
+    margin-left: 2px;
+    transition: all .2s;
 }

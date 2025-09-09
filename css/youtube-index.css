@@ -5,9 +5,6 @@
     padding:0;
     box-sizing: border-box;
 }
-body{
-    border: 2px solid orangered;
-}
 .page-wrapper {
     display: flex;
     flex-direction: column;
@@ -40,7 +37,7 @@ main > h2 {
     flex-direction: column;
     white-space: nowrap;
     text-wrap: nowrap;
-    border-radius: 7px;
+    
     margin-bottom: 2.5%;
     margin-bottom: 10%;
     padding:.5%;
