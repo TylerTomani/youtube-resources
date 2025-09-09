@@ -25,22 +25,24 @@ main > h2 {
 .topics-container {    
     display: flex;
     flex-wrap: wrap;
+    margin-top: 20%;
     gap: 3%;
     margin-left: 2.5%;
 }
 
 .topics-container > .topic{
-    flex-basis: 12.5%;    
-    border: 1px solid black;
-    border-radius: 3px;
-    border-radius: 2px;
-    padding:.5%;
-    margin-bottom: 2.5%;
+    flex-basis: 22%;    
+    height: 64px;
     text-decoration: none;
     display: flex;
     flex-direction: column;
     white-space: nowrap;
     text-wrap: nowrap;
+    border: 1px solid black;
+    border-radius: 7px;
+    padding:.5%;
+    margin-bottom: 2.5%;
+    margin-bottom: 10%;
     /* margin-bottom: 2.5%; */
 }
 .topics-container > .topic > h4 {

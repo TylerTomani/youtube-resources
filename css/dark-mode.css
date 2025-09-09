@@ -51,3 +51,6 @@ h4 .dark-mode p {
 .dark-mode .resource:visited{
     color: whitesmoke;
 }
+.dark-mode .topic {
+    border: 1px solid whitesmoke !important;
+}
