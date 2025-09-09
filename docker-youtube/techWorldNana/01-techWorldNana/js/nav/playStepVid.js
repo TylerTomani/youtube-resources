@@ -1,8 +1,6 @@
 // playStepVid.js
 let playing = false;
 
-// 
-
 function playPauseVideo({ vid, e }) {
     if (vid.currentTime === vid.duration) {
         vid.style.border = '2px solid red';
@@ -155,6 +153,7 @@ export function pauseDenlargeAllVideos({ allVids }) {
         vid.classList.remove("enlarge");
         vid.classList.remove("first-vid-enlarge");
         vid.style.border = "none";
+        // console.log('vid')
         if (!vid.paused) {
             vid.pause();
         }

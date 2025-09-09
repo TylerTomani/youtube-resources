@@ -19,8 +19,17 @@ export function initKeyboardNav({
     let suppressIndexUpdate = false; // prevent focus handler from resetting index after keyboard nav
 
     // --- Focus zone tracking ---
-    pageHeader.addEventListener("focusin", () => { focusZone = "header"; });
-    sidebar.addEventListener("focusin", () => { focusZone = "sidebar"; });
+    pageHeader.addEventListener("focusin", () => { 
+        const allVids = document.querySelectorAll('video')
+        pauseDenlargeAllVideos({ allVids })
+        focusZone = "header";
+     });
+    sidebar.addEventListener("focusin", () => {
+        const allVids = document.querySelectorAll('video')
+        pauseDenlargeAllVideos({ allVids })
+         focusZone = "sidebar";
+
+     });
     sidebarBtn.addEventListener("focusin", () => { focusZone = "sidebar"; });
     mainTargetDiv.addEventListener("focusin", () => { focusZone = "main"; });
 
@@ -147,7 +156,6 @@ export function initKeyboardNav({
         } else if (steps[0]) {
             steps[0].focus();
         } else {
-            
             mainTargetDiv.scrollIntoView({ block: 'start',inline: 'start' })
         }
     }
@@ -187,6 +195,7 @@ export function initKeyboardNav({
         if (e.shiftKey || e.metaKey) return;
         switch (focusZone) {
             case "header":
+                console.log('header')
                 headerElementsFocus(key, e);
                 if (key === 'f') {
                     focusZone = "sidebar";
@@ -212,6 +221,7 @@ export function initKeyboardNav({
             case "sidebar":
                 // IMPORTANT: no headerElementsFocus here (prevents 'a' from being hijacked)
                 headerElementsFocus(key,e)
+                
                 if (key === 'f') {
                     suppressIndexUpdate = true;
                     if (e.target == sidebarBtn) {
