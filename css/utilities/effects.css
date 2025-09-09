@@ -24,9 +24,19 @@
     box-shadow: 0 0 var(--xB) var(--yB) darkslateblue !important;
     border: 2px solid darkslateblue !important;
 }
+
+#aiYoutube:focus,
+#aiYoutube:active {
+    box-shadow:  0 0 var(--xB) var(--yB) orangered !important;
+    background-color: rgb(255, 69, 0, .4);
+    border: 2px solid var(--xB) var(--yB) orangered;
+}
+
 .topics-container>.topic:focus,
 .topics-container>.topic:active {
-    margin-top:  2px;
+    margin-top: 2px;
     margin-left: 2px;
+    padding-left: 1%;
+    font-size: 130%;
     transition: all .2s;
 }
