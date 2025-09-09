@@ -1,0 +1,17 @@
+#javascriptYoutube:focus,
+#javascriptYoutube:active {
+    box-shadow: 0 0 20px 2px yellow !important;
+    border: 2px solid yellow !important;
+}
+
+#nodeJsYoutube:focus,
+#nodeJsYoutube:active {
+    box-shadow: 0 0 20px 2px royalblue !important;
+    border: 2px solid royalblue !important;
+}
+
+#pythonYoutube:focus,
+#pythonYoutube:active {
+    box-shadow: 0 0 15px 2px mediumpurple !important;
+    border: 2px solid mediumpurple !important;
+}

@@ -1,4 +1,5 @@
 @import url('utilities/borders.css');
+@import url('utilities/effects.css');
 * {
     margin: 0;
     padding:0;
@@ -39,11 +40,12 @@ main > h2 {
     flex-direction: column;
     white-space: nowrap;
     text-wrap: nowrap;
-    border: 1px solid black;
     border-radius: 7px;
-    padding:.5%;
     margin-bottom: 2.5%;
     margin-bottom: 10%;
+    padding:.5%;
+    padding-top : 1%;
+    padding-left: 1%;
     /* margin-bottom: 2.5%; */
 }
 .topics-container > .topic > h4 {

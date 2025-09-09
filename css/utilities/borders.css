@@ -1,3 +1,8 @@
-#javascriptYoutube{ border: 2px solid yellow !important;}
-#nodeJsYoutube{ border: 2px solid royalblue !important;}
-#pythonYoutube{ border: 2px solid mediumpurple !important;}
+.topics-container>.topic {
+    border: 1px solid black;
+}
+#javascriptYoutube{
+    border: 2px solid darkkhaki !important;
+    }
+#nodeJsYoutube{border: 2px solid royalblue !important;}
+#pythonYoutube{border: 2px solid mediumpurple !important;}
