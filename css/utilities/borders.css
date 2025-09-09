@@ -1,4 +1,7 @@
-body {border: 2px solid orangered;}
+body {
+    border: 2px solid orangered;
+    border-bottom: none;
+}
 .topics-container>.topic {
     border-radius: 5px;
     text-decoration: none;
