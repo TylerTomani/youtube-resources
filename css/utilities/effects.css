@@ -4,20 +4,23 @@
     --yB: 2px;
 }
 
-.ai-b:focus h3,
-.ai-b:active h3,
-.ai-b:hover h3,
-.js-b:focus h3,
-.js-b:active h3,
-.js-b:hover h3,
-.python-b:focus h3,
-.python-b:active h3,
-.python-b:hover h3 {
+.ai-b:focus ,
+.ai-b:active ,
+.ai-b:hover ,
+.js-b:focus ,
+.js-b:active ,
+.js-b:hover ,
+.nodeJs-b:focus ,
+.nodeJs-b:active ,
+.nodeJs-b:hover ,
+.python-b:focus ,
+.python-b:active ,
+.python-b:hover  {
     color: whitesmoke;
     text-shadow: -1px 1px 3px black;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: 999;
-    font-size: 150%;
+    font-size: 130%;
 }
 
 .topic:focus,
@@ -31,7 +34,11 @@
 .nodeJs-b:focus,
 .nodeJs-b:active {
     box-shadow: var(--x) 0 var(--xB) var(--yB) royalblue !important;
+    background-color: rgb(65, 105, 225,.4);
     border: 2px solid royalblue !important;
+}
+.nodeJs-b:hover {
+    box-shadow: var(--x) 0 var(--xB) var(--yB) royalblue !important;
 }
 
 .docker-b:focus,
@@ -57,6 +64,9 @@
     box-shadow: var(--x) 0 var(--xB) var(--yB) orangered !important;
     background-color: rgb(255, 69, 0, .4);
     border: 10px;
+}
+.ai-b:hover {
+    box-shadow: var(--x) 0 var(--xB) var(--yB) orangered !important;
 }
 
 .js-b:focus,
