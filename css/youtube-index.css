@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 body{
-    border: 2px solid yellow;
+    border: 2px solid red;
 }
 .page-wrapper {
     display: flex;
