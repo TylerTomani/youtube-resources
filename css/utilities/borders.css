@@ -1,6 +1,7 @@
 body {
     border: 2px solid orangered;
     border-bottom: none;
+    border-top: none;
 }
 .topics-container>.topic {
     border-radius: 5px;
