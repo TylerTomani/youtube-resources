@@ -23,12 +23,16 @@ a:focus,
     /* -webkit-tap-highlight-color: transparent; */
 }
 /* Active (tap / mouse click press) */
-.step-float:focus,
-.step-float:active,
-.step-float:focus {
+.step-float.efxFocus{
+    /* border: 20px solid blue; */
+    box-shadow: 0 0 20px 40px gainsboro;
+    background-color: rgba(0, 139, 137, 0.4);
+}
+.step-float:active{
+    /* background-color: blue; */
     /* border: 2px solid var(--highlight-color); */
     /* border: 20px solid blue; */
-    /* box-shadow: 0 0 23px 4px rgba(0, 139, 137, 0.4); */
+    /* box-shadow: 0 0 23px 40px rgba(0, 139, 137, 0.4); */
     /* transform: scale(0.98); */
     /* subtle pressed effect */
 }

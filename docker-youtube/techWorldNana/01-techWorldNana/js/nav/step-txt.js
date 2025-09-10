@@ -37,12 +37,15 @@ export function initStepNavigation(mainTargetDiv) {
         })
         
     })
+    
     // Add step event listeners
     steps.forEach((step, index) => {
         if (!step.dataset.listenerAdded) {
             step.setAttribute("tabindex", "0");
 
-            step.addEventListener("focus", () => {
+            step.addEventListener("focus", (e) => {
+                removeStepsFocusEffects(steps)
+                e.target.classList.add('efxFocus')
                 copyCodesStepFocused = false
                 iStep = index;
                 currentIndex = 0;
@@ -97,10 +100,12 @@ export function initStepNavigation(mainTargetDiv) {
             step.addEventListener("pointerdown", e => {
                 e.preventDefault();
                 e.stopPropagation();
+                removeStepsFocusEffects(steps)
+                e.target.classList.add('efxFocus')
                 console.log('here')
                 const stepFloat = getStepFloat(e.target)
-                stepFloat.style.border = '20px solid blue !important'
-                stepFloat.style.background = ' blue !important'
+                // stepFloat.style.border = '20px solid blue !important'
+                // stepFloat.style.background = ' blue !important'
                 console.log(stepFloat)
                 if (e.target.tagName !== "IMG") {
                     denlargeAllImages();
@@ -343,4 +348,8 @@ function timeTutorialVid(e){
         tutorialLink.href = vidHref;
 
     }
+}
+
+function removeStepsFocusEffects(steps) {
+    steps.forEach(el => el.classList.remove('efxFocus'))
 }
