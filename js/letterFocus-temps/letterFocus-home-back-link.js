@@ -6,7 +6,7 @@ addEventListener('DOMContentLoaded', e => {
             return;
         }
 
-        const allAs = [...document.querySelectorAll('a, [id]')].filter(a => {
+        const allAs = [...document.querySelectorAll('a')].filter(a => {
             const rect = a.getBoundingClientRect();
             return a.offsetParent != null && rect.width > 0 && rect.height > 0;
         });

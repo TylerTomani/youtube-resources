@@ -3,50 +3,42 @@
     --xB: 2px;
     --yB: 2px;
 }
-
-.ai-b:focus ,
-.ai-b:active ,
-.ai-b:hover ,
-.js-b:focus ,
-.js-b:active ,
-.js-b:hover ,
-.nodeJs-b:focus ,
-.nodeJs-b:active ,
-.nodeJs-b:hover ,
-.python-b:focus ,
-.python-b:active ,
-.python-b:hover  {
+.topic:focus ,
+.topic:active ,
+.topic:hover  {
     color: whitesmoke;
     text-shadow: -1px 1px 3px black;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: 999;
     font-size: 130%;
-}
-
-.topic:focus,
-.topic:active {
     outline: none;
     margin-top: 2px !important;
     margin-left: 2px !important;
     transition: all .2s;
 }
 
+
+.ai-b:focus,
+.ai-b:active {
+    box-shadow: var(--x) 0 var(--xB) var(--yB) orangered !important;
+    background-color: rgb(255, 69, 0, .4);
+}
+.docker-b:focus,
+.docker-b:active {
+    box-shadow: var(--x) 0 var(--xB) var(--yB) darkslateblue !important;
+    background: darkslateblue;
+}
+.js-b:focus,
+.js-b:active {
+    box-shadow: var(--x) 0 var(--xB) var(--yB) yellow !important;
+    background-color: rgb(255, 255, 0, .3);
+}
 .nodeJs-b:focus,
 .nodeJs-b:active {
     box-shadow: var(--x) 0 var(--xB) var(--yB) royalblue !important;
     background-color: rgb(65, 105, 225,.4);
     border: 2px solid royalblue !important;
 }
-.nodeJs-b:hover {
-    box-shadow: var(--x) 0 var(--xB) var(--yB) royalblue !important;
-}
-
-.docker-b:focus,
-.docker-b:active {
-    box-shadow: var(--x) 0 var(--xB) var(--yB) darkslateblue !important;
-    border: 2px solid darkslateblue !important;
-}
-
 .python-b:focus,
 .python-b:active {
     background-color: rgb(147, 112, 216, .4);
@@ -54,38 +46,22 @@
     font-size: 1.3rem;
 }
 
+.ai-b:hover {
+    box-shadow: var(--x) 0 var(--xB) var(--yB) orangered !important;
+}
+
+.js-b:hover {
+    box-shadow: var(--x) 0 var(--xB) var(--yB) yellow !important;
+}
+.nodeJs-b:hover {
+    box-shadow: var(--x) 0 var(--xB) var(--yB) royalblue !important;
+}
 .python-b:hover {
     box-shadow: var(--x) 0 var(--xB) var(--yB) mediumpurple !important;
     border: 1px solid black;
 }
 
-.ai-b:focus,
-.ai-b:active {
-    box-shadow: var(--x) 0 var(--xB) var(--yB) orangered !important;
-    background-color: rgb(255, 69, 0, .4);
-    border: 10px;
-}
-.ai-b:hover {
-    box-shadow: var(--x) 0 var(--xB) var(--yB) orangered !important;
-}
 
-.js-b:focus,
-.js-b:active,
-.js-b:hover,
-.python-b:focus,
-.python-b:active,
-.python-b:hover {
-    border: 2px solid black !important;
-}
-
-.js-b:focus,
-.js-b:active {
-    /* .js-b:hover { */
-    box-shadow: var(--x) 0 var(--xB) var(--yB) yellow !important;
-    background-color: rgb(255, 255, 0, .3);
-    border: 10px;
-}
-
-.js-b:hover {
-    box-shadow: var(--x) 0 var(--xB) var(--yB) yellow !important;
+@media screen and (max-width: 720px){
+    
 }

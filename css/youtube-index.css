@@ -30,7 +30,7 @@ main > h2 {
 }
 
 .topics-container > .topic{
-    flex-basis: 22%;    
+    flex-basis: 20%;    
     height: 64px;
     text-decoration: none;
     display: flex;
