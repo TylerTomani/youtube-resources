@@ -54,7 +54,8 @@ export function initStepNavigation(mainTargetDiv) {
                 
             });
 
-            step.addEventListener("focusin", () => { 
+            step.addEventListener("focusin", (e) => { 
+                timeTutorialVid(e)
                 iStep = index;
             })
             step.addEventListener("focusout", () => { denlargeAllImages()})
@@ -194,15 +195,8 @@ export function handleStepKeys(key, e, mainTargetDiv) {
             }
             else {
 //  I need to put this in a function 
-                const vidBase = e.target.getAttribute("data-video");
-                const ts = e.target.getAttribute("data-timestamp");
-
-                let vidHref = vidBase;
-                if (ts) {
-                    vidHref += (vidBase.includes("?") ? "&" : "?") + `t=${ts}s`;
-                    tutorialLink.href = vidHref;
+                timeTutorialVid(e)
                 
-                }
             }
             break;
         case "f" : // next step
@@ -332,4 +326,15 @@ function getStepFloat(target) {
 }
 function goToStep(step) {
     step.scrollIntoView({ behavior: 'instant', inline: 'start', block: 'start' });
+}
+function timeTutorialVid(e){
+    const vidBase = e.target.getAttribute("data-video");
+    const ts = e.target.getAttribute("data-timestamp");
+
+    let vidHref = vidBase;
+    if (ts) {
+        vidHref += (vidBase.includes("?") ? "&" : "?") + `t=${ts}s`;
+        tutorialLink.href = vidHref;
+
+    }
 }

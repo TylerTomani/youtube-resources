@@ -23,6 +23,7 @@ a:focus,
     -webkit-tap-highlight-color: transparent;
 }
 /* Active (tap / mouse click press) */
+.step-float:active,
 .step-float:focus {
     /* border: 2px solid var(--highlight-color); */
     border: none;
