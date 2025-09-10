@@ -37,6 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const initialLink = sidebarLinks.find(el => el.hasAttribute("autofocus")) ;
     if (initialLink) {
         initialLink.focus();
+        initialLink.removeAttribute('autofocus')
         // Load initial content into mainTargetDiv
         // import("../core/inject-content.js").then(module => {
         //     module.injectContent(initialLink.href, mainTargetDiv, sidebarLinks, sidebarLinks.indexOf(initialLink), navLessonTitle);
@@ -46,6 +47,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     else {
         injectContent('home-page.html', mainTargetDiv, sidebarLinks, sidebarLinks.indexOf(initialLink), navLessonTitle);
-        console.log('lksjdf')
+        
     }
 });
