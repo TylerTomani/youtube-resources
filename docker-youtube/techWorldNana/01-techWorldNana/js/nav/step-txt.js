@@ -56,6 +56,7 @@ export function initStepNavigation(mainTargetDiv) {
 
             step.addEventListener("focusin", (e) => { 
                 timeTutorialVid(e)
+                
                 iStep = index;
             })
             step.addEventListener("focusout", () => { denlargeAllImages()})
@@ -96,6 +97,11 @@ export function initStepNavigation(mainTargetDiv) {
             step.addEventListener("pointerdown", e => {
                 e.preventDefault();
                 e.stopPropagation();
+                console.log('here')
+                const stepFloat = getStepFloat(e.target)
+                stepFloat.style.border = '20px solid blue !important'
+                stepFloat.style.background = ' blue !important'
+                console.log(stepFloat)
                 if (e.target.tagName !== "IMG") {
                     denlargeAllImages();
                     lastStep = step;

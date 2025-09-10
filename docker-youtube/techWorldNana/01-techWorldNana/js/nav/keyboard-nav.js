@@ -195,7 +195,7 @@ export function initKeyboardNav({
         if (e.shiftKey || e.metaKey) return;
         switch (focusZone) {
             case "header":
-                console.log('header')
+                
                 headerElementsFocus(key, e);
                 if (key === 'f') {
                     focusZone = "sidebar";
@@ -287,10 +287,10 @@ export function initKeyboardNav({
         const isImg = e.target.tagName === "IMG";
         const isEnlarged = e.target.closest("#targetDiv");
         if ((!isVideo || !isImg) && isEnlarged ) {
-            console.log(e.target)
+            
             const allVids = document.querySelectorAll("video");
             const allImgs = document.querySelectorAll("img");
-            console.log(allVids)
+            
             denlargeAllVideos({ allVids });
             // denlargeAllImages({ allImgs });
         }

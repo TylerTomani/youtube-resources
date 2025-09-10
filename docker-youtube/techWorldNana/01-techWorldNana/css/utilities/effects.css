@@ -20,14 +20,15 @@ a:focus,
 }
 /* Lessons injectContent() */
 .step-float {
-    -webkit-tap-highlight-color: transparent;
+    /* -webkit-tap-highlight-color: transparent; */
 }
 /* Active (tap / mouse click press) */
+.step-float:focus,
 .step-float:active,
 .step-float:focus {
     /* border: 2px solid var(--highlight-color); */
-    border: none;
-    box-shadow: 0 0 23px 4px rgba(0, 139, 137, 0.4);
+    /* border: 20px solid blue; */
+    /* box-shadow: 0 0 23px 4px rgba(0, 139, 137, 0.4); */
     /* transform: scale(0.98); */
     /* subtle pressed effect */
 }

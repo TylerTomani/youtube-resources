@@ -88,7 +88,7 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
             if (key === 'm') {
                 mainTargetDiv.focus()
                 focusZone = 'main'
-                console.log('this is glitchy code line 92 keyboard-nav')
+                
                 mKeyFocusOrder(e)
             }
         });
@@ -265,7 +265,7 @@ export function initKeyboardNav({ pageHeader, pageHeaderLinks, navLessonTitle, d
         if(e.target.tagName == 'VIDEO'){
             if(e.keyCod == 32){
                 e.preventDefault()
-                console.log(e.target)
+                
             }
         }
     });
