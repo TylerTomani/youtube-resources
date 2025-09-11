@@ -9,6 +9,10 @@ body {
     border: 1px solid black;
 }
 
+.code-container >.read-only {
+
+    border: 1px solid blue !important;
+}
 
 /* #javascriptYoutube{border: 2px solid darkkhaki !important;}
 #nodeJsYoutube{border: 2px solid royalblue !important;}

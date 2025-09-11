@@ -36,7 +36,8 @@
 
 .step,
 .step-float {
-    min-height: 50vh;
+    /* min-height: 50vh; */
+    min-height: fit-content;
     
 }
 .step-float>.step-txt>.code-container {
@@ -50,7 +51,7 @@
 }
 .code-container pre {
     /* width: fit-content; */
-    min-width: 30vw;
+    /* min-width: 30vw; */
 }
 .code-container > pre.copy-code {
     /* allow both directions */
@@ -58,10 +59,16 @@
     /* prevent overflow outside container */
     max-height: 300px;
     overflow-x: scroll;
+    min-height: 40px;
     width: fit-content;
 }
 .code-container>textarea.copy-code {
     min-height: 10vh;
+}
+.code-container > .read-only {
+    width: 100% !important;
+    height: fit-content !important;
+    min-width: 400px !important;
 }
 .clear {
         width: 100% !important;

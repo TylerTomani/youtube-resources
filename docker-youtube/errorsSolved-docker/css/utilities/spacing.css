@@ -8,8 +8,9 @@
 #sideBarBtn {
   margin-top: 2%;
 }
-#targetDiv{
+#mainTargetDiv > .main-container{
   padding-bottom: 25%;
+  margin: 25%;
 }
 #targetDiv>.main-container>header {
   margin-top: 1rem;

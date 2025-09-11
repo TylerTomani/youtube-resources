@@ -5,6 +5,7 @@ import { handleClickVideo,toggleVideoSize} from "./playStepVid.js";
 const mainTargetDiv = document.querySelector('#mainTargetDiv')
 let lastStep = null;
 const pageWrapper = document.querySelector('.page-wrapper')
+const pageH1 = document.querySelector('#pageH1')
 let steps = [];
 let allImgs = [];
 let allVids = [];
@@ -135,10 +136,13 @@ function handleStepKeys({key, e}) {
             }
             if(e.target == mainTargetDiv){
                 lastStep.focus()
-                console.log('yes')
+                // console.log('yes')
             }
             if(!copyCodesStepFocused){
-                mainTargetDiv.scrollIntoView({behavior:'instant', block: 'start'})
+                // pageH1.focus()
+                // scrollTo(0,0)
+                pageH1.scrollIntoView({behavior:'instant', inline: 'center'})
+                mainTargetDiv.focus()
             } else {
                 lastStep.focus()
             }

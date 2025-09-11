@@ -4,8 +4,8 @@ import { getPageHeader, getPageHeaderLinks, getNavLessonTitle, getDarkModeBtn, g
 import { toggleSidebar } from "../ui/toggle-sidebar.js";
 import { dragHideSidebar } from "../ui/drag-hide-sidebar.js";
 import { injectContent } from "../core/inject-content.js";
-
 document.addEventListener("DOMContentLoaded", () => {
+    const homePagelink = document.querySelector('#homePagelink')
     const pageHeader = getPageHeader();
     const pageHeaderLinks = getPageHeaderLinks();
     const navLessonTitle = getNavLessonTitle();
@@ -15,6 +15,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const sidebarLinks = Array.from(initSideBarLinks());
     const mainTargetDiv = getMainTargetDiv();
     const mainContainer = getMainContainer();
+    
+    
+
 
     // Initialize sidebar toggle and drag
     toggleSidebar(navLessonTitle, sidebar, sidebarBtn, mainContainer);

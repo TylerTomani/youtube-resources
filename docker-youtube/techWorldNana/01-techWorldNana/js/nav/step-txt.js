@@ -53,7 +53,8 @@ export function initStepNavigation(mainTargetDiv) {
                 denlargeAllImages();
                 pauseEnlargeAllVids(allVids)
                 stepClicked = false
-                step.scrollIntoView({behavior: 'instant' , inline: 'center'})
+                // step.scrollIntoView({behavior: 'instant' , inline: 'center'})
+                // step.scrollIntoView({behavior: 'instant'})
                 
             });
 
@@ -82,7 +83,8 @@ export function initStepNavigation(mainTargetDiv) {
                 
                 if (key === "enter") {
                     toggleStepImages(step,e);
-                    step.scrollIntoView({ behavior: 'instant', block: 'center' });
+                    // step.scrollIntoView({ behavior: 'instant', block: 'center' });
+                    // step.scrollIntoView({ behavior: 'instant', block: 'center' });
                     const firstCopyCode = e.target.querySelector('.copy-code')
                     // copyCodesStepFocused = true
                     if(step == lastStep && stepClicked){
@@ -158,8 +160,9 @@ export function initStepNavigation(mainTargetDiv) {
                 // console.log('add video toggle enlarge here one copy-codes')
                 const stepFloat = getStepFloat(e.target.parentElement)
                 const vid = stepFloat.querySelector('video')
+                console.log(e.target)
                 toggleVideoSize({ vid, e, steps, stepFloat })
-                handleVideo({vid})
+                handleVideo({ vid, e, steps, allVids })
             })
             code.dataset.listenerAdded = "true";
         }
@@ -336,7 +339,8 @@ function getStepFloat(target) {
     }
 }
 function goToStep(step) {
-    step.scrollIntoView({ behavior: 'instant', inline: 'start', block: 'start' });
+    // step.scrollIntoView({ behavior: 'instant', inline: 'end', block: 'end' });
+    // step.scrollIntoView({ behavior: 'instant' });
 }
 function timeTutorialVid(e){
     const vidBase = e.target.getAttribute("data-video");
