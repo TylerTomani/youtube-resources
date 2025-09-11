@@ -29,6 +29,9 @@ if (steps.length && !lastStep) {
 stepTxtPAs.forEach(el => {
     el.addEventListener('focus',e => {copyCodesStepFocused = true})
 })
+copyCodes.forEach(el => {
+    el.addEventListener('focus',e => {copyCodesStepFocused = true})
+})
 
 document.addEventListener('keydown', e => {
     let key = e.key.toLowerCase()
@@ -66,6 +69,7 @@ function handleStepKeys({key, e}) {
             }
         }
     }
+    console.log(copyCodesStepFocused)
     switch (key) {
         case "enter":
             if (e.target == mainTargetDiv) {
@@ -123,7 +127,16 @@ function handleStepKeys({key, e}) {
         case "e": // go to last stepm
             break;
         case "m": // focus last step or container
-        
+            const stepFloat = getStepFloat(e.target)
+            lastStep = stepFloat
+            if(copyCodesStepFocused){
+                lastStep.focus()
+                return
+            }
+            if(e.target == mainTargetDiv){
+                lastStep.focus()
+                console.log('yes')
+            }
             if(!copyCodesStepFocused){
                 mainTargetDiv.scrollIntoView({behavior:'instant', block: 'start'})
             } else {
