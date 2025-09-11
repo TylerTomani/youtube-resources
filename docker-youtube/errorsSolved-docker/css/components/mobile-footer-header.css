@@ -5,9 +5,12 @@
 }
 
 footer.mobile-footer-header {
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    background-color: whitesmoke;
     display: flex;
-    /* position: fixed; */
-    /* bottom: 0; */
+    bottom: 0;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
     justify-content: space-between;

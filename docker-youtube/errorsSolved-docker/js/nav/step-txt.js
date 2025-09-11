@@ -131,7 +131,15 @@ function handleStepKeys({key, e}) {
             }
             break;
         case 'c':
-            console.log(e.target)
+            const codeCommandShorcuts = document.querySelector('#codeComandShortcuts')
+            const chatGpt = document.querySelector('#chatGpt')
+            if (e.target.id != 'codeCommandShorcuts' || e.target.id != 'chatGpt' ){
+                codeCommandShorcuts.focus()
+            } else if(e.target.id === 'codeComandShortcuts'){
+                chatGpt.focus()
+            } else {
+                codeCommandShorcuts.focus()
+            }
             break
         default:
 
