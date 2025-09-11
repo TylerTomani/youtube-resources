@@ -39,9 +39,9 @@ export function handleClickVideo({ vid, e, steps, allVids,stepFloat }) {
     playPauseVideo({ vid,e });
 }
 
-export function handleVideo({ vid, e, steps, allVids }) {    
-    videoControls({ vid, e, steps, allVids });
-}
+// export function handleVideo({ vid, e, steps, allVids }) {    
+//     videoControls({ vid, e, steps, allVids });
+// }
 
 function videoControls({ vid, e, steps, allVids }) {
     let key = e.keyCode;

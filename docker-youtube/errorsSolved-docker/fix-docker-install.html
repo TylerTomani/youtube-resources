@@ -5,11 +5,15 @@
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>04-RunInstallImageOnContainer</title>
-    <link rel="stylesheet" href="css/main-mCoding.css">
+    <link rel="stylesheet" href="css/main-fix-docker.css">
+    <link rel="stylesheet" href="css/components/mobile-footer-header.css">
     <script type="module" src="js/nav/step-txt.js" defer></script>
 </head>
 <body class="dark-mode">
-    <div id="targetDiv">
+    <div tabindex="0" id="mainTargetDiv">
+        <header class="page-header">
+            <h1>fix-docker-install</h1>
+        </header>
         <div class="main-container">
             <header>
                 <h3 id="targetHeaderh3" >4. Run Install Image on Container</h3>
@@ -18,14 +22,10 @@
                 <!-- 01 -->
                 <div tabindex="0" class="step-float" data-video="https://www.youtube.com/watch?app=desktop&v=pg19Z8LL06w" 
                 data-timestamp="1276">
-                    <div class="imgs-container">
-                        <div class="step-img">
-                            <img src="images/01.png">
-                        </div>
-                        <div class="step-img">
-                            <img src="images/01.png">
-                        </div>
+                    <div class="step-img">
+                        <img src="images/01.png">
                     </div>
+                    
                     <div  class="step-txt ">
                         <h4>01</h4>
                         <p>
@@ -83,7 +83,21 @@ docker ps</pre>
                 
             </div>
         </div>
+        <!-- Footer (Mobile Header Style) -->
+        <footer class="mobile-footer-header">
+            <div class="main-links">
+                <a tabindex="0" id="backlink" href="../docker-youtube.html">back (docker-youtube)</a>
+                <a tabindex="0" id="homelink" href="https://tylertomani.github.io/myWebSite/index.html">Home (main)</a>
+            </div>
+            <div class="main-links">
+                <a tabindex="0" id="codeComandShortcuts" target="_blank" href="https://tylertomani.github.io/myWebSite/webPages/codeComShortcuts/codeComShortcuts.html">
+                    <sub>code command shortcuts</sub>
+                </a>
+                <a tabindex="0" id="chatGpt" target="_blank" href="https://tylertomani.github.io/myWebSite/webPages/chatGpt-questions/index.html">
+                    chatGpt Questions
+                </a>
+            </div>
+        </footer>
     </div>
-
 </body>
 </html>

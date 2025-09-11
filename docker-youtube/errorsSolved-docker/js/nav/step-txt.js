@@ -1,192 +1,68 @@
 // step-txt.js
 
-import { handleVideo,handleClickVideo,toggleVideoSize} from "./playStepVid.js";
-
-function initStepNavigation() {
-    const mainTargetDiv = document.querySelector('#targetDiv')
-    let lastStep = null;
-    const pageWrapper = document.querySelector('.page-wrapper')
-    let steps = [];
-    let allImgs = [];
-    let allVids = [];
-    let stepImageIndexes = new WeakMap();
-    let iStep = 0;
-    let iCopyCodes = 0;
-    let currentIndex = 0; // bad namae, index for imgs-container imgs
-    let stepClicked = false
-    let copyCodesStepFocused = false;
-    // const mainTargetDiv = document.getElementById("#targetDiv")
-    if (!mainTargetDiv) return;
-    steps = Array.from(mainTargetDiv.querySelectorAll(".steps-container > .step-float"));
-    const copyCodes = mainTargetDiv.querySelectorAll(".copy-code");
-    const stepTxtPAs = document.querySelectorAll('.step-txt p a')
-    allImgs = Array.from(mainTargetDiv.querySelectorAll(".step-img > img"));
-    
-    allVids = Array.from(mainTargetDiv.querySelectorAll('video'))
-    // Initialize first step
-    if (steps.length && !lastStep) {
-        // lastStep = steps[0];
-        // iStep = 0;
-    }
-    stepTxtPAs.forEach(el => {
-        el.addEventListener('focus',e => {
-            copyCodesStepFocused = true
-
-        })
-        
-    })
-    
-    // Add step event listeners
-    steps.forEach((step, index) => {
-        if (!step.dataset.listenerAdded) {
-            step.setAttribute("tabindex", "0");
-
-            step.addEventListener("focus", (e) => {
-                removeStepsFocusEffects(steps)
-                e.target.classList.add('efxFocus')
-                copyCodesStepFocused = false
-                iStep = index;
-                currentIndex = 0;
-                iCopyCodes = 0
-                denlargeAllImages(allImgs,allVids);
-                pauseEnlargeAllVids(allVids)
-                stepClicked = false
-                step.scrollIntoView({behavior: 'instant' , inline: 'center'})                
-            });
-            step.addEventListener("focusin", (e) => { 
-                // timeTutorialVid(e) 
-                iStep = index;
-            })
-            step.addEventListener("focusout", () => { denlargeAllImages(allImgs, allVids)})
-            
-            step.addEventListener("keydown", e => {
-                
-                let key = e.key.toLowerCase();
-                const hasVideo = step.querySelector('video') ? true : false
-                if(hasVideo){
-                    const vid = step.querySelector('video')
-                    // console.log(vid.currentTime)
-                    handleVideo({vid, e,steps,allVids})
-                    // const copyCodes = document.querySelectorAll('.copy-code, a')
-                    if(key === 'enter'){
-                        // copyCodesStepFocused = true
-                    }
-                    
-                    return
-                }
-                
-                if (key === "enter") {
-                    toggleStepImages(step,e);
-                    step.scrollIntoView({ behavior: 'instant', block: 'center' });
-                    const firstCopyCode = e.target.querySelector('.copy-code')
-                    // copyCodesStepFocused = true
-                    if(step == lastStep && stepClicked){
-                        copyCodesStepFocused = true
-                        firstCopyCode?.focus()
-                    }
-                    lastStep = step
-                    stepClicked = true
-                }
-                
-              
-            });
-            // --- unified pointerdown for click/tap ---
-            step.addEventListener("pointerdown", e => {
-                e.preventDefault();
-                e.stopPropagation();
-                removeStepsFocusEffects(steps)
-                e.target.classList.add('efxFocus')
-                const stepFloat = getStepFloat(e.target)
-                // stepFloat.style.border = '20px solid blue !important'
-                // stepFloat.style.background = ' blue !important'
-                if (e.target.tagName !== "IMG") {
-                    denlargeAllImages(allImgs, allVids);
-                    lastStep = step;
-                }
-            });
-
-            step.dataset.listenerAdded = "true";
-        }
-    });
-
-    // Add image click/touch listeners (now redundant, so left empty)
-    allImgs.forEach(img => {
-        if (!img.dataset.listenerAdded) {
-            img.addEventListener('click', e => {
-                toggleSingleImage(img)
-            })
-            img.dataset.listenerAdded = "true";
-        }
-    });
-    allVids.forEach(vid => {
-        if (!vid.dataset.listenerAdded) {
-            vid.addEventListener('click', e => {
-                // toggleSingleImage(vid)
-                const stepFloat = getStepFloat(e.target.parentElement)
-                handleClickVideo({vid,e,steps,allVids,stepFloat})
-            })
-            vid.addEventListener('keydown', e => {
-                // toggleSingleImage(vid)
-                console.log(e.target)
-                handleVideo({vid,e,steps,allVids})
-            })
-            vid.dataset.listenerAdded = "true";
-        }
-    });
-
-    // Initialize copy-code focus behavior
-    
-    copyCodes.forEach(code => {
-        if (!code.dataset.listenerAdded) {
-            code.addEventListener("focus", (e) => {
-                denlargeAllImages(allImgs, allVids);
-                pauseEnlargeAllVids(allVids)
-                copyCodesStepFocused = true 
-
-
-            });
-            code.addEventListener('keydown', e => {
-                // console.log('add video toggle enlarge here one copy-codes')
-                const stepFloat = getStepFloat(e.target.parentElement)
-                const vid = stepFloat.querySelector('video')
-                toggleVideoSize({ vid, e, steps, stepFloat })
-                handleVideo({vid})
-            })
-            code.dataset.listenerAdded = "true";
-        }
-    });
+// import { handleVideo,handleClickVideo,toggleVideoSize} from "./playStepVid.js";
+import { handleClickVideo,toggleVideoSize} from "./playStepVid.js";
+const mainTargetDiv = document.querySelector('#mainTargetDiv')
+let lastStep = null;
+const pageWrapper = document.querySelector('.page-wrapper')
+let steps = [];
+let allImgs = [];
+let allVids = [];
+let stepImageIndexes = new WeakMap();
+let iStep = 0;
+let iCopyCodes = 0;
+let currentIndex = 0; // bad namae, index for imgs-container imgs
+let stepClicked = false
+let copyCodesStepFocused = false;
+const copyCodes = mainTargetDiv.querySelectorAll(".copy-code");
+const stepTxtPAs = document.querySelectorAll('.step-txt p a')
+// const mainTargetDiv = document.getElementById("#targetDiv")
+// if (!mainTargetDiv) return;
+steps = Array.from(mainTargetDiv.querySelectorAll(".steps-container > .step-float"));
+allImgs = Array.from(mainTargetDiv.querySelectorAll(".step-img > img"));
+allVids = Array.from(mainTargetDiv.querySelectorAll('video'))
+// Initialize first step
+if (steps.length && !lastStep) {
+    // lastStep = steps[0];
+    // iStep = 0;
 }
-initStepNavigation()
-// --- Handle step navigation keys ---
-export function handleStepKeys(key, e, mainTargetDiv) {
-    if (!steps.length) return;
+stepTxtPAs.forEach(el => {
+    el.addEventListener('focus',e => {copyCodesStepFocused = true})
+})
 
+document.addEventListener('keydown', e => {
+    let key = e.key.toLowerCase()
+    handleStepKeys({key,e})
+})
+const backlink = document.querySelector('#backlink')
+function handleStepKeys({key, e}) {
+    if (!steps.length) return;
     if (!isNaN(key)) {
-        if (!copyCodesStepFocused){
+        if (!copyCodesStepFocused) {
             console.log(e.target)
             const index = parseInt(key, 10) - 1;
             if (index >= 0 && index < steps.length) {
                 iStep = index;
                 steps[iStep].focus();
                 lastStep = steps[iStep];
-                
-            } else if(index > steps.length){
+
+            } else if (index > steps.length) {
                 endNxtLessonBtn.focus()
             }
 
         } else {
             const stepFloat = getStepFloat(e.target)
             const copyCodes = stepFloat.querySelectorAll('.copy-code')
-            if(copyCodes.length > 1){
+            if (copyCodes.length > 1) {
                 let intKey = parseInt(key)
                 copyCodes[intKey - 1].focus()
             } else {
                 const index = parseInt(key, 10) - 1;
                 if (index >= 0 && index < steps.length) {
                     iStep = index;
-                    steps[iStep].focus();
+                    steps[iStep]?.focus();
                     lastStep = steps[iStep];
-                } 
+                }
             }
         }
     }
@@ -196,12 +72,12 @@ export function handleStepKeys(key, e, mainTargetDiv) {
                 steps[0].focus()
             }
             else {
-//  I need to put this in a function 
+                //  I need to put this in a function 
                 // timeTutorialVid(e)
-                
+
             }
             break;
-        case "f" : // next step
+        case "f": // next step
 
             if (!copyCodesStepFocused) {
                 if (e.target == mainTargetDiv) {
@@ -237,38 +113,105 @@ export function handleStepKeys(key, e, mainTargetDiv) {
                 copyCodes[iCopyCodes].focus()
 
             }
-            break;
+            break
+        case "b":
+            backlink.focus()
+            break
+        case "h":
+            homelink.focus()
+            break
         case "e": // go to last stepm
             break;
         case "m": // focus last step or container
-            if (e.target === mainTargetDiv) {
-                // scroll page to top if container itself has focus
-                window.scrollTo({ top: 0, behavior: "instant" });
-            } else if (e.target === lastStep) {
-                // go back to container
-                mainTargetDiv.focus();
-            } else if (lastStep) {
-                // otherwise focus the last step we tracked
-                lastStep.focus();
-            }
-            if (e.target === mainTargetDiv && !lastStep) {
-                steps[0].focus();
+        
+            if(!copyCodesStepFocused){
+                mainTargetDiv.scrollIntoView({behavior:'instant', block: 'start'})
+            } else {
+                lastStep.focus()
             }
             break;
+        case 'c':
+            console.log(e.target)
+            break
         default:
-            
+
             break;
     }
 }
 
-// --- Image handling ---
+steps.forEach((step, index) => {
+    if (!step.dataset.listenerAdded) {
+        step.setAttribute("tabindex", "0");
+
+        step.addEventListener("focus", (e) => {
+            removeStepsFocusEffects(steps)
+            e.target.classList.add('efxFocus')
+            copyCodesStepFocused = false
+            iStep = index;
+            currentIndex = 0;
+            iCopyCodes = 0
+            denlargeAllImages(allImgs, allVids);
+            pauseEnlargeAllVids(allVids)
+            stepClicked = false
+            step.scrollIntoView({ behavior: 'instant', inline: 'center' })
+        });
+        step.addEventListener("focusin", (e) => {
+            // timeTutorialVid(e) 
+            iStep = index;
+        })
+        step.addEventListener("focusout", () => { denlargeAllImages(allImgs, allVids) })
+
+        step.addEventListener("keydown", e => {
+
+            let key = e.key.toLowerCase();
+            const hasVideo = step.querySelector('video') ? true : false
+            if (hasVideo) {
+                const vid = step.querySelector('video')
+                // console.log(vid.currentTime)
+                // handleVideo({vid, e,steps,allVids})
+                // const copyCodes = document.querySelectorAll('.copy-code, a')
+                if (key === 'enter') {
+                    // copyCodesStepFocused = true
+                }
+                return
+            }
+
+            if (key === "enter") {
+                toggleStepImages(step, e);
+                step.scrollIntoView({ behavior: 'instant', block: 'center' });
+                const firstCopyCode = e.target.querySelector('.copy-code')
+                // copyCodesStepFocused = true
+                if (step == lastStep && stepClicked) {
+                    copyCodesStepFocused = true
+                    // firstCopyCode?.focus()
+                }
+                lastStep = step
+                stepClicked = true
+            }
+        });
+        // --- unified pointerdown for click/tap ---
+        step.addEventListener("pointerdown", e => {
+            e.preventDefault();
+            e.stopPropagation();
+            removeStepsFocusEffects(steps)
+            e.target.classList.add('efxFocus')
+            const stepFloat = getStepFloat(e.target)
+            // stepFloat.style.border = '20px solid blue !important'
+            // stepFloat.style.background = ' blue !important'
+            if (e.target.tagName !== "IMG") {
+                denlargeAllImages(allImgs, allVids);
+                lastStep = step;
+            }
+        });
+
+        step.dataset.listenerAdded = "true";
+    }
+});
 function toggleSingleImage(img) {
     img.classList.toggle("enlarge");
     // img.style.zIndex = img.classList.contains("enlarge") ? 100 : 0;
 }
-
-function toggleStepImages(step,e) {
-    
+function toggleStepImages(step, e) {
     const images = Array.from(step.querySelectorAll(".step-img > img"));
     if (!images.length) return;
     if (images.length === 1) {
@@ -280,7 +223,7 @@ function toggleStepImages(step,e) {
             denlargeAllImages(allImgs, allVids);
             currentIndex = 0;
         } else {
-            denlargeAllImages(allImgs, allVids);
+            // denlargeAllImages(allImgs, allVids);
             if (images[currentIndex]) {
                 images[currentIndex].classList.add("enlarge");
                 // images[currentIndex].style.zIndex = 100;
@@ -288,12 +231,10 @@ function toggleStepImages(step,e) {
             }
         }
     }
-    
 }
-// --- Utility ---
-export function denlargeAllImages(allImgs, allVids) {
+function denlargeAllImages(allImgs, allVids) {
     allImgs.forEach(img => {
-        if(img.classList.contains('enlarge'))img.classList.remove("enlarge");
+        if (img.classList.contains('enlarge')) img.classList.remove("enlarge");
         // img.style.zIndex = 0;
     });
     allVids.forEach(vid => {
@@ -301,21 +242,7 @@ export function denlargeAllImages(allImgs, allVids) {
 
     })
 }
-export function pauseEnlargeAllVids(allVids) {
-    allVids.forEach(vid => {
-        if (vid.classList.contains('enlarge')) {
-            vid.classList.remove('enlarge')
-        }
-        if (vid.classList.contains('first-vid-enlarge')) {
-            vid.classList.remove('.first-vid-enlarge')
-        }
-        // console.log(vid.playing)
-        if(vid.playing){
-            vid.pause()
-        }
-    })
-}
-
+function removeStepsFocusEffects(steps) {steps.forEach(el => el.classList.remove('efxFocus'))}
 function getStepFloat(target) {
     if (target.classList.contains('step-float')) {
         return target;
@@ -325,21 +252,17 @@ function getStepFloat(target) {
         return null;
     }
 }
-function goToStep(step) {
-    step.scrollIntoView({ behavior: 'instant', inline: 'start', block: 'start' });
-}
-function timeTutorialVid(e){
-    const vidBase = e.target.getAttribute("data-video");
-    const ts = e.target.getAttribute("data-timestamp");
-
-    let vidHref = vidBase;
-    if (ts) {
-        vidHref += (vidBase.includes("?") ? "&" : "?") + `t=${ts}s`;
-        tutorialLink.href = vidHref;
-
-    }
-}
-
-function removeStepsFocusEffects(steps) {
-    steps.forEach(el => el.classList.remove('efxFocus'))
+function pauseEnlargeAllVids(allVids) {
+    allVids.forEach(vid => {
+        if (vid.classList.contains('enlarge')) {
+            vid.classList.remove('enlarge')
+        }
+        if (vid.classList.contains('first-vid-enlarge')) {
+            vid.classList.remove('.first-vid-enlarge')
+        }
+        // console.log(vid.playing)
+        if (vid.playing) {
+            vid.pause()
+        }
+    })
 }
